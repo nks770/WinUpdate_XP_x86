@@ -136,3 +136,14 @@ __int64 getFileSize(/*const wchar_t* name*/ std::wstring name) {
     CloseHandle(hFile);
     return size.QuadPart;
 }
+
+bool fileExists(std::wstring name) {
+    HANDLE hFile = CreateFile(name.c_str(), GENERIC_READ, 
+        FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 
+        FILE_ATTRIBUTE_NORMAL, NULL);
+	if (hFile==INVALID_HANDLE_VALUE) {
+        return false; // error condition, could call GetLastError to find out more
+	}
+    CloseHandle(hFile);
+    return true;
+}

@@ -99,6 +99,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
+	bool _secdrv_sys_exist   = fileExists(Drivers+L"\\secdrv.sys");
+
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
@@ -2231,7 +2233,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"windowsxp-kb890859-x86-enu_813f47d987b772bacae20e7dec9b5f6f16079303.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
-		                  ( /*_secdrv_sys    >zero &&*/ _secdrv_sys    <fver(4,3,86,0)) )) {
+		                  ( /*_secdrv_sys    >zero*/ _secdrv_sys_exist
+						   && _secdrv_sys    <fver(4,3,86,0)) )) {
 		NN("Security Update for Windows XP (KB944653)");
 		XX(p+"windowsxp-kb944653-x86-enu_e08db12cc3442f904f2a1d9a51c7c5662e15ef3b.exe"+a1);
 	}

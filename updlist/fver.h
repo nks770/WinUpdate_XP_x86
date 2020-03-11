@@ -34,5 +34,6 @@ public:
 
 fver getFileVer(const std::wstring& lptstrFilename,int* status);
 __int64 getFileSize(std::wstring name);
+bool fileExists(std::wstring name);
 
 #endif
