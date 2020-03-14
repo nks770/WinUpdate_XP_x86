@@ -343,7 +343,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		}
 	}
 
-	if(*pshell && sp<3 && !disable_install) {
+	if(*pshell && sp<3 && !disable_install && !disable_all) {
 		//                        ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Cannot install Windows PowerShell 2.0 and")
 			                   +"|WinRM 2.0 because it requires Windows XP SP3.");

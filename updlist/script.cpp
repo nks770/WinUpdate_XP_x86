@@ -29,6 +29,8 @@ void createUpdateScript(std::vector<std::string>* name,std::vector<std::string>*
 		j=(unsigned int)exe->size();
 	}
 
+	printf("echo.\n");
+
 	if(j==0) {
 
 		printf("echo The machine is already up to date.\n");
@@ -40,9 +42,11 @@ void createUpdateScript(std::vector<std::string>* name,std::vector<std::string>*
 	} else {
 		if(!isNullAvailable) {
 			printf("echo Ready to install %d %s.\n",j,j==1?"update":"updates");
+			printf("echo.\n");
 			printf("pause\n");
 		} else {
 			printf("echo Ready to install %d %s. Press enter to begin.\n",j,j==1?"update":"updates");
+			printf("echo.\n");
 			printf("pause>NUL\n");
 		}
 		scriptElements(name,exe);
