@@ -170,6 +170,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fxscover_exe = getFileVer(System32+L"\\fxscover.exe",&status);
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
 	fver _gpkcsp_dll   = getFileVer(System32+L"\\gpkcsp.dll",&status);
+	fver _gpprefcl_dll = getFileVer(System32+L"\\gpprefcl.dll",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
@@ -199,6 +200,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _imagehlp_dll = getFileVer(System32+L"\\imagehlp.dll",&status);
 	fver _imapi2_dll   = getFileVer(System32+L"\\imapi2.dll",&status);
 	fver _imapi2fs_dll = getFileVer(System32+L"\\imapi2fs.dll",&status);
+	fver _imekr61_ime  = getFileVer(System32+L"\\imekr61.ime",&status);
 	fver _inetcomm_dll = getFileVer(System32+L"\\inetcomm.dll",&status);
 	fver _inetcpl_cpl  = getFileVer(System32+L"\\inetcpl.cpl",&status);
 	fver _inetpp_dll   = getFileVer(System32+L"\\inetpp.dll",&status);
@@ -482,6 +484,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wudfupdate_01007_dll  = getFileVer(System32+L"\\wudfupdate_01007.dll",&status);
 	fver _wudfusbcciddriver_dll = getFileVer(System32+L"\\drivers\\UMDF\\wudfusbcciddriver.dll",&status);
 	fver _wzcsvc_dll   = getFileVer(System32+L"\\wzcsvc.dll",&status);
+	fver _xmllite_dll  = getFileVer(System32+L"\\xmllite.dll",&status);
 	fver _xolehlp_dll  = getFileVer(System32+L"\\xolehlp.dll",&status);
 	fver _xp_eos_exe   = getFileVer(System32+L"\\xp_eos.exe",&status);
 	fver _xpsp4res_dll = getFileVer(System32+L"\\xpsp4res.dll",&status);
@@ -573,6 +576,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fltMgr_sys   = getFileVer(Drivers+L"\\fltMgr.sys",&status);
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
+	fver _ipnat_sys    = getFileVer(Drivers+L"\\ipnat.sys",&status);
 	fver _irbus_sys    = getFileVer(Drivers+L"\\irbus.sys",&status);
 	fver _kmixer_sys   = getFileVer(Drivers+L"\\kmixer.sys",&status);
 	fver _ks_sys       = getFileVer(Drivers+L"\\ks.sys",&status);
@@ -637,6 +641,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _jsprofilerui_dll = getFileVer(InternetExplorer+L"\\jsprofilerui.dll",&status);
 	fver _xpshims_dll  = getFileVer(InternetExplorer+L"\\xpshims.dll",&status);
 
+	fver _npdsplay_dll = getFileVer(WindowsMediaPlayer+L"\\npdsplay.dll",&status);
 	fver _wmsetsdk_exe = getFileVer(WindowsMediaPlayer+L"\\wmsetsdk.exe",&status);
 
 	fver _vgx_dll      = getFileVer(VGX+L"\\vgx.dll",&status);
@@ -1915,6 +1920,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB925902)");
 		XX(p+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
 	}
+	/*if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
+		// KB891781 is replaced by KB973869 on SP2
+		NN("Security Update for Windows XP (KB891781)");
+		XX(p+"windowsxp-kb891781-x86-enu_32b11076df0189adeb0f36ce3bf7baa01cff1c29.exe"+a6);
+	}*/
 	if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9247)) {
 		NN("Security Update for Windows XP (KB973869)");
 		XX(p+"windowsxp-kb973869-x86-enu_c0679cb2d4c07f35f39ee5d8d7b973c5e4582d34.exe"+a1);
@@ -1971,6 +1981,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 6.4 (KB925398)");
 		XX(p+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,2777))
+					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,2777)) )) {
+		// KB908519 is replaced by KB972270 on SP2
+		NN("Security Update for Windows XP (KB908519)");
+		XX(p+"windowsxp-kb908519-x86-enu_ea7ea742f9a3632f1090eab8c66b3fe7735c084f.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,3634))
 					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,3634))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,5888))
@@ -2112,6 +2128,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB971468)");
 		XX(p+"windowsxp-kb971468-x86-enu_68d7899c8b8462219daf40f02c6fb9f362b1ee6b.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _telnet_exe>zero && _telnet_exe<fver(5,1,2600,2674)) {
+		// KB896428 is replaced by KB960859 on SP2
+		NN("Security Update for Windows XP (KB896428)");
+		XX(p+"windowsxp-kb896428-x86-enu_24f66bc1e3b8107ec580ba2c53148a69dbc606a0.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_telnet_exe>zero && _telnet_exe<fver(5,1,2600,3587))
 					  ||  (_tlntsess_exe>zero && _tlntsess_exe<fver(5,1,2600,3587))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_telnet_exe>zero && _telnet_exe<fver(5,1,2600,5829))
@@ -2441,7 +2462,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _wab32_dll    >zero && _wab32_dll    <fver(6,0,2900,3138))
 					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2900,3138)) )) {
 		NN("Cumulative Security Update for Outlook Express for Windows XP (KB929123)");
-		XX(p+"windowsxp-kb929123-x86-enu_e0a3cac53fbefd5629a4cc6ec79803875ff473b3.exe"+a6);
+		XX(p+"windowsxp-kb929123-x86-enu_e0a3cac53fbefd5629a4cc6ec79803875ff473b3.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _ipnat_sys>zero && _ipnat_sys<fver(5,1,2600,2524)) {
+		NN("Critical Update for Windows XP (KB886185)");
+		XX(p+"windowsxp-kb886185-x86-enu_88123f8c8a9a8147529eac8ae4656b86c1018a8f.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && _imekr61_ime>zero && _imekr61_ime<fver(6,1,2600,3)) {
+		NN("Security Update for Windows XP (KB901190)");
+		XX(p+"windowsxp-kb901190-x86-enu_2497a4e9957ddf13e2343858608f89ef6132efb2.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && _xmllite_dll <fver(1,0,1018,0)) {
+		NN("XMLLite for Windows XP (KB915865)");
+		XX(p+"WindowsXP-KB915865-v11-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _gpprefcl_dll <fver(5,2,3790,4568)) {
+		// KB943729 requires KB915865
+		NN("Group Policy Preference Client Side Extensions for Windows XP (KB943729)");
+		XX(p+"windows-kb943729-x86-enu_e174c41ce3dcbd5c8922d6d1c39df1be425a70e0.exe"+a1);
 	}
 
 
@@ -4332,6 +4370,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for WMDRM-enabled Media Players (KB902344)");
 		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && _npdsplay_dll>zero && _npdsplay_dll<fver(3,0,2,629)) {
+		NN("Security Update for Windows Media Player Plug-in (KB911564)");
+		XX(p+"windowsmedia-kb911564-x86-enu_8f5e0c3d5c50c32200a78dab3ccadb175649858c.exe"+a1);
+	}
+
+
 	if( sp==3 && (sku & XP_ALL) && _infocomm_dll>zero && _infocomm_dll<fver(6,0,2600,6018)) {
 		NN("Security Update for Windows XP (KB2290570)");
 		XX(p+"WindowsXP-KB2290570-x86-ENU.exe"+a1);
