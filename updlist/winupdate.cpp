@@ -131,6 +131,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cdfview_dll  = getFileVer(System32+L"\\cdfview.dll",&status);
 	fver _cdosys_dll   = getFileVer(System32+L"\\cdosys.dll",&status);
 	fver _cewmdm_dll   = getFileVer(System32+L"\\cewmdm.dll",&status);
+	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
 	fver _colbact_dll  = getFileVer(System32+L"\\colbact.dll",&status);
@@ -161,6 +162,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dxtrans_dll  = getFileVer(System32+L"\\dxtrans.dll",&status);
 	fver _encdec_dll   = getFileVer(System32+L"\\encdec.dll",&status);
 	fver _es_dll       = getFileVer(System32+L"\\es.dll",&status);
+	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
 	fver _fltMc_exe    = getFileVer(System32+L"\\fltMc.exe",&status);
@@ -341,9 +343,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _oleprn_dll   = getFileVer(System32+L"\\oleprn.dll",&status);
 	fver _olepro32_dll = getFileVer(System32+L"\\olepro32.dll",&status);
 	fver _osk_exe      = getFileVer(System32+L"\\osk.exe",&status);
+	fver _p2p_dll      = getFileVer(System32+L"\\p2p.dll",&status);
+	fver _p2pgasvc_dll = getFileVer(System32+L"\\p2pgasvc.dll",&status);
+	fver _p2pgraph_dll = getFileVer(System32+L"\\p2pgraph.dll",&status);
+	fver _p2pnetsh_dll = getFileVer(System32+L"\\p2pnetsh.dll",&status);
+	fver _p2psvc_dll   = getFileVer(System32+L"\\p2psvc.dll",&status);
 	fver _packager_exe = getFileVer(System32+L"\\packager.exe",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
 	fver _pintool_exe  = getFileVer(System32+L"\\pintool.exe",&status);
+	fver _pnrpnsp_dll  = getFileVer(System32+L"\\pnrpnsp.dll",&status);
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
@@ -392,6 +400,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
 	fver _spoolsv_exe  = getFileVer(System32+L"\\spoolsv.exe",&status);
 	fver _srvsvc_dll   = getFileVer(System32+L"\\srvsvc.dll",&status);
+	fver _stclient_dll = getFileVer(System32+L"\\stclient.dll",&status);
 	fver _strmdll_dll  = getFileVer(System32+L"\\strmdll.dll",&status);
 	fver _strmfilt_dll = getFileVer(System32+L"\\strmfilt.dll",&status);
 	fver _sxs_dll      = getFileVer(System32+L"\\sxs.dll",&status);
@@ -628,9 +637,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wuweb_dll    = getFileVer(System32+L"\\wuweb.dll",&status);
 
 	fver _asp_dll      = getFileVer(inetsrv+L"\\asp.dll",&status);
+	fver _asp51_dll    = getFileVer(inetsrv+L"\\asp51.dll",&status);
 	fver _httpext_dll  = getFileVer(inetsrv+L"\\httpext.dll",&status);
 	fver _infocomm_dll = getFileVer(inetsrv+L"\\infocomm.dll",&status);
 	fver _smtpsvc_dll  = getFileVer(inetsrv+L"\\smtpsvc.dll",&status);
+	fver _w3svc_dll    = getFileVer(inetsrv+L"\\w3svc.dll",&status);
 
 	fver _iecompat_dll = getFileVer(InternetExplorer+L"\\iecompat.dll",&status);
 	fver _iedvtool_dll = getFileVer(InternetExplorer+L"\\iedvtool.dll",&status);
@@ -1644,9 +1655,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB888302)");
 		XX(p+"windowsxp-kb888302-x86-enu_5c4ef905021d66aa78d9f5f112e5d05c40b1a909.exe"+a6);
 	}
-	if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,2847)) {
+	/*if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,2847)) {
+		// KB928843 is replaced with revised patch KB935448
 		NN("Security Update for Windows XP (KB928843)");
 		XX(p+"windowsxp-kb928843-x86-enu_80eb8779856aefa25bceab8926940fbdebabdc23.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && (
+				_hhctrl_ocx<fver(5,2,3790,2847)
+				|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB935448")) ) {
+		NN("Update for Windows XP (KB935448)");
+		XX(p+"windowsxp-kb935448-x86-enu_f7a4f05c7979ea17ea0300ba131e0655c66f8eab.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && _snmp_exe>zero && _snmp_exe<fver(5,1,2600,3038)) {
 		NN("Security Update for Windows XP (KB926247)");
@@ -1679,11 +1697,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB943055)");
 		XX(p+"windowsxp-kb943055-x86-enu_e160e1b140872892d2d0050449b1606cc85b5654.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3316)) {
+		// KB948590 is replaced by KB956802 in SP2
+		NN("Security Update for Windows XP (KB948590)");
+		XX(p+"windowsxp-kb948590-x86-enu_f94e1dbe8e74d3da8f3979e1cae71360c0c11a8e.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3466)) {
 	//if( sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5698)) {
 		NN("Security Update for Windows XP (KB956802)");
 		XX(p+"windowsxp-kb956802-x86-enu_bf0a8bfe0d01487a999fb8f66b3719957acf1f3a.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,90,1101,0)) {
+		// KB936021 is replaced by KB955069 on SP2
+		NN("Security Update for Windows XP (KB936021)");
+		XX(p+"windowsxp-kb936021-x86-enu_9952bfa53c32d996780807ca1c1ab1c9ca398237.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1048,0)) { // also installable on SP3, same payload
 		NN("Security Update for Windows XP (KB955069)");
 		XX(p+"windowsxp-kb955069-x86-enu_fa864585a7d761ba0f940eff151672871d0e69f3.exe"+a1);
@@ -1702,6 +1730,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB958644)");
 		XX(p+"windowsxp-kb958644-x86-enu_5c135a8dae5721849430afe27af255f83e64f62b.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && ( (_mqac_sys>zero && _mqac_sys<fver(5,1,0,1109))
+					  ||  (_mqad_dll    >zero && _mqad_dll    <fver(5,1,0,1109))
+					  ||  (_mqdscli_dll >zero && _mqdscli_dll <fver(5,1,0,1109))
+					  ||  (_mqise_dll   >zero && _mqise_dll   <fver(5,1,0,1109))
+					  ||  (_mqqm_dll    >zero && _mqqm_dll    <fver(5,1,0,1109))
+					  ||  (_mqrt_dll    >zero && _mqrt_dll    <fver(5,1,0,1109))
+					  ||  (_mqsec_dll   >zero && _mqsec_dll   <fver(5,1,0,1109))
+					  ||  (_mqupgrd_dll >zero && _mqupgrd_dll <fver(5,1,0,1109))
+					  ||  (_mqutil_dll  >zero && _mqutil_dll  <fver(5,1,0,1109)) )) {
+		// KB937894 is replaced by KB971032 on SP2
+		NN("Security Update for Windows XP (KB937894)");
+		XX(p+"windowsxp-kb937894-x86-enu_4546c1f99c7d0d557b5c454c961798eab01e3444.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( (_mqac_sys>zero && _mqac_sys<fver(5,1,0,1111))
 					  ||  (_mqad_dll    >zero && _mqad_dll    <fver(5,1,0,1111))
 					  ||  (_mqbkup_exe  >zero && _mqbkup_exe  <fver(5,1,0,1111))
@@ -1722,6 +1763,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB971032)");
 		XX(p+"windowsxp-kb971032-x86-enu_23f7ac835ed26257c74a7b1ef5caa6198182cf6c.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,3243)) {
+		// KB941568 is replaced by KB975562 on SP2
+		NN("Security Update for Windows XP (KB941568)");
+		XX(p+"windowsxp-kb941568-x86-enu_e62eb6119afa388291cf71da243fb265afe31e60.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,3665)) {
 	//if( sp==3 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,5933)) {
 		NN("Security Update for Windows XP (KB975562)");
@@ -1772,11 +1818,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB950749)");
 		XX(p+"windowsxp-kb950749-x86-enu_52c183782f97ebcc7c92e0d71e0525a540898507.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,3173)) {
+		// KB933729 is replaced by KB970238 on SP2
+		NN("Security Update for Windows XP (KB933729)");
+		XX(p+"windowsxp-kb933729-x86-enu_5b4ed1a7e5586b93a367156607ace191dc4bf53a.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,3555)) {
 	//if( sp==3 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,5795)) {
 		NN("Security Update for Windows XP (KB970238)");
 		XX(p+"windowsxp-kb970238-x86-enu_82bd58dd365d93afa746a4beaf2a1ad5b8d5181a.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,3244)) {
+		// KB941644 is replaced by KB951748 on SP2
+		NN("Security Update for Windows XP (KB941644)");
+		XX(p+"windowsxp-kb941644-x86-enu_69bd9e4e22c97592dca087165e4fef304230f7a5.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
 					  ||  (_afd_sys     >zero && _afd_sys     <fver(5,1,2600,3394))
 					  ||  (_dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,3394))
@@ -1849,6 +1905,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB923191)");
 		XX(p+"windowsxp-kb923191-x86-enu_9d2cfed124f1f50804c20a6e8a881f84c266745f.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
+		// KB941693 is replaced by KB979559 on SP2
+		NN("Security Update for Windows XP (KB941693)");
+		XX(p+"windowsxp-kb941693-x86-enu_c2a97173c92d11672036e8a5e0a062f79460c6f1.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3706)) {
 	//if( sp==3 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,5976)) {
 		NN("Security Update for Windows XP (KB979559)");
@@ -1859,6 +1920,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978601)");
 		XX(p+"windowsxp-kb978601-x86-enu_49ae6ac4f6e0a609124f2ce6f80fcef249273c02.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,2951)) {
+		// KB919007 is replaced by KB950762 on SP2
+		NN("Security Update for Windows XP (KB919007)");
+		XX(p+"windowsxp-kb919007-x86-enu_dc2307d635a64c87bbf1f216442104ef4b4ada0b.exe"+a1);
+	}*/
 	if(   (sp==2 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,3369))
 		||(sp==3 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,5598))) {
 		NN("Security Update for Windows XP (KB950762)");
@@ -1938,6 +2004,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB961501)");
 		XX(p+"windowsxp-kb961501-x86-enu_a5360324a1fe219a9aa9f0e513edffe7305176e4.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,3249)) {
+		// KB943485 is replaced by KB956572 in SP2
+		NN("Security Update for Windows XP (KB943485)");
+		XX(p+"windowsxp-kb943485-x86-enu_cb8bf0aa18299dda9578a70411ade45cbd3ae619.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && (
 		                  (_advapi32_dll >zero && _advapi32_dll <fver(5,1,2600,3520))
 					  ||  (_colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,308))
@@ -1994,6 +2065,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB972270)");
 		XX(p+"WindowsXP-KB972270-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _schannel_dll>zero && _schannel_dll<fver(5,1,2600,3126)) {
+		// KB935840 is replaced by KB960225 on SP2
+		NN("Security Update for Windows XP (KB935840)");
+		XX(p+"windowsxp-kb935840-x86-enu_24d246dfa0195732d275b8f5206f9338f85a2113.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _schannel_dll>zero && _schannel_dll<fver(5,1,2600,3487)) {
 	//if( sp==3 && (sku & XP_ALL) && _schannel_dll>zero && _schannel_dll<fver(5,1,2600,5721)) {
 		NN("Security Update for Windows XP (KB960225)");
@@ -2003,6 +2079,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB946026)");
 		XX(p+"windowsxp-kb946026-x86-enu_09eb2e3ee66c5e1be768a4fee49f9f47a0f0b978.exe"+a1);
 	}
+	/*if(sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
+					  ||  (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,2975)) )) {
+		// KB922819 is replaced by KB978338 on SP2
+		NN("Security Update for Windows XP (KB922819)");
+		XX(p+"windowsxp-kb922819-x86-enu_e4dceecdd4a72e5ad91cc78fe5f4572f91ee5db0.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,3667))
 					  ||  (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,3667))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,5935))
@@ -2038,6 +2120,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && (sku & XP_ALL) && _helpsvc_exe>zero && _helpsvc_exe<fver(5,1,2600,5997))) {
 		NN("Security Update for Windows XP (KB2229593)");
 		XX(p+"WindowsXP-KB2229593-x86-ENU.exe"+a1);
+	}
+	if(sp==2 && (sku & XP_ALL) && ( (_ciodm_dll>zero && _ciodm_dll<fver(5,1,2600,2935))
+					  ||  (_query_dll>zero && _query_dll<fver(5,1,2600,2935)) )) {
+		NN("Security Update for Windows XP (KB920685)");
+		XX(p+"windowsxp-kb920685-x86-enu_be0e9cea96e2ad48394aebe90d48edcc36ac38d5.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && _query_dll>zero && _query_dll<fver(5,1,2600,3602))
 	 ||(sp==3 && (sku & XP_ALL) && _query_dll>zero && _query_dll<fver(5,1,2600,5847))) {
@@ -2092,9 +2179,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB958869)");
 		XX(p+"windowsxp-kb958869-x86-enu_ec59d655f78bbc751bb5d664530615ba53929548.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
+	/*if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
+		// KB929969 is replaced by KB938127 on SP2
 		NN("Security Update for Windows XP (KB929969)");
 		XX(p+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
+		NN("Security Update for Windows XP Service Pack 2 (KB938127)");
+		XX(p+"WindowsXP-KB938127-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && ( (_shell32_dll>zero && _shell32_dll<fver(6,0,2900,3051))
 					  ||  (_shsvcs_dll>zero && _shsvcs_dll<fver(6,0,2900,3051)) )) {
@@ -2110,6 +2202,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB967715)");
 		XX(p+"windowsxp-kb967715-x86-enu_7d158e1f0dc6a7b5de75ca59bc89816017150ab4.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && ( 
+		                  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3093))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,3093))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,3093))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,3093)) )) {
+		// KB931784 is replaced by KB979683 on SP2
+		NN("Security Update for Windows XP (KB931784)");
+		XX(p+"windowsxp-kb931784-x86-enu_70c95793c76ac8746a1ca9abd1815a8f0b73944f.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3670))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,3670))
@@ -2123,6 +2224,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB979683)");
 		XX(p+"windowsxp-kb979683-x86-enu_8f9e90bf9b6ad58fd264cc1cf0f187f9a83223a5.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,2974)) {
+		// KB923414 is replaced by KB971468 on SP2
+		NN("Security Update for Windows XP (KB923414)");
+		XX(p+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
 	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
 		NN("Security Update for Windows XP (KB971468)");
@@ -2149,6 +2255,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB946648)");
 		XX(p+"WindowsXP-KB946648-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,3119)) {
+		// KB935839 is replaced by KB959426 on SP2
+		NN("Security Update for Windows XP (KB935839)");
+		XX(p+"windowsxp-kb935839-x86-enu_891b3c6e312494ccf2dd0dab00dfcc4c49f2ca85.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,3541))
 					  ||  (_secur32_dll>zero && _secur32_dll<fver(5,1,2600,3518))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,5781))
@@ -2321,6 +2432,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978706)");
 		XX(p+"WindowsXP-KB978706-x86-ENU.exe"+a1);
 	}
+	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3198)) {
+		// KB941202 is replaced by KB978542 on SP2
+		NN("Security Update for Outlook Express for Windows XP (KB941202)");
+		XX(p+"windowsxp-kb941202-x86-enu_a82783a1dd4d11145d52b0fa0aa2f8dc172eefc3.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3664))
 					  ||  (_msoe_dll>zero && _msoe_dll<fver(6,0,2900,3664))))
 	|| (sp==3 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,5931))
@@ -2352,7 +2468,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB890046)");
 		XX(p+"windowsxp-kb890046-x86-enu_432bf46f62aeaecc0e519af31d74723096f9b201.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	/*if( sp==2 && (sku & XP_ALL) && (
 		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,308))
 					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,308))
 					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,308))
@@ -2375,8 +2491,36 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2726))
 					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,308))
 					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,308)) )) {
+		// KB902400 is replaced by KB912817 on SP2
 		NN("Security Update for Windows XP (KB902400)");
 		XX(p+"windowsxp-kb902400-x86-enu_a51d743a1925dd0216160daaf9fc4c7a42a27e53.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,310))
+					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,310))
+					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,310))
+					  ||  ( _clbcatq_dll  >zero && _clbcatq_dll  <fver(2001,12,4414,310))
+					  ||  ( _colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,310))
+					  ||  ( _comadmin_dll >zero && _comadmin_dll <fver(2001,12,4414,310))
+					  ||  ( _comrepl_dll  >zero && _comrepl_dll  <fver(2001,12,4414,310))
+					  ||  ( _comsvcs_dll  >zero && _comsvcs_dll  <fver(2001,12,4414,310))
+					  ||  ( _comuid_dll   >zero && _comuid_dll   <fver(2001,12,4414,310))
+					  ||  ( _es_dll       >zero && _es_dll       <fver(2001,12,4414,310))
+					  ||  ( _migregdb_exe >zero && _migregdb_exe <fver(2001,12,4414,310))
+					  ||  ( _msdtcprx_dll >zero && _msdtcprx_dll <fver(2001,12,4414,310))
+					  ||  ( _msdtctm_dll  >zero && _msdtctm_dll  <fver(2001,12,4414,310))
+					  ||  ( _msdtcuiu_dll >zero && _msdtcuiu_dll <fver(2001,12,4414,310))
+					  ||  ( _mtxclu_dll   >zero && _mtxclu_dll   <fver(2001,12,4414,310))
+					  ||  ( _mtxoci_dll   >zero && _mtxoci_dll   <fver(2001,12,4414,310))
+					  ||  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,2846))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,2846))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,2846))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2846))
+					  ||  ( _stclient_dll >zero && _stclient_dll <fver(2001,12,4414,310))
+					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,310))
+					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,310)) )) {
+		NN("Windows Communication Foundation (KB912817)");
+		XX(p+"WindowsXP-KB912817-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _jgdw400_dll >zero && _jgdw400_dll <fver(106,0,0,0))
@@ -2470,7 +2614,33 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==2 && (sku & XP_ALL) && _imekr61_ime>zero && _imekr61_ime<fver(6,1,2600,3)) {
 		NN("Security Update for Windows XP (KB901190)");
-		XX(p+"windowsxp-kb901190-x86-enu_2497a4e9957ddf13e2343858608f89ef6132efb2.exe"+a6);
+		XX(p+"windowsxp-kb901190-x86-enu_2497a4e9957ddf13e2343858608f89ef6132efb2.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _esent_dll>zero && _esent_dll<fver(5,1,2600,2780)) {
+		NN("Update for Windows XP (KB910437)");
+		XX(p+"windowsxp-kb910437-x86-enu_6045df96253a6130f973f5f6ac9d10988ba1b01c.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && ( 
+		                  (_p2p_dll      >zero && _p2p_dll      <fver(5,1,2600,3013))
+					  ||  (_p2pgasvc_dll >zero && _p2pgasvc_dll <fver(5,1,2600,3013))
+					  ||  (_p2pgraph_dll >zero && _p2pgraph_dll <fver(5,1,2600,3013))
+					  ||  (_p2pnetsh_dll >zero && _p2pnetsh_dll <fver(5,1,2600,3013))
+					  ||  (_p2psvc_dll   >zero && _p2psvc_dll   <fver(5,1,2600,3013))
+					  ||  (_pnrpnsp_dll  >zero && _pnrpnsp_dll  <fver(5,1,2600,3013)) )) {
+		NN("Update for Windows XP (KB920342)");
+		XX(p+"windowsxp-kb920342-x86-enu_6ffee4344d80833300220f461eff4d9c2d9d7d7f.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _w3svc_dll > zero && _w3svc_dll <fver(5,1,2600,3163)) {
+		NN("Security Update for Windows XP (KB939373)");
+		XX(p+"windowsxp-kb939373-x86-enu_1060604efc56284ff8208d265f72be4d5394ba32.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _asp51_dll > zero && _asp51_dll <fver(5,1,2600,3291)) {
+		NN("Security Update for Windows XP (KB942830)");
+		XX(p+"windowsxp-kb942830-x86-enu_3b34ded0cc8d3c0de48c3c31f4fae006a2eae923.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _infocomm_dll > zero && _infocomm_dll <fver(6,0,2600,3290)) {
+		NN("Security Update for Windows XP (KB942831)");
+		XX(p+"windowsxp-kb942831-x86-enu_0a8500f0300505cecc06c90840c75796c5e3c9a5.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && _xmllite_dll <fver(1,0,1018,0)) {
 		NN("XMLLite for Windows XP (KB915865)");
@@ -4133,6 +4303,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP Service Pack 3 (KB973540)");
 		XX(p+"WindowsXP-WindowsMedia-KB973540-x86-ENU.exe"+a1);
 	}
+//	if( sp==2 && (sku & XP_ALL) && ((_wmvcore_dll  >=fver(9,0,0,2980) /* WMP9NL Section */
+//		                 && _wmvcore_dll < fver(9,0,0,3265))
+//
+//					  || (_wmvcore_dll  >=fver(9,0,0,3287) /* WMP9L Section */
+//		                 && _wmvcore_dll < fver(9,0,0,3353))
+//
+//					  || (_wmvcore_dll  >=fver(10,0,0,3646) /* WMP10NL Section */
+//		                 && _wmvcore_dll < fver(10,0,0,3702))
+//
+//					  || (_wmvcore_dll  >=fver(10,0,0,3802) /* WMP10L Section */
+//		                 && _wmvcore_dll < fver(10,0,0,4054))
+//
+//					  || (_wmvcore_dll  >=fver(10,0,0,4332) /* Emerald Section */
+//		                 && _wmvcore_dll < fver(10,0,0,4357))					   
+//					   )) {
+//		// KB923689 is replaced by KB978695 on SP2
+//		NN("Security Update for Windows XP with Windows Media Format Runtime 9 (KB923689)");
+//		XX(p+"windowsxp-kb923689-v2-x86-enu_2cd41423c99bd3bd35d64fd2afcbe1005fd92a62.exe"+a1);
+//	}
 	if( sp==2 && (sku & XP_ALL) && ((_wmvcore_dll  >=fver(9,0,0,2980) /* WM9 Section */
 		                 && _wmvcore_dll < fver(9,0,0,3272))
 
@@ -4676,6 +4865,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||    _msisip_dll   <fver(3,1,4000,1823) )) {
 		NN("Microsoft Windows Installer 3.1");
 		XX(p+"WindowsInstaller-KB893803-v2-x86.exe"+a1);
+	}
+	if( sp==2 && !*msi45 && (sku & XP_ALL) && (  _msi_dll <fver(3,1,4000,4039) )) {
+		NN("Update for Windows XP (KB927891)");
+		XX(p+"windowsxp-kb927891-v3-x86-enu_831fc2b9075b0a490adf15d2c5452e01e6feaa17.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_WES2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24556))
 		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
