@@ -128,6 +128,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cabview_dll  = getFileVer(System32+L"\\cabview.dll",&status);
 	fver _catsrv_dll   = getFileVer(System32+L"\\catsrv.dll",&status);
 	fver _catsrvut_dll = getFileVer(System32+L"\\catsrvut.dll",&status);
+	fver _cdfview_dll  = getFileVer(System32+L"\\cdfview.dll",&status);
 	fver _cdosys_dll   = getFileVer(System32+L"\\cdosys.dll",&status);
 	fver _cewmdm_dll   = getFileVer(System32+L"\\cewmdm.dll",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
@@ -143,6 +144,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cryptdlg_dll = getFileVer(System32+L"\\cryptdlg.dll",&status);
 	fver _cscript_exe  = getFileVer(System32+L"\\cscript.exe",&status);
 	fver _csrsrv_dll   = getFileVer(System32+L"\\csrsrv.dll",&status);
+	fver _danim_dll    = getFileVer(System32+L"\\danim.dll",&status);
 	fver _dao360_dll   = getFileVer(System32+L"\\dao360.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
@@ -200,6 +202,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _inetcomm_dll = getFileVer(System32+L"\\inetcomm.dll",&status);
 	fver _inetcpl_cpl  = getFileVer(System32+L"\\inetcpl.cpl",&status);
 	fver _inetpp_dll   = getFileVer(System32+L"\\inetpp.dll",&status);
+	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
 	fver _iphlpapi_dll = getFileVer(System32+L"\\iphlpapi.dll",&status);
 	fver _iprtrmgr_dll = getFileVer(System32+L"\\iprtrmgr.dll",&status);
 	fver _isign32_dll  = getFileVer(System32+L"\\isign32.dll",&status);
@@ -627,6 +630,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _iecompat_dll = getFileVer(InternetExplorer+L"\\iecompat.dll",&status);
 	fver _iedvtool_dll = getFileVer(InternetExplorer+L"\\iedvtool.dll",&status);
+	fver _iedw_exe     = getFileVer(InternetExplorer+L"\\iedw.exe",&status);
 	fver _ieproxy_dll  = getFileVer(InternetExplorer+L"\\ieproxy.dll",&status);
 	fver _iexplore_exe = getFileVer(InternetExplorer+L"\\iexplore.exe",&status);
 	fver _jsdbgui_dll  = getFileVer(InternetExplorer+L"\\jsdbgui.dll",&status);
@@ -3691,6 +3695,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Internet Explorer Updates
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3314))
+	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3314))
+		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
+		|| (_dxtmsft_dll  >zero && _dxtmsft_dll  <fver(6,3,2900,3314))
+		|| (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2900,3314))
+		|| (_extmgr_dll   >zero && _extmgr_dll   <fver(6,0,2900,3314))
+		|| (_iedw_exe     >zero && _iedw_exe     <fver(5,1,2600,3314))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,3314))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,3314))
+		|| (_jsproxy_dll  >zero && _jsproxy_dll  <fver(6,0,2900,3314))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,3314))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,3314))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,3314))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2900,3314))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2900,3314))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,3314))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,3314))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,3314))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,3314)) )) {
+		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB947864)");
+		XX(p+"WindowsXP-KB947864-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll>zero && _advpack_dll<fver(7,0,6000,21357))
 	    || (_corpol_dll>zero && _corpol_dll<fver(2007,0,0,21306))
