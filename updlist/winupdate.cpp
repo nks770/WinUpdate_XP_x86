@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "winupdate.h"
+#include "nfxdetect.h"
 #include "fver.h"
 #include "winsku.h"
 #include "registry.h"
@@ -39,9 +40,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool* xpeos = options+16;
 	bool* rktools = options+17;
 
+	// Detect .NET Framework parameters
+	int nfxServicePack[NFX_VERSION_COUNT];
+	nfxDetect(nfxServicePack);
+	int* nfx11=nfxServicePack+2;
+
 	// Hotfix path and standard arguments
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string np="NetFx\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string a2=" /Q";
 	const std::string a2l=" /q";
@@ -68,11 +75,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring System32 = SystemRoot + L"\\system32";
 	std::wstring msagent = SystemRoot + L"\\msagent";
 	std::wstring ehome = SystemRoot + L"\\ehome";
+	std::wstring CreateDisc = ehome + L"\\CreateDisc";
+	std::wstring ehomeFilters = CreateDisc + L"\\Filters";
+	std::wstring Sfxplugins = CreateDisc + L"\\Sfxplugins";
+	std::wstring ehHelp = ehome + L"\\ehHelp";
 	std::wstring NetworkDiagnostic = SystemRoot + L"\\Network Diagnostic";
 	std::wstring usmt = System32 + L"\\usmt";
 	std::wstring Flash = System32 + L"\\Macromed\\Flash";
 	std::wstring wbem = System32 + L"\\wbem";
-	std::wstring Drivers = System32 + L"\\drivers";
+	std::wstring Drivers = System32 + L"\\Drivers";
+	std::wstring DriverCache = SystemRoot + L"\\Driver Cache\\i386";
 	std::wstring inetsrv = System32 + L"\\inetsrv";
 	std::wstring Restore = System32 + L"\\Restore";
 
@@ -237,6 +249,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mp4sdecd_dll = getFileVer(System32+L"\\mp4sdecd.dll",&status);
 	fver _mp4sdmod_dll = getFileVer(System32+L"\\mp4sdmod.dll",&status);
 	fver _mp4sds32_ax  = getFileVer(System32+L"\\mp4sds32.ax",&status);
+	fver _mpeg2data_ax = getFileVer(System32+L"\\mpeg2data.ax",&status);
 	fver _mpg2splt_ax  = getFileVer(System32+L"\\mpg2splt.ax",&status);
 	fver _mpg4ds32_ax  = getFileVer(System32+L"\\mpg4ds32.ax",&status);
 	fver _mqqm_dll     = getFileVer(System32+L"\\mqqm.dll",&status);
@@ -264,6 +277,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msdtcprx_dll = getFileVer(System32+L"\\msdtcprx.dll",&status);
 	fver _msdtctm_dll  = getFileVer(System32+L"\\msdtctm.dll",&status);
 	fver _msdtcuiu_dll = getFileVer(System32+L"\\msdtcuiu.dll",&status);
+	fver _msdvbnp_ax   = getFileVer(System32+L"\\msdvbnp.ax",&status);
 	fver _msexch40_dll = getFileVer(System32+L"\\msexch40.dll",&status);
 	fver _msexcl40_dll = getFileVer(System32+L"\\msexcl40.dll",&status);
 	fver _msfeeds_dll  = getFileVer(System32+L"\\msfeeds.dll",&status);
@@ -284,6 +298,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msltus40_dll = getFileVer(System32+L"\\msltus40.dll",&status);
 	fver _msmqocm_dll  = getFileVer(System32+L"\\Setup\\msmqocm.dll",&status);
 	fver _msnetobj_dll = getFileVer(System32+L"\\msnetobj.dll",&status);
+	fver _msnp_ax      = getFileVer(System32+L"\\msnp.ax",&status);
 	fver _msorcl32_dll = getFileVer(System32+L"\\msorcl32.dll",&status);
 	fver _mspaint_exe  = getFileVer(System32+L"\\mspaint.exe",&status);
 	fver _mspbde40_dll = getFileVer(System32+L"\\mspbde40.dll",&status);
@@ -322,6 +337,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _narrator_exe = getFileVer(System32+L"\\narrator.exe",&status);
 	fver _netapi32_dll = getFileVer(System32+L"\\netapi32.dll",&status);
 	fver _netman_dll   = getFileVer(System32+L"\\netman.dll",&status);
+	fver _netshell_dll = getFileVer(System32+L"\\netshell.dll",&status);
 	fver _ntdll_dll    = getFileVer(System32+L"\\ntdll.dll",&status);
 	fver _ntkrnlmp_exe = getFileVer(System32+L"\\ntkrnlmp.exe",&status);
 	fver _ntkrnlpa_exe = getFileVer(System32+L"\\ntkrnlpa.exe",&status);
@@ -355,6 +371,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
+	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
+	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
 	fver _qasf_dll     = getFileVer(System32+L"\\qasf.dll",&status);
 	fver _qdvd_dll     = getFileVer(System32+L"\\qdvd.dll",&status);
 	fver _qedit_dll    = getFileVer(System32+L"\\qedit.dll",&status);
@@ -409,6 +427,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _tapisrv_dll  = getFileVer(System32+L"\\tapisrv.dll",&status);
 	fver _tdc_ocx      = getFileVer(System32+L"\\tdc.ocx",&status);
 	fver _telnet_exe   = getFileVer(System32+L"\\telnet.exe",&status);
+	fver _termsrv_dll  = getFileVer(System32+L"\\termsrv.dll",&status);
 	fver _themeui_dll  = getFileVer(System32+L"\\themeui.dll",&status);
 	fver _tlntsess_exe = getFileVer(System32+L"\\tlntsess.exe",&status);
 	fver _tsbyuv_dll   = getFileVer(System32+L"\\tsbyuv.dll",&status);
@@ -430,6 +449,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usp10_dll    = getFileVer(System32+L"\\usp10.dll",&status);
 	fver _utilman_exe  = getFileVer(System32+L"\\utilman.exe",&status);
 	fver _uwdf_exe     = getFileVer(System32+L"\\uwdf.exe",&status);
+	fver _vbicodec_ax  = getFileVer(System32+L"\\vbicodec.ax",&status);
 	fver _vbscript_dll = getFileVer(System32+L"\\vbscript.dll",&status);
 	fver _verclsid_exe = getFileVer(System32+L"\\verclsid.exe",&status);
 	fver _wdfapi_dll   = getFileVer(System32+L"\\wdfapi.dll",&status);
@@ -490,8 +510,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wshext_dll   = getFileVer(System32+L"\\wshext.dll",&status);
 	fver _wshom_ocx    = getFileVer(System32+L"\\wshom.ocx",&status);
 	fver _wsnmp32_dll  = getFileVer(System32+L"\\wsnmp32.dll",&status);
+	fver _wstpager_ax  = getFileVer(System32+L"\\wstpager.ax",&status);
+	fver _wstrenderer_ax = getFileVer(System32+L"\\wstrenderer.ax",&status);
 	fver _wudfupdate_01007_dll  = getFileVer(System32+L"\\wudfupdate_01007.dll",&status);
 	fver _wudfusbcciddriver_dll = getFileVer(System32+L"\\drivers\\UMDF\\wudfusbcciddriver.dll",&status);
+	fver _wzcdlg_dll   = getFileVer(System32+L"\\wzcdlg.dll",&status);
+	fver _wzcsapi_dll  = getFileVer(System32+L"\\wzcsapi.dll",&status);
 	fver _wzcsvc_dll   = getFileVer(System32+L"\\wzcsvc.dll",&status);
 	fver _xmllite_dll  = getFileVer(System32+L"\\xmllite.dll",&status);
 	fver _xolehlp_dll  = getFileVer(System32+L"\\xolehlp.dll",&status);
@@ -535,7 +559,102 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _uncne_dll  = getFileVer(System32+L"\\uncne.dll",&status);
 
 	// Windows XP Media Center Edition files
+	fver _audiodepthconverter_ax = getFileVer(ehomeFilters+L"\\audiodepthconverter.ax",&status);
+	fver _directshowtap_ax       = getFileVer(ehomeFilters+L"\\directshowtap.ax",&status);
+	fver _sonicmpegaudio_dll     = getFileVer(ehomeFilters+L"\\sonicmpegaudio.dll",&status);
+	fver _sonicmpegsplitter_dll  = getFileVer(ehomeFilters+L"\\sonicmpegsplitter.dll",&status);
+	fver _sonicmpegvideo_dll     = getFileVer(ehomeFilters+L"\\sonicmpegvideo.dll",&status);
+	fver _rtstreamsink_ax        = getFileVer(ehomeFilters+L"\\rtstreamsink.ax",&status);
+
+	fver _bdatunepia_dll=getFileVer(ehome+L"\\bdatunepia.dll",&status);
+	fver _ehcett_dll   = getFileVer(ehome+L"\\ehcett.dll",&status);
+	fver _ehchhime_dll = getFileVer(ehome+L"\\ehchhime.dll",&status);
+	fver _ehchtime_dll = getFileVer(ehome+L"\\ehchtime.dll",&status);
+	fver _ehcir_dll    = getFileVer(ehome+L"\\ehcir.dll",&status);
+	fver _ehcm_dll     = getFileVer(ehome+L"\\ehcm.dll",&status);
+	fver _ehcommon_dll = getFileVer(ehome+L"\\ehcommon.dll",&status);
+	fver _ehcyrtt_dll  = getFileVer(ehome+L"\\ehcyrtt.dll",&status);
+	fver _ehdebug_dll  = getFileVer(ehome+L"\\ehdebug.dll",&status);
+	fver _ehdrop_dll   = getFileVer(ehome+L"\\ehdrop.dll",&status);
+	fver _ehentt_dll   = getFileVer(ehome+L"\\ehentt.dll",&status);
+	fver _ehepg_dll    = getFileVer(ehome+L"\\ehepg.dll",&status);
+	fver _ehepgdat_dll = getFileVer(ehome+L"\\ehepgdat.dll",&status);
+	fver _ehextcom_dll = getFileVer(ehome+L"\\ehextcom.dll",&status);
+	fver _ehexthost_exe= getFileVer(ehome+L"\\ehexthost.exe",&status);
+	fver _ehglid_dll   = getFileVer(ehome+L"\\ehglid.dll",&status);
+	fver _ehiextcom_dll= getFileVer(ehome+L"\\ehiextcom.dll",&status);
+	fver _ehiextens_dll= getFileVer(ehome+L"\\ehiextens.dll",&status);
+	fver _ehiplay_dll  = getFileVer(ehome+L"\\ehiplay.dll",&status);
+	fver _ehiproxy_dll = getFileVer(ehome+L"\\ehiproxy.dll",&status);
+	fver _ehiuserxp_dll= getFileVer(ehome+L"\\ehiuserxp.dll",&status);
+	fver _ehividctl_dll= getFileVer(ehome+L"\\ehividctl.dll",&status);
+	fver _ehiwuapi_dll = getFileVer(ehome+L"\\ehiwuapi.dll",&status);
+	fver _ehjpnime_dll = getFileVer(ehome+L"\\ehjpnime.dll",&status);
 	fver _ehkeyctl_dll = getFileVer(ehome+L"\\ehkeyctl.dll",&status);
+	fver _ehkorime_dll = getFileVer(ehome+L"\\ehkorime.dll",&status);
+	fver _ehmcxins_exe = getFileVer(ehome+L"\\ehmcxins.exe",&status);
+	fver _ehmsas_exe   = getFileVer(ehome+L"\\ehmsas.exe",&status);
+	fver _ehplayer_dll = getFileVer(ehome+L"\\ehplayer.dll",&status);
+	fver _ehproxy_dll  = getFileVer(ehome+L"\\ehproxy.dll",&status);
+	fver _ehrec_exe    = getFileVer(ehome+L"\\ehrec.exe",&status);
+	fver _ehrecobj_dll = getFileVer(ehome+L"\\ehrecobj.dll",&status);
+	fver _ehrecvr_exe  = getFileVer(ehome+L"\\ehrecvr.exe",&status);
+	fver _ehres_dll    = getFileVer(ehome+L"\\ehres.dll",&status);
+	fver _ehreschs_dll  = getFileVer(ehome+L"\\zh-chs\\ehepg.resources.dll",&status);
+	fver _ehrescht_dll  = getFileVer(ehome+L"\\zh-cht\\ehepg.resources.dll",&status);
+	fver _ehrescs_dll  = getFileVer(ehome+L"\\cs\\ehepg.resources.dll",&status);
+	fver _ehresda_dll  = getFileVer(ehome+L"\\da\\ehepg.resources.dll",&status);
+	fver _ehresde_dll  = getFileVer(ehome+L"\\de\\ehepg.resources.dll",&status);
+	fver _ehreses_dll  = getFileVer(ehome+L"\\es\\ehepg.resources.dll",&status);
+	fver _ehresfi_dll  = getFileVer(ehome+L"\\fi\\ehepg.resources.dll",&status);
+	fver _ehresfr_dll  = getFileVer(ehome+L"\\fr\\ehepg.resources.dll",&status);
+	fver _ehresit_dll  = getFileVer(ehome+L"\\it\\ehepg.resources.dll",&status);
+	fver _ehresja_dll  = getFileVer(ehome+L"\\ja\\ehepg.resources.dll",&status);
+	fver _ehresko_dll  = getFileVer(ehome+L"\\ko\\ehepg.resources.dll",&status);
+	fver _ehresnl_dll  = getFileVer(ehome+L"\\nl\\ehepg.resources.dll",&status);
+	fver _ehresno_dll  = getFileVer(ehome+L"\\no\\ehepg.resources.dll",&status);
+	fver _ehrespl_dll  = getFileVer(ehome+L"\\pl\\ehepg.resources.dll",&status);
+	fver _ehrespt_dll  = getFileVer(ehome+L"\\pt\\ehepg.resources.dll",&status);
+	fver _ehresru_dll  = getFileVer(ehome+L"\\ru\\ehepg.resources.dll",&status);
+	fver _ehressv_dll  = getFileVer(ehome+L"\\sv\\ehepg.resources.dll",&status);
+	fver _ehrestr_dll  = getFileVer(ehome+L"\\tr\\ehepg.resources.dll",&status);
+	fver _ehsched_exe  = getFileVer(ehome+L"\\ehsched.exe",&status);
+	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
+	fver _ehtktt_dll   = getFileVer(ehome+L"\\ehtktt.dll",&status);
+	fver _ehtrace_dll  = getFileVer(ehome+L"\\ehtrace.dll",&status);
+	fver _ehtray_exe   = getFileVer(ehome+L"\\ehtray.exe",&status);
+	fver _ehui_dll     = getFileVer(ehome+L"\\ehui.dll",&status);
+	fver _ehuihlp_dll  = getFileVer(ehome+L"\\ehuihlp.dll",&status);
+	fver _mcrdsvc_exe  = getFileVer(ehome+L"\\mcrdsvc.exe",&status);
+	fver _mcrmgr_dll   = getFileVer(ehome+L"\\mcrmgr.dll",&status);
+	fver _mcrmgr_exe   = getFileVer(ehome+L"\\mcrmgr.exe",&status);
+	fver _medctrro_exe = getFileVer(ehome+L"\\medctrro.exe",&status);
+	fver _microsoft_mediacenter_dll = getFileVer(ehome+L"\\Microsoft.MediaCenter.dll",&status);
+	fver _mstvcapn_dll = getFileVer(ehome+L"\\mstvcapn.dll",&status);
+	fver _sqldb20_dll  = getFileVer(ehome+L"\\sqldb20.dll",&status);
+	fver _sqlqp20_dll  = getFileVer(ehome+L"\\sqlqp20.dll",&status);
+	fver _sqlse20_dll  = getFileVer(ehome+L"\\sqlse20.dll",&status);
+
+	fver _standardfx_plugin_dll = getFileVer(Sfxplugins+L"\\standardfx_plugin.dll",&status);
+
+	fver _tenfoothelp_exe = getFileVer(ehHelp+L"\\tenfoothelp.exe",&status);
+
+	fver _authorscript_dll       = getFileVer(CreateDisc+L"\\authorscript.dll",&status);
+	fver _createdisc_dll         = getFileVer(CreateDisc+L"\\createdisc.dll",&status);
+	fver _mce_wmadrm_dll         = getFileVer(CreateDisc+L"\\mce_wmadrm.dll",&status);
+	fver _primosdk_dll           = getFileVer(CreateDisc+L"\\primosdk.dll",&status);
+	fver _px_dll                 = getFileVer(CreateDisc+L"\\px.dll",&status);
+	fver _pxdrv_dll              = getFileVer(CreateDisc+L"\\pxdrv.dll",&status);
+	fver _pxhpinst_exe           = getFileVer(CreateDisc+L"\\pxhpinst.exe",&status);
+	fver _pxmas_dll              = getFileVer(CreateDisc+L"\\pxmas.dll",&status);
+	fver _pxwavedec_dll          = getFileVer(CreateDisc+L"\\pxwavedec.dll",&status);
+	fver _pxwma_dll              = getFileVer(CreateDisc+L"\\pxwma.dll",&status);
+	fver _sbeserver_exe          = getFileVer(CreateDisc+L"\\sbeserver.exe",&status);
+	fver _sbeserverps_dll        = getFileVer(CreateDisc+L"\\sbeserverps.dll",&status);
+	fver _simpleburnuires_dll    = getFileVer(CreateDisc+L"\\simpleburnuires.dll",&status);
+	fver _sonicmceburnengine_dll = getFileVer(CreateDisc+L"\\sonicmceburnengine.dll",&status);
+	fver _sonicmmburnengine_exe  = getFileVer(CreateDisc+L"\\sonicmmburnengine.exe",&status);
+	fver _vxblock_dll            = getFileVer(CreateDisc+L"\\vxblock.dll",&status);
 
 	// Windows Genuine Advantge (WGA) Files
 	fver _LegitCheckControl_dll = getFileVer(System32+L"\\LegitCheckControl.dll",&status);
@@ -579,6 +698,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _afd_sys      = getFileVer(Drivers+L"\\afd.sys",&status);
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
+	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
 	fver _hidparse_sys = getFileVer(Drivers+L"\\hidparse.sys",&status);
 	fver _exfat_sys    = getFileVer(Drivers+L"\\exfat.sys",&status);
 	fver _fastfat_sys  = getFileVer(Drivers+L"\\fastfat.sys",&status);
@@ -596,15 +716,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msfs_sys     = getFileVer(Drivers+L"\\msfs.sys",&status);
 	fver _mup_sys      = getFileVer(Drivers+L"\\mup.sys",&status);
 	fver _ndistapi_sys = getFileVer(Drivers+L"\\ndistapi.sys",&status);
+	fver _ndisuio_sys  = getFileVer(Drivers+L"\\ndisuio.sys",&status);
 	fver _ndiswan_sys  = getFileVer(Drivers+L"\\ndiswan.sys",&status);
 	fver _ndproxy_sys  = getFileVer(Drivers+L"\\ndproxy.sys",&status);
 	fver _netbt_sys    = getFileVer(Drivers+L"\\netbt.sys",&status);
 	fver _npfs_sys     = getFileVer(Drivers+L"\\npfs.sys",&status);
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
+	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
+	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
 	fver _rdbss_sys    = getFileVer(Drivers+L"\\rdbss.sys",&status);
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
+	fver _sbp2port_sys = getFileVer(Drivers+L"\\sbp2port.sys",&status);
 	fver _secdrv_sys   = getFileVer(Drivers+L"\\secdrv.sys",&status);
 	fver _splitter_sys = getFileVer(Drivers+L"\\splitter.sys",&status);
 	fver _srv_sys      = getFileVer(Drivers+L"\\srv.sys",&status);
@@ -624,6 +748,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usbvideo_sys = getFileVer(Drivers+L"\\usbvideo.sys",&status);
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
+
+	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
+	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
 	fver _wuapi_dll    = getFileVer(System32+L"\\wuapi.dll",&status);
@@ -2657,9 +2784,239 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 
 	// Windows XP Media Center
+	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
+		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
+		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
+					  ||  (_drmclien_dll >zero && _drmclien_dll <fver(10,0,0,3802))
+					  ||  (_drmstor_dll  >zero && _drmstor_dll  <fver(10,0,0,3802))
+					  ||  (_drmupgds_exe >zero && _drmupgds_exe <fver(10,0,0,3802))
+					  ||  (_drmv2clt_dll >zero && _drmv2clt_dll <fver(10,0,0,3802))
+					  ||  (_LAPRXY_dll   >zero && _LAPRXY_dll   <fver(10,0,0,3802))
+					  ||  (_logagent_exe >zero && _logagent_exe <fver(10,0,0,3802))
+					  ||  (_msnetobj_dll >zero && _msnetobj_dll <fver(10,0,0,3802))
+					  ||  (_mspmsnsv_dll >zero && _mspmsnsv_dll <fver(10,0,3790,3802))
+					  ||  (_mspmsp_dll   >zero && _mspmsp_dll   <fver(10,0,3790,3802))
+					  ||  (_msscp_dll    >zero && _msscp_dll    <fver(10,0,0,3802))
+					  ||  (_mswmdm_dll   >zero && _mswmdm_dll   <fver(10,0,3790,3802))
+					  ||  (_qasf_dll     >zero && _qasf_dll     <fver(10,0,0,3802))
+					  ||  (_uwdf_exe     >zero && _uwdf_exe     <fver(5,2,3790,1230))
+					  ||  (_wdfapi_dll   >zero && _wdfapi_dll   <fver(5,2,3790,1230))
+					  ||  (_wdfmgr_exe   >zero && _wdfmgr_exe   <fver(5,2,3790,1230))
+					  ||  (_WMADMOD_dll  >zero && _WMADMOD_dll  <fver(10,0,0,3802))
+					  ||  (_WMADMOE_dll  >zero && _WMADMOE_dll  <fver(10,0,0,3802))
+					  ||  (_wmasf_dll    >zero && _wmasf_dll    <fver(10,0,0,3802))
+					  ||  (_wmdmlog_dll  >zero && _wmdmlog_dll  <fver(10,0,3790,3802))
+					  ||  (_wmdmps_dll   >zero && _wmdmps_dll   <fver(10,0,3790,3802))
+					  ||  (_wmdrmdev_dll >zero && _wmdrmdev_dll <fver(10,0,0,3802))
+					  ||  (_wmdrmnet_dll >zero && _wmdrmnet_dll <fver(10,0,0,3802))
+					  ||  (_wmidx_dll    >zero && _wmidx_dll    <fver(10,0,0,3802))
+					  ||  (_wmnetmgr_dll >zero && _wmnetmgr_dll <fver(10,0,0,3802))
+					  ||  (_wmsdmod_dll  >zero && _wmsdmod_dll  <fver(10,0,0,3802))
+					  ||  (_wmsdmoe2_dll >zero && _wmsdmoe2_dll <fver(10,0,0,3802))
+					  ||  (_wmsetsdk_exe >zero && _wmsetsdk_exe <fver(10,0,0,3802))
+					  ||  (_wmspdmod_dll >zero && _wmspdmod_dll <fver(10,0,0,3802))
+					  ||  (_WMSPDMOE_dll >zero && _WMSPDMOE_dll <fver(10,0,0,3802))
+					  ||  (_WMVADVD_dll  >zero && _WMVADVD_dll  <fver(10,0,0,3802))
+					  ||  (_WMVADVE_DLL  >zero && _WMVADVE_DLL  <fver(10,0,0,3802))
+					  ||  (_wmvcore_dll  >zero && _wmvcore_dll  <fver(10,0,0,3802))
+					  ||  (_wmvdmod_dll  >zero && _wmvdmod_dll  <fver(10,0,0,3802))
+					  ||  (_wmvdmoe2_dll >zero && _wmvdmoe2_dll <fver(10,0,0,3802))
+					  ||  (_wpdconns_dll >zero && _wpdconns_dll <fver(5,2,3802,3802))
+					  ||  (_wpdmtp_dll   >zero && _wpdmtp_dll   <fver(5,2,3802,3802))
+					  ||  (_wpdmtpdr_dll >zero && _wpdmtpdr_dll <fver(5,2,3802,3802))
+					  ||  (_wpdmtpus_dll >zero && _wpdmtpus_dll <fver(5,2,3802,3802))
+					  ||  (_wpdsp_dll    >zero && _wpdsp_dll    <fver(5,2,3802,3802))
+					  ||  (_wpdtrace_dll >zero && _wpdtrace_dll <fver(5,2,3802,3802))
+					  ||  (_wpdusb_sys   >zero && _wpdusb_sys   <fver(5,2,3802,3802))
+					  ||  (_wpd_ci_dll   >zero && _wpd_ci_dll   <fver(5,2,3802,3802)) )) {
+		NN("Update for WMDRM-enabled Media Players (KB891122)");
+		XX(p+"windowsmedia-kb891122-x86-enu_c1b14007407ee75d546dfd820af4f52eaf5e18f9.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _msscp_dll>=fver(10,0,0,3646) && _msscp_dll<fver(10,0,0,3934)) {
+		NN("Update for WMDRM-enabled Media Players (KB902344)");
+		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3909)) {
+		NN("Update for Windows XP (KB895572)");
+		XX(p+"windowsmedia10-kb895572-x86-enu.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _qdvd_dll   >zero && _qdvd_dll   <fver(6,5,2600,2709))
+					  ||  ( _quartz_dll >zero && _quartz_dll <fver(6,5,2600,2709)) )) {
+		NN("Update for Windows XP (KB891593)");
+		XX(p+"WindowsXP-KB891593-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
+	 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
+		NN("Update for Windows XP (KB895961)");
+		XX(p+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
+					  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
+					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
+					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
+					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+		NN("Update for Windows XP (KB899337)");
+		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_MCE2005) && (
+			(    _sbp2port_sys       <fver(5,1,2600,2688)
+		      && _sbp2port_sys_cache <fver(5,1,2600,2688))
+			|| (_sbp2port_sys>zero && _sbp2port_sys <fver(5,1,2600,2688))
+			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB899510"))) {
+		NN("Update for Windows XP (KB899510)");
+		XX(p+"WindowsXP-KB899510-x86.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_MCE2005) && (
+		                  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2709))
+					  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2709)) )) {
+		NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
+		XX(p+"windowsxp-kb888795-v3-x86-enu_35a20ee3889859f9e0db3d9899c0a679664726be.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_MCE2005) && (
+			(    _powerfil_sys       <fver(5,1,2600,2707)
+		      && _powerfil_sys_cache <fver(5,1,2600,2707))
+			|| (_powerfil_sys>zero && _powerfil_sys <fver(5,1,2600,2707))
+			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB902841"))) {
+		NN("Update for Windows XP (KB902841)");
+		XX(p+"WindowsXP-KB902841-x86.exe"+a1);
+	}
 	if(sp>=2 && (sku & XP_MCE2005) && _ehkeyctl_dll>zero && _ehkeyctl_dll<fver(5,1,2715,5512)) {
 		NN("Security Update for Windows XP (KB973768)");
 		XX(p+"windowsxpmediacenter2005-kb973768-enu_05fb491b522e4265834136d7288711e5fdb827e4.exe"+a1);
+	}
+	if(sp>=2 && (sku & XP_MCE2005) && *nfx11<0) {
+		// Update Rollup 2 (KB900325) requires .NET Framework 1.1 SP1
+		NN("Microsoft .NET Framework 1.1");
+		XX(np+"dotnetf11.exe /q:a /c:\"install.exe /qb /l\"");
+	}
+	if(sp>=2 && (sku & XP_MCE2005) && *nfx11<1){
+		// Update Rollup 2 (KB900325) requires .NET Framework 1.1 SP1
+		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
+		XX(p+"NDP1.1sp1-KB867460-X86.exe"+a2);
+	}
+	if( sp>=2 && (sku & XP_MCE2005) && (
+		    ( _audiodepthconverter_ax    <fver(6,0,0,1))
+		||  ( _authorscript_dll          <fver(6,0,0,1))
+		||  ( _bdatunepia_dll            <fver(5,1,2710,2732))
+		||  ( _createdisc_dll            <fver(2,0,0,0))
+		||  ( _directshowtap_ax          <fver(6,0,0,1))
+		||  ( _ehcett_dll                <fver(5,1,2710,2732))
+		||  ( _ehchhime_dll              <fver(5,1,2710,2732))
+		||  ( _ehchtime_dll              <fver(5,1,2710,2732))
+		||  ( _ehcir_dll                 <fver(5,1,2710,2732))
+		||  ( _ehcm_dll                  <fver(5,1,2710,2732))
+		||  ( _ehcommon_dll              <fver(5,1,2710,2732))
+		||  ( _ehcyrtt_dll               <fver(5,1,2710,2732))
+		||  ( _ehdebug_dll               <fver(5,1,2710,2732))
+		||  ( _ehdrop_dll                <fver(5,1,2710,2732))
+		||  ( _ehentt_dll                <fver(5,1,2710,2732))
+		||  ( _ehepg_dll                 <fver(5,1,2710,2732))
+		||  ( _ehepgdat_dll              <fver(5,1,2710,2732))
+		||  ( _ehextcom_dll              <fver(5,1,2710,2732))
+		||  ( _ehexthost_exe             <fver(5,1,2710,2732))
+		||  ( _ehglid_dll                <fver(5,1,2710,2732))
+		||  ( _ehiextcom_dll             <fver(5,1,2710,2732))
+		||  ( _ehiextens_dll             <fver(5,1,2710,2732))
+		||  ( _ehiplay_dll               <fver(5,1,2710,2732))
+		||  ( _ehiproxy_dll              <fver(5,1,2710,2732))
+		||  ( _ehiuserxp_dll             <fver(5,1,2710,2732))
+		||  ( _ehividctl_dll             <fver(5,1,2710,2732))
+		||  ( _ehiwuapi_dll              <fver(5,1,2710,2732))
+		||  ( _ehjpnime_dll              <fver(5,1,2710,2732))
+		||  ( _ehkorime_dll              <fver(5,1,2710,2732))
+		||  ( _ehmcxins_exe              <fver(6,1,2710,2732))
+		||  ( _ehmsas_exe                <fver(5,1,2710,2732))
+		||  ( _ehplayer_dll              <fver(5,1,2710,2732))
+		||  ( _ehproxy_dll               <fver(5,1,2710,2732))
+		||  ( _ehrec_exe                 <fver(5,1,2710,2732))
+		||  ( _ehrecobj_dll              <fver(5,1,2710,2732))
+		||  ( _ehrecvr_exe               <fver(5,1,2710,2732))
+		||  ( _ehres_dll                 <fver(5,1,2710,2732))
+		||  ( _ehreschs_dll              <fver(5,1,2710,2732))
+		||  ( _ehrescht_dll              <fver(5,1,2710,2732))
+		||  ( _ehrescs_dll               <fver(5,1,2710,2732))
+		||  ( _ehresda_dll               <fver(5,1,2710,2732))
+		||  ( _ehresde_dll               <fver(5,1,2710,2732))
+		||  ( _ehreses_dll               <fver(5,1,2710,2732))
+		||  ( _ehresfi_dll               <fver(5,1,2710,2732))
+		||  ( _ehresfr_dll               <fver(5,1,2710,2732))
+		||  ( _ehresit_dll               <fver(5,1,2710,2732))
+		||  ( _ehresja_dll               <fver(5,1,2710,2732))
+		||  ( _ehresko_dll               <fver(5,1,2710,2732))
+		||  ( _ehresnl_dll               <fver(5,1,2710,2732))
+		||  ( _ehresno_dll               <fver(5,1,2710,2732))
+		||  ( _ehrespl_dll               <fver(5,1,2710,2732))
+		||  ( _ehrespt_dll               <fver(5,1,2710,2732))
+		||  ( _ehresru_dll               <fver(5,1,2710,2732))
+		||  ( _ehressv_dll               <fver(5,1,2710,2732))
+		||  ( _ehrestr_dll               <fver(5,1,2710,2732))
+		||  ( _ehsched_exe               <fver(5,1,2710,2732))
+		||  ( _ehshell_exe               <fver(5,1,2710,2732))
+		||  ( _sqldb20_dll               <fver(2,2,6712,0))
+		||  ( _sqlqp20_dll               <fver(2,2,6712,0))
+		||  ( _sqlse20_dll               <fver(2,2,6712,0))
+		||  ( _ehtktt_dll                <fver(5,1,2710,2732))
+		||  ( _ehtrace_dll               <fver(5,1,2710,2732))
+		||  ( _ehtray_exe                <fver(5,1,2710,2732))
+		||  ( _ehui_dll                  <fver(5,1,2710,2732))
+		||  ( _ehuihlp_dll               <fver(5,1,2710,2732))
+		||  ( _encdec_dll                <fver(6,5,2710,2732))
+		||  ( _mce_wmadrm_dll            <fver(2,0,0,0))
+		||  ( _mcrdsvc_exe               <fver(4,1,2710,2732))
+		||  ( _mcrmgr_dll                <fver(6,1,2710,2732))
+		||  ( _mcrmgr_exe                <fver(6,1,2710,2732))
+		||  ( _medctrro_exe              <fver(5,1,2710,2732))
+		||  ( _microsoft_mediacenter_dll <fver(5,1,2710,2732))
+		||  ( _mpeg2data_ax              <fver(6,5,2710,2732))
+		||  ( _mpg2splt_ax               <fver(6,5,2710,2732))
+		||  ( _msdvbnp_ax                <fver(6,5,2710,2732))
+		||  ( _msnp_ax                   <fver(6,5,2710,2732))
+		||  ( _mstvcapn_dll              <fver(5,1,2710,2732))
+		||  ( _msvidctl_dll              <fver(6,5,2710,2732))
+		||  ( _primosdk_dll              <fver(2,2,45,500))
+		||  ( _psisdecd_dll              <fver(6,5,2710,2732))
+		||  ( _psisrndr_ax               <fver(6,5,2710,2732))
+		||  ( _px_dll                    <fver(2,2,45,500))
+		||  ( _pxdrv_dll                 <fver(1,1,33,0))
+		||  ( _pxhelp20_sys              <fver(2,3,26,0))
+		||  ( _pxhpinst_exe              <fver(2,3,0,0))
+		||  ( _pxmas_dll                 <fver(2,2,45,500))
+		||  ( _pxwavedec_dll             <fver(2,2,45,0))
+		||  ( _pxwma_dll                 <fver(1,0,0,3))
+		||  ( _rtstreamsink_ax           <fver(6,0,0,1))
+		||  ( _sbe_dll                   <fver(6,5,2710,2732))
+		||  ( _sbeserver_exe             <fver(2,0,0,0))
+		||  ( _sbeserverps_dll           <fver(2,0,0,0))
+		||  ( _simpleburnuires_dll       <fver(0,9,0,0))
+		||  ( _sonicmceburnengine_dll    <fver(0,9,0,0))
+		||  ( _sonicmmburnengine_exe     <fver(2,0,0,0))
+		||  ( _sonicmpegaudio_dll        <fver(3,0,0,14))
+		||  ( _sonicmpegsplitter_dll     <fver(3,0,0,19))
+		||  ( _sonicmpegvideo_dll        <fver(3,0,0,19))
+//		||  ( _spuninst_exe              <fver(5,6,1002,0))
+//		||  ( _spupdsvc_exe              <fver(5,6,1002,0))
+		||  ( _standardfx_plugin_dll     <fver(2,0,0,0))
+		||  ( _tenfoothelp_exe           <fver(5,6,1000,0))
+		||  ( _vbicodec_ax               <fver(6,5,2710,2732))
+		||  ( _vxblock_dll               <fver(1,0,62,0))
+		||  ( _wstpager_ax               <fver(6,5,2710,2732))
+		||  ( _wstrenderer_ax            <fver(6,5,2710,2732)) )) {
+	NN("Update Rollup 2 for Windows XP Media Center Edition 2005 (KB900325)");
+	//XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /quiet /norestart");
+	XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
+		+"pushd %TEMP%\\KB900325\\bin\n"
+		+"WindowsMedia10-KB895572-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB891593-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB895961-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB899337-v2-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB899510-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB888795-x86.exe /passive /norestart\n"
+		+"WindowsXP-KB902841-x86.exe /passive /norestart\n"
+		+"KB900325.exe /passive /norestart\n"
+		+"wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n"
+		+"popd\nrd /S /Q %TEMP%\\KB900325");
 	}
 
 	// Windows XP SP3 updates;
@@ -4576,58 +4933,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _cewmdm_dll>=fver(11,0,5721,5145) && _cewmdm_dll<fver(11,0,5721,5295)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3067903)");   /* WM11 Version */
 		XX(p+"windowsmedia-kb3067903-x86-enu_510155e48bfc1c08e7f2023fde514be960fa8fed.exe"+a1);
-	}
-	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
-		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
-		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
-					  ||  (_drmclien_dll >zero && _drmclien_dll <fver(10,0,0,3802))
-					  ||  (_drmstor_dll  >zero && _drmstor_dll  <fver(10,0,0,3802))
-					  ||  (_drmupgds_exe >zero && _drmupgds_exe <fver(10,0,0,3802))
-					  ||  (_drmv2clt_dll >zero && _drmv2clt_dll <fver(10,0,0,3802))
-					  ||  (_LAPRXY_dll   >zero && _LAPRXY_dll   <fver(10,0,0,3802))
-					  ||  (_logagent_exe >zero && _logagent_exe <fver(10,0,0,3802))
-					  ||  (_msnetobj_dll >zero && _msnetobj_dll <fver(10,0,0,3802))
-					  ||  (_mspmsnsv_dll >zero && _mspmsnsv_dll <fver(10,0,3790,3802))
-					  ||  (_mspmsp_dll   >zero && _mspmsp_dll   <fver(10,0,3790,3802))
-					  ||  (_msscp_dll    >zero && _msscp_dll    <fver(10,0,0,3802))
-					  ||  (_mswmdm_dll   >zero && _mswmdm_dll   <fver(10,0,3790,3802))
-					  ||  (_qasf_dll     >zero && _qasf_dll     <fver(10,0,0,3802))
-					  ||  (_uwdf_exe     >zero && _uwdf_exe     <fver(5,2,3790,1230))
-					  ||  (_wdfapi_dll   >zero && _wdfapi_dll   <fver(5,2,3790,1230))
-					  ||  (_wdfmgr_exe   >zero && _wdfmgr_exe   <fver(5,2,3790,1230))
-					  ||  (_WMADMOD_dll  >zero && _WMADMOD_dll  <fver(10,0,0,3802))
-					  ||  (_WMADMOE_dll  >zero && _WMADMOE_dll  <fver(10,0,0,3802))
-					  ||  (_wmasf_dll    >zero && _wmasf_dll    <fver(10,0,0,3802))
-					  ||  (_wmdmlog_dll  >zero && _wmdmlog_dll  <fver(10,0,3790,3802))
-					  ||  (_wmdmps_dll   >zero && _wmdmps_dll   <fver(10,0,3790,3802))
-					  ||  (_wmdrmdev_dll >zero && _wmdrmdev_dll <fver(10,0,0,3802))
-					  ||  (_wmdrmnet_dll >zero && _wmdrmnet_dll <fver(10,0,0,3802))
-					  ||  (_wmidx_dll    >zero && _wmidx_dll    <fver(10,0,0,3802))
-					  ||  (_wmnetmgr_dll >zero && _wmnetmgr_dll <fver(10,0,0,3802))
-					  ||  (_wmsdmod_dll  >zero && _wmsdmod_dll  <fver(10,0,0,3802))
-					  ||  (_wmsdmoe2_dll >zero && _wmsdmoe2_dll <fver(10,0,0,3802))
-					  ||  (_wmsetsdk_exe >zero && _wmsetsdk_exe <fver(10,0,0,3802))
-					  ||  (_wmspdmod_dll >zero && _wmspdmod_dll <fver(10,0,0,3802))
-					  ||  (_WMSPDMOE_dll >zero && _WMSPDMOE_dll <fver(10,0,0,3802))
-					  ||  (_WMVADVD_dll  >zero && _WMVADVD_dll  <fver(10,0,0,3802))
-					  ||  (_WMVADVE_DLL  >zero && _WMVADVE_DLL  <fver(10,0,0,3802))
-					  ||  (_wmvcore_dll  >zero && _wmvcore_dll  <fver(10,0,0,3802))
-					  ||  (_wmvdmod_dll  >zero && _wmvdmod_dll  <fver(10,0,0,3802))
-					  ||  (_wmvdmoe2_dll >zero && _wmvdmoe2_dll <fver(10,0,0,3802))
-					  ||  (_wpdconns_dll >zero && _wpdconns_dll <fver(5,2,3802,3802))
-					  ||  (_wpdmtp_dll   >zero && _wpdmtp_dll   <fver(5,2,3802,3802))
-					  ||  (_wpdmtpdr_dll >zero && _wpdmtpdr_dll <fver(5,2,3802,3802))
-					  ||  (_wpdmtpus_dll >zero && _wpdmtpus_dll <fver(5,2,3802,3802))
-					  ||  (_wpdsp_dll    >zero && _wpdsp_dll    <fver(5,2,3802,3802))
-					  ||  (_wpdtrace_dll >zero && _wpdtrace_dll <fver(5,2,3802,3802))
-					  ||  (_wpdusb_sys   >zero && _wpdusb_sys   <fver(5,2,3802,3802))
-					  ||  (_wpd_ci_dll   >zero && _wpd_ci_dll   <fver(5,2,3802,3802)) )) {
-		NN("Update for WMDRM-enabled Media Players (KB891122)");
-		XX(p+"windowsmedia-kb891122-x86-enu_c1b14007407ee75d546dfd820af4f52eaf5e18f9.exe"+a1);
-	}  
-	if( sp>=2 && (sku & XP_ALL) && _msscp_dll>=fver(10,0,0,3646) && _msscp_dll<fver(10,0,0,3934)) {
-		NN("Update for WMDRM-enabled Media Players (KB902344)");
-		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && _npdsplay_dll>zero && _npdsplay_dll<fver(3,0,2,629)) {
 		NN("Security Update for Windows Media Player Plug-in (KB911564)");
