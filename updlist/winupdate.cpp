@@ -2821,14 +2821,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_wmvcore_dll  >zero && _wmvcore_dll  <fver(10,0,0,3802))
 					  ||  (_wmvdmod_dll  >zero && _wmvdmod_dll  <fver(10,0,0,3802))
 					  ||  (_wmvdmoe2_dll >zero && _wmvdmoe2_dll <fver(10,0,0,3802))
-					  ||  (_wpdconns_dll >zero && _wpdconns_dll <fver(5,2,3802,3802))
-					  ||  (_wpdmtp_dll   >zero && _wpdmtp_dll   <fver(5,2,3802,3802))
-					  ||  (_wpdmtpdr_dll >zero && _wpdmtpdr_dll <fver(5,2,3802,3802))
-					  ||  (_wpdmtpus_dll >zero && _wpdmtpus_dll <fver(5,2,3802,3802))
-					  ||  (_wpdsp_dll    >zero && _wpdsp_dll    <fver(5,2,3802,3802))
-					  ||  (_wpdtrace_dll >zero && _wpdtrace_dll <fver(5,2,3802,3802))
-					  ||  (_wpdusb_sys   >zero && _wpdusb_sys   <fver(5,2,3802,3802))
-					  ||  (_wpd_ci_dll   >zero && _wpd_ci_dll   <fver(5,2,3802,3802)) )) {
+//					  ||  (_wpdconns_dll >zero && _wpdconns_dll <fver(5,2,3802,3802))
+//					  ||  (_wpdmtp_dll   >zero && _wpdmtp_dll   <fver(5,2,3802,3802))
+//					  ||  (_wpdmtpdr_dll >zero && _wpdmtpdr_dll <fver(5,2,3802,3802))
+//					  ||  (_wpdmtpus_dll >zero && _wpdmtpus_dll <fver(5,2,3802,3802))
+//					  ||  (_wpdsp_dll    >zero && _wpdsp_dll    <fver(5,2,3802,3802))
+//					  ||  (_wpdtrace_dll >zero && _wpdtrace_dll <fver(5,2,3802,3802))
+//					  ||  (_wpdusb_sys   >zero && _wpdusb_sys   <fver(5,2,3802,3802))
+//					  ||  (_wpd_ci_dll   >zero && _wpd_ci_dll   <fver(5,2,3802,3802))
+					      )) {
 		NN("Update for WMDRM-enabled Media Players (KB891122)");
 		XX(p+"windowsmedia-kb891122-x86-enu_c1b14007407ee75d546dfd820af4f52eaf5e18f9.exe"+a1);
 	}
