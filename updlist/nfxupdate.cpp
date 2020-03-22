@@ -89,11 +89,11 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 	bool wic_error=false;
 
 	// .NET Framework 1.0 Install
-	if( sp>=2 && !NFX40 && *i_nfx10 && *v_nfx10<0) {
+	if( sp>=2 && *v_nfx10mce<0 && !NFX40 && *i_nfx10 && *v_nfx10<0) {
 		NN("Microsoft .NET Framework 1.0");
 		XX(np+"dotnetf10.exe /Q /C:\"install.exe /q /l\"");
 	}
-	if( sp>=2 /*&& !NFX40*/ && (*i_nfx10 || (*v_nfx10>=0 && *v_nfx10<3))){
+	if( sp>=2 && *v_nfx10mce<0 /*&& !NFX40*/ && (*i_nfx10 || (*v_nfx10>=0 && *v_nfx10<3))){
 		install_nfx10sp3=true;
 		if(!NFX40) {
 			NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
@@ -108,7 +108,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 							               +"|again.");
 		}
 	}
-	if( sp>=2 /*&& !NFX40*/ && ((*i_nfx10 || install_nfx10sp3 || *v_nfx10>=3)) && (
+	if( sp>=2 && *v_nfx10mce<0 /*&& !NFX40*/ && ((*i_nfx10 || install_nfx10sp3 || *v_nfx10>=3)) && (
 		   ( _10_aspnet_isapi_dll<fver(1,0,3705,6060))
 		|| ( _10_aspnet_wp_exe   <fver(1,0,3705,6060))
 		|| ( _10_IEExec_exe      <fver(1,0,3705,6060))
