@@ -110,7 +110,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	std::vector<std::string> nfx_exe;
 
 	if(component_install) {
-		componentUpdates(&name,&exe,sku,sp_to_int(splevel));
+		componentUpdates(&name,&exe,sku,sp_to_int(splevel),&notifications);
 	} else if(install_sp) {
 		sp_to_be_installed=installServicePack(&name,&exe,sku,sp_to_int(splevel),&notifications);
 	} else if(install_mbsa) {

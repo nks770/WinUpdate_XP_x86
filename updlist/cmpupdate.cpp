@@ -11,7 +11,8 @@
 
 using namespace std;
 
-void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp) {
+void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,
+					  int sp,std::vector<std::string> *notifications) {
 
 	int status=0;
 
@@ -31,6 +32,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	int CannotFindProgramFiles=0;
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&CannotFindSystemRoot);
 	std::wstring System32 = SystemRoot + L"\\system32";
+	std::wstring ehome = SystemRoot + L"\\ehome";
 
 	std::wstring ProgramFiles = regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion",L"ProgramFilesDir",&CannotFindProgramFiles);
 	std::wstring InternetExplorer = ProgramFiles + L"\\Internet Explorer";
@@ -48,6 +50,8 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	fver _iexplore_exe = getFileVer(InternetExplorer+L"\\iexplore.exe",&status);
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
 
+	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
+
 	// Flag updates;
 	if((sku & XP_ALL) && (  _D3DCompiler_43 <fver(9,29,952,3111)
 		              ||    _d3dcsx_43_dll  <fver(9,29,952,3111)
@@ -62,7 +66,21 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			+"rd /S /Q %TEMP%\\directx_Jun2010_redist");
 	}
 
-	if( sp>=2 && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
+	if( sp>=2 && ( sku & XP_MCE2005 ) && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
+		if(_ehshell_exe >= fver(5,1,2710,2732)) {
+			NN("Windows Media Player 11 (for Windows Media Center Edition 2005)");
+			XX("\"Windows Media Player\\X86-en-wmp11-windowsxp-x86-enu_f6f975548c03c3761ab4ce55f80d1e17ae353428.exe\" /Q");
+		} else {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Update Rollup 2 for Windows XP Media Center")
+			                               +"|Edition 2005 must be installed prior to"
+							               +"|installing Windows Media Player 11."
+							               +"| "
+							               +"|Please run'update_windows.bat' to install"
+							               +"|Update Rollup 2, then try again.");
+		}
+	}
+	else if( sp>=2 && !( sku & XP_MCE2005 ) && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
 		NN("Windows Media Player 11");
 		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
 	}
