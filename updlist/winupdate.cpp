@@ -4728,7 +4728,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	
 
 	// Windows Media Player Updates
-	if( sp==3 && (sku & XP_ALL) && _wmpeffects_dll>=fver(11,0,5721,5145) && _wmpeffects_dll<fver(11,0,5721,5252)) {
+	if( sp>=2 && (sku & XP_ALL) && _wmpeffects_dll>=fver(11,0,5721,5145) && _wmpeffects_dll<fver(11,0,5721,5252)) {
 		NN("Security Update for Windows XP (KB954154)");
 		XX(p+"windowsmedia11-kb954154-x86-enu_9b75815f8c5d57dc8e2e22e221fb1a106f9ce6a0.exe"+a1);
 	}
@@ -5037,7 +5037,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975558)");
 		XX(p+"WindowsXP-WindowsMedia-KB975558-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( _unregmp2_exe >= fver(11,0,5721,5145) && _unregmp2_exe < fver(11,0,5721,5235))) {
+	if( sp>=2 && (sku & XP_ALL) && ( _unregmp2_exe >= fver(11,0,5721,5145) && _unregmp2_exe < fver(11,0,5721,5235))) {
 		NN("Update for Windows Media Player 11 for Windows XP (KB939683)");
 		XX(p+"windowsmedia11-kb939683-x86-enu_17d48a1cb35ad4f1cac39bd758158efe690730b5.exe"+a1);
 	}
@@ -5057,7 +5057,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player Plug-in (KB911564)");
 		XX(p+"windowsmedia-kb911564-x86-enu_8f5e0c3d5c50c32200a78dab3ccadb175649858c.exe"+a1);
 	}
-
+	if( sp>=2 && (sku & XP_ALL) && _msscp_dll>=fver(11,0,5721,5145) && _msscp_dll<fver(11,0,5721,5201)) {
+		NN("Update for Windows Media Format 11 SDK for Windows XP (KB929399)");
+		XX(p+"windowsmedia11-kb929399-v2-x86-intl_50e2bc6b5e79909a0061043e6211600548368431.exe"+a1);
+	}
 
 	if( sp==3 && (sku & XP_ALL) && _infocomm_dll>zero && _infocomm_dll<fver(6,0,2600,6018)) {
 		NN("Security Update for Windows XP (KB2290570)");
