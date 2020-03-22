@@ -548,7 +548,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _11_aspnet_isapi_dll         < fver(1,1,4322,2463))
 		|| ( _11_aspnet_wp_exe            < fver(1,1,4322,2463))
 		|| ( _11_CORPerfMonExt_dll        < fver(1,1,4322,2463))
-		|| ( _mscoree_dll                 < fver(4,0,31106,0))
+		|| ( _mscorees_dll                < fver(4,0,31106,0))
 		|| ( _11_mscorie_dll              < fver(1,1,4322,2463))
 		|| ( _11_mscorjit_dll             < fver(1,1,4322,2463))
 		|| ( _11_mscorld_dll              < fver(1,1,4322,2463))
