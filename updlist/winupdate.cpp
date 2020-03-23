@@ -73,6 +73,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&CannotFindSystemRoot);
 	std::wstring WinSxS = SystemRoot + L"\\WinSxS";
 	std::wstring System32 = SystemRoot + L"\\system32";
+	std::wstring dllcache = System32 + L"\\dllcache";
 	std::wstring msagent = SystemRoot + L"\\msagent";
 	std::wstring ehome = SystemRoot + L"\\ehome";
 	std::wstring CreateDisc = ehome + L"\\CreateDisc";
@@ -770,6 +771,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _asp_dll      = getFileVer(inetsrv+L"\\asp.dll",&status);
 	fver _asp51_dll    = getFileVer(inetsrv+L"\\asp51.dll",&status);
+	fver _asp51_dll_dllcache    = getFileVer(dllcache+L"\\asp51.dll",&status);
+	fver _ftpsvc2_dll  = getFileVer(inetsrv+L"\\ftpsvc2.dll",&status);
 	fver _httpext_dll  = getFileVer(inetsrv+L"\\httpext.dll",&status);
 	fver _infocomm_dll = getFileVer(inetsrv+L"\\infocomm.dll",&status);
 	fver _smtpsvc_dll  = getFileVer(inetsrv+L"\\smtpsvc.dll",&status);
@@ -2767,15 +2770,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB910437)");
 		XX(p+"windowsxp-kb910437-x86-enu_6045df96253a6130f973f5f6ac9d10988ba1b01c.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _w3svc_dll > zero && _w3svc_dll <fver(5,1,2600,3163)) {
+	if( sp==2 && (sku & XP_ALL) 
+		&& regQueryDWORD(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\Oc Manager\\Subcomponents",L"iis_www",&status)==1
+		&& _w3svc_dll > zero && _w3svc_dll <fver(5,1,2600,3163)) {
 		NN("Security Update for Windows XP (KB939373)");
 		XX(p+"windowsxp-kb939373-x86-enu_1060604efc56284ff8208d265f72be4d5394ba32.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _asp51_dll > zero && _asp51_dll <fver(5,1,2600,3291)) {
+	if( sp==2 && (sku & XP_ALL) && (
+		   (_asp51_dll          > zero && _asp51_dll          <fver(5,1,2600,2889))
+		|| (_asp51_dll_dllcache > zero && _asp51_dll_dllcache <fver(5,1,2600,2889)) )) {
+		NN("Security Update for Windows XP (KB917537)");
+		XX(p+"windowsxp-kb917537-x86-enu_a4dbb2338b97e63f46d45f1d69aa6a7908269b13.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL)
+		&& regQueryDWORD(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\Oc Manager\\Subcomponents",L"iis_www",&status)==1
+		&& ((_asp51_dll > zero && _asp51_dll <fver(5,1,2600,3291))
+		||   _asp51_dll_dllcache < fver(5,1,2600,3291)) ) {
 		NN("Security Update for Windows XP (KB942830)");
 		XX(p+"windowsxp-kb942830-x86-enu_3b34ded0cc8d3c0de48c3c31f4fae006a2eae923.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _infocomm_dll > zero && _infocomm_dll <fver(6,0,2600,3290)) {
+	if( sp==2 && (sku & XP_ALL) 
+		&& regTestKey(L"SYSTEM\\CurrentControlSet\\Services\\IISADMIN")
+		&& _infocomm_dll > zero && _infocomm_dll <fver(6,0,2600,3290)) {
 		NN("Security Update for Windows XP (KB942831)");
 		XX(p+"windowsxp-kb942831-x86-enu_0a8500f0300505cecc06c90840c75796c5e3c9a5.exe"+a1);
 	}
@@ -4556,6 +4572,42 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 7 for WEPOS and POSReady 2009 (KB3148198)");
 		XX(p+"ie7-windowsxp-kb3148198-x86-embedded-enu_254750ce40d33a8a4985de8339d8e66df6861f19.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		/* GDR */
+		   (_ie4uinit_exe  >zero && _ie4uinit_exe  <fver(8,0,6001,18876))
+		|| (_iedkcs32_dll  >zero && _iedkcs32_dll  <fver(18,0,6001,18876))
+		|| (_ieframe_dll   >zero && _ieframe_dll   <fver(8,0,6001,18876))
+		|| (_iepeers_dll   >zero && _iepeers_dll   <fver(8,0,6001,18876))
+		|| (_ieproxy_dll   >zero && _ieproxy_dll   <fver(8,0,6001,18876))
+		|| (_iertutil_dll  >zero && _iertutil_dll  <fver(8,0,6001,18876))
+		|| (_inetcpl_cpl   >zero && _inetcpl_cpl   <fver(8,0,6001,18876))
+		|| (_jsproxy_dll   >zero && _jsproxy_dll   <fver(8,0,6001,18876))
+		|| (_msfeeds_dll   >zero && _msfeeds_dll   <fver(8,0,6001,18876))
+		|| (_msfeedsbs_dll >zero && _msfeedsbs_dll <fver(8,0,6001,18876))
+		|| (_mshtml_dll    >zero && _mshtml_dll    <fver(8,0,6001,18876))
+		|| (_occache_dll   >zero && _occache_dll   <fver(8,0,6001,18876))
+		|| (_urlmon_dll    >zero && _urlmon_dll    <fver(8,0,6001,18876))
+		|| (_wininet_dll   >zero && _wininet_dll   <fver(8,0,6001,18876))
+		|| (_xpshims_dll   >zero && _xpshims_dll   <fver(8,0,6001,18876))
+		/* QFE */
+		|| (_ie4uinit_exe  >fver(8,0,6001,18876) && _ie4uinit_exe  <fver(8,0,6001,22967))
+		|| (_iedkcs32_dll  >fver(18,0,6001,18876)&& _iedkcs32_dll  <fver(18,0,6001,22967))
+		|| (_ieframe_dll   >fver(8,0,6001,18876) && _ieframe_dll   <fver(8,0,6001,22967))
+		|| (_iepeers_dll   >fver(8,0,6001,18876) && _iepeers_dll   <fver(8,0,6001,22967))
+		|| (_ieproxy_dll   >fver(8,0,6001,18876) && _ieproxy_dll   <fver(8,0,6001,22967))
+		|| (_iertutil_dll  >fver(8,0,6001,18876) && _iertutil_dll  <fver(8,0,6001,22967))
+		|| (_inetcpl_cpl   >fver(8,0,6001,18876) && _inetcpl_cpl   <fver(8,0,6001,22967))
+		|| (_jsproxy_dll   >fver(8,0,6001,18876) && _jsproxy_dll   <fver(8,0,6001,22967))
+		|| (_msfeeds_dll   >fver(8,0,6001,18876) && _msfeeds_dll   <fver(8,0,6001,22967))
+		|| (_msfeedsbs_dll >fver(8,0,6001,18876) && _msfeedsbs_dll <fver(8,0,6001,22967))
+		|| (_mshtml_dll    >fver(8,0,6001,18876) && _mshtml_dll    <fver(8,0,6001,22967))
+		|| (_occache_dll   >fver(8,0,6001,18876) && _occache_dll   <fver(8,0,6001,22967))
+		|| (_urlmon_dll    >fver(8,0,6001,18876) && _urlmon_dll    <fver(8,0,6001,22967))
+		|| (_wininet_dll   >fver(8,0,6001,18876) && _wininet_dll   <fver(8,0,6001,22967))
+		|| (_xpshims_dll   >fver(8,0,6001,18876) && _xpshims_dll   <fver(8,0,6001,22967)) )) {
+		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB978207)");
+		XX(p+"IE8-WindowsXP-KB978207-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XPE_WES2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24159))
 		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24159))
@@ -5066,12 +5118,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2290570)");
 		XX(p+"WindowsXP-KB2290570-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( (_msw3prt_dll>zero && _msw3prt_dll<fver(5,1,2600,5664))
-					  ||  (_win32spl_dll>zero && _win32spl_dll<fver(5,1,2600,5664)) )) {
+	if((sp==2 && (sku & XP_ALL) && ( (_msw3prt_dll >zero && _msw3prt_dll <fver(5,1,2600,3435))
+	                             ||  (_win32spl_dll>zero && _win32spl_dll<fver(5,1,2600,3435)) ))
+	 ||(sp==3 && (sku & XP_ALL) && ( (_msw3prt_dll> zero && _msw3prt_dll <fver(5,1,2600,5664))
+	                             ||  (_win32spl_dll>zero && _win32spl_dll<fver(5,1,2600,5664)) )) ) {
 		NN("Security Update for Windows XP (KB953155)");
 		XX(p+"WindowsXP-KB953155-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _httpext_dll>zero && _httpext_dll<fver(6,0,2600,5817)) {
+	if((sp==2 && (sku & XP_ALL) && _httpext_dll>zero && _httpext_dll<fver(6,0,2600,3574))
+	 ||(sp==3 && (sku & XP_ALL) && _httpext_dll>zero && _httpext_dll<fver(6,0,2600,5817))) {
 		NN("Security Update for Windows XP (KB970483)");
 		XX(p+"WindowsXP-KB970483-x86-ENU.exe"+a1);
 	}
@@ -5083,11 +5138,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WES09 and POSReady 2009 (KB3197835)");
 		XX(p+"windowsxp-kb3197835-x86-embedded-enu_96f4567c9e6d92956a85f4c8cbddb66cb6d8c8b3.exe"+a1);
 	}
-		//}
-		//if(*inetftp) {
-		//	NN("Security Update for Windows XP (KB975254)");
-		//	XX(p+"WindowsXP-KB975254-x86-ENU.exe"+a1);
-		//}
+	if((sp==2 && (sku & XP_ALL) && _ftpsvc2_dll>zero && _ftpsvc2_dll<fver(6,0,2600,3624))
+	 ||(sp==3 && (sku & XP_ALL) && _ftpsvc2_dll>zero && _ftpsvc2_dll<fver(6,0,2600,5875))) {
+		NN("Security Update for Windows XP (KB975254)");
+		XX(p+"WindowsXP-KB975254-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && _fxscover_exe>zero && _fxscover_exe<fver(5,2,2600,6078)) {
 		NN("Security Update for Windows XP (KB2491683)");
 		XX(p+"WindowsXP-KB2491683-x86-ENU.exe"+a1);

@@ -193,7 +193,8 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
-	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup";
+//	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup";
+	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup /forceappsclose";
 
 	// Create SKU masks
 	int XP_HOME_PRO = XP_PRO|XP_PRON|XP_HOME|XP_HOMEN;
@@ -239,11 +240,15 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 							               +"|it are already present on the system.");
 		}
 	}
-	// Windows XP Service Pack 3 (KB936929)
 	if((sku & XPE_FLP) && sp<3 ) {
 		r=3;
 		NN("Service Pack 3 for Windows Fundamentals for Legacy PCs and Windows Embedded for Point of Service (KB958255)");
 		XX("\"Service Packs\\WindowsXP-KB958255-ENU.exe\""+a7);
+	}
+	else if( !(sku & XPE_FLP) && sp<3 ) {
+		r=3;
+		NN("Windows XP Service Pack 3 (KB936929)");
+		XX("\"Service Packs\\WindowsXP-KB936929-SP3-x86-ENU.exe\""+a7);
 	}
 
 	return r;
