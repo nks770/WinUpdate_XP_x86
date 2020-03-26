@@ -60,12 +60,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Create SKU masks
 	int XP_HOME_PRO = XP_PRO|XP_PRON|XP_HOME|XP_HOMEN;
 	int XP_MCE = XP_MCE2002|XP_MCE2004|XP_MCE2005;
-	int XP_OTHER_EDITIONS = XP_STARTER|XP_TABLET|XP_MCE2002|XP_MCE2004|XP_MCE2005;
+	int XP_OTHER_EDITIONS = XP_STARTER|XP_TABLET|XP_MCE;
+	int XP_CLIENT = XP_HOME_PRO|XP_OTHER_EDITIONS;
 	int XP_PLUS_FLP = XP_HOME_PRO|XP_OTHER_EDITIONS|XPE_FLP;
 	int XPE_2009 = XPE_POSREADY2009|XPE_WES2009;
 	int XP_EMBEDDED = XPE_2009|XPE_FLP;
 	int XP_ALL =XP_HOME_PRO|XP_OTHER_EDITIONS|XP_EMBEDDED;
-	int XP_FOR_WGA = XP_HOME_PRO|XP_OTHER_EDITIONS|XPE_POSREADY2009;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
@@ -3374,6 +3374,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2347290)");
 		XX(p+"WindowsXP-KB2347290-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_CLIENT) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
+		NN("Security Update for Windows XP (KB2686509)");
+		XX(p+"WindowsXP-KB2686509-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_EMBEDDED) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
 		NN("Security Update for Windows XP Embedded (KB2686509)");
 		XX(p+"WindowsXPEmbedded-KB2686509-x86-ENU.exe"+a1);
@@ -3576,12 +3580,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2868038)");
 		XX(p+"WindowsXP-KB2868038-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & (XP_HOME_PRO|XPE_FLP)) && (
+	if( sp==3 && (sku & XP_PLUS_FLP) && (
 		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,6059)) )) {
 		NN("Security Update for Windows XP (KB2478971)");
 		XX(p+"WindowsXP-KB2478971-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & (XP_HOME_PRO|XPE_FLP)) && (
+	if( sp==3 && (sku & XP_PLUS_FLP) && (
 		     ( _localspl_dll > zero && _localspl_dll < fver(5,1,2600,6226)) )) {
 		 NN("Security Update for Windows XP (KB2712808)");
 		XX(p+"WindowsXP-KB2712808-x86-ENU.exe"+a1);
@@ -4766,7 +4770,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB981332)");
 		XX(p+"ie8-windowsxp-kb981332-x86-enu_d1ba1076cb5d94b06333011c6eb29dedb5c2c48d.exe"+a1);
 	}
-	if( sp==3 && (sku & (XP_HOME_PRO|XPE_FLP)) && ( _iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0))
+	if( sp==3 && (sku & XP_PLUS_FLP) && ( _iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0))
 		                && ( (_jscript_dll>zero && _jscript_dll<fver(5,8,6001,23141))
 					  ||  (_vbscript_dll>zero && _vbscript_dll<fver(5,8,6001,23141)) )) {
 		NN("Security Update for Windows XP (KB2510531)");
@@ -5147,7 +5151,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2491683)");
 		XX(p+"WindowsXP-KB2491683-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,5949)) {
+	if((sp==2 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,3680))
+	 ||(sp==3 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,5949))) {
 		NN("Security Update for Windows XP (KB976323)");
 		XX(p+"WindowsXP-KB976323-x86-ENU.exe"+a1);
 	}

@@ -251,8 +251,11 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	fver _10_mscorwks_dll     = getFileVer(p_nfx10+L"\\mscorwks.dll",&status);
 	fver _10_netfxupdate_exe  = getFileVer(p_nfx10+L"\\netfxupdate.exe",&status);
 	fver _10_SetRegNI_exe     = getFileVer(p_nfx10+L"\\SetRegNI.exe",&status);
+	fver _10_system_dll       = getFileVer(p_nfx10+L"\\system.dll",&status);
+	fver _10_System_Drawing_dll = getFileVer(p_nfx10+L"\\System.Drawing.dll",&status);
 	fver _10_System_Security_dll = getFileVer(p_nfx10+L"\\System.Security.dll",&status);
 	fver _10_System_Web_dll   = getFileVer(p_nfx10+L"\\System.Web.dll",&status);
+	fver _10_System_Windows_Forms_dll = getFileVer(p_nfx10+L"\\System.Windows.Forms.dll",&status);
 	fver _10_ToGac_exe        = getFileVer(p_nfx10+L"\\ToGac.exe",&status);
 
 	fver _11_aspnet_filter_dll        = getFileVer(p_nfx11+L"\\aspnet_filter.dll",&status);
@@ -508,7 +511,47 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Microsoft .NET Framework 1.0 SP3 Security Update for Windows XP Tablet PC and Media Center (KB979904)");
 		XX(p+"ndp1.0sp3-kb979904-x86-ocm-enu_a617462b19d63e11f602c18ada0070ebc99f0a0f.exe"+n1);
 	}
-
+	if( sp==3 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
+		   ( _10_aspnet_isapi_dll <fver(1,0,3705,6115))
+		|| ( _10_aspnet_state_exe <fver(1,0,3705,6115))
+		|| ( _10_aspnet_wp_exe    <fver(1,0,3705,6115))
+		|| ( _10_gacutil_exe      <fver(1,0,3705,0))
+		|| ( _10_IEExec_exe       <fver(1,0,3705,6115))
+		|| ( _10_mscorie_dll      <fver(1,0,3705,6115))
+		|| ( _10_mscorjit_dll     <fver(1,0,3705,6115))
+		|| ( _10_mscorld_dll      <fver(1,0,3705,6115))
+		|| ( _10_mscorlib_dll     <fver(1,0,3705,6115))
+		|| ( _10_mscorsvr_dll     <fver(1,0,3705,6115))
+		|| ( _10_mscorwks_dll     <fver(1,0,3705,6115))
+		|| ( _10_netfxupdate_exe  <fver(1,0,3705,1))
+		|| ( _10_SetRegNI_exe     <fver(1,1,4322,2035))
+		|| ( _10_System_Web_dll   <fver(1,0,3705,6115))
+		|| ( _10_ToGac_exe        <fver(1,1,4322,2251)) )) {
+		NN("Security Update for Microsoft .NET Framework 1.0 SP3 on Windows XP Tablet PC and Media Center (KB2904878)");
+		XX(p+"NDP1.0sp3-KB2904878-X86-Ocm-Enu.exe"+n1);
+	}
+	if( sp==3 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
+		   ( _10_aspnet_isapi_dll         <fver(1,0,3705,6110))
+		|| ( _10_aspnet_state_exe         <fver(1,0,3705,6110))
+		|| ( _10_aspnet_wp_exe            <fver(1,0,3705,6110))
+		|| ( _10_gacutil_exe              <fver(1,0,3705,0))
+		|| ( _10_IEExec_exe               <fver(1,0,3705,6110))
+		|| ( _10_mscorie_dll              <fver(1,0,3705,6110))
+		|| ( _10_mscorjit_dll             <fver(1,0,3705,6110))
+		|| ( _10_mscorld_dll              <fver(1,0,3705,6110))
+		|| ( _10_mscorlib_dll             <fver(1,0,3705,6110))
+		|| ( _10_mscorsvr_dll             <fver(1,0,3705,6110))
+		|| ( _10_mscorwks_dll             <fver(1,0,3705,6110))
+		|| ( _10_netfxupdate_exe          <fver(1,0,3705,1))
+		|| ( _10_SetRegNI_exe             <fver(1,1,4322,2035))
+		|| ( _10_system_dll               <fver(1,0,3705,6110))
+		|| ( _10_System_Drawing_dll       <fver(1,0,3705,6110))
+		|| ( _10_System_Web_dll           <fver(1,0,3705,6110))
+		|| ( _10_System_Windows_Forms_dll <fver(1,0,3705,6110))
+		|| ( _10_ToGac_exe                <fver(1,1,4322,2251)) )) {
+		NN("Security Update for Microsoft .NET Framework 1.0 SP3 on Windows XP Tablet PC and Media Center (KB2742607)");
+		XX(p+"NDP1.0sp3-KB2742607-X86-Ocm-Enu.exe"+n1);
+	}
 
 	// .NET Framework 1.1
 	if( sp>=2 && *i_nfx11 && *v_nfx11>=0){
