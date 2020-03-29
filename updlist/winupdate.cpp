@@ -4368,6 +4368,45 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP Service Pack 3 (KB3197835)");
 		XX(p+"windowsxp-kb3197835-x86-custom-enu_a65f07e2c62156b47d3940873c516b05ad775086.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_CLIENT) && ((_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,7209))
+		              ||  (_usp10_dll>zero && _usp10_dll<fver(1,420,2600,7209))
+					  ||  (_gdiplus_dll_24064<fver(5,2,6002,24064)) )) {
+		NN("Security Update for Windows XP Service Pack 3 (KB4012583)");
+		XX(p+"windowsxp-kb4012583-x86-custom-enu_36fa3aa9ed1507506cc79e6bb2e4d0fd774dd941.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _srv_sys>zero && _srv_sys<fver(5,1,2600,7208)) {
+		NN("Security Update for Windows XP SP3 (KB4012598)");
+		XX(p+"windowsxp-kb4012598-x86-custom-enu_eceb7d5023bbb23c0dc633e46b9c2f14fa6ee9dd.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _srv_sys>zero && _srv_sys<fver(5,1,2600,7238)) {
+		NN("Security Update for Windows XP SP3 (KB4018466)");
+		XX(p+"windowsxp-kb4018466-x86-custom-enu_97472f796e84cd9869c02c32178886115a77daf6.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,7258)) {
+		NN("Security Update for Windows XP SP3 (KB4019204)");
+		XX(p+"windowsxp-kb4019204-x86-custom-enu_4498d4a6c2faf1232afa6595b9a0bdb9e39526c5.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _gpkcsp_dll>zero && _gpkcsp_dll<fver(5,1,2600,7264)) {
+		NN("Security Update for Windows XP SP3 (KB4022747)");
+		XX(p+"windowsxp-kb4022747-x86-custom-enu_79307511c6d11bf713a33e53683b594c8876e78e.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && (
+		                  (_iprtrmgr_dll >zero && _iprtrmgr_dll <fver(5,1,2600,7272))
+		              ||  (_ndiswan_sys  >zero && _ndiswan_sys  <fver(5,1,2600,7272))
+					  ||  (_rasctrs_dll  >zero && _rasctrs_dll  <fver(5,1,2600,7272))
+					  ||  (_rasdlg_dll   >zero && _rasdlg_dll   <fver(5,1,2600,7272))
+					  ||  (_rasmxs_dll   >zero && _rasmxs_dll   <fver(5,1,2600,7272)) )) {	
+		NN("Security Update for Windows XP SP3 (KB4024323)");
+		XX(p+"windowsxp-kb4024323-x86-custom-enu_edb5a850bcbcc640c2b8c8aad3ab4d36a3b6fb26.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _query_dll>zero && _query_dll<fver(5,1,2600,7273)) {
+		NN("Security Update for Windows XP SP3 (KB4024402)");
+		XX(p+"windowsxp-kb4024402-x86-custom-enu_c2334a5c8087e107fe26570650966a8f42602b0a.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && _olecnv32_dll>zero && _olecnv32_dll<fver(5,1,2600,7285)) {
+		NN("Security Update for Windows XP SP3 (KB4025218)");
+		XX(p+"windowsxp-kb4025218-x86-custom-enu_f72f48762b3c7354919c86f10d3139b65ddc8a26.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_PLUS_FLP) && _termdd_sys>zero && _termdd_sys<fver(5,1,2600,7701)) {
 		NN("Security Update for Windows XP SP3 (KB4500331)");
 		XX(p+"windowsxp-kb4500331-x86-custom-enu_d7206aca53552fececf72a3dee93eb2da0421188.exe"+a1);
