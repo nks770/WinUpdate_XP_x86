@@ -287,6 +287,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	int minimum_sp[18] = { 2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,0 };
 
 	if(sku & XPE_WES2009) { *wga=false; }
+	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
 
 	if(sp>2) { *rdp60=false; }
 

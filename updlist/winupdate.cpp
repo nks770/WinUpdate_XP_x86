@@ -4364,8 +4364,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2019-05 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4500331)");
 		XX(p+"windowsxp-kb4500331-x86-embedded-enu_8aee1065d848661cbbf5a5b5b21d94803247741e.exe"+a1);
 	}
-
-	if( sp==3 && (sku & (XP_HOME_PRO|XPE_FLP)) && _termdd_sys>zero && _termdd_sys<fver(5,1,2600,7701)) {
+	if( sp==3 && (sku & XP_CLIENT) && _httpext_dll>zero && _httpext_dll<fver(6,0,2600,7150)) {
+		NN("Security Update for Windows XP Service Pack 3 (KB3197835)");
+		XX(p+"windowsxp-kb3197835-x86-custom-enu_a65f07e2c62156b47d3940873c516b05ad775086.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_PLUS_FLP) && _termdd_sys>zero && _termdd_sys<fver(5,1,2600,7701)) {
 		NN("Security Update for Windows XP SP3 (KB4500331)");
 		XX(p+"windowsxp-kb4500331-x86-custom-enu_d7206aca53552fececf72a3dee93eb2da0421188.exe"+a1);
 	}
@@ -4392,7 +4395,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows Malicious Software Removal Tool - August 2016 (KB890830)");
 		XX(p+"Windows-KB890830-v5.39.exe"+a2);
 	}
-	if(sp==3 && (sku & (XP_HOME_PRO|XPE_FLP)) && (*xpeos || (_xp_eos_exe>zero && _xp_eos_exe<fver(5,1,2600,6526)))){
+	if(sp==3 && (sku & XP_PLUS_FLP) && (*xpeos || (_xp_eos_exe>zero && _xp_eos_exe<fver(5,1,2600,6526)))){
 		NN("Windows XP End of Support Notification (KB2934207)");
 		XX(p+"WindowsXP-KB2934207-x86-ENU.exe"+a1);
 	}
@@ -4611,6 +4614,46 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_xpshims_dll   >fver(8,0,6001,18876) && _xpshims_dll   <fver(8,0,6001,22967)) )) {
 		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB978207)");
 		XX(p+"IE8-WindowsXP-KB978207-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_CLIENT) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,23942))
+		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,23942))
+		|| (_dxtrans_dll      >zero && _dxtrans_dll      <fver(8,0,6001,23942))
+		|| (_hlink_dll        >zero && _hlink_dll        <fver(6,0,6001,23942))
+		|| (_html_iec         >zero && _html_iec         <fver(2018,0,0,23942))
+		|| (_ie4uinit_exe     >zero && _ie4uinit_exe     <fver(8,0,6001,23942))
+		|| (_iedkcs32_dll     >zero && _iedkcs32_dll     <fver(18,0,6001,23942))
+		|| (_iedvtool_dll     >zero && _iedvtool_dll     <fver(8,0,6001,23942))
+		|| (_ieframe_dll      >zero && _ieframe_dll      <fver(8,0,6001,23942))
+		|| (_iepeers_dll      >zero && _iepeers_dll      <fver(8,0,6001,23942))
+		|| (_ieproxy_dll      >zero && _ieproxy_dll      <fver(8,0,6001,23942))
+		|| (_iertutil_dll     >zero && _iertutil_dll     <fver(8,0,6001,23942))
+		|| (_iexplore_exe     >zero && _iexplore_exe     <fver(8,0,6001,23942))
+		|| (_inetcomm_dll     >zero && _inetcomm_dll     <fver(6,0,2900,7246))
+		|| (_inetcpl_cpl      >zero && _inetcpl_cpl      <fver(8,0,6001,23942))
+		|| (_jscript_dll      >zero && _jscript_dll      <fver(5,8,6001,23942))
+		|| (_jsdbgui_dll      >zero && _jsdbgui_dll      <fver(8,0,6001,23942))
+		|| (_jsprofilerui_dll >zero && _jsprofilerui_dll <fver(8,0,6001,23942))
+		|| (_jsproxy_dll      >zero && _jsproxy_dll      <fver(8,0,6001,23942))
+		|| (_licmgr10_dll     >zero && _licmgr10_dll     <fver(8,0,6001,23942))
+		|| (_msfeeds_dll      >zero && _msfeeds_dll      <fver(8,0,6001,23942))
+		|| (_msfeedsbs_dll    >zero && _msfeedsbs_dll    <fver(8,0,6001,23942))
+		|| (_mshtml_dll       >zero && _mshtml_dll       <fver(8,0,6001,23942))
+		|| (_mshtmled_dll     >zero && _mshtmled_dll     <fver(8,0,6001,23942))
+		|| (_msrating_dll     >zero && _msrating_dll     <fver(8,0,6001,23942))
+		|| (_mstime_dll       >zero && _mstime_dll       <fver(8,0,6001,23942))
+		|| (_occache_dll      >zero && _occache_dll      <fver(8,0,6001,23942))
+		|| (_tdc_ocx          >zero && _tdc_ocx          <fver(8,0,6001,23942))
+		|| (_url_dll          >zero && _url_dll          <fver(8,0,6001,23942))
+		|| (_urlmon_dll       >zero && _urlmon_dll       <fver(8,0,6001,23942))
+		|| (_vbscript_dll     >zero && _vbscript_dll     <fver(5,8,6001,23942))
+		|| (_vgx_dll          >zero && _vgx_dll          <fver(8,0,6001,23942))
+		|| (_webcheck_dll     >zero && _webcheck_dll     <fver(8,0,6001,23942))
+		|| (_wininet_dll      >zero && _wininet_dll      <fver(8,0,6001,23942))
+		|| (_xpshims_dll      >zero && _xpshims_dll      <fver(8,0,6001,23942))
+		)) {
+		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP SP3 (KB4018271)");
+		XX(p+"ie8-windowsxp-kb4018271-x86-custom-enu_122a1122404b9862e6998bcec0917de02c378de6.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_WES2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24159))
