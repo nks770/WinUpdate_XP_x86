@@ -172,7 +172,7 @@ void nfxInstallCheck(int* nfxsp, bool* nfxinstall, int sp, std::vector<std::stri
 
 	bool netfx4_issue=false;
 
-	if (*v_nfx10<3) {
+	if (*v_nfx10<3 && *v_nfx10mce<0) {
 		if(*v_nfx40c<0 && *v_nfx40f<0) {
 				*i_nfx10=true;
 		} else {

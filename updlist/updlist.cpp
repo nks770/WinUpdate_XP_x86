@@ -38,6 +38,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	bool component_install=false;
 	bool list_cert_root=false;
 	bool list_cert_disallowed=false;
+	bool allow_reboot=true;
 	int sp_to_be_installed=0;
 
 	std::vector<std::string> notifications;
@@ -51,6 +52,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		if(!wcscmp(argv[i],L"--install-sp")) { install_sp=true; }
 		if(!wcscmp(argv[i],L"--list-cert-root")) { list_cert_root=true; }
 		if(!wcscmp(argv[i],L"--list-cert-disallowed")) { list_cert_disallowed=true; }
+		if(!wcscmp(argv[i],L"--noreboot")) { allow_reboot=false; }
 		if(!wcscmp(argv[i],L"--mbsa")) {
 			mbsa=true;
 			if(++i<argc) {
@@ -158,9 +160,9 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		showNotifications(batch,&notifications);
 		if(batch) {
 			if(netfx_mode || install_netfx) {
-				createUpdateScript(&nfx_name,&nfx_exe,false,false);
+				createUpdateScript(&nfx_name,&nfx_exe,allow_reboot,false);
 			} else {
-				createUpdateScript(&name,&exe,false,false);
+				createUpdateScript(&name,&exe,allow_reboot,false);
 			}
 		} else {
 			printList(&all_name);
