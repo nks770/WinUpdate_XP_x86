@@ -1219,6 +1219,80 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	// .NET Framework 4.0
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
+			( _40_System_dll < fver(4,0,30319,258))
+		/* QFE */
+		 || ( _40_System_dll > fver(4,0,30319,258) && _40_System_dll < fver(4,0,30319,523))
+		 || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2633870",
+							L"ThisVersionInstalled",&status)!=L"Y" )) {
+		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2633870)");
+		XX(p+"NDP40-KB2633870-x86.exe"+n6);
+	}
+	if( sp==3 &&  (NFX40) && (
+		/* GDR */
+			( _40_ServiceModelReg_exe              < fver(4,0,30319,272))
+		 || ( _40_aspnet_wp_exe             > zero && _40_aspnet_wp_exe             < fver(4,0,30319,272)) // Full Profile Only
+		 || ( _40_System_Web_Extensions_dll > zero && _40_System_Web_Extensions_dll < fver(4,0,30319,272)) // Full Profile Only
+		 || ( _40_System_Web_dll            > zero && _40_System_Web_dll            < fver(4,0,30319,272)) // Full Profile Only
+		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,272)) // Full Profile Only
+		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,272)) // Full Profile Only
+		/* QFE */
+		 || ( _40_ServiceModelReg_exe              > fver(4,0,30319,272) && _40_ServiceModelReg_exe              < fver(4,0,30319,547))
+		 || ( _40_aspnet_wp_exe                    > fver(4,0,30319,272) && _40_aspnet_wp_exe                    < fver(4,0,30319,547))
+		 || ( _40_System_Web_Extensions_dll        > fver(4,0,30319,272) && _40_System_Web_Extensions_dll        < fver(4,0,30319,547))
+		 || ( _40_System_Web_dll                   > fver(4,0,30319,272) && _40_System_Web_dll                   < fver(4,0,30319,547))
+		 || ( _40_webengine4_dll                   > fver(4,0,30319,272) && _40_webengine4_dll                   < fver(4,0,30319,547))
+		 || ( _40_webengine_dll                    > fver(4,0,30319,272) && _40_webengine_dll                    < fver(4,0,30319,547))
+	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2656351",
+							L"ThisVersionInstalled",&status)!=L"Y" )) {
+		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2656351)");
+		XX(p+"NDP40-KB2656351-x86.exe"+n6);
+	}
+	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
+		/* GDR */
+			( _40_clr_dll	                       < fver(4,0,30319,239))
+		 || ( _40_mscordacwks_dll                  < fver(4,0,30319,239))
+		 || ( _40_mscordbi_dll                     < fver(4,0,30319,239))
+		 || ( _40_mscorlib_dll                     < fver(4,0,30319,239))
+		 || ( _40_nlssorting_dll                   < fver(4,0,30319,239))
+		 || ( _40_SOS_dll                          < fver(4,0,30319,239))
+		/* QFE */
+		 || ( _40_clr_dll                          > fver(4,0,30319,239) && _40_clr_dll                          < fver(4,0,30319,488))
+		 || ( _40_mscordacwks_dll                  > fver(4,0,30319,239) && _40_mscordacwks_dll                  < fver(4,0,30319,488))
+		 || ( _40_mscordbi_dll                     > fver(4,0,30319,239) && _40_mscordbi_dll                     < fver(4,0,30319,488))
+		 || ( _40_mscorlib_dll                     > fver(4,0,30319,239) && _40_mscorlib_dll                     < fver(4,0,30319,488))
+		 || ( _40_nlssorting_dll                   > fver(4,0,30319,239) && _40_nlssorting_dll                   < fver(4,0,30319,488))
+		 || ( _40_SOS_dll                          > fver(4,0,30319,239) && _40_SOS_dll                          < fver(4,0,30319,488))
+	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2572078",
+							L"ThisVersionInstalled",&status)!=L"Y" )) {
+		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2572078)");
+		XX(p+"NDP40-KB2572078-x86.exe"+n6);
+	}
+	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
+		/* GDR */
+			( _40_clr_dll	                       < fver(4,0,30319,235))
+		 || ( _40_clrjit_dll                       < fver(4,0,30319,235))
+		 || ( _40_mscordacwks_dll                  < fver(4,0,30319,235))
+		 || ( _40_mscordbi_dll                     < fver(4,0,30319,235))
+		 || ( _40_mscorlib_dll                     < fver(4,0,30319,235))
+		 || ( _40_nlssorting_dll                   < fver(4,0,30319,235))
+		 || ( _40_SOS_dll                          < fver(4,0,30319,235))
+		 || ( _40_System_Windows_Forms_dll         < fver(4,0,30319,235))
+		/* QFE */
+		 || ( _40_clr_dll                          > fver(4,0,30319,235) && _40_clr_dll                          < fver(4,0,30319,454))
+		 || ( _40_clrjit_dll                       > fver(4,0,30319,235) && _40_clrjit_dll                       < fver(4,0,30319,454))
+		 || ( _40_mscordacwks_dll                  > fver(4,0,30319,235) && _40_mscordacwks_dll                  < fver(4,0,30319,454))
+		 || ( _40_mscordbi_dll                     > fver(4,0,30319,235) && _40_mscordbi_dll                     < fver(4,0,30319,454))
+		 || ( _40_mscorlib_dll                     > fver(4,0,30319,235) && _40_mscorlib_dll                     < fver(4,0,30319,454))
+		 || ( _40_nlssorting_dll                   > fver(4,0,30319,235) && _40_nlssorting_dll                   < fver(4,0,30319,454))
+		 || ( _40_SOS_dll                          > fver(4,0,30319,235) && _40_SOS_dll                          < fver(4,0,30319,454))
+		 || ( _40_System_Windows_Forms_dll         > fver(4,0,30319,235) && _40_System_Windows_Forms_dll         < fver(4,0,30319,454))
+	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2518870",
+							L"ThisVersionInstalled",&status)!=L"Y" )) {
+		NN("Security Update for Microsoft .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows Server 2008 x86 (KB2518870)");
+		XX(p+"NDP40-KB2518870-x86.exe"+n6);
+	}
+	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
+		/* GDR */
 			( _40_System_Windows_Forms_dll < fver(4,0,30319,1002))
 		/* QFE */
 		 || ( _40_System_Windows_Forms_dll > fver(4,0,30319,1002) && _40_System_Windows_Forms_dll < fver(4,0,30319,2003)) )) {
