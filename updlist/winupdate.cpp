@@ -114,6 +114,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
 	bool _secdrv_sys_exist   = fileExists(Drivers+L"\\secdrv.sys");
+	bool kb900325 = false;
 	bool kb913800 = false;
 
 	// Read file version information
@@ -3021,6 +3022,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		||  ( _vxblock_dll               <fver(1,0,62,0))
 		||  ( _wstpager_ax               <fver(6,5,2710,2732))
 		||  ( _wstrenderer_ax            <fver(6,5,2710,2732)) )) {
+	kb900325=true;
 	NN("Update Rollup 2 for Windows XP Media Center Edition 2005 (KB900325)");
 	//XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /quiet /norestart");
 	XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
@@ -3036,23 +3038,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		+"wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n"
 		+"popd\nrd /S /Q %TEMP%\\KB900325");
 	}
-	if(sp>=2 && (sku & XP_MCE2005) && (
-			regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
+	if(sp>=2 && (sku & XP_MCE2005) && ( kb900325
+		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
 		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.1" )
-		 && (_mstvcapn_dll>zero && _mstvcapn_dll<fver(5,1,2715,5512))) {
+		 && (/*_mstvcapn_dll>zero &&*/ _mstvcapn_dll<fver(5,1,2715,5512))) {
 		NN("Security Update for Windows XP Media Center Edition 2005 Update Rollup 2 X86 Edition (KB2628259)");
 		XX(p+"windowsxpmediacenter2005-kb2628259-enu_78c8b91dfe474d076c66d74e8454960e5bc23fa3.exe"+a1);
 	}
-	if(sp>=2 && (sku & XP_MCE2005) && (
-			regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
+	if(sp>=2 && (sku & XP_MCE2005) && ( kb900325
+		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
 		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.1" )
 		 && ((/*_encdec_dll>zero &&*/ _encdec_dll<fver(6,5,2715,5512))
 		  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB2619340") )) {
 		NN("Security Update for Windows XP Media Center Edition 2005 Update Rollup 2 X86 Edition (KB2619340)");
 		XX(p+"windowsxpmediacenter2005-kb2619340-enu_074452832167002c2b8388847294a6a5950d78f1.exe"+a1);
 	}
-	if(sp>=2 && (sku & XP_MCE2005) && (
-			regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
+	if(sp>=2 && (sku & XP_MCE2005) && ( kb900325
+		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
 		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.1" )
 		 && ((/*_encdec_dll>zero &&*/ _encdec_dll<fver(6,5,2715,5512))
 		  || (_sbe_dll   >zero && _sbe_dll   <fver(6,5,2715,5512)) )) {
@@ -3060,7 +3062,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"windowsxpmediacenter2005-kb2502898-enu_6449e0bc751c138c0a5a31fe0394677038616056.exe"+a1);
 	}
 	if(sp>=2 && (sku & XP_MCE2005)
-		&& ( regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
+		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
 		&& (    (_blackbox_dll >zero && _blackbox_dll <fver(11,0,0,4346))
 		     || (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,4332))
 		     || (_drmupgds_exe >zero && _drmupgds_exe <fver(11,0,0,4332))
@@ -3123,7 +3125,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"windowsmedia10-kb926251-x86-enu_1e6ce415f8de5a8a3b43e9917daf0f501493dde5.exe"+a1);
 	}
 	if(sp>=2 && (sku & XP_MCE2005)
-		&& ( regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
+		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
 		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,3011))
 		     || (_ehepg_dll    >zero && _ehepg_dll    <fver(5,1,2715,3011))
 		     || (_ehglid_dll   >zero && _ehglid_dll   <fver(5,1,2715,3011))
@@ -3147,9 +3149,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
 		XX(p+"windowsxp-kb888795-v3-x86-enu_35a20ee3889859f9e0db3d9899c0a679664726be.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_MCE2005) && (
-		                  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2825))
-					  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2825)) )) {
+	if( sp==2 && (sku & XP_MCE2005) && ( kb900325
+		              || ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2825))
+					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2825)) )) {
 		NN("Update for Windows XP Media Center Edition 2005 (KB912024)");
 		XX(p+"windowsxp-kb912024-v2-x86-enu_0e305ca77d97d5ee54ea79e3f43bedaba844705b.exe"+a1);
 	}

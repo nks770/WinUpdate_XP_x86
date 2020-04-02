@@ -76,7 +76,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			                               +"|Edition 2005 must be installed prior to"
 							               +"|installing Windows Media Player 11."
 							               +"| "
-							               +"|Please run'update_windows.bat' to install"
+							               +"|Please run 'update_windows.bat' to install"
 							               +"|Update Rollup 2, then try again.");
 		}
 	}
