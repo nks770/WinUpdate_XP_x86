@@ -3543,21 +3543,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"WindowsXP-KB971029-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && (
-		     ( _kerberos_dll < fver(5,1,2600,3592))
+		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,3592))
 		||   ( _ksecdd_sys   < fver(5,1,2600,3592))
 		||   ( _lsasrv_dll   < fver(5,1,2600,3592))
-		||   ( _msv1_0_dll   < fver(5,1,2600,3592))
-		||   ( _schannel_dll < fver(5,1,2600,3592))
-		||   ( _secur32_dll  < fver(5,1,2600,3592))
-		||   ( _wdigest_dll  < fver(5,1,2600,3592))))
+		||   ( _msv1_0_dll   > zero && _msv1_0_dll   < fver(5,1,2600,3592))
+		||   ( _schannel_dll > zero && _schannel_dll < fver(5,1,2600,3592))
+		||   ( _secur32_dll  > zero && _secur32_dll  < fver(5,1,2600,3592))
+		||   ( _wdigest_dll  > zero && _wdigest_dll  < fver(5,1,2600,3592))))
 	 ||(sp==3 && (sku & XP_ALL) && (
-		     ( _kerberos_dll < fver(5,1,2600,5834))
+		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,5834))
 		||   ( _ksecdd_sys   < fver(5,1,2600,5834))
 		||   ( _lsasrv_dll   < fver(5,1,2600,5834))
-		||   ( _msv1_0_dll   < fver(5,1,2600,5834))
-		||   ( _schannel_dll < fver(5,1,2600,5834))
-		||   ( _secur32_dll  < fver(5,1,2600,5834))
-		||   ( _wdigest_dll  < fver(5,1,2600,5834))))) {
+		||   ( _msv1_0_dll   > zero && _msv1_0_dll   < fver(5,1,2600,5834))
+		||   ( _schannel_dll > zero && _schannel_dll < fver(5,1,2600,5834))
+		||   ( _secur32_dll  > zero && _secur32_dll  < fver(5,1,2600,5834))
+		||   ( _wdigest_dll  > zero && _wdigest_dll  < fver(5,1,2600,5834))))) {
 		NN("Update for Windows XP (KB968389)");
 		XX(p+"WindowsXP-KB968389-x86-ENU.exe"+a1);
 	}
@@ -4655,6 +4655,35 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_xpshims_dll   >fver(8,0,6001,18876) && _xpshims_dll   <fver(8,0,6001,22967)) )) {
 		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB978207)");
 		XX(p+"IE8-WindowsXP-KB978207-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		/* QFE */
+		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,23532))
+		|| (_html_iec         >zero && _html_iec         <fver(2018,0,0,23532))
+		|| (_ie4uinit_exe     >zero && _ie4uinit_exe     <fver(8,0,6001,23532))
+		|| (_iedkcs32_dll     >zero && _iedkcs32_dll     <fver(18,0,6001,23532))
+		|| (_iedvtool_dll     >zero && _iedvtool_dll     <fver(8,0,6001,23532))
+		|| (_ieframe_dll      >zero && _ieframe_dll      <fver(8,0,6001,23532))
+		|| (_iepeers_dll      >zero && _iepeers_dll      <fver(8,0,6001,23532))
+		|| (_ieproxy_dll      >zero && _ieproxy_dll      <fver(8,0,6001,23532))
+		|| (_iertutil_dll     >zero && _iertutil_dll     <fver(8,0,6001,23532))
+		|| (_inetcpl_cpl      >zero && _inetcpl_cpl      <fver(8,0,6001,23532))
+		|| (_jsdbgui_dll      >zero && _jsdbgui_dll      <fver(8,0,6001,23532))
+		|| (_jsproxy_dll      >zero && _jsproxy_dll      <fver(8,0,6001,23532))
+		|| (_licmgr10_dll     >zero && _licmgr10_dll     <fver(8,0,6001,23532))
+		|| (_msfeeds_dll      >zero && _msfeeds_dll      <fver(8,0,6001,23532))
+		|| (_msfeedsbs_dll    >zero && _msfeedsbs_dll    <fver(8,0,6001,23532))
+		|| (_mshtml_dll       >zero && _mshtml_dll       <fver(8,0,6001,23532))
+		|| (_mshtmled_dll     >zero && _mshtmled_dll     <fver(8,0,6001,23532))
+		|| (_mstime_dll       >zero && _mstime_dll       <fver(8,0,6001,23532))
+		|| (_occache_dll      >zero && _occache_dll      <fver(8,0,6001,23532))
+		|| (_url_dll          >zero && _url_dll          <fver(8,0,6001,23532))
+		|| (_urlmon_dll       >zero && _urlmon_dll       <fver(8,0,6001,23532))
+		|| (_vgx_dll          >zero && _vgx_dll          <fver(8,0,6001,23532))
+		|| (_wininet_dll      >zero && _wininet_dll      <fver(8,0,6001,23532))
+		|| (_xpshims_dll      >zero && _xpshims_dll      <fver(8,0,6001,23532)) )) {
+		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB2879017)");
+		XX(p+"IE8-WindowsXP-KB2879017-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_CLIENT) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,23942))
