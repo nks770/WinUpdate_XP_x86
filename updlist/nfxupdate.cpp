@@ -502,7 +502,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Microsoft .NET Framework 1.0 Service Pack 3 Security Update for Windows XP Tablet PC and Media Center (KB953295)");
 		XX(p+"ndp1.0sp3-kb953295-x86-ocm-enu_6bcabcb5c10ed16416a6325743cca321b42d64c4.exe"+n1);
 	}
-	if( sp==2 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
+	if( sp>=2 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
 		   ( _10_gacutil_exe         <fver(1,0,3705,0))
 		|| ( _10_netfxupdate_exe     <fver(1,0,3705,1))
 		|| ( _10_SetRegNI_exe        <fver(1,1,4322,2035))

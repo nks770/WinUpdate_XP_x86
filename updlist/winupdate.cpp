@@ -114,6 +114,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
 	bool _secdrv_sys_exist   = fileExists(Drivers+L"\\secdrv.sys");
+	bool kb891122 = false;
 	bool kb900325 = false;
 	bool kb913800 = false;
 
@@ -2854,6 +2855,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //					  ||  (_wpdusb_sys   >zero && _wpdusb_sys   <fver(5,2,3802,3802))
 //					  ||  (_wpd_ci_dll   >zero && _wpd_ci_dll   <fver(5,2,3802,3802))
 					      )) {
+		kb891122=true;
 		NN("Update for WMDRM-enabled Media Players (KB891122)");
 		XX(p+"windowsmedia-kb891122-x86-enu_c1b14007407ee75d546dfd820af4f52eaf5e18f9.exe"+a1);
 	}
@@ -5099,7 +5101,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
 		XX(p+"WindowsXP-KB941569-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3802) && _wmvdmod_dll<fver(10,0,0,4084)) {
+	if( sp==3 && !kb891122 && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
+		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834902)");
+		XX(p+"windowsxp-windowsmedia-kb2834902-v2-x86-enu_ecc8652da2b85688917a4f7aa48ac1efe84975fd.exe"+a1);
+	}
+	if( sp==3 && !kb913800 && (sku & XP_ALL) && (kb891122 || _wmvdmod_dll>=fver(10,0,0,3802)) && _wmvdmod_dll<fver(10,0,0,4084)) {
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834903)");
 		XX(p+"WindowsXP-WindowsMedia-KB2834903-v2-x86-ENU.exe"+a1);
 	}
