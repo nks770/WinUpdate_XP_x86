@@ -757,6 +757,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
+	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
+	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 
@@ -2809,7 +2811,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 
 	// Windows XP Media Center
-	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
+	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
 		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
 		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
 					  ||  (_drmclien_dll >zero && _drmclien_dll <fver(10,0,0,3802))
@@ -2859,14 +2861,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for WMDRM-enabled Media Players (KB891122)");
 		XX(p+"windowsmedia-kb891122-x86-enu_c1b14007407ee75d546dfd820af4f52eaf5e18f9.exe"+a1);
 	}
-	if( sp>=2 && (sku & XP_ALL) && _msscp_dll>=fver(10,0,0,3646) && _msscp_dll<fver(10,0,0,3934)) {
-		NN("Update for WMDRM-enabled Media Players (KB902344)");
-		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
-	}
-	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3909)) {
-		NN("Update for Windows XP (KB895572)");
-		XX(p+"windowsmedia10-kb895572-x86-enu.exe"+a1);
-	}
+//	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3909)) {
+//		NN("Update for Windows XP (KB895572)");
+//		XX(p+"windowsmedia10-kb895572-x86-enu.exe"+a1);
+//	}
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _qdvd_dll   >zero && _qdvd_dll   <fver(6,5,2600,2709))
 					  ||  ( _quartz_dll >zero && _quartz_dll <fver(6,5,2600,2709)) )) {
@@ -2878,31 +2876,37 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB895961)");
 		XX(p+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		                  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
-					  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
-					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
-					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
-					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
-		NN("Update for Windows XP (KB899337)");
-		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_MCE2005) && (
-			(    _sbp2port_sys       <fver(5,1,2600,2688)
-		      && _sbp2port_sys_cache <fver(5,1,2600,2688))
-			|| (_sbp2port_sys>zero && _sbp2port_sys <fver(5,1,2600,2688))
-			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB899510"))) {
-		NN("Update for Windows XP (KB899510)");
-		XX(p+"WindowsXP-KB899510-x86.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_MCE2005) && (
-			(    _powerfil_sys       <fver(5,1,2600,2707)
-		      && _powerfil_sys_cache <fver(5,1,2600,2707))
-			|| (_powerfil_sys>zero && _powerfil_sys <fver(5,1,2600,2707))
-			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB902841"))) {
-		NN("Update for Windows XP (KB902841)");
-		XX(p+"WindowsXP-KB902841-x86.exe"+a1);
-	}
+//	if( sp==2 && (sku & XP_ALL) && (
+//		                  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
+//					  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
+//					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
+//					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
+//					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+//		NN("Update for Windows XP (KB899337)");
+//		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
+//	}
+//	if( sp==2 && (sku & XP_MCE2005) && (
+//			(    _sbp2port_sys       <fver(5,1,2600,2688)
+//		      && _sbp2port_sys_cache <fver(5,1,2600,2688))
+//			|| (_sbp2port_sys>zero && _sbp2port_sys <fver(5,1,2600,2688))
+//			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB899510"))) {
+//		NN("Update for Windows XP (KB899510)");
+//		XX(p+"WindowsXP-KB899510-x86.exe"+a1);
+//	}
+//	if( sp==2 && (sku & XP_MCE2005) && (
+//		                  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2709))
+//					  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2709)) )) {
+//		NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
+//		XX(p+"windowsxp-kb888795-v3-x86-enu_35a20ee3889859f9e0db3d9899c0a679664726be.exe"+a1);
+//	}
+//	if( sp==2 && (sku & XP_MCE2005) && (
+//			(    _powerfil_sys       <fver(5,1,2600,2707)
+//		      && _powerfil_sys_cache <fver(5,1,2600,2707))
+//			|| (_powerfil_sys>zero && _powerfil_sys <fver(5,1,2600,2707))
+//			|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB902841"))) {
+//		NN("Update for Windows XP (KB902841)");
+//		XX(p+"WindowsXP-KB902841-x86.exe"+a1);
+//	}
 	if(sp>=2 && (sku & XP_MCE2005) && _ehkeyctl_dll>zero && _ehkeyctl_dll<fver(5,1,2715,5512)) {
 		NN("Security Update for Windows XP (KB973768)");
 		XX(p+"windowsxpmediacenter2005-kb973768-enu_05fb491b522e4265834136d7288711e5fdb827e4.exe"+a1);
@@ -2917,6 +2921,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
 		XX(p+"NDP1.1sp1-KB867460-X86.exe"+a2);
 	}
+	std::string temp;
 	if( sp>=2 && (sku & XP_MCE2005) && (
 		    ( _audiodepthconverter_ax    <fver(6,0,0,1))
 		||  ( _authorscript_dll          <fver(6,0,0,1))
@@ -3027,18 +3032,73 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	kb900325=true;
 	NN("Update Rollup 2 for Windows XP Media Center Edition 2005 (KB900325)");
 	//XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /quiet /norestart");
-	XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
-		+"pushd %TEMP%\\KB900325\\bin\n"
-		+"WindowsMedia10-KB895572-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB891593-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB895961-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB899337-v2-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB899510-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB888795-x86.exe /passive /norestart\n"
-		+"WindowsXP-KB902841-x86.exe /passive /norestart\n"
-		+"KB900325.exe /passive /norestart\n"
-		+"wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n"
-		+"popd\nrd /S /Q %TEMP%\\KB900325");
+	temp=p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
+		  +"pushd %TEMP%\\KB900325\n"
+		  +"md install\n"
+		  +"copy bin\\WindowsXP-KB891593-x86.exe install\\\n"
+		  +"copy bin\\WindowsXP-KB899337-v2-x86.exe install\\\n"
+		  +"copy bin\\WindowsXP-KB899510-x86.exe install\\\n"
+		  +"copy bin\\WindowsXP-KB888795-x86.exe install\\\n"
+		  +"copy bin\\WindowsXP-KB902841-x86.exe install\\\n";
+		if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3937)) {
+			//NN("Update for Windows XP (KB895572)"); // Actually it is KB903157
+			temp+="bin\\WindowsMedia10-KB895572-x86.exe"+a1+"\n";
+		}
+//		if( sp==2 && (sku & XP_ALL) && (
+//							  ( _qdvd_dll   >zero && _qdvd_dll   <fver(6,5,2600,2709))
+//						  ||  ( _quartz_dll >zero && _quartz_dll <fver(6,5,2600,2709)) )) {
+//			//NN("Update for Windows XP (KB891593)");
+//			temp+="install\\WindowsXP-KB891593-x86.exe"+a1+"\n";
+//		}
+		if( sp==2 && (sku & XP_ALL) && (
+							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
+						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
+						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
+						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
+						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+			//NN("Update for Windows XP (KB899337)");
+			temp+="install\\WindowsXP-KB899337-v2-x86.exe"+a1+"\n";
+		}
+		if( sp==2 && (sku & XP_MCE2005) && (
+				(    _sbp2port_sys       <fver(5,1,2600,2688)
+				  && _sbp2port_sys_cache <fver(5,1,2600,2688))
+				|| (_sbp2port_sys>zero && _sbp2port_sys <fver(5,1,2600,2688))
+				|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB899510"))) {
+			//NN("Update for Windows XP (KB899510)");
+			temp+="install\\WindowsXP-KB899510-x86.exe"+a1+"\n";
+		}
+		if( sp==2 && (sku & XP_MCE2005) && (
+							  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2709))
+						  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2709))
+						  ||    _hidir_sys_cache < fver(5,1,2600,2709)
+						  ||    _irbus_sys_cache < fver(5,1,2600,2709) )) {
+			//NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
+			temp+="install\\WindowsXP-KB888795-x86.exe"+a1+"\n";
+		}
+		if( sp==2 && (sku & XP_MCE2005) && (
+				(    _powerfil_sys       <fver(5,1,2600,2707)
+				  && _powerfil_sys_cache <fver(5,1,2600,2707))
+				|| (_powerfil_sys>zero && _powerfil_sys <fver(5,1,2600,2707))
+				|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB902841"))) {
+			//NN("Update for Windows XP (KB902841)");
+			temp+="install\\WindowsXP-KB902841-x86.exe"+a1+"\n";
+		}
+		temp+="bin\\KB900325.exe /passive /norestart\n";
+		temp+="bin\\wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n";
+		temp+="popd\nrd /S /Q %TEMP%\\KB900325";
+//	XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
+//		+"pushd %TEMP%\\KB900325\\bin\n"
+//		+"WindowsMedia10-KB895572-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB891593-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB895961-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB899337-v2-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB899510-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB888795-x86.exe /passive /norestart\n"
+//		+"WindowsXP-KB902841-x86.exe /passive /norestart\n"
+//		+"KB900325.exe /passive /norestart\n"
+//		+"wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n"
+//		+"popd\nrd /S /Q %TEMP%\\KB900325");
+		XX(temp);
 	}
 	if(sp>=2 && (sku & XP_MCE2005) && ( kb900325
 		 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0"
@@ -3120,7 +3180,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"windowsmedia10-kb913800-x86-enu_d92cb6ac9b52c7926f8f94d65217ed297c45fecc.exe"+a1);
 		kb913800=true;
 	}
-	if(sp>=2 && (sku & XP_MCE2005) &&  (_wmploc_dll==fver(10,0,0,3931) ||
+	if(sp==2 && (sku & XP_MCE2005) &&  (_wmploc_dll==fver(10,0,0,3931) ||
 				( _wmploc_dll<=fver(10,0,0,3931) && kb913800 ))
 			&& ((_setup_wm_exe >zero && _setup_wm_exe <fver(10,0,0,3931)) )) {
 		NN("Update for Windows XP Media Center Edition 2005 (KB926251)");
@@ -3144,12 +3204,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		     || (_sbe_dll      >zero && _sbe_dll      <fver(6,5,2715,3011)) )) {
 		NN("Update Rollup for Windows XP Media Center Edition 2005 (KB925766)");
 		XX(p+"windowsxpmediacenter2005-kb925766-enu_30e90395a057a5e974768536ee7eaf014670ed2c.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_MCE2005) && (
-		                  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2709))
-					  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2709)) )) {
-		NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
-		XX(p+"windowsxp-kb888795-v3-x86-enu_35a20ee3889859f9e0db3d9899c0a679664726be.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_MCE2005) && ( kb900325
 		              || ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2825))
@@ -5101,7 +5155,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
 		XX(p+"WindowsXP-KB941569-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && !kb891122 && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
+	if( sp==3 && !kb891122 && !kb913800 
+		      && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834902)");
 		XX(p+"windowsxp-windowsmedia-kb2834902-v2-x86-enu_ecc8652da2b85688917a4f7aa48ac1efe84975fd.exe"+a1);
 	}
@@ -5112,6 +5167,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _wmvdecod_dll>=fver(11,0,5721,5145) && _wmvdecod_dll<fver(11,0,5721,5289)) {
 		NN("Security Update for Windows Media Format Runtime 11 for Windows XP (KB2834904)");
 		XX(p+"WindowsXP-WindowsMedia-KB2834904-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && (kb913800 || _wmvdmod_dll>=fver(10,0,0,4332)) && _wmvdmod_dll<fver(10,0,0,4377)) {
+		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834905)");
+		XX(p+"windowsxp-windowsmedia-kb2834905-v2-x86-enu_c34829167838fddcc6d679649a1f79d39280a2f0.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && ((_wmspdmod_dll >=fver(9,0,0,2980) /* WM9 Section */
 					     && _wmspdmod_dll<fver(9,0,0,3269))
@@ -5216,11 +5275,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows Media Player 11 for Windows XP (KB939683)");
 		XX(p+"windowsmedia11-kb939683-x86-enu_17d48a1cb35ad4f1cac39bd758158efe690730b5.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _cewmdm_dll>=fver(10,0,3790,3646) && _cewmdm_dll<fver(10,0,3790,3747)) {
+	if( sp==3 && !kb913800 && (sku & XP_ALL) && _cewmdm_dll>=fver(10,0,3790,3646) && _cewmdm_dll<fver(10,0,3790,3747)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3067903)");   /* WM10 Version */
 		XX(p+"windowsmedia-kb3067903-x86-enu_65c7ef0682d0b3b8a23e579145728ac9d27ea242.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _cewmdm_dll>=fver(10,0,3790,3802) && _cewmdm_dll<fver(10,0,3790,4093)) {
+	if( sp==3 && !kb913800 && (sku & XP_ALL) && _cewmdm_dll>=fver(10,0,3790,3802) && _cewmdm_dll<fver(10,0,3790,4093)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3067903)");   /* WM10L Version */
 		XX(p+"windowsmedia-kb3067903-x86-enu_17cadd59515063d00d9f0d92d023ae1aa2349e4e.exe"+a1);
 	}
@@ -5231,6 +5290,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && (sku & XP_ALL) && _npdsplay_dll>zero && _npdsplay_dll<fver(3,0,2,629)) {
 		NN("Security Update for Windows Media Player Plug-in (KB911564)");
 		XX(p+"windowsmedia-kb911564-x86-enu_8f5e0c3d5c50c32200a78dab3ccadb175649858c.exe"+a1);
+	}
+	if( sp>=2 && !kb913800 && (sku & XP_ALL) && (kb891122 || _wmvcore_dll >= fver(10,0,0,3802))
+		    && _msscp_dll>=fver(10,0,0,3646) && _msscp_dll<fver(10,0,0,3934)) {
+		NN("Update for WMDRM-enabled Media Players (KB902344)");
+		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && _msscp_dll>=fver(11,0,5721,5145) && _msscp_dll<fver(11,0,5721,5201)) {
 		NN("Update for Windows Media Format 11 SDK for Windows XP (KB929399)");
