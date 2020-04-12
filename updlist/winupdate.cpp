@@ -4525,6 +4525,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB947864)");
 		XX(p+"WindowsXP-KB947864-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,6452))
+		|| (_html_iec     >zero && _html_iec     <fver(2011,1,31,10))
+		|| (_ieencode_dll >zero && _ieencode_dll <fver(2011,1,31,10))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,6452))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,6452))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,6452))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2900,6452))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,6452))
+		|| (_tdc_ocx      >zero && _tdc_ocx      <fver(1,3,0,3131))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2900,6452))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,6452))
+		|| (_vgx_dll      >zero && _vgx_dll      <fver(6,0,2900,6452))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,6452)) )) {
+		NN("Cumulative Security Update for Internet Explorer 6 for Windows XP (KB2879017)");
+		XX(p+"windowsxp-kb2879017-x86-enu_e6b354acd732c385254babb1a6a61568bf185b65.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		/* GDR */
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,16640))
