@@ -5076,6 +5076,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP Service Pack 2 (KB973540)");
 		XX(p+"windowsxp-sp2-windowsmedia-kb973540-x86-enu_dff9fd1cafd1b740784f00e43a3aff588d0c810d.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3367)) {
+		NN("Security Update for Windows Media Player 9 for Windows XP SP2 (KB979402)");
+		XX(p+"windowsxp-sp2-windowsmedia-kb979402-x86-enu_09cff283401228cd946081159b796d5d1abdfbd3.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9 Section */
 		                 && _wmpdxm_dll >=fver(9,0,0,2980)
 					     && (_wmp_dll<fver(9,0,0,4507) || _wmpdxm_dll<fver(9,0,0,4507)))
@@ -5169,8 +5173,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  || (_wmasf_dll  >=fver(11,0,5721,5145) /* WMP11 Section */
 		                 && _wmasf_dll < fver(11,0,5721,5238))					   
 					   )) {
-		NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
-		XX(p+"WindowsXP-KB941569-x86-ENU.exe"+a1);
+		if(_wmasf_dll<fver(10,0,0,3646)) {
+			NN("Security Update for Windows XP with Windows Media Format Runtime 9 (KB941569)");
+		} else {
+			NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
+		}
+		XX(p+"windowsxp-kb941569-x86-enu_55e8b619dd436e8be22c381fa8643a58b5f7c2a8.exe"+a1);
 	}
 	if( sp==3 && !kb891122 && !kb913800 
 		      && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
