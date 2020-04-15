@@ -110,6 +110,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring WDS_mui = WDS + L"\\en-US";
 	std::wstring jnl = ProgramFiles+L"\\Windows Journal Viewer";
 	std::wstring WindowsMediaPlayer = ProgramFiles+L"\\Windows Media Player";
+	std::wstring Ink = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Ink";
 
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
@@ -642,6 +643,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sqldb20_dll  = getFileVer(ehome+L"\\sqldb20.dll",&status);
 	fver _sqlqp20_dll  = getFileVer(ehome+L"\\sqlqp20.dll",&status);
 	fver _sqlse20_dll  = getFileVer(ehome+L"\\sqlse20.dll",&status);
+
+	fver _ContextTagger_dll = getFileVer(Ink+L"\\ContextTagger.dll",&status);
+	fver _TabTip_exe        = getFileVer(Ink+L"\\TabTip.exe",&status);
+	fver _TCServer_exe      = getFileVer(Ink+L"\\TCServer.exe",&status);
+	fver _TipLibrary_dll    = getFileVer(Ink+L"\\TipLibrary.dll",&status);
+	fver _tiptsf_dll        = getFileVer(Ink+L"\\tiptsf.dll",&status);
 
 	fver _standardfx_plugin_dll = getFileVer(Sfxplugins+L"\\standardfx_plugin.dll",&status);
 
@@ -4974,6 +4981,67 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB954154)");
 		XX(p+"windowsmedia11-kb954154-x86-enu_9b75815f8c5d57dc8e2e22e221fb1a106f9ce6a0.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9L Section */
+		                 && _wmpdxm_dll >=fver(9,0,0,2980)
+					     && (_wmp_dll<fver(9,0,0,3364) || _wmpdxm_dll<fver(9,0,0,3364)))
+
+					  || (_wmp_dll  >=fver(10,0,0,3646) /* WM10L Section */
+		                 && _wmpdxm_dll >=fver(10,0,0,3646)
+					     && (_wmp_dll<fver(10,0,0,4074) || _wmpdxm_dll<fver(10,0,0,4074)))
+
+					  || (_wmp_dll  >=fver(11,0,5721,5145) /* WM11 Section */
+		                 && _wmpdxm_dll >=fver(11,0,5721,5145)
+					     && (_wmp_dll<fver(11,0,5721,5268) || _wmpdxm_dll<fver(11,0,5721,5268)))					   
+					   )) {
+		NN("Security Update for Windows XP Service Pack 2 (KB973540)");
+		XX(p+"windowsxp-sp2-windowsmedia-kb973540-x86-enu_dff9fd1cafd1b740784f00e43a3aff588d0c810d.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3367)) {
+		NN("Security Update for Windows Media Player 9 for Windows XP SP2 (KB979402)");
+		XX(p+"windowsxp-sp2-windowsmedia-kb979402-x86-enu_09cff283401228cd946081159b796d5d1abdfbd3.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9 Section */
+		                 && _wmpdxm_dll >=fver(9,0,0,2980)
+					     && (_wmp_dll<fver(9,0,0,4507) || _wmpdxm_dll<fver(9,0,0,4507)))
+
+					  || (_wmp_dll  >=fver(10,0,0,3646) /* WM10L Section */
+		                 && _wmpdxm_dll >=fver(10,0,0,3646)
+					     && (_wmp_dll<fver(10,0,0,4074) || _wmpdxm_dll<fver(10,0,0,4074)))
+
+					  || (_wmp_dll  >=fver(11,0,5721,5145) /* WM11 Section */
+		                 && _wmpdxm_dll >=fver(11,0,5721,5145)
+					     && (_wmp_dll<fver(11,0,5721,5268) || _wmpdxm_dll<fver(11,0,5721,5268)))					   
+					   )) {
+		NN("Security Update for Windows XP Service Pack 3 (KB973540)");
+		XX(p+"WindowsXP-WindowsMedia-KB973540-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && ( (_l3codeca_acm>zero && _l3codeca_acm<fver(1,9,0,306))
+					  ||  (_l3codecx_ax>zero && _l3codecx_ax<fver(1,6,0,51)) )) {
+		NN("Security Update for Windows XP (KB977816)");
+		XX(p+"WindowsXP-KB977816-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && ((_wmasf_dll     >=fver(9,0,0,2980) /* WMP9NL Section */
+					     && (_wmasf_dll<fver(9,0,0,3267) || (_wmvcore_dll>zero && _wmvcore_dll<fver(9,0,0,3267))))
+						 
+					  || (_wmasf_dll     >=fver(9,0,0,3287) /* WMP9L Section */
+					     && (_wmasf_dll<fver(9,0,0,3355) || (_wmvcore_dll>zero && _wmvcore_dll<fver(9,0,0,3355))))
+
+					  || (_wmasf_dll  >=fver(10,0,0,3646) /* WMP10 Section */
+		                 && _wmasf_dll < fver(10,0,0,4060))
+
+					  || (_wmasf_dll  >=fver(10,0,0,4332) /* EMERALD Section */
+		                 && _wmasf_dll < fver(10,0,0,4359))
+
+					  || (_wmasf_dll  >=fver(11,0,5721,5145) /* WMP11 Section */
+		                 && _wmasf_dll < fver(11,0,5721,5238))					   
+					   )) {
+		if(_wmasf_dll<fver(10,0,0,3646)) {
+			NN("Security Update for Windows XP with Windows Media Format Runtime 9 (KB941569)");
+		} else {
+			NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
+		}
+		XX(p+"windowsxp-kb941569-x86-enu_55e8b619dd436e8be22c381fa8643a58b5f7c2a8.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ((_logagent_exe  >=fver(9,0,0,2980) /* WM9 Section */
 		                 && _wmnetmgr_dll >=fver(9,0,0,2980)
 						 && _wmvcore_dll  >=fver(9,0,0,2980)
@@ -5061,41 +5129,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP Service Pack 3 (KB972187)");
 		XX(p+"windowsxp-windowsmedia-kb972187-x86-enu_d07aa4b7065e73bb2e9db2e7ce3289e4d91848ce.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9L Section */
-		                 && _wmpdxm_dll >=fver(9,0,0,2980)
-					     && (_wmp_dll<fver(9,0,0,3364) || _wmpdxm_dll<fver(9,0,0,3364)))
-
-					  || (_wmp_dll  >=fver(10,0,0,3646) /* WM10L Section */
-		                 && _wmpdxm_dll >=fver(10,0,0,3646)
-					     && (_wmp_dll<fver(10,0,0,4074) || _wmpdxm_dll<fver(10,0,0,4074)))
-
-					  || (_wmp_dll  >=fver(11,0,5721,5145) /* WM11 Section */
-		                 && _wmpdxm_dll >=fver(11,0,5721,5145)
-					     && (_wmp_dll<fver(11,0,5721,5268) || _wmpdxm_dll<fver(11,0,5721,5268)))					   
-					   )) {
-		NN("Security Update for Windows XP Service Pack 2 (KB973540)");
-		XX(p+"windowsxp-sp2-windowsmedia-kb973540-x86-enu_dff9fd1cafd1b740784f00e43a3aff588d0c810d.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3367)) {
-		NN("Security Update for Windows Media Player 9 for Windows XP SP2 (KB979402)");
-		XX(p+"windowsxp-sp2-windowsmedia-kb979402-x86-enu_09cff283401228cd946081159b796d5d1abdfbd3.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9 Section */
-		                 && _wmpdxm_dll >=fver(9,0,0,2980)
-					     && (_wmp_dll<fver(9,0,0,4507) || _wmpdxm_dll<fver(9,0,0,4507)))
-
-					  || (_wmp_dll  >=fver(10,0,0,3646) /* WM10L Section */
-		                 && _wmpdxm_dll >=fver(10,0,0,3646)
-					     && (_wmp_dll<fver(10,0,0,4074) || _wmpdxm_dll<fver(10,0,0,4074)))
-
-					  || (_wmp_dll  >=fver(11,0,5721,5145) /* WM11 Section */
-		                 && _wmpdxm_dll >=fver(11,0,5721,5145)
-					     && (_wmp_dll<fver(11,0,5721,5268) || _wmpdxm_dll<fver(11,0,5721,5268)))					   
-					   )) {
-		NN("Security Update for Windows XP Service Pack 3 (KB973540)");
-		XX(p+"WindowsXP-WindowsMedia-KB973540-x86-ENU.exe"+a1);
-	}
-//	if( sp==2 && (sku & XP_ALL) && ((_wmvcore_dll  >=fver(9,0,0,2980) /* WMP9NL Section */
+	//	if( sp==2 && (sku & XP_ALL) && ((_wmvcore_dll  >=fver(9,0,0,2980) /* WMP9NL Section */
 //		                 && _wmvcore_dll < fver(9,0,0,3265))
 //
 //					  || (_wmvcore_dll  >=fver(9,0,0,3287) /* WMP9L Section */
@@ -5152,33 +5186,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					   )) {
 		NN("Security Update for Windows Media Format Runtime 9, 9.5 & 11 for Windows XP SP3 (KB978695)");
 		XX(p+"WindowsXP-WindowsMedia-KB978695-x86-ENU.exe"+a1);
-	}
-	if( sp>=2 && (sku & XP_ALL) && ( (_l3codeca_acm>zero && _l3codeca_acm<fver(1,9,0,306))
-					  ||  (_l3codecx_ax>zero && _l3codecx_ax<fver(1,6,0,51)) )) {
-		NN("Security Update for Windows XP (KB977816)");
-		XX(p+"WindowsXP-KB977816-x86-ENU.exe"+a1);
-	}
-	if( sp>=2 && (sku & XP_ALL) && ((_wmasf_dll     >=fver(9,0,0,2980) /* WMP9NL Section */
-					     && (_wmasf_dll<fver(9,0,0,3267) || (_wmvcore_dll>zero && _wmvcore_dll<fver(9,0,0,3267))))
-						 
-					  || (_wmasf_dll     >=fver(9,0,0,3287) /* WMP9L Section */
-					     && (_wmasf_dll<fver(9,0,0,3355) || (_wmvcore_dll>zero && _wmvcore_dll<fver(9,0,0,3355))))
-
-					  || (_wmasf_dll  >=fver(10,0,0,3646) /* WMP10 Section */
-		                 && _wmasf_dll < fver(10,0,0,4060))
-
-					  || (_wmasf_dll  >=fver(10,0,0,4332) /* EMERALD Section */
-		                 && _wmasf_dll < fver(10,0,0,4359))
-
-					  || (_wmasf_dll  >=fver(11,0,5721,5145) /* WMP11 Section */
-		                 && _wmasf_dll < fver(11,0,5721,5238))					   
-					   )) {
-		if(_wmasf_dll<fver(10,0,0,3646)) {
-			NN("Security Update for Windows XP with Windows Media Format Runtime 9 (KB941569)");
-		} else {
-			NN("Security Update for Windows XP with Windows Media Format Runtime 9.5 and 11 (KB941569)");
-		}
-		XX(p+"windowsxp-kb941569-x86-enu_55e8b619dd436e8be22c381fa8643a58b5f7c2a8.exe"+a1);
 	}
 	if( sp==3 && !kb891122 && !kb913800 
 		      && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
@@ -5557,9 +5564,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"WindowsServer2003.WindowsXP-KB963093-x86-ENU.exe"+a1);
 	}
 
-	if( sp>=2 && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
+	if( sp>=2 && !(sku & XP_TABLET) && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
 		NN("Microsoft Windows Journal Viewer 1.5");
 		XX(p+"JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /passive\"");
+	}
+	if( sp==2 && (sku & XP_TABLET) && (
+		                  (_ContextTagger_dll >zero && _ContextTagger_dll <fver(1,7,2600,2663))
+		              ||  (_TabTip_exe        >zero && _TabTip_exe        <fver(1,7,2600,2663))
+					  ||  (_TCServer_exe      >zero && _TCServer_exe      <fver(1,7,2600,2663))
+					  ||  (_TipLibrary_dll    >zero && _TipLibrary_dll    <fver(1,7,2600,2657))
+					  ||  (_tiptsf_dll        >zero && _tiptsf_dll        <fver(1,7,2600,2663)) )) {
+		NN("Update for Windows XP Tablet PC Edition 2005 (KB895953)");
+		XX(p+"windowsxp-kb895953-v4-x86-enu_9e8006f0a1303efca8503b73f9a4243cfba236ff.exe"+a1);
 	}
 	if( sp==3 && *pshell) {
 		NN("Windows Powershell 2.0 and WinRM 2.0 for Windows XP and Windows Embedded (KB968930)");

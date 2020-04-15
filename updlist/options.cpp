@@ -286,11 +286,6 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 
 	int minimum_sp[18] = { 2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,3,0 };
 
-	if(sku & XPE_WES2009) { *wga=false; }
-	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
-
-	if(sp>2) { *rdp60=false; }
-
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
 	nfxDetect(nfxServicePack);
@@ -336,6 +331,12 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--enable-rktools")) { *rktools=true; }
 		if(!wcscmp(argv[i],L"--disable-rktools")) { *rktools=false; }
 	}
+
+	// Miscellaneous restrictions
+	if(sp>2) { *rdp60=false; }
+	if(sku & XPE_WES2009) { *wga=false; }
+	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
+	if(sku & XP_TABLET) { *jview=false; }
 
 	// Enable all components
 	if(enable_all) {
