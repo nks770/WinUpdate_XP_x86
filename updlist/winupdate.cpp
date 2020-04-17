@@ -5323,8 +5323,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player Plug-in (KB911564)");
 		XX(p+"windowsmedia-kb911564-x86-enu_8f5e0c3d5c50c32200a78dab3ccadb175649858c.exe"+a1);
 	}
-	if( sp>=2 && !kb913800 && (sku & XP_ALL) && (kb891122 || _wmvcore_dll >= fver(10,0,0,3802))
-		    && _msscp_dll>=fver(10,0,0,3646) && _msscp_dll<fver(10,0,0,3934)) {
+	if( sp>=2 && !kb913800 && (sku & XP_ALL)
+			&& ( kb891122 || _wmvcore_dll >= fver(10,0,0,3802))
+		    && ((kb891122 || _msscp_dll   >= fver(10,0,0,3646)) && _msscp_dll<fver(10,0,0,3934)) ) {
 		NN("Update for WMDRM-enabled Media Players (KB902344)");
 		XX(p+"WindowsMedia10-KB902344-x86-INTL.exe"+a1);
 	}
