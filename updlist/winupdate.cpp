@@ -60,6 +60,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string a4=" /u /z";
 	const std::string a5=" /wuforce /quiet /norestart";
 	const std::string a6=" /passive /norestart /o /n";
+	const std::string a7=" -u -n -o -z";
 
 	// Create SKU masks
 	int XP_HOME_PRO = XP_PRO|XP_PRON|XP_HOME|XP_HOMEN;
@@ -429,6 +430,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _shell32_dll  = getFileVer(System32+L"\\shell32.dll",&status);
 	fver _shimgvw_dll  = getFileVer(System32+L"\\shimgvw.dll",&status);
 	fver _shlwapi_dll  = getFileVer(System32+L"\\shlwapi.dll",&status);
+	fver _shmedia_dll  = getFileVer(System32+L"\\shmedia.dll",&status);
 	fver _shsvcs_dll   = getFileVer(System32+L"\\shsvcs.dll",&status);
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
 	fver _spoolsv_exe  = getFileVer(System32+L"\\spoolsv.exe",&status);
@@ -1794,7 +1796,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_netapi32_dll >zero && _mstinit_exe  <fver(5,1,2600,1562))
 	   || (_schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,1564)) )) {
 		NN("Security Update for Windows XP (KB841873)");
-		XX(p1+"windowsxp-kb841873-x86-enu_f0f4cb2c535f8adf154e72f2f2c60d6f9b710d6d.exe"+a1);
+		XX(p1+"windowsxp-kb841873-x86-enu_f0f4cb2c535f8adf154e72f2f2c60d6f9b710d6d.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && _shmedia_dll>zero && _shmedia_dll<fver(6,0,2600,101)) {
+		NN("Q329390: Security Update");
+		XX(p1+"q329390_wxp_3f60064794271f0053892985402fe5b6679d3f2d.exe"+a7);
 	}
 
 	// Windows XP SP2 updates
