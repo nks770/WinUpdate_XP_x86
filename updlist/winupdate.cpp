@@ -108,7 +108,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring VGX = ProgramFiles + L"\\Common Files\\Microsoft Shared\\VGX";
 	std::wstring WDS = ProgramFiles + L"\\Windows Desktop Search";
 	std::wstring WDS_mui = WDS + L"\\en-US";
-	std::wstring jnl = ProgramFiles+L"\\Windows Journal Viewer";
+	std::wstring WindowsJournalViewer = ProgramFiles+L"\\Windows Journal Viewer";
+	std::wstring WindowsJournal = ProgramFiles+L"\\Windows Journal";
 	std::wstring WindowsMediaPlayer = ProgramFiles+L"\\Windows Media Player";
 	std::wstring Ink = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Ink";
 
@@ -975,7 +976,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( _agcore_debug_dll_5_1_50907 > _agcore_debug_dll ) { _agcore_debug_dll = _agcore_debug_dll_5_1_50907; }
 	if( _agcore_debug_dll_5_1_50918 > _agcore_debug_dll ) { _agcore_debug_dll = _agcore_debug_dll_5_1_50918; }
  
-	fver _jntview_exe            = getFileVer(jnl+L"\\jntview.exe",&status);
+	fver _jntview_exe            = getFileVer(WindowsJournalViewer+L"\\jntview.exe",&status);
+	fver _jntfiltr_dll           = getFileVer(WindowsJournal+L"\\jntfiltr.dll",&status);
+	fver _jnwdrv_dll             = getFileVer(WindowsJournal+L"\\jnwdrv.dll",&status);
+	fver _nbdoc_dll              = getFileVer(WindowsJournal+L"\\nbdoc.dll",&status);
 
 	fver _spcustom_dll_ref = getFileVer(wxp_x86_0409_v1+L"\\spcustom.dll.ref",&status);
 	fver _spmsg_dll_ref    = getFileVer(wxp_x86_0409_v1+L"\\spmsg.dll.ref",&status);
@@ -5577,6 +5581,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_tiptsf_dll        >zero && _tiptsf_dll        <fver(1,7,2600,2663)) )) {
 		NN("Update for Windows XP Tablet PC Edition 2005 (KB895953)");
 		XX(p+"windowsxp-kb895953-v4-x86-enu_9e8006f0a1303efca8503b73f9a4243cfba236ff.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XP_TABLET) && ( // KB2660649 is replaced by KB2835364
+		                  (_jntfiltr_dll >zero && _jntfiltr_dll <fver(1,7,2600,6189))
+		              ||  (_jnwdrv_dll   >zero && _jnwdrv_dll   <fver(0,3,7,0))
+					  ||  (_nbdoc_dll    >zero && _nbdoc_dll    <fver(1,7,2600,6189)) )) {
+		NN("Security Update for Windows XP (KB2660649)");
+		XX(p+"windowsxp-kb2660649-x86-enu_689f93b51ce8325d1947ae0d40a3d41ceedcb4b0.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XP_TABLET) && (
+		                  (_jntfiltr_dll >zero && _jntfiltr_dll <fver(1,7,2600,6379))
+		              ||  (_jnwdrv_dll   >zero && _jnwdrv_dll   <fver(0,3,7,0))
+					  ||  (_nbdoc_dll    >zero && _nbdoc_dll    <fver(1,7,2600,6379)) )) {
+		NN("Security Update for Windows XP (KB2835364)");
+		XX(p+"windowsxp-kb2835364-x86-enu_b055260207a810f44e7d68c2b93a151d6f8d9691.exe"+a1);
 	}
 	if( sp==3 && *pshell) {
 		NN("Windows Powershell 2.0 and WinRM 2.0 for Windows XP and Windows Embedded (KB968930)");
