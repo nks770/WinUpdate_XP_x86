@@ -41,6 +41,8 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p2=p+"SP2\\";
+	const std::string p3=p+"SP3\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string np="NetFx\\";
 	const std::string n3=" /Q";
@@ -97,7 +99,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 		install_nfx10sp3=true;
 		if(!NFX40) {
 			NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
-			XX(p+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
+			XX(p3+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Update KB867461 for .NET Framework 1.0 is")
@@ -120,7 +122,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 		|| ( _10_System_Web_dll  <fver(1,0,3705,6060)) )) {
 		if(!NFX40) {
 			NN("Security Update for Microsoft .NET Framework, Version 1.0 Service Pack 3 (KB928367)");
-			XX(p+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
+			XX(p3+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Update KB928367 for .NET Framework 1.0 is")
@@ -139,7 +141,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 		// i_nfx11 means NFX11 is flagged to be upgraded (e.g. install SP1)
 		// v_nfx11 means the current NFX11 SP level is at least 0 (e.g. not -1 (absent))
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
-		XX(p+"NDP1.1sp1-KB867460-X86.exe"+n3);
+		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+n3);
 	}
 	if( sp>=2 && (*i_nfx20 || *i_nfx30 || *i_nfx35)) {
 		NN("Microsoft .NET Framework 3.5 Service Pack 1 and .NET Framework 3.5 Family Update for .NET versions 2.0 through 3.5 (KB951847) x86");
@@ -156,7 +158,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 			&& _windowscodecsext_dll     <=fver(6,0,5840,16388)
 			&& _wmphoto_dll              <=fver(6,0,5840,16388)) {
 			NN("Windows Imaging Component for Windows XP and Server 2003");
-			XX(p+"wic_x86_enu.exe"+a1);
+			XX(p3+"wic_x86_enu.exe"+a1);
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string(".NET Framework 4.0 cannot be installed because")
@@ -209,6 +211,8 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p2=p+"SP2\\";
+	const std::string p3=p+"SP3\\";
 	const std::string np="NetFx\\";
 	const std::string n1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string n3=" /Q";
@@ -450,13 +454,13 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		//NN("Microsoft Root Certificate Authority 2011");
 		//XX("bin\\certutil.exe -addstore ROOT "+p+"MicrosoftRootCertificateAuthority2011.cer");
 		NN("Update for Root Certificates for Windows XP [March 2014] (KB931125)");
-		XX(sw+p+"rootsupd_01a26e5c75ff5b3e34fb6b763ace486fe6836aac.exe");
+		XX(sw+p3+"rootsupd_01a26e5c75ff5b3e34fb6b763ace486fe6836aac.exe");
 	}
 
 	// .NET Framework 1.0, Regular Edition
 	if( sp>=2 && *i_nfx10 && !NFX40){
 		NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
-		XX(p+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
+		XX(p3+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
 	}
 	if( sp>=2 /*&& !NFX40*/ && ((*i_nfx10 || *v_nfx10>=3)) && (
 		   ( _10_aspnet_isapi_dll<fver(1,0,3705,6060))
@@ -470,7 +474,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _10_System_Web_dll  <fver(1,0,3705,6060)) )) {
 		if(!NFX40) {
 			NN("Security Update for Microsoft .NET Framework, Version 1.0 Service Pack 3 (KB928367)");
-			XX(p+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
+			XX(p3+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Update KB928367 for .NET Framework 1.0 is")
@@ -500,7 +504,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _10_System_Web_dll  <fver(1,0,3705,6073))
 		|| ( _10_ToGac_exe       <fver(1,1,4322,2251)) )) {
 		NN("Microsoft .NET Framework 1.0 Service Pack 3 Security Update for Windows XP Tablet PC and Media Center (KB953295)");
-		XX(p+"ndp1.0sp3-kb953295-x86-ocm-enu_6bcabcb5c10ed16416a6325743cca321b42d64c4.exe"+n1);
+		XX(p2+"ndp1.0sp3-kb953295-x86-ocm-enu_6bcabcb5c10ed16416a6325743cca321b42d64c4.exe"+n1);
 	}
 	if( sp>=2 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
 		   ( _10_gacutil_exe         <fver(1,0,3705,0))
@@ -509,7 +513,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _10_System_Security_dll <fver(1,0,3705,6074))
 		|| ( _10_ToGac_exe           <fver(1,1,4322,2251)) )) {
 		NN("Microsoft .NET Framework 1.0 SP3 Security Update for Windows XP Tablet PC and Media Center (KB979904)");
-		XX(p+"ndp1.0sp3-kb979904-x86-ocm-enu_a617462b19d63e11f602c18ada0070ebc99f0a0f.exe"+n1);
+		XX(p3+"ndp1.0sp3-kb979904-x86-ocm-enu_a617462b19d63e11f602c18ada0070ebc99f0a0f.exe"+n1);
 	}
 	if( sp==3 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
 		   ( _10_aspnet_isapi_dll <fver(1,0,3705,6115))
@@ -528,7 +532,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _10_System_Web_dll   <fver(1,0,3705,6115))
 		|| ( _10_ToGac_exe        <fver(1,1,4322,2251)) )) {
 		NN("Security Update for Microsoft .NET Framework 1.0 SP3 on Windows XP Tablet PC and Media Center (KB2904878)");
-		XX(p+"NDP1.0sp3-KB2904878-X86-Ocm-Enu.exe"+n1);
+		XX(p3+"NDP1.0sp3-KB2904878-X86-Ocm-Enu.exe"+n1);
 	}
 	if( sp==3 && ((*i_nfx10mce || *v_nfx10mce>=3)) && (
 		   ( _10_aspnet_isapi_dll         <fver(1,0,3705,6110))
@@ -550,7 +554,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _10_System_Windows_Forms_dll <fver(1,0,3705,6110))
 		|| ( _10_ToGac_exe                <fver(1,1,4322,2251)) )) {
 		NN("Security Update for Microsoft .NET Framework 1.0 SP3 on Windows XP Tablet PC and Media Center (KB2742607)");
-		XX(p+"NDP1.0sp3-KB2742607-X86-Ocm-Enu.exe"+n1);
+		XX(p3+"NDP1.0sp3-KB2742607-X86-Ocm-Enu.exe"+n1);
 	}
 
 	// .NET Framework 1.1
@@ -558,7 +562,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		// i_nfx11 means NFX11 is flagged to be upgraded (e.g. install SP1)
 		// v_nfx11 means the current NFX11 SP level is at least 0 (e.g. not -1 (absent))
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
-		XX(p+"NDP1.1sp1-KB867460-X86.exe"+n3);
+		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+n3);
 	}
 	if( sp==3 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
 		   ( _11_aspnet_filter_dll        < fver(1,1,4322,2503))
@@ -580,7 +584,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _11_System_Web_dll           < fver(1,1,4322,2503)) )) {
 		NN("Security Update for Microsoft .NET Framework 1.1 SP1 on Windows XP, Windows Vista, and Windows Server 2008 x86 (KB2833941)");
 		//XX(p+"NDP1.1SP1-KB2833941-x86.exe"+n6); // Shows no UI, but fails on Windows Embedded.
-		XX(p+"NDP1.1SP1-KB2833941-x86.exe /extract %TEMP%\\KB2833941\n"
+		XX(p3+"NDP1.1SP1-KB2833941-x86.exe /extract %TEMP%\\KB2833941\n"
 				+"pushd %TEMP%\\KB2833941\n"
 				+"msiexec /update NDP1.1sp1-KB2833941-X86.msp /passive /norestart\n"
 				+"popd\n"
@@ -603,8 +607,8 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _11_mscorwks_dll             < fver(1,1,4322,2463))
 		|| ( _11_System_Web_dll           < fver(1,1,4322,2463)) )) {
 		NN("Microsoft .NET Framework 1.1 SP1 Security Update for Windows 2000 and Windows XP (KB979906)");
-		XX(p+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe"+n6); // Shows no UI, but fails on Windows Embedded.
-//		XX(p+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe /extract %TEMP%\\KB979906\n"
+		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe"+n6); // Shows no UI, but fails on Windows Embedded.
+//		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe /extract %TEMP%\\KB979906\n"
 //				+"pushd %TEMP%\\KB979906\n"
 //				+"msiexec /update ___.msp /passive /norestart\n"
 //				+"popd\n"
@@ -627,7 +631,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_Security_dll > fver(2,0,50727,3675) && _20_System_Security_dll < fver(2,0,50727,4434)) )) {
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Security Update for Windows 2000, Windows Server 2003, and Windows XP x86 (KB979909)");
-		XX(p+"ndp20sp2-kb979909-x86_dc7f4b15ff426d9e413b87909c35929660d8a33c.exe"+n6);
+		XX(p2+"ndp20sp2-kb979909-x86_dc7f4b15ff426d9e413b87909c35929660d8a33c.exe"+n6);
 	}
 //	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
 //		/* GDR */
@@ -653,7 +657,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_SOS_dll               > fver(2,0,50727,3655) && _20_SOS_dll               < fver(2,0,50727,4413))
 		 || ( _20_mscorwks_dll          > fver(2,0,50727,3655) && _20_mscorwks_dll          < fver(2,0,50727,4413)) )) {
 		NN("Microsoft .NET Framework 2.0 Service Pack 2 Update for Windows Server 2003 and Windows XP x86 (KB976569)");
-		XX(p+"ndp20sp2-kb976569-x86_dd5f498a00cff2addd29b7f9e5ea8b1054ac2d73.exe"+n6);
+		XX(p2+"ndp20sp2-kb976569-x86_dd5f498a00cff2addd29b7f9e5ea8b1054ac2d73.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -663,7 +667,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Design_dll        > fver(2,0,50727,3645) && _20_System_Design_dll        < fver(2,0,50727,7015))
 		 || ( _20_System_Windows_Forms_dll > fver(2,0,50727,3645) && _20_System_Windows_Forms_dll < fver(2,0,50727,7015)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2789643)");
-		XX(p+"NDP20SP2-KB2789643-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2789643-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -671,7 +675,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_Runtime_Remoting_dll > fver(2,0,50727,3659) && _20_System_Runtime_Remoting_dll < fver(2,0,50727,7055)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 (KB2932079)");
-		XX(p+"ndp20sp2-kb2932079-x86_62d2a448718d1a1343055d53eb722e8c72aafaeb.exe"+n6);
+		XX(p3+"ndp20sp2-kb2932079-x86_62d2a448718d1a1343055d53eb722e8c72aafaeb.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -682,7 +686,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_SOS_dll             < fver(2,0,50727,8788))
 		 || ( _20_System_Security_dll < fver(2,0,50727,8788)) )) {
 		NN("2018-05 Security Only Update for .NET Framework 2.0 on WES09 and POSReady 2009 (KB4095516)");
-		XX(p+"ndp20sp2-kb4095516-x86_c5111ba0c2003141ee07c8cd75932e98f0d80948.exe"+n6);
+		XX(p3+"ndp20sp2-kb4095516-x86_c5111ba0c2003141ee07c8cd75932e98f0d80948.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -700,7 +704,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_Microsoft_JScript_dll > fver(8,0,50727,3643) && _20_Microsoft_JScript_dll < fver(8,0,50727,5737))
 		 || ( _20_mscorwks_dll          > fver(2,0,50727,3655) && _20_mscorwks_dll          < fver(2,0,50727,5737)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2729450)");
-		XX(p+"NDP20SP2-KB2729450-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2729450-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -714,7 +718,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_SOS_dll         > fver(2,0,50727,3655) && _20_SOS_dll         < fver(2,0,50727,7041))
 		 || ( _20_mscorwks_dll    > fver(2,0,50727,3655) && _20_mscorwks_dll    < fver(2,0,50727,7041)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2898856)");
-		XX(p+"NDP20SP2-KB2898856-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2898856-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -726,14 +730,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Data_SqlXml_dll   > fver(2,0,50727,3654) && _20_System_Data_SqlXml_dll   < fver(2,0,50727,7037))
 		 || ( _20_System_XML_dll           > fver(2,0,50727,3654) && _20_System_XML_dll           < fver(2,0,50727,7037)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2844285)");
-		XX(p+"NDP20SP2-KB2844285-v2-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2844285-v2-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
 		/* QFE */
 		    ( _20_System_Runtime_Remoting_dll < fver(2,0,50727,8772)) )) {
 		NN("2017-10 Security and Quality Rollup for .NET Framework 2.0 SP2 on WES09 and POSReady 2009 (KB4040968)");
-		XX(p+"ndp20sp2-kb4040968-x86_627a7d41e164c26280b1db64fefbba23c754ebc4.exe"+n6);
+		XX(p3+"ndp20sp2-kb4040968-x86_627a7d41e164c26280b1db64fefbba23c754ebc4.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -741,7 +745,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_dll > fver(2,0,50727,3677) && _20_System_dll < fver(2,0,50727,8688)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 for WES09 and POSReady 2009 (KB3142027)");
-		XX(p+"ndp20sp2-kb3142027-x86_dfb224d16b27f203dedc393678a150e887b98e84.exe"+n6);
+		XX(p3+"ndp20sp2-kb3142027-x86_dfb224d16b27f203dedc393678a150e887b98e84.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -752,7 +756,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_dll      < fver(2,0,50727,8797))
 		 || ( _20_mscorwks_dll    < fver(2,0,50727,8797)) )) {
 		NN("2018-08 Security Only Update for .NET Framework 2.0 on WES09 and POSReady 2009 (KB4344180)");
-		XX(p+"ndp20sp2-kb4344180-x86_d0f73b32fe800b37b11cb66c2f0cc07f047a7b0f.exe"+n6);
+		XX(p3+"ndp20sp2-kb4344180-x86_d0f73b32fe800b37b11cb66c2f0cc07f047a7b0f.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -768,7 +772,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Web_dll                    > fver(2,0,50727,3658) && _20_System_Web_dll                    < fver(2,0,50727,7046))
 		 || ( _20_System_dll                        > fver(2,0,50727,3677) && _20_System_dll                        < fver(2,0,50727,4443)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2901111)");
-		XX(p+"NDP20SP2-KB2901111-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2901111-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -776,14 +780,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_Data_dll > fver(2,0,50727,3678) && _20_System_Data_dll < fver(2,0,50727,8692)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 for WES09 and POSReady 2009 (KB3163248)");
-		XX(p+"ndp20sp2-kb3163248-x86_3144185c68b59a85109a7d03ecc3849f4423006a.exe"+n6);
+		XX(p3+"ndp20sp2-kb3163248-x86_3144185c68b59a85109a7d03ecc3849f4423006a.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
 		/* QFE */
 			( _20_System_dll < fver(2,0,50727,8804)) )) {
 		NN("2019-02 Security Only Update for .NET Framework 2.0 SP2 on WES09 and POSReady 2009 (KB4483485)");
-		XX(p+"ndp20sp2-kb4483485-x86_4b0a0ebe86b450617b48584326a5a6e74352f027.exe"+n6);
+		XX(p3+"ndp20sp2-kb4483485-x86_4b0a0ebe86b450617b48584326a5a6e74352f027.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -791,7 +795,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_Drawing_dll > fver(2,0,50727,3674) && _20_System_Drawing_dll < fver(2,0,50727,8682)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 for WEPOS and POSReady 2009 (KB3127223)");
-		XX(p+"ndp20sp2-kb3127223-x86_297ce3410a8ae6d50522d3da7d2f926af3329439.exe"+n6);
+		XX(p3+"ndp20sp2-kb3127223-x86_297ce3410a8ae6d50522d3da7d2f926af3329439.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -803,7 +807,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Security_dll < fver(2,0,50727,8761))
 		 || ( _20_mscorwks_dll        < fver(2,0,50727,8761)) )) {
 		NN("May, 2017 Security and Quality Rollup for .NET Framework 2.0 SP2 on WES09 and POSReady 2009 (KB4014585)");
-		XX(p+"ndp20sp2-kb4014585-x86_4e8fac1a909fd3443b5a1ddd4ae2af5601f1d407.exe"+n6);
+		XX(p3+"ndp20sp2-kb4014585-x86_4e8fac1a909fd3443b5a1ddd4ae2af5601f1d407.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -823,7 +827,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Windows_Forms_dll > fver(2,0,50727,3645) && _20_System_Windows_Forms_dll < fver(2,0,50727,5710))
 		 || ( _20_mscorwks_dll             > fver(2,0,50727,3655) && _20_mscorwks_dll             < fver(2,0,50727,5710)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2604092)");
-		XX(p+"NDP20SP2-KB2604092-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2604092-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -841,7 +845,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_webengine_dll                     > fver(2,0,50727,3658) && _20_webengine_dll                     < fver(2,0,50727,7043))
 		 || ( _20_System_dll                        > fver(2,0,50727,3677) && _20_System_dll                        < fver(2,0,50727,4443)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 (KB2894843)");
-		XX(p+"ndp20sp2-kb2894843-x86_36228a0825744e86a31a0d0d020ada3b2d0da9fa.exe"+n6);
+		XX(p3+"ndp20sp2-kb2894843-x86_36228a0825744e86a31a0d0d020ada3b2d0da9fa.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -851,7 +855,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_SOS_dll         < fver(2,0,50727,8790))
 		 || ( _20_mscorwks_dll    < fver(2,0,50727,8790)) )) {
 		NN("2018-07 Security Only Update for .NET Framework 2.0 on WES09 and POSReady 2009 (KB4338615)");
-		XX(p+"ndp20sp2-kb4338615-x86_2efbd12454fd3710958d88de466e1902eefca318.exe"+n6);
+		XX(p3+"ndp20sp2-kb4338615-x86_2efbd12454fd3710958d88de466e1902eefca318.exe"+n6);
 	}
 //	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && ( // KB2863239 is superceded by KB3135986
 //		/* GDR */
@@ -867,7 +871,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _20_System_Security_dll > fver(2,0,50727,3675) && _20_System_Security_dll < fver(2,0,50727,8683)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 for WEPOS and POSReady 2009 (KB3135986)");
-		XX(p+"ndp20sp2-kb3135986-x86_3c143b65f9e2cc3ab1f140fbd71a50f34af88a49.exe"+n6);
+		XX(p3+"ndp20sp2-kb3135986-x86_3c143b65f9e2cc3ab1f140fbd71a50f34af88a49.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -877,7 +881,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_dfdll_dll                      > fver(2,0,50727,3663) && _20_dfdll_dll                      < fver(2,0,50727,8641))
 		 || ( _20_System_DeploymentFramework_dll > fver(2,0,50727,3663) && _20_System_DeploymentFramework_dll < fver(2,0,50727,8641)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 (KB2979574)");
-		XX(p+"ndp20sp2-kb2979574-v2-x86_e9d7e292cff96f768a99c2f2dbeba9ca14784c70.exe"+n6);
+		XX(p3+"ndp20sp2-kb2979574-v2-x86_e9d7e292cff96f768a99c2f2dbeba9ca14784c70.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -885,7 +889,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 			( _20_System_Management_dll < fver(2,0,50727,8758))
 		 || ( _20_WMINet_Utils_dll      < fver(2,0,50727,8758)) )) {
 		NN("April, 2017 Security and Quality Rollup for .NET Framework 2.0 SP2 on WES09 and POSReady 2009 (KB4014580)");
-		XX(p+"ndp20sp2-kb4014580-x86_00bc481a903b582272cae81e76334295a1209f73.exe"+n6);
+		XX(p3+"ndp20sp2-kb4014580-x86_00bc481a903b582272cae81e76334295a1209f73.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
@@ -893,7 +897,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 			( _20_System_Data_SqlXml_dll < fver(2,0,50727,8776))
 		 || ( _20_System_XML_dll         < fver(2,0,50727,8776)) )) {
 		NN("2018-01 Security Only Update for .NET Framework 2.0 on WES09 and POSReady 2009 (KB4054178)");
-		XX(p+"ndp20sp2-kb4054178-x86_c0d933409d0128ad7df07c0eaf71ae01f49c48c3.exe"+n6);
+		XX(p3+"ndp20sp2-kb4054178-x86_c0d933409d0128ad7df07c0eaf71ae01f49c48c3.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
@@ -917,7 +921,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_Security_dll                    > fver(2,0,50727,3675) && _20_System_Security_dll                    < fver(2,0,50727,5740))
 		 || ( _20_System_Windows_Forms_dll               > fver(2,0,50727,3645) && _20_System_Windows_Forms_dll               < fver(2,0,50727,5740)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2742596)");
-		XX(p+"NDP20SP2-KB2742596-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB2742596-x86.exe"+n6);
 	}
 
 	// .NET Framework 3.0
@@ -949,7 +953,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_System_ServiceModel_dll            > fver(3,0,4506,4037) && _30_System_ServiceModel_dll            < fver(3,0,4506,4532))
 		 || ( _30_System_ServiceModel_WasHosting_dll > fver(3,0,4506,4037) && _30_System_ServiceModel_WasHosting_dll < fver(3,0,4506,4532)) )) {
 		NN("Microsoft .NET Framework 3.5 SP1 Update for Windows Server 2003 and Windows XP x86 (KB982168)");
-		XX(p+"ndp30sp2-kb982168-x86_55b498e96d1ea7db2d25302f30fc7f8fb5441158.exe"+n6);
+		XX(p2+"ndp30sp2-kb982168-x86_55b498e96d1ea7db2d25302f30fc7f8fb5441158.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* GDR */
@@ -973,7 +977,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_WindowsBase_dll           > fver(3,0,6920,4050) && _30_WindowsBase_dll           < fver(3,0,6920,7045))
 		 || ( _30_wpfgfx_v0300_dll          > fver(3,0,6920,4050) && _30_wpfgfx_v0300_dll          < fver(3,0,6920,7045)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2832411)");
-		XX(p+"NDP30SP2-KB2832411-x86.exe"+n6);
+		XX(p3+"NDP30SP2-KB2832411-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* GDR */
@@ -982,7 +986,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_PresentationCFFRasterizerNative_v0300_dll > fver(3,0,6920,4058)
 		     && _30_PresentationCFFRasterizerNative_v0300_dll < fver(3,0,6920,7061)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2861189)");
-		XX(p+"NDP30SP2-KB2861189-x86.exe"+n6);
+		XX(p3+"NDP30SP2-KB2861189-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* No GDR */
@@ -997,7 +1001,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_WindowsBase_dll           < fver(3,0,6920,8721))
 		 || ( _30_wpfgfx_v0300_dll          < fver(3,0,6920,8721)) )) {
 		NN("November, 2016 Security and Quality Rollup for .NET Framework 3.0, 4 on WES09 and POSReady (KB3189598)");
-		XX(p+"ndp30sp2-kb3188734-x86_1a1e2f42b2aaf963a2d79a8072f08e29243a3330.exe"+n6);
+		XX(p3+"ndp30sp2-kb3188734-x86_1a1e2f42b2aaf963a2d79a8072f08e29243a3330.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* No GDR */
@@ -1010,7 +1014,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_System_ServiceModel_dll            < fver(3,0,4506,8796))
 		 || ( _30_System_ServiceModel_WasHosting_dll < fver(3,0,4506,8796)) )) {
 		NN("2018-01 Security Only Update for .NET Framework 3.0 on WES09 and POSReady 2009 (KB4055229)");
-		XX(p+"ndp30sp2-kb4055229-x86_45c6c6c58de4c40a6ab5c31cca4c685e289493ad.exe"+n6);
+		XX(p3+"ndp30sp2-kb4055229-x86_45c6c6c58de4c40a6ab5c31cca4c685e289493ad.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* No GDR */
@@ -1025,7 +1029,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_WindowsBase_dll           < fver(3,0,6920,8774))
 		 || ( _30_wpfgfx_v0300_dll          < fver(3,0,6920,8774)) )) {
 		NN("May, 2017 Security and Quality Rollup for .NET Framework 3.0 SP2 on WES09 and POSReady 2009 (KB4017101)");
-		XX(p+"ndp30sp2-kb4017101-x86_d96aaad1352c554a2740fe30d371144cdb5a5ffa.exe"+n6);
+		XX(p3+"ndp30sp2-kb4017101-x86_d96aaad1352c554a2740fe30d371144cdb5a5ffa.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* GDR */
@@ -1043,7 +1047,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_System_ServiceModel_dll            > fver(3,0,4506,4037) && _30_System_ServiceModel_dll            < fver(3,0,4506,5845))
 		 || ( _30_System_ServiceModel_WasHosting_dll > fver(3,0,4506,4037) && _30_System_ServiceModel_WasHosting_dll < fver(3,0,4506,5845)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2756918)");
-		XX(p+"NDP30SP2-KB2756918-x86.exe"+n6);
+		XX(p3+"NDP30SP2-KB2756918-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* No GDR */
@@ -1058,7 +1062,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_System_Workflow_ComponentModel_dll < fver(3,0,4203,8801))
 		 || ( _30_System_Workflow_Runtime_dll        < fver(3,0,4203,8801)))) {
 		NN("2018-07 Security Only Update for .NET Framework 3.0 on WES09 and POSReady 2009 (KB4338597)");
-		XX(p+"ndp30sp2-kb4338597-x86_7eefe88d95fcdb3b2e2941fdc555d4baeeab5864.exe"+n6);
+		XX(p3+"ndp30sp2-kb4338597-x86_7eefe88d95fcdb3b2e2941fdc555d4baeeab5864.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx30 || *v_nfx30==2) && (
 		/* No GDR */
@@ -1067,7 +1071,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_System_Workflow_ComponentModel_dll < fver(3,0,4203,8820))
 		 || ( _30_System_Workflow_Runtime_dll        < fver(3,0,4203,8820)))) {
 		NN("2019-02 Security Only Update for .NET Framework 3.0 SP2 on WES09 and POSReady 2009 (KB4483495)");
-		XX(p+"ndp30sp2-kb4483495-x86_08c0291774b8f619507a581cfebb8f522d65cb75.exe"+n6);
+		XX(p3+"ndp30sp2-kb4483495-x86_08c0291774b8f619507a581cfebb8f522d65cb75.exe"+n6);
 	}
 
 	// .NET Framework 3.5
@@ -1079,14 +1083,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _35_System_ServiceModel_Web_dll > fver(3,5,594,4056)   && _35_System_ServiceModel_Web_dll < fver(3,5,594,7056))
 		 || ( _35_System_Web_Extensions_dll   > fver(3,5,30729,4056) && _35_System_Web_Extensions_dll   < fver(3,5,30729,7056)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.5 SP1 on Windows XP, Server 2003, Vista, Server 2008 x86 (KB2861697)");
-		XX(p+"NDP35SP1-KB2861697-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB2861697-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
 		/* No GDR */
 		/* QFE */
 		    ( _35_System_Web_Extensions_dll   < fver(3,5,30729,8815)) )) {
 		NN("2018-12 Security Only Update for .NET Framework 3.5 SP1 on WES09 and POSReady 2009 (KB4470633)");
-		XX(p+"ndp35sp1-kb4470633-x86_dc94f13d3a8c1eaaf30ca31c03a6364758c3b5ab.exe"+n6);
+		XX(p3+"ndp35sp1-kb4470633-x86_dc94f13d3a8c1eaaf30ca31c03a6364758c3b5ab.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
 		/* GDR */
@@ -1100,7 +1104,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _35_System_Data_Services_Client_dll > fver(3,5,30729,4039) && _35_System_Data_Services_Client_dll < fver(3,5,30729,5851))
 		 || ( _35_System_Data_Services_Design_dll > fver(3,5,30729,4039) && _35_System_Data_Services_Design_dll < fver(3,5,30729,5851)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.5 SP1 on Windows XP, Server 2003, Vista, Server 2008 x86 (KB2736416)");
-		XX(p+"NDP35SP1-KB2736416-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB2736416-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
 		/* GDR */
@@ -1108,7 +1112,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _35_System_Data_Linq_dll > fver(3,5,30729,4052) && _35_System_Data_Linq_dll < fver(3,5,30729,7049)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.5 SP1 on Windows XP, Server 2003, Vista, Server 2008 x86 (KB2840629)");
-		XX(p+"NDP35SP1-KB2840629-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB2840629-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
 		/* GDR */
@@ -1116,7 +1120,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _35_System_AddIn_dll > fver(3,5,30729,3676) && _35_System_AddIn_dll < fver(3,5,30729,5766)) )) {
 		NN("Security Update for Microsoft .NET Framework 3.5 SP1 on Windows XP, Server 2003, Vista, Server 2008 x86 (KB2604111)");
-		XX(p+"NDP35SP1-KB2604111-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB2604111-x86.exe"+n6);
 	}
 	if( sp>=2 && ( *i_nfx35 || ( *v_nfx35==1  && (
 			( _35_chrome_jar      > -1 && _35_chrome_jar      != 10010 )
@@ -1124,7 +1128,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _35_defaults_js     > -1 && _35_defaults_js     != 10351 )
 		 || ( _35_install_rdf     > -1 && _35_install_rdf     != 1071  ))))) {
 		NN("Update to .NET Framework 3.5 Service Pack 1 for the .NET Framework Assistant 1.0 x86 (KB963707)");
-		XX(p+"NDP35SP1-KB963707-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB963707-x86.exe"+n6);
 	}
 	if( sp>=2 &&  (*i_nfx20 || *i_nfx35 || *v_nfx20==2 || *v_nfx35==1 ) && (
 		/* GDR */
@@ -1158,7 +1162,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _sbs_system_enterpriseservices_dll    > fver(4,0,30902,0) && _sbs_system_enterpriseservices_dll    < fver(4,0,31106,0))
 		 || ( _sbs_wminet_utils_dll                 > fver(4,0,30902,0) && _sbs_wminet_utils_dll                 < fver(4,0,31106,0)) )) {
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
-		XX(p+"NDP20SP2-KB976576-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB976576-x86.exe"+n6);
 		// Article http://support.microsoft.com/kb/982524/
 		// Rolls up KB976576 and KB977354
 	}
@@ -1176,14 +1180,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_PresentationHostDLL_dll   > fver(3,0,6920,4016) && _30_PresentationHostDLL_dll   < fver(3,0,6920,4030))
 		 || ( _30_WindowsBase_dll           > fver(3,0,6920,4016) && _30_WindowsBase_dll           < fver(3,0,6920,4030)) )) {
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
-		XX(p+"ndp30sp2-kb977354-v2-x86_36d5f7b86e33e09d4e1934c43bbfab04c64a280e.exe"+n6);
+		XX(p3+"ndp30sp2-kb977354-v2-x86_36d5f7b86e33e09d4e1934c43bbfab04c64a280e.exe"+n6);
 		// Article http://support.microsoft.com/kb/982524/
 		// Rolls up KB976576 and KB977354
 	}
 	if( sp>=2 &&  (*i_nfx35 || *v_nfx35==1) && (
 		    ( _ntprint_cat != 1089593 && _ntprint_cat != 1089601 )) ) {
 		NN("Update for Windows XP (KB961118)");
-		XX(p+"WindowsXP-KB961118-x86-ENU.exe"+n1);
+		XX(p3+"WindowsXP-KB961118-x86-ENU.exe"+n1);
 	}
 
 	if( sp>=2 &&  (*i_nfx20 || *v_nfx20==2) && (
@@ -1197,14 +1201,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_webengine_dll                < fver(2,0,50727,3082))
 		 || ( _20_System_Web_dll               < fver(2,0,50727,3082)) )) {
 		NN("Application Compatibility Update for the .NET Framework 2.0 SP2 (KB958481)");
-		XX(p+"NDP20SP2-KB958481-x86.exe"+n6);
+		XX(p3+"NDP20SP2-KB958481-x86.exe"+n6);
 	}
 	if( sp>=2 &&  (*i_nfx30 || *v_nfx30==2) && (
 			( _30_System_ServiceModel_dll   < fver(3,0,4506,2254))
 		 || ( _30_wpfgfx_v0300_dll          < fver(3,0,6920,1500))
 		 || ( _30_PresentationFramework_dll < fver(3,0,6920,1500)) )) {
 		NN("Application Compatibility Update for the .NET Framework 3.0 SP2 (KB958483)");
-		XX(p+"NDP30SP2-KB958483-x86.exe"+n6);
+		XX(p3+"NDP30SP2-KB958483-x86.exe"+n6);
 	}
 	if( sp>=2 &&  (*i_nfx35 || *v_nfx35==1) && (
 			( _35_System_Data_Services_Client_dll < fver(3,5,30729,196))
@@ -1213,7 +1217,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _35_System_Web_DynamicData_dll      < fver(3,5,30729,196))
 		 || ( _35_System_Web_Extensions_dll       < fver(3,5,30729,196)) )) {
 		NN("Application Compatibility Update for the .NET Framework 3.5 SP1 (KB958484)");
-		XX(p+"NDP35SP1-KB958484-x86.exe"+n6);
+		XX(p3+"NDP35SP1-KB958484-x86.exe"+n6);
 	}
 
 	// .NET Framework 4.0
@@ -1225,7 +1229,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2633870",
 							L"ThisVersionInstalled",&status)!=L"Y" )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2633870)");
-		XX(p+"NDP40-KB2633870-x86.exe"+n6);
+		XX(p3+"NDP40-KB2633870-x86.exe"+n6);
 	}
 	if( sp==3 &&  (NFX40) && (
 		/* GDR */
@@ -1245,7 +1249,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2656351",
 							L"ThisVersionInstalled",&status)!=L"Y" )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2656351)");
-		XX(p+"NDP40-KB2656351-x86.exe"+n6);
+		XX(p3+"NDP40-KB2656351-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1265,7 +1269,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2572078",
 							L"ThisVersionInstalled",&status)!=L"Y" )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2572078)");
-		XX(p+"NDP40-KB2572078-x86.exe"+n6);
+		XX(p3+"NDP40-KB2572078-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1289,7 +1293,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	     || regQueryValue(L"SOFTWARE\\Microsoft\\Updates\\Microsoft .NET Framework 4 Client Profile\\KB2518870",
 							L"ThisVersionInstalled",&status)!=L"Y" )) {
 		NN("Security Update for Microsoft .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows Server 2008 x86 (KB2518870)");
-		XX(p+"NDP40-KB2518870-x86.exe"+n6);
+		XX(p3+"NDP40-KB2518870-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1297,7 +1301,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_Windows_Forms_dll > fver(4,0,30319,1002) && _40_System_Windows_Forms_dll < fver(4,0,30319,2003)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2789642)");
-		XX(p+"NDP40-KB2789642-x86.exe"+n6);
+		XX(p3+"NDP40-KB2789642-x86.exe"+n6);
 	}
 	if( sp==3 &&  (NFX40) && (
 		/* GDR */
@@ -1319,7 +1323,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2026))
 		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2026)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2858302)");
-		XX(p+"NDP40-KB2858302-v2-x86.exe"+n6);
+		XX(p3+"NDP40-KB2858302-v2-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1332,7 +1336,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           < fver(4,0,30319,2091))
 		 || ( _40_wpftxt_v0400_dll           < fver(4,0,30319,2091)) )) {
 		NN("November, 2016 Security and Quality Rollup for .NET Framework 3.0, 4 on WES09 and POSReady (KB3189598)");
-		XX(p+"ndp40-kb3189017-x86_3100ea6231780b202c1bbc764cd460a8d84bc542.exe"+n6);
+		XX(p3+"ndp40-kb3189017-x86_3100ea6231780b202c1bbc764cd460a8d84bc542.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1356,7 +1360,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Runtime_Serialization_dll > fver(4,0,30319,1026) && _40_System_Runtime_Serialization_dll < fver(4,0,30319,2045))
 		 || ( _40_System_XML_dll                   > fver(4,0,30319,1026) && _40_System_XML_dll                   < fver(4,0,30319,2045)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on Windows Server 2003, Vista, Windows 7, Server 2008 x86 (KB2972215)");
-		XX(p+"ndp40-kb2972215-x86_e29cbc6c4dd603c8965aca1ce75528fe1b345a30.exe"+n6);
+		XX(p3+"ndp40-kb2972215-x86_e29cbc6c4dd603c8965aca1ce75528fe1b345a30.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1366,7 +1370,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Data_SqlXml_dll   < fver(4,0,30319,2110))
 		 || ( _40_System_XML_dll           < fver(4,0,30319,2110)) )) {
 		NN("2018-01 Security Only Update for .NET Framework 4 on WES09 and POSReady 2009 (KB4054173)");
-		XX(p+"ndp40-kb4054173-x86_a223c7d77b86086e3fd412e816edc47e31458f96.exe"+n6);
+		XX(p3+"ndp40-kb4054173-x86_a223c7d77b86086e3fd412e816edc47e31458f96.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1374,7 +1378,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_dll > fver(4,0,30319,1053) && _40_System_dll < fver(4,0,30319,2088)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 for WES09 and POSReady 2009 (KB3142029)");
-		XX(p+"ndp40-kb3142029-x86_78ec90fdf9239c367f154a347cf026a1c27f3e9a.exe"+n6);
+		XX(p3+"ndp40-kb3142029-x86_78ec90fdf9239c367f154a347cf026a1c27f3e9a.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1382,7 +1386,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_Drawing_dll > fver(4,0,30319,1047) && _40_System_Drawing_dll < fver(4,0,30319,2082)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 for WEPOS and POSReady 2009 (KB3127225)");
-		XX(p+"ndp40-kb3127225-x86_6086071d07278955e22366990a3f8ffbfdccda85.exe"+n6);
+		XX(p3+"ndp40-kb3127225-x86_6086071d07278955e22366990a3f8ffbfdccda85.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1400,7 +1404,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2034))
 		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2034)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2901110)");
-		XX(p+"NDP40-KB2901110-v2-x86.exe"+n6);
+		XX(p3+"NDP40-KB2901110-v2-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1436,7 +1440,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Windows_Forms_dll   > fver(4,0,30319,269) && _40_System_Windows_Forms_dll   < fver(4,0,30319,544))
 		 || ( _40_WindowsBase_dll            > fver(4,0,30319,269) && _40_WindowsBase_dll            < fver(4,0,30319,544)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2604121)");
-		XX(p+"NDP40-KB2604121-x86.exe"+n6);
+		XX(p3+"NDP40-KB2604121-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* No GDR */
@@ -1452,14 +1456,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Workflow_ComponentModel_dll > zero && _40_System_Workflow_ComponentModel_dll < fver(4,0,30319,2113))      // Full Profile Only
 		 || ( _40_System_Workflow_Runtime_dll        > zero && _40_System_Workflow_Runtime_dll        < fver(4,0,30319,2113)) )) { // Full Profile Only
 		NN("2018-07 Security Only Update for .NET Framework 4.0 on WES09 and POSReady 2009 (KB4338598)");
-		XX(p+"ndp40-kb4338598-x86_0c01ff2ae51080f9ba371861795bba423b957b1b.exe"+n6);
+		XX(p3+"ndp40-kb4338598-x86_0c01ff2ae51080f9ba371861795bba423b957b1b.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
 		/* QFE */
 			( _40_System_Security_dll < fver(4,0,30319,2111)) )) {
 		NN("2018-05 Security Only Update for .NET Framework 4 on WES09 and POSReady 2009 (KB4095528)");
-		XX(p+"ndp40-kb4095528-x86_169b199b7738982df1df89dc8951cf087695165a.exe"+n6);
+		XX(p3+"ndp40-kb4095528-x86_169b199b7738982df1df89dc8951cf087695165a.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1467,7 +1471,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 			( _40_System_Management_dll < fver(4,0,30319,2097))
 		 || ( _40_WMINet_Utils_dll      < fver(4,0,30319,2097)) )) {
 		NN("April, 2017 Security and Quality Rollup for .NET Framework 4 on WES09 and POSReady 2009 (KB4014570)");
-		XX(p+"ndp40-kb4014570-x86_da912e6659c218306c1850642966ae13ac114051.exe"+n6);
+		XX(p3+"ndp40-kb4014570-x86_da912e6659c218306c1850642966ae13ac114051.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1480,7 +1484,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           < fver(4,0,30319,2102))
 		 || ( _40_wpftxt_v0400_dll           < fver(4,0,30319,2102)) )) {
 		NN("June, 2017 Security Only Update for .NET Framework 4 on WES09 and POSReady 2009 (KB4021915)");
-		XX(p+"ndp40-kb4021915-x86_e520b6b35c1e6461d73ace5c130ab7ba077296a6.exe"+n6);
+		XX(p3+"ndp40-kb4021915-x86_e520b6b35c1e6461d73ace5c130ab7ba077296a6.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1508,7 +1512,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           > fver(4,0,30319,1051) && _40_wpfgfx_v0400_dll           < fver(4,0,30319,2022))
 		 || ( _40_wpftxt_v0400_dll           > fver(4,0,30319,1051) && _40_wpftxt_v0400_dll           < fver(4,0,30319,2022)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2840628)");
-		XX(p+"NDP40-KB2840628-v2-x86.exe"+n6);
+		XX(p3+"NDP40-KB2840628-v2-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* No GDR */
@@ -1521,7 +1525,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,2125)) // Full Profile Only
 		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,2125)) )) {  // Full Profile Only
 		NN("2018-12 Security Only Update for .NET Framework 4.0 on WES09 and POSReady 2009 (KB4470490)");
-		XX(p+"ndp40-kb4470490-x86_ff434d474cd210560f89cef4fda1cbb87224b0db.exe"+n6);
+		XX(p3+"ndp40-kb4470490-x86_ff434d474cd210560f89cef4fda1cbb87224b0db.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1543,7 +1547,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           > fver(4,0,30319,1051) && _40_wpfgfx_v0400_dll           < fver(4,0,30319,2021))
 		 || ( _40_wpftxt_v0400_dll           > fver(4,0,30319,1051) && _40_wpftxt_v0400_dll           < fver(4,0,30319,2021)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Server 2008 x86 (KB2861188)");
-		XX(p+"NDP40-KB2861188-x86.exe"+n6);
+		XX(p3+"NDP40-KB2861188-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1563,14 +1567,14 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine_dll             > fver(4,0,30319,1025) && _40_webengine_dll             < fver(4,0,30319,2042))
 		 || ( _40_webengine4_dll            > fver(4,0,30319,1025) && _40_webengine4_dll            < fver(4,0,30319,2042)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on Windows Server 2003, Vista, Windows 7, Server 2008 x86 (KB2894842)");
-		XX(p+"ndp40-kb2894842-v2-x86_5ce3160ba23ace5b2137c87a1ded990e4503b3f1.exe"+n6);
+		XX(p3+"ndp40-kb2894842-v2-x86_5ce3160ba23ace5b2137c87a1ded990e4503b3f1.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
 		/* QFE */
 			( _40_System_Runtime_Remoting_dll < fver(4,0,30319,2108)) )) {
 		NN("2017-10 Security and Quality Rollup for .NET Framework 4 on WES09 and POSReady 2009 (KB4040962)");
-		XX(p+"ndp40-kb4040962-x86_976f8849c17de7a0cab333c0081e9858a6407a85.exe"+n6);
+		XX(p3+"ndp40-kb4040962-x86_976f8849c17de7a0cab333c0081e9858a6407a85.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1598,7 +1602,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Security_dll                    > fver(4,0,30319,1051) && _40_System_Security_dll                    < fver(4,0,30319,2001))
 		 || ( _40_System_Windows_Forms_dll               > fver(4,0,30319,1002) && _40_System_Windows_Forms_dll               < fver(4,0,30319,2001)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2742595)");
-		XX(p+"NDP40-KB2742595-x86.exe"+n6);
+		XX(p3+"NDP40-KB2742595-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1620,7 +1624,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_dll            > fver(4,0,30319,296) && _40_System_dll            < fver(4,0,30319,586))
 		 || ( _40_Microsoft_JScript_dll > fver(10,0,30319,296)&& _40_Microsoft_JScript_dll < fver(10,0,30319,586)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2729449)");
-		XX(p+"NDP40-KB2729449-x86.exe"+n6);
+		XX(p3+"NDP40-KB2729449-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1635,7 +1639,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           < fver(4,0,30319,2098))
 		 || ( _40_wpftxt_v0400_dll           < fver(4,0,30319,2098)) )) {
 		NN("May, 2017 Security and Quality Rollup for .NET Framework 4 on WES09 and POSReady 2009 (KB4014605)");
-		XX(p+"ndp40-kb4014605-x86_e9b8f1c169c032585d0a74e16aabbbf7d227417d.exe"+n6);
+		XX(p3+"ndp40-kb4014605-x86_e9b8f1c169c032585d0a74e16aabbbf7d227417d.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* No GDR */
@@ -1648,7 +1652,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_SOS_dll         < fver(4,0,30319,2121))
 		 || ( _40_System_dll      < fver(4,0,30319,2121)) )) {
 		NN("2018-08 Security Only Update for .NET Framework 4.0 on WES09 and POSReady 2009 (KB4462774)");
-		XX(p+"ndp40-kb4462774-x86_3d9d6cc17c34a22b9f1421bf8a8cdbbe9ede2b5c.exe"+n6);
+		XX(p3+"ndp40-kb4462774-x86_3d9d6cc17c34a22b9f1421bf8a8cdbbe9ede2b5c.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1670,7 +1674,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           > fver(4,0,30319,1051) && _40_wpfgfx_v0400_dll           < fver(4,0,30319,2086))
 		 || ( _40_wpftxt_v0400_dll           > fver(4,0,30319,1051) && _40_wpftxt_v0400_dll           < fver(4,0,30319,2086)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 for WEPOS and POSReady 2009 (KB3135993)");
-		XX(p+"ndp40-kb3135993-x86_d7f3f1d40b58935f52381123d60f19b22cfcc872.exe"+n6);
+		XX(p3+"ndp40-kb3135993-x86_d7f3f1d40b58935f52381123d60f19b22cfcc872.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1692,7 +1696,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll           > fver(4,0,30319,298) && _40_wpfgfx_v0400_dll           < fver(4,0,30319,588))
 		 || ( _40_wpftxt_v0400_dll           > fver(4,0,30319,298) && _40_wpftxt_v0400_dll           < fver(4,0,30319,588)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2737019)");
-		XX(p+"NDP40-KB2737019-x86.exe"+n6);
+		XX(p3+"NDP40-KB2737019-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* No GDR */
@@ -1702,7 +1706,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Workflow_Runtime_dll        > zero && _40_System_Workflow_Runtime_dll        < fver(4,0,30319,2128)) // Full Profile Only
 		 || ( _40_System_dll                         < fver(4,0,30319,2128)) )) {
 		NN("2019-02 Security Only Update for .NET Framework 4.0 on WES09 and POSReady 2009 (KB4483475)");
-		XX(p+"ndp40-kb4483475-x86_25db1d55a1c940328a6f3de2105f9454a778ff2f.exe"+n6);
+		XX(p3+"ndp40-kb4483475-x86_25db1d55a1c940328a6f3de2105f9454a778ff2f.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1710,7 +1714,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_Data_dll > fver(4,0,30319,1054) && _40_System_Data_dll < fver(4,0,30319,2089)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 for WES09 and POSReady 2009 (KB3163249)");
-		XX(p+"ndp40-kb3163249-x86_c30a31e9c3f8b8c3d0a43887da18486f1f7cc3de.exe"+n6);
+		XX(p3+"ndp40-kb3163249-x86_c30a31e9c3f8b8c3d0a43887da18486f1f7cc3de.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
@@ -1718,7 +1722,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_Runtime_Remoting_dll > fver(4,0,30319,1023) && _40_System_Runtime_Remoting_dll < fver(4,0,30319,2036)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on Windows Server 2003, Vista, Windows 7, Server 2008 x86 (KB2931365)");
-		XX(p+"ndp40-kb2931365-x86_99d59cfc6e59f2c5d406b61f06172dca0a89286d.exe"+n6);
+		XX(p3+"ndp40-kb2931365-x86_99d59cfc6e59f2c5d406b61f06172dca0a89286d.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* No GDR */
@@ -1727,7 +1731,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 			( _40_System_Workflow_ComponentModel_dll > zero && _40_System_Workflow_ComponentModel_dll < fver(4,0,30319,2119))
 		 || ( _40_System_Workflow_Runtime_dll        > zero && _40_System_Workflow_Runtime_dll        < fver(4,0,30319,2119)) )) {
 		NN("2018-09 Security Only Update for .NET Framework 4.0 on WES09 and POSReady 2009 (KB4457046)");
-		XX(p+"ndp40-kb4457046-x86_407a3efb88f4bdf4974375f288761502e1683155.exe"+n6);
+		XX(p3+"ndp40-kb4457046-x86_407a3efb88f4bdf4974375f288761502e1683155.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1736,7 +1740,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		/* QFE */
 		 || ( _40_System_Web_DataVisualization_dll > fver(4,0,30319,236) && _40_System_Web_DataVisualization_dll < fver(4,0,30319,461)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows Server 2008 x86 (KB2487367)");
-		XX(p+"NDP40-KB2487367-x86.exe"+n6);
+		XX(p3+"NDP40-KB2487367-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1750,7 +1754,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_System_Data_Services_Design_dll > fver(4,0,30319,297) && _40_System_Data_Services_Design_dll < fver(4,0,30319,587))
 		 || ( _40_System_Data_Services_dll        > fver(4,0,30319,297) && _40_System_Data_Services_dll        < fver(4,0,30319,587)) )) {
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2736428)");
-		XX(p+"NDP40-KB2736428-x86.exe"+n6);
+		XX(p3+"NDP40-KB2736428-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1787,7 +1791,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine_dll             > fver(4,0,30319,261) && _40_webengine_dll             < fver(4,0,30319,530))
 		 || ( _40_webengine4_dll            > fver(4,0,30319,261) && _40_webengine4_dll            < fver(4,0,30319,530)) )) {
 		NN("Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2600217)");
-		XX(p+"NDP40-KB2600217-x86.exe"+n6);
+		XX(p3+"NDP40-KB2600217-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1833,7 +1837,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_webengine_dll             > fver(4,0,30319,237) && _40_webengine_dll             < fver(4,0,30319,468))
 		 || ( _40_webengine4_dll            > fver(4,0,30319,237) && _40_webengine4_dll            < fver(4,0,30319,468)) )) {
 		NN("Update for Microsoft .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows Server 2008 x86 (KB2533523)");
-		XX(p+"NDP40-KB2533523-x86.exe"+n6);
+		XX(p3+"NDP40-KB2533523-x86.exe"+n6);
 	}
 	if( sp==3 &&  ( NFX40 ) && (
 		/* GDR */
@@ -1903,7 +1907,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _40_wpfgfx_v0400_dll                      > fver(4,0,30319,233) && _40_wpfgfx_v0400_dll                      < fver(4,0,30319,450))
 		 || ( _40_wpftxt_v0400_dll                      > fver(4,0,30319,237) && _40_wpftxt_v0400_dll                      < fver(4,0,30319,468)) )) {
 		NN("Update for Microsoft .NET Framework 4 on Windows XP, Windows Server 2003, Windows Vista, Windows 7, Windows Server 2008 x86 (KB2468871)");
-		XX(p+"NDP40-KB2468871-v2-x86.exe"+n6);
+		XX(p3+"NDP40-KB2468871-v2-x86.exe"+n6);
 	}
 /*
 

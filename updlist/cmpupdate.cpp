@@ -59,7 +59,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 					  ||    _d3dx11_43_dll  <fver(9,29,952,3111)
 					  ||    _D3DX9_43_dll   <fver(9,29,952,3111) )) {
 		NN("DirectX End-User Runtimes (June 2010)");
-		XX(std::string("Extras\\directx_Jun2010_redist.exe /Q /C /T:%TEMP%\\directx_Jun2010_redist\n")
+		XX(std::string(p+"directx_Jun2010_redist.exe /Q /C /T:%TEMP%\\directx_Jun2010_redist\n")
 			+"pushd %TEMP%\\directx_Jun2010_redist\n"
 			+"start /wait DXSETUP.exe /silent\n"
 			+"popd\n"
