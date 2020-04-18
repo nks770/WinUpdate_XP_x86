@@ -226,6 +226,8 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 	// Hotfix path and standard arguments
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p2=p+"SP2\\";
+	const std::string p3=p+"SP3\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 //	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup";
 	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup /forceappsclose";
@@ -254,7 +256,7 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 	// Flag updates;
 	if( sp==2 && (sku & XP_ALL) /*&& _msctf_dll>zero*/ && _msctf_dll<fver(5,1,2600,3319)) {
 		NN("Update for Windows XP (KB932823)");
-		XX(p+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
+		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
 	}
 	if( sp<3 && (sku & XP_ALL) && ( 
 		                  ( _photometadatahandler_dll <fver(6,0,5840,16388))
@@ -266,7 +268,7 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 			&& _windowscodecsext_dll     <=fver(6,0,5840,16388)
 			&& _wmphoto_dll              <=fver(6,0,5840,16388)) {
 			NN("Windows Imaging Component for Windows XP and Server 2003");
-			XX(p+"wic_x86_enu.exe"+a1);
+			XX(p3+"wic_x86_enu.exe"+a1);
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Windows Imaging Component is missing, but")

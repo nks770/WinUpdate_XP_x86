@@ -48,6 +48,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Hotfix path and standard arguments
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p1=p+"SP1\\";
 	const std::string p2=p+"SP2\\";
 	const std::string p3=p+"SP3\\";
 	const std::string vcredist=p+"vcredist\\";
@@ -321,8 +322,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msrepl40_dll = getFileVer(System32+L"\\msrepl40.dll",&status);
 	fver _msrle32_dll  = getFileVer(System32+L"\\msrle32.dll",&status);
 	fver _msscp_dll    = getFileVer(System32+L"\\msscp.dll",&status);
+	fver _mstask_dll   = getFileVer(System32+L"\\mstask.dll",&status);
 	fver _mstext40_dll = getFileVer(System32+L"\\mstext40.dll",&status);
 	fver _mstime_dll   = getFileVer(System32+L"\\mstime.dll",&status);
+	fver _mstinit_exe  = getFileVer(System32+L"\\mstinit.exe",&status);
 	fver _mstsc_exe    = getFileVer(System32+L"\\mstsc.exe",&status);
 	fver _mstsc_exe_mui = getFileVer(System32+L"\\en-US\\mstsc.exe.mui",&status);
 	fver _mstscax_dll  = getFileVer(System32+L"\\mstscax.dll",&status);
@@ -412,6 +415,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sc_exe       = getFileVer(System32+L"\\sc.exe",&status);
 	fver _scesrv_dll   = getFileVer(System32+L"\\scesrv.dll",&status);
 	fver _schannel_dll = getFileVer(System32+L"\\schannel.dll",&status);
+	fver _schedsvc_dll = getFileVer(System32+L"\\schedsvc.dll",&status);
 	fver _scrobj_dll   = getFileVer(System32+L"\\scrobj.dll",&status);
 	fver _scrrun_dll   = getFileVer(System32+L"\\scrrun.dll",&status);
 	fver _seclogon_dll = getFileVer(System32+L"\\seclogon.dll",&status);
@@ -1783,7 +1787,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	printf("%s\t%s\n","vcruntime140.dll",_vcruntime140_dll.format().c_str());
 	printf("\n");
 */
-	// Windows XP SP2 updates;
+	// Windows XP SP1 updates
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_mstask_dll   >zero && _mstask_dll   <fver(5,1,2600,1564))
+	   || (_mstinit_exe  >zero && _mstinit_exe  <fver(5,1,2600,1564))
+	   || (_netapi32_dll >zero && _mstinit_exe  <fver(5,1,2600,1562))
+	   || (_schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,1564)) )) {
+		NN("Security Update for Windows XP (KB841873)");
+		XX(p1+"windowsxp-kb841873-x86-enu_f0f4cb2c535f8adf154e72f2f2c60d6f9b710d6d.exe"+a1);
+	}
+
+	// Windows XP SP2 updates
 	if( sp>=2 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
 		              ||    _spmsg_dll_ref    <fver(6,1,22,4)
 					  ||    _spuninst_exe_ref <fver(6,1,22,4)

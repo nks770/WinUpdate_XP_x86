@@ -7,16 +7,20 @@
 using namespace std;
 
 void servicePackNotifications(int sp, std::vector<std::string> *data) {
+	std::string spstr;
+	if(sp==1) { spstr="1"; }
+	if(sp==2) { spstr="2"; }
+	if(sp==3) { spstr="3"; }
 	if(sp<3) {
 //                       ....V....1....V....2....V....3....V....4....V....5
 		data->push_back(std::string("A NEWER SERVICE PACK IS AVAILABLE!")+
-			           "| |Service Pack 2 is installed, but Service Pack"+
+			           "| |Service Pack "+spstr+" is installed, but Service Pack"+
 			           "|3 is available.  We recommend you install the"+
 					   "|latest Service Pack before applying other"+
 					   "|patches.  You can use 'install_sp.bat' to"+
 					   "|install Service Pack 3."+
 					   "| |Otherwise, we will continue installing all"+
-					   "|patches relevant for Service Pack 2.");
+					   "|patches relevant for Service Pack "+spstr+".");
 	}
 }
 

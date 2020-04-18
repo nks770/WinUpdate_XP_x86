@@ -430,11 +430,13 @@ void systemComponentVersions(bool batchmode) {
 
 	// Get file versions
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
+	fver _wmpcore_dll  = getFileVer(System32+L"\\wmpcore.dll",&status);
 	fver _msdxm_ocx    = getFileVer(System32+L"\\msdxm.ocx",&status);
 	fver _iexplore_exe = getFileVer(iepath,&status);
 
 	// Default to get version of wmplayer, but fall back to mplayer2 if needed.
 	fver wmp = _wmp_dll;
+	if(wmp==fver()) { wmp=_wmpcore_dll; }
 	if(wmp==fver()) { wmp=_msdxm_ocx; }
 
 	if(wmp.major() >= 8) {
