@@ -19,6 +19,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	// Hotfix path and standard arguments
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p2=p+"SP2\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 
 	// Create SKU masks
@@ -52,6 +53,8 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 
 	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
 
+	bool kb932823_ok = false;
+
 	// Flag updates;
 	if((sku & XP_ALL) && (  _D3DCompiler_43 <fver(9,29,952,3111)
 		              ||    _d3dcsx_43_dll  <fver(9,29,952,3111)
@@ -84,11 +87,42 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 		NN("Windows Media Player 11");
 		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
 	}
-	if( sp==2 && (sku & XP_ALL) /*&& _msctf_dll>zero*/ && _msctf_dll<fver(5,1,2600,3319)) {
+	if( sp==2 && (sku & XP_ALL) && _msctf_dll<fver(5,1,2600,3319)) {
+		// If MSCTF.dll is already on the system, but not the required version, then
+		// KB932823 needs to be installed, and a system reboot will be needed so that the
+		// file can actually be replaced.
 		NN("Update for Windows XP (KB932823)");
-		XX(p+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
+		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
+		kb932823_ok=true;
+		if(_msctf_dll > fver()) {
+			kb932823_ok=false;
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
+			                               +"|on the system, but Internet Explorer 8"
+							               +"|requires version 5.1.2600.3319."
+							               +"| "
+							               +"|We will upgrade this DLL by installing"
+							               +"|KB932823, but a system reboot will be needed"
+										   +"|before you can continue installing Internet"
+										   +"|Explorer 8.");
+		}
+	} else {
+		kb932823_ok=true;
 	}
-	if((sku & XP_ALL) && (  _iexplore_exe <fver(8,0,0,0) ) &&
+	if( sp>2 && _msctf_dll<fver(5,1,2600,3319)) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Internet Explorer 8 requires msctf.dll")
+			                               +"|version 5.1.2600.3319, which is not present"
+										   +"|on your system."
+							               +"| "
+							               +"|You should have installed KB932823 before"
+							               +"|upgrading to SP3.  Your best option at this"
+										   +"|point is to manually install msctf.dll and"
+										   +"|use regsvr32.exe to register it."
+										   +"| "
+										   +"|Internet Explorer 8 cannot be installed.");
+	}
+	if((sku & XP_ALL) && kb932823_ok && (  _iexplore_exe <fver(8,0,0,0) ) &&
 			( sp==2 || (sp==3 && _msctf_dll>fver()))) {
 		NN("Internet Explorer 8 for Windows XP");
 		XX("\"Internet Explorer\\IE8-WindowsXP-x86-ENU.EXE\" /passive /update-no");

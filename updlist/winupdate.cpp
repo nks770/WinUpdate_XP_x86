@@ -2828,8 +2828,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
 		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
 		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
-					  ||  (_drmclien_dll >zero && _drmclien_dll <fver(10,0,0,3802))
-					  ||  (_drmstor_dll  >zero && _drmstor_dll  <fver(10,0,0,3802))
+					  ||  (_drmclien_dll >zero && _wmp_dll<fver(11,0,0,0) && _drmclien_dll <fver(10,0,0,3802))
+					  ||  (_drmstor_dll  >zero && _wmp_dll<fver(11,0,0,0) && _drmstor_dll  <fver(10,0,0,3802))
 					  ||  (_drmupgds_exe >zero && _drmupgds_exe <fver(10,0,0,3802))
 					  ||  (_drmv2clt_dll >zero && _drmv2clt_dll <fver(10,0,0,3802))
 					  ||  (_LAPRXY_dll   >zero && _LAPRXY_dll   <fver(10,0,0,3802))
