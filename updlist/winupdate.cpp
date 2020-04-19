@@ -1802,6 +1802,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q329390: Security Update");
 		XX(p1+"q329390_wxp_3f60064794271f0053892985402fe5b6679d3f2d.exe"+a7);
 	}
+	if( sp==1 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,1123)) {
+		NN("Q329115: Security Update (Windows XP)");
+		XX(p1+"q329115_wxp_sp2_x86_1d09793faf21249febcc160d341612338dfd3154.exe"+a7);
+	}
 
 	// Windows XP SP2 updates
 	if( sp>=2 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
@@ -2586,7 +2590,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 							               +"|it are already present on the system.");
 		}
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
+					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1634))
+					  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1634))
+					  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1634))
+					  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1634))
+					  ||  ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1634))
+					  ||  ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1634))
+					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,1634))))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,2622))
 					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,2622))
 					  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,2622))
@@ -2594,7 +2607,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,2622))
 					  ||  ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,2622))
 					  ||  ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,2622))
-					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,2622)) )) {
+					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,2622))))) {
 		NN("Security Update for Windows XP (KB890859)");
 		XX(p2+"windowsxp-kb890859-x86-enu_813f47d987b772bacae20e7dec9b5f6f16079303.exe"+a1);
 	}
