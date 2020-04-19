@@ -167,6 +167,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _credssp_dll  = getFileVer(System32+L"\\credssp.dll",&status);
 	fver _crypt32_dll  = getFileVer(System32+L"\\crypt32.dll",&status);
 	fver _cryptdlg_dll = getFileVer(System32+L"\\cryptdlg.dll",&status);
+	fver _cscdll_dll   = getFileVer(System32+L"\\cscdll.dll",&status);
 	fver _cscript_exe  = getFileVer(System32+L"\\cscript.exe",&status);
 	fver _csrsrv_dll   = getFileVer(System32+L"\\csrsrv.dll",&status);
 	fver _danim_dll    = getFileVer(System32+L"\\danim.dll",&status);
@@ -1857,8 +1858,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB923561)");
 		XX(p3+"WindowsXP-KB923561-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ( (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,2902))
-					  ||  (_rdbss_sys>zero && _rdbss_sys<fver(5,1,2600,2902)) )) {
+	if((sp==1 && (sku & XP_ALL) && (
+		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
+					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1836))
+					  ||  (_rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,1836))))
+	 ||(sp==2 && (sku & XP_ALL) && ( (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,2902))
+					  ||  (_rdbss_sys>zero && _rdbss_sys<fver(5,1,2600,2902))))) {
 		NN("Security Update for Windows XP (KB914389)");
 		XX(p2+"windowsxp-kb914389-x86-enu_8c44336e9e4f287891ac384bee0219e9c2224523.exe"+a1);
 	}
@@ -1867,8 +1872,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB980232)");
 		XX(p2+"windowsxp-kb980232-x86-enu_d137985d21958a9f3f277189287b9a71eee02421.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ( (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,2938))
-					  ||  (_rasadhlp_dll>zero && _rasadhlp_dll<fver(5,1,2600,2938)) )) {
+	if((sp==1 && (sku & XP_ALL) && ( (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,1863))
+					  ||  (_rasadhlp_dll>zero && _rasadhlp_dll<fver(5,1,2600,1863))))
+	 ||(sp==2 && (sku & XP_ALL) && ( (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,2938))
+					  ||  (_rasadhlp_dll>zero && _rasadhlp_dll<fver(5,1,2600,2938))))) {
 		NN("Security Update for Windows XP (KB920683)");
 		XX(p2+"windowsxp-kb920683-x86-enu_ef1482c5b88557e56563dace9b7549ebf6d7f9c7.exe"+a1);
 	}
@@ -2236,12 +2243,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 6.4 (KB925398)");
 		XX(p3+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,2777))
-					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,2777)) )) {
+	if( sp==1 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,1762))
+					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,1762)) )) {
+//	if( sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,2777))
+//					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,2777)) )) {
 		// KB908519 is replaced by KB972270 on SP2
 		NN("Security Update for Windows XP (KB908519)");
-		XX(p+"windowsxp-kb908519-x86-enu_ea7ea742f9a3632f1090eab8c66b3fe7735c084f.exe"+a1);
-	}*/
+		XX(p1+"windowsxp-kb908519-x86-enu_ea7ea742f9a3632f1090eab8c66b3fe7735c084f.exe"+a1);
+	}
 	if((sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,3634))
 					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,3634))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,5888))
