@@ -172,6 +172,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _csrsrv_dll   = getFileVer(System32+L"\\csrsrv.dll",&status);
 	fver _danim_dll    = getFileVer(System32+L"\\danim.dll",&status);
 	fver _dao360_dll   = getFileVer(System32+L"\\dao360.dll",&status);
+	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
@@ -189,6 +190,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _es_dll       = getFileVer(System32+L"\\es.dll",&status);
 	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
+	fver _fldrclnr_dll = getFileVer(System32+L"\\fldrclnr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
 	fver _fltMc_exe    = getFileVer(System32+L"\\fltMc.exe",&status);
 	fver _fmifs_dll    = getFileVer(System32+L"\\fmifs.dll",&status);
@@ -231,6 +233,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _inetcomm_dll = getFileVer(System32+L"\\inetcomm.dll",&status);
 	fver _inetcpl_cpl  = getFileVer(System32+L"\\inetcpl.cpl",&status);
 	fver _inetpp_dll   = getFileVer(System32+L"\\inetpp.dll",&status);
+	fver _inetres_dll  = getFileVer(System32+L"\\inetres.dll",&status);
 	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
 	fver _iphlpapi_dll = getFileVer(System32+L"\\iphlpapi.dll",&status);
 	fver _iprtrmgr_dll = getFileVer(System32+L"\\iprtrmgr.dll",&status);
@@ -286,6 +289,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msaud32_acm  = getFileVer(System32+L"\\msaud32.acm",&status);
 	fver _mscms_dll    = getFileVer(System32+L"\\mscms.dll",&status);
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
+	fver _msdart_dll   = getFileVer(System32+L"\\msdart.dll",&status);
 	fver _msdrm_dll    = getFileVer(System32+L"\\msdrm.dll",&status);
 	fver _msdtclog_dll = getFileVer(System32+L"\\msdtclog.dll",&status);
 	fver _msdtcprx_dll = getFileVer(System32+L"\\msdtcprx.dll",&status);
@@ -300,6 +304,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mshtml_dll   = getFileVer(System32+L"\\mshtml.dll",&status);
 	fver _mshtmled_dll = getFileVer(System32+L"\\mshtmled.dll",&status);
 	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
+	fver _msident_dll  = getFileVer(System32+L"\\msident.dll",&status);
 	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
 	fver _msihnd_dll   = getFileVer(System32+L"\\msihnd.dll",&status);
 	fver _msimsg_dll   = getFileVer(System32+L"\\msimsg.dll",&status);
@@ -313,6 +318,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msmqocm_dll  = getFileVer(System32+L"\\Setup\\msmqocm.dll",&status);
 	fver _msnetobj_dll = getFileVer(System32+L"\\msnetobj.dll",&status);
 	fver _msnp_ax      = getFileVer(System32+L"\\msnp.ax",&status);
+	fver _msoeacct_dll = getFileVer(System32+L"\\msoeacct.dll",&status);
+	fver _msoert2_dll  = getFileVer(System32+L"\\msoert2.dll",&status);
 	fver _msorcl32_dll = getFileVer(System32+L"\\msorcl32.dll",&status);
 	fver _mspaint_exe  = getFileVer(System32+L"\\mspaint.exe",&status);
 	fver _mspbde40_dll = getFileVer(System32+L"\\mspbde40.dll",&status);
@@ -363,8 +370,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _nwprovau_dll = getFileVer(System32+L"\\nwprovau.dll",&status);
 	fver _nwwks_dll    = getFileVer(System32+L"\\nwwks.dll",&status);
 	fver _oakley_dll   = getFileVer(System32+L"\\oakley.dll",&status);
-	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
 	fver _occache_dll  = getFileVer(System32+L"\\occache.dll",&status);
+	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
+	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
+	fver _odbccp32_dll = getFileVer(System32+L"\\odbccp32.dll",&status);
 	fver _ole32_dll    = getFileVer(System32+L"\\ole32.dll",&status);
 	fver _oleacc_dll   = getFileVer(System32+L"\\oleacc.dll",&status);
 	fver _oleaccrc_dll = getFileVer(System32+L"\\oleaccrc.dll",&status);
@@ -507,6 +516,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wmpeffects_dll = getFileVer(System32+L"\\wmpeffects.dll",&status);
 	fver _wmphoto_dll  = getFileVer(System32+L"\\wmphoto.dll",&status);
 	fver _wmploc_dll   = getFileVer(System32+L"\\wmploc.dll",&status);
+	fver _wmpui_dll    = getFileVer(System32+L"\\wmpui.dll",&status);
 	fver _wmsdmod_dll  = getFileVer(System32+L"\\wmsdmod.dll",&status);
 	fver _wmsdmoe2_dll = getFileVer(System32+L"\\wmsdmoe2.dll",&status);
 	fver _wmspdmod_dll = getFileVer(System32+L"\\wmspdmod.dll",&status);
@@ -837,7 +847,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msmsgs_exe   = getFileVer(Messenger+L"\\msmsgs.exe",&status);
 	fver _msgsc_dll    = getFileVer(Messenger+L"\\msgsc.dll",&status);
 
+	fver _msimn_exe   = getFileVer(OutlookExpress+L"\\msimn.exe",&status);
 	fver _msoe_dll    = getFileVer(OutlookExpress+L"\\msoe.dll",&status);
+	fver _msoeres_dll = getFileVer(OutlookExpress+L"\\msoeres.dll",&status);
+	fver _oeimport_dll= getFileVer(OutlookExpress+L"\\oeimport.dll",&status);
+	fver _oemig50_exe = getFileVer(OutlookExpress+L"\\oemig50.exe",&status);
+	fver _oemiglib_dll= getFileVer(OutlookExpress+L"\\oemiglib.dll",&status);
 	fver _wab_exe     = getFileVer(OutlookExpress+L"\\wab.exe",&status);
 	fver _wabfind_dll = getFileVer(OutlookExpress+L"\\wabfind.dll",&status);
 	fver _wabimp_dll  = getFileVer(OutlookExpress+L"\\wabimp.dll",&status);
@@ -883,6 +898,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msado27_tlb = getFileVer(ado+L"\\msado27.tlb",&status);
 	fver _msado28_tlb = getFileVer(ado+L"\\msado28.tlb",&status);
 	fver _msdaora_dll = getFileVer(OleDB+L"\\msdaora.dll",&status);
+	fver _oledb32_dll = getFileVer(OleDB+L"\\oledb32.dll",&status);
 
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
 	fver _wmiprvsd_dll = getFileVer(wbem+L"\\wmiprvsd.dll",&status);
@@ -1027,6 +1043,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdiplus_dll_24563 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24563_x-ww_24ee7315\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_20488 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6003.20488_x-ww_40820f9c\\GdiPlus.dll",&status);
 
+	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
+	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
 	fver _comctl32_dll_2982 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2982_x-ww_ac3f9c03\\comctl32.dll",&status);
 	fver _comctl32_dll_7660 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.7660_x-ww_936580bb\\comctl32.dll",&status);
 
@@ -1816,6 +1834,65 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("329170: Security Update");
 		XX(p1+"q329170_wxp_sp2_en_90a3d54a8af7b392e7b3ff4deddc745.exe"+a7);
 	}
+	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,4,2600,1106) && _quartz_dll<fver(6,4,2600,1738)) {
+		NN("Security Update for Windows XP (KB904706)");
+		XX(p1+"windowsxp-kb904706-v2-x86-enu_ec909ee2bab6b15d7d3545a1eaf07bbb066e038b.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && _ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,114)) {
+		NN("Security Update for Windows XP (815021)");
+		XX(p1+"q815021_wxp_sp2_x86_enu_b56c13ca24cdeefbe85e72cdbf34fb0.exe"+a7);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_directdb_dll   >zero && _directdb_dll   <fver(6,0,2800,1807))
+//	   || (_iecustom_dll  >zero && _iecustom_dll  <fver(6,0,2800,1502))
+	   || (_inetcomm_dll >zero && _inetcomm_dll  <fver(6,0,2800,1807))
+	   || (_inetres_dll >zero && _inetres_dll  <fver(6,0,2800,1807))
+	   || (_msident_dll >zero && _msident_dll  <fver(6,0,2800,1807))
+	   || (_msimn_exe >zero && _msimn_exe  <fver(6,0,2800,1807))
+	   || (_msoe_dll >zero && _msoe_dll  <fver(6,0,2800,1807))
+	   || (_msoeacct_dll >zero && _msoeacct_dll  <fver(6,0,2800,1807))
+	   || (_msoeres_dll >zero && _msoeres_dll  <fver(6,0,2800,1807))
+	   || (_msoert2_dll >zero && _msoert2_dll  <fver(6,0,2800,1807))
+	   || (_oeimport_dll >zero && _oeimport_dll  <fver(6,0,2800,1807))
+	   || (_oemig50_exe >zero && _oemig50_exe  <fver(6,0,2800,1807))
+	   || (_oemiglib_dll >zero && _oemiglib_dll  <fver(6,0,2800,1807))
+	   || (_wab_exe >zero && _wab_exe  <fver(6,0,2800,1807))
+	   || (_wab32_dll >zero && _wab32_dll  <fver(6,0,2800,1816))
+	   || (_wabfind_dll >zero && _wabfind_dll  <fver(6,0,2800,1807))
+	   || (_wabimp_dll >zero && _wabimp_dll  <fver(6,0,2800,1807))
+	   || (_wabmig_exe >zero && _wabmig_exe <fver(6,0,2800,1807)) )) {
+		NN("Cumulative Security Update for Outlook Express 6 Service Pack 1 (KB911567)");
+		XX(p1+"oe6.0sp1-kb911567-windows-2000-xp-x86-enu_4d946bdca2160231bd638c04c83f226cda161ca1.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_dbnetlib_dll >fver(2000,81,9002,0) && _dbnetlib_dll <fver(2000,81,9042,0))
+	   || (_msdart_dll   >zero                 && _msdart_dll   <fver(2,71,9042,0))
+	   || (_odbc32_dll   >fver(3,520,9002,0)   && _odbc32_dll   <fver(3,520,9042,0))
+	   || (_odbcbcp_dll  >fver(2000,81,9002,0) && _odbcbcp_dll  <fver(2000,81,9042,0))
+	   || (_odbccp32_dll >fver(3,520,9002,0)   && _odbccp32_dll <fver(3,520,9042,0))
+	   || (_oledb32_dll  >fver(2,70,9002,0)    && _oledb32_dll  <fver(2,71,9042,0)) )) {
+		NN("Security Update for Microsoft Data Access Components (KB823718)");
+		XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1789))
+	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331)) )) {
+		NN("Security Update for Windows XP (KB912919)");
+		XX(p1+"windowsxp-kb912919-x86-enu_a4b4638c85d74c1d9ceaf63189ad46aa34f60293.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+			    (_mqac_sys    >zero && _mqac_sys    <fver(5,1,0,1044))
+			||  (_mqad_dll    >zero && _mqad_dll    <fver(5,1,0,1044))
+			||  (_mqdscli_dll >zero && _mqdscli_dll <fver(5,1,0,1044))
+			||  (_mqise_dll   >zero && _mqise_dll   <fver(5,1,0,1044))
+			||  (_mqqm_dll    >zero && _mqqm_dll    <fver(5,1,0,1044))
+			||  (_mqrt_dll    >zero && _mqrt_dll    <fver(5,1,0,1044))
+			||  (_mqsec_dll   >zero && _mqsec_dll   <fver(5,1,0,1044))
+			||  (_mqupgrd_dll >zero && _mqupgrd_dll <fver(5,1,0,1044))
+			||  (_mqutil_dll  >zero && _mqutil_dll  <fver(5,1,0,1044)) )) {
+		NN("Security Update for Windows XP (KB892944)");
+		XX(p1+"windowsxp-kb892944-x86-enu_4bdf561e99e401a81737b04f5ce9f2dde640e06f.exe"+a1);
+	}
 
 	// Windows XP SP2 updates
 	if( sp>=2 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
@@ -1840,7 +1917,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows Update Agent 3.0");
 		XX(p+"WindowsUpdateAgent30-x86.exe"+a5);
 	}
-	if( sp==2 && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,2577)) {
+	if((sp==1 && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,1613))
+	 ||(sp==2 && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,2577))) {
 		NN("Security Update for Windows XP (KB888302)");
 		XX(p2+"windowsxp-kb888302-x86-enu_5c4ef905021d66aa78d9f5f112e5d05c40b1a909.exe"+a6);
 	}
@@ -2253,11 +2331,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB974112)");
 		XX(p3+"WindowsXP-KB974112-x86-ENU.exe"+a1);
 	}
-	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
-					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
-		NN("Security Update for Windows Media Player 6.4 (KB925398)");
-		XX(p3+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
-	}
 	if( sp==1 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,1762))
 					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,1762)) )) {
 //	if( sp==2 && (sku & XP_ALL) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,2777))
@@ -2646,14 +2719,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Flash Player (KB923789)");
 		XX(p3+"WindowsXP-KB923789-x86-ENU.exe"+a2);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		                  ( _umpnpmgr_dll    >zero && _umpnpmgr_dll    <fver(5,1,2600,2744)) )) {
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _umpnpmgr_dll    >zero && _umpnpmgr_dll    <fver(5,1,2600,1734))))
+	 ||(sp==2 && (sku & XP_ALL) && (
+		                  ( _umpnpmgr_dll    >zero && _umpnpmgr_dll    <fver(5,1,2600,2744))))) {
 		NN("Security Update for Windows XP (KB905749)");
 		XX(p2+"windowsxp-kb905749-x86-enu_3f44b68f7e0a0e6332dd18997e134beab1027c73.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+					  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1816))
+					  ||  ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+					  ||  ( _verclsid_exe >zero && _verclsid_exe <fver(5,1,2600,1816))
+					  ||  ( _comctl32_dll_1816 < fver(6,0,2800,1816)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _shell32_dll    >zero && _shell32_dll    <fver(6,0,2900,2869))
-					  ||  ( _verclsid_exe   >zero && _verclsid_exe   <fver(5,1,2600,2869)) )) {
+					  ||  ( _verclsid_exe   >zero && _verclsid_exe   <fver(5,1,2600,2869))))) {
 		NN("Security Update for Windows XP (KB908531)");
 		XX(p2+"windowsxp-kb908531-v2-x86-enu_0f04352bbc21b3c173cc8dd8c9e63c082b34b676.exe"+a1);
 	}
@@ -2674,11 +2755,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978542)");
 		XX(p3+"WindowsXP-KB978542-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+					  ||  ( _linkinfo_dll >zero && _linkinfo_dll <fver(5,1,2600,1740))
+					  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1751))
+					  ||  ( _shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1740))
+					  ||  ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,1740))
+					  ||  ( _comctl32_dll_1740 < fver(6,0,2800,1740)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _linkinfo_dll >zero && _linkinfo_dll <fver(5,1,2600,2751))
 					  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2900,2763))
 					  ||  ( _shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2753))
-					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,2751)) )) {
+					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,2751))))) {
 		NN("Security Update for Windows XP (KB900725)");
 		XX(p2+"windowsxp-kb900725-x86-enu_21b409882b7f51a9d09c32bd698504fadb9fc433.exe"+a1);
 	}
@@ -5042,6 +5131,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	
 
 	// Windows Media Player Updates
+	if( sp==1 && (sku & XP_ALL) && _wmplayer_exe>=fver(8,0,0,0) && _wmplayer_exe<fver(8,0,0,4490)) {
+		NN("817787: Security Update Windows Media Player for XP");
+		XX(p1+"windowsmedia8-kb817787-x86-enu_3dd1c7dba24e432e5df843b4bd01d81.exe"+a2);
+	}
+	if( sp==1 && (sku & XP_ALL) && _wmpui_dll>=fver(8,0,0,2) && _wmpui_dll<fver(8,0,0,4496)) {
+		NN("Security Update for Windows Media Player 8 for Windows XP (KB917734)");
+		XX(p1+"windowsmedia8-kb917734-x86-enu_4733e6d1a9dc7f044197a7be6dc83223c797b3cf.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
+					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
+		NN("Security Update for Windows Media Player 6.4 (KB925398)");
+		XX(p3+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
+	}
 	if( sp>=2 && (sku & XP_ALL) && _wmpeffects_dll>=fver(11,0,5721,5145) && _wmpeffects_dll<fver(11,0,5721,5252)) {
 		NN("Security Update for Windows XP (KB954154)");
 		XX(p3+"windowsmedia11-kb954154-x86-enu_9b75815f8c5d57dc8e2e22e221fb1a106f9ce6a0.exe"+a1);
