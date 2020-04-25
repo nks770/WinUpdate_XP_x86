@@ -199,6 +199,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\kb914798.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\kb980195.cpp"
 				>
 			</File>
@@ -290,6 +294,10 @@
 			</File>
 			<File
 				RelativePath=".\kb2900986.h"
+				>
+			</File>
+			<File
+				RelativePath=".\kb914798.h"
 				>
 			</File>
 			<File

@@ -7,6 +7,7 @@
 #include "certificates.h"
 #include "kb980195.h"
 #include "kb2900986.h"
+#include "kb914798.h"
 #include <vector>
 #include <string>
 
@@ -2071,6 +2072,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows XP (KB828035)");
 		XX(p1+"windowsxp-kb828035-x86-enu_d911770163b58b6809b00f033230b46.exe"+a6);
 	}
+	if( sp==1 && (sku & XP_ALL) && !kb914798_installed() ) {
+		NN("Security Update for Windows XP (KB914798)");
+		XX(p1+"windowsxp-kb914798-v2-x86-enu_e1655311aaea236143c52067105754193e90c3ce.exe"+a1);
+	}
 
 
 	// Windows XP SP2 updates
@@ -2591,7 +2596,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB950974)");
 		XX(p3+"WindowsXP-KB950974-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987)) {
+	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
+					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
+	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
 		NN("Security Update for Windows XP (KB924496)");
 		XX(p2+"windowsxp-kb924496-x86-enu_f1e2421551a739eae947590735fb3f4abec82c22.exe"+a1);
 	}
