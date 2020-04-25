@@ -1040,6 +1040,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _agentdpv_dll = getFileVer(msagent+L"\\agentdpv.dll",&status);
 	fver _agentsvr_exe = getFileVer(msagent+L"\\agentsvr.exe",&status);
 
+	fver _gdiplus_dll_1360  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1360_x-ww_24a2ed47\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22319 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22791 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_23084 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23084_x-ww_f3f35550\\GdiPlus.dll",&status);
@@ -1987,6 +1988,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("810833: Security Update (Windows XP)");
 		XX(p1+"q810833_wxp_sp2_45a2502a400329a5db92327f4cb345a441fc1d2e.exe"+a7);
 	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1363))
+	   || ( _gdiplus_dll_1360 < fver(5,1,3102,1360)) )) {
+		NN("Security Update for Windows XP (KB833987)");
+		XX(p1+"windowsxp-kb833987-x86-enu_8af7883db1147e663caee85b7ddea002ad4da772.exe"+a6);
+	}
+
 
 	// Windows XP SP2 updates
 	if((sku & XP_ALL) && (  _cdm_dll      <fver(7,0,6000,374)
