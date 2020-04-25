@@ -146,6 +146,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _axaltocm_dll = getFileVer(System32+L"\\axaltocm.dll",&status);
 	fver _basecsp_dll  = getFileVer(System32+L"\\basecsp.dll",&status);
 	fver _bcsprsrc_dll = getFileVer(System32+L"\\bcsprsrc.dll",&status);
+	fver _bitsprx2_dll = getFileVer(System32+L"\\bitsprx2.dll",&status);
+	fver _bitsprx3_dll = getFileVer(System32+L"\\bitsprx3.dll",&status);
 	fver _blackbox_dll = getFileVer(System32+L"\\blackbox.dll",&status);
 	fver _browser_dll  = getFileVer(System32+L"\\browser.dll",&status);
 	fver _browseui_dll = getFileVer(System32+L"\\browseui.dll",&status);
@@ -257,6 +259,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _licmgr10_dll = getFileVer(System32+L"\\licmgr10.dll",&status);
 	fver _linkinfo_dll = getFileVer(System32+L"\\linkinfo.dll",&status);
 	fver _localspl_dll = getFileVer(System32+L"\\localspl.dll",&status);
+	fver _locator_exe  = getFileVer(System32+L"\\locator.exe",&status);
 	fver _logagent_exe = getFileVer(System32+L"\\logagent.exe",&status);
 	fver _lsasrv_dll   = getFileVer(System32+L"\\lsasrv.dll",&status);
 	fver _magnify_exe  = getFileVer(System32+L"\\magnify.exe",&status);
@@ -309,6 +312,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mshtmled_dll = getFileVer(System32+L"\\mshtmled.dll",&status);
 	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
 	fver _msident_dll  = getFileVer(System32+L"\\msident.dll",&status);
+	fver _msieftp_dll  = getFileVer(System32+L"\\msieftp.dll",&status);
 	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
 	fver _msihnd_dll   = getFileVer(System32+L"\\msihnd.dll",&status);
 	fver _msimsg_dll   = getFileVer(System32+L"\\msimsg.dll",&status);
@@ -409,6 +413,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
 	fver _qdvd_dll     = getFileVer(System32+L"\\qdvd.dll",&status);
 	fver _qedit_dll    = getFileVer(System32+L"\\qedit.dll",&status);
+	fver _qmgr_dll     = getFileVer(System32+L"\\qmgr.dll",&status);
+	fver _qmgrprxy_dll = getFileVer(System32+L"\\qmgrprxy.dll",&status);
 	fver _quartz_dll   = getFileVer(System32+L"\\quartz.dll",&status);
 	fver _query_dll    = getFileVer(System32+L"\\query.dll",&status);
 	fver _rasadhlp_dll = getFileVer(System32+L"\\rasadhlp.dll",&status);
@@ -1828,8 +1834,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Qfecheck.exe Update Check Utility (Q282784)");
 		XX("Extras\\Q282784_WXP_SP1_x86_ENU.exe"+a7);
 	}
+	if( sp>=1 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
+		              ||    _spmsg_dll_ref    <fver(6,1,22,4)
+					  ||    _spuninst_exe_ref <fver(6,1,22,4)
+					  ||    _spupdsvc_exe_ref <fver(6,1,22,4)
+					  ||    _update_exe_ref   <fver(6,1,22,4)
+					  ||    _updspapi_dll_ref <fver(6,1,22,4) )) {
+		NN("Update for Windows XP (KB898461)");
+		XX(p3+"WindowsXP-KB898461-x86-ENU.exe"+a1);
+	}
 
 	// Windows XP SP1 updates
+	if( sp==1 && (sku & XP_ALL) && (
+	      /*(_bitsinst_exe >zero && _bitsinst_exe <fver(6,6,2600,1580))
+	   ||*/ (_bitsprx2_dll >zero && _bitsprx2_dll <fver(6,6,2600,1569))
+	   || (_bitsprx3_dll >zero && _bitsprx3_dll <fver(6,6,2600,1569))
+	   || (_qmgr_dll     >zero && _qmgr_dll     <fver(6,6,2600,1569))
+	   || (_qmgrprxy_dll >zero && _qmgrprxy_dll <fver(6,6,2600,1569))
+	   || (_winhttp_dll  >zero && _winhttp_dll  <fver(5,1,2600,1557))
+	   || (_xpob2res_dll >zero && _xpob2res_dll <fver(5,1,2600,1570)) )) {
+		NN("Update for Background Intelligent Transfer Service (BITS) 2.0 and WinHTTP 5.1 (KB842773)");
+		XX(p1+"windowsxp-kb842773-v2-x86-enu_1d3d2bc417bf9d881206ed238ad6a4a9c189cfb3.exe"+a6);
+	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_mstask_dll   >zero && _mstask_dll   <fver(5,1,2600,1564))
 	   || (_mstinit_exe  >zero && _mstinit_exe  <fver(5,1,2600,1564))
@@ -1953,17 +1979,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB873376)");
 		XX(p1+"windowsxp-kb873376-x86-enu_5c67061f5227844ef8b5f1eec8596bd2520c542d.exe"+a6);
 	}
+	if( sp==1 && (sku & XP_ALL) && _msieftp_dll>zero && _msieftp_dll<fver(6,0,2800,1724)) {
+		NN("Security Update for Windows XP (KB905495)");
+		XX(p1+"windowsxp-kb905495-x86-enu_10db795016004f5543ea1e556c4b41f471f5f99f.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && _locator_exe>zero && _locator_exe<fver(5,1,2600,1147)) {
+		NN("810833: Security Update (Windows XP)");
+		XX(p1+"q810833_wxp_sp2_45a2502a400329a5db92327f4cb345a441fc1d2e.exe"+a7);
+	}
 
 	// Windows XP SP2 updates
-	if( sp>=2 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
-		              ||    _spmsg_dll_ref    <fver(6,1,22,4)
-					  ||    _spuninst_exe_ref <fver(6,1,22,4)
-					  ||    _spupdsvc_exe_ref <fver(6,1,22,4)
-					  ||    _update_exe_ref   <fver(6,1,22,4)
-					  ||    _updspapi_dll_ref <fver(6,1,22,4) )) {
-		NN("Update for Windows XP (KB898461)");
-		XX(p3+"WindowsXP-KB898461-x86-ENU.exe"+a1);
-	}
 	if((sku & XP_ALL) && (  _cdm_dll      <fver(7,0,6000,374)
 		              ||    _wuapi_dll    <fver(7,0,6000,374)
 					  ||    _wuauclt_exe  <fver(7,0,6000,374)
@@ -2948,12 +2973,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows Communication Foundation (KB912817)");
 		XX(p2+"WindowsXP-KB912817-v2-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		                  ( _jgdw400_dll >zero && _jgdw400_dll <fver(106,0,0,0))
-					  ||  ( _jgpl400_dll >zero && _jgpl400_dll <fver( 54,0,0,0)) )) {
-		NN("Security Update for Windows XP (KB918439)");
-		XX(p2+"windowsxp-kb918439-x86-enu_056bf5d0c049e0e8e799593b3508627ee8557dc1.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) && _moviemk_exe>zero && _moviemk_exe<fver(2,1,4027,0)) {
 	//if( sp==3 && (sku & XP_ALL) && _moviemk_exe>zero && _moviemk_exe<fver(2,1,4027,0)) {
 		NN("Security Update for Windows XP (KB975561)");
@@ -2963,12 +2982,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB981997)");
 		XX(p3+"WindowsXP-KB981997-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _hh_exe      >zero && _hh_exe      <fver(5,2,3790,315))
+					  ||  ( _hhctrl_ocx  >zero && _hhctrl_ocx  <fver(5,2,3790,315))
+					  ||  ( _hhsetup_dll >zero && _hhsetup_dll <fver(5,2,3790,315))
+					  ||  ( _itircl_dll  >zero && _itircl_dll  <fver(5,2,3790,315))
+					  ||  ( _itss_dll    >zero && _itss_dll    <fver(5,2,3790,315))))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _hh_exe      >zero && _hh_exe      <fver(5,2,3790,2453))
 					  ||  ( _hhctrl_ocx  >zero && _hhctrl_ocx  <fver(5,2,3790,2453))
 					  ||  ( _hhsetup_dll >zero && _hhsetup_dll <fver(5,2,3790,2453))
 					  ||  ( _itircl_dll  >zero && _itircl_dll  <fver(5,2,3790,2453))
-					  ||  ( _itss_dll    >zero && _itss_dll    <fver(5,2,3790,2453)) )) {
+					  ||  ( _itss_dll    >zero && _itss_dll    <fver(5,2,3790,2453))))) {
 		NN("Security Update for Windows XP (KB896358)");
 		XX(p2+"windowsxp-kb896358-x86-enu_42b05278a6f2ee006072af8830c103eab2ce045f.exe"+a1);
 	}
@@ -4774,6 +4799,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Internet Explorer Updates
+	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
+	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2800,1485))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2800,1469))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1491))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1612))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1612))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1485))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1485)) )) {
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)");
+		XX(p1+"ie6.0sp1-kb867282-windows-2000-xp-x86-enu_261bd11af527fd33c1c30bb16789cfee73d0f7d9.exe"+a6);
+	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3314))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3314))
@@ -5157,6 +5195,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_iecompat_dll      >fver(8,0,6001,19130) && _iecompat_dll      <fver(8,0,6001,23226)) )) {
 		NN("Update for Internet Explorer 8 Compatibility View List for Windows XP (KB2598845)");
 		XX(p3+"IE8-WindowsXP-KB2598845-x86-ENU.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+		                  ( _jgdw400_dll >zero && _jgdw400_dll <fver(106,0,0,0))
+					  ||  ( _jgpl400_dll >zero && _jgpl400_dll <fver( 54,0,0,0)) )) {
+		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB918439)");
+		XX(p1+"ie6.0sp1-kb918439-windows-2000-xp-x86-enu_a6973947012196eb5a2be06bffdc5c19a14209ea.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _jgdw400_dll >zero && _jgdw400_dll <fver(106,0,0,0))
+					  ||  ( _jgpl400_dll >zero && _jgpl400_dll <fver( 54,0,0,0)) )) {
+		NN("Security Update for Windows XP (KB918439)");
+		XX(p2+"windowsxp-kb918439-x86-enu_056bf5d0c049e0e8e799593b3508627ee8557dc1.exe"+a1);
 	}
 
 	// Jscript and Vbscript 5.6 (IE6)
