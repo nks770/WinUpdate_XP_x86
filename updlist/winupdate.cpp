@@ -311,6 +311,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msfeeds_dll  = getFileVer(System32+L"\\msfeeds.dll",&status);
 	fver _msfeedsbs_dll= getFileVer(System32+L"\\msfeedsbs.dll",&status);
 	fver _msftedit_dll = getFileVer(System32+L"\\msftedit.dll",&status);
+	fver _msgsvc_dll   = getFileVer(System32+L"\\msgsvc.dll",&status);
 	fver _mshtml_dll   = getFileVer(System32+L"\\mshtml.dll",&status);
 	fver _mshtmled_dll = getFileVer(System32+L"\\mshtmled.dll",&status);
 	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
@@ -1985,6 +1986,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB919007)");
 		XX(p1+"windowsxp-kb919007-x86-enu_dc2307d635a64c87bbf1f216442104ef4b4ada0b.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1126)) {
+		NN("Q329048: Security Update");
+		XX(p1+"q329048_xp_bdcca3f0c06417895bf3ee93b6db09f6d04d0282.exe"+a7);
+	}
 	if( sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1584)) {
 		NN("Security Update for Windows XP (KB873376)");
 		XX(p1+"windowsxp-kb873376-x86-enu_5c67061f5227844ef8b5f1eec8596bd2520c542d.exe"+a6);
@@ -2059,6 +2064,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_wow32_dll    >zero && _wow32_dll    <fver(5,1,2600,1562)) )) {
 		NN("Security Update for Windows XP (KB840987)");
 		XX(p1+"windowsxp-kb840987-x86-enu_60b89d9ecf98d6f749d0f9c87ff99c4758ef0de7.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_msgsvc_dll >zero && _msgsvc_dll <fver(5,1,2600,1309))
+	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,1309)) )) {
+		NN("Security Update for Microsoft Windows XP (KB828035)");
+		XX(p1+"windowsxp-kb828035-x86-enu_d911770163b58b6809b00f033230b46.exe"+a6);
 	}
 
 
@@ -4903,6 +4914,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1511)) )) {
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)");
 		XX(p1+"ie6.0sp1-kb896688-windows-2000-xp-x86-enu_57950e4fbed19228cd32acf537946a9077d4b6d5.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+		   (_vgx_dll >zero && _vgx_dll <fver(6,0,2800,1580)) )) {
+		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB925486)");
+		XX(p1+"ie6.0sp1-kb925486-windowsxp-x86-enu_08de2f06f64de1e2225032d8e49e45b6f31eb8ba.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3314))
