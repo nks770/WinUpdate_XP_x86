@@ -453,6 +453,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
 	fver _spoolsv_exe  = getFileVer(System32+L"\\spoolsv.exe",&status);
 	fver _srvsvc_dll   = getFileVer(System32+L"\\srvsvc.dll",&status);
+	fver _srrstr_dll   = getFileVer(System32+L"\\srrstr.dll",&status);
 	fver _stclient_dll = getFileVer(System32+L"\\stclient.dll",&status);
 	fver _strmdll_dll  = getFileVer(System32+L"\\strmdll.dll",&status);
 	fver _strmfilt_dll = getFileVer(System32+L"\\strmfilt.dll",&status);
@@ -1948,6 +1949,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB919007)");
 		XX(p1+"windowsxp-kb919007-x86-enu_dc2307d635a64c87bbf1f216442104ef4b4ada0b.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1584)) {
+		NN("Security Update for Windows XP (KB873376)");
+		XX(p1+"windowsxp-kb873376-x86-enu_5c67061f5227844ef8b5f1eec8596bd2520c542d.exe"+a6);
+	}
 
 	// Windows XP SP2 updates
 	if( sp>=2 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
@@ -2886,11 +2891,37 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2726))
 					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,308))
 					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,308)) )) {
-		// KB902400 is replaced by KB912817 on SP2
+		// KB902400 is replaced by KB912817 on SP1 and SP2
 		NN("Security Update for Windows XP (KB902400)");
 		XX(p+"windowsxp-kb902400-x86-enu_a51d743a1925dd0216160daaf9fc4c7a42a27e53.exe"+a1);
 	}*/
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,64))
+					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,64))
+					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,64))
+					  ||  ( _clbcatq_dll  >zero && _clbcatq_dll  <fver(2001,12,4414,64))
+					  ||  ( _colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,64))
+					  ||  ( _comadmin_dll >zero && _comadmin_dll <fver(2001,12,4414,64))
+					  ||  ( _comrepl_dll  >zero && _comrepl_dll  <fver(2001,12,4414,64))
+					  ||  ( _comsvcs_dll  >zero && _comsvcs_dll  <fver(2001,12,4414,64))
+					  ||  ( _comuid_dll   >zero && _comuid_dll   <fver(2001,12,4414,64))
+					  ||  ( _es_dll       >zero && _es_dll       <fver(2001,12,4414,64))
+					  ||  ( _migregdb_exe >zero && _migregdb_exe <fver(2001,12,4414,64))
+					  ||  ( _msdtcprx_dll >zero && _msdtcprx_dll <fver(2001,12,4414,64))
+					  ||  ( _msdtctm_dll  >zero && _msdtctm_dll  <fver(2001,12,4414,64))
+					  ||  ( _msdtcuiu_dll >zero && _msdtcuiu_dll <fver(2001,12,4414,64))
+					  ||  ( _mtxclu_dll   >zero && _mtxclu_dll   <fver(2001,12,4414,64))
+					  ||  ( _mtxoci_dll   >zero && _mtxoci_dll   <fver(2001,12,4414,64))
+					  ||  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1801))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,1801))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,1801))
+					  ||  ( _rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,1361))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,1801))
+					  ||  ( _srrstr_dll   >zero && _srrstr_dll   <fver(5,1,2600,1765))
+					  ||  ( _stclient_dll >zero && _stclient_dll <fver(2001,12,4414,64))
+					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,64))
+					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,64))))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,310))
 					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,310))
 					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,310))
@@ -2913,7 +2944,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2846))
 					  ||  ( _stclient_dll >zero && _stclient_dll <fver(2001,12,4414,310))
 					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,310))
-					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,310)) )) {
+					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,310))))) {
 		NN("Windows Communication Foundation (KB912817)");
 		XX(p2+"WindowsXP-KB912817-v2-x86-ENU.exe"+a1);
 	}
@@ -5570,7 +5601,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB3067903)");   /* WM11 Version */
 		XX(p3+"windowsmedia-kb3067903-x86-enu_510155e48bfc1c08e7f2023fde514be960fa8fed.exe"+a1);
 	}
-	if( sp>=2 && (sku & XP_ALL) && _npdsplay_dll>zero && _npdsplay_dll<fver(3,0,2,629)) {
+	if( sp>=1 && (sku & XP_ALL) && _npdsplay_dll>zero && _npdsplay_dll<fver(3,0,2,629)) {
 		NN("Security Update for Windows Media Player Plug-in (KB911564)");
 		XX(p3+"windowsmedia-kb911564-x86-enu_8f5e0c3d5c50c32200a78dab3ccadb175649858c.exe"+a1);
 	}
