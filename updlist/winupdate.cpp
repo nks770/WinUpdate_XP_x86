@@ -200,6 +200,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
 	fver _gpkcsp_dll   = getFileVer(System32+L"\\gpkcsp.dll",&status);
 	fver _gpprefcl_dll = getFileVer(System32+L"\\gpprefcl.dll",&status);
+	fver _grpconv_exe  = getFileVer(System32+L"\\grpconv.exe",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
@@ -1047,6 +1048,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdiplus_dll_24563 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24563_x-ww_24ee7315\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_20488 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6003.20488_x-ww_40820f9c\\GdiPlus.dll",&status);
 
+	fver _comctl32_dll_1579 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1579_x-ww_7bbf8d08\\comctl32.dll",&status);
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
 	fver _comctl32_dll_1891 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1891_x-ww_7d3bbc01\\comctl32.dll",&status);
@@ -1917,6 +1919,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==1 && (sku & XP_ALL) && _netbt_sys>zero && _netbt_sys<fver(5,1,2600,1243)) {
 		NN("Security Update for Microsoft Windows (KB824105)");
 		XX(p1+"windowsxp-kb824105-x86-enu_92192cc7a15f27eda4f0e6a932db355.exe"+a7);
+	}
+	if( sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1831)) {
+		NN("Security Update for Windows XP (KB917953)");
+		XX(p1+"windowsxp-kb917953-x86-enu_a1c66e00d1a487f25ca16af5a7f858858136c228.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+	   || (_grpconv_exe  >zero && _grpconv_exe  <fver(5,1,2600,1580))
+	   || (_linkinfo_dll >zero && _linkinfo_dll <fver(5,1,2600,1579))
+	   || (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1580))
+	   || (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1584))
+	   || (_sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+	   || ( _comctl32_dll_1579 < fver(6,0,2800,1579)) )) {
+		NN("Security Update for Windows XP (KB841356)");
+		XX(p1+"windowsxp-kb841356-x86-enu_c263b64a1074aa6b5bb34ee43935e7dc82f7acc9.exe"+a6);
 	}
 
 	// Windows XP SP2 updates
@@ -2811,8 +2828,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB901214)");
 		XX(p2+"windowsxp-kb901214-x86-enu_2838831de819dad80ea0edaf5fb1e0bfb3c026c0.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		                  ( _netman_dll    >zero && _netman_dll    <fver(5,1,2600,2743)) )) {
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _netman_dll    >zero && _netman_dll    <fver(5,1,2600,1733))))
+	 ||(sp==2 && (sku & XP_ALL) && (
+		                  ( _netman_dll    >zero && _netman_dll    <fver(5,1,2600,2743))))) {
 		NN("Security Update for Windows XP (KB905414)");
 		XX(p2+"windowsxp-kb905414-x86-enu_9e8fa8909332653de951edcfdb691f2aa148eb1b.exe"+a1);
 	}
@@ -5087,6 +5106,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Jscript and Vbscript 5.6 (IE6)
+	if( sp==1 && (sku & XP_ALL) && _jscript_dll>=fver(5,6,0,0) && _jscript_dll<fver(5,6,0,8831)) {
+		NN("Security Update for Windows XP (KB917344)");
+		XX(p1+"windowsxp-kb917344-x86-enu_9c0c688c3e5c11a1b2ce0666117dc193823367b0.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && 
 		( _jscript_dll <= fver(5,6,0,8835) && _vbscript_dll <= fver(5,6,0,8835)) &&
 		(                 (_jscript_dll >=fver(5,6,0,0) && _jscript_dll <fver(5,6,0,8835))
