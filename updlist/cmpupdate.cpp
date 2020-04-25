@@ -158,11 +158,11 @@ void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,w
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
-	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
+//	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
 	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
-	fver _msihnd_dll   = getFileVer(System32+L"\\msihnd.dll",&status);
-	fver _msimsg_dll   = getFileVer(System32+L"\\msimsg.dll",&status);
-	fver _msisip_dll   = getFileVer(System32+L"\\msisip.dll",&status);
+//	fver _msihnd_dll   = getFileVer(System32+L"\\msihnd.dll",&status);
+//	fver _msimsg_dll   = getFileVer(System32+L"\\msimsg.dll",&status);
+//	fver _msisip_dll   = getFileVer(System32+L"\\msisip.dll",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
 	fver _wuapi_dll    = getFileVer(System32+L"\\wuapi.dll",&status);
@@ -177,18 +177,17 @@ void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,w
 
 	fver _mbsa_exe     = getFileVer(MBSA+L"\\mbsa.exe",&status);
 	fver _mbsacli_exe  = getFileVer(MBSA+L"\\mbsacli.exe",&status);
-	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
+//	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
 
 	// Flag updates;
-	if((sku & XP_ALL) && (  _msi_dll      <fver(3,1,4000,2435)
-					  ||    _msiexec_exe  <fver(3,1,4000,1823)
-					  ||    _msihnd_dll   <fver(3,1,4000,1823)
-					  ||    _msimsg_dll   <fver(3,1,4000,1823)
-					  ||    _msisip_dll   <fver(3,1,4000,1823) )) {
-		NN("Microsoft Windows Installer 3.1");
-		XX(p+"WindowsInstaller-KB893803-v2-x86.exe"+a1);
-	}
-
+//	if((sku & XP_ALL) && (  _msi_dll      <fver(3,1,4000,2435)
+//					  ||    _msiexec_exe  <fver(3,1,4000,1823)
+//					  ||    _msihnd_dll   <fver(3,1,4000,1823)
+//					  ||    _msimsg_dll   <fver(3,1,4000,1823)
+//					  ||    _msisip_dll   <fver(3,1,4000,1823) )) {
+//		NN("Microsoft Windows Installer 3.1");
+//		XX(p+"WindowsInstaller-KB893803-v2-x86.exe"+a1);
+//	}
 	if((sku & XP_ALL) && (  _cdm_dll      <fver(7,0,6000,374)
 		              ||    _wuapi_dll    <fver(7,0,6000,374)
 					  ||    _wuauclt_exe  <fver(7,0,6000,374)
@@ -206,13 +205,17 @@ void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,w
 	if((sku & XP_ALL) && (  _mbsa_exe     <fver(2,2,2170,0)
 					  ||    _mbsacli_exe  <fver(2,2,2170,0) )) {
 		NN("Microsoft Baseline Security Analyzer 2.2");
-		XX("msiexec /i MBSA\\MBSASetup-x86-EN.msi /passive /norestart");
+		if(_msiexec_exe  <fver(3,0,0,0)) {
+			XX("msiexec /i MBSA\\MBSASetup-x86-EN.msi /qb");
+		} else {
+			XX("msiexec /i MBSA\\MBSASetup-x86-EN.msi /passive /norestart");
+		}
 	}
 
-	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,0,2195,4605) )) {
-		NN("Qfecheck.exe Update Check Utility (Q282784)");
-		XX("Extras\\Q282784_WXP_SP1_x86_ENU.exe -u -n -o -z");
-	}
+//	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,0,2195,4605) )) {
+//		NN("Qfecheck.exe Update Check Utility (Q282784)");
+//		XX("Extras\\Q282784_WXP_SP1_x86_ENU.exe -u -n -o -z");
+//	}
 
 }
 
