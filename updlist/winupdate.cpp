@@ -181,7 +181,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
+	fver _dplayx_dll   = getFileVer(System32+L"\\dplayx.dll",&status);
 	fver _dpnet_dll    = getFileVer(System32+L"\\dpnet.dll",&status);
+	fver _dpwsockx_dll = getFileVer(System32+L"\\dpwsockx.dll",&status);
 	fver _drmclien_dll = getFileVer(System32+L"\\drmclien.dll",&status);
 	fver _drmstor_dll  = getFileVer(System32+L"\\drmstor.dll",&status);
 	fver _drmupgds_exe = getFileVer(System32+L"\\drmupgds.exe",&status);
@@ -205,6 +207,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
 	fver _gpkcsp_dll   = getFileVer(System32+L"\\gpkcsp.dll",&status);
 	fver _gpprefcl_dll = getFileVer(System32+L"\\gpprefcl.dll",&status);
+	fver _gptext_dll   = getFileVer(System32+L"\\gptext.dll",&status);
 	fver _grpconv_exe  = getFileVer(System32+L"\\grpconv.exe",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
@@ -244,6 +247,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
 	fver _iphlpapi_dll = getFileVer(System32+L"\\iphlpapi.dll",&status);
 	fver _iprtrmgr_dll = getFileVer(System32+L"\\iprtrmgr.dll",&status);
+	fver _ipsecsnp_dll = getFileVer(System32+L"\\ipsecsnp.dll",&status);
+	fver _ipsecsvc_dll = getFileVer(System32+L"\\ipsecsvc.dll",&status);
+	fver _ipsmsnap_dll = getFileVer(System32+L"\\ipsmsnap.dll",&status);
 	fver _ipv6_exe     = getFileVer(System32+L"\\ipv6.exe",&status);
 	fver _ipv6mon_dll  = getFileVer(System32+L"\\ipv6mon.dll",&status);
 	fver _isign32_dll  = getFileVer(System32+L"\\isign32.dll",&status);
@@ -413,6 +419,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pnrpnsp_dll  = getFileVer(System32+L"\\pnrpnsp.dll",&status);
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
+	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
@@ -516,6 +523,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _windowscodecsext_dll = getFileVer(System32+L"\\windowscodecsext.dll",&status);
 	fver _winhttp_dll  = getFileVer(System32+L"\\winhttp.dll",&status);
 	fver _wininet_dll  = getFileVer(System32+L"\\wininet.dll",&status);
+	fver _winipsec_dll = getFileVer(System32+L"\\winipsec.dll",&status);
 	fver _winlogon_exe = getFileVer(System32+L"\\winlogon.exe",&status);
 	fver _winmm_dll    = getFileVer(System32+L"\\winmm.dll",&status);
 	fver _winspool_drv = getFileVer(System32+L"\\winspool.drv",&status);
@@ -770,6 +778,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
 	fver _ipnat_sys    = getFileVer(Drivers+L"\\ipnat.sys",&status);
+	fver _ipsec_sys    = getFileVer(Drivers+L"\\ipsec.sys",&status);
 	fver _irbus_sys    = getFileVer(Drivers+L"\\irbus.sys",&status);
 	fver _kmixer_sys   = getFileVer(Drivers+L"\\kmixer.sys",&status);
 	fver _ks_sys       = getFileVer(Drivers+L"\\ks.sys",&status);
@@ -789,6 +798,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
+	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
 	fver _rdbss_sys    = getFileVer(Drivers+L"\\rdbss.sys",&status);
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
@@ -2076,6 +2086,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB914798)");
 		XX(p1+"windowsxp-kb914798-v2-x86-enu_e1655311aaea236143c52067105754193e90c3ce.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_html32_cnv   >zero && _html32_cnv   <fver(2003,1100,5426,0))
+	   || (_msconv97_dll >zero && _msconv97_dll <fver(2003,1100,5426,0)) )) {
+		NN("823559: Security Update for Microsoft Windows");
+		XX(p1+"windowsxp-kb823559-x86-enu_3a1b8659662198db00ff48a89d4689f.exe"+a7);
+	}
+	if( sp==1 && (sku & XP_ALL) && _raspptp_sys>zero && _raspptp_sys<fver(5,1,2600,1129)) {
+		NN("Security Update for Windows XP (329834)");
+		XX(p1+"q329834_wxp_sp2_en_be9ddcff9200ff0d4879ed5939e73ed.exe"+a7);
+	}
 
 
 	// Windows XP SP2 updates
@@ -2643,11 +2663,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB924667)");
 		XX(p2+"windowsxp-kb924667-x86-enu_9016dbabca407c3278219baba256111e131330a3.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,81,1124,0)) {
+	if((sp==1 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,71,9053,0))
+	 ||(sp==2 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,81,1124,0))) {
 		NN("Security Update for Windows XP (KB911562)");
 		XX(p2+"windowsxp-kb911562-x86-enu_7d16ad9701607a354e0ca2602a3fef485c8d9929.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _rasmans_dll>zero && _rasmans_dll<fver(5,1,2600,2936)) {
+	if(( sp==1 && (sku & XP_ALL) && (
+	    (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1581))
+	 || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1842))
+	 || (_ipsecsnp_dll >zero && _ipsecsnp_dll <fver(5,1,2600,1842))
+	 || (_ipsecsvc_dll >zero && _ipsecsvc_dll <fver(5,1,2600,1842))
+	 || (_ipsmsnap_dll >zero && _ipsmsnap_dll <fver(5,1,2600,1842))
+	 || (_oakley_dll   >zero && _oakley_dll   <fver(5,1,2600,1842))
+	 || (_polstore_dll >zero && _polstore_dll <fver(5,1,2600,1842))
+	 || (_rasmans_dll  >zero && _rasmans_dll  <fver(5,1,2600,1861))
+	 || (_winipsec_dll >zero && _winipsec_dll <fver(5,1,2600,1842)) ))
+	 ||( sp==2 && (sku & XP_ALL) && _rasmans_dll>zero && _rasmans_dll<fver(5,1,2600,2936))) {
 		NN("Security Update for Windows XP (KB911280)");
 		XX(p2+"windowsxp-kb911280-v2-x86-enu_3a49ae105416eb7b37dbbaccbedc9c20069ef1d9.exe"+a1);
 	}
@@ -3098,7 +3129,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB873339)");
 		XX(p2+"windowsxp-kb873339-x86-enu_fd28098f5f0e8e629e5b7f64e5cd6b6b722a35a7.exe"+a6);
 	}
-	if( sp==2 && (sku & XP_ALL) && _spoolsv_exe>zero && _spoolsv_exe<fver(5,1,2600,2696)) {
+	if(( sp==1 && (sku & XP_ALL) && (
+		                  ( _spoolsv_exe  >zero && _spoolsv_exe  <fver(5,1,2600,1699))
+					  ||  ( _win32spl_dll >zero && _win32spl_dll <fver(5,1,2600,1699))))
+	 ||(sp==2 && (sku & XP_ALL) && _spoolsv_exe>zero && _spoolsv_exe<fver(5,1,2600,2696)) ) {
 		NN("Security Update for Windows XP (KB896423)");
 		XX(p2+"windowsxp-kb896423-x86-enu_baba29a9d96e44e3f55045f749cc82cfa4038f0b.exe"+a1);
 	}
@@ -4889,6 +4923,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //		} else {
 //			XX("Extras\\rktools.exe /R:N /C:\"msiexec /i rktools.msi /passive\"");
 //		}
+	}
+
+	// DirectX Updates
+	if( sp==1 && (sku & XP_ALL) 
+		&& regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status)==L"4.08.01.0810"
+		&& (
+	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,1,2600,1517))
+	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,1,2600,1517)) )) {
+		NN("Security Update for Windows XP (KB839643)");
+		XX(p1+"windowsxp-kb839643-x86-enu_57fb5ffbac48b02d0452e07fb843834510077477.exe"+a6);
 	}
 
 	// Internet Explorer Updates
