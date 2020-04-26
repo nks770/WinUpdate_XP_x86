@@ -927,6 +927,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _helpctr_exe  = getFileVer(helpctr_binaries+L"\\helpctr.exe",&status);
 	fver _helphost_exe = getFileVer(helpctr_binaries+L"\\helphost.exe",&status);
 	fver _helpsvc_exe  = getFileVer(helpctr_binaries+L"\\helpsvc.exe",&status);
+	fver _HscUpd_exe   = getFileVer(helpctr_binaries+L"\\HscUpd.exe",&status);
 	fver _pchsvc_dll   = getFileVer(helpctr_binaries+L"\\pchsvc.dll",&status);
 	fver _srdiag_exe   = getFileVer(Restore+L"\\srdiag.exe",&status);
 	fver _uploadm_exe  = getFileVer(UploadLB+L"\\uploadm.exe",&status);
@@ -2154,6 +2155,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB835732)");
 		XX(p1+"windowsxp-kb835732-x86-enu_99fc98fc8e8cbf6720f28028a1f05eb.exe"+a6);
 	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_helpctr_exe >zero && _helpctr_exe <fver(5,1,2600,1515))
+	   || (_HscUpd_exe  >zero && _HscUpd_exe  <fver(5,1,2600,1515)) )) {
+		NN("Security Update for Windows XP (KB840374)");
+		XX(p1+"windowsxp-kb840374-x86-enu_26d1a97f5266edb9af508be2cb8242d.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && _netapi32_dll>zero && _netapi32_dll<fver(5,1,2600,1874)) {
+		NN("Security Update for Windows XP (KB921883)");
+		XX(p1+"windowsxp-kb921883-x86-enu_80bd35bdac09cbe1974111ee623b36f016b639be.exe"+a1);
+	}
 
 
 	// Windows XP SP2 updates
@@ -2421,8 +2432,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB918118)");
 		XX(p2+"windowsxp-kb918118-x86-enu_8c38e06d795c410b8a072506af40ad81d64f1d6d.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ((_mswrd6_wpc>zero && _mswrd6_wpc<fver(10,0,803,2))
-	       || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885836") )) {
+	if((sp==1 && (sku & XP_ALL) && (
+		      (_mswrd632_wpc>zero && _mswrd632_wpc<fver(2004,10,25,0))
+		   || (_wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,1606))
+	       || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885836")))
+	 ||(sp==2 && (sku & XP_ALL) && ((_mswrd6_wpc>zero && _mswrd6_wpc<fver(10,0,803,2))
+	       || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885836")))) {
 		NN("Security Update for Windows XP (KB885836)");
 		XX(p2+"windowsxp-kb885836-x86-enu_f87074f42947ee275445bdd34dda472871ed3b41.exe"+a6);
 	}
@@ -2801,11 +2816,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB979683)");
 		XX(p2+"windowsxp-kb979683-x86-enu_8f9e90bf9b6ad58fd264cc1cf0f187f9a83223a5.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,2974)) {
+	if( sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1885)) {
 		// KB923414 is replaced by KB971468 on SP2
 		NN("Security Update for Windows XP (KB923414)");
-		XX(p+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
-	}*/
+		XX(p1+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
 	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
 		NN("Security Update for Windows XP (KB971468)");
