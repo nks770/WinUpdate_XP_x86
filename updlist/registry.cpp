@@ -107,6 +107,63 @@ DWORD regQueryDWORD(const std::wstring& lpSubKey,const std::wstring& lpValueName
 	return rval;
 }
 
+LPBYTE regQueryBinaryData(const std::wstring& lpSubKey,const std::wstring& lpValueName,int* status) {
+	
+	*status=0;
+	LPBYTE lpData=NULL;
+
+	HKEY hKey = HKEY_LOCAL_MACHINE;
+	DWORD ulOptions = NULL;
+	REGSAM samDesired = KEY_QUERY_VALUE; //KEY_ALL_ACCESS;
+	HKEY phkResult = NULL;
+	//wprintf(L"Accessing: %ls\n",lpSubKey.c_str());
+	LONG lRet = RegOpenKeyExW(hKey,lpSubKey.c_str(),ulOptions,samDesired,&phkResult);
+
+	if (lRet != ERROR_SUCCESS) {
+		*status=-1;
+		return NULL;
+	}
+
+	LPDWORD lpReserved=NULL;
+	DWORD lpType;
+	DWORD lpcbData;
+	
+	lRet = RegQueryValueExW(phkResult,lpValueName.c_str(),NULL,NULL,NULL,&lpcbData);
+	if (lRet != ERROR_SUCCESS) {
+		*status=-1;
+		return NULL;
+	}
+
+	lpData=(LPBYTE)malloc(lpcbData);
+
+	lRet = RegQueryValueExW(phkResult,lpValueName.c_str(),lpReserved,&lpType,(LPBYTE)lpData,&lpcbData);
+	if (lRet != ERROR_SUCCESS) {
+		*status=-2;
+		free(lpData);
+		return NULL;
+	}
+
+	lRet = RegCloseKey(phkResult);
+	if (lRet != ERROR_SUCCESS) {
+		*status=-4;
+		free(lpData);
+		return NULL;
+	}
+
+	switch(lpType) {
+		case REG_BINARY:
+			*status=(int)lpcbData;
+			return lpData;
+			break;
+		default:
+			*status=-3;
+			return NULL;
+			break;
+	}
+	free(lpData);
+	return NULL;
+}
+
 bool regTestKey(const std::wstring& lpSubKey) {
 
 	HKEY hKey = HKEY_LOCAL_MACHINE;
