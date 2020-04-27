@@ -3221,7 +3221,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
 			  ||  ( _rtcimsp_dll  >zero && _rtcimsp_dll  <fver(4,0,3599,0)) )) {
 		NN("Security Update for Windows Messenger (KB887472)");
-		XX(p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe"+a2);
+		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe"+a2);
 	}
 	if( sp==2 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,3001)) {
 		NN("Security Update for Windows Messenger (KB887472)");
