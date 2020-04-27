@@ -890,8 +890,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sysmod_dll   = getFileVer(usmt+L"\\sysmod.dll",&status);
 	fver _sysmoda_dll  = getFileVer(usmt+L"\\sysmoda.dll",&status);
 
-	fver _msmsgs_exe   = getFileVer(Messenger+L"\\msmsgs.exe",&status);
 	fver _msgsc_dll    = getFileVer(Messenger+L"\\msgsc.dll",&status);
+	fver _msgslang_dll = getFileVer(Messenger+L"\\msgslang.dll",&status);
+	fver _msmsgs_exe   = getFileVer(Messenger+L"\\msmsgs.exe",&status);
+	fver _msmsgsin_exe = getFileVer(Messenger+L"\\msmsgsin.exe",&status);
+	fver _rtcimsp_dll  = getFileVer(Messenger+L"\\rtcimsp.dll",&status);
 
 	fver _callcont_dll = getFileVer(NetMeeting+L"\\callcont.dll",&status);
 	fver _mst120_dll   = getFileVer(NetMeeting+L"\\mst120.dll",&status);
@@ -1910,7 +1913,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==1 && (sku & XP_ALL) && (_flash_ocx>zero || _swflash_ocx>zero) && _flash_ocx<fver(6,0,84,0)) {
 		NN("Security Update for Flash Player (KB913433)");
-		XX(p3+"Windows-KB913433-x86-ENU.exe"+a2);
+		XX(p1+"Windows-KB913433-x86-ENU.exe"+a2);
 	}
 	if( sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,105)) {
 		NN("329170: Security Update");
@@ -1954,7 +1957,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_odbccp32_dll >fver(3,520,9002,0)   && _odbccp32_dll <fver(3,520,9042,0))
 	   || (_oledb32_dll  >fver(2,70,9002,0)    && _oledb32_dll  <fver(2,71,9042,0)) )) {
 		NN("Security Update for Microsoft Data Access Components (KB823718)");
-		XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
+		//XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
+		XX(sw+p1+"ENU_Q832483_MDAC_x86.EXE /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
 	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1789))
@@ -3210,6 +3214,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB896358)");
 		XX(p2+"windowsxp-kb896358-x86-enu_42b05278a6f2ee006072af8830c103eab2ce045f.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && ( 
+                  ( _msgsc_dll    >zero && _msgsc_dll    <fver(4,7,0,2009))
+			  ||  ( _msgslang_dll >zero && _msgslang_dll <fver(4,7,0,2009))
+			  ||  ( _msmsgs_exe   >zero && _msmsgs_exe   <fver(4,7,0,2010))
+			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
+			  ||  ( _rtcimsp_dll  >zero && _rtcimsp_dll  <fver(4,0,3599,0)) )) {
+		NN("Security Update for Windows Messenger (KB887472)");
+		XX(p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe"+a2);
+	}
 	if( sp==2 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,3001)) {
 		NN("Security Update for Windows Messenger (KB887472)");
 		XX(p2+"windowsxp-kb887472-x86-enu_5edc4ccc759d65f4afba8542435172ed54515135.exe"+a6);
@@ -3299,7 +3312,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB901190)");
 		XX(p2+"windowsxp-kb901190-x86-enu_2497a4e9957ddf13e2343858608f89ef6132efb2.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _esent_dll>zero && _esent_dll<fver(5,1,2600,2780)) {
+	if((sp==1 && (sku & XP_ALL) && _esent_dll>zero && _esent_dll<fver(5,1,2600,1763))
+	 ||(sp==2 && (sku & XP_ALL) && _esent_dll>zero && _esent_dll<fver(5,1,2600,2780))) {
 		NN("Update for Windows XP (KB910437)");
 		XX(p2+"windowsxp-kb910437-x86-enu_6045df96253a6130f973f5f6ac9d10988ba1b01c.exe"+a1);
 	}
@@ -5000,7 +5014,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 
-	if( sp>=2 &&  (*wga || ( (sku & XP_ALL)
+	if( sp>=1 &&  (*wga || ( (sku & XP_ALL)
 		    && ( _LegitCheckControl_dll>zero && _LegitCheckControl_dll<fver(1,9,40,0))
 			&& ( _WgaLogon_dll>zero          && _WgaLogon_dll         <fver(1,9,40,0))
 			&& ( _WgaTray_exe>zero           && _WgaTray_exe          <fver(1,9,40,0)) ))) {
@@ -5013,7 +5027,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		    +"popd\n"
 		    +"rd /S /Q %TEMP%\\KB905474");
 	}
-	else if( sp>=2 && ( _LegitCheckControl_dll<fver(1,7,69,2))) {
+	else if( sp>=1 && ( _LegitCheckControl_dll<fver(1,7,69,2))) {
 		NN("Windows Genuine Advantage Validation Tool (KB892130)");
 		XX(p3+"WindowsXP-KB892130-x86-ENU.exe"+a1);
 	}
