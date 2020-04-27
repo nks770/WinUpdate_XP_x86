@@ -2165,6 +2165,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB921883)");
 		XX(p1+"windowsxp-kb921883-x86-enu_80bd35bdac09cbe1974111ee623b36f016b639be.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,70,1113,0)) {
+		NN("Security Update for Windows XP (KB924191)");
+		XX(p1+"windowsxp-kb924191-x86-enu_5e3ee7c5954da4cd38a5121623c05d617e547951.exe"+a1);
+	}
 
 
 	// Windows XP SP2 updates
@@ -2644,9 +2648,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB946026)");
 		XX(p2+"windowsxp-kb946026-x86-enu_09eb2e3ee66c5e1be768a4fee49f9f47a0f0b978.exe"+a1);
 	}
-	if(sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
+	if((sp==1 && (sku & XP_ALL) && ( 
+		                  (_6to4svc_dll  >zero && _6to4svc_dll  <fver(5,1,2600,1886))
+					  ||  (_inetmib1_dll >zero && _inetmib1_dll <fver(5,1,2600,1886))
+					  ||  (_iphlpapi_dll >zero && _iphlpapi_dll <fver(5,1,2600,1886))
+					  ||  (_ipv6_exe     >zero && _ipv6_exe     <fver(5,1,2600,1886))
+					  ||  (_ipv6mon_dll  >zero && _ipv6mon_dll  <fver(5,1,2600,1886))
+					  ||  (_netsh_exe    >zero && _netsh_exe    <fver(5,1,2600,1886))
+					  ||  (_tcpip6_sys   >zero && _tcpip6_sys   <fver(5,1,2600,1886))
+					  ||  (_tunmp_sys    >zero && _tunmp_sys    <fver(5,1,2600,1886))
+					  ||  (_ws2_32_dll   >zero && _ws2_32_dll   <fver(5,1,2600,1886))
+					  ||  (_wship6_dll   >zero && _wship6_dll   <fver(5,1,2600,1886)) ))
+	 ||(sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
 					  || (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,2975))
-					  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB922819"))) {
+					  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB922819")))) {
 		// KB922819 is replaced by KB978338 on SP2, but is a prerequisite to KB920342
 		NN("Security Update for Windows XP (KB922819)");
 		XX(p2+"windowsxp-kb922819-x86-enu_e4dceecdd4a72e5ad91cc78fe5f4572f91ee5db0.exe"+a1);
@@ -3245,14 +3260,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB911927)");
 		XX(p2+"windowsxp-kb911927-x86-enu_db8cbad537f3f0453deac488f8eb629b3c3a832b.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _cscdll_dll   >zero && _cscdll_dll   <fver(5,1,2600,1599))
+					  ||  ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,1597))
+					  ||  ( _mrxsmb_sys   >zero && _mrxsmb_sys   <fver(5,1,2600,1599))
+					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1605))
+					  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1605))
+					  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1605))
+					  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1605))
+					  ||  ( _rdbss_sys    >zero && _rdbss_sys    <fver(5,1,2600,1599))
+					  ||  ( _shsvcs_dll   >zero && _shsvcs_dll   <fver(6,0,2800,1605))))
+	 ||(sp==2 && (sku & XP_ALL) && (
 		                  ( _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2525))
 					  ||  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,2541))
-					  ||  ( _rdbss_sys  >zero && _rdbss_sys  <fver(5,1,2600,2541)) )) {
+					  ||  ( _rdbss_sys  >zero && _rdbss_sys  <fver(5,1,2600,2541))))) {
 		NN("Security Update for Windows XP (KB885835)");
 		XX(p2+"windowsxp-kb885835-x86-enu_920ecebf9cd90610ec67a305820f98e4186ca748.exe"+a6);
 	}
-	if( sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698)) {
+	if((sp==1 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1701))
+	 ||(sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698))) {
 		NN("Security Update for Windows XP (KB899587)");
 		XX(p2+"windowsxp-kb899587-x86-enu_95ef03f0da9761b044b9a98d445af90266777ea8.exe"+a1);
 	}
