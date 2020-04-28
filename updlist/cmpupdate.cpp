@@ -41,7 +41,13 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
-	fver _D3DCompiler_43 = getFileVer(System32+L"\\D3DCompiler_43.dll",&status);
+	fver _D3DCompiler_42_dll = getFileVer(System32+L"\\D3DCompiler_42.dll",&status);
+	fver _d3dcsx_42_dll  = getFileVer(System32+L"\\d3dcsx_42.dll",&status);
+	fver _d3dx10_42_dll  = getFileVer(System32+L"\\d3dx10_42.dll",&status);
+	fver _d3dx11_42_dll  = getFileVer(System32+L"\\d3dx11_42.dll",&status);
+	fver _D3DX9_42_dll   = getFileVer(System32+L"\\D3DX9_42.dll",&status);
+
+	fver _D3DCompiler_43_dll = getFileVer(System32+L"\\D3DCompiler_43.dll",&status);
 	fver _d3dcsx_43_dll  = getFileVer(System32+L"\\d3dcsx_43.dll",&status);
 	fver _d3dx10_43_dll  = getFileVer(System32+L"\\d3dx10_43.dll",&status);
 	fver _d3dx11_43_dll  = getFileVer(System32+L"\\d3dx11_43.dll",&status);
@@ -56,7 +62,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	bool kb932823_ok = false;
 
 	// Flag updates;
-	if((sku & XP_ALL) && (  _D3DCompiler_43 <fver(9,29,952,3111)
+	if( sp>1 && (sku & XP_ALL) && (  _D3DCompiler_43_dll <fver(9,29,952,3111)
 		              ||    _d3dcsx_43_dll  <fver(9,29,952,3111)
 					  ||    _d3dx10_43_dll  <fver(9,29,952,3111)
 					  ||    _d3dx11_43_dll  <fver(9,29,952,3111)
@@ -67,6 +73,18 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			+"start /wait DXSETUP.exe /silent\n"
 			+"popd\n"
 			+"rd /S /Q %TEMP%\\directx_Jun2010_redist");
+	}
+	else if( sp<2 && (sku & XP_ALL) && (  _D3DCompiler_42_dll <fver(9,27,952,3022)
+		              ||    _d3dcsx_42_dll  <fver(9,27,952,3022)
+					  ||    _d3dx10_42_dll  <fver(9,27,952,3001)
+					  ||    _d3dx11_42_dll  <fver(9,27,952,3022)
+					  ||    _D3DX9_42_dll   <fver(9,27,952,3001) )) {
+		NN("DirectX End-User Runtimes (August 2009)");
+		XX(std::string(p+"directx_aug2009_redist.exe /Q /C /T:%TEMP%\\directx_aug2009_redist\n")
+			+"pushd %TEMP%\\directx_aug2009_redist\n"
+			+"start /wait DXSETUP.exe /silent\n"
+			+"popd\n"
+			+"rd /S /Q %TEMP%\\directx_aug2009_redist");
 	}
 
 	if( sp>=2 && ( sku & XP_MCE2005 ) && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
@@ -83,10 +101,28 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 							               +"|Update Rollup 2, then try again.");
 		}
 	}
-	else if( sp>=2 && !( sku & XP_MCE2005 ) && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
+	else if( sp>=2 && !( sku & XP_MCE2005 ) && (  _wmp_dll <fver(11,0,5721,5145) )) {
 		NN("Windows Media Player 11");
 		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
 	}
+	else if( sp>=1 && ( sku & XP_ALL ) && ( _wmp_dll <fver(10,0,0,2980) )) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Windows Media Player 11 only installs on")
+			                               +"|Windows XP Serivce Pack 2 or higher."
+							               +"| "
+										   +"|Proceeding to install Media Player 10.");
+		NN("Windows Media Player 10");
+//		XX("\"Windows Media Player\\MP10Setup.exe\" /Q");
+		XX("\"Windows Media Player\\MP10Setup.exe\" /q:A /c:\"setup_wm.exe /Q /R:N /DisallowSystemRestore\"");
+	}
+	else if( sp<2 ) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Windows Media Player 11 is only for")
+			                               +"|Windows XP Serivce Pack 2 or higher."
+							               +"| "
+										   +"|No available Windows Media Player upgrade.");
+	}
+
 	if( sp==2 && (sku & XP_ALL) && _msctf_dll<fver(5,1,2600,3319)) {
 		// If MSCTF.dll is already on the system, but not the required version, then
 		// KB932823 needs to be installed, and a system reboot will be needed so that the
@@ -126,6 +162,13 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			( sp==2 || (sp==3 && _msctf_dll>fver()))) {
 		NN("Internet Explorer 8 for Windows XP");
 		XX("\"Internet Explorer\\IE8-WindowsXP-x86-ENU.EXE\" /passive /update-no");
+	}
+	if( sp<2 ) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Internet Explorer 7 and 8 are only for")
+			                               +"|Windows XP Serivce Pack 2 or higher."
+							               +"| "
+										   +"|No available Internet Explorer upgrade.");
 	}
 
 }
