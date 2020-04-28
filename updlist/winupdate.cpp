@@ -1922,10 +1922,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("329170: Security Update");
 		XX(p1+"q329170_wxp_sp2_en_90a3d54a8af7b392e7b3ff4deddc745.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,4,2600,1106) && _quartz_dll<fver(6,4,2600,1738)) {
-		NN("Security Update for Windows XP (KB904706)");
-		XX(p1+"windowsxp-kb904706-v2-x86-enu_ec909ee2bab6b15d7d3545a1eaf07bbb066e038b.exe"+a1);
-	}
 	if( sp==1 && (sku & XP_ALL) && _ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,1217)) {
 		NN("Security Update for Windows XP (815021)");
 		XX(p1+"q815021_wxp_sp2_x86_enu_b56c13ca24cdeefbe85e72cdbf34fb0.exe"+a7);
@@ -5056,6 +5052,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// DirectX Updates
+	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,4,2600,1106) && _quartz_dll<fver(6,4,2600,1738)) {
+		NN("Security Update for Windows XP (KB904706)");
+		XX(p1+"windowsxp-kb904706-v2-x86-enu_ec909ee2bab6b15d7d3545a1eaf07bbb066e038b.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,5,1,900) && _quartz_dll<fver(6,5,1,907)) {
+		NN("Security Update for DirectX 9 for Windows XP (KB904706)");
+		XX(p1+"windowsxp-kb904706-dx9-x86-enu_2ecaf33bde917cd33eaf2c8e0459a72c4bff0ce9.exe"+a1);
+	}
 	if( sp==1 && (sku & XP_ALL) 
 		&& regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status)==L"4.08.01.0810"
 		&& (
@@ -5613,6 +5617,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3349)) {
 		NN("Security Update for Windows Media Player 9 (KB917734)");
 		XX(p1+"windowsmedia9-kb917734-x86-enu_6e46e8d786614f9306b1307c2991e5acaa4dceac.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,4036)) {
+		NN("Security Update for Windows Media Player 10 for Windows XP (KB917734)");
+		XX(p1+"windowsmedia10-kb917734-x86-enu_499fe88d62843835153a4225712e1b2f19120527.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
 					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
