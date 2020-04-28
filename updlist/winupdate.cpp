@@ -5610,6 +5610,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 8 for Windows XP (KB917734)");
 		XX(p1+"windowsmedia8-kb917734-x86-enu_4733e6d1a9dc7f044197a7be6dc83223c797b3cf.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3349)) {
+		NN("Security Update for Windows Media Player 9 (KB917734)");
+		XX(p1+"windowsmedia9-kb917734-x86-enu_6e46e8d786614f9306b1307c2991e5acaa4dceac.exe"+a1);
+	}
 	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
 					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
 		NN("Security Update for Windows Media Player 6.4 (KB925398)");
