@@ -53,6 +53,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string p2=p+"SP2\\";
 	const std::string p3=p+"SP3\\";
 	const std::string vcredist=p+"vcredist\\";
+	const std::string mstsc=p+"mstsc\\";
 	const std::string np="NetFx\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string a2=" /Q";
@@ -958,6 +959,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
 	fver _wmiprvsd_dll = getFileVer(wbem+L"\\wmiprvsd.dll",&status);
 	fver _wmiprvse_exe = getFileVer(wbem+L"\\wmiprvse.exe",&status);
+
+	fver DirectXVersion = fver(regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status).c_str());
 
 	fver _agcore_dll = getFileVer(MicrosoftSilverlight+L"\\agcore.dll",&status);
 	fver _slup_exe = getFileVer(MicrosoftSilverlight+L"\\slup.exe",&status);
@@ -3137,6 +3140,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB902400)");
 		XX(p+"windowsxp-kb902400-x86-enu_a51d743a1925dd0216160daaf9fc4c7a42a27e53.exe"+a1);
 	}*/
+	if( sp==1 && (sku & XP_ALL) && _srrstr_dll>zero && _srrstr_dll<fver(5,1,2600,1765)) {
+		NN("Update for Windows XP (KB835409)");
+		XX(p1+"windowsxp-kb835409-x86-enu_bfb2828c3da695a07dfd25d76110cd35da03e044.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,64))
 					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,64))
@@ -3218,7 +3225,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
                   ( _msgsc_dll    >zero && _msgsc_dll    <fver(4,7,0,2009))
 			  ||  ( _msgslang_dll >zero && _msgslang_dll <fver(4,7,0,2009))
 			  ||  ( _msmsgs_exe   >zero && _msmsgs_exe   <fver(4,7,0,2010))
-			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
+//			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
 			  ||  ( _rtcimsp_dll  >zero && _rtcimsp_dll  <fver(4,0,3599,0)) )) {
 		NN("Security Update for Windows Messenger (KB887472)");
 		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe /Q:A /R:N");
@@ -5041,11 +5048,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if(*rktools) {
 		NN("Windows Server 2003 Resource Kit Tools");
-//		if(_msiexec_exe  <fver(3,0,0,0)) {
+		if(_msiexec_exe  <fver(3,0,0,0)) {
 			XX("Extras\\rktools.exe /R:N /C:\"msiexec /i rktools.msi /qb\"");
-//		} else {
-//			XX("Extras\\rktools.exe /R:N /C:\"msiexec /i rktools.msi /passive\"");
-//		}
+		} else {
+			XX("Extras\\rktools.exe /R:N /C:\"msiexec /i rktools.msi /passive\"");
+		}
 	}
 
 	// DirectX Updates
@@ -5056,6 +5063,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,1,2600,1517)) )) {
 		NN("Security Update for Windows XP (KB839643)");
 		XX(p1+"windowsxp-kb839643-x86-enu_57fb5ffbac48b02d0452e07fb843834510077477.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) 
+		&& ( DirectXVersion >= fver(4,8,2,0) && DirectXVersion <= fver(4,8,2,137) )
+		&& (
+	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,2,3677,144))
+	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,2,3677,144)) )) {
+		NN("Security Update for DirectX 8.2 (KB839643)");
+		XX(p1+"directx82-kb839643-x86-enu_2c6260d2b78db6079e86cd8e8d578b8140cabca1.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) 
+		&& ( DirectXVersion >= fver(4,9,0,0) && DirectXVersion <= fver(4,9,0,902) )
+		&& (
+	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,3,0,903))
+	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,3,0,903)) )) {
+		NN("Security Update for DirectX 9.0 (KB839643)");
+		XX(p1+"directx90-kb839643-x86-enu_ed1fc697f95aa71dfd7773edb3bebc77030e08df.exe"+a1);
 	}
 
 	// Internet Explorer Updates
@@ -5883,7 +5906,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2115168)");
 		XX(p3+"WindowsXP-KB2115168-x86-ENU.exe"+a1);
 	}
-	if( sp>=2 && *wmp6cdcs) {
+	if( sp>=1 && *wmp6cdcs) {
 		NN("Codecs Package for Windows Media Player 6.4");
 		XX(p3+"wmp6cdcs.EXE /Q /C:\"setup_wm.exe /Q /R:N\"");
 	}
@@ -5999,11 +6022,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	
 	if( sp==2 && *rdp60) {
 		NN("Remote Desktop Connection (Terminal Services Client 6.0) for Windows XP (KB925876)");
-		XX(p2+"windowsxp-kb925876-x86-enu_402612fb3d6636c721ff8d8edc0c4241aa68e477.exe"+a1);
+		XX(mstsc+"windowsxp-kb925876-x86-enu_402612fb3d6636c721ff8d8edc0c4241aa68e477.exe"+a1);
 	}
 	if( sp>=2 && *rdp61) {
 		NN("Remote Desktop Connection (Terminal Services Client 6.1) for Windows XP (KB952155)");
-		XX(p3+"WindowsXP-KB952155-x86-ENU.exe"+a1);
+		XX(mstsc+"WindowsXP-KB952155-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0)))
 		              && (
@@ -6033,7 +6056,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==3 && *rdp70){
 		NN("Remote Desktop Connection 7.0 client update for Windows XP (KB969084)");
-		XX(p3+"windowsxp-kb969084-x86-enu_153587172bf060ddc9d2c966f1eaaf4f47926f28.exe"+a1);
+		XX(mstsc+"windowsxp-kb969084-x86-enu_153587172bf060ddc9d2c966f1eaaf4f47926f28.exe"+a1);
 	}
 	if( sp==3 && (*rdp70 || ((sku & XP_ALL) && (_mstscax_dll >= fver(6,1,7600,16385) && _mstscax_dll<fver(6,1,7601,0))
 		              && (
@@ -6180,9 +6203,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsServer2003.WindowsXP-KB963093-x86-ENU.exe"+a1);
 	}
 
-	if( sp>=2 && !(sku & XP_TABLET) && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
+	if( sp>=1 && !(sku & XP_TABLET) && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
 		NN("Microsoft Windows Journal Viewer 1.5");
-		XX("Extras\\JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /passive\"");
+		if(_msiexec_exe  <fver(3,0,0,0)) {
+			XX("Extras\\JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /qb\"");
+		} else {
+			XX("Extras\\JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /passive\"");
+		}
 	}
 	if( sp==2 && (sku & XP_TABLET) && (
 		                  (_ContextTagger_dll >zero && _ContextTagger_dll <fver(1,7,2600,2663))
@@ -6228,7 +6255,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		//XX(sw+p+"windowsrightsmanagementservicessp2-kb979099-client-x86-enu_c57a952c1c55300114000b769e6f97e8a44322e3.exe -override 1 /I MsDrmClient.msi REBOOT=ReallySuppress /q -override 2 /I RmClientBackCompat.msi REBOOT=ReallySuppress /q");
 		XX(sw+p3+"windowsrightsmanagementservicessp2-kb979099-client-x86-enu_c57a952c1c55300114000b769e6f97e8a44322e3.exe -override 1 /I MsDrmClient.msi REBOOT=ReallySuppress /passive -override 2 /I RmClientBackCompat.msi REBOOT=ReallySuppress /passive");
 	}
-	if( sp>=2 && (*msxml4 || ((sku & XP_ALL) && (
+	if( sp>=1 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,30,2117,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,30,2100,0)))))) {
 		NN("Security Update for Microsoft XML Core Services 4.0 Service Pack 3 (KB2758694)");
@@ -6245,7 +6272,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB954459)");
 		NN(p+"windowsxp-kb954459-x86-enu_a409813d4541734043c419d399d20a463b52f8e1.exe"+a1);
 	}*/
-	if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp>=1 && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2003,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 		NN("Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB973686)");
