@@ -284,7 +284,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* xpeos   =components+16; *xpeos=true;
 	bool* rktools =components+17; *rktools=true;
 
-	int minimum_sp[18] = { 2,2,3,1,2,2,2,1,3,2,2,1,1,2,2,1,3,0 };
+	int minimum_sp[18] = { 2,2,3,1,2,2,2,1,3,1,2,1,1,2,2,1,3,0 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];

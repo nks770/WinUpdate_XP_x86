@@ -6254,7 +6254,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("BitLocker To Go Reader (KB970401)");
 		XX(p3+"KB970401-x86.exe"+a1);
 	}
-	if( sp>=2 && (*winrms ||   (     (_msdrm_dll              >zero && _msdrm_dll              <fver(5,2,3790,433))
+	if( sp>=1 && (*winrms ||   (     (_msdrm_dll              >zero && _msdrm_dll              <fver(5,2,3790,433))
 		              ||  (_RmActivate_exe         >zero && _RmActivate_exe         <fver(6,0,6406,0))
 					  ||  (_RmActivate_isv_exe     >zero && _RmActivate_isv_exe     <fver(6,0,6406,0))
 					  ||  (_RmActivate_ssp_exe     >zero && _RmActivate_ssp_exe     <fver(6,0,6406,0))
