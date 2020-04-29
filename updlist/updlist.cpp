@@ -21,7 +21,7 @@
 
 using namespace std;
 
-#define PROGRAM_DATE "27-Apr-2020"
+#define PROGRAM_DATE "28-Apr-2020"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -103,7 +103,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	int nfxServicePack[NFX_VERSION_COUNT];
 	bool nfxInstall[NFX_VERSION_COUNT];
 	nfxDetect(nfxServicePack);
-	nfxUpgrade(nfxServicePack,nfxInstall,&notifications);
+	nfxUpgrade(nfxServicePack,nfxInstall,sp_to_int(splevel),&notifications);
 
 	// Construct Update vector
 	std::vector<std::string> name;

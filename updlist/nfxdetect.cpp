@@ -112,7 +112,7 @@ void nfxDetect(int* nfxVersions) {
 
 }
 
-void nfxUpgrade(int* nfxsp, bool* nfxinstall, std::vector<std::string> *notifications) {
+void nfxUpgrade(int* nfxsp, bool* nfxinstall, int sp, std::vector<std::string> *notifications) {
 	int* v_nfx10=nfxsp+0;
 	int* v_nfx10mce=nfxsp+1;
 	int* v_nfx11=nfxsp+2;
@@ -146,9 +146,11 @@ void nfxUpgrade(int* nfxsp, bool* nfxinstall, std::vector<std::string> *notifica
 		}
 	}
 	if (*v_nfx11>=0 && *v_nfx11<1) { *i_nfx11=true; }
-	if (*v_nfx20>=0 && *v_nfx20<2) { *i_nfx20=true; }
-	if (*v_nfx30>=0 && *v_nfx30<2) { *i_nfx20=true; *i_nfx30=true; *i_nfx35=true; }
-	if (*v_nfx35>=0 && *v_nfx35<1) { *i_nfx20=true; *i_nfx30=true; *i_nfx35=true; }
+	if(sp>=2) {
+		if (*v_nfx20>=0 && *v_nfx20<2) { *i_nfx20=true; }
+		if (*v_nfx30>=0 && *v_nfx30<2) { *i_nfx20=true; *i_nfx30=true; *i_nfx35=true; }
+		if (*v_nfx35>=0 && *v_nfx35<1) { *i_nfx20=true; *i_nfx30=true; *i_nfx35=true; }
+	}
 }
 
 void nfxInstallCheck(int* nfxsp, bool* nfxinstall, int sp, std::vector<std::string> *notifications) {
@@ -170,8 +172,6 @@ void nfxInstallCheck(int* nfxsp, bool* nfxinstall, int sp, std::vector<std::stri
 	bool* i_nfx40c=nfxinstall+6;   *i_nfx40c=false;
 	bool* i_nfx40f=nfxinstall+7;   *i_nfx40f=false;
 
-	bool netfx4_issue=false;
-
 	if (*v_nfx10<3 && *v_nfx10mce<0) {
 		if(*v_nfx40c<0 && *v_nfx40f<0) {
 				*i_nfx10=true;
@@ -186,26 +186,23 @@ void nfxInstallCheck(int* nfxsp, bool* nfxinstall, int sp, std::vector<std::stri
 		}
 	}
 	if (*v_nfx11<1 ) { *i_nfx11=true; }
-	/*if (*v_nfx20<0 || *v_nfx30<0 || *v_nfx35<0 ) { *i_nfx20=true; *i_nfx30=true; *i_nfx35=true; }*/
 	if (*v_nfx20<2 ) { *i_nfx20=true; }
 	if (*v_nfx30<2 ) { *i_nfx30=true; }
 	if (*v_nfx35<1 ) { *i_nfx35=true; }
-	if (*v_nfx40c<0 ) {
-		if(sp==3) {
-			*i_nfx40c=true; *i_nfx40f=true;
-		} else {
-			netfx4_issue=true;
-		}
-	}
-	if (*v_nfx40f<0 ) {
-		if(sp==3) {
-			*i_nfx40f=true;
-		} else {
-			netfx4_issue=true;
-		}
-	}
+	if (*v_nfx40c<0 ) { *i_nfx40c=true; }
+	if (*v_nfx40f<0 ) { *i_nfx40c=true; *i_nfx40f=true; }
 
-	if(netfx4_issue && sp==2 ) {
+	if((*i_nfx20 || *i_nfx30 || *i_nfx35 || *i_nfx40c || *i_nfx40f) && sp<2 ) {
+		*i_nfx20=false;
+		*i_nfx30=false;
+		*i_nfx35=false;
+		*i_nfx40c=false; *i_nfx40f=false;
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Microsoft .NET Framework versions 2.0-4.0")
+			                               +"|require at least Windows XP Service Pack 2.");
+	}
+	else if((*i_nfx40c || *i_nfx40f) && sp<3 ) {
+		*i_nfx40c=false; *i_nfx40f=false;
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Cannot install Microsoft .NET Framework 4.0")
 			                               +"|because it requires Windows XP Service Pack 3."
