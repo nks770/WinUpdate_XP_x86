@@ -291,6 +291,12 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	nfxDetect(nfxServicePack);
 	int* nfx20=nfxServicePack+3;
 
+	// Windows Installer version
+	int status;
+	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&status);
+	std::wstring System32 = SystemRoot + L"\\system32";
+	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
+
 	// Parse arguments
 	int i=0;
 	for(i=0; i<argc; i++) {
@@ -371,7 +377,16 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 							   +"|.NET Framework 2.0, which is not installed.");
 		*pshell=false;
 	}
-	//if(*nfx20<0) { *pshell=false; }
+	
+	// Disable MSXML6 if Windows Installer 3.1 is not present
+	if(*msxml6 && _msiexec_exe<fver(3,1,4000,1823)) {
+		//                        ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("MSXML6 requires that you first install")
+			                   +"|Windows Installer 3.1 and reboot."
+							   +"| |Run 'update_windows.bat' again after your"
+							   +"|system restarts.");
+		*msxml6=false;
+	}
 
 	// Disable components that are already installed
 	for(i=0; i<ncomp; i++) {
