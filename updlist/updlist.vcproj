@@ -263,6 +263,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\vcredist.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\winsku.cpp"
 				>
 			</File>
@@ -342,6 +346,10 @@
 			</File>
 			<File
 				RelativePath=".\trim.h"
+				>
+			</File>
+			<File
+				RelativePath=".\vcredist.h"
 				>
 			</File>
 			<File

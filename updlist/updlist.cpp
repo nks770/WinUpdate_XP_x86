@@ -18,10 +18,11 @@
 #include "nfxupdate.h"
 #include "certificates.h"
 #include "notify.h"
+#include "vcredist.h"
 
 using namespace std;
 
-#define PROGRAM_DATE "01-May-2020"
+#define PROGRAM_DATE "03-May-2020"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -35,11 +36,20 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	bool install_netfx=false;
 	bool install_mbsa=false;
 	bool install_sp=false;
+	bool install_vcredist=false;
 	bool component_install=false;
 	bool list_cert_root=false;
 	bool list_cert_disallowed=false;
 	bool allow_reboot=true;
 	int sp_to_be_installed=0;
+
+	bool vcdebug2005 = false;
+	bool vcdebug2008 = false;
+	bool vcdebug2010 = false;
+	bool vcdebug2012 = false;
+	bool vcdebug2013 = false;
+	bool vcdebug2015 = false;
+	bool vcdebug     = false;
 
 	std::vector<std::string> notifications;
 
@@ -53,6 +63,14 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		if(!wcscmp(argv[i],L"--list-cert-root")) { list_cert_root=true; }
 		if(!wcscmp(argv[i],L"--list-cert-disallowed")) { list_cert_disallowed=true; }
 		if(!wcscmp(argv[i],L"--noreboot")) { allow_reboot=false; }
+		if(!wcscmp(argv[i],L"--vcdebug2005")) { vcdebug2005=true; }
+		if(!wcscmp(argv[i],L"--vcdebug2008")) { vcdebug2008=true; }
+		if(!wcscmp(argv[i],L"--vcdebug2010")) { vcdebug2010=true; }
+		if(!wcscmp(argv[i],L"--vcdebug2012")) { vcdebug2012=true; }
+		if(!wcscmp(argv[i],L"--vcdebug2013")) { vcdebug2013=true; }
+		if(!wcscmp(argv[i],L"--vcdebug2015")) { vcdebug2015=true; }
+		if(!wcscmp(argv[i],L"--vcdebug")) { vcdebug=true; }
+		if(!wcscmp(argv[i],L"--vcredist")) { install_vcredist=true; }
 		if(!wcscmp(argv[i],L"--mbsa")) {
 			mbsa=true;
 			if(++i<argc) {
@@ -67,12 +85,19 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		printf("End of certificates.\n");
 		return 0;
 	}
-	if( list_cert_disallowed ) {
+	else if( list_cert_disallowed ) {
 		printf("Certificates:\n");
 		listCertificates("Disallowed");
 		printf("End of certificates.\n");
 		return 0;
 	}
+	else if( vcdebug2005 ) { vcr2005(true); return 0; }
+	else if( vcdebug2008 ) { vcr2008(true); return 0; }
+	else if( vcdebug2010 ) { vcr2010(true); return 0; }
+	else if( vcdebug2012 ) { vcr2012(true); return 0; }
+	else if( vcdebug2013 ) { vcr2013(true); return 0; }
+	else if( vcdebug2015 ) { vcr2015(true); return 0; }
+	else if( vcdebug     ) { vcsummary(); return 0; }
 
 	// Validate selected options
 	if(batch && mbsa) {
@@ -96,7 +121,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	detectOptions(compInstalled);
 	argumentOptions(argc,argv,compInstalled,compInstall,COMPONENT_COUNT,
 			(component_install || install_netfx || install_mbsa
-			     || netfx_mode || install_sp), // Conditions to not mark anything with '[>]'
+			     || netfx_mode || install_sp || install_vcredist), // Conditions to not mark anything with '[>]'
 			sku,sp_to_int(splevel),&notifications);
 
 	// Detect .NET Framework parameters
@@ -117,6 +142,8 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		sp_to_be_installed=installServicePack(&name,&exe,sku,sp_to_int(splevel),&notifications);
 	} else if(install_mbsa) {
 		installMBSA(&name,&exe,sku);
+	} else if(install_vcredist) {
+		installVC(&name,&exe,sp_to_int(splevel));
 	} else if(install_netfx) {
 		nfxInstallCheck(nfxServicePack,nfxInstall,sp_to_int(splevel),&notifications);
 		nfxInstallation(&nfx_name,&nfx_exe,sku,sp_to_int(splevel),nfxServicePack,nfxInstall,&notifications);
