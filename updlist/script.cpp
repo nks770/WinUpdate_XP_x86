@@ -10,12 +10,19 @@ void scriptElements(std::vector<std::string>* name,std::vector<std::string>* exe
 	unsigned int i=0;
 	unsigned int j=(unsigned int)name->size();
 
+	std::string f;
+
 	if((unsigned int)exe->size()<j){
 		j=(unsigned int)exe->size();
 	}
 
+	if(j<10) { f="echo [%d of %d] %s\n"; }
+	else if(j<100) { f="echo [%2d of %d] %s\n"; }
+	else if(j<1000) { f="echo [%3d of %d] %s\n"; }
+
 	for(i=0; i<j; i++) {
-		printf("echo Installing %s (update %d of %d)...\n",escapeString(name->at(i)).c_str(),i+1,j);
+		//printf("echo Installing %s (update %d of %d)...\n",escapeString(name->at(i)).c_str(),i+1,j);
+		printf(f.c_str(),i+1,j,escapeString(name->at(i)).c_str());
 		printf("%s\n",exe->at(i).c_str());
 	}
 }

@@ -3,6 +3,7 @@
 #include "fver.h"
 #include "winsku.h"
 #include "registry.h"
+#include "certificates.h"
 #include <string>
 
 #define NN name->push_back
@@ -56,16 +57,24 @@ void vcsummary() {
 
 void installVC(std::vector<std::string>* name, std::vector<std::string>* exe, int sp) {
 
+	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p3=p+"SP3\\";
 	const std::string a2=" /Q";
 	const std::string a3=" /passive /norestart";
 
+	// A certificate update is needed for VC++ 2013
+	if( sp==3 &&  !checkCertificate("8f43288ad272f3103b6fb1428485ea3014c0bcfe Microsoft Root Certificate Authority 2011","Root")) {
+		NN("Update for Root Certificates for Windows XP [March 2014] (KB931125)");
+		XX(sw+p3+"rootsupd_01a26e5c75ff5b3e34fb6b763ace486fe6836aac.exe");
+	}
+
 	// Install Microsoft Visual C++ Runtime Versions
-	if( sp>=2 && vcr2005(false)<fver(8,0,50727,6195) ) {
+	if( sp>=0 && vcr2005(false)<fver(8,0,50727,6195) ) {
 		NN("Security Update for Microsoft Visual C++ 2005 Service Pack 1 Redistributable Package (KB2538242)");
 		XX(p+"vcredist_x86_b8fab0bb7f62a24ddfe77b19cd9a1451abd7b847.exe"+a2);
 	}
-	if( sp>=2 && vcr2008(false)<fver(9,0,30729,6161) ) {
+	if( sp>=0 && vcr2008(false)<fver(9,0,30729,6161) ) {
 		NN("Security Update for Microsoft Visual C++ 2008 Service Pack 1 Redistributable Package (KB2538243)");
 		XX(p+"vcredist_x86_470640aa4bb7db8e69196b5edb0010933569e98d.exe /qb");
 	}

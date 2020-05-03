@@ -3471,12 +3471,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB924667)");
 		XX(p2+"windowsxp-kb924667-x86-enu_9016dbabca407c3278219baba256111e131330a3.exe"+a1);
 	}
-	if( sp>=2 && (sku & XP_ALL) && (
+	if( sp>=0 && (sku & XP_ALL) && (
 			(vcr2005(false)>zero && vcr2005(false)<fver(8,0,50727,6195)) )) {
 		NN("Security Update for Microsoft Visual C++ 2005 Service Pack 1 Redistributable Package (KB2538242)");
 		XX(p+"vcredist_x86_b8fab0bb7f62a24ddfe77b19cd9a1451abd7b847.exe"+a2);
 	}
-	if( sp>=2 && (sku & XP_ALL) && (
+	if( sp>=0 && (sku & XP_ALL) && (
 			(vcr2008(false)>zero && vcr2008(false)<fver(9,0,30729,6161)) )) {
 		NN("Security Update for Microsoft Visual C++ 2008 Service Pack 1 Redistributable Package (KB2538243)");
 		XX(p+"vcredist_x86_470640aa4bb7db8e69196b5edb0010933569e98d.exe /qb");
