@@ -453,6 +453,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rasmxs_dll   = getFileVer(System32+L"\\rasmxs.dll",&status);
 	fver _rassapi_dll  = getFileVer(System32+L"\\rassapi.dll",&status);
 	fver _rastls_dll   = getFileVer(System32+L"\\rastls.dll",&status);
+	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
 	fver _remotesp_tsp = getFileVer(System32+L"\\remotesp.tsp",&status);
 	fver _rhttpaa_dll  = getFileVer(System32+L"\\rhttpaa.dll",&status);
 	fver _riched20_dll = getFileVer(System32+L"\\riched20.dll",&status);
@@ -1219,6 +1220,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows XP (KB328940)");
 		XX(rtm+"q328940_wxp_sp1_x86_enu_00ed243d76d57a997ce99e22e96be9b.exe"+a7);
 	}
+	if( sp==0 && (sku & XP_ALL) && (
+			    (_rdpdd_dll >zero && _rdpdd_dll <fver(5,1,2600,48))
+			||  (_rdpwd_sys >zero && _rdpwd_sys <fver(5,1,2600,48)) )) {
+		NN("Q324380: Security Update (Windows XP)");
+		XX(rtm+"q324380_xpsp1_en_7c993133cd978d619b3db3fe70821ab.exe"+a7);
+	}
 
 
 	// Windows XP SP1 updates
@@ -1347,7 +1354,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB919007)");
 		XX(p1+"windowsxp-kb919007-x86-enu_dc2307d635a64c87bbf1f216442104ef4b4ada0b.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1126)) {
+	if((sp==0 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2600,101))
+	 ||(sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1126))) {
 		NN("Q329048: Security Update");
 		XX(p1+"q329048_xp_bdcca3f0c06417895bf3ee93b6db09f6d04d0282.exe"+a7);
 	}
@@ -1449,9 +1457,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB840987)");
 		XX(p1+"windowsxp-kb840987-x86-enu_60b89d9ecf98d6f749d0f9c87ff99c4758ef0de7.exe"+a6);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
+	if((sp==0 && (sku & XP_ALL) && (
+	      (_msgsvc_dll >zero && _msgsvc_dll <fver(5,1,2600,121))
+	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,121))))
+	 ||(sp==1 && (sku & XP_ALL) && (
 	      (_msgsvc_dll >zero && _msgsvc_dll <fver(5,1,2600,1309))
-	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,1309)) )) {
+	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,1309))))) {
 		NN("Security Update for Microsoft Windows XP (KB828035)");
 		XX(p1+"windowsxp-kb828035-x86-enu_d911770163b58b6809b00f033230b46.exe"+a6);
 	}
@@ -1459,13 +1470,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB914798)");
 		XX(p1+"windowsxp-kb914798-v2-x86-enu_e1655311aaea236143c52067105754193e90c3ce.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
+	if( sp<2 && (sku & XP_ALL) && (
 	      (_html32_cnv   >zero && _html32_cnv   <fver(2003,1100,5426,0))
 	   || (_msconv97_dll >zero && _msconv97_dll <fver(2003,1100,5426,0)) )) {
 		NN("823559: Security Update for Microsoft Windows");
 		XX(p1+"windowsxp-kb823559-x86-enu_3a1b8659662198db00ff48a89d4689f.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _raspptp_sys>zero && _raspptp_sys<fver(5,1,2600,1129)) {
+	if((sp==0 && (sku & XP_ALL) && _raspptp_sys>zero && _raspptp_sys<fver(5,1,2600,101))
+	 ||(sp==1 && (sku & XP_ALL) && _raspptp_sys>zero && _raspptp_sys<fver(5,1,2600,1129))) {
 		NN("Security Update for Windows XP (329834)");
 		XX(p1+"q329834_wxp_sp2_en_be9ddcff9200ff0d4879ed5939e73ed.exe"+a7);
 	}
@@ -1477,16 +1489,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB896424)");
 		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
+	if((sp==0 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2600,151))
+	 ||(sp==1 && (sku & XP_ALL) && (
 	      (_fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1515))
 	   || (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1556))
 	   || (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1514))
 	   || (_sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1515))
-	   || ( _comctl32_dll_1515 < fver(6,0,2800,1515)) )) {
+	   || ( _comctl32_dll_1515 < fver(6,0,2800,1515))) )) { // FIXME - verify what gets installed on RTM
 		NN("Security Update for Windows XP (KB839645)");
 		XX(p1+"windowsxp-kb839645-x86-enu_18b27da784cef2d2f9c1888ef3aa2619e02b402a.exe"+a6);
 	}
-	if( sp==1 && (sku & XP_ALL) && _cryptui_dll>zero && _cryptui_dll<fver(5,131,2600,1243)) {
+	if((sp==0 && (sku & XP_ALL) && _cryptui_dll>zero && _cryptui_dll<fver(5,131,2600,117))
+	 ||(sp==1 && (sku & XP_ALL) && _cryptui_dll>zero && _cryptui_dll<fver(5,131,2600,1243))) {
 		NN("Security Update for Microsoft Windows (KB823182)");
 		XX(p1+"windowsxp-kb823182-x86-enu_211ee84995ef332148cf9b6657c9038.exe"+a7);
 	}
@@ -4271,11 +4285,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for DirectX 9 for Windows XP (KB904706)");
 		XX(p1+"windowsxp-kb904706-dx9-x86-enu_2ecaf33bde917cd33eaf2c8e0459a72c4bff0ce9.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) 
+	if((sp==0 && (sku & XP_ALL) 
+		&& regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status)==L"4.08.01.0810"
+		&& (
+	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,1,2600,148))
+	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,1,2600,148)) ))
+	 ||(sp==1 && (sku & XP_ALL) 
 		&& regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status)==L"4.08.01.0810"
 		&& (
 	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,1,2600,1517))
-	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,1,2600,1517)) )) {
+	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,1,2600,1517)) ))) {
 		NN("Security Update for Windows XP (KB839643)");
 		XX(p1+"windowsxp-kb839643-x86-enu_57fb5ffbac48b02d0452e07fb843834510077477.exe"+a6);
 	}
