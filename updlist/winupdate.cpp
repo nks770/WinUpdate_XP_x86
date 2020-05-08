@@ -489,6 +489,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _shmedia_dll  = getFileVer(System32+L"\\shmedia.dll",&status);
 	fver _shsvcs_dll   = getFileVer(System32+L"\\shsvcs.dll",&status);
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
+	fver _snmpapi_dll  = getFileVer(System32+L"\\snmpapi.dll",&status);
+	fver _spiisupd_exe = getFileVer(System32+L"\\spiisupd.exe",&status);
 	fver _spoolsv_exe  = getFileVer(System32+L"\\spoolsv.exe",&status);
 	fver _sqlsrv32_dll = getFileVer(System32+L"\\sqlsrv32.dll",&status);
 	fver _srvsvc_dll   = getFileVer(System32+L"\\srvsvc.dll",&status);
@@ -850,7 +852,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
-	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
+//	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
@@ -872,8 +874,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _asp51_dll_dllcache    = getFileVer(dllcache+L"\\asp51.dll",&status);
 	fver _ftpsvc2_dll  = getFileVer(inetsrv+L"\\ftpsvc2.dll",&status);
 	fver _httpext_dll  = getFileVer(inetsrv+L"\\httpext.dll",&status);
+	fver _httpodbc_dll = getFileVer(inetsrv+L"\\httpodbc.dll",&status);
+	fver _iischema_dll = getFileVer(inetsrv+L"\\iischema.dll",&status);
 	fver _infocomm_dll = getFileVer(inetsrv+L"\\infocomm.dll",&status);
+	fver _isatq_dll    = getFileVer(inetsrv+L"\\isatq.dll",&status);
+	fver _lonsint_dll  = getFileVer(inetsrv+L"\\lonsint.dll",&status);
 	fver _smtpsvc_dll  = getFileVer(inetsrv+L"\\smtpsvc.dll",&status);
+	fver _ssinc_dll    = getFileVer(inetsrv+L"\\ssinc.dll",&status);
 	fver _w3svc_dll    = getFileVer(inetsrv+L"\\w3svc.dll",&status);
 
 	fver _iecompat_dll = getFileVer(InternetExplorer+L"\\iecompat.dll",&status);
@@ -1004,6 +1011,52 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fpremadm_exe_dllcache = getFileVer(dllcache+L"\\fpremadm.exe",&status);
 	fver _shtml_dll_dllcache    = getFileVer(dllcache+L"\\shtml.dll",&status);
 	fver _shtml_exe_dllcache    = getFileVer(dllcache+L"\\shtml.exe",&status);
+
+	// FrontPage Server Extensions
+	std::wstring isapi_vtiadm = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\isapi\\_vti_adm";
+	std::wstring vtibin_vtiadm = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\_vti_bin\\_vti_adm";
+	std::wstring isapi_vtiaut = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\isapi\\_vti_aut";
+	std::wstring vtibin_vtiaut = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\_vti_bin\\_vti_aut";
+	std::wstring wse_bin = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\bin";
+	std::wstring srvsupp = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\servsupp";
+	std::wstring vinavbar = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\bots\\vinavbar";
+	std::wstring v30bin = ProgramFiles+L"\\microsoft frontpage\\version3.0\\bin";
+	std::wstring admcgi_scripts = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\admcgi\\scripts";
+	std::wstring admisapi_scripts = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\admisapi\\scripts";
+	std::wstring vtibin = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\_vti_bin";
+	std::wstring isapi = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\isapi";
+
+	fver _admin_dll = getFileVer(isapi_vtiadm+L"\\admin.dll",&status);
+	fver _admin_exe = getFileVer(vtibin_vtiadm+L"\\admin.exe",&status);
+	fver _author_dll = getFileVer(isapi_vtiaut+L"\\author.dll",&status);
+	fver _author_exe = getFileVer(vtibin_vtiaut+L"\\author.exe",&status);
+	fver _cfgwiz_exe = getFileVer(wse_bin+L"\\cfgwiz.exe",&status);
+	fver _fp4areg_dll = getFileVer(wse_bin+L"\\fp4areg.dll",&status);
+	fver _fp4atxt_dll = getFileVer(wse_bin+L"\\fp4atxt.dll",&status);
+	fver _fp4autl_dll = getFileVer(wse_bin+L"\\fp4autl.dll",&status);
+	fver _fp4avss_dll = getFileVer(wse_bin+L"\\fp4avss.dll",&status);
+	fver _fp4awel_dll = getFileVer(wse_bin+L"\\fp4awel.dll",&status);
+	fver _fpencode_dll = getFileVer(wse_bin+L"\\fpencode.dll",&status);
+	fver _fpexedll_dll = getFileVer(wse_bin+L"\\fpexedll.dll",&status);
+	fver _fpmmc_dll = getFileVer(wse_bin+L"\\fpmmc.dll",&status);
+	fver _fpremadm_exe = getFileVer(wse_bin+L"\\fpremadm.exe",&status);
+	fver _fpsrvadm_exe = getFileVer(wse_bin+L"\\fpsrvadm.exe",&status);
+	fver _tcptest_exe = getFileVer(wse_bin+L"\\tcptest.exe",&status);
+	fver _fp4amsft_dll = getFileVer(srvsupp+L"\\fp4amsft.dll",&status);
+	fver _fp4anscp_dll = getFileVer(srvsupp+L"\\fp4anscp.dll",&status);
+	fver _fp4apws_dll = getFileVer(srvsupp+L"\\fp4apws.dll",&status);
+	fver _fp4awebs_dll = getFileVer(srvsupp+L"\\fp4awebs.dll",&status);
+	fver _fp4avnb_dll = getFileVer(vinavbar+L"\\fp4avnb.dll",&status);
+	fver _fp98sadm_exe = getFileVer(v30bin+L"\\fp98sadm.exe",&status);
+	fver _fp98swin_exe = getFileVer(v30bin+L"\\fp98swin.exe",&status);
+	fver _stub_fpsrvadm_exe = getFileVer(v30bin+L"\\fpsrvadm.exe",&status);
+	fver _stub_fpsrvwin_exe = getFileVer(v30bin+L"\\fpsrvwin.exe",&status);
+	fver _fpadmcgi_exe = getFileVer(admcgi_scripts+L"\\fpadmcgi.exe",&status);
+	fver _fpadmdll_dll = getFileVer(admisapi_scripts+L"\\fpadmdll.dll",&status);
+	fver _fpcount_exe1 = getFileVer(vtibin+L"\\fpcount.exe",&status);
+	fver _fpcount_exe2 = getFileVer(isapi+L"\\fpcount.exe",&status);
+	fver _shtml_dll = getFileVer(isapi+L"\\shtml.dll",&status);
+	fver _shtml_exe = getFileVer(vtibin+L"\\shtml.exe",&status);
 
 	fver DirectXVersion = fver(regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status).c_str());
 
@@ -1260,30 +1313,31 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"q311967_ac5efc3697ad46f2b02646ba229f31bac1c0cc26.exe"+a7);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
-//			    (_admin_exe    >zero && _admin_exe    <fver(4,0,2,6513))
-//			||  (_author_dll   >zero && _author_dll   <fver(4,0,2,6513))
-//			||  (_author_exe   >zero && _author_exe   <fver(4,0,2,6513))
-//			||  (_cfgwiz_exe   >zero && _cfgwiz_exe   <fver(4,0,2,6513))
-//			||  (_fp4amsft_dll >zero && _fp4amsft_dll <fver(4,0,2,6513))
-//			||  (_fp4anscp_dll >zero && _fp4anscp_dll <fver(4,0,2,6513))
-//			||  (_fp4apws_dll  >zero && _fp4apws_dll  <fver(4,0,2,6513))
-//			||  (_fp4areg_dll  >zero && _fp4areg_dll  <fver(4,0,2,6513))
-//			||  (_fp4atxt_dll  >zero && _fp4atxt_dll  <fver(4,0,2,6513))
-//			||  (_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,6513))
-//			||  (_fp4avnb_dll  >zero && _fp4avnb_dll  <fver(4,0,2,6513))
-//			||  (_fp4avss_dll  >zero && _fp4avss_dll  <fver(4,0,2,6513))
-//			||  (_fp4awebs_dll >zero && _fp4awebs_dll <fver(4,0,2,6513))
-//			||  (_fp4awel_dll  >zero && _fp4awel_dll  <fver(4,0,2,6513))
-//			||  (_fpadmcgi_exe >zero && _fpadmcgi_exe <fver(4,0,2,6513))
-//			||  (_fpadmdll_dll >zero && _fpadmdll_dll <fver(4,0,2,6513))
-//			||  (_fpcount_exe  >zero && _fpcount_exe  <fver(4,0,2,6513))
-//			||  (_fpexedll_dll >zero && _fpexedll_dll <fver(4,0,2,6513))
-//			||  (_fpmmc_dll    >zero && _fpmmc_dll    <fver(4,0,2,6513))
-//			||  (_fpremadm_exe >zero && _fpremadm_exe <fver(4,0,2,6513))
-//			||  (_fpsrvadm_exe >zero && _fpsrvadm_exe <fver(4,0,2,6513))
-//			||  (_shtml_dll    >zero && _shtml_dll    <fver(4,0,2,6513))
-//			||  (_shtml_exe    >zero && _shtml_exe    <fver(4,0,2,6513))
-			    (_admin_exe_dllcache    <fver(4,0,2,6513))
+			    (_admin_exe    >zero && _admin_exe    <fver(4,0,2,6513))
+			||  (_author_dll   >zero && _author_dll   <fver(4,0,2,6513))
+			||  (_author_exe   >zero && _author_exe   <fver(4,0,2,6513))
+			||  (_cfgwiz_exe   >zero && _cfgwiz_exe   <fver(4,0,2,6513))
+			||  (_fp4amsft_dll >zero && _fp4amsft_dll <fver(4,0,2,6513))
+			||  (_fp4anscp_dll >zero && _fp4anscp_dll <fver(4,0,2,6513))
+			||  (_fp4apws_dll  >zero && _fp4apws_dll  <fver(4,0,2,6513))
+			||  (_fp4areg_dll  >zero && _fp4areg_dll  <fver(4,0,2,6513))
+			||  (_fp4atxt_dll  >zero && _fp4atxt_dll  <fver(4,0,2,6513))
+			||  (_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,6513))
+			||  (_fp4avnb_dll  >zero && _fp4avnb_dll  <fver(4,0,2,6513))
+			||  (_fp4avss_dll  >zero && _fp4avss_dll  <fver(4,0,2,6513))
+			||  (_fp4awebs_dll >zero && _fp4awebs_dll <fver(4,0,2,6513))
+			||  (_fp4awel_dll  >zero && _fp4awel_dll  <fver(4,0,2,6513))
+			||  (_fpadmcgi_exe >zero && _fpadmcgi_exe <fver(4,0,2,6513))
+			||  (_fpadmdll_dll >zero && _fpadmdll_dll <fver(4,0,2,6513))
+			||  (_fpcount_exe1  >zero && _fpcount_exe1  <fver(4,0,2,6513))
+			||  (_fpcount_exe2  >zero && _fpcount_exe2  <fver(4,0,2,6513))
+			||  (_fpexedll_dll >zero && _fpexedll_dll <fver(4,0,2,6513))
+			||  (_fpmmc_dll    >zero && _fpmmc_dll    <fver(4,0,2,6513))
+			||  (_fpremadm_exe >zero && _fpremadm_exe <fver(4,0,2,6513))
+			||  (_fpsrvadm_exe >zero && _fpsrvadm_exe <fver(4,0,2,6513))
+			||  (_shtml_dll    >zero && _shtml_dll    <fver(4,0,2,6513))
+			||  (_shtml_exe    >zero && _shtml_exe    <fver(4,0,2,6513))
+			||  (_admin_exe_dllcache    <fver(4,0,2,6513))
 			||  (_author_dll_dllcache   <fver(4,0,2,6513))
 			||  (_author_exe_dllcache   <fver(4,0,2,6513))
 			||  (_cfgwiz_exe_dllcache   <fver(4,0,2,6513))
@@ -1308,6 +1362,41 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			||  (_shtml_exe_dllcache    <fver(4,0,2,6513)) )) {
 		NN("Q324096: Security Update (Windows XP)");
 		XX(rtm+"q324096_wxp_sp1_en_1556063f6e8f4175aca99c531d2a8b4.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+			    (_admin_dll    >zero && _admin_dll    <fver(4,0,2,7523))
+			||  (_admin_exe    >zero && _admin_exe    <fver(4,0,2,7523))
+			||  (_author_dll   >zero && _author_dll   <fver(4,0,2,7523))
+			||  (_author_exe   >zero && _author_exe   <fver(4,0,2,7523))
+			||  (_cfgwiz_exe   >zero && _cfgwiz_exe   <fver(4,0,2,7523))
+			||  (_fp4amsft_dll >zero && _fp4amsft_dll <fver(4,0,2,7523))
+			||  (_fp4anscp_dll >zero && _fp4anscp_dll <fver(4,0,2,7523))
+			||  (_fp4apws_dll  >zero && _fp4apws_dll  <fver(4,0,2,7523))
+			||  (_fp4areg_dll  >zero && _fp4areg_dll  <fver(4,0,2,7523))
+			||  (_fp4atxt_dll  >zero && _fp4atxt_dll  <fver(4,0,2,7523))
+			||  (_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,7523))
+			||  (_fp4avnb_dll  >zero && _fp4avnb_dll  <fver(4,0,2,7523))
+			||  (_fp4avss_dll  >zero && _fp4avss_dll  <fver(4,0,2,7523))
+			||  (_fp4awebs_dll >zero && _fp4awebs_dll <fver(4,0,2,7523))
+			||  (_fp4awel_dll  >zero && _fp4awel_dll  <fver(4,0,2,7802))
+			||  (_fp98sadm_exe >zero && _fp98sadm_exe <fver(3,0,2,1706))
+			||  (_fp98swin_exe >zero && _fp98swin_exe <fver(3,0,2,1706))
+			||  (_fpadmcgi_exe >zero && _fpadmcgi_exe <fver(4,0,2,7523))
+			||  (_fpadmdll_dll >zero && _fpadmdll_dll <fver(4,0,2,7523))
+			||  (_fpcount_exe1  >zero && _fpcount_exe1  <fver(4,0,2,7523))
+			||  (_fpcount_exe2  >zero && _fpcount_exe2  <fver(4,0,2,7523))
+			||  (_fpencode_dll >zero && _fpencode_dll <fver(1997,5,27,0))
+			||  (_fpexedll_dll >zero && _fpexedll_dll <fver(4,0,2,7523))
+			||  (_fpmmc_dll    >zero && _fpmmc_dll    <fver(4,0,2,7523))
+			||  (_fpremadm_exe >zero && _fpremadm_exe <fver(4,0,2,7523))
+			||  (_fpsrvadm_exe >zero && _fpsrvadm_exe <fver(4,0,2,7523))
+			||  (_shtml_dll    >zero && _shtml_dll    <fver(4,0,2,7523))
+			||  (_shtml_exe    >zero && _shtml_exe    <fver(4,0,2,7523))
+			||  (_stub_fpsrvadm_exe >zero && _stub_fpsrvadm_exe    <fver(4,0,2,7523))
+			||  (_stub_fpsrvwin_exe >zero && _stub_fpsrvwin_exe    <fver(4,0,2,7523))
+			||  (_tcptest_exe  >zero && _tcptest_exe    <fver(4,0,2,7523)) )) {
+		NN("Security Update for Windows XP (KB810217)");
+		XX(rtm+"windowsxp-kb810217-x86-enu_696190f151ea0bcb063f0a89471e45b.exe"+a7);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
                   ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,53))
@@ -1362,11 +1451,39 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q329441: Critical Update");
 		XX(rtm+"windowsxp-kb329441-x86-enu_4526376824a7a2be48c6f4bcbbcf829.exe"+a7);
 	}
-	if( sp==0 && (sku & XP_ALL) && ( // FIXME - double check if this update is needed on RTM or SP1
-			(    _dmusic_sys  <fver(5,1,2600,2688) && _dmusic_sys_cache <fver(5,1,2600,106))
-			|| (_dmusic_sys>zero && _dmusic_sys <fver(5,1,2600,106)) )) {
+	if((sp==0 && (sku & XP_ALL) && _dmusic_sys>zero && _dmusic_sys <fver(5,1,2600,106))
+	 ||(sp==1 && (sku & XP_ALL) && _dmusic_sys>zero && _dmusic_sys <fver(5,1,2600,1142)) ) {
 		NN("810272: Recommended Update");
-		XX(rtm+"Q810272_WXP_SP2_x86_ENU.exe"+a7);
+		XX(p1+"Q810272_WXP_SP2_x86_ENU.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+			    (_httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,165))
+			||  (_msxml3_dll   >zero && _msxml3_dll   <fver(8,50,2162,0))
+			||  (_xpsp1hfm_exe >zero && _xpsp1hfm_exe <fver(5,5,31,0)) )) {
+		NN("Security Update for Windows XP (KB824151)");
+		XX(rtm+"windowsxp-kb824151-x86-enu_1e13d4fd702b9d5028429062023bbd7e02d9c714.exe"+a6);
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+			    (_snmp_exe    >zero && _snmp_exe    <fver(5,1,2600,28))
+			||  (_snmpapi_dll >zero && _snmpapi_dll <fver(5,1,2600,28))
+			||  (_wsnmp32_dll >zero && _wsnmp32_dll <fver(5,1,2600,28)) )) {
+		NN("Security Update, February 12, 2002");
+		XX(rtm+"q314147_4448f8c22d771895880c0cbd09491b03670c483a.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+                  ( _asp51_dll    >zero && _asp51_dll    <fver(5,1,2600,1181))
+			  ||  ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
+			  ||  ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1189))
+			  ||  ( _httpodbc_dll >zero && _httpodbc_dll <fver(5,1,2600,1172))
+			  ||  ( _iischema_dll >zero && _iischema_dll <fver(5,1,2600,1152))
+			  ||  ( _infocomm_dll >zero && _infocomm_dll <fver(6,0,2600,1167))
+			  ||  ( _isatq_dll    >zero && _isatq_dll    <fver(6,0,2600,1182))
+			  ||  ( _lonsint_dll  >zero && _lonsint_dll  <fver(6,0,2600,1167))
+			  ||  ( _spiisupd_exe >zero && _spiisupd_exe <fver(5,1,2600,1152)) //FIXME - verify this exists
+			  ||  ( _ssinc_dll    >zero && _ssinc_dll    <fver(5,1,2600,1152))
+			  ||  ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,1166)) )) {
+		NN("Q811114: Security Update (Windows XP or Windows XP Service Pack 1)");
+		XX(rtm+"q811114_wxp_sp2_x86_enu_63cfc7cfc1fb0ad0b7df3c483b75760.exe"+a7);
 	}
 
 	// Windows XP SP1 updates
