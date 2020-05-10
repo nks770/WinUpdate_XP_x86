@@ -136,6 +136,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _acgenral_dll = getFileVer(SystemRoot+L"\\AppPatch\\acgenral.dll",&status);
 	fver _aclayers_dll = getFileVer(SystemRoot+L"\\AppPatch\\aclayers.dll",&status);
+	fver _acspecfc_dll = getFileVer(SystemRoot+L"\\AppPatch\\acspecfc.dll",&status);
+	fver _acxtrnal_dll = getFileVer(SystemRoot+L"\\AppPatch\\acxtrnal.dll",&status);
 	fver _explorer_exe = getFileVer(SystemRoot+L"\\explorer.exe",&status);
 	fver _hh_exe       = getFileVer(SystemRoot+L"\\hh.exe",&status);
 	fver _kb913800_exe = getFileVer(SystemRoot+L"\\kb913800.exe",&status);
@@ -144,6 +146,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _6to4svc_dll  = getFileVer(System32+L"\\6to4svc.dll",&status);
 	fver _aaclient_dll = getFileVer(System32+L"\\aaclient.dll",&status);
 	fver _aaclient_dll_mui = getFileVer(System32+L"\\en-US\\aaclient.dll.mui",&status);
+	fver _accwiz_exe   = getFileVer(System32+L"\\accwiz.exe",&status);
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
 	fver _advpack_dll  = getFileVer(System32+L"\\advpack.dll",&status);
 	fver _appwiz_cpl   = getFileVer(System32+L"\\appwiz.cpl",&status);
@@ -180,6 +183,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _credssp_dll  = getFileVer(System32+L"\\credssp.dll",&status);
 	fver _crypt32_dll  = getFileVer(System32+L"\\crypt32.dll",&status);
 	fver _cryptdlg_dll = getFileVer(System32+L"\\cryptdlg.dll",&status);
+	fver _cryptsvc_dll = getFileVer(System32+L"\\cryptsvc.dll",&status);
 	fver _cryptui_dll  = getFileVer(System32+L"\\cryptui.dll",&status);
 	fver _cscdll_dll   = getFileVer(System32+L"\\cscdll.dll",&status);
 	fver _cscript_exe  = getFileVer(System32+L"\\cscript.exe",&status);
@@ -403,6 +407,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _netsetup_exe = getFileVer(System32+L"\\netsetup.exe",&status);
 	fver _netsh_exe    = getFileVer(System32+L"\\netsh.exe",&status);
 	fver _netshell_dll = getFileVer(System32+L"\\netshell.dll",&status);
+	fver _newdev_dll   = getFileVer(System32+L"\\newdev.dll",&status);
 	fver _ntdll_dll    = getFileVer(System32+L"\\ntdll.dll",&status);
 	fver _ntkrnlmp_exe = getFileVer(System32+L"\\ntkrnlmp.exe",&status);
 	fver _ntkrnlpa_exe = getFileVer(System32+L"\\ntkrnlpa.exe",&status);
@@ -1858,6 +1863,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("814995: Recommended Update");
 		XX(p1+"q814995_wxp_sp2_x86_enu_9e15819376b7ecb637bc9f9bfac2d16.exe"+a7);
 	}
+	if( sp==0 && (sku & XP_ALL) && (
+	      (_acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,40))
+	   || (_aclayers_dll >zero && _aclayers_dll <fver(5,1,2600,40))
+	   || (_acspecfc_dll >zero && _acspecfc_dll <fver(5,1,2600,40))
+	   || (_acxtrnal_dll >zero && _acxtrnal_dll <fver(5,1,2600,40)) )) {
+		NN("Windows XP Application Compatibility Update, April 2002");
+		XX(rtm+"q319580_7377086567f22a47d655346683359c1306df1074.exe"+a7);
+	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_appwiz_cpl   >zero && _appwiz_cpl   <fver(5,1,2600,1228))
 	   || (_explorer_exe >zero && _explorer_exe <fver(6,0,2800,1221))
@@ -2001,6 +2014,48 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2600,1)) )) {
 		NN("Windows XP Update Package, October 25, 2001");
 		XX(rtm+"q309521_x86_3c970d04ded697e0dc2daded5d10a9974534db79.exe"+a7);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_accwiz_exe   >zero && _accwiz_exe   <fver(5,1,2600,1143))
+	   || (_crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1123))
+	   || (_cryptsvc_dll >zero && _cryptsvc_dll <fver(5,1,2600,1190))
+	   || (_hh_exe       >zero && _hh_exe       <fver(5,2,3644,0))
+	   || (_hhctrl_ocx   >zero && _hhctrl_ocx   <fver(5,2,3735,0))
+	   || (_hhsetup_dll  >zero && _hhsetup_dll  <fver(5,2,3644,0))
+	   || (_html32_cnv   >zero && _html32_cnv   <fver(2003,1100,5426,0))
+	   || (_itircl_dll   >zero && _itircl_dll   <fver(5,2,3644,0))
+	   || (_itss_dll     >zero && _itss_dll     <fver(5,2,3644,0))
+	   || (_locator_exe  >zero && _locator_exe  <fver(5,1,2600,1147))
+	   || (_magnify_exe  >zero && _magnify_exe  <fver(5,1,2600,1143))
+	   || (_migwiz_exe   >zero && _migwiz_exe   <fver(5,1,2600,1143))
+	   || (_mrxsmb_sys   >zero && _mrxsmb_sys   <fver(5,1,2600,1143))
+	   || (_msconv97_dll >zero && _msconv97_dll <fver(2003,1100,5426,0))
+	   || (_narrator_exe >zero && _narrator_exe <fver(5,1,2600,1143))
+	   || (_newdev_dll   >zero && _newdev_dll   <fver(5,1,2600,1164))
+	   || (_ntdll_dll    >zero && _ntdll_dll    <fver(5,1,2600,1217))
+	   || (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1151))
+	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1151))
+	   || (_ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1151))
+	   || (_ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1151))
+	   || (_ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1263))
+	   || (_osk_exe      >zero && _osk_exe      <fver(5,1,2600,1143))
+	   || (_pchshell_dll >zero && _pchshell_dll <fver(5,1,2600,1143))
+	   || (_raspptp_sys  >zero && _raspptp_sys  <fver(5,1,2600,1129))
+	   || (_rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,1254))
+	   || (_rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,1263))
+	   || (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1145))
+	   || (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1233))
+	   || (_shmedia_dll  >zero && _shmedia_dll  <fver(6,0,2800,1125))
+	   || (_srrstr_dll   >zero && _srrstr_dll   <fver(5,1,2600,1142))
+	   || (_srv_sys      >zero && _srv_sys      <fver(5,1,2600,1193))
+//	   || (_sysmain_sdb  >zero && _sysmain_sdb  <fver())
+	   || (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1143))
+	   || (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,1134))
+	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1134))
+	   || (_winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,1134))
+	   || (_zipfldr_dll  >zero && _zipfldr_dll  <fver(6,0,2800,1126)) )) {
+		NN("Update Rollup 1 for Microsoft Windows XP (KB826939)");
+		XX(p1+"WindowsXP-KB826939-x86-ENU.exe"+a6);
 	}
 
 	// Windows XP SP2 updates
