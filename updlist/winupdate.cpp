@@ -134,9 +134,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	// File MD5 hashes
 	MD5 md5;
-	char* _shgina_dll_md5;
-	_shgina_dll_md5 = md5.digestFileW((System32+L"\\msginab.dll").c_str(),false);
-		//printf("%s\n",_shgina_dll_md5);
+	char* md5_ptr = md5.digestFileW((System32+L"\\shgina.dll").c_str(),false);
+	char _shgina_dll_md5[33];
+	strncpy_s(_shgina_dll_md5,33,md5_ptr,33);
+
+	md5.digestFileW((inetsrv+L"\\httpodbc.dll").c_str(),false);
+	char _httpodbc_dll_md5[33];
+	strncpy_s(_httpodbc_dll_md5,33,md5_ptr,33);
+	
+	md5.digestFileW((inetsrv+L"\\ssinc.dll").c_str(),false);
+	char _ssinc_dll_md5[33];
+	strncpy_s(_ssinc_dll_md5,33,md5_ptr,33);
+
+//	printf("%s\n",_shgina_dll_md5);
+//	printf("%s\n",_httpodbc_dll_md5);
+//	printf("%s\n",_ssinc_dll_md5);
 	
 	// Read file version information
 	fver zero = fver(0,0,0,0);
@@ -210,6 +222,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _drmupgds_exe = getFileVer(System32+L"\\drmupgds.exe",&status);
 	fver _drmv2clt_dll = getFileVer(System32+L"\\drmv2clt.dll",&status);
 	fver _dssenh_dll   = getFileVer(System32+L"\\dssenh.dll",&status);
+	fver _dwwin_exe    = getFileVer(System32+L"\\dwwin.exe",&status);
 	fver _dxmasf_dll   = getFileVer(System32+L"\\dxmasf.dll",&status);
 	fver _dxtmsft_dll  = getFileVer(System32+L"\\dxtmsft.dll",&status);
 	fver _dxtrans_dll  = getFileVer(System32+L"\\dxtrans.dll",&status);
@@ -218,6 +231,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
 	fver _expsrv_dll   = getFileVer(System32+L"\\expsrv.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
+	fver _faultrep_dll = getFileVer(System32+L"\\faultrep.dll",&status);
 	fver _fldrclnr_dll = getFileVer(System32+L"\\fldrclnr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
 	fver _fltMc_exe    = getFileVer(System32+L"\\fltMc.exe",&status);
@@ -473,6 +487,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rasmxs_dll   = getFileVer(System32+L"\\rasmxs.dll",&status);
 	fver _rassapi_dll  = getFileVer(System32+L"\\rassapi.dll",&status);
 	fver _rastls_dll   = getFileVer(System32+L"\\rastls.dll",&status);
+	fver _rdchost_dll  = getFileVer(System32+L"\\rdchost.dll",&status);
 	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
 	fver _remotesp_tsp = getFileVer(System32+L"\\remotesp.tsp",&status);
 	fver _rhttpaa_dll  = getFileVer(System32+L"\\rhttpaa.dll",&status);
@@ -501,6 +516,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _SecProc_ssp_isv_dll = getFileVer(System32+L"\\SecProc_ssp_isv.dll",&status);
 	fver _secur32_dll  = getFileVer(System32+L"\\secur32.dll",&status);
 	fver _services_exe = getFileVer(System32+L"\\services.exe",&status);
+	fver _sessmgr_exe  = getFileVer(System32+L"\\sessmgr.exe",&status);
 	fver _sfcfiles_dll = getFileVer(System32+L"\\sfcfiles.dll",&status);
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _shell32_dll  = getFileVer(System32+L"\\shell32.dll",&status);
@@ -1868,7 +1884,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("810272: Recommended Update");
 		XX(p1+"Q810272_WXP_SP2_x86_ENU.exe"+a7);
 	}
-	if( sp<2 && (sku & XP_ALL) && _acgenral_dll>zero && _acgenral_dll<fver(5,1,2600,1170)) { //CHECKME
+	if( sp==1 && (sku & XP_ALL) && _acgenral_dll>zero && _acgenral_dll<fver(5,1,2600,1170)) {
 		NN("814995: Recommended Update");
 		XX(p1+"q814995_wxp_sp2_x86_enu_9e15819376b7ecb637bc9f9bfac2d16.exe"+a7);
 	}
@@ -1962,11 +1978,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q320914: Recommended Update");
 		XX(rtm+"Q320914_WXP_SP1_x86_ENU.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _fxsclnt_exe>zero && _fxsclnt_exe<fver(5,2,1776,1024)) { //CHECKME
+	if( sp==1 && (sku & XP_ALL) && _fxsclnt_exe>zero && _fxsclnt_exe<fver(5,2,1776,1024)) {
 		NN("Q322011: Recommended Update");
 		XX(p1+"q322011_wxp_c8e80cfc7414d922d9f5f9794d996cc86913e008.exe"+a7);
 	}
-	if( sp==0 && (sku & XP_ALL) && _xactsrv_dll>zero && _xactsrv_dll<fver(5,1,2600,50)) { //CHECKME
+	if( sp==0 && (sku & XP_ALL) && _xactsrv_dll>zero && _xactsrv_dll<fver(5,1,2600,50)) {
 		NN("Q326830: Security Update (Windows XP)");
 		XX(rtm+"q326830_wxp_sp1_en_592a4e341f97da6d1bb0479ef1deecd.exe"+a7);
 	}
@@ -1989,6 +2005,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		&& strncmp(_shgina_dll_md5,"584fb7de76afe6735dd12aabee568b34",32) != 0 ) {
 		NN("Restarting Windows XP");
 		XX(rtm+"Q307274_x86.exe"+a7);
+	}
+	if((sp==0 && (sku & XP_ALL) && (
+	      (_dwwin_exe    >zero && _dwwin_exe    <fver(10,0,5403,0))
+	   || (_faultrep_dll >zero && _faultrep_dll <fver(5,1,2600,115)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
+	      (_dwwin_exe    >zero && _dwwin_exe    <fver(10,0,5403,0))
+	   || (_faultrep_dll >zero && _faultrep_dll <fver(5,1,2600,1232)) ))) {
+		NN("Windows Error Reporting: Recommended Update (Windows XP)");
+		XX(p1+"windowsxp-kb821253-x86-enu_6700bff43173d425ee692ec1239b617.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,18)) {
+		NN("Remote Assistance Connection");
+		XX(rtm+"q311889_wxp_27dba07edd39b4cc0b3e2c6db90178e7396cff1a.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+	      (_rdchost_dll >zero && _rdchost_dll <fver(5,1,2600,15))
+	   || (_sessmgr_exe >zero && _sessmgr_exe <fver(5,1,2600,15)) )) {
+		NN("Remote Assistance Used with Network Cards and Firewalls");
+		XX(rtm+"q308210_x86_9bf60ad45ad260ab449772bbdc337825796ac677.exe"+a7);
 	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_encdec_dll >zero && _encdec_dll <fver(6,4,2600,1142))
@@ -2021,19 +2056,53 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_dxmasf_dll   >zero && _dxmasf_dll   <fver(6,4,9,1121))
-//	   || (_httpod51_dll >zero && _httpod51_dll <fver(5,1,2600,1))  //CHECKME
+//	   || (_httpod51_dll >zero && _httpod51_dll <fver(5,1,2600,1))
+	   || (_httpodbc_dll<=fver(5,1,2600,1)
+			&& strncmp(_httpodbc_dll_md5,"504486b0f3c976c26201ad03a86a35a3",32) != 0)
 	   || (_lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,14))
 	   || (_msdxm_ocx    >zero && _msdxm_ocx    <fver(6,4,9,1121))
 	   || (_sfcfiles_dll >zero && _sfcfiles_dll <fver(5,1,2600,16))
 	   || (_ssdpapi_dll  >zero && _ssdpapi_dll  <fver(5,1,2600,15))
 	   || (_ssdpsrv_dll	 >zero && _ssdpsrv_dll  <fver(5,1,2600,15))
-//	   || (_ssinc51_dll  >zero && _ssinc51_dll  <fver(5,1,2600,1))  //CHECKME
+//	   || (_ssinc51_dll  >zero && _ssinc51_dll  <fver(5,1,2600,1))
+	   || (_ssinc_dll<=fver(5,1,2600,1)
+			&& strncmp(_ssinc_dll_md5,"45d1cacd02a55cb26d364c7e773441d6",32) != 0)
 	   || (_url_dll      >zero && _url_dll      <fver(6,0,2600,1))
 	   || (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2600,1)) )) {
 		NN("Windows XP Update Package, October 25, 2001");
 		XX(rtm+"q309521_x86_3c970d04ded697e0dc2daded5d10a9974534db79.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
+	if((sp==0 && (sku & XP_ALL) && (
+	      (_crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1123))
+	   || (_hh_exe       >zero && _hh_exe       <fver(5,2,3644,0))
+	   || (_hhctrl_ocx   >zero && _hhctrl_ocx   <fver(5,2,3735,0))
+	   || (_hhsetup_dll  >zero && _hhsetup_dll  <fver(5,2,3644,0))
+	   || (_html32_cnv   >zero && _html32_cnv   <fver(2003,1100,5426,0))
+	   || (_itircl_dll   >zero && _itircl_dll   <fver(5,2,3644,0))
+	   || (_itss_dll     >zero && _itss_dll     <fver(5,2,3644,0))
+	   || (_locator_exe  >zero && _locator_exe  <fver(5,1,2600,108))
+	   || (_mrxsmb_sys   >zero && _mrxsmb_sys   <fver(5,1,2600,106))
+	   || (_msconv97_dll >zero && _msconv97_dll <fver(2003,1100,5426,0))
+	   || (_newdev_dll   >zero && _newdev_dll   <fver(5,1,2600,109))
+	   || (_ntdll_dll    >zero && _ntdll_dll    <fver(5,1,2600,114))
+	   || (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,108))
+	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,108))
+	   || (_ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,108))
+	   || (_ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,108))
+	   || (_ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,118))
+	   || (_raspptp_sys  >zero && _raspptp_sys  <fver(5,1,2600,101))
+	   || (_rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,109))
+	   || (_rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,118))
+	   || (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2600,115))
+	   || (_shmedia_dll  >zero && _shmedia_dll  <fver(6,0,2600,101))
+	   || (_srrstr_dll   >zero && _srrstr_dll   <fver(5,1,2600,101))
+	   || (_srv_sys      >zero && _srv_sys      <fver(5,1,2600,112))
+//	   || (_sysmain_sdb  >zero && _sysmain_sdb  <fver())
+	   || (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,104))
+	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,104))
+	   || (_winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,104))
+	   || (_zipfldr_dll  >zero && _zipfldr_dll  <fver(6,0,2600,101)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
 	      (_accwiz_exe   >zero && _accwiz_exe   <fver(5,1,2600,1143))
 	   || (_crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1123))
 	   || (_cryptsvc_dll >zero && _cryptsvc_dll <fver(5,1,2600,1190))
@@ -2071,7 +2140,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,1134))
 	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1134))
 	   || (_winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,1134))
-	   || (_zipfldr_dll  >zero && _zipfldr_dll  <fver(6,0,2800,1126)) )) {
+	   || (_zipfldr_dll  >zero && _zipfldr_dll  <fver(6,0,2800,1126)) ))) {
 		NN("Update Rollup 1 for Microsoft Windows XP (KB826939)");
 		XX(p1+"WindowsXP-KB826939-x86-ENU.exe"+a6);
 	}
