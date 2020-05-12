@@ -9,6 +9,7 @@
 #include "kb2900986.h"
 #include "kb914798.h"
 #include "vcredist.h"
+#include "md5.h"
 #include <vector>
 #include <string>
 
@@ -131,6 +132,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool kb900325 = false;
 	bool kb913800 = false;
 
+	// File MD5 hashes
+	MD5 md5;
+	char* _shgina_dll_md5;
+	_shgina_dll_md5 = md5.digestFileW((System32+L"\\msginab.dll").c_str(),false);
+		//printf("%s\n",_shgina_dll_md5);
+	
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
@@ -497,6 +504,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sfcfiles_dll = getFileVer(System32+L"\\sfcfiles.dll",&status);
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _shell32_dll  = getFileVer(System32+L"\\shell32.dll",&status);
+	fver _shgina_dll   = getFileVer(System32+L"\\shgina.dll",&status);
 	fver _shimgvw_dll  = getFileVer(System32+L"\\shimgvw.dll",&status);
 	fver _shlwapi_dll  = getFileVer(System32+L"\\shlwapi.dll",&status);
 	fver _shmedia_dll  = getFileVer(System32+L"\\shmedia.dll",&status);
@@ -1207,6 +1215,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _agentdpv_dll = getFileVer(msagent+L"\\agentdpv.dll",&status);
 	fver _agentsvr_exe = getFileVer(msagent+L"\\agentsvr.exe",&status);
 
+	fver _gdiplus_dll_0     = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.0.1_x-ww_8d353f14\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_1360  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1360_x-ww_24a2ed47\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22319 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22791 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.22791_x-ww_c8dff154\\GdiPlus.dll",&status);
@@ -1976,6 +1985,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Resuming From Standby Update");
 		XX(rtm+"q311542xpsp1x86_6897313d2eed9825fe937d670f389e97dca35664.exe"+a7);
 	}
+	if( sp==0 && (sku & XP_ALL) && _shgina_dll==fver(6,0,2600,0)
+		&& strncmp(_shgina_dll_md5,"584fb7de76afe6735dd12aabee568b34",32) != 0 ) {
+		NN("Restarting Windows XP");
+		XX(rtm+"Q307274_x86.exe"+a7);
+	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_encdec_dll >zero && _encdec_dll <fver(6,4,2600,1142))
 	   || (_sbe_dll    >zero && _sbe_dll    <fver(6,4,2600,1142)) )) {
@@ -1996,6 +2010,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==0 && (sku & XP_ALL) && _msctf_dll>zero && _msctf_dll<fver(5,1,2600,29)) {
 		NN("Keyboard Layout Update");
 		XX(rtm+"Q318388WXPSP1.exe"+a7);
+	}
+	if( sp==0 && (sku & XP_ALL) && _gdiplus_dll_0<fver(5,1,3100,0)) {
+		NN("Q318966: Recommended Update");
+		XX(rtm+"Q318966_x86.exe"+a7);
 	}
 	if( sp==0 && (sku & XP_ALL) && _srchui_dll>zero && _srchui_dll<fver(1,0,0,2714)) {
 		NN("Q319949: Recommended Update");
