@@ -2070,12 +2070,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q319949: Recommended Update");
 		XX(rtm+"Q319949_WXP_SP1_x86_ENU.exe"+a7);
 	}
-	if( sp<2 && (sku & XP_PRO) && ( // FIXME: Add the Home Edition version of this
+	if( sp<2 && (sku & (XP_PRO|XP_PRON)) && (
 	    (_HscUpd_exe   >zero && _HscUpd_exe   <fver(5,1,2600,48))
 	 || (regQueryValue(L"SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{abcdf74f-9a64-4e6e-b8eb-6e5a41de6550}\\0409",L"Version",&status)!=L"1.0.0.2")
 	)) {
 		NN("Q327405: Recommended Update (Windows XP Professional)");
 		XX(sw+rtm+"hu1002_pro_d3adfeca5d27b538bfb5243dbf39a9034f2a5019.exe"+a2);
+	}
+	if( sp<2 && (sku & (XP_HOME|XP_HOMEN)) && (
+	    (_HscUpd_exe   >zero && _HscUpd_exe   <fver(5,1,2600,48))
+	 || (regQueryValue(L"SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{abcdf74f-9a64-4e6e-b8eb-6e5a41de6550}\\0409",L"Version",&status)!=L"1.0.0.2")
+	)) {
+		NN("Q327405: Recommended Update (Windows XP Home Edition)");
+		XX(sw+rtm+"hu1002_per_f08bc10e7760c0d84cd27effd4c32e5965c2b142.exe"+a2);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_dxmasf_dll   >zero && _dxmasf_dll   <fver(6,4,9,1121))
@@ -2749,7 +2756,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==1 && (sku & XP_ALL) && (
 	      (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1234))
 	   || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1240))
-//	   || (_ipseccmd_exe >zero && _ipseccmd_exe <fver(5,1,2600,1240)) // FIXME - where is this?
+//	   || (_ipseccmd_exe >zero && _ipseccmd_exe <fver(5,1,2600,1240))
 	   || (_ipsecsnp_dll >zero && _ipsecsnp_dll <fver(5,1,2600,1240))
 	   || (_ipsecsvc_dll >zero && _ipsecsvc_dll <fver(5,1,2600,1240))
 	   || (_ipsmsnap_dll >zero && _ipsmsnap_dll <fver(5,1,2600,1221))
@@ -5034,7 +5041,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	// Internet Explorer Updates
 	if( sp==0 && (sku & XP_ALL) && (
-		   (_urlmon_dll >=fver(6,0,2800,0) && _urlmon_dll <fver(6,0,2800,1167)) )) { //CHECKME
+		   (_urlmon_dll >=fver(6,0,2800,0) && _urlmon_dll <fver(6,0,2800,1167)) )) {
 		NN("813951: Update for Internet Explorer 6 SP1");
 		XX(sw+rtm+"q813951_080984187358e485219cec8a3ea3fa4ab37d7833.exe"+a2);
 	}
