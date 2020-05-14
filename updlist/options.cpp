@@ -447,12 +447,18 @@ void systemComponentVersions(bool batchmode) {
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
 	fver _wmpcore_dll  = getFileVer(System32+L"\\wmpcore.dll",&status);
 	fver _msdxm_ocx    = getFileVer(System32+L"\\msdxm.ocx",&status);
+	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _iexplore_exe = getFileVer(iepath,&status);
 
 	// Default to get version of wmplayer, but fall back to mplayer2 if needed.
 	fver wmp = _wmp_dll;
 	if(wmp==fver()) { wmp=_wmpcore_dll; }
 	if(wmp==fver()) { wmp=_msdxm_ocx; }
+
+	fver ie = _iexplore_exe;
+	if(ie>fver() && ie<fver(7,0,0,0)) {
+		ie = _shdocvw_dll;
+	}
 
 	if(wmp.major() >= 8) {
 		printf("%s     Windows Media Player %d (%s)\n",batchmode?"echo ":"",wmp.major(),wmp.format().c_str());
@@ -461,6 +467,10 @@ void systemComponentVersions(bool batchmode) {
 	} else {
 		printf("%s     Windows Media Player is not present.\n",batchmode?"echo ":"");
 	}
-	printf("%s     Internet Explorer %d (%s)\n",batchmode?"echo ":"",_iexplore_exe.major(),_iexplore_exe.format().c_str());
+	if(ie>=fver(6,0,2800,1106) && ie<fver(7,0,0,0)){
+		printf("%s     Internet Explorer 6 SP1 (%s)\n",batchmode?"echo ":"",ie.format().c_str());
+	} else {
+		printf("%s     Internet Explorer %d (%s)\n",batchmode?"echo ":"",ie.major(),ie.format().c_str());
+	}
 	printf("%s\n",batchmode?"echo.":"");
 }

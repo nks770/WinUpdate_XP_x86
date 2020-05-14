@@ -66,6 +66,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string a5=" /wuforce /quiet /norestart";
 	const std::string a6=" /passive /norestart /o /n";
 	const std::string a7=" -u -n -o -z";
+	const std::string a8=" /Q:U /R:N";
 
 	// Create SKU masks
 	int XP_HOME_PRO = XP_PRO|XP_PRON|XP_HOME|XP_HOMEN;
@@ -585,6 +586,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _windowscodecs_dll = getFileVer(System32+L"\\windowscodecs.dll",&status);
 	fver _windowscodecsext_dll = getFileVer(System32+L"\\windowscodecsext.dll",&status);
 	fver _winhttp_dll  = getFileVer(System32+L"\\winhttp.dll",&status);
+	fver _WINHTTP5_DLL = getFileVer(System32+L"\\WINHTTP5.DLL",&status);
 	fver _wininet_dll  = getFileVer(System32+L"\\wininet.dll",&status);
 	fver _winipsec_dll = getFileVer(System32+L"\\winipsec.dll",&status);
 	fver _winlogon_exe = getFileVer(System32+L"\\winlogon.exe",&status);
@@ -1295,6 +1297,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Background Intelligent Transfer Service (BITS) 2.0 and WinHTTP 5.1 (KB842773)");
 		XX(p1+"windowsxp-kb842773-v2-x86-enu_1d3d2bc417bf9d881206ed238ad6a4a9c189cfb3.exe"+a6);
 	}
+	/*
+	// Hotfix KB883357 fixes a flaw with how KB842773 v1 writes a REG_MULTI_SZ value
+	// to the registry.  The value should be terminated with two NULL wchar_t
+	// values (0x0000).  The faulty KB883357 patch wrote one null (0x0000) and one
+	// unicode character (0xeeef).  KB842773v2 fixed the issue, which means that
+	// KB883357 is not explicitly needed.
+	wchar_t* bits = (wchar_t*)regQueryBinaryData(L"SYSTEM\\CurrentControlSet\\Control\\BackupRestore\\FilesNotToBackup",L"BITS_metadata",&status);
+	for(int i=0; i<(status/sizeof(wchar_t)); i++) {
+			printf("%04x ",bits[i]);
+	} printf("\n");
+	if( sp<1 && (sku & XP_ALL) && 1==0) {
+		NN("Update for Background Intelligent Transfer Service (BITS) (KB883357)");
+		XX(p1+"windowsxp-kb883357-x86-enu_f4bd524df7dbf1db8bed916d4a4f63b0f29f777c.exe"+a6);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && _itircl_dll>zero && _itircl_dll<fver(5,2,3790,80)) {
 		NN("Security Update for Microsoft Windows XP (KB825119)");
 		XX(rtm+"windowsxp-kb825119-x86-enu_1b9f23b64b002d1e9d1eaba62f5f8fd.exe"+a7);
@@ -2053,6 +2069,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==0 && (sku & XP_ALL) && _srchui_dll>zero && _srchui_dll<fver(1,0,0,2714)) {
 		NN("Q319949: Recommended Update");
 		XX(rtm+"Q319949_WXP_SP1_x86_ENU.exe"+a7);
+	}
+	if( sp<2 && (sku & XP_PRO) && ( // FIXME: Add the Home Edition version of this
+	    (_HscUpd_exe   >zero && _HscUpd_exe   <fver(5,1,2600,48))
+	 || (regQueryValue(L"SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{abcdf74f-9a64-4e6e-b8eb-6e5a41de6550}\\0409",L"Version",&status)!=L"1.0.0.2")
+	)) {
+		NN("Q327405: Recommended Update (Windows XP Professional)");
+		XX(sw+rtm+"hu1002_pro_d3adfeca5d27b538bfb5243dbf39a9034f2a5019.exe"+a2);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_dxmasf_dll   >zero && _dxmasf_dll   <fver(6,4,9,1121))
@@ -4939,7 +4962,30 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	      (_inetcomm_dll >zero && _inetcomm_dll  <fver(6,0,2742,200))
 	   || (_msoe_dll >zero && _msoe_dll  <fver(6,0,2741,2600)) )) {
 		NN("Cumulative Security Update for Outlook Express 6 (KB823353)");
-		XX(rtm+"ie6.0-kb823353-windowsxp-x86-enu_6769d29ed07c313c9cd3b7d659a9b93e5feb1b8a.exe"+a2);
+		XX(sw+rtm+"ie6.0-kb823353-windowsxp-x86-enu_6769d29ed07c313c9cd3b7d659a9b93e5feb1b8a.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0))
+	  && ((_directdb_dll >zero && _directdb_dll <fver(6,0,2800,1123))
+	   || (_inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2800,1441))
+	   || (_inetres_dll  >zero && _inetres_dll  <fver(6,0,2800,1123))
+	   || (_msident_dll  >zero && _msident_dll  <fver(6,0,2800,1123))
+	   || (_msimn_exe    >zero && _msimn_exe    <fver(6,0,2800,1123))
+	   || (_msoe_dll     >zero && _msoe_dll     <fver(6,0,2800,1437))
+	   || (_msoeacct_dll >zero && _msoeacct_dll <fver(6,0,2800,1123))
+	   || (_msoeres_dll  >zero && _msoeres_dll  <fver(6,0,2800,1123))
+	   || (_msoert2_dll  >zero && _msoert2_dll  <fver(6,0,2800,1123))
+	   || (_oeimport_dll >zero && _oeimport_dll <fver(6,0,2800,1123))
+	   || (_oemig50_exe  >zero && _oemig50_exe  <fver(6,0,2800,1123))
+	   || (_oemiglib_dll >zero && _oemiglib_dll <fver(6,0,2800,1123))
+//	   || (_oeuninst_exe >zero && _oeuninst_exe <fver(6,0,2800,1223))
+//	   || (_oeupdate_exe >zero && _oeupdate_exe <fver(6,0,2800,1276))
+	   || (_wab_exe      >zero && _wab_exe      <fver(6,0,2800,1123))
+	   || (_wab32_dll    >zero && _wab32_dll    <fver(6,0,2800,1450))
+	   || (_wabfind_dll  >zero && _wabfind_dll  <fver(6,0,2800,1123))
+	   || (_wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2800,1123))
+	   || (_wabmig_exe   >zero && _wabmig_exe   <fver(6,0,2800,1123)) )) {
+		NN("Cumulative Security Update for Outlook Express 6 SP1 (KB823353)");
+		XX(sw+rtm+"ie6.0sp1-kb823353-x86-enu_fc5e431c90275cbf25628c46712a6aa7fe86acd9.exe"+a8);
 	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_directdb_dll   >zero && _directdb_dll   <fver(6,0,2800,1807))
@@ -4992,7 +5038,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("813951: Update for Internet Explorer 6 SP1");
 		XX(sw+rtm+"q813951_080984187358e485219cec8a3ea3fa4ab37d7833.exe"+a2);
 	}
-	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
 		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2800,1485))
@@ -5005,7 +5051,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)");
 		XX(p1+"ie6.0sp1-kb867282-windows-2000-xp-x86-enu_261bd11af527fd33c1c30bb16789cfee73d0f7d9.exe"+a6);
 	}
-	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1692))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
 		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,147))
@@ -5023,7 +5069,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)");
 		XX(p1+"ie6.0sp1-kb896688-windows-2000-xp-x86-enu_57950e4fbed19228cd32acf537946a9077d4b6d5.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_vgx_dll >zero && _vgx_dll <fver(6,0,2800,1580)) )) {
 		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB925486)");
 		XX(p1+"ie6.0sp1-kb925486-windowsxp-x86-enu_08de2f06f64de1e2225032d8e49e45b6f31eb8ba.exe"+a1);
@@ -5412,7 +5458,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 8 Compatibility View List for Windows XP (KB2598845)");
 		XX(p3+"IE8-WindowsXP-KB2598845-x86-ENU.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,2800,1106) && _iexplore_exe<fver(6,0,2900,0)) && (
+	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		                  ( _jgdw400_dll >zero && _jgdw400_dll <fver(106,0,0,0))
 					  ||  ( _jgpl400_dll >zero && _jgpl400_dll <fver( 54,0,0,0)) )) {
 		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB918439)");
@@ -6215,6 +6261,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		} else {
 			XX(p3+"msxml4-kb2758694-enu_24abccbcceaf5bea9c3e34ff1f64c2aa3d57e308.exe"+a3);
 		}
+	}
+	if( sp==0 && (sku & XP_ALL) && (
+	    (_msxml4_dll  >zero && _msxml4_dll  <fver(4,0,9406,0))
+	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,0,9406,0))
+	 || ((_msxml4_dll>zero || _msxml4r_dll>zero || *msxml4) && _WINHTTP5_DLL<fver(5,0,2613,0)) )){
+		NN("Security Update, February 13, 2002 (MSXML 4.0)");
+		XX(sw+rtm+"q317244_21ecede68f96753e7cb328ef7473711f9f3b4115.exe"+a2);
 	}
 	/*if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,10,1129,0))

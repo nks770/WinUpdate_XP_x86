@@ -47,6 +47,9 @@ std::wstring regQueryValue(const std::wstring& lpSubKey,const std::wstring& lpVa
 		case REG_SZ:
 			rval=lpData;
 			break;
+		case REG_MULTI_SZ:
+			rval=lpData;
+			break;
 		case REG_DWORD:
 			wchar_t buffer[4096];
 			swprintf_s(buffer,4096,L"%d",(int)lpData[0]);
@@ -152,6 +155,10 @@ LPBYTE regQueryBinaryData(const std::wstring& lpSubKey,const std::wstring& lpVal
 
 	switch(lpType) {
 		case REG_BINARY:
+			*status=(int)lpcbData;
+			return lpData;
+			break;
+		case REG_MULTI_SZ:
 			*status=(int)lpcbData;
 			return lpData;
 			break;
