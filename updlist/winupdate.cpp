@@ -519,6 +519,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _services_exe = getFileVer(System32+L"\\services.exe",&status);
 	fver _sessmgr_exe  = getFileVer(System32+L"\\sessmgr.exe",&status);
 	fver _sfcfiles_dll = getFileVer(System32+L"\\sfcfiles.dll",&status);
+	fver _shdoclc_dll  = getFileVer(System32+L"\\shdoclc.dll",&status);
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _shell32_dll  = getFileVer(System32+L"\\shell32.dll",&status);
 	fver _shgina_dll   = getFileVer(System32+L"\\shgina.dll",&status);
@@ -5040,10 +5041,54 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 
 	// Internet Explorer Updates
-	if( sp==0 && (sku & XP_ALL) && (
+	/*if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2723,2500))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2723,100))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2722,900))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("810847: February 2003, Cumulative Patch for Internet Explorer 6");
+		XX(sw+rtm+"ie6.0-q810847.exe"+a8);
+	}*/
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2734,1600))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2734,1600))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2730,1200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2734,200))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("824145: November 2003, Cumulative Patch for Internet Explorer 6");
+		XX(sw+rtm+"ie6.0-q824145.exe"+a8);
+	}
+	/*if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1141))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1154))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1154)) )) {
+		// Q810847 is replaced by Q824145
+		NN("810847: February 2003, Cumulative Patch for Internet Explorer 6 Service Pack 1");
+		XX(sw+rtm+"ie6.0sp1-q810847.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) &&
+		(  _mshtml_dll  >= fver(6,0,2800,1141)
+		&& _shdocvw_dll >= fver(6,0,2800,1154)
+		&& _urlmon_dll  >= fver(6,0,2800,1154)) && (
 		   (_urlmon_dll >=fver(6,0,2800,0) && _urlmon_dll <fver(6,0,2800,1167)) )) {
+	// This update requires Internet Explorer 6.0 Service Pack 1 and Q810847 to be installed.
+	// Q813951 is replaced by Q824145
 		NN("813951: Update for Internet Explorer 6 SP1");
-		XX(sw+rtm+"q813951_080984187358e485219cec8a3ea3fa4ab37d7833.exe"+a2);
+		XX(sw+rtm+"q813951_080984187358e485219cec8a3ea3fa4ab37d7833.exe"+a8);
+	}*/
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1276))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1276))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1276))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1282)) )) {
+		NN("824145: November 2003, Cumulative Patch for Internet Explorer 6 SP1");
+		XX(sw+rtm+"ie6.0sp1-q824145.exe"+a8);
 	}
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
