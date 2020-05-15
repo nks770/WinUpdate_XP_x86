@@ -5042,6 +5042,68 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	// Internet Explorer Updates
 	/*if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2713,1100))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2713,1100))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2713,1500))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2712,300))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2713,1100))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2712,300)) )) {
+		NN("11 February 2002 Cumulative Patch for Internet Explorer");
+		XX(sw+rtm+"ie6.0-q316059.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2715,400))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2715,400))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2715,400))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2715,400)) )) {
+		NN("28 March 2002 Cumulative Patch for Internet Explorer");
+		XX(sw+rtm+"ie6.0-q319182.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2716,2200))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2716,1500))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2716,1500))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2715,400)) )) {
+		NN("May 2002: Cumulative Patch for Internet Explorer (Q321232)");
+		XX(sw+rtm+"ie6.0-q321232.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2719,2200))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2719,2200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2719,2200))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("August 2002, Cumulative Update for Internet Explorer (Q323759)");
+		XX(sw+rtm+"ie6.0-q323759.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2722,900))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2722,900))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2722,900))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("Q328970: November, 2002 Cumulative Patch for Internet Explorer 6");
+		XX(sw+rtm+"ie6.0-q328970.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2722,900))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2723,100))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2722,900))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("Q324929: December, 2002 Cumulative Patch for Internet Explorer");
+		XX(sw+rtm+"ie6.0-q324929.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
 		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2723,2500))
 		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
 		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
@@ -5051,7 +5113,53 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
 		NN("810847: February 2003, Cumulative Patch for Internet Explorer 6");
 		XX(sw+rtm+"ie6.0-q810847.exe"+a8);
-	}*/
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2726,2500))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2723,100))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2727,2400))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("813489: April 2003, Cumulative Patch for Internet Explorer 6");
+		XX(sw+rtm+"ie6.0-q813489.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2726,2500))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2729,2200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2728,1400))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("818529: June 2003, Cumulative Patch for Internet Explorer 6");
+		XX(sw+rtm+"ie6.0-q818529.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2730,1700))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2729,2200))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2730,1200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2731,1000))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("August 2003, Cumulative Patch for Internet Explorer 6 (822925)");
+		XX(sw+rtm+"ie6.0-q822925.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2733,1800))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2729,2200))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2730,1200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2733,1000))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
+		NN("October 2003, Cumulative Patch for Internet Explorer 6 (828750)");
+		XX(sw+rtm+"ie6.0-q828750.exe"+a8);
+	}
 	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
 		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2734,1600))
 		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
@@ -5063,8 +5171,34 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2718,400)) )) {
 		NN("824145: November 2003, Cumulative Patch for Internet Explorer 6");
 		XX(sw+rtm+"ie6.0-q824145.exe"+a8);
+	}*/
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2600,0) && _shdocvw_dll<fver(6,0,2800,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2737,1600))
+	    || (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2737,800))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2722,900))
+		|| (_shdoclc_dll  >zero && _shdoclc_dll  <fver(6,0,2715,400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2737,800))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2730,1200))
+		|| (_url_dll      >zero && _url_dll      <fver(6,0,2715,400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2736,2300))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2737,800)) )) {
+		NN("Cumulative Security Update for Internet Explorer 6 (KB832894)");
+		XX(sw+rtm+"ie6.0-Q832894.exe"+a8);
 	}
 	/*if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1126))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1126)) )) {
+		NN("Q328970: November, 2002 Cumulative Patch for Internet Explorer 6 SP1");
+		XX(sw+rtm+"ie6.0sp1-q328970.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1126))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1133))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1126)) )) {
+		NN("December, 2002 Cumulative Patch for Internet Explorer 6 Service Pack 1");
+		XX(sw+rtm+"ie6.0sp1-q324929.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1141))
 		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1154))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1154)) )) {
@@ -5081,7 +5215,37 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Q813951 is replaced by Q824145
 		NN("813951: Update for Internet Explorer 6 SP1");
 		XX(sw+rtm+"q813951_080984187358e485219cec8a3ea3fa4ab37d7833.exe"+a8);
-	}*/
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1170))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1170))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1170)) )) {
+		NN("813489: April 2003, Cumulative Patch for Internet Explorer 6 Service Pack 1");
+		XX(sw+rtm+"ie6.0sp1-q813489.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1170))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1203))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1188)) )) {
+		NN("818529: June 2003, Cumulative Patch for Internet Explorer 6 Service Pack 1");
+		XX(sw+rtm+"ie6.0sp1-q818529.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1226))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1203))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1226))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1226)) )) {
+		NN("August 2003, Cumulative Patch for Internet Explorer 6 Service Pack 1 (822925)");
+		XX(sw+rtm+"ie6.0sp1-q822925.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1264))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1203))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1226))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1259)) )) {
+		NN("October 2003, Cumulative Patch for Internet Explorer 6 Service Pack 1 (828750)");
+		XX(sw+rtm+"ie6.0sp1-q828750.exe"+a8);
+	}
 	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1276))
 		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1276))
@@ -5089,6 +5253,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1282)) )) {
 		NN("824145: November 2003, Cumulative Patch for Internet Explorer 6 SP1");
 		XX(sw+rtm+"ie6.0sp1-q824145.exe"+a8);
+	}*/
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1400))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1400))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1400))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1400))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1400))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1400)) )) {
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB832894)");
+		XX(sw+rtm+"ie6.0sp1-Q832894.exe"+a8);
 	}
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
@@ -5628,9 +5802,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"wm320920_8_2d2bb2749d7aebe8efee1df06da63b146dd1176a.exe"+a2);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
-		   (_wmp_dll      >=fver(9,0,0,2980) && _wmp_dll   <fver(9,0,0,3008)) )) { //CHECKME
+		   (_wmp_dll      >=fver(9,0,0,2980) && _wmp_dll   <fver(9,0,0,3008)) )) {
 		NN("Flaw In Windows Media Player May Allow Media Library Access (819639)");
-		XX(rtm+"windowsmedia9-kb819639-x86-enu_bfd620da8e1529c3e4ffadfb93f33fa.exe"+a2);
+		XX(sw+rtm+"windowsmedia9-kb819639-x86-enu_bfd620da8e1529c3e4ffadfb93f33fa.exe"+a8);
 	}
 	if( sp<2 && (sku & XP_ALL) && (
 		   (_msdxm_ocx    >=fver(6,4,9,0) && _msdxm_ocx    <fver(6,4,9,1128))
