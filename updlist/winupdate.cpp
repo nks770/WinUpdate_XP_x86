@@ -1258,6 +1258,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdiplus_dll_24563 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24563_x-ww_24ee7315\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_20488 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6003.20488_x-ww_40820f9c\\GdiPlus.dll",&status);
 
+	fver _comctl32_dll_1342 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1331_x-ww_7abf6d02\\comctl32.dll",&status);
 	fver _comctl32_dll_1515 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1515_x-ww_7bb98b8a\\comctl32.dll",&status);
 	fver _comctl32_dll_1579 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1579_x-ww_7bbf8d08\\comctl32.dll",&status);
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
@@ -1819,6 +1820,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_win32k_sys >zero && _win32k_sys <fver(5,1,2600,1755)) )) {
 		NN("Security Update for Windows XP (KB896424)");
 		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
+	}
+	if(sp==1 && (sku & XP_ALL) && (
+	      (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1348))
+	   || (_sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1336))
+	   || ( _comctl32_dll_1342 < fver(6,0,2800,1342)) )) {
+		NN("Update for Windows XP Shop for Music Online Link (KB833998)");
+		XX(p1+"windowsxp-kb833998-x86-enu_aeee0743a7f7604e32e3c80f5f3a694.exe"+a6);
 	}
 	if((sp==0 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2600,151))
 	 ||(sp==1 && (sku & XP_ALL) && (
