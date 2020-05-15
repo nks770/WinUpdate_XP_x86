@@ -55,6 +55,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
 	fver _iexplore_exe = getFileVer(InternetExplorer+L"\\iexplore.exe",&status);
+	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
 
 	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
@@ -105,7 +106,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 		NN("Windows Media Player 11");
 		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
 	}
-	else if( sp>=1 && ( sku & XP_ALL ) && ( _wmp_dll <fver(10,0,0,2980) )) {
+	else if( sp<2 && ( sku & XP_ALL ) && ( _wmp_dll <fver(10,0,0,2980) )) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Windows Media Player 11 only installs on")
 			                               +"|Windows XP Serivce Pack 2 or higher."
@@ -163,7 +164,16 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 		NN("Internet Explorer 8 for Windows XP");
 		XX("\"Internet Explorer\\IE8-WindowsXP-x86-ENU.EXE\" /passive /update-no");
 	}
-	if( sp<2 ) {
+	if( sp<2 && _shdocvw_dll<fver(6,0,2800,1106)) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Internet Explorer 7 and 8 are only for")
+			                               +"|Windows XP Serivce Pack 2 or higher."
+							               +"| "
+										   +"|Proceeding to install IE 6.0 SP1.");
+		NN("Internet Explorer 6 Service Pack 1");
+		XX("\"Internet Explorer\\ie6sp1en\\ie6setup.exe /Q:U /R:N /C:\"ie6wzd.exe /S:\"\"#e\"\" /Q:U /R:N\"");
+	}
+	else if( sp<2 ) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Internet Explorer 7 and 8 are only for")
 			                               +"|Windows XP Serivce Pack 2 or higher."

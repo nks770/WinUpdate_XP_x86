@@ -2709,12 +2709,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB950974)");
 		XX(p3+"WindowsXP-KB950974-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
-					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
-	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
-		NN("Security Update for Windows XP (KB924496)");
-		XX(p2+"windowsxp-kb924496-x86-enu_f1e2421551a739eae947590735fb3f4abec82c22.exe"+a1);
-	}
 	if((sp==2 && (sku & XP_ALL) && _helpsvc_exe>zero && _helpsvc_exe<fver(5,1,2600,3720))
 	 ||(sp==3 && (sku & XP_ALL) && _helpsvc_exe>zero && _helpsvc_exe<fver(5,1,2600,5997))) {
 		NN("Security Update for Windows XP (KB2229593)");
@@ -5295,6 +5289,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)");
 		XX(p1+"ie6.0sp1-kb896688-windows-2000-xp-x86-enu_57950e4fbed19228cd32acf537946a9077d4b6d5.exe"+a1);
 	}
+	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
+					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
+	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
+		NN("Security Update for Windows XP (KB924496)");
+		XX(p2+"windowsxp-kb924496-x86-enu_f1e2421551a739eae947590735fb3f4abec82c22.exe"+a1);
+	}
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_vgx_dll >zero && _vgx_dll <fver(6,0,2800,1580)) )) {
 		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB925486)");
@@ -6462,7 +6462,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("BitLocker To Go Reader (KB970401)");
 		XX(p3+"KB970401-x86.exe"+a1);
 	}
-	if( sp>=1 && (*winrms ||   (     (_msdrm_dll              >zero && _msdrm_dll              <fver(5,2,3790,433))
+	if( sp>=0 && (*winrms ||   (     (_msdrm_dll              >zero && _msdrm_dll              <fver(5,2,3790,433))
 		              ||  (_RmActivate_exe         >zero && _RmActivate_exe         <fver(6,0,6406,0))
 					  ||  (_RmActivate_isv_exe     >zero && _RmActivate_isv_exe     <fver(6,0,6406,0))
 					  ||  (_RmActivate_ssp_exe     >zero && _RmActivate_ssp_exe     <fver(6,0,6406,0))
@@ -6506,7 +6506,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB954459)");
 		NN(p+"windowsxp-kb954459-x86-enu_a409813d4541734043c419d399d20a463b52f8e1.exe"+a1);
 	}*/
-	if( sp>=1 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2003,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
