@@ -286,6 +286,7 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 	const std::string p3=p+"SP3\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 //	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup";
+	const std::string a6=" /passive /o /n /f";
 	const std::string a7=" /passive /warnrestart /overwriteoem /nobackup /forceappsclose";
 
 	// Create SKU masks
@@ -314,7 +315,7 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 		NN("Update for Windows XP (KB932823)");
 		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
 	}
-	if( sp<3 && (sku & XP_ALL) && ( 
+	if( sp==2 && (sku & XP_ALL) && ( 
 		                  ( _photometadatahandler_dll <fver(6,0,5840,16388))
 					  ||  ( _windowscodecs_dll        <fver(6,0,5840,16388))
 					  ||  ( _windowscodecsext_dll     <fver(6,0,5840,16388))
@@ -337,10 +338,15 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 		NN("Service Pack 3 for Windows Fundamentals for Legacy PCs and Windows Embedded for Point of Service (KB958255)");
 		XX("\"Service Packs\\WindowsXP-KB958255-ENU.exe\""+a7);
 	}
-	else if( !(sku & XPE_FLP) && sp<3 ) {
+	else if( !(sku & XPE_FLP) && sp==2 ) {
 		r=3;
 		NN("Windows XP Service Pack 3 (KB936929)");
 		XX("\"Service Packs\\WindowsXP-KB936929-SP3-x86-ENU.exe\""+a7);
+	}
+	else if( !(sku & XPE_FLP) && sp<2 ) {
+		r=2;
+		NN("Windows XP Service Pack 2 (KB835935)");
+		XX("\"Service Packs\\WindowsXP-KB835935-SP2-ENU.exe\""+a6);
 	}
 
 	return r;
