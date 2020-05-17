@@ -18,6 +18,25 @@
 
 using namespace std;
 
+// NOTES
+//
+// /q[n|b|r|f] Sets user interface level
+//    n - No UI
+//    b - Basic UI
+//    r - Reduced UI
+//    f - Full UI
+// /quiet   Same as /q
+// /passive Same as /qb
+//
+// /q[:u | :a] 	/q - Specifies quiet mode, or suppresses prompts.
+// /q:u - Specifies user-quiet mode, which presents some dialog boxes to the user.
+// /q:a - Specifies administrator-quiet mode, which does not present any dialog boxes to the user.
+//
+// /r:n Never restarts the computer after installation.
+// /r:i Prompts the user to restart the computer if a restart is required, except when used with /q:a.
+// /r:a Always restarts the computer after installation.
+// /r:s Restarts the computer after installation without prompting the user.
+
 void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp,
 					bool* options,std::vector<std::string> *notifications) {
 
@@ -42,6 +61,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool* wga = options+15;
 	bool* xpeos = options+16;
 	bool* rktools = options+17;
+	bool* msjvm = options+18;
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -193,6 +213,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
+	fver _clspack_exe  = getFileVer(System32+L"\\clspack.exe",&status);
 	fver _colbact_dll  = getFileVer(System32+L"\\colbact.dll",&status);
 	fver _comctl32_dll = getFileVer(System32+L"\\comctl32.dll",&status);
 	fver _comrepl_dll  = getFileVer(System32+L"\\comrepl.dll",&status);
@@ -298,10 +319,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _itircl_dll   = getFileVer(System32+L"\\itircl.dll",&status);
 	fver _itss_dll     = getFileVer(System32+L"\\itss.dll",&status);
 	fver _iyuv_32_dll  = getFileVer(System32+L"\\iyuv_32.dll",&status);
+	fver _javacypt_dll = getFileVer(System32+L"\\javacypt.dll",&status);
+	fver _javaee_dll   = getFileVer(System32+L"\\javaee.dll",&status);
+	fver _javaprxy_dll = getFileVer(System32+L"\\javaprxy.dll",&status);
+	fver _javart_dll   = getFileVer(System32+L"\\javart.dll",&status);
+	fver _jdbgmgr_exe  = getFileVer(System32+L"\\jdbgmgr.exe",&status);
 	fver _jgdw400_dll  = getFileVer(System32+L"\\jgdw400.dll",&status);
 	fver _jgpl400_dll  = getFileVer(System32+L"\\jgpl400.dll",&status);
+	fver _jit_dll      = getFileVer(System32+L"\\jit.dll",&status);
 	fver _jscript_dll  = getFileVer(System32+L"\\jscript.dll",&status);
 	fver _jsproxy_dll  = getFileVer(System32+L"\\jsproxy.dll",&status);
+	fver _jview_exe    = getFileVer(System32+L"\\jview.exe",&status);
 	fver _kerberos_dll = getFileVer(System32+L"\\kerberos.dll",&status);
 	fver _kernel32_dll = getFileVer(System32+L"\\kernel32.dll",&status);
 	fver _krnl386_exe  = getFileVer(System32+L"\\krnl386.exe",&status);
@@ -346,6 +374,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mrt_exe      = getFileVer(System32+L"\\mrt.exe",&status);
 	fver _msasn1_dll   = getFileVer(System32+L"\\msasn1.dll",&status);
 	fver _msaud32_acm  = getFileVer(System32+L"\\msaud32.acm",&status);
+	fver _msawt_dll    = getFileVer(System32+L"\\msawt.dll",&status);
 	fver _mscms_dll    = getFileVer(System32+L"\\mscms.dll",&status);
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
 	fver _msdart_dll   = getFileVer(System32+L"\\msdart.dll",&status);
@@ -372,6 +401,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msihnd_dll   = getFileVer(System32+L"\\msihnd.dll",&status);
 	fver _msimsg_dll   = getFileVer(System32+L"\\msimsg.dll",&status);
 	fver _msisip_dll   = getFileVer(System32+L"\\msisip.dll",&status);
+	fver _msjava_dll   = getFileVer(System32+L"\\msjava.dll",&status);
+	fver _msjdbc10_dll = getFileVer(System32+L"\\msjdbc10.dll",&status);
 	fver _msjet40_dll  = getFileVer(System32+L"\\msjet40.dll",&status);
 	fver _msjetol1_dll = getFileVer(System32+L"\\msjetol1.dll",&status);
 	fver _msjint40_dll = getFileVer(System32+L"\\msjint40.dll",&status);
@@ -575,6 +606,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _vbscript_dll = getFileVer(System32+L"\\vbscript.dll",&status);
 	fver _vdmdbg_dll   = getFileVer(System32+L"\\vdmdbg.dll",&status);
 	fver _verclsid_exe = getFileVer(System32+L"\\verclsid.exe",&status);
+	fver _vmhelper_dll = getFileVer(System32+L"\\vmhelper.dll",&status);
 	fver _wdfapi_dll   = getFileVer(System32+L"\\wdfapi.dll",&status);
 	fver _WdfCoInstaller01007_dll = getFileVer(System32+L"\\WdfCoInstaller01007.dll",&status);
 	fver _wdfmgr_exe   = getFileVer(System32+L"\\wdfmgr.exe",&status);
@@ -596,6 +628,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _winsrv_dll   = getFileVer(System32+L"\\winsrv.dll",&status);
 	fver _wintrust_dll = getFileVer(System32+L"\\wintrust.dll",&status);
 	fver _winusbcoinstaller_dll = getFileVer(System32+L"\\winusbcoinstaller.dll",&status);
+	fver _wjview_exe   = getFileVer(System32+L"\\wjview.exe",&status);
 	fver _wksprt_exe   = getFileVer(System32+L"\\wksprt.exe",&status);
 	fver _wkssvc_dll   = getFileVer(System32+L"\\wkssvc.dll",&status);
 	fver _wldap32_dll  = getFileVer(System32+L"\\wldap32.dll",&status);
@@ -2096,7 +2129,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_dxmasf_dll   >zero && _dxmasf_dll   <fver(6,4,9,1121))
 //	   || (_httpod51_dll >zero && _httpod51_dll <fver(5,1,2600,1))
-	   || (_httpodbc_dll<=fver(5,1,2600,1)
+	   || (_httpodbc_dll > zero && _httpodbc_dll<=fver(5,1,2600,1)
 			&& strncmp(_httpodbc_dll_md5,"504486b0f3c976c26201ad03a86a35a3",32) != 0)
 	   || (_lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,14))
 	   || (_msdxm_ocx    >zero && _msdxm_ocx    <fver(6,4,9,1121))
@@ -2104,7 +2137,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_ssdpapi_dll  >zero && _ssdpapi_dll  <fver(5,1,2600,15))
 	   || (_ssdpsrv_dll	 >zero && _ssdpsrv_dll  <fver(5,1,2600,15))
 //	   || (_ssinc51_dll  >zero && _ssinc51_dll  <fver(5,1,2600,1))
-	   || (_ssinc_dll<=fver(5,1,2600,1)
+	   || (_ssinc_dll    >zero && _ssinc_dll<=fver(5,1,2600,1)
 			&& strncmp(_ssinc_dll_md5,"45d1cacd02a55cb26d364c7e773441d6",32) != 0)
 	   || (_url_dll      >zero && _url_dll      <fver(6,0,2600,1))
 	   || (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2600,1)) )) {
@@ -4928,6 +4961,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		}
 	}
 
+	// Microsoft Java Virtual Machine (MSJVM)
+	if( sp>=0 && (sku & XP_ALL)
+	  && ( *msjvm
+	   || (_clspack_exe  >zero && _clspack_exe  <fver(5,0,3810,0))
+	   || (_javacypt_dll >zero && _javacypt_dll <fver(5,0,3810,0))
+	   || (_javaee_dll   >zero && _javaee_dll   <fver(5,0,3810,0))
+	   || (_javaprxy_dll >zero && _javaprxy_dll <fver(5,0,3810,0))
+	   || (_javart_dll   >zero && _javart_dll   <fver(5,0,3810,0))
+	   || (_jdbgmgr_exe  >zero && _jdbgmgr_exe  <fver(5,0,3810,0))
+	   || (_jit_dll      >zero && _jit_dll      <fver(5,0,3810,0))
+	   || (_jview_exe    >zero && _jview_exe    <fver(5,0,3810,0))
+	   || (_msawt_dll    >zero && _msawt_dll    <fver(5,0,3810,0))
+	   || (_msjava_dll   >zero && _msjava_dll   <fver(5,0,3810,0))
+	   || (_msjdbc10_dll >zero && _msjdbc10_dll <fver(5,0,3810,0))
+	   || (_vmhelper_dll >zero && _vmhelper_dll <fver(5,0,3810,0))
+	   || (_wjview_exe   >zero && _wjview_exe   <fver(5,0,3810,0)) )) {
+		NN("Q816093 Java Virtual Machine Security Update");
+		XX(sw+p+"msjavx86.exe"+a8);
+	}
+
 	// DirectX Updates
 	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,4,2600,1106) && _quartz_dll<fver(6,4,2600,1738)) {
 		NN("Security Update for Windows XP (KB904706)");
@@ -4950,7 +5003,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB839643)");
 		XX(p1+"windowsxp-kb839643-x86-enu_57fb5ffbac48b02d0452e07fb843834510077477.exe"+a6);
 	}
-	if( sp==1 && (sku & XP_ALL) 
+	if( sp<2 && (sku & XP_ALL) 
 		&& ( DirectXVersion >= fver(4,8,2,0) && DirectXVersion <= fver(4,8,2,137) )
 		&& (
 	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,2,3677,144))
@@ -4958,7 +5011,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for DirectX 8.2 (KB839643)");
 		XX(p1+"directx82-kb839643-x86-enu_2c6260d2b78db6079e86cd8e8d578b8140cabca1.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) 
+	if( sp<2 && (sku & XP_ALL) 
 		&& ( DirectXVersion >= fver(4,9,0,0) && DirectXVersion <= fver(4,9,0,902) )
 		&& (
 	      (_dplayx_dll   >zero && _dplayx_dll   <fver(5,3,0,903))

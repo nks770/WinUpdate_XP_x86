@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 
-#define COMPONENT_COUNT 18
+#define COMPONENT_COUNT 19
 
 void detectOptions(bool* components);
 void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components, const int ncomp, bool disable_install,

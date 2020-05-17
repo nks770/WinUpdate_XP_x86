@@ -32,6 +32,7 @@ void detectOptions(bool* components) {
 	bool* wga     =components+15; *wga=false;
 	bool* xpeos   =components+16; *xpeos=false;
 	bool* rktools =components+17; *rktools=false;
+	bool* msjvm   =components+18; *msjvm=false;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
@@ -113,6 +114,9 @@ void detectOptions(bool* components) {
 	fver _compress_exe   = getFileVer(rktooldir+L"\\compress.exe",&status);
 	fver _dvdburn_exe    = getFileVer(rktooldir+L"\\dvdburn.exe",&status);
 	fver _cdburn_exe     = getFileVer(rktooldir+L"\\cdburn.exe",&status);
+
+	fver _jview_exe    = getFileVer(System32+L"\\jview.exe",&status);
+	fver _msjava_dll   = getFileVer(System32+L"\\msjava.dll",&status);
 
 	if(_mstsc_exe>=fver(6,0,6000,16386) && _mstsc_exe<fver(6,0,6001,0)) {
 		*rdp60=true;
@@ -206,6 +210,9 @@ void detectOptions(bool* components) {
 		&& (_cdburn_exe   >= fver(5,2,3790,0)) ) {
 		*rktools=true;
 	}
+	if( (_jview_exe > fver() || _msjava_dll > fver()) ) {
+		*msjvm=true;
+	}
 
 /*
 	Test Case: <Windows Embedded Standard 2009>
@@ -283,8 +290,9 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* wga     =components+15; *wga=true;
 	bool* xpeos   =components+16; *xpeos=true;
 	bool* rktools =components+17; *rktools=true;
+	bool* msjvm   =components+18; *msjvm=true;
 
-	int minimum_sp[18] = { 2,2,3,0,2,2,2,0,3,0,2,0,0,2,2,0,3,0 };
+	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,3,0,2,0,0,2,2,0,3,0,0 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -336,6 +344,8 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--disable-xpeos")) { *xpeos=false; }
 		if(!wcscmp(argv[i],L"--enable-rktools")) { *rktools=true; }
 		if(!wcscmp(argv[i],L"--disable-rktools")) { *rktools=false; }
+		if(!wcscmp(argv[i],L"--enable-msjvm")) { *msjvm=true; }
+		if(!wcscmp(argv[i],L"--disable-msjvm")) { *msjvm=false; }
 	}
 
 	// Miscellaneous restrictions
@@ -419,6 +429,7 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("Windows Genuine Advantage (WGA) Notification");
 	component.push_back("Windows XP End of Support Notification");
 	component.push_back("Windows Server 2003 Resource Kit Tools");
+	component.push_back("Microsoft Java Virtual Machine (MSJVM)");
 
 	printf("%sOptional Components:\n",batchmode?"echo ":"");
 	for(int i=0; i<ncomp; i++) {

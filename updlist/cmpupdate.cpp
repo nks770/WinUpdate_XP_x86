@@ -171,7 +171,8 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 							               +"| "
 										   +"|Proceeding to install IE 6.0 SP1.");
 		NN("Internet Explorer 6 Service Pack 1");
-		XX("\"Internet Explorer\\ie6sp1en\\ie6setup.exe /Q:U /R:N /C:\"ie6wzd.exe /S:\"\"#e\"\" /Q:U /R:N\"");
+		//XX("\"Internet Explorer\\ie6sp1en\\ie6setup.exe\" /Q:U /R:N /C:\"ie6wzd.exe /S:\"\"#e\"\" /Q:U /R:N\"");
+		XX("\"Internet Explorer\\ie6sp1en\\ie6setup.exe\" /Q:U /R:S /C:\"ie6wzd.exe /S:\"\"#e\"\" /Q:U /R:N\"");
 	}
 	else if( sp<2 ) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
