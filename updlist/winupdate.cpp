@@ -4962,6 +4962,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Microsoft Java Virtual Machine (MSJVM)
+	if( *msjvm ) {
+		NN("Microsoft Java Virtual Machine (MSJVM)");
+		XX(sw+p+"msjavx86.exe"+a8);
+	}
 	if( sp>=0 && (sku & XP_ALL)
 	  && ( *msjvm
 	   || (_clspack_exe  >zero && _clspack_exe  <fver(5,0,3810,0))
@@ -4978,7 +4982,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_vmhelper_dll >zero && _vmhelper_dll <fver(5,0,3810,0))
 	   || (_wjview_exe   >zero && _wjview_exe   <fver(5,0,3810,0)) )) {
 		NN("Q816093 Java Virtual Machine Security Update");
-		XX(sw+p+"msjavx86.exe"+a8);
+		XX(sw+p+"msjavx86-q816093.exe"+a8);
 	}
 
 	// DirectX Updates
