@@ -41,6 +41,7 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
+	const std::string p1=p+"SP1\\";
 	const std::string p2=p+"SP2\\";
 	const std::string p3=p+"SP3\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
@@ -79,58 +80,60 @@ void nfxInstallation(std::vector<std::string>* name, std::vector<std::string>* e
 	bool wic_error=false;
 
 	// .NET Framework 1.0 Install
-	if( sp>=1 && *v_nfx10mce<0 && !NFX40 && *i_nfx10 && *v_nfx10<0) {
+	if( sp>=0 && *v_nfx10mce<0 && !NFX40 && *i_nfx10 && *v_nfx10<0) {
 		NN("Microsoft .NET Framework 1.0");
 		XX(np+"dotnetf10.exe /Q /C:\"install.exe /q /l\"");
 	}
-//	if(*i_nfx40c || *i_nfx40f) {
-		// If .NET 4.0 is set to be installed, then take care of these .NET 1.0
-		// patches right now.  Otherwise, save for later.
-		if( sp>=1 && *v_nfx10mce<0 && (*i_nfx10 || (*v_nfx10>=0 && *v_nfx10<3))){
-			install_nfx10sp3=true;
-			if(!NFX40) {
-				NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
-				XX(p3+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
-			} else {
-			//                                    ....V....1....V....2....V....3....V....4....V....5
-			notifications->push_back(std::string("Update KB867461 for .NET Framework 1.0 is")
-											   +"|missing, but cannot be installed because"
-											   +"|.NET Framework 4.0 is installed."
-											   +"| "
-											   +"|Please uninstall .NET Framework 4.0 and try"
-											   +"|again.");
-			}
+	if( sp>=0 && *v_nfx10mce<0 && (*i_nfx10 || (*v_nfx10>=0 && *v_nfx10<3))){
+		install_nfx10sp3=true;
+		if(!NFX40) {
+			NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
+			XX(p3+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
+		} else {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Update KB867461 for .NET Framework 1.0 is")
+										   +"|missing, but cannot be installed because"
+										   +"|.NET Framework 4.0 is installed."
+										   +"| "
+										   +"|Please uninstall .NET Framework 4.0 and try"
+										   +"|again.");
 		}
-		if( sp>=2 && *v_nfx10mce<0 && ((*i_nfx10 || install_nfx10sp3 || *v_nfx10>=3)) && (
-			// According to online docs, KB928367 is officially supported on SP2+
-			   ( _10_aspnet_isapi_dll<fver(1,0,3705,6060))
-			|| ( _10_aspnet_wp_exe   <fver(1,0,3705,6060))
-			|| ( _10_IEExec_exe      <fver(1,0,3705,6060))
-			|| ( _10_mscorie_dll     <fver(1,0,3705,6060))
-			|| ( _10_mscorld_dll     <fver(1,0,3705,6060))
-			|| ( _10_mscorlib_dll    <fver(1,0,3705,6060))
-			|| ( _10_mscorsvr_dll    <fver(1,0,3705,6060))
-			|| ( _10_mscorwks_dll    <fver(1,0,3705,6060))
-			|| ( _10_System_Web_dll  <fver(1,0,3705,6060)) )) {
-			if(!NFX40) {
-				NN("Security Update for Microsoft .NET Framework, Version 1.0 Service Pack 3 (KB928367)");
-				XX(p3+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
-			} else {
-			//                                    ....V....1....V....2....V....3....V....4....V....5
-			notifications->push_back(std::string("Update KB928367 for .NET Framework 1.0 is")
-											   +"|missing, but cannot be installed because"
-											   +"|.NET Framework 4.0 is installed."
-											   +"| "
-											   +"|Please uninstall .NET Framework 4.0 and try"
-											   +"|again.");
-			}
+	}
+	if( sp==1 && *v_nfx10mce<0 && ((*i_nfx10 || install_nfx10sp3 || *v_nfx10>=3)) && (
+		// According to online docs, KB886906 is intended for use on SP1 or SP2
+		   ( _10_System_Web_dll  <fver(1,0,3705,6021)) )) {
+		NN("Security Update for Microsoft .NET Framework, Version 1.0 SP3, English (KB886906)");
+		XX(p1+"ndp1.0sp3-kb886906-x86-enu_704fc2f79b62d7116b5bdbcaeb74e2039e2c7d4f.exe"+n3);
+	}
+	if( sp>=2 && *v_nfx10mce<0 && ((*i_nfx10 || install_nfx10sp3 || *v_nfx10>=3)) && (
+		// According to online docs, KB928367 is officially supported on SP2+
+		   ( _10_aspnet_isapi_dll<fver(1,0,3705,6060))
+		|| ( _10_aspnet_wp_exe   <fver(1,0,3705,6060))
+		|| ( _10_IEExec_exe      <fver(1,0,3705,6060))
+		|| ( _10_mscorie_dll     <fver(1,0,3705,6060))
+		|| ( _10_mscorld_dll     <fver(1,0,3705,6060))
+		|| ( _10_mscorlib_dll    <fver(1,0,3705,6060))
+		|| ( _10_mscorsvr_dll    <fver(1,0,3705,6060))
+		|| ( _10_mscorwks_dll    <fver(1,0,3705,6060))
+		|| ( _10_System_Web_dll  <fver(1,0,3705,6060)) )) {
+		if(!NFX40) {
+			NN("Security Update for Microsoft .NET Framework, Version 1.0 Service Pack 3 (KB928367)");
+			XX(p3+"NDP1.0sp3-KB928367-X86-Enu.exe"+n3);
+		} else {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Update KB928367 for .NET Framework 1.0 is")
+										   +"|missing, but cannot be installed because"
+										   +"|.NET Framework 4.0 is installed."
+										   +"| "
+										   +"|Please uninstall .NET Framework 4.0 and try"
+										   +"|again.");
 		}
-//	}
-	if( sp>=1 && *i_nfx11 && *v_nfx11<0) {
+	}
+	if( sp>=0 && *i_nfx11 && *v_nfx11<0) {
 		NN("Microsoft .NET Framework 1.1");
 		XX(np+"dotnetf11.exe /q:a /c:\"install.exe /qb /l\"");
 	}
-	if( sp>=1 && *i_nfx11 && *v_nfx11<1){
+	if( sp>=0 && *i_nfx11 && *v_nfx11<1){
 		// i_nfx11 means NFX11 is flagged to be upgraded (e.g. install SP1)
 		// v_nfx11 is the current NFX11 SP level
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
@@ -452,9 +455,15 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	}
 
 	// Patches for .NET Framework 1.0, Regular Edition
-	if( sp>=1 && *i_nfx10 && !NFX40){
+	if( sp>=0 && *i_nfx10 && !NFX40){
 		NN("Microsoft .NET Framework 1.0 Service Pack 3, English Version (KB867461)");
 		XX(p3+"NDP1.0sp3-KB867461-X86-Enu.exe"+n3);
+	}
+	if( sp==1 && ((*i_nfx10 || *v_nfx10>=3)) && (
+		// According to online docs, KB886906 is intended for use on SP1 or SP2
+		   ( _10_System_Web_dll  <fver(1,0,3705,6021)) )) {
+		NN("Security Update for Microsoft .NET Framework, Version 1.0 SP3, English (KB886906)");
+		XX(p1+"ndp1.0sp3-kb886906-x86-enu_704fc2f79b62d7116b5bdbcaeb74e2039e2c7d4f.exe"+n3);
 	}
 	if( sp>=2 /*&& !NFX40*/ && ((*i_nfx10 || *v_nfx10>=3)) && (
 		// According to online docs, KB928367 is officially supported on SP2+
@@ -553,13 +562,21 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	}
 
 	// .NET Framework 1.1
-	if( sp>=1 && *i_nfx11 && *v_nfx11==0){
+	if( sp>=0 && *i_nfx11 && *v_nfx11==0){
 		// i_nfx11 means NFX11 is flagged to be upgraded (e.g. install SP1)
 		// v_nfx11 means the current NFX11 SP level is at least 0 (e.g. not -1 (absent))
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
 		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+n3);
 	}
 	if( sp==1 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
+		// According to online docs, KB886903 is officially supported on SP1 or SP2
+		   ( _11_System_Web_dll           < fver(1,1,4322,2037)) )) {
+		NN("Security Update for Microsoft .NET Framework, Version 1.1 Service Pack 1 (KB886903)");
+		XX(p1+"ndp1.1sp1-kb886903-x86_535f57e5a8eceab18533c50c0b0e1469ed45331f.exe"+n3);
+	}
+	/*if( sp==1 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
+		// According to online docs, KB928366 is officially supported only on SP2
+		// On SP2, newer patch KB979906 is available.
 		   ( _11_aspnet_isapi_dll         < fver(1,1,4322,2407))
 		|| ( _11_aspnet_wp_exe            < fver(1,1,4322,2407))
 		|| ( _11_CORPerfMonExt_dll        < fver(1,1,4322,2407))
@@ -575,7 +592,7 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _11_System_Web_dll           < fver(1,1,4322,2407)) )) {
 		NN("Security Update for Microsoft .NET Framework, Version 1.1 Service Pack 1 (KB928366)");
 		XX(p1+"ndp1.1sp1-kb928366-x86_20112ef50011e0de2c0e3378139245d81a178b15.exe"+n3);
-	}
+	}*/
 	if( sp==2 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
 		   ( _11_aspnet_filter_dll        < fver(1,1,4322,2463))
 		|| ( _11_aspnet_isapi_dll         < fver(1,1,4322,2463))

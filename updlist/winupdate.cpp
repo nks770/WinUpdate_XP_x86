@@ -953,7 +953,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wuweb_dll    = getFileVer(System32+L"\\wuweb.dll",&status);
 
 	fver _asp_dll      = getFileVer(inetsrv+L"\\asp.dll",&status);
-	fver _asp51_dll    = getFileVer(inetsrv+L"\\asp51.dll",&status);
 	fver _asp51_dll_dllcache    = getFileVer(dllcache+L"\\asp51.dll",&status);
 	fver _ftpsvc2_dll  = getFileVer(inetsrv+L"\\ftpsvc2.dll",&status);
 	fver _httpext_dll  = getFileVer(inetsrv+L"\\httpext.dll",&status);
@@ -1535,7 +1534,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"windowsxp-kb840315-x86-enu_b07233fce45da8b90e43ed27916f4c80b7cbcb19.exe"+a6);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
-		// Q323255 might be replaced by KB811630
+		// Q323255 might be replaced by Q811630
 			    (_hh_exe      >zero && _hh_exe      <fver(5,2,3644,0))
 			||  (_hhctrl_ocx  >zero && _hhctrl_ocx  <fver(5,2,3669,0))
 			||  (_hhsetup_dll >zero && _hhsetup_dll <fver(5,2,3644,0))
@@ -1545,6 +1544,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"q323255_x86_en_0eba14f85cc1851ae65f87755f7154e.exe"+a7);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
+		// Q811630 is replaced by kb896358 on SP1
 			    (_hh_exe      >zero && _hh_exe      <fver(5,2,3644,0))
 			||  (_hhctrl_ocx  >zero && _hhctrl_ocx  <fver(5,2,3735,0))
 			||  (_hhsetup_dll >zero && _hhsetup_dll <fver(5,2,3644,0))
@@ -1575,8 +1575,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update, February 12, 2002");
 		XX(rtm+"q314147_4448f8c22d771895880c0cbd09491b03670c483a.exe"+a7);
 	}
-	if( sp==0 && (sku & XP_ALL) && (
-                  ( _asp51_dll    >zero && _asp51_dll    <fver(5,1,2600,1181))
+	if( sp<2 && (sku & XP_ALL) && (
+                  ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1181))
 			  ||  ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
 			  ||  ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1189))
 			  ||  ( _httpodbc_dll >zero && _httpodbc_dll <fver(5,1,2600,1172))
@@ -1588,7 +1588,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			  ||  ( _ssinc_dll    >zero && _ssinc_dll    <fver(5,1,2600,1152))
 			  ||  ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,1166)) )) {
 		NN("Q811114: Security Update (Windows XP or Windows XP Service Pack 1)");
-		XX(rtm+"q811114_wxp_sp2_x86_enu_63cfc7cfc1fb0ad0b7df3c483b75760.exe"+a7);
+		XX(p1+"q811114_wxp_sp2_x86_enu_63cfc7cfc1fb0ad0b7df3c483b75760.exe"+a7);
 	}
 
 	// Windows XP SP1 updates
@@ -3349,17 +3349,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb939373-x86-enu_1060604efc56284ff8208d265f72be4d5394ba32.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
-		   (_asp51_dll          > zero && _asp51_dll          <fver(5,1,2600,1829))
+		   (_asp_dll            > zero && _asp_dll            <fver(5,1,2600,1829))
 		|| (_asp51_dll_dllcache > zero && _asp51_dll_dllcache <fver(5,1,2600,1829)) ))
 	 ||(sp==2 && (sku & XP_ALL) && (
-		   (_asp51_dll          > zero && _asp51_dll          <fver(5,1,2600,2889))
+		   (_asp_dll            > zero && _asp_dll            <fver(5,1,2600,2889))
 		|| (_asp51_dll_dllcache > zero && _asp51_dll_dllcache <fver(5,1,2600,2889)) ))) {
 		NN("Security Update for Windows XP (KB917537)");
 		XX(p2+"windowsxp-kb917537-x86-enu_a4dbb2338b97e63f46d45f1d69aa6a7908269b13.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL)
 		&& regQueryDWORD(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\Oc Manager\\Subcomponents",L"iis_www",&status)==1
-		&& ((_asp51_dll > zero && _asp51_dll <fver(5,1,2600,3291))
+		&& ((_asp_dll > zero && _asp_dll <fver(5,1,2600,3291))
 		||   _asp51_dll_dllcache < fver(5,1,2600,3291)) ) {
 		NN("Security Update for Windows XP (KB942830)");
 		XX(p2+"windowsxp-kb942830-x86-enu_3b34ded0cc8d3c0de48c3c31f4fae006a2eae923.exe"+a1);
