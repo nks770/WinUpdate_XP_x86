@@ -165,7 +165,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	// Compare MBSA, if option selected
 	if(mbsa) {
 		systemComponentVersions(false);
-		displayOptions(compInstalled,compInstall,false,COMPONENT_COUNT);
+		displayOptions(compInstalled,compInstall,false,COMPONENT_COUNT,sp_to_int(splevel));
 		compareMBSA(mbsa_file,&all_name);
 	} else {
 
@@ -182,7 +182,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 			printf("%s\n",batch?"echo.":"");
 		} else {
 			systemComponentVersions(batch);
-			displayOptions(compInstalled,compInstall,batch,COMPONENT_COUNT);
+			displayOptions(compInstalled,compInstall,batch,COMPONENT_COUNT,sp_to_int(splevel));
 		}
 		showNotifications(batch,&notifications);
 		if(batch) {

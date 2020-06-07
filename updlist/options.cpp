@@ -82,6 +82,8 @@ void detectOptions(bool* components) {
 	fver _jntview_exe            = getFileVer(jnl+L"\\jntview.exe",&status);
 
 	fver _powershell_exe         = getFileVer(pshelldir+L"\\powershell.exe",&status);
+	fver _pwrshmsg_dll           = getFileVer(pshelldir+L"\\pwrshmsg.dll",&status);
+	fver _pwrshsip_dll           = getFileVer(pshelldir+L"\\pwrshsip.dll",&status);
 	fver _winrs_exe              = getFileVer(System32+L"\\winrs.exe",&status);
 
 	fver _msdrm_dll    = getFileVer(System32+L"\\msdrm.dll",&status);
@@ -164,7 +166,9 @@ void detectOptions(bool* components) {
 	if(  _jntview_exe  >fver() ) {
 		*jview=true;
 	}
-	if(    ( _powershell_exe ==fver(6,0,5430,0)) ) {
+	if(    ( _powershell_exe == fver(6,0,5430,0))
+		&& ( _pwrshmsg_dll   == fver(6,0,5430,0))
+		&& ( _pwrshsip_dll   == fver(6,0,5430,0)) ) {
 		*pshell1=true;
 	}
 	if(    ( _powershell_exe >=fver(6,0,6002,18111))
@@ -414,7 +418,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	if( *pshell2 ) { *pshell1=false; }
 }
 
-void displayOptions(bool* installed, bool* install, bool batchmode, const int ncomp) {
+void displayOptions(bool* installed, bool* install, bool batchmode, const int ncomp, const int sp) {
 	
 	// Component names
 	std::vector<std::string> component;
@@ -439,13 +443,30 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("Windows Server 2003 Resource Kit Tools");
 	component.push_back("Microsoft Java Virtual Machine (MSJVM)");
 
+	// Arrays to decide which options get shown for each SP level
+	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1 };
+	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1 };
+	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1 };
+	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
+	int show[COMPONENT_COUNT];
+	for(int i=0; i<COMPONENT_COUNT; i++) {
+		switch(sp){
+			case 0: show[i]=show_rtm[i]; break;
+			case 1: show[i]=show_sp1[i]; break;
+			case 2: show[i]=show_sp2[i]; break;
+			case 3: show[i]=show_sp3[i]; break;
+			default: show[i]=0; break;
+		}
+	}
+
 	printf("%sOptional Components:\n",batchmode?"echo ":"");
 	for(int i=0; i<ncomp; i++) {
-		//printf("echo [%s] %s\n",installed[i]?" Installed  ":(install[i]?"Will Install":"            "),component[i].c_str());
-		if(batchmode) {
-			printf("echo [%s] %s\n",installed[i]?"X":(install[i]?"^>":" "),component[i].c_str());
-		} else {
-		printf("[%s] %s\n",installed[i]?"X":(install[i]?">":" "),component[i].c_str());
+		if(show[i]) {
+			if(batchmode) {
+				printf("echo [%s] %s\n",installed[i]?"X":(install[i]?"^>":" "),component[i].c_str());
+			} else {
+			printf("[%s] %s\n",installed[i]?"X":(install[i]?">":" "),component[i].c_str());
+			}
 		}
 	}
 	printf("%s\n",batchmode?"echo.":"");
