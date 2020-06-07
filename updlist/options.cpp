@@ -22,17 +22,18 @@ void detectOptions(bool* components) {
 	bool* smartcard=components+5; *smartcard=false;
 	bool* wsearch4=components+6; *wsearch4=false;
 	bool* jview   =components+7; *jview=false;
-	bool* pshell  =components+8; *pshell=false;
-	bool* winrms  =components+9; *winrms=false;
-	bool* msi45   =components+10; *msi45=false;
-	bool *msxml4  =components+11; *msxml4=false;
-	bool *msxml6  =components+12; *msxml6=false;
-	bool *bitlocker=components+13; *bitlocker=false;
-	bool *silverlight=components+14; *silverlight=false;
-	bool* wga     =components+15; *wga=false;
-	bool* xpeos   =components+16; *xpeos=false;
-	bool* rktools =components+17; *rktools=false;
-	bool* msjvm   =components+18; *msjvm=false;
+	bool* pshell1 =components+8; *pshell1=false;
+	bool* pshell2 =components+9; *pshell2=false;
+	bool* winrms  =components+10; *winrms=false;
+	bool* msi45   =components+11; *msi45=false;
+	bool *msxml4  =components+12; *msxml4=false;
+	bool *msxml6  =components+13; *msxml6=false;
+	bool *bitlocker=components+14; *bitlocker=false;
+	bool *silverlight=components+15; *silverlight=false;
+	bool* wga     =components+16; *wga=false;
+	bool* xpeos   =components+17; *xpeos=false;
+	bool* rktools =components+18; *rktools=false;
+	bool* msjvm   =components+19; *msjvm=false;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
@@ -163,9 +164,12 @@ void detectOptions(bool* components) {
 	if(  _jntview_exe  >fver() ) {
 		*jview=true;
 	}
+	if(    ( _powershell_exe ==fver(6,0,5430,0)) ) {
+		*pshell1=true;
+	}
 	if(    ( _powershell_exe >=fver(6,0,6002,18111))
 		&& ( _winrs_exe      >=fver(6,0,6002,18111)) ) {
-		*pshell=true;
+		*pshell2=true;
 	}
 	if(    (_msdrm_dll              >=fver(5,2,3790,433))
 		&& (_RmActivate_exe         >=fver(6,0,6406,0))
@@ -280,19 +284,20 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* smartcard=components+5; *smartcard=true;
 	bool* wsearch4=components+6; *wsearch4=false;
 	bool* jview   =components+7; *jview=true;
-	bool* pshell  =components+8; *pshell=true;
-	bool* winrms  =components+9; *winrms=true;
-	bool* msi45   =components+10; *msi45=true;
-	bool* msxml4  =components+11; *msxml4=true;
-	bool* msxml6  =components+12; *msxml6=true;
-	bool* bitlocker=components+13; *bitlocker=true;
-	bool* silverlight=components+14; *silverlight=true;
-	bool* wga     =components+15; *wga=true;
-	bool* xpeos   =components+16; *xpeos=true;
-	bool* rktools =components+17; *rktools=true;
-	bool* msjvm   =components+18; *msjvm=true;
+	bool* pshell1 =components+8; *pshell1=true;
+	bool* pshell2 =components+9; *pshell2=true;
+	bool* winrms  =components+10; *winrms=true;
+	bool* msi45   =components+11; *msi45=true;
+	bool* msxml4  =components+12; *msxml4=true;
+	bool* msxml6  =components+13; *msxml6=true;
+	bool* bitlocker=components+14; *bitlocker=true;
+	bool* silverlight=components+15; *silverlight=true;
+	bool* wga     =components+16; *wga=true;
+	bool* xpeos   =components+17; *xpeos=true;
+	bool* rktools =components+18; *rktools=true;
+	bool* msjvm   =components+19; *msjvm=true;
 
-	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,3,0,2,0,0,2,2,0,3,0,0 };
+	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -326,8 +331,8 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--disable-wsearch4")) { *wsearch4=false; }
 		if(!wcscmp(argv[i],L"--enable-jview")) { *jview=true; }
 		if(!wcscmp(argv[i],L"--disable-jview")) { *jview=false; }
-		if(!wcscmp(argv[i],L"--enable-pshell")) { *pshell=true; }
-		if(!wcscmp(argv[i],L"--disable-pshell")) { *pshell=false; }
+		if(!wcscmp(argv[i],L"--enable-pshell")) { *pshell1=true; *pshell2=true; }
+		if(!wcscmp(argv[i],L"--disable-pshell")) { *pshell1=false; *pshell2=false; }
 		if(!wcscmp(argv[i],L"--enable-winrms")) { *winrms=true; }
 		if(!wcscmp(argv[i],L"--disable-winrms")) { *winrms=false; }
 		if(!wcscmp(argv[i],L"--enable-msxml4")) { *msxml4=true; }
@@ -361,10 +366,10 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		}
 	}
 
-	if(*pshell && sp==2 && !disable_install && !disable_all) {
-		//                        ....V....1....V....2....V....3....V....4....V....5
-		notifications->push_back(std::string("Cannot install Windows PowerShell 2.0 and")
-			                   +"|WinRM 2.0 because it requires Windows XP SP3.");
+	if((*pshell1 || *pshell2) && sp<2 && !disable_install && !disable_all) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Cannot install Windows PowerShell because it")
+			                   +"|requires at least Windows XP SP2.");
 	}
 
 	// Disable components that don't meet minimum SP requirement
@@ -380,12 +385,12 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	}
 
 	// Disable PowerShell if .NET Framework 2.0 is not present
-	if(*pshell && *nfx20<0 && !disable_install) {
-		//                        ....V....1....V....2....V....3....V....4....V....5
-		notifications->push_back(std::string("Cannot install Windows PowerShell 2.0 and")
-			                   +"|WinRM 2.0 because it requires Microsoft"
-							   +"|.NET Framework 2.0, which is not installed.");
-		*pshell=false;
+	if((*pshell1 || *pshell2) && *nfx20<0 && !disable_install) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Cannot install Windows PowerShell because it")
+			                   +"|requires Microsoft .NET Framework 2.0, which"
+							   +"|is not installed.");
+		*pshell1=false; *pshell2=false;
 	}
 	
 	// Disable MSXML6 if Windows Installer 3.1 is not present
@@ -403,8 +408,10 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(installed[i]) { components[i]=false; }
 	}
 
+	// Miscellaneous Rules
 	if(     *rdp70 || *rdp70_installed ) { *rdp61=false; *rdp60=false; }
 	else if(*rdp61 || *rdp61_installed ) { *rdp60=false; }
+	if( *pshell2 ) { *pshell1=false; }
 }
 
 void displayOptions(bool* installed, bool* install, bool batchmode, const int ncomp) {
@@ -419,6 +426,7 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("ICCD Smart Card Driver");
 	component.push_back("Windows Search 4.0");
 	component.push_back("Windows Journal Viewer 1.5");
+	component.push_back("Windows PowerShell(TM) 1.0");
 	component.push_back("Windows PowerShell 2.0 and WinRM 2.0");
 	component.push_back("Windows Rights Management Client with SP2");
 	component.push_back("Windows Installer 4.5");

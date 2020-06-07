@@ -51,17 +51,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool* smartcard=options+5;
 	bool* wsearch4=options+6;
 	bool* jview   =options+7;
-	bool* pshell  =options+8;
-	bool* winrms  =options+9;
-	bool* msi45   =options+10;
-	bool* msxml4  =options+11;
-	bool* msxml6  =options+12;
-	bool* bitlocker=options+13;
-	bool* silverlight=options+14;
-	bool* wga = options+15;
-	bool* xpeos = options+16;
-	bool* rktools = options+17;
-	bool* msjvm = options+18;
+	bool* pshell1 =options+8;
+	bool* pshell2 =options+9;
+	bool* winrms  =options+10;
+	bool* msi45   =options+11;
+	bool* msxml4  =options+12;
+	bool* msxml6  =options+13;
+	bool* bitlocker=options+14;
+	bool* silverlight=options+15;
+	bool* wga = options+16;
+	bool* xpeos = options+17;
+	bool* rktools = options+18;
+	bool* msjvm = options+19;
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -6519,7 +6520,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2835364)");
 		XX(p3+"windowsxp-kb2835364-x86-enu_b055260207a810f44e7d68c2b93a151d6f8d9691.exe"+a1);
 	}
-	if( sp==3 && *pshell) {
+	if( sp>=2 && *pshell1) {
+		NN("Windows PowerShell 1.0 English-Language Installation Package for Windows XP (KB926139)");
+		XX(p2+"WindowsXP-KB926139-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && *pshell2) {
 		NN("Windows Powershell 2.0 and WinRM 2.0 for Windows XP and Windows Embedded (KB968930)");
 		XX(p3+"WindowsXP-KB968930-x86-ENG.exe"+a1);
 	}
