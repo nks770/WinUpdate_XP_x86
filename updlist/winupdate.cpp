@@ -94,10 +94,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	int XP_MCE = XP_MCE2002|XP_MCE2004|XP_MCE2005;
 	int XP_OTHER_EDITIONS = XP_STARTER|XP_TABLET|XP_MCE;
 	int XP_CLIENT = XP_HOME_PRO|XP_OTHER_EDITIONS;
-	int XP_PLUS_FLP = XP_HOME_PRO|XP_OTHER_EDITIONS|XPE_FLP;
+	int XP_PLUS_FLP = XP_CLIENT|XPE_FLP;
 	int XPE_2009 = XPE_POSREADY2009|XPE_WES2009;
-	int XP_EMBEDDED = XPE_2009|XPE_FLP;
-	int XP_ALL =XP_HOME_PRO|XP_OTHER_EDITIONS|XP_EMBEDDED;
+	int XP_EMBEDDED = XPE_2009;
+	int XP_EMBEDDED_PLUS_FLP = XP_EMBEDDED|XPE_FLP;
+	int XP_ALL =XP_CLIENT|XP_EMBEDDED|XPE_FLP;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
@@ -4008,7 +4009,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2686509)");
 		XX(p3+"WindowsXP-KB2686509-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_EMBEDDED) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
+	if( sp==3 && (sku & XP_EMBEDDED_PLUS_FLP) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
 		NN("Security Update for Windows XP Embedded (KB2686509)");
 		XX(p3+"WindowsXPEmbedded-KB2686509-x86-ENU.exe"+a1);
 	}
@@ -5509,7 +5510,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 for Windows XP (KB2879017)");
 		XX(p3+"windowsxp-kb2879017-x86-enu_e6b354acd732c385254babb1a6a61568bf185b65.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+	if( sp==3 && (sku & XP_PLUS_FLP) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,21357))
 	    || (_corpol_dll      >zero && _corpol_dll      <fver(2007,0,0,21306))
 		|| (_dxtmsft_dll     >zero && _dxtmsft_dll     <fver(7,0,6000,21357))
@@ -5551,7 +5552,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP (KB2879017)");
 		XX(p3+"IE7-WindowsXP-KB2879017-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+	/*if( sp==3 && (sku & XPE_2009) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		// KB3148198 is replaced by KB4018271
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,21582))
 	    || (_corpol_dll      >zero && _corpol_dll      <fver(2007,0,0,21306))
 		|| (_dxtmsft_dll     >zero && _dxtmsft_dll     <fver(7,0,6000,21582))
@@ -5591,6 +5593,51 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll     >zero && _wininet_dll     <fver(7,0,6000,21582)) )) {
 		NN("Cumulative Security Update for Internet Explorer 7 for WEPOS and POSReady 2009 (KB3148198)");
 		XX(p3+"ie7-windowsxp-kb3148198-x86-embedded-enu_254750ce40d33a8a4985de8339d8e66df6861f19.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XP_EMBEDDED) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,24071))
+	    || (_corpol_dll      >zero && _corpol_dll      <fver(2007,0,0,21306))
+		|| (_dxtmsft_dll     >zero && _dxtmsft_dll     <fver(7,0,6000,24071))
+		|| (_dxtrans_dll     >zero && _dxtrans_dll     <fver(7,0,6000,24071))
+		|| (_extmgr_dll      >zero && _extmgr_dll      <fver(7,0,6000,24071))
+		|| (_html_iec        >zero && _html_iec        <fver(2017,0,0,21306))
+		|| (_icardie_dll     >zero && _icardie_dll     <fver(7,0,6000,24071))
+		|| (_ie4uinit_exe    >zero && _ie4uinit_exe    <fver(7,0,6000,24071))
+		|| (_ieakeng_dll     >zero && _ieakeng_dll     <fver(7,0,6000,24071))
+		|| (_ieaksie_dll     >zero && _ieaksie_dll     <fver(7,0,6000,24071))
+		|| (_ieakui_dll      >zero && _ieakui_dll      <fver(7,0,6000,24071))
+		|| (_ieapfltr_dat    >zero && _ieapfltr_dat    <fver(7,0,6011,1))
+		|| (_ieapfltr_dll    >zero && _ieapfltr_dll    <fver(7,0,6000,16730))
+		|| (_iedkcs32_dll    >zero && _iedkcs32_dll    <fver(17,0,6000,24071))
+		|| (_ieencode_dll    >zero && _ieencode_dll    <fver(2017,0,0,21306))
+		|| (_ieframe_dll     >zero && _ieframe_dll     <fver(7,0,6000,24071))
+		|| (_ieframe_dll_mui >zero && _ieframe_dll_mui <fver(7,0,6000,16414))
+		|| (_iepeers_dll     >zero && _iepeers_dll     <fver(7,0,6000,24071))
+		|| (_iernonce_dll    >zero && _iernonce_dll    <fver(7,0,6000,24071))
+		|| (_iertutil_dll    >zero && _iertutil_dll    <fver(7,0,6000,24071))
+		|| (_ieudinit_exe    >zero && _ieudinit_exe    <fver(7,0,6000,24071))
+		|| (_iexplore_exe    >zero && _iexplore_exe    <fver(7,0,6000,24071))
+		|| (_inetcomm_dll    >zero && _inetcomm_dll    <fver(6,0,2900,7246))
+		|| (_inetcpl_cpl     >zero && _inetcpl_cpl     <fver(7,0,6000,24071))
+		|| (_jscript_dll     >zero && _jscript_dll     <fver(5,7,6002,24071))
+		|| (_jsproxy_dll     >zero && _jsproxy_dll     <fver(7,0,6000,24071))
+		|| (_msfeeds_dll     >zero && _msfeeds_dll     <fver(7,0,6000,24071))
+		|| (_msfeedsbs_dll   >zero && _msfeedsbs_dll   <fver(7,0,6000,24071))
+		|| (_mshtml_dll      >zero && _mshtml_dll      <fver(7,0,6000,24071))
+		|| (_mshtmled_dll    >zero && _mshtmled_dll    <fver(7,0,6000,24071))
+		|| (_msrating_dll    >zero && _msrating_dll    <fver(7,0,6000,24071))
+		|| (_mstime_dll      >zero && _mstime_dll      <fver(7,0,6000,24071))
+		|| (_occache_dll     >zero && _occache_dll     <fver(7,0,6000,24071))
+		|| (_pngfilt_dll     >zero && _pngfilt_dll     <fver(7,0,6000,24071))
+		|| (_tdc_ocx         >zero && _tdc_ocx         <fver(7,0,6000,24071))
+		|| (_url_dll         >zero && _url_dll         <fver(7,0,6000,24071))
+		|| (_urlmon_dll      >zero && _urlmon_dll      <fver(7,0,6000,24071))
+		|| (_vbscript_dll    >zero && _vbscript_dll    <fver(5,7,6002,24071))
+		|| (_vgx_dll         >zero && _vgx_dll         <fver(7,0,6000,24071))
+		|| (_webcheck_dll    >zero && _webcheck_dll    <fver(7,0,6000,24071))
+		|| (_wininet_dll     >zero && _wininet_dll     <fver(7,0,6000,24071)) )) {
+		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP SP3 for XPe (KB4018271)");
+		XX(p3+"ie7-windowsxp-kb4018271-x86-embedded-custom-enu_8a89028acf7c751031a5748720deff45a054045e.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		/* QFE */
