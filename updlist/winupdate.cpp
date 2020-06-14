@@ -729,6 +729,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _uncdms_dll  = getFileVer(System32+L"\\uncdms.dll",&status);
 	fver _uncne_dll  = getFileVer(System32+L"\\uncne.dll",&status);
 
+	// Detect Windows Media Player version
+	fver wmp = _wmp_dll;
+	if(wmp==fver()) { wmp=_wmpcore_dll; }
+
 	// Windows XP Media Center Edition files
 	fver _audiodepthconverter_ax = getFileVer(ehomeFilters+L"\\audiodepthconverter.ax",&status);
 	fver _directshowtap_ax       = getFileVer(ehomeFilters+L"\\directshowtap.ax",&status);
@@ -3257,7 +3261,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
 			  ||  ( _rtcimsp_dll  >zero && _rtcimsp_dll  <fver(4,0,3599,0)) )) {
 		NN("Security Update for Windows Messenger (KB887472)");
-		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe /Q:A /R:N");
+		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe /Q:U /R:N");
 	}
 	if( sp==2 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,3001)) {
 		NN("Security Update for Windows Messenger (KB887472)");
@@ -3657,7 +3661,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			temp+="install\\WindowsXP-KB902841-x86.exe"+a1+"\n";
 		}
 		temp+="bin\\KB900325.exe /passive /norestart\n";
-		temp+="bin\\wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n";
+//		temp+="bin\\wmfdist95.exe /Q:A /R:N /c:\"wmsetsdk.exe /WMFDIST /Q /R:N /DisallowSystemRestore\"\n";
+		temp+="bin\\wmfdist95.exe /Q:U /R:N /c:\"wmsetsdk.exe /WMFDIST /Q:U /R:N /DisallowSystemRestore\"\n";
 		temp+="popd\nrd /S /Q %TEMP%\\KB900325";
 //	XX(p+"WindowsXPMediaCenter2005-KB900325-usa.exe /Q /x:%TEMP%\\KB900325\n"
 //		+"pushd %TEMP%\\KB900325\\bin\n"
@@ -6306,6 +6311,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=0 && *wmp6cdcs) {
 		NN("Codecs Package for Windows Media Player 6.4");
 		XX(p3+"wmp6cdcs.EXE /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N\"");
+	}
+	if( sp>=0 && wmp >= fver(8,0,0,0) && (
+		   (_WMADMOD_dll  <fver(10,0,0,3646))
+		|| (_wmsdmod_dll  <fver(10,0,0,3646))
+		|| (_wmspdmod_dll <fver(10,0,0,3646))
+		|| (_WMVADVD_dll  <fver(10,0,0,3646))
+		|| (_wmvdmod_dll  <fver(10,0,0,3646)) )) {
+		NN("Windows Media Player 9 Codecs");
+		XX(p3+"WM9Codecs.exe /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N /DisallowSystemRestore\"");
+	}
+	if( sp>=0 && wmp >= fver(8,0,0,0) && (
+		   (_wmv9vcm_dll  <fver(9,0,1,369)) )) {
+		NN("Windows Media Video 9 VCM");
+		XX(p3+"wmv9VCMsetup.exe /Q:U /R:N");
 	}
 	if( sp>=2 && (sku & XP_ALL) && ( *wmp6cdcs || (_wmavds32_ax>=fver(9,0,0,3224) && _wmavds32_ax<fver(9,0,0,3360)))) {
 		NN("Security Update for Windows 2000, Windows XP and Windows 2003 (KB969878)");

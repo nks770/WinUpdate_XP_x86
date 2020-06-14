@@ -317,6 +317,12 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
 	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
 
+	// Detect Windows Media Player version
+	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
+	fver _wmpcore_dll  = getFileVer(System32+L"\\wmpcore.dll",&status);
+	fver wmp = _wmp_dll;
+	if(wmp==fver()) { wmp=_wmpcore_dll; }
+
 	// Parse arguments
 	int i=0;
 	for(i=0; i<argc; i++) {
@@ -372,8 +378,8 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	if(sku & XPE_WES2009) { *wga=false; }
 	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
 	if(sku & XP_TABLET) { *jview=false; }
-	if(sku & XPE_FLP) { *wmp6cdcs=false; }
-		// wmp6cdcs fails to install on Windows XP Embedded minimum configurations, like FLP "typical".
+	// wmp6cdcs requires at least Media Player 7+ to install.
+	if(wmp < fver(8,0,0,0)) { *wmp6cdcs=false; }
 
 	if((*pshell1 || *pshell2) && sp<2 && !disable_install && !disable_all) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
