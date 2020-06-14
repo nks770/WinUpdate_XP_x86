@@ -610,12 +610,12 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		|| ( _11_mscorwks_dll             < fver(1,1,4322,2463))
 		|| ( _11_System_Web_dll           < fver(1,1,4322,2463)) )) {
 		NN("Microsoft .NET Framework 1.1 SP1 Security Update for Windows 2000 and Windows XP (KB979906)");
-		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe"+n6); // Shows no UI, but fails on Windows Embedded.
-//		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe /extract %TEMP%\\KB979906\n"
-//				+"pushd %TEMP%\\KB979906\n"
-//				+"msiexec /update ___.msp /passive /norestart\n"
-//				+"popd\n"
-//				+"rd /S /Q %TEMP%\\KB979906");
+//		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe"+n6); // Shows no UI, but fails on Windows Embedded.
+		XX(p2+"ndp1.1sp1-kb979906-x86_642ace45800ffefd77231150a07a2bdfe170732c.exe /extract %TEMP%\\KB979906\n"
+				+"pushd %TEMP%\\KB979906\n"
+				+"msiexec /update NDP1.1sp1-KB979906-X86.msp /passive /norestart\n"
+				+"popd\n"
+				+"rd /S /Q %TEMP%\\KB979906");
 	}
 	if( sp==3 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
 		   ( _11_aspnet_filter_dll        < fver(1,1,4322,2503))

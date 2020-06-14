@@ -6305,7 +6305,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp>=0 && *wmp6cdcs) {
 		NN("Codecs Package for Windows Media Player 6.4");
-		XX(p3+"wmp6cdcs.EXE /Q /C:\"setup_wm.exe /Q /R:N\"");
+		XX(p3+"wmp6cdcs.EXE /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N\"");
 	}
 	if( sp>=2 && (sku & XP_ALL) && ( *wmp6cdcs || (_wmavds32_ax>=fver(9,0,0,3224) && _wmavds32_ax<fver(9,0,0,3360)))) {
 		NN("Security Update for Windows 2000, Windows XP and Windows 2003 (KB969878)");

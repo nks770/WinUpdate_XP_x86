@@ -172,6 +172,8 @@ void detectOptions(bool* components) {
 		*pshell1=true;
 	}
 	if(    ( _powershell_exe >=fver(6,0,6002,18111))
+		&& ( _pwrshmsg_dll   >=fver(6,0,6002,18111))
+		&& ( _pwrshsip_dll   >=fver(6,0,6002,18111))
 		&& ( _winrs_exe      >=fver(6,0,6002,18111)) ) {
 		*pshell2=true;
 	}
@@ -288,8 +290,8 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* smartcard=components+5; *smartcard=true;
 	bool* wsearch4=components+6; *wsearch4=false;
 	bool* jview   =components+7; *jview=true;
-	bool* pshell1 =components+8; *pshell1=true;
-	bool* pshell2 =components+9; *pshell2=true;
+	bool* pshell1 =components+8; *pshell1=true; bool* pshell1_installed = installed+8;
+	bool* pshell2 =components+9; *pshell2=true; bool* pshell2_installed = installed+9;
 	bool* winrms  =components+10; *winrms=true;
 	bool* msi45   =components+11; *msi45=true;
 	bool* msxml4  =components+12; *msxml4=true;
@@ -313,6 +315,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&status);
 	std::wstring System32 = SystemRoot + L"\\system32";
 	fver _msiexec_exe  = getFileVer(System32+L"\\msiexec.exe",&status);
+	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
 
 	// Parse arguments
 	int i=0;
@@ -357,18 +360,20 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--disable-msjvm")) { *msjvm=false; }
 	}
 
-	// Miscellaneous restrictions
-	if(sp>2) { *rdp60=false; }
-	if(sku & XPE_WES2009) { *wga=false; }
-	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
-	if(sku & XP_TABLET) { *jview=false; }
-
 	// Enable all components
 	if(enable_all) {
 		for(i=0; i<ncomp; i++) {
 			components[i]=true;
 		}
 	}
+
+	// Miscellaneous restrictions
+	if(sp>2) { *rdp60=false; }
+	if(sku & XPE_WES2009) { *wga=false; }
+	if(sku & (XPE_WES2009|XPE_POSREADY2009)) { *xpeos=false; }
+	if(sku & XP_TABLET) { *jview=false; }
+	if(sku & XPE_FLP) { *wmp6cdcs=false; }
+		// wmp6cdcs fails to install on Windows XP Embedded minimum configurations, like FLP "typical".
 
 	if((*pshell1 || *pshell2) && sp<2 && !disable_install && !disable_all) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
@@ -413,9 +418,27 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	}
 
 	// Miscellaneous Rules
-	if(     *rdp70 || *rdp70_installed ) { *rdp61=false; *rdp60=false; }
-	else if(*rdp61 || *rdp61_installed ) { *rdp60=false; }
-	if( *pshell2 ) { *pshell1=false; }
+	if( *rdp70 || *rdp70_installed ) { *rdp61=false; *rdp60=false; }
+
+	if( _reg_exe == fver() ) {
+		// RDP 6.1 setup requires functioning reg.exe, but 6.0 does not
+		if( *rdp60 ) {
+			//                                    ....V....1....V....2....V....3....V....4....V....5
+			notifications->push_back(std::string("Microsoft Remote Desktop 6.1 setup requires")
+												+"|reg.exe, which is not installed on your"
+												+"|system.  Falling back to Remote Desktop 6.0.");
+		}
+		*rdp61=false;
+	}
+
+	if(*rdp61 || *rdp61_installed ) { *rdp60=false; }
+
+	if( *pshell2 || *pshell2_installed ) { *pshell1=false; }
+
+	if( _reg_exe == fver() ) {
+		// Properly setting up WGA Notifications (KB905474) requires reg.exe.
+		*wga=false;
+	}
 }
 
 void displayOptions(bool* installed, bool* install, bool batchmode, const int ncomp, const int sp) {
