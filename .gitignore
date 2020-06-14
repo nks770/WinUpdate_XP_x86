@@ -34,3 +34,7 @@
 # Other
 updlist.aps
 updlist.ncb
+*.suo
+*.user
+debug
+updlist/Debug
