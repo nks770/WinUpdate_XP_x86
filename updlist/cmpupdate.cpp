@@ -57,10 +57,17 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	fver _iexplore_exe = getFileVer(InternetExplorer+L"\\iexplore.exe",&status);
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
+	fver _wmpcore_dll  = getFileVer(System32+L"\\wmpcore.dll",&status);
+	fver _msdxm_ocx    = getFileVer(System32+L"\\msdxm.ocx",&status);
 
 	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
 
 	bool kb932823_ok = false;
+
+	// Default to get version of wmplayer, but fall back to mplayer2 if needed.
+	fver wmp = _wmp_dll;
+	if(wmp==fver()) { wmp=_wmpcore_dll; }
+	if(wmp==fver()) { wmp=_msdxm_ocx; }
 
 	// Flag updates;
 	if( sp>1 && (sku & XP_ALL) && (  _D3DCompiler_43_dll <fver(9,29,952,3111)
@@ -102,7 +109,23 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 							               +"|Update Rollup 2, then try again.");
 		}
 	}
-	else if( sp>=2 && !( sku & XP_MCE2005 ) && (  _wmp_dll <fver(11,0,5721,5145) )) {
+	else if( sp>=2 && !( sku & XP_MCE2005 ) && !( sku & XPE_FLP) && ( _wmp_dll <fver(11,0,5721,5145))) {
+		NN("Windows Media Player 11");
+		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
+	}
+	// There appear to be some restrictions with installing Windows Media Player
+	// on certain Windows Embedded systems, such as Fundamentals for Legacy PCs.
+	// Out-of-the-box, if FLP is intalled with the "Typical" or "Minimum" configurations,
+	// only WMP 6.4 is present, and attempting to upgrade to WMP 9+ results in a
+	// cryptic access violation 0xc0000005 error.  It looks like EmbdTrst.dll is
+	// blocking setup_wm.exe from working.  After you upgrade SP2 to SP3, this
+	// restriction appears to be lifted.
+	// The specifics of this restriction are still a mystery to me.
+	else if( sp==2 && ( sku & XPE_FLP ) && (wmp > fver(8,0,0,0)) && ( _wmp_dll <fver(11,0,5721,5145))) {
+		NN("Windows Media Player 11");
+		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
+	}
+	else if( sp==3 && ( sku & XPE_FLP ) && (  _wmp_dll <fver(11,0,5721,5145))) {
 		NN("Windows Media Player 11");
 		XX("\"Windows Media Player\\wmp11-windowsxp-x86-enu.exe\" /Q");
 	}
