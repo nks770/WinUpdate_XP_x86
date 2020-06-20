@@ -3376,12 +3376,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB942831)");
 		XX(p2+"windowsxp-kb942831-x86-enu_0a8500f0300505cecc06c90840c75796c5e3c9a5.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _xmllite_dll <fver(1,0,1018,0)) {
+	if( sp>=2 && (sku & XP_ALL) && _xmllite_dll <fver(1,0,1018,0)) {
 		NN("XMLLite for Windows XP (KB915865)");
-		XX(p2+"WindowsXP-KB915865-v11-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB915865-v11-x86-ENU.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && _gpprefcl_dll <fver(5,2,3790,4568)) {
-		// KB943729 requires KB915865
+		// KB943729 requires KB915865 (which is an upgraded version of KB914783)
 		NN("Group Policy Preference Client Side Extensions for Windows XP (KB943729)");
 		XX(p3+"windows-kb943729-x86-enu_e174c41ce3dcbd5c8922d6d1c39df1be425a70e0.exe"+a1);
 	}

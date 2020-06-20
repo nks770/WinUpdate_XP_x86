@@ -59,6 +59,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	fver _wmp_dll      = getFileVer(System32+L"\\wmp.dll",&status);
 	fver _wmpcore_dll  = getFileVer(System32+L"\\wmpcore.dll",&status);
 	fver _msdxm_ocx    = getFileVer(System32+L"\\msdxm.ocx",&status);
+	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
 
 	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
 
@@ -146,15 +147,29 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 							               +"| "
 										   +"|No available Windows Media Player upgrade.");
 	}
+	else if( (sku & XPE_FLP) && wmp < fver(8,0,0,0) && sp==2 ) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Windows Media Player cannot be installed on")
+			                               +"|this version of Windows Embedded. WMP setup"
+										   +"|appears to be blocked on FLP SP2 in the"
+										   +"|\"Minimum\" and \"Typical\" configurations."
+							               +"| "
+										   +"|Please try upgrading to SP3 and try again.");
+	}
 
-	if( sp==2 && (sku & XP_ALL) && _msctf_dll<fver(5,1,2600,3319)) {
+	if( sp==2 && (sku & XP_ALL) && _reg_exe>fver() && _msctf_dll<fver(5,1,2600,3319)) {
 		// If MSCTF.dll is already on the system, but not the required version, then
 		// KB932823 needs to be installed, and a system reboot will be needed so that the
 		// file can actually be replaced.
+		//
+		// If reg.exe is missing, then there is no point installing this update here
+		// because IE7/IE8 can't be installed anyway.
+		//
 		NN("Update for Windows XP (KB932823)");
 		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
 		kb932823_ok=true;
 		if(_msctf_dll > fver()) {
+			// If the file was already present, then a reboot is needed before IE setup.
 			kb932823_ok=false;
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
@@ -182,12 +197,20 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 										   +"| "
 										   +"|Internet Explorer 8 cannot be installed.");
 	}
-	if((sku & XP_ALL) && kb932823_ok && (  _iexplore_exe <fver(8,0,0,0) ) &&
+	if((sku & XP_ALL) && kb932823_ok && _reg_exe>fver() && (  _iexplore_exe <fver(8,0,0,0) ) &&
 			( sp==2 || (sp==3 && _msctf_dll>fver()))) {
 		NN("Internet Explorer 8 for Windows XP");
 		XX("\"Internet Explorer\\IE8-WindowsXP-x86-ENU.EXE\" /passive /update-no");
 	}
-	if( sp<2 && _shdocvw_dll<fver(6,0,2800,1106)) {
+	else if( sp>=2 && _reg_exe==fver() ) {
+		//                                    ....V....1....V....2....V....3....V....4....V....5
+		notifications->push_back(std::string("Internet Explorer 7 or 8 setup programs")
+			                               +"|require a working reg.exe to be on the system."
+							               +"| "
+										   +"|IE will not be installed by this script, but"
+										   +"|you might have success installing it yourself.");
+	}
+	else if( sp<2 && _shdocvw_dll<fver(6,0,2800,1106)) {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Internet Explorer 7 and 8 are only for")
 			                               +"|Windows XP Serivce Pack 2 or higher."

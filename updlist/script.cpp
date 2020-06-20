@@ -86,11 +86,29 @@ void printList(std::vector<std::string>* name) {
 	}
 }
 
+void printList2(std::vector<std::string>* name, bool batch) {
+
+	unsigned int j=(unsigned int)name->size();
+
+	printf("%sThe following %d update%s will be installed:\n",batch?"echo ":"",j,j==1?"":"s");
+	if(j==0) {
+		printf("%s%s\n",batch?"echo ":"",escapeString(std::string("  * <None>"),batch).c_str());
+	} else {
+		for(unsigned int i=0; i<j; i++) {
+			printf("%s%s\n",batch?"echo ":"",escapeString(std::string("  * ")+name->at(i),batch).c_str());
+		}
+	}
+	
+	//printf("%s\n",batch?"echo.":"");
+}
+
 std::string escapeString(const std::string str) {
 	std::string rval;
 	for(unsigned int i=0; i<str.length(); i++) {
 		if(str[i]=='&') { rval.append("^&"); }
 		else if(str[i]=='|') { rval.append("^|"); }
+		else if(str[i]=='<') { rval.append("^<"); }
+		else if(str[i]=='>') { rval.append("^>"); }
 		else { rval.push_back(str[i]); }
 	}
 	return rval;

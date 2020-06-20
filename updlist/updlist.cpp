@@ -22,7 +22,7 @@
 
 using namespace std;
 
-#define PROGRAM_DATE "19-Jun-2020"
+#define PROGRAM_DATE "20-Jun-2020"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -180,6 +180,10 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				printf("%s   Install Service Pack %d\n",batch?"echo ":"",sp_to_be_installed);
 			}
 			printf("%s\n",batch?"echo.":"");
+			printList2(&name,batch);
+		} else if( component_install ) {
+			systemComponentVersions(batch);
+			printList2(&name,batch);
 		} else {
 			systemComponentVersions(batch);
 			displayOptions(compInstalled,compInstall,batch,COMPONENT_COUNT,sp_to_int(splevel));

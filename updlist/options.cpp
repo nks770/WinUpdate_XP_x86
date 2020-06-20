@@ -541,7 +541,10 @@ void systemComponentVersions(bool batchmode) {
 	} else {
 		printf("%s     Windows Media Player is not present.\n",batchmode?"echo ":"");
 	}
-	if(ie>=fver(6,0,2800,1106) && ie<fver(7,0,0,0)){
+	if( ie == fver()) {
+		printf("%s     Internet Explorer is not present!\n",batchmode?"echo ":"");
+	}
+	else if(ie>=fver(6,0,2800,1106) && ie<fver(7,0,0,0)){
 		printf("%s     Internet Explorer 6 SP1 (%s)\n",batchmode?"echo ":"",ie.format().c_str());
 	} else {
 		printf("%s     Internet Explorer %d (%s)\n",batchmode?"echo ":"",ie.major(),ie.format().c_str());
