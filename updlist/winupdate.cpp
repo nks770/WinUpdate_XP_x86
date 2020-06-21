@@ -146,6 +146,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring WindowsJournal = ProgramFiles+L"\\Windows Journal";
 	std::wstring WindowsMediaPlayer = ProgramFiles+L"\\Windows Media Player";
 	std::wstring Ink = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Ink";
+	std::wstring WMV9_VCM = ProgramFiles+L"\\WMV9_VCM";
 
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
@@ -154,6 +155,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool kb891122 = false;
 	bool kb900325 = false;
 	bool kb913800 = false;
+	bool wmv9vcm_install = false;
+	bool wm9codecs_install = false;
 
 	// File MD5 hashes
 	MD5 md5;
@@ -168,6 +171,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	md5.digestFileW((inetsrv+L"\\ssinc.dll").c_str(),false);
 	char _ssinc_dll_md5[33];
 	strncpy_s(_ssinc_dll_md5,33,md5_ptr,33);
+
+	md5.digestFileW((WMV9_VCM+L"\\Film-320x240-vbr.wv9").c_str(),false);
+	char _film_320x240_vbr_wv9_md5[33];
+	strncpy_s(_film_320x240_vbr_wv9_md5,33,md5_ptr,33);
 
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
@@ -3261,7 +3268,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //			  ||  ( _msmsgsin_exe >zero && _msmsgsin_exe <fver(4,7,0,2009))
 			  ||  ( _rtcimsp_dll  >zero && _rtcimsp_dll  <fver(4,0,3599,0)) )) {
 		NN("Security Update for Windows Messenger (KB887472)");
-		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe /Q:U /R:N");
+		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe"+a8);
 	}
 	if( sp==2 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,3001)) {
 		NN("Security Update for Windows Messenger (KB887472)");
@@ -6227,8 +6234,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Format Runtime 9, 9.5 & 11 for Windows XP SP3 (KB978695)");
 		XX(p3+"WindowsXP-WindowsMedia-KB978695-x86-ENU.exe"+a1);
 	}
+	if( sp>=0 && !(sku & XP_MCE2005) && !kb891122 && !kb913800 && wmp >= fver(8,0,0,0) && (
+		   (_WMADMOD_dll  <fver(10,0,0,3646))
+		|| (_wmsdmod_dll  <fver(10,0,0,3646))
+		|| (_wmspdmod_dll <fver(10,0,0,3646))
+		|| (_WMVADVD_dll  <fver(10,0,0,3646))
+		|| (_wmvdmod_dll  <fver(10,0,0,3646)) ) && (
+
+		   (_WMADMOD_dll  <=fver(10,0,0,3646))
+		&& (_wmsdmod_dll  <=fver(10,0,0,3646))
+		&& (_wmspdmod_dll <=fver(10,0,0,3646))
+		&& (_WMVADVD_dll  <=fver(10,0,0,3646))
+		&& (_wmvdmod_dll  <=fver(10,0,0,3646)) )) {
+		wm9codecs_install=true;
+		NN("Windows Media Player 9 Codecs");
+		XX(sw+p3+"WM9Codecs.exe /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N /DisallowSystemRestore\"");
+	}
 	if( sp==3 && !kb891122 && !kb913800 
-		      && (sku & XP_ALL) && _wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708)) {
+		      && (sku & XP_ALL) && (
+			  (_wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708))
+			  || wm9codecs_install )) {
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834902)");
 		XX(p3+"windowsxp-windowsmedia-kb2834902-v2-x86-enu_ecc8652da2b85688917a4f7aa48ac1efe84975fd.exe"+a1);
 	}
@@ -6262,7 +6287,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Format Runtime 9, 9.5 & 11 for Windows XP SP 2 (KB954155)");
 		XX(p2+"windowsxp-sp2-windowsmedia-kb954155-x86-enu_77db0c2aa79d2a5049fb9fb0fa4fbc5e98d4f30d.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ((_wmspdmod_dll >=fver(9,0,0,2980) /* WM9 Section */
+	if( sp==3 && (sku & XP_ALL) && ( wm9codecs_install
+		              || (_wmspdmod_dll >=fver(9,0,0,2980) /* WM9 Section */
 					     && _wmspdmod_dll<fver(9,0,0,4505))
 
 					  || (_wmspdmod_dll  >=fver(10,0,0,3646) /* WM10 Section */
@@ -6313,18 +6339,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"wmp6cdcs.EXE /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N\"");
 	}
 	if( sp>=0 && wmp >= fver(8,0,0,0) && (
-		   (_WMADMOD_dll  <fver(10,0,0,3646))
-		|| (_wmsdmod_dll  <fver(10,0,0,3646))
-		|| (_wmspdmod_dll <fver(10,0,0,3646))
-		|| (_WMVADVD_dll  <fver(10,0,0,3646))
-		|| (_wmvdmod_dll  <fver(10,0,0,3646)) )) {
-		NN("Windows Media Player 9 Codecs");
-		XX(p3+"WM9Codecs.exe /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N /DisallowSystemRestore\"");
-	}
-	if( sp>=0 && wmp >= fver(8,0,0,0) && (
-		   (_wmv9vcm_dll  <fver(9,0,1,369)) )) {
+		   (_wmv9vcm_dll  <fver(9,0,1,369))
+		|| strncmp(_film_320x240_vbr_wv9_md5,"0c60d0a17cdb324e7ab0f66170a1c775",32) != 0) ) {
+		wmv9vcm_install=true;
 		NN("Windows Media Video 9 VCM");
-		XX(p3+"wmv9VCMsetup.exe /Q:U /R:N");
+		XX(sw+p3+"wmv9VCMsetup.exe"+a8);
 	}
 	if( sp>=2 && (sku & XP_ALL) && ( *wmp6cdcs || (_wmavds32_ax>=fver(9,0,0,3224) && _wmavds32_ax<fver(9,0,0,3360)))) {
 		NN("Security Update for Windows 2000, Windows XP and Windows 2003 (KB969878)");
@@ -6334,7 +6353,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975025)");
 		XX(p3+"WindowsXP-KB975025-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( *wmp6cdcs || (_wmv9vcm_dll>=fver(9,0,1,369) && _wmv9vcm_dll<fver(9,0,1,3073)))) {
+	if( sp==3 && (sku & XP_ALL) && ( *wmp6cdcs || wmv9vcm_install
+		      || (_wmv9vcm_dll>=fver(9,0,1,369) && _wmv9vcm_dll<fver(9,0,1,3073)))) {
 		NN("Security Update for Windows XP (KB2845142)");
 		XX(p3+"windowsxp-windowsmedia-kb2845142-x86-enu_560190cc172d1009450366fa48a274f2ae0672a7.exe"+a1);
 	}
