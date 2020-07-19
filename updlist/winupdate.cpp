@@ -3421,15 +3421,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 
 	// Windows XP Media Center
-	if( sp>=1 && (sku & XP_MCE) && _dxg_sys>zero && _dxg_sys <fver(5,1,2600,1152)) {
+	if( sp==1 && (sku & XP_MCE) && _dxg_sys>zero && _dxg_sys <fver(5,1,2600,1152)) {
 		NN("Q811009: Windows XP Media Center Edition Fast User Switching Hotfix");
 		XX(p1+"q811009_wxp_84709768aaaf96cf2de82f15b2db5ffd49e6ca3e.exe"+a7);
 	}
-	if( sp>=1 && (sku & XP_MCE) && _dpcdll_dll>zero && _dpcdll_dll <fver(5,1,2600,1165)) {
+	if( sp==1 && (sku & XP_MCE) && _dpcdll_dll>zero && _dpcdll_dll <fver(5,1,2600,1165)) {
 		NN("Q811632: Critical Update (Windows XP Media Center Edition Product Activation Hotfix)");
 		XX(p1+"q811632_xp_eec81e99c580646b731e53c7186d7e9c9741ef42.exe"+a7);
 	}
-	if( sp>=1 && (sku & XP_MCE) && (
+	if( sp==1 && (sku & XP_MCE) && (
 		                 ( /*_hidir_sys >zero &&*/ _hidir_sys <fver(5,1,2600,1321))
 					  || ( /*_irbus_sys >zero &&*/ _irbus_sys <fver(5,1,2600,1321)) )) {
 		NN("Critical Update for Microsoft Windows XP Media Center Edition Infrared Receiver (KB832418)");
