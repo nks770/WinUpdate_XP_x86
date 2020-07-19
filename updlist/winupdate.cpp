@@ -3430,8 +3430,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p1+"q811632_xp_eec81e99c580646b731e53c7186d7e9c9741ef42.exe"+a7);
 	}
 	if( sp>=1 && (sku & XP_MCE) && (
-		                 ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,1321))
-					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,1321)) )) {
+		                 ( /*_hidir_sys >zero &&*/ _hidir_sys <fver(5,1,2600,1321))
+					  || ( /*_irbus_sys >zero &&*/ _irbus_sys <fver(5,1,2600,1321)) )) {
 		NN("Critical Update for Microsoft Windows XP Media Center Edition Infrared Receiver (KB832418)");
 		XX(p1+"windowsxp-kb832418-x86-enu_7f380619f4113b382546291911af7d1.exe"+a6);
 	}
