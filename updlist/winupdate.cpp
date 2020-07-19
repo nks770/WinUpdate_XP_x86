@@ -246,6 +246,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
+	fver _dpcdll_dll   = getFileVer(System32+L"\\dpcdll.dll",&status);
 	fver _dplayx_dll   = getFileVer(System32+L"\\dplayx.dll",&status);
 	fver _dpnet_dll    = getFileVer(System32+L"\\dpnet.dll",&status);
 	fver _dpwsockx_dll = getFileVer(System32+L"\\dpwsockx.dll",&status);
@@ -256,6 +257,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dssenh_dll   = getFileVer(System32+L"\\dssenh.dll",&status);
 	fver _dwwin_exe    = getFileVer(System32+L"\\dwwin.exe",&status);
 	fver _dxmasf_dll   = getFileVer(System32+L"\\dxmasf.dll",&status);
+	fver _dxmrtp_dll   = getFileVer(System32+L"\\dxmrtp.dll",&status);
 	fver _dxtmsft_dll  = getFileVer(System32+L"\\dxtmsft.dll",&status);
 	fver _dxtrans_dll  = getFileVer(System32+L"\\dxtrans.dll",&status);
 	fver _encdec_dll   = getFileVer(System32+L"\\encdec.dll",&status);
@@ -890,6 +892,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
 	fver _dmusic_sys   = getFileVer(Drivers+L"\\dmusic.sys",&status);
+	fver _dxg_sys      = getFileVer(Drivers+L"\\dxg.sys",&status);
 	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
 	fver _hidparse_sys = getFileVer(Drivers+L"\\hidparse.sys",&status);
 	fver _exfat_sys    = getFileVer(Drivers+L"\\exfat.sys",&status);
@@ -2109,7 +2112,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Remote Assistance Used with Network Cards and Firewalls");
 		XX(rtm+"q308210_x86_9bf60ad45ad260ab449772bbdc337825796ac677.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
+	if( sp==1 && !(sku & XP_MCE) && (
 	      (_encdec_dll >zero && _encdec_dll <fver(6,4,2600,1142))
 	   || (_sbe_dll    >zero && _sbe_dll    <fver(6,4,2600,1142)) )) {
 		NN("Update for Windows XP Service Pack 1 (KB810243)");
@@ -2151,6 +2154,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	)) {
 		NN("Q327405: Recommended Update (Windows XP Home Edition)");
 		XX(sw+rtm+"hu1002_per_f08bc10e7760c0d84cd27effd4c32e5965c2b142.exe"+a2);
+	}
+	if( sp>=0 && (sku & XP_ALL) && (
+	      (_aec_sys      >zero && _aec_sys      <fver(5,1,2601,0))
+	   || (_dxmrtp_dll   >zero && _dxmrtp_dll   <fver(5,1,2600,16))
+	   || (_rtcdll_dll   >zero && _rtcdll_dll   <fver(5,1,2600,28))
+	   || (_splitter_sys >zero && _splitter_sys <fver(5,1,2600,16))
+	   || (_usbaudio_sys >zero && _usbaudio_sys <fver(5,1,2600,21))
+	   || (_usbuhci_sys  >zero && _usbuhci_sys  <fver(5,1,2600,28)) )) {
+		NN("Windows Messenger Audio Update");
+		XX(rtm+"q316397_wxpx86_cb2ee9c9013d6a1a0db49d4353ff47dfb68310bd.exe"+a7);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_dxmasf_dll   >zero && _dxmasf_dll   <fver(6,4,9,1121))
@@ -3408,6 +3421,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 
 	// Windows XP Media Center
+	if( sp>=1 && (sku & XP_MCE) && _dxg_sys>zero && _dxg_sys <fver(5,1,2600,1152)) {
+		NN("Q811009: Windows XP Media Center Edition Fast User Switching Hotfix");
+		XX(p1+"q811009_wxp_84709768aaaf96cf2de82f15b2db5ffd49e6ca3e.exe"+a7);
+	}
+	if( sp>=1 && (sku & XP_MCE) && _dpcdll_dll>zero && _dpcdll_dll <fver(5,1,2600,1165)) {
+		NN("Q811632: Critical Update (Windows XP Media Center Edition Product Activation Hotfix)");
+		XX(p1+"q811632_xp_eec81e99c580646b731e53c7186d7e9c9741ef42.exe"+a7);
+	}
+	if( sp>=1 && (sku & XP_MCE) && (
+		                 ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,1321))
+					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,1321)) )) {
+		NN("Critical Update for Microsoft Windows XP Media Center Edition Infrared Receiver (KB832418)");
+		XX(p1+"windowsxp-kb832418-x86-enu_7f380619f4113b382546291911af7d1.exe"+a6);
+	}
+	if( sp>=1 && (sku & XP_MCE)
+		&& regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"2.7"
+		&& (( _ehshell_exe >zero && _ehshell_exe <fver(5,1,2600,1378)) )) {
+		NN("Critical Update for Windows XP Media Center Edition 2004 (KB838358)");
+		XX(p1+"kb838358_mce2004_x86_enu_8468b88ac30fa21b96f12588ed76278cb865ba8a.exe"+a6);
+	}
 	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
 		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
 		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
