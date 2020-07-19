@@ -1662,7 +1662,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_sqlsrv32_dll >fver(2000,81,9002,0)  && _sqlsrv32_dll <fver(2000,81,9042,0)) ))) {
 		NN("Security Update for Microsoft Data Access Components (KB823718)");
 		//XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
-		XX(sw+p1+"ENU_Q832483_MDAC_x86.EXE /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
+		XX(sw+p1+"ENU_Q832483_MDAC_x86.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
 	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1789))
@@ -1984,6 +1984,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Critical Update for ADODB.stream (KB870669)");
 		XX(sw+p1+"windows-kb870669-x86-enu_e3bab5ab3953b33dd4fd28b64c6f670aac446996.exe"+a2);
 	}
+	/*
+	if( sp==0 && (sku & XP_ALL) && (
+	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,31))
+	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,31))
+	   || (_ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,31))
+	   || (_ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,31)) )) {
+		NN("System Recovered Error Message Update");
+		XX(rtm+"q317277_8c5a39cf107c69cc9462b9adf1cf511df228c575.exe"+a7);
+	}
+	*/
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,170))
 	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,170))
@@ -5982,14 +5992,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// This key can also be used to determine WMP version:
 	// HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}
 
-	if( sp==0 && (sku & XP_ALL) && (
+	if( sp==0 && (sku & XP_ALL) && _wmpcore_dll >=fver(8,0,0,0) && (
 		   (_dxmasf_dll   >=fver(6,4,9,0) && _dxmasf_dll   <fver(6,4,9,1121))
 		|| (_msdxm_ocx    >=fver(6,4,9,0) && _msdxm_ocx    <fver(6,4,9,1124))
 		|| (_unregmp2_exe >=fver(8,0,0,0) && _unregmp2_exe <fver(8,0,0,4482))
 		|| (_wmpcore_dll  >=fver(8,0,0,0) && _wmpcore_dll  <fver(8,0,0,4482))
 		|| (_wmplayer_exe >=fver(8,0,0,0) && _wmplayer_exe <fver(8,0,0,4482)) )) {
 		NN("Q320920: Security Update (Windows Media Player for Windows XP)");
-		XX(rtm+"wm320920_8_2d2bb2749d7aebe8efee1df06da63b146dd1176a.exe"+a2);
+		XX(rtm+"wm320920_8_2d2bb2749d7aebe8efee1df06da63b146dd1176a.exe"+a8);
+	}
+	else if( sp==0 && (sku & XP_ALL) && (
+		   (_dxmasf_dll   >=fver(6,4,9,0) && _dxmasf_dll   <fver(6,4,9,1121))
+		|| (_msdxm_ocx    >=fver(6,4,9,0) && _msdxm_ocx    <fver(6,4,9,1124)) )) {
+		NN("Q320920: Security Update (Windows Media Player 6.4)");
+		XX(rtm+"wm320920_64.exe"+a8);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 		   (_wmp_dll      >=fver(9,0,0,2980) && _wmp_dll   <fver(9,0,0,3008)) )) {
