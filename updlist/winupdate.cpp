@@ -156,7 +156,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool kb900325 = false;
 	bool kb913800 = false;
 	bool wmv9vcm_install = false;
-	bool wm9codecs_install = false;
+	bool wm9codecs_v1_install = false;
+	bool wm9codecs_v2_install = false;
 
 	// File MD5 hashes
 	MD5 md5;
@@ -359,11 +360,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mfc42_dll    = getFileVer(System32+L"\\mfc42.dll",&status);
 	fver _mfc42u_dll   = getFileVer(System32+L"\\mfc42u.dll",&status);
 	fver _mfplat_dll   = getFileVer(System32+L"\\mfplat.dll",&status);
+	fver _MP43DMOD_dll = getFileVer(System32+L"\\MP43DMOD.dll",&status);
 	fver _mp4sdecd_dll = getFileVer(System32+L"\\mp4sdecd.dll",&status);
 	fver _mp4sdmod_dll = getFileVer(System32+L"\\mp4sdmod.dll",&status);
 	fver _mp4sds32_ax  = getFileVer(System32+L"\\mp4sds32.ax",&status);
 	fver _mpeg2data_ax = getFileVer(System32+L"\\mpeg2data.ax",&status);
 	fver _mpg2splt_ax  = getFileVer(System32+L"\\mpg2splt.ax",&status);
+	fver _MPG4DMOD_dll = getFileVer(System32+L"\\MPG4DMOD.dll",&status);
 	fver _mpg4ds32_ax  = getFileVer(System32+L"\\mpg4ds32.ax",&status);
 	fver _mqqm_dll     = getFileVer(System32+L"\\mqqm.dll",&status);
 	fver _mqad_dll     = getFileVer(System32+L"\\mqad.dll",&status);
@@ -6012,6 +6015,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Flaw In Windows Media Player May Allow Media Library Access (819639)");
 		XX(sw+rtm+"windowsmedia9-kb819639-x86-enu_bfd620da8e1529c3e4ffadfb93f33fa.exe"+a8);
 	}
+	if( sp==0 && (sku & XP_ALL) && (
+		   (_wmp_dll      >=fver(9,0,0,2980) && _wmp_dll   <fver(9,0,0,3128)) )) {
+		NN("Update for Windows Media Player 9 Series (KB837272)");
+		XX(rtm+"windowsmedia9-kb837272-enu_481af581c0365fc3fc7bfc482760a68.exe"+a6);
+	}
 	if( sp<2 && (sku & XP_ALL) && (
 		   (_msdxm_ocx    >=fver(6,4,9,0) && _msdxm_ocx    <fver(6,4,9,1128))
 		|| (_wmp_dll      >=fver(9,0,0,0) && _wmp_dll      <fver(9,0,0,3075))
@@ -6252,6 +6260,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-WindowsMedia-KB978695-x86-ENU.exe"+a1);
 	}
 	if( sp>=0 && !(sku & XP_MCE2005) && !kb891122 && !kb913800 && wmp >= fver(8,0,0,0) && (
+		   (_mp4sdmod_dll <fver(9,0,0,2980))
+		|| (_MP43DMOD_dll <fver(9,0,0,2980))
+		|| (_MPG4DMOD_dll <fver(9,0,0,2980))
+		|| (_WMADMOD_dll  <fver(9,0,0,2980))
+		|| (_wmsdmod_dll  <fver(9,0,0,2980))
+		|| (_wmspdmod_dll <fver(9,0,0,2980))
+		|| (_wmvdmod_dll  <fver(9,0,0,2980)) ) && (
+
+		   (_mp4sdmod_dll <=fver(9,0,0,2980))
+		&& (_MP43DMOD_dll <=fver(9,0,0,2980))
+		&& (_MPG4DMOD_dll <=fver(9,0,0,2980))
+		&& (_WMADMOD_dll  <=fver(9,0,0,2980))
+		&& (_wmsdmod_dll  <=fver(9,0,0,2980))
+		&& (_wmspdmod_dll <=fver(9,0,0,2980))
+		&& (_wmvdmod_dll  <=fver(9,0,0,2980)) )) {
+		wm9codecs_v1_install=true;
+		NN("Windows Media 9 Series Codec Install Package");
+		XX(sw+p3+"wm9codecs_6dbfa989738fa4c4fd9934afbda30cef570582d6.exe /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N /DisallowSystemRestore\"");
+	}
+	if( wm9codecs_v1_install || (sp>=0 && !(sku & XP_MCE2005) && !kb891122 && !kb913800 && wmp >= fver(8,0,0,0) && (
 		   (_WMADMOD_dll  <fver(10,0,0,3646))
 		|| (_wmsdmod_dll  <fver(10,0,0,3646))
 		|| (_wmspdmod_dll <fver(10,0,0,3646))
@@ -6262,15 +6290,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		&& (_wmsdmod_dll  <=fver(10,0,0,3646))
 		&& (_wmspdmod_dll <=fver(10,0,0,3646))
 		&& (_WMVADVD_dll  <=fver(10,0,0,3646))
-		&& (_wmvdmod_dll  <=fver(10,0,0,3646)) )) {
-		wm9codecs_install=true;
+		&& (_wmvdmod_dll  <=fver(10,0,0,3646)) ))) {
+		wm9codecs_v2_install=true;
 		NN("Windows Media Player 9 Codecs");
 		XX(sw+p3+"WM9Codecs.exe /Q:U /R:N /C:\"setup_wm.exe /Q:U /R:N /DisallowSystemRestore\"");
 	}
 	if( sp==3 && !kb891122 && !kb913800 
 		      && (sku & XP_ALL) && (
 			  (_wmvdmod_dll>=fver(10,0,0,3646) && _wmvdmod_dll<fver(10,0,0,3708))
-			  || wm9codecs_install )) {
+			  || wm9codecs_v2_install )) {
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834902)");
 		XX(p3+"windowsxp-windowsmedia-kb2834902-v2-x86-enu_ecc8652da2b85688917a4f7aa48ac1efe84975fd.exe"+a1);
 	}
@@ -6304,7 +6332,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Format Runtime 9, 9.5 & 11 for Windows XP SP 2 (KB954155)");
 		XX(p2+"windowsxp-sp2-windowsmedia-kb954155-x86-enu_77db0c2aa79d2a5049fb9fb0fa4fbc5e98d4f30d.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( wm9codecs_install
+	if( sp==3 && (sku & XP_ALL) && ( wm9codecs_v2_install
 		              || (_wmspdmod_dll >=fver(9,0,0,2980) /* WM9 Section */
 					     && _wmspdmod_dll<fver(9,0,0,4505))
 
@@ -6390,7 +6418,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  || (_mp4sdecd_dll  >=fver(11,0,5721,0) /* WM11 Section */
 		                 && _mp4sdecd_dll < fver(11,0,5721,5274))
 
-					  || *wmp6cdcs   )) {
+					  || *wmp6cdcs || wm9codecs_v1_install  )) {
 		NN("Security Update for Windows XP (KB975558)");
 		XX(p3+"WindowsXP-WindowsMedia-KB975558-x86-ENU.exe"+a1);
 	}
