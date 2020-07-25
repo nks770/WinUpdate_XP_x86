@@ -1797,6 +1797,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB837001)");
 		XX(p1+"windowsxp-kb837001-x86-enu_09e9d2c15ee5ee9323b210decd84941.exe"+a6);
 	}
+	/*if((sp==0 && (sku & XP_ALL) && (
+	      (_user32_dll      >zero && _user32_dll <fver(5,1,2600,118))
+	   || ( _win32k_sys     >zero && _win32k_sys <fver(5,1,2600,115)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
+	      (_user32_dll      >zero && _user32_dll <fver(5,1,2600,1255))
+	   || ( _win32k_sys     >zero && _win32k_sys <fver(5,1,2600,1275)) ))) {
+		// KB824141 is replaced by KB840987
+		NN("Security Update for Microsoft Windows (KB824141)");
+		XX(p1+"WindowsXP-KB824141-x86-ENU.exe"+a6);
+	}*/
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_basesrv_dll  >zero && _basesrv_dll  <fver(5,1,2600,159))
 	   || (_gdi32_dll    >zero && _gdi32_dll    <fver(5,1,2600,151))
@@ -5151,9 +5161,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Outlook Express Updates
+	/*if( sp==0 && (sku & XP_ALL) && (
+	      (_inetcomm_dll >zero && _inetcomm_dll  <fver(6,0,2739,300))
+	   || (_msoe_dll >zero && _msoe_dll  <fver(6,0,2720,3000)) )) {
+		// Microsoft Security Bulletin MS04-013
+		// Cumulative Security Update for Outlook Express (837009)
+		// Issued: April 13, 2004
+		// KB837009 is replaced by KB823353
+		NN("Cumulative Security Update for Outlook Express 6 (KB837009)");
+		XX(sw+rtm+"q837009_5a0166ddbe242c76aed9c7c4b595f9f.exe"+a8);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_inetcomm_dll >zero && _inetcomm_dll  <fver(6,0,2742,200))
 	   || (_msoe_dll >zero && _msoe_dll  <fver(6,0,2741,2600)) )) {
+		// Microsoft Security Bulletin MS04-018
+		// Cumulative Security Update for Outlook Express (823353)
+		// Issued: July 13, 2004
 		NN("Cumulative Security Update for Outlook Express 6 (KB823353)");
 		XX(sw+rtm+"ie6.0-kb823353-windowsxp-x86-enu_6769d29ed07c313c9cd3b7d659a9b93e5feb1b8a.exe"+a8);
 	}
@@ -5448,6 +5471,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1400)) )) {
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB832894)");
 		XX(sw+rtm+"ie6.0sp1-Q832894.exe"+a8);
+	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_wininet_dll   >zero && _wininet_dll   <fver(6,0,2800,1405)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (KB831167)");
+		XX(sw+rtm+"Q831167.exe"+a8);
 	}
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))

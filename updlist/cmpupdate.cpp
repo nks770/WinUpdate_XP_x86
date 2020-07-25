@@ -96,6 +96,9 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			+"rd /S /Q %TEMP%\\directx_aug2009_redist");
 	}
 
+	// Windows Media Player 9
+	// "MPsetupXP.exe /Q:A /R:N /c:"setup_wm.exe /Q /R:N /NoPID /DisallowSystemRestore /P:#e""
+
 	if( sp>=2 && ( sku & XP_MCE2005 ) && (sku & XP_ALL) && (  _wmp_dll <fver(11,0,5721,5145) )) {
 		if(_ehshell_exe >= fver(5,1,2710,2732)) {
 			NN("Windows Media Player 11 (for Windows Media Center Edition 2005)");
