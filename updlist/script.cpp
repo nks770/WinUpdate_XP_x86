@@ -75,13 +75,23 @@ void createUpdateScript(std::vector<std::string>* name,std::vector<std::string>*
 void printList(std::vector<std::string>* name) {
 
 	unsigned int j=(unsigned int)name->size();
+	unsigned int jj=j;
 
-	if(j==0) {
+	// Workaround to not display QChain.exe as a missing update when listing the missing updates.
+	for(unsigned int i=0; i<j; i++) {
+		if(name->at(i)=="QChain.exe command-line tool (Q815062)") {
+			jj--;
+		}
+	}
+
+	if(jj==0) {
 		printf("<List Empty>\n\n");
 	} else {
-		printf("%d updates are missing.\n\n",j);
+		printf("%d updates are missing.\n\n",jj);
 		for(unsigned int i=0; i<j; i++) {
-			printf("%s\n",name->at(i).c_str());
+			if(name->at(i)!="QChain.exe command-line tool (Q815062)") {
+				printf("%s\n",name->at(i).c_str());
+			}
 		}
 	}
 }

@@ -1638,10 +1638,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Flash Player (KB913433)");
 		XX(p1+"Windows-KB913433-x86-ENU.exe"+a2);
 	}
-	if((sp==0 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,105))
+	/*if((sp==0 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,105))
 	 ||(sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1154))) {
 		NN("329170: Security Update");
 		XX(p1+"q329170_wxp_sp2_en_90a3d54a8af7b392e7b3ff4deddc745.exe"+a7);
+	}*/
+	if((sp==0 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,112))
+	 ||(sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1193))) {
+		// MS03-024: Windows XP Security Patch: Buffer Overrun in Windows Could Lead to Data Corruption
+		NN("817606: Security Update (Windows XP)");
+		XX(p1+"Q817606_WXP_SP2_x86_ENU.exe"+a7);
 	}
 	if((sp==0 && (sku & XP_ALL) && _ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,114))
 	 ||(sp==1 && (sku & XP_ALL) && _ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,1217))) {
@@ -2010,6 +2016,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"q317277_8c5a39cf107c69cc9462b9adf1cf511df228c575.exe"+a7);
 	}
 	*/
+	/*if( sp==0 && (sku & XP_ALL) && _xpsp1hfm_exe>zero && _xpsp1hfm_exe<fver(5,5,31,0)) {
+		NN("Critical Update for Windows XP (KB887822)");
+		// KB887822 might be replaced by KB887811, as KB887811 installs a newer version of XPSP1HFM.EXE
+		XX(rtm+"windowsxp-kb887822-x86-enu_a3e55bed585f126e5ab10f200f6a5a1ffbb66c96.exe"+a7);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,170))
 	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,170))
@@ -6744,9 +6755,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=0 && !(sku & XP_TABLET) && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
 		NN("Microsoft Windows Journal Viewer 1.5");
 		if(_msiexec_exe  <fver(3,0,0,0)) {
-			XX("Extras\\JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /qb\"");
+			XX("\"Extras\\Journal Viewer 1.5\\JournalViewer1.5.exe\" /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /qb\"");
 		} else {
-			XX("Extras\\JournalViewer1.5.exe /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /passive\"");
+			XX("\"Extras\\Journal Viewer 1.5\\JournalViewer1.5.exe\" /Q /R:N /C:\"msiexec /i \"\"Microsoft Windows Journal Viewer.msi\"\" /passive\"");
 		}
 	}
 	if( sp==2 && (sku & XP_TABLET) && (
@@ -6884,5 +6895,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			+"regsvr32.exe /s %SystemRoot%\\system32\\MSI.DLL\n"
 			+"regsvr32.exe /s %SystemRoot%\\system32\\MSIHND.DLL\n"
 			+"regsvr32.exe /s %SystemRoot%\\system32\\MSISIP.DLL");
+	}
+	if( sp<2 && (sku & XP_ALL) && name->size() > 1 ) {
+		NN("QChain.exe command-line tool (Q815062)");
+		XX("Extras\\QChain\\qchain.exe qchain.log");
 	}
 }
