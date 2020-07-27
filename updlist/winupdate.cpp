@@ -2021,6 +2021,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// KB887822 might be replaced by KB887811, as KB887811 installs a newer version of XPSP1HFM.EXE
 		XX(rtm+"windowsxp-kb887822-x86-enu_a3e55bed585f126e5ab10f200f6a5a1ffbb66c96.exe"+a7);
 	}*/
+	/*if((sp==0 && (sku & XP_ALL) && (
+	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,108))
+	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,108))
+	   || (_ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,108))
+	   || (_ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,108)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
+	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1151))
+	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1151))
+	   || (_ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1151))
+	   || (_ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1151)) ) )) {
+	   // Q811493 is included in KB826939
+		NN("811493: Security Update (Windows XP)");
+		XX(rtm+"Q811493_WXP_SP2_x86_ENU.exe"+a7);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,170))
 	   || (_ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,170))
@@ -6553,6 +6567,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _fxscover_exe>zero && _fxscover_exe<fver(5,2,2600,6078)) {
 		NN("Security Update for Windows XP (KB2491683)");
 		XX(p3+"WindowsXP-KB2491683-x86-ENU.exe"+a1);
+	}
+	if( sp==0 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,28)) {
+		NN("Q313450: Security Update ");
+		XX(rtm+"Q313450_WXP.exe"+a7);
 	}
 	if((sp==2 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,3680))
 	 ||(sp==3 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,5949))) {
