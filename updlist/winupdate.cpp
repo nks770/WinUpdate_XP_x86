@@ -5995,6 +5995,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB917344)");
 		XX(p1+"windowsxp-kb917344-x86-enu_9c0c688c3e5c11a1b2ce0666117dc193823367b0.exe"+a1);
 	}
+	if( sp<2 && (sku & XP_ALL) && _vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,7426)) {
+		NN("Security Update, February 14, 2002 (Internet Explorer 6)");
+		XX(sw+rtm+"VBS56NEN.EXE"+a8);
+	}
 	if( sp==2 && (sku & XP_ALL) && 
 		( _jscript_dll <= fver(5,6,0,8835) && _vbscript_dll <= fver(5,6,0,8835)) &&
 		(                 (_jscript_dll >=fver(5,6,0,0) && _jscript_dll <fver(5,6,0,8835))
@@ -6569,7 +6573,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2491683-x86-ENU.exe"+a1);
 	}
 	if( sp==0 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,28)) {
-		NN("Q313450: Security Update ");
+		NN("Q313450: Security Update");
 		XX(rtm+"Q313450_WXP.exe"+a7);
 	}
 	if((sp==2 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,3680))
