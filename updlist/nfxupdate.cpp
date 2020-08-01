@@ -277,15 +277,35 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	fver _11_System_Web_dll           = getFileVer(p_nfx11+L"\\System.Web.dll",&status);
 	fver _mscoree_dll                 = getFileVer(System32+L"\\mscoree.dll",&status);
 
+	fver _20_AppLaunch_exe               = getFileVer(p_nfx20+L"\\AppLaunch.exe",&status);
+	fver _20_aspnet_filter_dll           = getFileVer(p_nfx20+L"\\aspnet_filter.dll",&status);
+	fver _20_aspnet_isapi_dll            = getFileVer(p_nfx20+L"\\aspnet_isapi.dll",&status);
+	fver _20_Aspnet_perf_dll             = getFileVer(p_nfx20+L"\\Aspnet_perf.dll",&status);
+	fver _20_aspnet_rc_dll               = getFileVer(p_nfx20+L"\\aspnet_rc.dll",&status);
+	fver _20_aspnet_regiis_exe           = getFileVer(p_nfx20+L"\\aspnet_regiis.exe",&status);
+	fver _20_aspnet_state_exe            = getFileVer(p_nfx20+L"\\aspnet_state.exe",&status);
 	fver _20_aspnet_wp_exe               = getFileVer(p_nfx20+L"\\aspnet_wp.exe",&status);
+	fver _20_AspNetMMCExt_dll            = getFileVer(p_nfx20+L"\\AspNetMMCExt.dll",&status);
+	fver _20_CORPerfMonExt_dll           = getFileVer(p_nfx20+L"\\CORPerfMonExt.dll",&status);
 	fver _20_dfdll_dll                   = getFileVer(p_nfx20+L"\\dfdll.dll",&status);
+	fver _20_IEExec_exe                  = getFileVer(p_nfx20+L"\\IEExec.exe",&status);
+	fver _20_ilasm_exe                   = getFileVer(p_nfx20+L"\\ilasm.exe",&status);
+	fver _20_InstallUtil_exe             = getFileVer(p_nfx20+L"\\InstallUtil.exe",&status);
 	fver _20_Microsoft_JScript_dll       = getFileVer(p_nfx20+L"\\Microsoft.JScript.dll",&status);
+	fver _20_MmcAspExt_dll               = getFileVer(p_nfx20+L"\\MmcAspExt.dll",&status);
 	fver _20_mscordacwks_dll             = getFileVer(p_nfx20+L"\\mscordacwks.dll",&status);
+	fver _20_mscorie_dll                 = getFileVer(p_nfx20+L"\\mscorie.dll",&status);
 	fver _20_mscorjit_dll                = getFileVer(p_nfx20+L"\\mscorjit.dll",&status);
 	fver _20_mscorlib_dll                = getFileVer(p_nfx20+L"\\mscorlib.dll",&status);
+	fver _20_mscorpe_dll                 = getFileVer(p_nfx20+L"\\mscorpe.dll",&status);
+	fver _20_mscorsvc_dll                = getFileVer(p_nfx20+L"\\mscorsvc.dll",&status);
+	fver _20_mscorsvw_exe                = getFileVer(p_nfx20+L"\\mscorsvw.exe",&status);
 	fver _20_mscorwks_dll                = getFileVer(p_nfx20+L"\\mscorwks.dll",&status);
+	fver _20_ngen_exe                    = getFileVer(p_nfx20+L"\\ngen.exe",&status);
+	fver _20_normalization_dll           = getFileVer(p_nfx20+L"\\normalization.dll",&status);
 	fver _20_peverify_dll                = getFileVer(p_nfx20+L"\\peverify.dll",&status);
 	fver _20_SOS_dll                     = getFileVer(p_nfx20+L"\\SOS.dll",&status);
+	fver _20_sysglobl_dll                = getFileVer(p_nfx20+L"\\sysglobl.dll",&status);
 	fver _20_System_dll                  = getFileVer(p_nfx20+L"\\System.dll",&status);
 	fver _20_System_configuration_dll    = getFileVer(p_nfx20+L"\\System.configuration.dll",&status);
 	fver _20_System_Data_dll             = getFileVer(p_nfx20+L"\\System.Data.dll",&status);
@@ -296,14 +316,21 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	fver _20_System_DirectoryServices_dll = getFileVer(p_nfx20+L"\\System.DirectoryServices.dll",&status);
 	fver _20_System_DirectoryServices_Protocols_dll = getFileVer(p_nfx20+L"\\System.DirectoryServices.Protocols.dll",&status);
 	fver _20_System_Drawing_dll          = getFileVer(p_nfx20+L"\\System.Drawing.dll",&status);
+	fver _20_System_EnterpriseServices_dll = getFileVer(p_nfx20+L"\\System.EnterpriseServices.dll",&status);
+	fver _20_System_EnterpriseServices_Thunk_dll = getFileVer(p_nfx20+L"\\System.EnterpriseServices.Thunk.dll",&status);
+	fver _20_System_EnterpriseServices_tlb = getFileVer(p_nfx20+L"\\System.EnterpriseServices.tlb",&status);
+	fver _20_System_EnterpriseServices_Wrapper_dll = getFileVer(p_nfx20+L"\\System.EnterpriseServices.Wrapper.dll",&status);
 	fver _20_System_Management_dll       = getFileVer(p_nfx20+L"\\System.Management.dll",&status);
 	fver _20_System_Runtime_Remoting_dll = getFileVer(p_nfx20+L"\\System.Runtime.Remoting.dll",&status);
 	fver _20_System_Security_dll         = getFileVer(p_nfx20+L"\\System.Security.dll",&status);
+	fver _20_System_Transactions_dll         = getFileVer(p_nfx20+L"\\System.Transactions.dll",&status);
 	fver _20_System_Web_dll              = getFileVer(p_nfx20+L"\\System.Web.dll",&status);
 	fver _20_System_Web_Mobile_dll       = getFileVer(p_nfx20+L"\\System.Web.Mobile.dll",&status);
 	fver _20_System_Web_RegularExpressions_dll = getFileVer(p_nfx20+L"\\System.Web.RegularExpressions.dll",&status);
 	fver _20_System_Windows_Forms_dll    = getFileVer(p_nfx20+L"\\System.Windows.Forms.dll",&status);
 	fver _20_System_XML_dll              = getFileVer(p_nfx20+L"\\System.XML.dll",&status);
+	fver _20_vbc_exe                     = getFileVer(p_nfx20+L"\\vbc.exe",&status);
+	fver _20_VsaVb7rt_dll                = getFileVer(p_nfx20+L"\\VsaVb7rt.dll",&status);
 	fver _20_webengine_dll               = getFileVer(p_nfx20+L"\\webengine.dll",&status);
 	fver _20_WMINet_Utils_dll            = getFileVer(p_nfx20+L"\\WMINet_Utils.dll",&status);
 
@@ -656,6 +683,66 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	}
 
 	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
+		/* No GDR */
+		/* QFE */
+		    ( _20_AppLaunch_exe                          < fver(2,0,50727,832))
+		 || ( _20_aspnet_filter_dll                      < fver(2,0,50727,832))
+		 || ( _20_aspnet_isapi_dll                       < fver(2,0,50727,832))
+		 || ( _20_AspNetMMCExt_dll                       < fver(2,0,50727,832))
+		 || ( _20_Aspnet_perf_dll                        < fver(2,0,50727,832))
+		 || ( _20_aspnet_rc_dll                          < fver(2,0,50727,832))
+		 || ( _20_aspnet_regiis_exe                      < fver(2,0,50727,832))
+		 || ( _20_aspnet_state_exe                       < fver(2,0,50727,832))
+		 || ( _20_aspnet_wp_exe                          < fver(2,0,50727,832))
+		 || ( _20_CORPerfMonExt_dll                      < fver(2,0,50727,832))
+		 || ( _20_IEExec_exe                             < fver(2,0,50727,832))
+		 || ( _20_ilasm_exe                              < fver(2,0,50727,832))
+		 || ( _20_InstallUtil_exe                        < fver(2,0,50727,832))
+		 || ( _20_MmcAspExt_dll                          < fver(2,0,50727,832))
+//		 || ( _20_MSBuildEngine_dll                      < fver(2,0,50727,832))
+//		 || ( _20_MSBuildTasks_dll                       < fver(2,0,50727,832))
+		 || ( _20_mscordacwks_dll                        < fver(2,0,50727,832))
+//		 || ( _20_mscoree_dll                            < fver(2,0,50727,832))
+		 || ( _20_mscorie_dll                            < fver(2,0,50727,832))
+		 || ( _20_mscorjit_dll                           < fver(2,0,50727,832))
+		 || ( _20_mscorlib_dll                           < fver(2,0,50727,832))
+		 || ( _20_mscorpe_dll                            < fver(2,0,50727,832))
+		 || ( _20_mscorsvc_dll                           < fver(2,0,50727,832))
+		 || ( _20_mscorsvw_exe                           < fver(2,0,50727,832))
+		 || ( _20_ngen_exe                               < fver(2,0,50727,832))
+		 || ( _20_normalization_dll                      < fver(2,0,50727,832))
+		 || ( _20_peverify_dll                           < fver(2,0,50727,832))
+		 || ( _20_SOS_dll                                < fver(2,0,50727,832))
+		 || ( _20_sysglobl_dll                           < fver(2,0,50727,832))
+		 || ( _20_System_configuration_dll               < fver(2,0,50727,832))
+		 || ( _20_System_Data_dll                        < fver(2,0,50727,832))
+		 || ( _20_System_Data_OracleClient_dll           < fver(2,0,50727,832))
+		 || ( _20_System_Data_SqlXml_dll                 < fver(2,0,50727,832))
+		 || ( _20_System_DeploymentFramework_dll         < fver(2,0,50727,832))
+//		 || ( _20_System_DeploymentFramework_Service_exe < fver(2,0,50727,832))
+		 || ( _20_System_Design_dll                      < fver(2,0,50727,832))
+		 || ( _20_System_DirectoryServices_Protocols_dll < fver(2,0,50727,832))
+		 || ( _20_System_dll                             < fver(2,0,50727,832))
+		 || ( _20_System_Drawing_dll                     < fver(2,0,50727,832))
+		 || ( _20_System_EnterpriseServices_dll          < fver(2,0,50727,832))
+		 || ( _20_System_EnterpriseServices_Thunk_dll    < fver(2,0,50727,832))
+		 || ( _20_System_EnterpriseServices_tlb          < fver(2,0,50727,832))
+		 || ( _20_System_EnterpriseServices_Wrapper_dll  < fver(2,0,50727,832))
+		 || ( _20_System_Management_dll                  < fver(2,0,50727,832))
+		 || ( _20_System_Runtime_Remoting_dll            < fver(2,0,50727,832))
+		 || ( _20_System_Transactions_dll                < fver(2,0,50727,832))
+		 || ( _20_System_Windows_Forms_dll               < fver(2,0,50727,832))
+		 || ( _20_System_XML_dll                         < fver(2,0,50727,832))
+		 || ( _20_vbc_exe                                < fver(8,0,50727,832))
+		 || ( _20_webengine_dll                          < fver(2,0,50727,832))
+		 || ( _20_Microsoft_JScript_dll                  < fver(8,0,50727,832))
+		 || ( _20_mscorwks_dll                           < fver(2,0,50727,832))
+		 || ( _20_System_Web_dll                         < fver(2,0,50727,832))
+		 || ( _20_VsaVb7rt_dll                           < fver(8,0,50727,832)) )) {
+		NN("Security Update for Microsoft .NET Framework, Version 2.0 (KB928365)");
+		XX(p2+"NDP20-KB928365-X86.exe"+n6);
+	}
+	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
 			( _20_System_Security_dll < fver(2,0,50727,3613))
 		/* QFE */
@@ -663,6 +750,15 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Security Update for Windows 2000, Windows Server 2003, and Windows XP x86 (KB979909)");
 		XX(p2+"ndp20sp2-kb979909-x86_dc7f4b15ff426d9e413b87909c35929660d8a33c.exe"+n6);
 	}
+//	if( sp==2 &&  (*i_nfx20 || *v_nfx20==1) && (
+//		/* No GDR */
+//		/* QFE */
+//			( _20_mscordacwks_dll       < fver(2,0,50727,1873))
+//		 || ( _20_mscorlib_dll          < fver(2,0,50727,1873))
+//		 || ( _20_mscorwks_dll          < fver(2,0,50727,1873)) )) {
+//		NN("Security Update for Microsoft .NET Framework 3.5 on Windows Server 2003 and Windows XP x86 (KB2416468)");
+//		XX(p2+"NDP20SP1-KB2416468-x86.exe"+n6);
+//	}
 //	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
 //		/* GDR */
 //			( _20_mscordacwks_dll       < fver(2,0,50727,3603))

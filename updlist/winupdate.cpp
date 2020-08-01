@@ -1368,6 +1368,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows XP (KB825119)");
 		XX(rtm+"windowsxp-kb825119-x86-enu_1b9f23b64b002d1e9d1eaba62f5f8fd.exe"+a7);
 	}
+	/*if((sp==0 && (sku & XP_ALL) && (
+			    (_ole32_dll  >zero && _ole32_dll  <fver(5,1,2600,118))
+			||  (_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,109))
+			||  (_rpcss_dll  >zero && _rpcss_dll  <fver(5,1,2600,118))))
+	 ||(sp==1 && (sku & XP_ALL) && (
+			    (_ole32_dll  >zero && _ole32_dll  <fver(5,1,2600,1263))
+			||  (_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,1254))
+			||  (_rpcss_dll  >zero && _rpcss_dll  <fver(5,1,2600,1263))))) {
+		// KB824146 is replaced by KB826939
+		NN("Security Update for Windows XP (KB824146)");
+		XX(p1+"WindowsXP-KB824146-x86-ENU.exe"+a7);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (
 			    (_ole32_dll  >zero && _ole32_dll  <fver(5,1,2600,115))
 			||  (_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,109))
@@ -1719,6 +1731,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB917953)");
 		XX(p1+"windowsxp-kb917953-x86-enu_a1c66e00d1a487f25ca16af5a7f858858136c228.exe"+a1);
 	}
+	/*if((sp==0 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2600,115))
+	 ||(sp==1 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2800,1233))) {
+		// KB821557 is replaced by KB841356
+		NN("Security Update for Windows XP (KB821557)");
+		XX(p1+"WindowsXP-KB821557-x86-ENU.exe"+a7);
+	}*/
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2750,165))
 	   || (_grpconv_exe  >zero && _grpconv_exe  <fver(5,1,2600,166))
@@ -1915,6 +1933,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB922616)");
 		XX(p1+"windowsxp-kb922616-x86-enu_cf1ee106a318c1fe135978f94ec0867312cea73b.exe"+a7);
 	}
+	/*if(    (sp==0 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,119))
+		|| (sp==1 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,1274))) {
+		// KB828028 is replaced by KB835732
+		NN("Security Update for Windows XP (KB828028)");
+		XX(p1+"WindowsXP-KB828028-x86-ENU.exe"+a6);
+	}*/
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_browser_dll     >zero && _browser_dll     <fver(5,1,2600,105))
 	   || (_callcont_dll    >zero && _callcont_dll    <fver(5,1,2600,133))
@@ -3852,6 +3876,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP Media Center Edition 2005 (KB926251)");
 		XX(p2+"windowsmedia10-kb926251-x86-enu_1e6ce415f8de5a8a3b43e9917daf0f501493dde5.exe"+a1);
 	}
+	/*if(sp>=2 && (sku & XP_MCE2005) && ((_ehepg_dll >zero && _ehepg_dll <fver(5,1,2700,2567)) )) {
+		// KB888316 is replaced by KB925766
+		NN("Update for Windows XP Media Center Edition 2005 (KB888316)");
+		XX(p3+"KB888316_enu.exe"+a6);
+	}*/
 	if(sp>=2 && (sku & XP_MCE2005)
 		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
 		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,3011))
