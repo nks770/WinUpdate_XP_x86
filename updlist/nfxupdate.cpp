@@ -291,6 +291,8 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	fver _20_IEExec_exe                  = getFileVer(p_nfx20+L"\\IEExec.exe",&status);
 	fver _20_ilasm_exe                   = getFileVer(p_nfx20+L"\\ilasm.exe",&status);
 	fver _20_InstallUtil_exe             = getFileVer(p_nfx20+L"\\InstallUtil.exe",&status);
+	fver _20_Microsoft_Build_Engine_dll  = getFileVer(p_nfx20+L"\\Microsoft.Build.Engine.dll",&status);
+	fver _20_Microsoft_Build_Tasks_dll   = getFileVer(p_nfx20+L"\\Microsoft.Build.Tasks.dll",&status);
 	fver _20_Microsoft_JScript_dll       = getFileVer(p_nfx20+L"\\Microsoft.JScript.dll",&status);
 	fver _20_MmcAspExt_dll               = getFileVer(p_nfx20+L"\\MmcAspExt.dll",&status);
 	fver _20_mscordacwks_dll             = getFileVer(p_nfx20+L"\\mscordacwks.dll",&status);
@@ -673,6 +675,12 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	
 
 	// .NET Framework 2.0
+
+	// Base file versions of various SP levels:
+	// RTM 2,0,50727,42
+	// SP1 2,0,50727,1433
+	// SP2 2,0,50727,3053
+
 	if( sp>=2 &&  *i_nfx30 && *i_nfx35) {
 		NN("Microsoft .NET Framework 3.5 Service Pack 1 and .NET Framework 3.5 Family Update for .NET versions 2.0 through 3.5 (KB951847) x86");
 		XX(np+"dotnetfx35_x86.exe"+n6);
@@ -682,7 +690,8 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		XX(np+"NetFx20SP2_x86.exe"+n6);
 	}
 
-	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
+	if( sp==2 && !*i_nfx20 && *v_nfx20==0 && (
+		// This patch (KB928365) is only for .NET 2.0 RTM.  Does not apply to post-SP1 configurations.
 		/* No GDR */
 		/* QFE */
 		    ( _20_AppLaunch_exe                          < fver(2,0,50727,832))
@@ -699,8 +708,8 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_ilasm_exe                              < fver(2,0,50727,832))
 		 || ( _20_InstallUtil_exe                        < fver(2,0,50727,832))
 		 || ( _20_MmcAspExt_dll                          < fver(2,0,50727,832))
-//		 || ( _20_MSBuildEngine_dll                      < fver(2,0,50727,832))
-//		 || ( _20_MSBuildTasks_dll                       < fver(2,0,50727,832))
+		 || ( _20_Microsoft_Build_Engine_dll             < fver(2,0,50727,832))
+		 || ( _20_Microsoft_Build_Tasks_dll              < fver(2,0,50727,832))
 		 || ( _20_mscordacwks_dll                        < fver(2,0,50727,832))
 //		 || ( _20_mscoree_dll                            < fver(2,0,50727,832))
 		 || ( _20_mscorie_dll                            < fver(2,0,50727,832))
@@ -742,6 +751,59 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Security Update for Microsoft .NET Framework, Version 2.0 (KB928365)");
 		XX(p2+"NDP20-KB928365-X86.exe"+n6);
 	}
+	//	if( sp==2 && !*i_nfx20 && *v_nfx20==1 && (
+	// Patch KB953300 is only for SP1 configurations.
+//		/* No GDR */
+//		/* QFE */
+//			( _20_mscordacwks_dll       < fver(2,0,50727,1873))
+//		 || ( _20_mscorlib_dll          < fver(2,0,50727,1873))
+//		 || ( _20_mscorwks_dll          < fver(2,0,50727,1873)) )) {
+//		NN("Microsoft .NET Framework 2.0 Service Pack 1 Security Update for Windows 2000, Windows Server 2003, and Windows XP (KB953300)");
+//		XX(p2+"NDP20SP1-KB953300-v2-x86.exe"+n6);
+//	}
+	//	if( sp==2 && !*i_nfx20 && *v_nfx20==1 && (
+	// Patch KB2416468 is only for SP1 configurations.
+//		/* No GDR */
+//		/* QFE */
+//			( _20_Aspnet_perf_dll       < fver(2,0,50727,1887))
+//		 || ( _20_aspnet_wp_exe         < fver(2,0,50727,1887))
+//		 || ( _20_webengine_dll         < fver(2,0,50727,1887))
+//		 || ( _20_System_Web_dll        < fver(2,0,50727,1887)) )) {
+//		NN("Security Update for Microsoft .NET Framework 3.5 on Windows Server 2003 and Windows XP x86 (KB2416468)");
+//		XX(p2+"NDP20SP1-KB2416468-x86.exe"+n6);
+//	}
+		//	if( sp==2 && !*i_nfx20 && *v_nfx20==1 && (
+	// Patch KB982865 is only for SP1 configurations.
+//		/* No GDR */
+//		/* QFE */
+//			( _20_Aspnet_perf_dll       < fver(2,0,50727,1879))
+//		 || ( _20_aspnet_wp_exe         < fver(2,0,50727,1879))
+//		 || ( _20_webengine_dll         < fver(2,0,50727,1879))
+//		 || ( _20_System_Security_dll   < fver(2,0,50727,1879))
+//		 || ( _20_System_Web_dll        < fver(2,0,50727,1879)) )) {
+//		NN("Microsoft .NET Framework 3.5 Security Update for Windows Server 2003 and Windows XP x86 (KB982865)");
+//		XX(p2+"NDP20SP1-KB982865-x86.exe"+n6);
+//	}
+		//	if( sp==2 && !*i_nfx20 && *v_nfx20==1 && (
+	// Patch KB2478656 is only for SP1 configurations.
+//		/* No GDR */
+//		/* QFE */
+//			( _20_System_dll        < fver(2,0,50727,1889)) )) {
+//		NN("Security Update for .NET Framework 3.5 on Windows Server 2003 and Windows XP x86 (KB2478656)");
+//		XX(p2+"NDP20SP1-KB2478656-x86.exe"+n6);
+//	}
+	//	if( sp==2 && !*i_nfx20 && *v_nfx20==1 && (
+	// Patch KB2530095 is only for SP1 configurations.
+//		/* No GDR */
+//		/* QFE */
+//			( _20_mscordacwks_dll       < fver(2,0,50727,1891))
+//		 || ( _20_mscorlib_dll          < fver(2,0,50727,1891))
+//		 || ( _20_SOS_dll               < fver(2,0,50727,1891))
+//		 || ( _20_System_Windows_Forms_dll < fver(2,0,50727,1891))
+//		 || ( _20_mscorwks_dll          < fver(2,0,50727,1891)) )) {
+//		NN("Security Update for .NET Framework 3.5 on Windows Server 2003 and Windows XP x86 (KB2530095)");
+//		XX(p2+"NDP20SP1-KB2530095-x86.exe"+n6);
+//	}
 	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
 			( _20_System_Security_dll < fver(2,0,50727,3613))
@@ -750,15 +812,6 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Security Update for Windows 2000, Windows Server 2003, and Windows XP x86 (KB979909)");
 		XX(p2+"ndp20sp2-kb979909-x86_dc7f4b15ff426d9e413b87909c35929660d8a33c.exe"+n6);
 	}
-//	if( sp==2 &&  (*i_nfx20 || *v_nfx20==1) && (
-//		/* No GDR */
-//		/* QFE */
-//			( _20_mscordacwks_dll       < fver(2,0,50727,1873))
-//		 || ( _20_mscorlib_dll          < fver(2,0,50727,1873))
-//		 || ( _20_mscorwks_dll          < fver(2,0,50727,1873)) )) {
-//		NN("Security Update for Microsoft .NET Framework 3.5 on Windows Server 2003 and Windows XP x86 (KB2416468)");
-//		XX(p2+"NDP20SP1-KB2416468-x86.exe"+n6);
-//	}
 //	if( sp==2 &&  (*i_nfx20 || *v_nfx20==2) && (
 //		/* GDR */
 //			( _20_mscordacwks_dll       < fver(2,0,50727,3603))
@@ -1201,6 +1254,22 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	}
 
 	// .NET Framework 3.5
+//	if( sp>=2 && !*i_nfx35 && *v_nfx35==0 && (
+//		/* No GDR */
+//		/* QFE */
+//		    ( _35_System_Web_Extensions_dll   < fver(3,5,21022,239)) )) {
+//		NN("Security Update for Microsoft .NET Framework 3.5 on Windows XP, Windows Server 2003, Windows Vista, Windows Server 2008 x86 (KB2418240)");
+//		XX(p2+"NDP35-KB2418240-x86.exe"+n6);
+//	}
+//	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
+//		/* GDR */
+//			( _35_System_Web_Extensions_dll < fver(3,5,30729,4051))
+//		/* QFE */
+//		 || ( _35_System_Web_Extensions_dll > fver(3,5,30729,4056) && _35_System_Web_Extensions_dll < fver(3,5,30729,7047)) )) {
+//	  // KB2836940 is replaced by KB2861697
+//		NN("Update for Microsoft .NET Framework 3.5 SP1 on Windows XP, Server 2003, Vista and Server 2008 x86 (KB2836940)");
+//		XX(p3+"ndp35sp1-kb2836940-x86_43c873339b256d55a01b8e0303d53153949fdec3.exe"+n6);
+//	}
 	if( sp==3 &&  (*i_nfx35 || *v_nfx35==1) && (
 		/* GDR */
 			( _35_System_ServiceModel_Web_dll < fver(3,5,594,4056))
@@ -1429,6 +1498,25 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2789642)");
 		XX(p3+"NDP40-KB2789642-x86.exe"+n6);
 	}
+//	if( sp==3 &&  (NFX40) && (
+//		/* GDR */
+//			( _40_ServiceModelReg_exe              < fver(4,0,30319,1016))
+//		 || ( _40_aspnet_wp_exe             > zero && _40_aspnet_wp_exe             < fver(4,0,30319,1016)) // Full Profile Only
+//		 || ( _40_System_Web_Extensions_dll > zero && _40_System_Web_Extensions_dll < fver(4,0,30319,1016)) // Full Profile Only
+//		 || ( _40_System_Web_dll            > zero && _40_System_Web_dll            < fver(4,0,30319,1016)) // Full Profile Only
+//		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,1016)) // Full Profile Only
+//		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,1016)) // Full Profile Only
+//		/* QFE */
+//		 || ( _40_ServiceModelReg_exe              > fver(4,0,30319,1025) && _40_ServiceModelReg_exe              < fver(4,0,30319,2026))
+//		 || ( _40_aspnet_wp_exe                    > fver(4,0,30319,1025) && _40_aspnet_wp_exe                    < fver(4,0,30319,2026))
+//		 || ( _40_System_Web_Extensions_dll        > fver(4,0,30319,1025) && _40_System_Web_Extensions_dll        < fver(4,0,30319,2026))
+//		 || ( _40_System_Web_dll                   > fver(4,0,30319,1025) && _40_System_Web_dll                   < fver(4,0,30319,2026))
+//		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2026))
+//		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2026)) )) {
+//		 // KB2836939 is replaced by KB2858302
+//		NN("Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2836939)");
+//		XX(p3+"ndp40-kb2836939-v3-x86_5f7e7f9811136bd3dfeb994d75a96aece646ea3d.exe"+n6);
+//	}
 	if( sp==3 &&  (NFX40) && (
 		/* GDR */
 			( _40_ServiceModelReg_exe              < fver(4,0,30319,1016))
@@ -1464,6 +1552,25 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("November, 2016 Security and Quality Rollup for .NET Framework 3.0, 4 on WES09 and POSReady (KB3189598)");
 		XX(p3+"ndp40-kb3189017-x86_3100ea6231780b202c1bbc764cd460a8d84bc542.exe"+n6);
 	}
+//	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
+//		/* GDR */
+//			( _40_clr_dll	                       < fver(4,0,30319,1022))
+//		 || ( _40_mscordacwks_dll                  < fver(4,0,30319,1022))
+//		 || ( _40_mscordbi_dll                     < fver(4,0,30319,1022))
+//		 || ( _40_mscorlib_dll                     < fver(4,0,30319,1022))
+//		 || ( _40_nlssorting_dll                   < fver(4,0,30319,1022))
+//		 || ( _40_SOS_dll                          < fver(4,0,30319,1022))
+//		/* QFE */
+//		 || ( _40_clr_dll                          > fver(4,0,30319,1026) && _40_clr_dll                          < fver(4,0,30319,2034))
+//		 || ( _40_mscordacwks_dll                  > fver(4,0,30319,1026) && _40_mscordacwks_dll                  < fver(4,0,30319,2034))
+//		 || ( _40_mscordbi_dll                     > fver(4,0,30319,1026) && _40_mscordbi_dll                     < fver(4,0,30319,2034))
+//		 || ( _40_mscorlib_dll                     > fver(4,0,30319,1026) && _40_mscorlib_dll                     < fver(4,0,30319,2034))
+//		 || ( _40_nlssorting_dll                   > fver(4,0,30319,1026) && _40_nlssorting_dll                   < fver(4,0,30319,2034))
+//		 || ( _40_SOS_dll                          > fver(4,0,30319,1026) && _40_SOS_dll                          < fver(4,0,30319,2034)) )) {
+//	 // KB2898855 is replaced by KB2972215
+//		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2898855)");
+//		XX(p3+"NDP40-KB2898855-v2-x86.exe"+n6);
+//	}
 	if( sp==3 &&  (*i_nfx40c || *v_nfx40c>=0) && (
 		/* GDR */
 			( _40_clr_dll	                       < fver(4,0,30319,1026))
