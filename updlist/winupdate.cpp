@@ -3355,6 +3355,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Messenger (KB887472)");
 		XX(sw+p1+"windowsmessenger-kb887472-prexpsp2-enu_15756113f5ce1562fa277d6473ad77e5b54bc00c.exe"+a8);
 	}
+	/*if( sp==1 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,2010)) {
+		// This is an updated release for KB887472 on Windows XP SP1
+		// According to Bulletin MS05-009:
+		// Subsequent to the release of this bulletin, it was determined that the update for Windows Messenger
+		// version 4.7.0.2009 (when running on Windows XP Service Pack 1) was failing to install when
+		// distributed via SMS [Systems Management Server] or AutoUpdate. The updated package corrects this behavior.
+		//
+		// Customers who have successfully installed the previous update and are now running the 4.7.0.2010
+		// version of Windows Messenger are protected from the vulnerability and do not need to take any action
+		// at this time.
+		//
+		// Administrative note: The older version of the security update installs a digitally signed
+		// binary while the new version does not, so I made the decision to retain the older one in
+		// this code.
+		NN("Security Update for Windows Messenger (KB887472)");
+		XX(p1+"windowsxp-kb887472-x86-sp1-enu_6d8ca0284e1d032c3ba4e11e2730c8d16988ae15.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _msmsgs_exe>zero && _msmsgs_exe<fver(4,7,0,3001)) {
 		NN("Security Update for Windows Messenger (KB887472)");
 		XX(p2+"windowsxp-kb887472-x86-enu_5edc4ccc759d65f4afba8542435172ed54515135.exe"+a6);
@@ -3571,6 +3588,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
 //					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
 //					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+//		// KB89937 is replaced by KB915428
 //		NN("Update for Windows XP (KB899337)");
 //		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
 //	}
@@ -3585,6 +3603,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //	if( sp==2 && (sku & XP_MCE2005) && (
 //		                  ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2709))
 //					  ||  ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2709)) )) {
+//		// Included in KB900325, but also KB888795 is replaced by KB912024
 //		NN("Update Rollup 1 for eHome Infrared Receiver for Windows XP Media Center Edition (KB888795)");
 //		XX(p+"windowsxp-kb888795-v3-x86-enu_35a20ee3889859f9e0db3d9899c0a679664726be.exe"+a1);
 //	}
@@ -3905,6 +3924,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2825)) )) {
 		NN("Update for Windows XP Media Center Edition 2005 (KB912024)");
 		XX(p2+"windowsxp-kb912024-v2-x86-enu_0e305ca77d97d5ee54ea79e3f43bedaba844705b.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2858))
+	  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2858))
+	  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2858))
+	  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2858))
+	  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858)) )) {
+		NN("Update for Windows XP (KB915428)");
+		XX(p2+"WindowsXP-KB915428-x86-ENU.exe"+a1);
 	}
 
 	// Windows XP SP3 updates;
@@ -5291,6 +5319,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978542)");
 		XX(p3+"WindowsXP-KB978542-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && (
+		                  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,2869))
+					  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2900,2869))
+					  ||  ( _wab32_dll    >zero && _wab32_dll    <fver(6,0,2900,2869))
+					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2900,2869)) )) {
+		// KB911567 is replaced by KB929123 on Windows XP SP2
+		NN("Cumulative Security Update for Outlook Express for Windows XP (KB911567)");
+		XX(p2+"windowsxp-kb911567-x86-enu_3322015f70b63fd2c82af81148ed88055a6f7e5b.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _directdb_dll >zero && _directdb_dll <fver(6,0,2900,3138))
 					  ||  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,3138))
@@ -5573,6 +5610,30 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Internet Explorer 6 Service Pack 1 (KB925486)");
 		XX(p1+"ie6.0sp1-kb925486-windowsxp-x86-enu_08de2f06f64de1e2225032d8e49e45b6f31eb8ba.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3231))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3231))
+		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
+		|| (_dxtmsft_dll  >zero && _dxtmsft_dll  <fver(6,3,2900,3231))
+		|| (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2900,3231))
+		|| (_extmgr_dll   >zero && _extmgr_dll   <fver(6,0,2900,3231))
+		|| (_iedw_exe     >zero && _iedw_exe     <fver(5,1,2600,3231))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,3231))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,3231))
+		|| (_jsproxy_dll  >zero && _jsproxy_dll  <fver(6,0,2900,3231))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,3243))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,3231))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,3231))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2900,3231))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2900,3231))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,3231))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,3231))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,3231))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,3231)) )) {
+		// KB942615 is replaced by KB947864
+		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB942615)");
+		XX(p2+"WindowsXP-KB942615-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3314))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3314))
@@ -5595,6 +5656,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,3314)) )) {
 		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB947864)");
 		XX(p2+"WindowsXP-KB947864-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && 
+			regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_PROTECT_DECOMPRESSION_FILTER_FROM_ABORT_KB942367",L"*",&status)!=1 ) {
+		NN("Update for Internet Explorer 6 for Windows XP (KB946627)");
+		XX(p2+"windowsxp-kb946627-x86-enu_f46e072004e766768205a78b6cd207f871c5376e.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		/* GDR */
@@ -6114,7 +6180,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// This key can also be used to determine WMP version:
 	// HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components\{6BF52A52-394A-11d3-B153-00C04F79FAA6}
 
-	if( sp==0 && (sku & XP_ALL) && _wmpcore_dll >=fver(8,0,0,0) && (
+	if( sp==0 && (sku & XP_ALL) && _wmpcore_dll >=fver(8,0,0,0) && _wmpcore_dll < fver(9,0,0,0) && (
 		   (_dxmasf_dll   >=fver(6,4,9,0) && _dxmasf_dll   <fver(6,4,9,1121))
 		|| (_msdxm_ocx    >=fver(6,4,9,0) && _msdxm_ocx    <fver(6,4,9,1124))
 		|| (_unregmp2_exe >=fver(8,0,0,0) && _unregmp2_exe <fver(8,0,0,4482))
@@ -6159,6 +6225,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 9 (KB917734)");
 		XX(p1+"windowsmedia9-kb917734-x86-enu_6e46e8d786614f9306b1307c2991e5acaa4dceac.exe"+a1);
 	}
+	/*if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3909)) {
+		// KB895572 is replaced by KB917734
+		NN("Update for Windows XP (KB895572)");
+		XX(p1+"windowsmedia10-kb895572-x86-enu.exe"+a1);
+	}*/
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,4036)) {
 		NN("Security Update for Windows Media Player 10 for Windows XP (KB917734)");
 		XX(p1+"windowsmedia10-kb917734-x86-enu_499fe88d62843835153a4225712e1b2f19120527.exe"+a1);
@@ -6658,6 +6729,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Remote Desktop Connection 7.0 client update for Windows XP (KB969084)");
 		XX(mstsc+"windowsxp-kb969084-x86-enu_153587172bf060ddc9d2c966f1eaaf4f47926f28.exe"+a1);
 	}
+//	if( sp==3 && (*rdp70 || ((sku & XP_ALL) && (_mstscax_dll >= fver(6,1,7600,16385) && _mstscax_dll<fver(6,1,7601,0))
+//		              && (
+//					  /* GDR */
+//					      (_aaclient_dll    >zero && _aaclient_dll <fver(6,1,7600,16385))
+//		              ||  (_mstsc_exe       >zero && _mstsc_exe    <fver(6,1,7600,16722))
+//					  ||  (_mstscax_dll     >zero && _mstscax_dll  <fver(6,1,7600,16722))
+//					  ||  (_tsgqec_dll      >zero && _tsgqec_dll   <fver(6,1,7600,16385))
+//					  /* QFE */
+//					  ||  (_aaclient_dll    >fver(6,1,7600,17233) && _aaclient_dll    <fver(6,1,7600,20861))
+//		              ||  (_mstsc_exe       >fver(6,1,7600,16722) && _mstsc_exe       <fver(6,1,7600,20861))
+//					  ||  (_mstscax_dll     >fver(6,1,7600,17233) && _mstscax_dll     <fver(6,1,7600,20861))
+//					  ||  (_tsgqec_dll      >fver(6,1,7600,17233) && _tsgqec_dll      <fver(6,1,7600,20861)) )))) {
+//		// KB2483614 is replaced by KB2813347
+//		NN("Security Update for Windows XP (KB2483614)");
+//		XX(p3+"windowsxp-kb2483614-x86-enu_c7386b821d55b92e56a33280bccc5b406a6e8797.exe"+a1);
+//	}
 	if( sp==3 && (*rdp70 || ((sku & XP_ALL) && (_mstscax_dll >= fver(6,1,7600,16385) && _mstscax_dll<fver(6,1,7601,0))
 		              && (
 					  /* GDR */
@@ -6701,12 +6788,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2813345-x86-ENU.exe"+a1);
 	}
 
+	if( sp>=2 && (*imapi2 || 
+		( sp==2 && (sku & XP_ALL) && (_imapi2_dll >zero && _imapi2fs_dll >zero)
+		&& ((_cdrom_sys   <fver(5,1,2600,3364))
+		||  (_imapi2_dll  <fver(5,1,2600,3364))
+		||  (_imapi2fs_dll<fver(5,1,2600,3364)))) ||
+		( sp==3 && (sku & XP_ALL) && (_imapi2_dll >zero && _imapi2fs_dll >zero)
+		&& ((_cdrom_sys   <fver(5,1,2600,5593))
+		||  (_imapi2_dll  <fver(5,1,2600,5593))
+		||  (_imapi2fs_dll<fver(5,1,2600,5593)))) )) {
+		NN("Image Mastering API v2.0 (IMAPIv2.0) for Windows XP (KB932716)");
+		XX(p3+"WindowsXP-KB932716-v2-x86-ENU.exe"+a1);
+	}
 	if( sp>=2 && (*imapi2 || (   (sku & XP_ALL)
-		            && (_imapi2_dll >zero && _imapi2fs_dll >zero)
-		            && (
-						(_cdrom_sys   <fver(5,1,2600,3126))
-		            ||  (_imapi2_dll  <fver(6,0,6001,18164))
-					||  (_imapi2fs_dll<fver(6,0,6001,18164)) )))) {
+		&& (_imapi2_dll >zero && _imapi2fs_dll >zero)
+		&& (
+		   (_cdrom_sys   <fver(5,1,2600,3126))
+		|| (_imapi2_dll  <fver(6,0,6001,18164))
+		|| (_imapi2fs_dll<fver(6,0,6001,18164)) )))) {
 		NN("Windows Feature Pack for Storage (32-bit) - IMAPI update for Blu-Ray (KB952011)");
 		XX(p3+"IMAPI_XP_SRV2003_x86.exe"+a1);
 	}
