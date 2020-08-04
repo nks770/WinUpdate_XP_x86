@@ -3577,10 +3577,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB891593)");
 		XX(p2+"WindowsXP-KB891593-v2-x86-ENU.exe"+a1);
 	}
-	if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
+	/*if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
 	 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
+		// KB895961 is replaced by KB281981
 		NN("Update for Windows XP (KB895961)");
 		XX(p3+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
+	}*/
+	if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3501))
+	 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5733))) {
+		NN("Update for Windows XP (KB281981)");
+		XX(p3+"WindowsXP-KB281981-x86-ENU.exe"+a1);
 	}
 //	if( sp==2 && (sku & XP_ALL) && (
 //		                  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
@@ -3588,7 +3594,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
 //					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
 //					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
-//		// KB89937 is replaced by KB915428
+//		// KB899337 is replaced by KB915428
 //		NN("Update for Windows XP (KB899337)");
 //		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
 //	}
@@ -3629,6 +3635,33 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
 		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+a2);
 	}
+	/*if( sp>=2 && (sku & XP_MCE2005) && (
+		    ( _ehcm_dll                  <fver(5,1,2700,2230))
+		||  ( _ehcommon_dll              <fver(5,1,2700,2230))
+		||  ( _ehepg_dll                 <fver(5,1,2700,2230))
+		||  ( _ehepgdat_dll              <fver(5,1,2700,2230))
+		||  ( _ehiproxy_dll              <fver(5,1,2700,2230))
+		||  ( _ehplayer_dll              <fver(5,1,2700,2230))
+		||  ( _ehproxy_dll               <fver(5,1,2700,2230))
+		||  ( _ehrecobj_dll              <fver(5,1,2700,2230))
+		||  ( _ehrecvr_exe               <fver(5,1,2700,2230))
+		||  ( _ehres_dll                 <fver(5,1,2700,2230))
+		||  ( _ehshell_exe               <fver(5,1,2700,2230))
+		||  ( _ehui_dll                  <fver(5,1,2700,2230))
+		||  ( _encdec_dll                <fver(6,5,2700,2230))
+		||  ( _medctrro_exe              <fver(5,1,2700,2230))
+		||  ( _mpeg2data_ax              <fver(6,5,2700,2230))
+		||  ( _mpg2splt_ax               <fver(6,5,2700,2230))
+		||  ( _msdvbnp_ax                <fver(6,5,2700,2230))
+		||  ( _msvidctl_dll              <fver(6,5,2700,2230))
+		||  ( _psisdecd_dll              <fver(6,5,2700,2230))
+		||  ( _psisrndr_ax               <fver(6,5,2700,2230))
+		||  ( _sbe_dll                   <fver(6,5,2700,2230))
+		||  ( _wstrenderer_ax            <fver(6,5,2700,2230)) )) {
+		// KB873369 is replaced by KB900325
+		NN("Update Rollup 1 for Windows XP Media Center Edition 2005 with HDTV Support (KB873369)");
+		XX(p2+"WindowsXPMediaCenter2005-KB873369-ENU.exe"+a6);
+	}*/
 	std::string temp;
 	if( sp>=2 && (sku & XP_MCE2005) && (
 		    ( _audiodepthconverter_ax    <fver(6,0,0,1))
@@ -6492,6 +6525,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834902)");
 		XX(p3+"windowsxp-windowsmedia-kb2834902-v2-x86-enu_ecc8652da2b85688917a4f7aa48ac1efe84975fd.exe"+a1);
 	}
+	if( sp==3 && !wm9codecs_v2_install && !kb891122 && !kb913800 && (sku & XP_ALL) && ( _wmvdmod_dll>=fver(9,0,0,3287) && _wmvdmod_dll<fver(9,0,0,4512))) {
+		NN("Security Update for Windows Media Format Runtime 9 for Windows XP (KB2803821)");
+		XX(p3+"WindowsXP-WindowsMedia-KB2803821-v2-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && !kb913800 && (sku & XP_ALL) && (kb891122 || _wmvdmod_dll>=fver(10,0,0,3802)) && _wmvdmod_dll<fver(10,0,0,4084)) {
 		NN("Security Update for Windows Media Format Runtime 9.5 for Windows XP (KB2834903)");
 		XX(p3+"WindowsXP-WindowsMedia-KB2834903-v2-x86-ENU.exe"+a1);
@@ -6763,6 +6800,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2813347)");
 		XX(p3+"windowsxp-kb2813347-v2-x86-enu_7f5b07e5464702cdfa24a869d21f55335223069a.exe"+a1);
 	}
+//	if( sp==3 && (!*rdp70 && ((sku & XP_ALL) && (_mstscax_dll >= fver(6,0,6001,0) && _mstscax_dll<=fver(6,0,6002,0))
+//		              && ( *rdp61
+//					  /* No GDR */
+//					  /* QFE */
+//					  ||  (_mstscax_dll     >fver(6,0,6001,18926) && _mstscax_dll     <fver(6,0,6001,22435)) )))) {
+//		// KB968358 is replaced by KB2481109 or by installing RDC 7.0
+//		NN("Update for Windows XP (KB968358)");
+//		XX(p3+"WindowsXP-KB968358-x86-ENU.exe"+a1);
+//	}
 	if( sp==3 && (!*rdp70 && ((sku & XP_ALL) && (_mstscax_dll >= fver(6,0,6001,0) && _mstscax_dll<=fver(6,0,6002,0))
 		              && ( *rdp61
 					  /* GDR */
