@@ -272,6 +272,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fmifs_dll    = getFileVer(System32+L"\\fmifs.dll",&status);
 	fver _fontsub_dll  = getFileVer(System32+L"\\fontsub.dll",&status);
 	fver _format_com   = getFileVer(System32+L"\\format.com",&status);
+	fver _ftp_exe      = getFileVer(System32+L"\\ftp.exe",&status);
 	fver _fxsclnt_exe  = getFileVer(System32+L"\\fxsclnt.exe",&status);
 	fver _fxscover_exe = getFileVer(System32+L"\\fxscover.exe",&status);
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
@@ -362,6 +363,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mfc42_dll    = getFileVer(System32+L"\\mfc42.dll",&status);
 	fver _mfc42u_dll   = getFileVer(System32+L"\\mfc42u.dll",&status);
 	fver _mfplat_dll   = getFileVer(System32+L"\\mfplat.dll",&status);
+	fver _mlang_dll    = getFileVer(System32+L"\\mlang.dll",&status);
+	fver _mmsys_cpl    = getFileVer(System32+L"\\mmsys.cpl",&status);
 	fver _MP43DMOD_dll = getFileVer(System32+L"\\MP43DMOD.dll",&status);
 	fver _mp4sdecd_dll = getFileVer(System32+L"\\mp4sdecd.dll",&status);
 	fver _mp4sdmod_dll = getFileVer(System32+L"\\mp4sdmod.dll",&status);
@@ -901,6 +904,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
 	fver _imapi_sys    = getFileVer(Drivers+L"\\imapi.sys",&status);
+	fver _intelppm_sys = getFileVer(Drivers+L"\\intelppm.sys",&status);
 	fver _ipnat_sys    = getFileVer(Drivers+L"\\ipnat.sys",&status);
 	fver _ipsec_sys    = getFileVer(Drivers+L"\\ipsec.sys",&status);
 	fver _irbus_sys    = getFileVer(Drivers+L"\\irbus.sys",&status);
@@ -923,6 +927,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
 	fver _pci_sys      = getFileVer(Drivers+L"\\pci.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
+	fver _processr_sys = getFileVer(Drivers+L"\\processr.sys",&status);
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
 	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
@@ -1387,10 +1392,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("MS03-026: Security Update for Windows XP (823980)");
 		XX(rtm+"WindowsXP-KB823980-x86-ENU.exe"+a7);
 	}
-	if( sp==0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,2,8307,0)) {
+	/*if( sp==0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,2,8307,0)) {
+		// Q318202 is replaced by KB887606
 		NN("Security Update, February 13, 2002 (MSXML 2.6)");
 		//XX(rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe"+a2);
 		XX(sw+rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
+	}*/
+	if( sp>=0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,30,9531,0)) {
+		NN("Hotfix for MSXML 2 (KB887606)");
+		XX(p3+"MSXML2SP6-KB887606-x86-ENU.exe"+a1);
 	}
 	if( sp==0 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,20,9415,0)) {
 		NN("Security Update, February 13, 2002 (MSXML 3.0)");
@@ -3966,6 +3976,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858)) )) {
 		NN("Update for Windows XP (KB915428)");
 		XX(p2+"WindowsXP-KB915428-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _intelppm_sys  >zero && _intelppm_sys  <fver(5,1,2600,2508))
+	  ||  ( _processr_sys  >zero && _processr_sys  <fver(5,1,2600,2508)) )) {
+		NN("Update for Windows XP (KB884575)");
+		XX(p2+"WindowsXP-KB884575-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && (sku & XP_ALL) && _mlang_dll >zero && _mlang_dll <fver(6,0,2800,1599))
+	 ||(sp==2 && (sku & XP_ALL) && _mlang_dll >zero && _mlang_dll <fver(6,0,2900,2530))) {
+		NN("Update for Windows XP (KB886677)");
+		XX(p2+"WindowsXP-KB886677-x86-enu.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ftp_exe  >zero && _ftp_exe  <fver(5,1,2600,2723)) )) {
+		NN("Update for Windows XP (KB902149)");
+		XX(p2+"WindowsXP-KB902149-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _mmsys_cpl  >zero && _mmsys_cpl  <fver(5,1,2600,2776)) )) {
+		NN("Update for Windows XP (KB909441)");
+		XX(p2+"windowsxp-kb909441-x86-enu.exe"+a1);
 	}
 
 	// Windows XP SP3 updates;
