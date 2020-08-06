@@ -282,7 +282,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _grpconv_exe  = getFileVer(System32+L"\\grpconv.exe",&status);
 	fver _h323_tsp     = getFileVer(System32+L"\\h323.tsp",&status);
 	fver _h323msp_dll  = getFileVer(System32+L"\\h323msp.dll",&status);
+	fver _hal_dll      = getFileVer(System32+L"\\hal.dll",&status);
 	fver _hccoin_dll   = getFileVer(System32+L"\\hccoin.dll",&status);
+	fver _Hdaudprop_dll = getFileVer(System32+L"\\Hdaudprop.dll",&status);
+	fver _Hdaudpropres_dll = getFileVer(System32+L"\\Hdaudpropres.dll",&status);
+	fver _Hdaudpropshortcut_exe = getFileVer(System32+L"\\Hdaudpropshortcut.exe",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
@@ -623,6 +627,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _vbscript_dll = getFileVer(System32+L"\\vbscript.dll",&status);
 	fver _vdmdbg_dll   = getFileVer(System32+L"\\vdmdbg.dll",&status);
 	fver _verclsid_exe = getFileVer(System32+L"\\verclsid.exe",&status);
+	fver _verifier_dll = getFileVer(System32+L"\\verifier.dll",&status);
 	fver _vmhelper_dll = getFileVer(System32+L"\\vmhelper.dll",&status);
 	fver _wdfapi_dll   = getFileVer(System32+L"\\wdfapi.dll",&status);
 	fver _WdfCoInstaller01007_dll = getFileVer(System32+L"\\WdfCoInstaller01007.dll",&status);
@@ -688,6 +693,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wpd_ci_dll   = getFileVer(System32+L"\\wpd_ci.dll",&status);
 	fver _ws2_32_dll   = getFileVer(System32+L"\\ws2_32.dll",&status);
 	fver _wscript_exe  = getFileVer(System32+L"\\wscript.exe",&status);
+	fver _wscsvc_dll   = getFileVer(System32+L"\\wscsvc.dll",&status);
 	fver _wshext_dll   = getFileVer(System32+L"\\wshext.dll",&status);
 	fver _wship6_dll   = getFileVer(System32+L"\\wship6.dll",&status);
 	fver _wshom_ocx    = getFileVer(System32+L"\\wshom.ocx",&status);
@@ -902,6 +908,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fastfat_sys  = getFileVer(Drivers+L"\\fastfat.sys",&status);
 	fver _fltMgr_sys   = getFileVer(Drivers+L"\\fltMgr.sys",&status);
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
+	fver _hdaudbus_sys = getFileVer(Drivers+L"\\hdaudbus.sys",&status);
+	fver _Hdaudio_sys  = getFileVer(Drivers+L"\\Hdaudio.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
 	fver _imapi_sys    = getFileVer(Drivers+L"\\imapi.sys",&status);
 	fver _intelppm_sys = getFileVer(Drivers+L"\\intelppm.sys",&status);
@@ -911,9 +919,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _kmixer_sys   = getFileVer(Drivers+L"\\kmixer.sys",&status);
 	fver _ks_sys       = getFileVer(Drivers+L"\\ks.sys",&status);
 	fver _ksecdd_sys   = getFileVer(Drivers+L"\\ksecdd.sys",&status);
+	fver _mqac_sys     = getFileVer(Drivers+L"\\mqac.sys",&status);
 	fver _mrxdav_sys   = getFileVer(Drivers+L"\\mrxdav.sys",&status);
 	fver _mrxsmb_sys   = getFileVer(Drivers+L"\\mrxsmb.sys",&status);
-	fver _mqac_sys     = getFileVer(Drivers+L"\\mqac.sys",&status);
+	fver _msdv_sys     = getFileVer(Drivers+L"\\msdv.sys",&status);
 	fver _msfs_sys     = getFileVer(Drivers+L"\\msfs.sys",&status);
 	fver _mup_sys      = getFileVer(Drivers+L"\\mup.sys",&status);
 	fver _ndis_sys     = getFileVer(Drivers+L"\\ndis.sys",&status);
@@ -926,6 +935,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
 	fver _pci_sys      = getFileVer(Drivers+L"\\pci.sys",&status);
+	fver _portcls_sys  = getFileVer(Drivers+L"\\portcls.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
 	fver _processr_sys = getFileVer(Drivers+L"\\processr.sys",&status);
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
@@ -960,8 +970,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
+	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
+	fver _halacpi_dll        = getFileVer(DriverCache+L"\\halacpi.sys",&status);
+	fver _halapic_dll        = getFileVer(DriverCache+L"\\halapic.sys",&status);
+	fver _halmacpi_dll       = getFileVer(DriverCache+L"\\halmacpi.sys",&status);
+	fver _halmps_dll         = getFileVer(DriverCache+L"\\halmps.sys",&status);
+	fver _halsp_dll          = getFileVer(DriverCache+L"\\halsp.sys",&status);
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
+	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 
@@ -3998,6 +4015,44 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909441)");
 		XX(p2+"windowsxp-kb909441-x86-enu.exe"+a1);
 	}
+	if((sp>=2 && (sku & XP_ALL) && (
+		  ( _Hdaudprop_dll         >zero && _Hdaudprop_dll         <fver(5,10,1,5013))
+	  ||  ( _Hdaudpropres_dll      >zero && _Hdaudpropres_dll      <fver(5,10,1,5013))
+	  ||  ( _Hdaudpropshortcut_exe >zero && _Hdaudpropshortcut_exe <fver(5,10,1,5013))
+	  ||  ( _hdaudbus_sys          >zero && _hdaudbus_sys          <fver(5,10,1,5013))
+	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
+		  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) ))) {
+		NN("Universal Audio Architecture (UAA) High Definition Audio class driver version 1.0a for Windows XP (KB888111)");
+		XX(p3+"WindowsXP-KB888111-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && (sku & XP_ALL) && _verifier_dll >zero && _verifier_dll <fver(5,1,2600,1607))
+	 ||(sp==2 && (sku & XP_ALL) && _verifier_dll >zero && _verifier_dll <fver(5,1,2600,2562))) {
+		NN("Update for Windows XP (KB889016)");
+		XX(p2+"WindowsXP-KB889016-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _hal_dll  >zero && _hal_dll          <fver(5,1,2600,2562))
+	  ||  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,2562))
+	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,2562))
+	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,2562))
+	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,2562))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,2562))
+	  ||  ( _halsp_dll    >zero && _halsp_dll    <fver(5,1,2600,2562)) )) {
+		NN("Update for Windows XP (KB889673)");
+		XX(p2+"WindowsXP-KB889673-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _wscsvc_dll  >zero && _wscsvc_dll  <fver(5,1,2600,2604)) )) {
+		NN("Update for Windows XP (KB892489)");
+		XX(p2+"WindowsXP-KB892489-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		   ( _msdv_sys  >zero && _msdv_sys  <fver(5,3,2600,2601))
+		|| (_msdv_sys_cache <fver(5,3,2600,2601)) )){
+		NN("Update for Windows XP (KB893008)");
+		XX(p2+"windowsxp-kb893008-x86-enu.exe"+a6);
+	}
 
 	// Windows XP SP3 updates;
 	if( sp==3 && (sku & XP_ALL) && _packager_exe>zero && _packager_exe<fver(5,1,2600,6176)) {
@@ -4075,6 +4130,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _synceng_dll>zero && _synceng_dll<fver(5,1,2600,6293)) {
 		NN("Security Update for Windows XP (KB2727528)");
 		XX(p3+"WindowsXP-KB2727528-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,3345)) )) {
+	//if( sp==3 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,5574)) )) {
+		NN("Update for Windows XP (KB889320)");
+		XX(p2+"WindowsXP-KB889320-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,6260))
 					  ||  (_netapi32_dll>zero && _netapi32_dll<fver(5,1,2600,6260)) )) {
