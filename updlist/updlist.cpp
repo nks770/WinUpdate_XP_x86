@@ -22,7 +22,7 @@
 
 using namespace std;
 
-#define PROGRAM_DATE "05-Aug-2020"
+#define PROGRAM_DATE "29-Aug-2020"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -36,6 +36,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	bool install_netfx=false;
 	bool install_mbsa=false;
 	bool install_sp=false;
+	bool qfe=false;
 	bool install_vcredist=false;
 	bool component_install=false;
 	bool list_cert_root=false;
@@ -60,6 +61,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		if(!wcscmp(argv[i],L"--install-netfx")) { install_netfx=true; }
 		if(!wcscmp(argv[i],L"--install-mbsa")) { install_mbsa=true; }
 		if(!wcscmp(argv[i],L"--install-sp")) { install_sp=true; }
+		if(!wcscmp(argv[i],L"--enable-qfe")) { qfe=true; }
 		if(!wcscmp(argv[i],L"--list-cert-root")) { list_cert_root=true; }
 		if(!wcscmp(argv[i],L"--list-cert-disallowed")) { list_cert_disallowed=true; }
 		if(!wcscmp(argv[i],L"--noreboot")) { allow_reboot=false; }
@@ -148,7 +150,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		nfxInstallCheck(nfxServicePack,nfxInstall,sp_to_int(splevel),&notifications);
 		nfxInstallation(&nfx_name,&nfx_exe,sku,sp_to_int(splevel),nfxServicePack,nfxInstall,&notifications);
 	} else {
-		windowsUpdates(&name,&exe,sku,sp_to_int(splevel),compInstall,&notifications);
+		windowsUpdates(&name,&exe,sku,sp_to_int(splevel),compInstall,qfe,&notifications);
 		nfxUpdates(&nfx_name,&nfx_exe,sku,sp_to_int(splevel),nfxServicePack,nfxInstall,&notifications);
 	}
 
@@ -187,6 +189,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		} else {
 			systemComponentVersions(batch);
 			displayOptions(compInstalled,compInstall,batch,COMPONENT_COUNT,sp_to_int(splevel));
+			if(qfe) { printf("QFE Hotfixes are enabled.\n"); }
 		}
 		showNotifications(batch,&notifications);
 		if(batch) {

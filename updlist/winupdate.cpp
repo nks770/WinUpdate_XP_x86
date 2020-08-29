@@ -38,7 +38,7 @@ using namespace std;
 // /r:s Restarts the computer after installation without prompting the user.
 
 void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp,
-					bool* options,std::vector<std::string> *notifications) {
+					bool* options,bool qfe,std::vector<std::string> *notifications) {
 
 	int status=0;
 
@@ -2204,17 +2204,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP Service Pack 1 (KB810243)");
 		XX(p1+"windowsxp-kb810243-x86-enu_f9221252ff64f016a59490bfacdd617.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
-	      (_dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1264))
-	   || (_ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1254))
-	   || (_ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1254))
-	   || (_netshell_dll >zero && _netshell_dll <fver(5,1,2600,1254))
-	   || (_wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1276))
-	   || (_wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1276))
-	   || (_wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1276)) )) {
-		NN("Update for Microsoft Windows XP (KB826942)");
-		XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
-	}
 	if( sp==0 && (sku & XP_ALL) && _msctf_dll>zero && _msctf_dll<fver(5,1,2600,29)) {
 		NN("Keyboard Layout Update");
 		XX(rtm+"Q318388WXPSP1.exe"+a7);
@@ -3615,16 +3604,39 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB281981)");
 		XX(p3+"WindowsXP-KB281981-x86-ENU.exe"+a1);
 	}
-//	if( sp==2 && (sku & XP_ALL) && (
-//		                  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
-//					  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
-//					  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
-//					  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
-//					  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
-//		// KB899337 is replaced by KB915428
-//		NN("Update for Windows XP (KB899337)");
-//		XX(p+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
-//	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1264))
+	   || (_ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1254))
+	   || (_ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1254))
+	   || (_netshell_dll >zero && _netshell_dll <fver(5,1,2600,1254))
+	   || (_wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1276))
+	   || (_wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1276))
+	   || (_wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1276)) )) {
+		NN("Update for Microsoft Windows XP (KB826942)");
+		XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
+	}
+	if(!qfe) {
+		if( sp==2 && (sku & XP_ALL) && (
+							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
+						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
+						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
+						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
+						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+			// KB899337 is replaced by KB915428
+			NN("Update for Windows XP (KB899337)");
+			XX(p2+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2858))
+		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2858))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2858))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2858))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858)) )) {
+			NN("Update for Windows XP (KB915428)");
+			XX(p2+"WindowsXP-KB915428-x86-ENU.exe"+a1);
+		}
+	}
 //	if( sp==2 && (sku & XP_MCE2005) && (
 //			(    _sbp2port_sys       <fver(5,1,2600,2688)
 //		      && _sbp2port_sys_cache <fver(5,1,2600,2688))
@@ -3984,15 +3996,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2825)) )) {
 		NN("Update for Windows XP Media Center Edition 2005 (KB912024)");
 		XX(p2+"windowsxp-kb912024-v2-x86-enu_0e305ca77d97d5ee54ea79e3f43bedaba844705b.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && (
-		  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2858))
-	  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2858))
-	  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2858))
-	  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2858))
-	  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858)) )) {
-		NN("Update for Windows XP (KB915428)");
-		XX(p2+"WindowsXP-KB915428-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _intelppm_sys  >zero && _intelppm_sys  <fver(5,1,2600,2508))

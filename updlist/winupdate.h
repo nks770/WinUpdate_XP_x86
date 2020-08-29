@@ -8,6 +8,6 @@
 #include "winsku.h"
 
 void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp,
-					bool* options,std::vector<std::string> *notifications);
+					bool* options,bool qfe,std::vector<std::string> *notifications);
 
 #endif
