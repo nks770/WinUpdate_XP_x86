@@ -3998,7 +3998,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP Media Center Edition 2005 (KB912024)");
 		XX(p2+"windowsxp-kb912024-v2-x86-enu_0e305ca77d97d5ee54ea79e3f43bedaba844705b.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _intelppm_sys  >zero && _intelppm_sys  <fver(5,1,2600,2508))
 	  ||  ( _processr_sys  >zero && _processr_sys  <fver(5,1,2600,2508)) )) {
 		NN("Update for Windows XP (KB884575)");
@@ -4009,7 +4009,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB886677)");
 		XX(p2+"WindowsXP-KB886677-x86-enu.exe"+a6);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _ftp_exe  >zero && _ftp_exe  <fver(5,1,2600,2723)) )) {
 		NN("Update for Windows XP (KB902149)");
 		XX(p2+"WindowsXP-KB902149-x86-ENU.exe"+a1);
