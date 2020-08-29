@@ -3593,16 +3593,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB891593)");
 		XX(p2+"WindowsXP-KB891593-v2-x86-ENU.exe"+a1);
 	}
-	/*if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
-	 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
-		// KB895961 is replaced by KB281981
-		NN("Update for Windows XP (KB895961)");
-		XX(p3+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
-	}*/
-	if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3501))
-	 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5733))) {
-		NN("Update for Windows XP (KB281981)");
-		XX(p3+"WindowsXP-KB281981-x86-ENU.exe"+a1);
+	if(!qfe) {
+		if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
+		 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
+			NN("Update for Windows XP (KB895961)");
+			XX(p3+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
+		}
+	} else {
+		if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3501))
+		 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5733))) {
+			NN("Update for Windows XP (KB281981)");
+			XX(p3+"WindowsXP-KB281981-x86-ENU.exe"+a1);
+		}
 	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1264))
@@ -3622,7 +3624,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
 						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
 						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
-			// KB899337 is replaced by KB915428
 			NN("Update for Windows XP (KB899337)");
 			XX(p2+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
 		}
