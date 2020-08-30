@@ -1,0 +1,111 @@
+
+#include "stdafx.h"
+#include "help.h"
+#include <string>
+
+void show_help(const char* display_date) {
+	printf(" __      ___       _   _           _       _\n");
+	printf(" \\ \\    / (_)_ __ | | | |_ __   __| | __ _| |_ ___\n");
+	printf("  \\ \\/\\/ /| | '_ \\| | | | '_ \\ / _` |/ _` | __/ _ \\\n");
+	printf("   \\    / | | | | | |_| | |_) | (_| | (_| | ||  __/\n");
+	printf("    \\/\\/  |_|_| |_|\\___/| .__/ \\__,_|\\__,_|\\__\\___|\n");
+	printf("                        |_|     Updated %s\n\n",display_date);
+
+	printf("\n");
+	printf("  Usage: updlist.exe [mode] [options]\n\n");
+
+	printf("  Available Modes (select only one):\n\n");
+	printf("     (none)          : If no mode flags given, then default to search for\n");
+	printf("                       Windows Updates.\n");
+	printf("     --netfx         : Search for updates to Microsoft .NET Framework\n");
+	printf("     --install-sp    : Install a Service Pack\n");
+	printf("     --comp          : Install the latest DirectX, Windows Media Player, and\n");
+	printf("                       Internet Explorer.\n");
+	printf("     --install-netfx : Install all versions of .NET Framework that apply to the\n");
+	printf("                       current OS configuration.\n");
+	printf("     --vcredist      : Install all versions of Visual C++ Runtime libraries\n");
+	printf("                       that apply to the current OS configuration.\n");
+	printf("     --install-mbsa  : Install Microsoft Baseline Security Analyzer (MBSA) and\n");
+	printf("                       minimum required updates for it to function.\n");
+	printf("     --mbsa          : Activate MBSA compare mode, to compare this program's\n");
+	printf("                       list of missing/installed updates against the output\n");
+	printf("                       from Microsoft Baseline Security Analyzer.  See below\n");
+	printf("                       for usage.\n");
+	printf("     --help          : Display this help.\n\n");
+	printf("  Options:\n\n");
+	printf("     --enable-qfe    : Allow QFE (Quick Fix Engineering) hotfixes when\n");
+	printf("                       searching for updates.  These are non-GDR (General\n");
+	printf("                       Distribution Release) that contain more recent software\n");
+	printf("                       fixes, but were not certified for general release.\n");
+	printf("     --batch         : Batch file mode ; output of application will be suitable\n");
+	printf("                       for redirecting to create a valid batch file.\n");
+	printf("     --noreboot      : Omit any reboot commands from the end of generated\n");
+	printf("                       scripts.\n\n");
+	printf("  Special Debug Modes:\n\n");
+	printf("     The following is a list of implemented debug modes, intended for\n");
+	printf("       development debugging, but may be useful.\n");
+	printf("     --list-cert-root       : List the hashes and names of security\n");
+	printf("                              certificates in the system's ROOT certificate\n");
+	printf("                              store.\n");
+	printf("     --list-cert-disallowed : List the hashes and names of security\n");
+	printf("                              certificates in the system's revoked list of\n");
+	printf("                              untrusted certificates.\n");
+	printf("     --vcdebug        : List versions of all Visual C++ Runtimes installed.\n");
+	printf("     --vcdebug2005    : List versions of all Visual C++ 2005 Runtime DLLs.\n");
+	printf("     --vcdebug2008    : List versions of all Visual C++ 2008 Runtime DLLs.\n");
+	printf("     --vcdebug2010    : List versions of all Visual C++ 2010 Runtime DLLs.\n");
+	printf("     --vcdebug2012    : List versions of all Visual C++ 2012 Runtime DLLs.\n");
+	printf("     --vcdebug2013    : List versions of all Visual C++ 2013 Runtime DLLs.\n");
+	printf("     --vcdebug2015    : List versions of all Visual C++ 2015 Runtime DLLs.\n\n");
+	printf("  Optional Component Control:\n\n");
+	printf("     --enable-all          : Turn ON all optional components.\n");
+	printf("     --disable-all         : Turn OFF all optional components.  Useful if you\n");
+	printf("                             only want the minimum Windows Updates.\n");
+	printf("     --enable-rdp60        : Install Remote Desktop 6.0.\n");
+	printf("     --disable-rdp60       : DO NOT install Remote desktop 6.0. [Default]\n");
+	printf("     --enable-rdp61        : Install Remote Desktop 6.1. [Default on XP SP2]\n");
+	printf("     --disable-rdp60       : DO NOT install Remote Desktop 6.1.\n");
+	printf("     --enable-rdp70        : Install Remote Desktop 7.0. [Default on XP SP3]\n");
+	printf("     --disable-rdp70       : DO NOT install Remote Desktop 7.0.\n");
+	printf("     --enable-wmp6cdcs     : Install Windows Media 6.4 Codecs Pack. [Default]\n");
+	printf("     --disable-wmp6cdcs    : DO NOT install Windows Media 6.4 Codecs Pack.\n");
+	printf("     --enable-smartcard    : Install SmartCard Driver. [Default]\n");
+	printf("     --disable-smartcard   : DO NOT install SmartCard Driver.\n");
+	printf("     --enable-wsearch4     : Install Windows Search 4.0.\n");
+	printf("     --disable-wsearch4    : DO NOT install Windows Search 4.0. [Default\n");
+	printf("     --enable-jview        : Install Windows Journal Viewer 1.5. [Default]\n");
+	printf("     --disable-jview       : DO NOT install Windows Journal Viewer 1.5.\n");
+	printf("     --enable-pshell       : Install Windows PowerShell. [Default]\n");
+	printf("     --disable-pshell      : DO NOT install Windows PowerShell.\n");
+	printf("     --enable-winrms       : Install Windows Rights Management Services\n");
+	printf("                             Client. [Default]\n");
+	printf("     --disable-winrms      : DO NOT install Rights Management Services Client.\n");
+	printf("     --enable-msxml4       : Install Microsoft XML Core Services 4.0. [Default]\n");
+	printf("     --disable-msxml4      : DO NOT install Microsoft XML Core Services 4.0.\n");
+	printf("     --enable-msxml6       : Install Microsoft XML Core Services 6.0. [Default]\n");
+	printf("     --disable-msxml6      : DO NOT install Microsoft XML Core Services 6.0.\n");
+	printf("     --enable-bitlocker    : Install BitLocker To Go Reader. [Default]\n");
+	printf("     --disable-bitlocker   : DO NOT install BitLocker To Go Reader.\n");
+	printf("     --enable-silverlight  : Install Microsoft Silverlight. [Default]\n");
+	printf("     --disable-silverlight : DO NOT install Microsoft Silverlight.\n");
+	printf("     --enable-wga          : Install Windows Genuine Advantage (WGA). [Default]\n");
+	printf("     --disable-wga         : DO NOT install Windows Genuine Advantage (WGA).\n");
+	printf("     --enable-xpeos        : Install Windows XP End-of-Service\n");
+	printf("                             Notifications. [Default]\n");
+	printf("     --disable-xpeos       : DO NOT install XP End-of-Service Notifications.\n");
+	printf("     --enable-rktools      : Install Windows Server 2003 Resource Kit\n");
+	printf("                             Tools. [Default]\n");
+	printf("     --disable-rktools     : DO NOT install Windows Server 2003 Resource Kit\n");
+	printf("                             Tools.\n");
+	printf("     --enable-msjvm        : Install Microsoft Java Virtual Machine. [Default]\n");
+	printf("     --disable-msjvm       : DO NOT install Microsoft Java Virtual Machine.\n");
+	printf("\n");
+	printf("  Microsoft Baseline Security Analyzer (MBSA) Compare Mode:\n\n");
+	printf("   Starting the application with this flag lets you compare the results of this\n");
+	printf("   application's internal update search routines against the MBSA.\n\n");
+	printf("   Usage: updlist.exe --mbsa [path_to_mbsa_output.txt] [options]\n");
+	printf("\n");
+	printf("          [options] = You may use all of the options mentioned above.\n");
+	printf("\n");
+}
+

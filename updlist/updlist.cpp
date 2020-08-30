@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "banner.h"
+#include "help.h"
 #include "fver.h"
 #include "registry.h"
 #include "winsku.h"
@@ -22,7 +23,7 @@
 
 using namespace std;
 
-#define PROGRAM_DATE "29-Aug-2020"
+#define PROGRAM_DATE "30-Aug-2020"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -30,6 +31,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 	// Parse arguments
 	int i=0;
+	bool help=false;
 	bool batch=false;
 	bool mbsa=false; std::wstring mbsa_file;
 	bool netfx_mode=false;
@@ -55,6 +57,12 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	std::vector<std::string> notifications;
 
 	for(i=0;i<argc;i++) {
+		if(!wcscmp(argv[i],L"--help")) { help=true; }
+		if(!wcscmp(argv[i],L"-h")) { help=true; }
+		if(!wcscmp(argv[i],L"-H")) { help=true; }
+		if(!wcscmp(argv[i],L"-?")) { help=true; }
+		if(!wcscmp(argv[i],L"/?")) { help=true; }
+		if(!wcscmp(argv[i],L"--help")) { help=true; }
 		if(!wcscmp(argv[i],L"--batch")) { batch=true; }
 		if(!wcscmp(argv[i],L"--netfx")) { netfx_mode=true; }
 		if(!wcscmp(argv[i],L"--comp")) { component_install=true; }
@@ -81,6 +89,10 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		}
 	}
 
+	if( help ) {
+		show_help(PROGRAM_DATE);
+		return 0;
+	}
 	if( list_cert_root ) {
 		printf("Certificates:\n");
 		listCertificates("Root");

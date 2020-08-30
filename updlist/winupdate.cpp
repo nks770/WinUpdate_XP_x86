@@ -5914,7 +5914,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Internet Explorer 7 for Windows XP (KB2797052)");
 		XX(p3+"IE7-WindowsXP-KB2797052-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_vgx_dll      >zero && _vgx_dll      <fver(8,0,6001,23468)) )) {
 		NN("Security Update for Internet Explorer 8 for Windows XP (KB2797052)");
 		XX(p3+"IE8-WindowsXP-KB2797052-x86-ENU.exe"+a1);

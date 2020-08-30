@@ -338,7 +338,7 @@ fver vcr2005(bool debug) {
 	
 		fver t = fver(8,0,50727,42);
 		if( _ATL80_dll    >= t
-		 && _msdia80_dll  >= t
+		 //&& _msdia80_dll  >= t
 		 && _mfc80_dll    >= t
 		 && _mfc80u_dll   >= t
 		 && _mfcm80_dll   >= t
@@ -359,7 +359,7 @@ fver vcr2005(bool debug) {
 
 		t = fver(8,0,50727,762);
 		if( _ATL80_dll    >= t
-		 && _msdia80_dll  >= t
+		 //&& _msdia80_dll  >= t
 		 && _mfc80_dll    >= t
 		 && _mfc80u_dll   >= t
 		 && _mfcm80_dll   >= t
@@ -380,7 +380,7 @@ fver vcr2005(bool debug) {
 
 		t = fver(8,0,50727,4053);
 		if( _ATL80_dll    >= t
-		 && _msdia80_dll  >= t
+		 //&& _msdia80_dll  >= t
 		 && _mfc80_dll    >= t
 		 && _mfc80u_dll   >= t
 		 && _mfcm80_dll   >= t
@@ -401,7 +401,7 @@ fver vcr2005(bool debug) {
 
 		t = fver(8,0,50727,5592);
 		if( _ATL80_dll    >= t
-		 && _msdia80_dll  >= t
+		 //&& _msdia80_dll  >= t
 		 && _mfc80_dll    >= t
 		 && _mfc80u_dll   >= t
 		 && _mfcm80_dll   >= t
@@ -422,7 +422,7 @@ fver vcr2005(bool debug) {
 
 		t = fver(8,0,50727,6195);
 		if( _ATL80_dll    >= t
-		 && _msdia80_dll  >= t
+		 //&& _msdia80_dll  >= t
 		 && _mfc80_dll    >= t
 		 && _mfc80u_dll   >= t
 		 && _mfcm80_dll   >= t

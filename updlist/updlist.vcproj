@@ -195,6 +195,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\help.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\kb2900986.cpp"
 				>
 			</File>
@@ -294,6 +298,10 @@
 			</File>
 			<File
 				RelativePath=".\fver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\help.h"
 				>
 			</File>
 			<File
