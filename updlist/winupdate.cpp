@@ -5904,6 +5904,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB978207)");
 		XX(p2+"IE8-WindowsXP-KB978207-x86-ENU.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_vgx_dll      >zero && _vgx_dll      <fver(6,0,2900,6333)) )) {
+		NN("Security Update for Internet Explorer 6 for Windows XP (KB2797052)");
+		XX(p3+"WindowsXP-KB2797052-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		   (_vgx_dll      >zero && _vgx_dll      <fver(7,0,6000,21324)) )) {
+		NN("Security Update for Internet Explorer 7 for Windows XP (KB2797052)");
+		XX(p3+"IE7-WindowsXP-KB2797052-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		   (_vgx_dll      >zero && _vgx_dll      <fver(8,0,6001,23468)) )) {
+		NN("Security Update for Internet Explorer 8 for Windows XP (KB2797052)");
+		XX(p3+"IE8-WindowsXP-KB2797052-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,6452))
 		|| (_html_iec     >zero && _html_iec     <fver(2011,1,31,10))
