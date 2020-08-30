@@ -4057,16 +4057,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB889673)");
 		XX(p2+"WindowsXP-KB889673-x86-ENU.exe"+a6);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
+	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _wscsvc_dll  >zero && _wscsvc_dll  <fver(5,1,2600,2604)) )) {
 		NN("Update for Windows XP (KB892489)");
 		XX(p2+"WindowsXP-KB892489-x86-ENU.exe"+a6);
-	}
-	if( sp==2 && (sku & XP_ALL) && (
-		   ( _msdv_sys  >zero && _msdv_sys  <fver(5,3,2600,2601))
-		|| (_msdv_sys_cache <fver(5,3,2600,2601)) )){
-		NN("Update for Windows XP (KB893008)");
-		XX(p2+"windowsxp-kb893008-x86-enu.exe"+a6);
 	}
 
 	// Windows XP SP3 updates;
@@ -5379,6 +5373,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_dpwsockx_dll >zero && _dpwsockx_dll <fver(5,3,0,903)) )) {
 		NN("Security Update for DirectX 9.0 (KB839643)");
 		XX(p1+"directx90-kb839643-x86-enu_ed1fc697f95aa71dfd7773edb3bebc77030e08df.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		   ( _msdv_sys  >zero && _msdv_sys  <fver(5,3,2600,2601))
+		|| (_msdv_sys_cache <fver(5,3,2600,2601)) )){ // For DirectX 9.0b
+		NN("Update for Windows XP (KB893008)");
+		XX(p2+"windowsxp-kb893008-x86-enu.exe"+a6);
 	}
 
 	// Outlook Express Updates
