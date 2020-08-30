@@ -4140,7 +4140,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2727528)");
 		XX(p3+"WindowsXP-KB2727528-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,3345)) )) {
+	if( sp==2 && qfe && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,3345)) )) {
 	//if( sp==3 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,5574)) )) {
 		NN("Update for Windows XP (KB889320)");
 		XX(p2+"WindowsXP-KB889320-v2-x86-ENU.exe"+a1);
