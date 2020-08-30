@@ -445,6 +445,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msrd3x40_dll = getFileVer(System32+L"\\msrd3x40.dll",&status);
 	fver _msrepl40_dll = getFileVer(System32+L"\\msrepl40.dll",&status);
 	fver _msrle32_dll  = getFileVer(System32+L"\\msrle32.dll",&status);
+	fver _mssap_dll    = getFileVer(System32+L"\\mssap.dll",&status);
 	fver _msscp_dll    = getFileVer(System32+L"\\msscp.dll",&status);
 	fver _mstask_dll   = getFileVer(System32+L"\\mstask.dll",&status);
 	fver _mstext40_dll = getFileVer(System32+L"\\mstext40.dll",&status);
@@ -2188,10 +2189,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows Error Reporting: Recommended Update (Windows XP)");
 		XX(p1+"windowsxp-kb821253-x86-enu_6700bff43173d425ee692ec1239b617.exe"+a7);
 	}
-	if( sp==0 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,18)) {
-		NN("Remote Assistance Connection");
-		XX(rtm+"q311889_wxp_27dba07edd39b4cc0b3e2c6db90178e7396cff1a.exe"+a7);
-	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_rdchost_dll >zero && _rdchost_dll <fver(5,1,2600,15))
 	   || (_sessmgr_exe >zero && _sessmgr_exe <fver(5,1,2600,15)) )) {
@@ -3593,6 +3590,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB891593)");
 		XX(p2+"WindowsXP-KB891593-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==0 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,18)) {
+		NN("Remote Assistance Connection");
+		XX(rtm+"q311889_wxp_27dba07edd39b4cc0b3e2c6db90178e7396cff1a.exe"+a7);
+	}
 	if(!qfe) {
 		if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
 		 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
@@ -4019,16 +4020,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909441)");
 		XX(p2+"windowsxp-kb909441-x86-enu.exe"+a1);
 	}
-	if((sp>=2 && (sku & XP_ALL) && (
+	if( sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _Hdaudprop_dll         >zero && _Hdaudprop_dll         <fver(5,10,1,5013))
 	  ||  ( _Hdaudpropres_dll      >zero && _Hdaudpropres_dll      <fver(5,10,1,5013))
 	  ||  ( _Hdaudpropshortcut_exe >zero && _Hdaudpropshortcut_exe <fver(5,10,1,5013))
 	  ||  ( _hdaudbus_sys          >zero && _hdaudbus_sys          <fver(5,10,1,5013))
-	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013)) ))
-	 ||(sp==2 && (sku & XP_ALL) && (
-		  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) ))) {
-		NN("Universal Audio Architecture (UAA) High Definition Audio class driver version 1.0a for Windows XP (KB888111)");
-		XX(p3+"WindowsXP-KB888111-x86-ENU.exe"+a1);
+	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013))
+	  ||  ( _mssap_dll             >zero && _mssap_dll             <fver(9,0,0,3140))
+	  ||  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) )) {
+		NN("High Definition Audio Driver Package - KB888111");
+		XX(p1+"kb888111xpsp1.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _Hdaudprop_dll         >zero && _Hdaudprop_dll         <fver(5,10,1,5013))
+	  ||  ( _Hdaudpropres_dll      >zero && _Hdaudpropres_dll      <fver(5,10,1,5013))
+	  ||  ( _Hdaudpropshortcut_exe >zero && _Hdaudpropshortcut_exe <fver(5,10,1,5013))
+	  ||  ( _hdaudbus_sys          >zero && _hdaudbus_sys          <fver(5,10,1,5013))
+	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013))
+	  ||  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) )) {
+		NN("High Definition Audio Driver Package - KB888111");
+		XX(p2+"kb888111xpsp2.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && _verifier_dll >zero && _verifier_dll <fver(5,1,2600,1607))
 	 ||(sp==2 && (sku & XP_ALL) && _verifier_dll >zero && _verifier_dll <fver(5,1,2600,2562))) {
