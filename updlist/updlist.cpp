@@ -58,6 +58,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 	for(i=0;i<argc;i++) {
 		if(!wcscmp(argv[i],L"--help")) { help=true; }
+		if(!wcscmp(argv[i],L"-help")) { help=true; }
 		if(!wcscmp(argv[i],L"-h")) { help=true; }
 		if(!wcscmp(argv[i],L"-H")) { help=true; }
 		if(!wcscmp(argv[i],L"-?")) { help=true; }

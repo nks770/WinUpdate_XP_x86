@@ -33,7 +33,7 @@ void show_help(const char* display_date) {
 	printf("                       for usage.\n");
 	printf("     --help          : Display this help.\n\n");
 	printf("  Options:\n\n");
-	printf("     --enable-qfe    : Allow QFE (Quick Fix Engineering) hotfixes when\n");
+	printf("     --enable-qfe    : Include QFE (Quick Fix Engineering) hotfixes when\n");
 	printf("                       searching for updates.  These are non-GDR (General\n");
 	printf("                       Distribution Release) that contain more recent software\n");
 	printf("                       fixes, but were not certified for general release.\n");
