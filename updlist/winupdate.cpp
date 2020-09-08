@@ -5824,6 +5824,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer for Windows XP (KB958215)");
 		XX(p2+"WindowsXP-KB958215-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,3492)) )) {
+//	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+//		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,5726)) )) {
+		// KB960714 is replaced by KB2936068 on SP3
+		NN("Security Update for Internet Explorer for Windows XP (KB960714)");
+		XX(p2+"WindowsXP-KB960714-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && 
 			regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_PROTECT_DECOMPRESSION_FILTER_FROM_ABORT_KB942367",L"*",&status)!=1 ) {
 		NN("Update for Internet Explorer 6 for Windows XP (KB946627)");
@@ -5883,7 +5891,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_jsproxy_dll     >fver(7,0,6000,16762) && _jsproxy_dll     <fver(7,0,6000,20772))
 		|| (_msfeeds_dll     >fver(7,0,6000,16762) && _msfeeds_dll     <fver(7,0,6000,20772))
 		|| (_msfeedsbs_dll   >fver(7,0,6000,16762) && _msfeedsbs_dll   <fver(7,0,6000,20772))
-		|| (_mshtml_dll      >fver(7,0,6000,16762) && _mshtml_dll      <fver(7,0,6000,20772))
+		|| (_mshtml_dll      >fver(7,0,6000,16788) && _mshtml_dll      <fver(7,0,6000,20772))
 		|| (_mshtmled_dll    >fver(7,0,6000,16762) && _mshtmled_dll    <fver(7,0,6000,20772))
 		|| (_msrating_dll    >fver(7,0,6000,16762) && _msrating_dll    <fver(7,0,6000,20772))
 		|| (_mstime_dll      >fver(7,0,6000,16762) && _mstime_dll      <fver(7,0,6000,20772))
@@ -5951,7 +5959,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_jsproxy_dll     >fver(7,0,6000,16762) && _jsproxy_dll     <fver(7,0,6000,20935))
 		|| (_msfeeds_dll     >fver(7,0,6000,16762) && _msfeeds_dll     <fver(7,0,6000,20935))
 		|| (_msfeedsbs_dll   >fver(7,0,6000,16762) && _msfeedsbs_dll   <fver(7,0,6000,20935))
-		|| (_mshtml_dll      >fver(7,0,6000,16762) && _mshtml_dll      <fver(7,0,6000,20935))
+		|| (_mshtml_dll      >fver(7,0,6000,16788) && _mshtml_dll      <fver(7,0,6000,20935))
 		|| (_mshtmled_dll    >fver(7,0,6000,16762) && _mshtmled_dll    <fver(7,0,6000,20935))
 		|| (_msrating_dll    >fver(7,0,6000,16762) && _msrating_dll    <fver(7,0,6000,20935))
 		|| (_mstime_dll      >fver(7,0,6000,16762) && _mstime_dll      <fver(7,0,6000,20935))
@@ -5963,6 +5971,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll     >fver(7,0,6000,16762) && _wininet_dll     <fver(7,0,6000,20935)) )) {
 		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP (KB958215)");
 		XX(p2+"IE7-WindowsXP-KB958215-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		   (_mshtml_dll   >zero                 && _mshtml_dll   <fver(7,0,6000,16788))
+		|| (_mshtml_dll   >fver(7,0,6000,16788) && _mshtml_dll   <fver(7,0,6000,20973)) )) {
+		NN("Security Update for Internet Explorer 7 for Windows XP (KB960714)");
+		XX(p2+"IE7-WindowsXP-KB960714-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		/* GDR */
@@ -6236,6 +6250,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll     >zero && _wininet_dll     <fver(7,0,6000,24071)) )) {
 		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP SP3 for XPe (KB4018271)");
 		XX(p3+"ie7-windowsxp-kb4018271-x86-embedded-custom-enu_8a89028acf7c751031a5748720deff45a054045e.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && (_iexplore_exe==fver(8,0,6001,18241)) && (
+		   (_mshtml_dll   >zero                 && _mshtml_dll   <fver(8,0,6001,18247))
+		|| (_mshtml_dll   >fver(8,0,6001,18247) && _mshtml_dll   <fver(8,0,6001,22342)) )) {
+		NN("Security Update for Internet Explorer 8 Beta 2 for Windows XP (KB960714)");
+		XX(p2+"IE8-WindowsXP-KB960714-x86-ENU.exe"+a1);
 	}
 	/*if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		// QFE
