@@ -63,6 +63,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool* xpeos = options+17;
 	bool* rktools = options+18;
 	bool* msjvm = options+19;
+	bool* kmdf19 = options+20;
+	bool* umdf19 = options+21;
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -7207,6 +7209,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					||  (_wudfusbcciddriver_dll <fver(6,0,6001,18158)) )))) {
 		NN("Windows Feature Pack for Storage (32-bit) - Smart Card driver (KB952013)");
 		XX(p3+"SmartCard_XP_x86.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && *kmdf19 ) {
+		NN("Microsoft Kernel-Mode Driver Framework Feature Pack 1.9 (KB970158)");
+		XX(p+"Microsoft_Kernel-Mode_Driver_Framework_Install-v1.9-Win2k-WinXP-Win2k3.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && *umdf19 ) {
+		NN("Microsoft User-Mode Driver Framework Feature Pack 1.9 (KB970159)");
+		XX(p+"Microsoft_User-Mode_Driver_Framework-v1.9-WinXP-Win2K3.exe"+a1);
 	}
 	if( sp>=2 && (*wsearch4 || (   (sku & XP_ALL)
 		            && (_searchfilterhost_exe >=fver(7,0,6001,16503) && _searchindexer_exe >=fver(7,0,6001,16503)

@@ -99,6 +99,10 @@ void show_help(const char* display_date) {
 	printf("                             Tools.\n");
 	printf("     --enable-msjvm        : Install Microsoft Java Virtual Machine. [Default]\n");
 	printf("     --disable-msjvm       : DO NOT install Microsoft Java Virtual Machine.\n");
+	printf("     --enable-kmdf19       : Install Kernel-Mode Driver Framework 1.9. [Default]\n");
+	printf("     --disable-kmdf19      : DO NOT install Kernel-Mode Driver Framework 1.9.\n");
+	printf("     --enable-umdf19       : Install User-Mode Driver Framework 1.9. [Default]\n");
+	printf("     --disable-umdf19      : DO NOT install User-Mode Driver Framework 1.9.\n");
 	printf("\n");
 	printf("  Microsoft Baseline Security Analyzer (MBSA) Compare Mode:\n\n");
 	printf("   Starting the application with this flag lets you compare the results of this\n");

@@ -34,13 +34,15 @@ void detectOptions(bool* components) {
 	bool* xpeos   =components+17; *xpeos=false;
 	bool* rktools =components+18; *rktools=false;
 	bool* msjvm   =components+19; *msjvm=false;
+	bool* kmdf19  =components+20; *kmdf19=false;
+	bool* umdf19  =components+21; *umdf19=false;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
 	int CannotFindProgramFiles=0;
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&CannotFindSystemRoot);
 	std::wstring System32 = SystemRoot + L"\\system32";
-	std::wstring drivers = System32+L"\\drivers";
+	std::wstring Drivers = System32+L"\\Drivers";
 	std::wstring pshelldir = System32+L"\\WindowsPowerShell\\v1.0";
 
 	std::wstring ProgramFiles = regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion",L"ProgramFilesDir",&CannotFindProgramFiles);
@@ -66,14 +68,14 @@ void detectOptions(bool* components) {
 	fver _wmv8ds32_ax  = getFileVer(System32+L"\\WMV8DS32.AX",&status);
 	fver _wmvds32_ax   = getFileVer(System32+L"\\WMVDS32.AX",&status);
 
-	fver _cdrom_sys    = getFileVer(drivers+L"\\cdrom.sys",&status);
+	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
 	fver _imapi2_dll   = getFileVer(System32+L"\\imapi2.dll",&status);
 	fver _imapi2fs_dll = getFileVer(System32+L"\\imapi2fs.dll",&status);
 
 	fver _WdfCoInstaller01007_dll = getFileVer(System32+L"\\WdfCoInstaller01007.dll",&status);
 	fver _winusbcoinstaller_dll = getFileVer(System32+L"\\winusbcoinstaller.dll",&status);
 	fver _wudfupdate_01007_dll  = getFileVer(System32+L"\\wudfupdate_01007.dll",&status);
-	fver _wudfusbcciddriver_dll = getFileVer(System32+L"\\drivers\\UMDF\\wudfusbcciddriver.dll",&status);
+	fver _wudfusbcciddriver_dll = getFileVer(Drivers+L"\\UMDF\\wudfusbcciddriver.dll",&status);
 
 	fver _searchfilterhost_exe   = getFileVer(System32+L"\\searchfilterhost.exe",&status);
 	fver _searchindexer_exe      = getFileVer(System32+L"\\searchindexer.exe",&status);
@@ -120,6 +122,16 @@ void detectOptions(bool* components) {
 
 	fver _jview_exe    = getFileVer(System32+L"\\jview.exe",&status);
 	fver _msjava_dll   = getFileVer(System32+L"\\msjava.dll",&status);
+
+	fver _wdf01000_sys        = getFileVer(Drivers+L"\\wdf01000.sys",&status);
+	fver _wdfldr_sys          = getFileVer(Drivers+L"\\wdfldr.sys",&status);
+	fver _wudfcoinstaller_dll = getFileVer(System32+L"\\wudfcoinstaller.dll",&status);
+	fver _wudfhost_exe        = getFileVer(System32+L"\\wudfhost.exe",&status);
+	fver _wudfpf_sys          = getFileVer(Drivers+L"\\wudfpf.sys",&status);
+	fver _wudfplatform_dll    = getFileVer(System32+L"\\wudfplatform.dll",&status);
+	fver _wudfrd_sys          = getFileVer(Drivers+L"\\wudfrd.sys",&status);
+	fver _wudfsvc_dll         = getFileVer(System32+L"\\wudfsvc.dll",&status);
+	fver _wudfx_dll           = getFileVer(System32+L"\\wudfx.dll",&status);
 
 	if(_mstsc_exe>=fver(6,0,6000,16386) && _mstsc_exe<fver(6,0,6001,0)) {
 		*rdp60=true;
@@ -223,6 +235,19 @@ void detectOptions(bool* components) {
 	if( (_jview_exe > fver() || _msjava_dll > fver()) ) {
 		*msjvm=true;
 	}
+	if(    (_wdf01000_sys >= fver(1,9,7600,16385))
+		&& (_wdfldr_sys   >= fver(1,9,7600,16385)) ) {
+		*kmdf19=true;
+	}
+	if(    (_wudfcoinstaller_dll >= fver(6,1,7600,16385))
+		&& (_wudfhost_exe        >= fver(6,1,7600,16385))
+		&& (_wudfpf_sys          >= fver(6,1,7600,16385))
+		&& (_wudfplatform_dll    >= fver(6,1,7600,16385))
+		&& (_wudfrd_sys          >= fver(6,1,7600,16385))
+		&& (_wudfsvc_dll         >= fver(6,1,7600,16385))
+		&& (_wudfx_dll           >= fver(6,1,7600,16385))) {
+		*umdf19=true;
+	}
 
 /*
 	Test Case: <Windows Embedded Standard 2009>
@@ -302,8 +327,10 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* xpeos   =components+17; *xpeos=true;
 	bool* rktools =components+18; *rktools=true;
 	bool* msjvm   =components+19; *msjvm=true;
+	bool* kmdf19  =components+20; *kmdf19=true;
+	bool* umdf19  =components+21; *umdf19=true;
 
-	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0 };
+	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0,2,2 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -364,6 +391,10 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--disable-rktools")) { *rktools=false; }
 		if(!wcscmp(argv[i],L"--enable-msjvm")) { *msjvm=true; }
 		if(!wcscmp(argv[i],L"--disable-msjvm")) { *msjvm=false; }
+		if(!wcscmp(argv[i],L"--enable-kmdf19")) { *kmdf19=true; }
+		if(!wcscmp(argv[i],L"--disable-kmdf19")) { *kmdf19=false; }
+		if(!wcscmp(argv[i],L"--enable-umdf19")) { *umdf19=true; }
+		if(!wcscmp(argv[i],L"--disable-umdf19")) { *umdf19=false; }
 	}
 
 	// Enable all components
@@ -476,12 +507,14 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("Windows XP End of Support Notification");
 	component.push_back("Windows Server 2003 Resource Kit Tools");
 	component.push_back("Microsoft Java Virtual Machine (MSJVM)");
+	component.push_back("Microsoft Kernel-Mode Driver Framework 1.9");
+	component.push_back("Microsoft User-Mode Driver Framework 1.9");
 
 	// Arrays to decide which options get shown for each SP level
-	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1 };
-	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1 };
-	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1 };
-	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
+	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0 };
+	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0 };
+	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1 };
+	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
 	int show[COMPONENT_COUNT];
 	for(int i=0; i<COMPONENT_COUNT; i++) {
 		switch(sp){
