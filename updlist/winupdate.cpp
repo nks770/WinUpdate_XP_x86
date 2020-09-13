@@ -1420,21 +1420,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("MS03-026: Security Update for Windows XP (823980)");
 		XX(rtm+"WindowsXP-KB823980-x86-ENU.exe"+a7);
 	}
-	/*if( sp==0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,2,8307,0)) {
-		// Q318202 is replaced by KB887606
-		NN("Security Update, February 13, 2002 (MSXML 2.6)");
-		//XX(rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe"+a2);
-		XX(sw+rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
-	}*/
-	if( sp>=0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,30,9531,0)) {
-		NN("Hotfix for MSXML 2 (KB887606)");
-		XX(p3+"MSXML2SP6-KB887606-x86-ENU.exe"+a1);
-	}
-	if( sp==0 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,20,9415,0)) {
-		NN("Security Update, February 13, 2002 (MSXML 3.0)");
-		//XX(rtm+"q318203_c0d4c77cc65c64a062f915de6feef911843afc51.exe"+a2);
-		XX(sw+rtm+"q318203_c0d4c77cc65c64a062f915de6feef911843afc51.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
-	}
 	if( sp==0 && (sku & XP_ALL) && (
 			    (_ssdpapi_dll  >zero && _ssdpapi_dll  <fver(5,1,2600,23))
 			||  (_netsetup_exe >zero && _netsetup_exe <fver(6,0,2448,0))
@@ -1648,16 +1633,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			    (_srrstr_dll >zero && _srrstr_dll <fver(5,1,2600,101)) )) {
 		NN("Q329441: Critical Update");
 		XX(rtm+"windowsxp-kb329441-x86-enu_4526376824a7a2be48c6f4bcbbcf829.exe"+a7);
-	}
-	if((sp==0 && (sku & XP_ALL) && (
-			    (_httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,165))
-			||  (_msxml3_dll   >zero && _msxml3_dll   <fver(8,50,2162,0))
-			||  (_xpsp1hfm_exe >zero && _xpsp1hfm_exe <fver(5,5,31,0))))
-	 ||(sp==1 && (sku & XP_ALL) && (
-			    (_httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1579))
-			||  (_msxml3_dll   >zero && _msxml3_dll   <fver(8,50,2162,0)) ))) {
-		NN("Security Update for Windows XP (KB824151)");
-		XX(p1+"windowsxp-kb824151-x86-enu_1e13d4fd702b9d5028429062023bbd7e02d9c714.exe"+a6);
 	}
 	if( sp==0 && (sku & XP_ALL) && (
 			    (_snmp_exe    >zero && _snmp_exe    <fver(5,1,2600,28))
@@ -2050,10 +2025,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB921883)");
 		XX(p1+"windowsxp-kb921883-x86-enu_80bd35bdac09cbe1974111ee623b36f016b639be.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,70,1113,0)) {
-		NN("Security Update for Windows XP (KB924191)");
-		XX(p1+"windowsxp-kb924191-x86-enu_5e3ee7c5954da4cd38a5121623c05d617e547951.exe"+a1);
-	}
 
 	// Pre-SP2 Nonsecurity updates
 	if((sp==0 && (sku & XP_ALL) && _dmusic_sys>zero && _dmusic_sys <fver(5,1,2600,106))
@@ -2436,15 +2407,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	//if( sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5698)) {
 		NN("Security Update for Windows XP (KB956802)");
 		XX(p2+"windowsxp-kb956802-x86-enu_bf0a8bfe0d01487a999fb8f66b3719957acf1f3a.exe"+a1);
-	}
-	/*if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,90,1101,0)) {
-		// KB936021 is replaced by KB955069 on SP2
-		NN("Security Update for Windows XP (KB936021)");
-		XX(p+"windowsxp-kb936021-x86-enu_9952bfa53c32d996780807ca1c1ab1c9ca398237.exe"+a1);
-	}*/
-	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1048,0)) { // also installable on SP3, same payload
-		NN("Security Update for Windows XP (KB955069)");
-		XX(p2+"windowsxp-kb955069-x86-enu_fa864585a7d761ba0f940eff151672871d0e69f3.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && ( (_msdtcprx_dll>zero && _msdtcprx_dll<fver(2001,12,4414,65))
 					  ||  (_msdtctm_dll>zero && _msdtctm_dll<fver(2001,12,4414,65))
@@ -3102,13 +3064,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	//if( sp==3 && (sku & XP_ALL) /*&& _aclayers_dll>zero*/ && _aclayers_dll<fver(5,1,2600,5906)) {
 		NN("Update for Windows XP (KB955759)");
 		XX(p2+"windowsxp-kb955759-x86-enu_32f91e0ecc35b55f6c9e51ad360b2adee1f74049.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1050,0)) {
-//	if( sp==3 && (sku & XP_ALL) && ( 
-//		                  (_msxml3_dll >zero && _msxml3_dll <fver(8,100,1051,0))
-//					  ||  (_msxml6_dll >zero && _msxml6_dll <fver(6,20,1103,0)) )) {
-		NN("Update for Windows XP (KB973687)");
-		XX(p2+"windowsxp-kb973687-x86-enu_936b46b34291e12c6fe6b7cb19e93d52dda990d8.exe"+a1);
 	}
 	if( (sp==2 && (sku & XP_ALL) && _msadce_dll>zero && _msadce_dll<fver(2,81,1135,0))
 	 || (sp==3 && (sku & XP_ALL) && _msadce_dll>zero && _msadce_dll<fver(2,81,3002,0)) ){
@@ -4233,10 +4188,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2419632)");
 		XX(p3+"WindowsXP-KB2419632-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _msxml6_dll>zero && _msxml6_dll<fver(6,20,2502,0)) {
-		NN("Security Update for Windows XP (KB2757638)");
-		XX(p3+"WindowsXP-KB2757638-x86-ENU.exe"+a1);
-	}
 	if( sp==3 && (sku & XP_ALL) && _imagehlp_dll>zero && _imagehlp_dll<fver(5,1,2600,6479)) {
 		NN("Security Update for Windows XP (KB2893294)");
 		XX(p3+"WindowsXP-KB2893294-x86-ENU.exe"+a1);
@@ -4288,11 +4239,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,6462)) {
 		NN("Security Update for Windows XP (KB2862152)");
 		XX(p3+"WindowsXP-KB2862152-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1053,0))
-					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2501,0)) )) {
-		NN("Security Update for Windows XP (KB2719985)");
-		XX(p3+"WindowsXP-KB2719985-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _themeui_dll>zero && _themeui_dll<fver(6,0,2900,6437)) {
 		NN("Security Update for Windows XP (KB2864063)");
@@ -4410,10 +4356,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,6157)) {
 		NN("Security Update for Windows XP (KB2544893)");
 		XX(p3+"WindowsXP-KB2544893-v2-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1054,0)) {
-		NN("Security Update for Windows XP (KB2916036)");
-		XX(p3+"WindowsXP-KB2916036-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_oleacc_dll>zero && _oleacc_dll<fver(7,0,2600,6153))
 		              ||  (_oleaccrc_dll>zero && _oleaccrc_dll<fver(7,0,2600,6153))
@@ -4940,19 +4882,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458001)");
 		XX(p3+"windowsxp-kb4458001-x86-embedded-enu_b6ae71b9b58128d4c6a3221208c1e42d0d434f79.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1063,0))
-					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2506,0)) )) {
-		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458003)");
-		XX(p3+"windowsxp-kb4458003-x86-embedded-enu_a17d87d408201c9d690d726da04d09f717bc661e.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && ( (_msexcl40_dll>zero && _msexcl40_dll<fver(4,0,9801,4))
 					  ||  (_msjet40_dll>zero && _msjet40_dll<fver(4,0,9801,4)) )) {
 		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458006)");
 		XX(p3+"windowsxp-kb4458006-x86-embedded-enu_e96b950633bde3636cffe6629b30f424acc90daf.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _msxml6_dll>zero && _msxml6_dll<fver(6,20,2507,0)) {
-		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458008)");
-		XX(p3+"windowsxp-kb4458008-x86-embedded-enu_abc9e19593fcbcf30212a77493af05b144da8bb6.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _ks_sys>zero && _ks_sys<fver(5,3,2600,7562)) {
 		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458318)");
@@ -5063,11 +4996,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489973)");
 		XX(p3+"windowsxp-kb4489973-x86-embedded-enu_1c50f081b27c440d89300b59cd5df9ed689390b0.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1064,0))
-					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2508,0)) )) {
-		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489974)");
-		XX(p3+"windowsxp-kb4489974-x86-embedded-enu_fb9d178e51321bf47246a752c2d79dcfe6bada40.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && (_msrd2x40_dll>zero && _msrd2x40_dll<fver(4,0,9801,12))) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489977)");
 		XX(p3+"windowsxp-kb4489977-x86-embedded-enu_e1b835d2c684f2953946a414fddc7fe40ef6eec2.exe"+a1);
@@ -5104,11 +5032,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// that causes error messages to display improperly?
 		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4493563)");
 		XX(p3+"windowsxp-kb4493563-x86-embedded-enu_b7acbe01322ca903c920fa8a85328057ba2d9703.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_POSREADY2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1065,0))
-					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2509,0)) )) {
-		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4493790)");
-		XX(p3+"windowsxp-kb4493790-x86-embedded-enu_e078da675e389cbfaba2354eae8040e438a42476.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_POSREADY2009) && (_msxbde40_dll>zero && _msxbde40_dll<fver(4,0,9801,14))) {
 		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4493793)");
@@ -7389,6 +7312,52 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(sw+p3+"windowsrightsmanagementservicessp2-kb979099-client-x86-enu_c57a952c1c55300114000b769e6f97e8a44322e3.exe -override 1 /I MsDrmClient.msi REBOOT=ReallySuppress /passive -override 2 /I RmClientBackCompat.msi REBOOT=ReallySuppress /passive");
 		}
 	}
+
+	// Microsoft XML Core Services
+	/*if( sp==0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,2,8307,0)) {
+		// Q318202 is replaced by KB887606
+		NN("Security Update, February 13, 2002 (MSXML 2.6)");
+		//XX(rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe"+a2);
+		XX(sw+rtm+"q318202_a37106c874860f0782d1eadd9fa9c41cd65f1307.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
+	}*/
+	if( sp>=0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,30,9531,0)) {
+		NN("Hotfix for MSXML 2 (KB887606)");
+		XX(p3+"MSXML2SP6-KB887606-x86-ENU.exe"+a1);
+	}
+
+	if( sp==0 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,20,9415,0)) {
+		NN("Security Update, February 13, 2002 (MSXML 3.0)");
+		//XX(rtm+"q318203_c0d4c77cc65c64a062f915de6feef911843afc51.exe"+a2);
+		XX(sw+rtm+"q318203_c0d4c77cc65c64a062f915de6feef911843afc51.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
+	}
+	if((sp==0 && (sku & XP_ALL) && (
+			    (_httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,165))
+			||  (_msxml3_dll   >zero && _msxml3_dll   <fver(8,50,2162,0))
+			||  (_xpsp1hfm_exe >zero && _xpsp1hfm_exe <fver(5,5,31,0))))
+	 ||(sp==1 && (sku & XP_ALL) && (
+			    (_httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1579))
+			||  (_msxml3_dll   >zero && _msxml3_dll   <fver(8,50,2162,0)) ))) {
+		NN("Security Update for Windows XP (KB824151)");
+		XX(p1+"windowsxp-kb824151-x86-enu_1e13d4fd702b9d5028429062023bbd7e02d9c714.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,70,1113,0)) {
+		NN("Security Update for Windows XP (KB924191)");
+		XX(p1+"windowsxp-kb924191-x86-enu_5e3ee7c5954da4cd38a5121623c05d617e547951.exe"+a1);
+	}
+	/*if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,90,1101,0)) {
+		// KB936021 is replaced by KB955069 on SP2
+		NN("Security Update for Windows XP (KB936021)");
+		XX(p+"windowsxp-kb936021-x86-enu_9952bfa53c32d996780807ca1c1ab1c9ca398237.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1048,0)) { // also installable on SP3, same payload
+		NN("Security Update for Windows XP (KB955069)");
+		XX(p2+"windowsxp-kb955069-x86-enu_fa864585a7d761ba0f940eff151672871d0e69f3.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1054,0)) {
+		NN("Security Update for Windows XP (KB2916036)");
+		XX(p3+"WindowsXP-KB2916036-x86-ENU.exe"+a1);
+	}
+
 	/*if( sp>=0 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9848,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
@@ -7409,6 +7378,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"msxml4-KB954430-enu.exe"+a3);
 		}
 	}*/
+	if( sp==0 && (sku & XP_ALL) && (
+	    (_msxml4_dll  >zero && _msxml4_dll  <fver(4,0,9406,0))
+	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,0,9406,0))
+	 || ((_msxml4_dll>zero || _msxml4r_dll>zero || *msxml4) && _WINHTTP5_DLL<fver(5,0,2613,0)) )){
+		NN("Security Update, February 13, 2002 (MSXML 4.0)");
+		XX(sw+rtm+"q317244_21ecede68f96753e7cb328ef7473711f9f3b4115.exe"+a2);
+	}
 	if( sp>=0 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,30,2117,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,30,2100,0)))))) {
@@ -7419,13 +7395,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"msxml4-kb2758694-enu_24abccbcceaf5bea9c3e34ff1f64c2aa3d57e308.exe"+a3);
 		}
 	}
-	if( sp==0 && (sku & XP_ALL) && (
-	    (_msxml4_dll  >zero && _msxml4_dll  <fver(4,0,9406,0))
-	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,0,9406,0))
-	 || ((_msxml4_dll>zero || _msxml4r_dll>zero || *msxml4) && _WINHTTP5_DLL<fver(5,0,2613,0)) )){
-		NN("Security Update, February 13, 2002 (MSXML 4.0)");
-		XX(sw+rtm+"q317244_21ecede68f96753e7cb328ef7473711f9f3b4115.exe"+a2);
-	}
+	
 	/*if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,10,1129,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
@@ -7453,10 +7423,45 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2017,0))
-					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3884,0)))))) {
+					  &&  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3884,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
 		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB2957482)");
 		XX(p3+"msxml6-KB2957482-enu-x86.exe REBOOT=ReallySuppress /passive /norestart");
+	}
+	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1050,0)) {
+//	if( sp==3 && (sku & XP_ALL) && ( 
+//		                  (_msxml3_dll >zero && _msxml3_dll <fver(8,100,1051,0))
+//					  ||  (_msxml6_dll >zero && _msxml6_dll <fver(6,20,1103,0)) )) {
+		NN("Update for Windows XP (KB973687)");
+		XX(p2+"windowsxp-kb973687-x86-enu_936b46b34291e12c6fe6b7cb19e93d52dda990d8.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1053,0))
+					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2501,0)) )) {
+		NN("Security Update for Windows XP (KB2719985)");
+		XX(p3+"WindowsXP-KB2719985-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _msxml6_dll>zero && _msxml6_dll<fver(6,20,2502,0)) {
+		NN("Security Update for Windows XP (KB2757638)");
+		XX(p3+"WindowsXP-KB2757638-x86-ENU.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XPE_2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1063,0))
+					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2506,0)) )) {
+		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458003)");
+		XX(p3+"windowsxp-kb4458003-x86-embedded-enu_a17d87d408201c9d690d726da04d09f717bc661e.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _msxml6_dll>zero && _msxml6_dll<fver(6,20,2507,0)) {
+		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458008)");
+		XX(p3+"windowsxp-kb4458008-x86-embedded-enu_abc9e19593fcbcf30212a77493af05b144da8bb6.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XPE_WES2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1064,0))
+					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2508,0)) )) {
+		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489974)");
+		XX(p3+"windowsxp-kb4489974-x86-embedded-enu_fb9d178e51321bf47246a752c2d79dcfe6bada40.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_POSREADY2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1065,0))
+					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2509,0)) )) {
+		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4493790)");
+		XX(p3+"windowsxp-kb4493790-x86-embedded-enu_e078da675e389cbfaba2354eae8040e438a42476.exe"+a1);
 	}
 
 	if( sp>=2 && ((sku & XP_ALL) && _agcore_debug_dll>zero
