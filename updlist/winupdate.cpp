@@ -7414,20 +7414,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft XML Core Services 6.0 and Service Pack 1 (KB933579)");
 		XX(p3+"msxml6-KB933579-enu-x86.exe REBOOT=ReallySuppress /passive /norestart");
 	}*/
-	/*if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2003,0))
-					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
+					  &&  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
 		NN("Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB973686)");
 		XX(p3+"msxml6-kb973686-enu-x86_e139664a78bc2806cf0c5bcf0bedec7ea073c3b1.exe REBOOT=ReallySuppress /passive /norestart");
-	}*/
-	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+	}
+	/*if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2017,0))
 					  &&  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3884,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
+	// KB2957482 is not appropriate for Windows XP for two reasons.
+	// 1.) The KB documentation does not say that it applies to Windows XP
+	// 2.) KB2957482 contains a newer version of msxml6r.dll than is provided by default with Service Pack 3,
+	//     yet you cannot use this patch to upgrade msxml6r.dll.  Attempting to install KB2957482 on an XP SP3
+	//     system that already has MSXML6 results in an error, and installation cannot complete.
 		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB2957482)");
 		XX(p3+"msxml6-KB2957482-enu-x86.exe REBOOT=ReallySuppress /passive /norestart");
-	}
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1050,0)) {
 //	if( sp==3 && (sku & XP_ALL) && ( 
 //		                  (_msxml3_dll >zero && _msxml3_dll <fver(8,100,1051,0))
