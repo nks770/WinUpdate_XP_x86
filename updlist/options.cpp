@@ -36,6 +36,7 @@ void detectOptions(bool* components) {
 	bool* msjvm   =components+19; *msjvm=false;
 	bool* kmdf19  =components+20; *kmdf19=false;
 	bool* umdf19  =components+21; *umdf19=false;
+	bool *webfldrs=components+22; *webfldrs=false;
 
 	// Identify system paths
 	int CannotFindSystemRoot=0;
@@ -132,6 +133,13 @@ void detectOptions(bool* components) {
 	fver _wudfrd_sys          = getFileVer(Drivers+L"\\wudfrd.sys",&status);
 	fver _wudfsvc_dll         = getFileVer(System32+L"\\wudfsvc.dll",&status);
 	fver _wudfx_dll           = getFileVer(System32+L"\\wudfx.dll",&status);
+
+	std::wstring OleDB = ProgramFiles + L"\\Common Files\\System\\Ole DB";
+	std::wstring WebFolders = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Web Folders";
+	fver _msdaipp_dll  = getFileVer(OleDB+L"\\msdaipp.dll",&status);
+	fver _msdapml_dll  = getFileVer(OleDB+L"\\msdapml.dll",&status);
+	fver _msonsext_dll = getFileVer(WebFolders+L"\\msonsext.dll",&status);
+	fver _nsextint_dll = getFileVer(WebFolders+L"\\1033\\nsextint.dll",&status);
 
 	if(_mstsc_exe>=fver(6,0,6000,16386) && _mstsc_exe<fver(6,0,6001,0)) {
 		*rdp60=true;
@@ -249,6 +257,13 @@ void detectOptions(bool* components) {
 		*umdf19=true;
 	}
 
+	if (  _msdaipp_dll  >fver()
+	   && _msdapml_dll  >fver()
+	   && _msonsext_dll >fver()
+	   && _nsextint_dll >fver() ) {
+		*webfldrs=true;
+	}
+
 /*
 	Test Case: <Windows Embedded Standard 2009>
 msaud32.acm	0		7.0.0.1954		*
@@ -329,8 +344,9 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* msjvm   =components+19; *msjvm=true;
 	bool* kmdf19  =components+20; *kmdf19=true;
 	bool* umdf19  =components+21; *umdf19=true;
+	bool* webfldrs=components+22; *webfldrs=true;
 
-	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0,2,2 };
+	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0,2,2,0 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -395,6 +411,8 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 		if(!wcscmp(argv[i],L"--disable-kmdf19")) { *kmdf19=false; }
 		if(!wcscmp(argv[i],L"--enable-umdf19")) { *umdf19=true; }
 		if(!wcscmp(argv[i],L"--disable-umdf19")) { *umdf19=false; }
+		if(!wcscmp(argv[i],L"--enable-webfldrs")) { *webfldrs=true; }
+		if(!wcscmp(argv[i],L"--disable-webfldrs")) { *webfldrs=false; }
 	}
 
 	// Enable all components
@@ -509,12 +527,13 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("Microsoft Java Virtual Machine (MSJVM)");
 	component.push_back("Microsoft Kernel-Mode Driver Framework 1.9");
 	component.push_back("Microsoft User-Mode Driver Framework 1.9");
+	component.push_back("Web Folders");
 
 	// Arrays to decide which options get shown for each SP level
-	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0 };
-	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0 };
-	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1 };
-	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
+	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0,1 };
+	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0,1 };
+	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1 };
+	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
 	int show[COMPONENT_COUNT];
 	for(int i=0; i<COMPONENT_COUNT; i++) {
 		switch(sp){

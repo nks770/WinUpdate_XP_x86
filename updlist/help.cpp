@@ -103,6 +103,8 @@ void show_help(const char* display_date) {
 	printf("     --disable-kmdf19      : DO NOT install Kernel-Mode Driver Framework 1.9.\n");
 	printf("     --enable-umdf19       : Install User-Mode Driver Framework 1.9. [Default]\n");
 	printf("     --disable-umdf19      : DO NOT install User-Mode Driver Framework 1.9.\n");
+	printf("     --enable-webfldrs     : Install Web Folders. [Default]\n");
+	printf("     --disable-webfldrs    : DO NOT install Web Folders.\n");
 	printf("\n");
 	printf("  Microsoft Baseline Security Analyzer (MBSA) Compare Mode:\n\n");
 	printf("   Starting the application with this flag lets you compare the results of this\n");

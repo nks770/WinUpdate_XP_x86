@@ -202,7 +202,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		} else {
 			systemComponentVersions(batch);
 			displayOptions(compInstalled,compInstall,batch,COMPONENT_COUNT,sp_to_int(splevel));
-			if(qfe) { printf("QFE Hotfixes are enabled.\n"); }
+			if(qfe) { printf("%sQFE Hotfixes are enabled.\n",batch?"echo.":""); }
 		}
 		showNotifications(batch,&notifications);
 		if(batch) {

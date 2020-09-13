@@ -65,6 +65,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool* msjvm = options+19;
 	bool* kmdf19 = options+20;
 	bool* umdf19 = options+21;
+	bool *webfldrs=options+22;
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -1105,6 +1106,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msadomd_dll = getFileVer(ado+L"\\msadomd.dll",&status);
 	fver _msador15_dll = getFileVer(ado+L"\\msador15.dll",&status);
 	fver _msadox_dll = getFileVer(ado+L"\\msadox.dll",&status);
+	fver _msdaipp_dll = getFileVer(OleDB+L"\\msdaipp.dll",&status);
+	fver _msdapml_dll = getFileVer(OleDB+L"\\msdapml.dll",&status);
 	fver _msjro_dll = getFileVer(ado+L"\\msjro.dll",&status);
 	fver _msado20_tlb = getFileVer(ado+L"\\msado20.tlb",&status);
 	fver _msado21_tlb = getFileVer(ado+L"\\msado21.tlb",&status);
@@ -1115,6 +1118,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msdaora_dll = getFileVer(OleDB+L"\\msdaora.dll",&status);
 	fver _oledb32_dll = getFileVer(OleDB+L"\\oledb32.dll",&status);
 	fver _sqloledb_dll = getFileVer(OleDB+L"\\sqloledb.dll",&status);
+
+	std::wstring WebFolders = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Web Folders";
+	fver _msonsext_dll = getFileVer(WebFolders+L"\\msonsext.dll",&status);
+	fver _nsextint_dll = getFileVer(WebFolders+L"\\1033\\nsextint.dll",&status);
 
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
@@ -1168,6 +1175,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fp4atxt_dll = getFileVer(wse_bin+L"\\fp4atxt.dll",&status);
 	fver _fp4autl_dll = getFileVer(wse_bin+L"\\fp4autl.dll",&status);
 	fver _fp4avss_dll = getFileVer(wse_bin+L"\\fp4avss.dll",&status);
+	fver _fp4awec_dll = getFileVer(wse_bin+L"\\fp4awec.dll",&status);
 	fver _fp4awel_dll = getFileVer(wse_bin+L"\\fp4awel.dll",&status);
 	fver _fpencode_dll = getFileVer(wse_bin+L"\\fpencode.dll",&status);
 	fver _fpexedll_dll = getFileVer(wse_bin+L"\\fpexedll.dll",&status);
@@ -1563,6 +1571,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			||  (_tcptest_exe  >zero && _tcptest_exe    <fver(4,0,2,7523)) )) {
 		NN("Security Update for Windows XP (KB810217)");
 		XX(p1+"windowsxp-kb810217-x86-enu_696190f151ea0bcb063f0a89471e45b.exe"+a7);
+	}
+	if( sp>=0 && (sku & XP_ALL) && ( *webfldrs || (
+		   _msdaipp_dll  > zero
+		&& _msdapml_dll  > zero
+		&& _msonsext_dll > zero
+		&& _nsextint_dll > zero )) && (
+			    (_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,3216))
+			||  (_fp4awec_dll  >zero && _fp4awec_dll  <fver(4,0,2,2611))
+			||  (_msdaipp_dll  >zero && _msdaipp_dll  <fver(12,0,4518,1014))
+			||  (_msdapml_dll  >zero && _msdapml_dll  <fver(12,0,4518,1014))
+			||  (_msonsext_dll >zero && _msonsext_dll <fver(12,0,4518,1014))
+			||  (_nsextint_dll >zero && _nsextint_dll <fver(12,0,4518,1014)) )) {
+		NN("Software Update for Web Folders (KB907306)");
+		XX(sw+p3+"Webfldrs-KB907306-ENU.exe /quiet");
+	}
+	if( sp>=0 && qfe && (sku & XP_ALL) && ( *webfldrs || (
+		   _msdaipp_dll  > zero
+		&& _msdapml_dll  > zero )) && (
+			    (_msdaipp_dll  >zero && _msdaipp_dll  <fver(12,0,6300,5000))
+			||  (_msdapml_dll  >zero && _msdapml_dll  <fver(12,0,6327,5000)) )) {
+		NN("Hotfix for Office (KB956790)");
+		XX(sw+p3+"office-kb956790-fullfile-x86-glb.exe /passive");
 	}
 	if( sp==0 && (sku & XP_ALL) && (
                   ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,53))
