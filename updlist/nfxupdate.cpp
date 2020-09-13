@@ -622,6 +622,28 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Security Update for Microsoft .NET Framework, Version 1.1 Service Pack 1 (KB928366)");
 		XX(p1+"ndp1.1sp1-kb928366-x86_20112ef50011e0de2c0e3378139245d81a178b15.exe"+n3);
 	}*/
+	/*if( sp==2 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
+		   ( _11_aspnet_isapi_dll         < fver(1,1,4322,2425))
+		|| ( _11_aspnet_wp_exe            < fver(1,1,4322,2425))
+		|| ( _11_CORPerfMonExt_dll        < fver(1,1,4322,2425))
+		|| ( _mscorees_dll                < fver(2,0,50727,253))
+		|| ( _11_mscorie_dll              < fver(1,1,4322,2425))
+		|| ( _11_mscorjit_dll             < fver(1,1,4322,2425))
+		|| ( _11_mscorld_dll              < fver(1,1,4322,2425))
+		|| ( _11_mscorlib_dll             < fver(1,1,4322,2425))
+		|| ( _11_mscorsn_dll              < fver(1,1,4322,2425))
+		|| ( _11_mscorsvr_dll             < fver(1,1,4322,2425))
+		|| ( _11_System_dll               < fver(1,1,4322,2425))
+		|| ( _11_mscorwks_dll             < fver(1,1,4322,2425))
+		|| ( _11_System_Web_dll           < fver(1,1,4322,2425)) )) {
+		NN("Security Update for Microsoft .NET Framework, Version 1.1 Service Pack 1 (KB942228)");
+//		XX(p2+"NDP1.1sp1-KB942228-X86.exe"+n3); // Shows no UI
+		XX(p2+"NDP1.1sp1-KB942228-X86.exe /Xp:%TEMP%\\KB942228\n"
+				+"pushd %TEMP%\\KB942228\n"
+				+"msiexec /update M942228.msp /passive /norestart\n"
+				+"popd\n"
+				+"rd /S /Q %TEMP%\\KB942228");
+	}*/
 	if( sp==2 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
 		   ( _11_aspnet_filter_dll        < fver(1,1,4322,2463))
 		|| ( _11_aspnet_isapi_dll         < fver(1,1,4322,2463))
@@ -689,7 +711,22 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Microsoft .NET Framework 2.0 Service Pack 2");
 		XX(np+"NetFx20SP2_x86.exe"+n6);
 	}
-
+	/*if( sp==2 && !*i_nfx20 && *v_nfx20==0 && (
+	// Patch KB917283 is only for RTM configurations.
+	// Additionally, KB917283 is replaced by KB928365.
+			( _20_aspnet_filter_dll < fver(2,0,50727,101)) )) {
+		NN("NDP 2.0 ASP.Net Security Update (KB917283)");
+		XX(sw+p2+"NDP20-KB917283-X86.exe"+n3);
+	}*/
+	/*if( sp==2 && !*i_nfx20 && *v_nfx20==0 && (
+	// Patch KB922770 is only for RTM configurations.
+	// Additionally, KB922770 is replaced by KB928365.
+			( _20_aspnet_wp_exe                          < fver(2,0,50727,210))
+		 || ( _20_webengine_dll                          < fver(2,0,50727,210))
+		 || ( _20_System_Web_dll                         < fver(2,0,50727,210)) )) {
+		NN(".NET Framework 2.0 SYSTEM.WEB.DLL Security Update (KB922770)");
+		XX(sw+p2+"NDP20-KB922770-X86.exe"+n3);
+	}*/
 //	if( sp==2 && !*i_nfx20 && *v_nfx20==0 && (
 //		// This patch (KB928365) is only for .NET 2.0 RTM.  Does not apply to post-SP1 configurations.
 //		/* No GDR */
