@@ -1573,9 +1573,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp>=0 && qfe && (sku & XP_ALL) && ( *webfldrs || (
 		   _msdaipp_dll  > zero
-		&& _msdapml_dll  > zero )) && (
+		&& _msonsext_dll  > zero )) && (
 			    (_msdaipp_dll  >zero && _msdaipp_dll  <fver(12,0,6300,5000))
-			||  (_msdapml_dll  >zero && _msdapml_dll  <fver(12,0,6327,5000)) )) {
+			||  (_msonsext_dll >zero && _msonsext_dll <fver(12,0,6327,5000)) )) {
 		NN("Hotfix for Office (KB956790)");
 		XX(sw+p3+"office-kb956790-fullfile-x86-glb.exe /passive");
 	}
