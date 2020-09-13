@@ -7396,6 +7396,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		}
 	}
 	
+	if( sp>=1 && (sku & XP_ALL) && *msxml6 ) {
+		NN("Microsoft Core XML Services (MSXML) 6.0");
+		XX(std::string("msiexec.exe /package ")+p+"msxml6.msi /passive /norestart");
+	}
 	/*if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,10,1129,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
@@ -7414,7 +7418,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft XML Core Services 6.0 and Service Pack 1 (KB933579)");
 		XX(p3+"msxml6-KB933579-enu-x86.exe REBOOT=ReallySuppress /passive /norestart");
 	}*/
-	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp==2 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2003,0))
 					  &&  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.

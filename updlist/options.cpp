@@ -346,7 +346,7 @@ void argumentOptions(int argc, _TCHAR* argv[], bool* installed, bool* components
 	bool* umdf19  =components+21; *umdf19=true;
 	bool* webfldrs=components+22; *webfldrs=true;
 
-	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,0,2,2,0,3,0,0,2,2,0 };
+	const int minimum_sp[COMPONENT_COUNT] = { 2,2,3,0,2,2,2,0,2,3,0,2,0,1,2,2,0,3,0,0,2,2,0 };
 
 	// Detect .NET Framework parameters
 	int nfxServicePack[NFX_VERSION_COUNT];
@@ -530,7 +530,7 @@ void displayOptions(bool* installed, bool* install, bool batchmode, const int nc
 	component.push_back("Web Folders");
 
 	// Arrays to decide which options get shown for each SP level
-	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0,1 };
+	const int show_rtm[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,0,0,0,1,0,1,1,0,0,1 };
 	const int show_sp1[COMPONENT_COUNT] = { 0,0,0,1,0,0,0,1,0,0,1,0,1,1,0,0,1,0,1,1,0,0,1 };
 	const int show_sp2[COMPONENT_COUNT] = { 1,1,0,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,1,1 };
 	const int show_sp3[COMPONENT_COUNT] = { 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 };
