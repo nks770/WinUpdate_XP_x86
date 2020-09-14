@@ -7358,6 +7358,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2916036-x86-ENU.exe"+a1);
 	}
 
+	
+	if( sp>=0 && (sku & XP_ALL) && (*msxml4 || (
+		(_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9818,0))
+	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0))) )) {
+		NN("MSXML 4.0 Service Pack 2 (Microsoft XML Core Services)");
+		XX(std::string("msiexec.exe /i ")+p+"msxml.msi /qb");
+	}
+	/*if( sp==0 && (sku & XP_ALL) && (
+	    (_msxml4_dll  >zero && _msxml4_dll  <fver(4,0,9406,0))
+	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,0,9406,0))
+	 || ((_msxml4_dll>zero || _msxml4r_dll>zero || *msxml4) && _WINHTTP5_DLL<fver(5,0,2613,0)) )){
+		NN("Security Update, February 13, 2002 (MSXML 4.0)");
+		XX(sw+rtm+"q317244_21ecede68f96753e7cb328ef7473711f9f3b4115.exe"+a2);
+	}*/
 	/*if( sp>=0 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9848,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
@@ -7368,24 +7382,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"msxml4-KB936181-enu.exe"+a3);
 		}
 	}*/
-	/*if( sp>=0 && (*msxml4 || ((sku & XP_ALL) && (
+	if( sp<2 && (*msxml4 || ((sku & XP_ALL) && (
+		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9841,0))
+					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
+		NN("MSXML 4.0 SP2 Security Update (KB927978)");
+		if(_msiexec_exe  <fver(3,0,0,0)) {
+			XX(p1+"msxml4-KB927978-enu.exe REBOOT=ReallySuppress /qb");
+		} else {
+			XX(p1+"msxml4-KB927978-enu.exe"+a3);
+		}
+	}
+	if( sp==2 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9870,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
 		NN("Security Update for Microsoft XML Core Services 4.0 Service Pack 2 (KB954430)");
 		if(_msiexec_exe  <fver(3,0,0,0)) {
-			XX(p3+"msxml4-KB954430-enu.exe REBOOT=ReallySuppress /qb");
+			XX(p2+"msxml4-KB954430-enu.exe REBOOT=ReallySuppress /qb");
 		} else {
-			XX(p3+"msxml4-KB954430-enu.exe"+a3);
+			XX(p2+"msxml4-KB954430-enu.exe"+a3);
 		}
-	}*/
-	if( sp==0 && (sku & XP_ALL) && (
-	    (_msxml4_dll  >zero && _msxml4_dll  <fver(4,0,9406,0))
-	 || (_msxml4r_dll >zero && _msxml4r_dll <fver(4,0,9406,0))
-	 || ((_msxml4_dll>zero || _msxml4r_dll>zero || *msxml4) && _WINHTTP5_DLL<fver(5,0,2613,0)) )){
-		NN("Security Update, February 13, 2002 (MSXML 4.0)");
-		XX(sw+rtm+"q317244_21ecede68f96753e7cb328ef7473711f9f3b4115.exe"+a2);
 	}
-	if( sp>=0 && (*msxml4 || ((sku & XP_ALL) && (
+	if( sp==3 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,30,2117,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,30,2100,0)))))) {
 		NN("Security Update for Microsoft XML Core Services 4.0 Service Pack 3 (KB2758694)");
@@ -7396,9 +7413,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		}
 	}
 	
+
 	if( sp>=1 && (sku & XP_ALL) && *msxml6 ) {
 		NN("Microsoft Core XML Services (MSXML) 6.0");
 		XX(std::string("msiexec.exe /package ")+p+"msxml6.msi /passive /norestart");
+	}
+	if( sp==1 && (*msxml6 || ((sku & XP_ALL) && ( 
+		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,0,3890,0))
+					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
+		NN("MSXML 6.0 RTM Security Update (KB927977)");
+		XX(p1+"msxml6-kb927977-enu-x86_9db9b1c3784a015ebe31bf3a84f92ac453aead5f.exe"+a3);
 	}
 	/*if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,10,1129,0))
@@ -7406,24 +7430,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Microsoft Core XML Services (MSXML) 6.0 Service Pack 1 (KB934268)");
 		XX(p+"msxml6sp1-kb934268-enu-x86_dac3db6bec59d839c713a6a2d1e169fd7dec1e25.exe"+a3);
 	}
-	if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
-		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,1099,0))))) {
-		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB954459)");
-		NN(p+"windowsxp-kb954459-x86-enu_a409813d4541734043c419d399d20a463b52f8e1.exe"+a1);
-	}*/
-	/*if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,10,1200,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
 		NN("Security Update for Microsoft XML Core Services 6.0 and Service Pack 1 (KB933579)");
 		XX(p3+"msxml6-KB933579-enu-x86.exe REBOOT=ReallySuppress /passive /norestart");
-	}*/
+	}
+	if( sp>=2 && (*msxml6 || ((sku & XP_ALL) && ( 
+		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,1099,0))))) {
+		NN("Security Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB954459)");
+		NN(p+"windowsxp-kb954459-x86-enu_a409813d4541734043c419d399d20a463b52f8e1.exe"+a1);
+	}
+	*/
 	if( sp==2 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2003,0))
 					  &&  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 	// To install MSXML 6.0 you must have Microsoft Windows(R) Installer 3.1 (MSI 3.1) or higher on your computer.
 		NN("Update for Microsoft XML Core Services 6.0 Service Pack 2 (KB973686)");
-		XX(p3+"msxml6-kb973686-enu-x86_e139664a78bc2806cf0c5bcf0bedec7ea073c3b1.exe REBOOT=ReallySuppress /passive /norestart");
+		XX(p2+"msxml6-kb973686-enu-x86_e139664a78bc2806cf0c5bcf0bedec7ea073c3b1.exe REBOOT=ReallySuppress /passive /norestart");
 	}
 	/*if( sp>=0 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,20,2017,0))
