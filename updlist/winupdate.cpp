@@ -6592,6 +6592,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 9 for Windows XP SP2 (KB979402)");
 		XX(p2+"windowsxp-sp2-windowsmedia-kb979402-x86-enu_09cff283401228cd946081159b796d5d1abdfbd3.exe"+a1);
 	}
+	/*if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3354)) {
+		NN("Security Update for Windows Media Player 9 (KB936782)"); // Replaced by KB973540/KB979402
+		XX(p3+"windowsmedia9-kb936782-x86-enu_3a49a6df67d0d6966a93395d576cf43598f57c8e.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,4058)) {
+		NN("Security Update for Windows Media Player 10 for Windows XP (KB936782)"); // Replaced by KB973540
+		XX(p3+"windowsmedia10-kb936782-x86-enu_d36bcde4de10fd6a91fef475258036f021e94538.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(11,0,5721,5145) && _wmp_dll<fver(11,0,5721,5230)) {
+		NN("Security Update for Windows Media Player 11 for Windows XP (KB936782)"); // Replaced by KB973540
+		XX(p3+"windowsmedia11-kb936782-x86-enu_d5ecf4426e64e606633cc10d9c19086f2d2a07bf.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && ((_wmp_dll  >=fver(9,0,0,2980) /* WM9 Section */
 		                 && _wmpdxm_dll >=fver(9,0,0,2980)
 					     && (_wmp_dll<fver(9,0,0,4507) || _wmpdxm_dll<fver(9,0,0,4507)))
