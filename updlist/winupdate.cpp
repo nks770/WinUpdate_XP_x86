@@ -6566,7 +6566,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3802) && _wmp_dll<fver(10,0,0,4062)) {
 		NN("Hotfix for Windows Media Player 10 (KB949056)"); // Replaced by KB973540 on SP2+
-		XX(p3+"windowsmedia10-kb949056-x86-intl.exe"+a1);
+		XX(p1+"windowsmedia10-kb949056-x86-intl.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
 					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
