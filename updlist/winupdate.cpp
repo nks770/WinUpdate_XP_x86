@@ -6976,6 +6976,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows Media Format 11 SDK for Windows XP (KB929399)");
 		XX(p3+"windowsmedia11-kb929399-v2-x86-intl_50e2bc6b5e79909a0061043e6211600548368431.exe"+a1);
 	}
+	if( sp>=1 && !kb913800 && (sku & XP_ALL) && _wpdmtpdr_dll>=fver(5,2,3790,3646) && _wpdmtpdr_dll<fver(5,2,3810,4045)) {
+		NN("Hotfix for Windows Media Format SDK (KB922814)");
+		XX(p3+"windowsmedia10-kb922814-x86-intl.exe"+a1);
+	}
+
+
 
 	if( sp==3 && (sku & XP_ALL) && _infocomm_dll>zero && _infocomm_dll<fver(6,0,2600,6018)) {
 		NN("Security Update for Windows XP (KB2290570)");
@@ -7414,11 +7420,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	
 
-	if( sp>=1 && (sku & XP_ALL) && *msxml6 ) {
+	if( sp>=1 && (sku & XP_ALL) && (_msiexec_exe >=fver(3,1,4000,1823)) && *msxml6 ) {
 		NN("Microsoft Core XML Services (MSXML) 6.0");
 		XX(std::string("msiexec.exe /package ")+p+"msxml6.msi /passive /norestart");
 	}
-	if( sp==1 && (*msxml6 || ((sku & XP_ALL) && ( 
+	if( sp==1 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,0,3890,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
 		NN("MSXML 6.0 RTM Security Update (KB927977)");
