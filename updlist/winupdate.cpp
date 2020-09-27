@@ -627,6 +627,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usp10_dll    = getFileVer(System32+L"\\usp10.dll",&status);
 	fver _utilman_exe  = getFileVer(System32+L"\\utilman.exe",&status);
 	fver _uwdf_exe     = getFileVer(System32+L"\\uwdf.exe",&status);
+	fver _uxtheme_dll  = getFileVer(System32+L"\\uxtheme.dll",&status);
 	fver _vbajet32_dll = getFileVer(System32+L"\\vbajet32.dll",&status);
 	fver _vbicodec_ax  = getFileVer(System32+L"\\vbicodec.ax",&status);
 	fver _vbscript_dll = getFileVer(System32+L"\\vbscript.dll",&status);
@@ -4056,6 +4057,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _wscsvc_dll  >zero && _wscsvc_dll  <fver(5,1,2600,2604)) )) {
 		NN("Update for Windows XP (KB892489)");
 		XX(p2+"WindowsXP-KB892489-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _uxtheme_dll  >zero && _uxtheme_dll  <fver(6,0,2900,2523)) )) {
+		NN("Update for Windows XP (KB319740)");
+		XX(p2+"WindowsXP-KB319740-v5-x86-ENU.exe"+a1);
 	}
 
 	// Windows XP SP3 updates;
