@@ -2929,6 +2929,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB980195)");
 		XX(p2+"windowsxp-kb980195-x86-enu_5e9692a99ed5f78af0ce82f7aa5e87b1cd5bf958.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2695962")
+		                        || !kb2695962_installed() )) {
+		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB2695962)");
+		XX(p3+"WindowsXP-KB2695962-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2900986")
 		                        || !kb2900986_installed())) {
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB2900986)");
