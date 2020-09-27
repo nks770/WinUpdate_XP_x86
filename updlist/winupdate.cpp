@@ -7057,6 +7057,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Player 11 (KB954067)"); // Replaced by KB978695+KB2834904 on SP3
 		XX(p2+"windowsmedia11-kb954067-x86-intl.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && _wmvdecod_dll>=fver(11,0,5721,5145) && _wmvdecod_dll<fver(11,0,5721,5268)) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB973442)"); // Replaced by KB2834904 on SP3
+		XX(p2+"windowsmedia11-kb973442-x86-intl.exe"+a1);
+	}
 
 
 	if( sp==3 && (sku & XP_ALL) && _infocomm_dll>zero && _infocomm_dll<fver(6,0,2600,6018)) {
