@@ -2529,7 +2529,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB970238)");
 		XX(p2+"windowsxp-kb970238-x86-enu_82bd58dd365d93afa746a4beaf2a1ad5b8d5181a.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,3244)) {
+	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2505)) {
+		NN("Update for Windows XP Service Pack 2 (KB884020)");
+		XX(p2+"WindowsXP-KB884020-x86-enu.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,3244)) {
 		// KB941644 is replaced by KB951748 on SP2
 		NN("Security Update for Windows XP (KB941644)");
 		XX(p+"windowsxp-kb941644-x86-enu_69bd9e4e22c97592dca087165e4fef304230f7a5.exe"+a1);
@@ -4063,6 +4067,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB319740)");
 		XX(p2+"WindowsXP-KB319740-v5-x86-ENU.exe"+a1);
 	}
+	
 
 	// Windows XP SP3 updates;
 	if( sp==3 && (sku & XP_ALL) && _packager_exe>zero && _packager_exe<fver(5,1,2600,6176)) {
