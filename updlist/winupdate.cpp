@@ -7045,6 +7045,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Player 11 (KB944882)");
 		XX(p3+"windowsmedia11-kb944882-x86-intl.exe"+a1);
 	}
+	/*if( sp>=2 && (sku & XP_ALL) && _wmvcore_dll>=fver(11,0,5721,5145) && _wmvcore_dll<fver(11,0,5721,5245)) {
+		NN("Hotfix for Windows Media Player 11 (KB946665)"); // Replaced by KB952069 & KB978695
+		XX(p3+"windowsmedia11-kb946665-x86-intl.exe"+a1);
+	}*/
 
 
 
