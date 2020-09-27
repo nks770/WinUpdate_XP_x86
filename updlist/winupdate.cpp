@@ -6996,6 +6996,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format SDK (KB922814)");
 		XX(p3+"windowsmedia10-kb922814-x86-intl.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL)
+			&& _drmv2clt_dll >= fver(11,0,5721,5145)
+			&& _wmdrmnet_dll >= fver(11,0,5721,5145)
+			&& _wmdrmsdk_dll >= fver(11,0,5721,5145)
+			&& ( _drmv2clt_dll < fver(11,0,5721,5203)
+			  || _wmdrmnet_dll < fver(11,0,5721,5203)
+			  || _wmdrmsdk_dll < fver(11,0,5721,5203) )) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB928788)");
+		XX(p3+"windowsmedia11-kb928788-x86-intl.exe"+a1);
+	}
 
 
 
