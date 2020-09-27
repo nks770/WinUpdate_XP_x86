@@ -7022,6 +7022,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format 11 SDK (KB935551)"); // Replaced by KB3067903 on SP3
 		XX(p2+"windowsmedia11-kb935551-x86-intl.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL)
+			&& _wpdmtpdr_dll >= fver(5,2,5721,5145)
+			&& _wpdmtpus_dll >= fver(5,2,5721,5145)
+			&& ( _wpdmtpdr_dll < fver(5,2,5721,5223)
+			  || _wpdmtpus_dll < fver(5,2,5721,5223) )) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB935552)");
+		XX(p3+"windowsmedia11-kb935552-x86-intl.exe"+a1);
+	}
 
 
 
