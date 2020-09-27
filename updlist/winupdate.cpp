@@ -7018,6 +7018,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format 11 SDK (KB933547)");
 		XX(p3+"windowsmedia11-kb933547-x86-intl.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && _cewmdm_dll>=fver(11,0,5721,5145) && _cewmdm_dll<fver(11,0,5721,5220)) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB935551)"); // Replaced by KB3067903 on SP3
+		XX(p2+"windowsmedia11-kb935551-x86-intl.exe"+a1);
+	}
 
 
 
