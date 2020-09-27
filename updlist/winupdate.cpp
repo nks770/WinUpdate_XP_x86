@@ -3057,10 +3057,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB932823)");
 		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5971)) {
-		NN("Update for Windows XP (KB981793)");
-		XX(p2+"windowsxp-kb981793-x86-enu_e1363fb1d582b860c3e25b2bbfbc0b7f38a8b44b.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) /*&& _aclayers_dll>zero*/ && _aclayers_dll<fver(5,1,2600,3647)) {
 	//if( sp==3 && (sku & XP_ALL) /*&& _aclayers_dll>zero*/ && _aclayers_dll<fver(5,1,2600,5906)) {
 		NN("Update for Windows XP (KB955759)");
@@ -4388,14 +4384,31 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2922229)");
 		XX(p3+"WindowsXP-KB2922229-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5971)) {
+		NN("Update for Windows XP (KB981793)");
+		XX(p2+"windowsxp-kb981793-x86-enu_e1363fb1d582b860c3e25b2bbfbc0b7f38a8b44b.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6188)) {
+		NN("Update for Windows XP (KB2657025)");
+		XX(p3+"WindowsXP-KB2657025-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6479)) {
 		NN("Update for Windows XP (KB2904266)");
 		XX(p3+"WindowsXP-KB2904266-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _wab_exe>zero && _wab_exe<fver(6,0,2900,6040)) {
-		NN("Security Update for Windows XP (KB2423089)");
-		XX(p3+"WindowsXP-KB2423089-x86-ENU.exe"+a1);
+	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
+		NN("Update for WES09 and POSReady 2009 (KB4468323)");
+		XX(p3+"windowsxp-kb4468323-x86-embedded-enu_6a46468fe73b3b793934d70768ab2c4ce11a03ab.exe"+a1);
 	}
+	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7654)) {
+		NN("2019-03 Update for POSReady 2009 for x86-based Systems (KB4487989)");
+		XX(p3+"windowsxp-kb4487989-x86-embedded-enu_3c32c4f284fcd7208b3cf4428320e95a27513c3a.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_POSREADY2009) && _tzchange_exe<fver(5,1,2600,7676)) {
+		NN("2019-04 Update for POSReady 2009 for x86-based Systems (KB4487990)");
+		XX(p3+"windowsxp-kb4487990-x86-embedded-enu_8a1f84ccfc4cdcb9536864fa91ae82ef62cb3e79.exe"+a1);
+	}
+	
 	if((sp==2 && (sku & XP_ALL) && ( ( _exfat_sys   < fver(5,1,2600,3453))
 		||   ( _fmifs_dll   < fver(5,1,2600,3453))
 		||   ( _format_com > zero && _format_com  < fver(5,1,2600,3453))
@@ -4938,10 +4951,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4467689)");
 		XX(p3+"windowsxp-kb4467689-x86-embedded-enu_b974cbc4675474ddb38c41f7926f493cde207eee.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
-		NN("Update for WES09 and POSReady 2009 (KB4468323)");
-		XX(p3+"windowsxp-kb4468323-x86-embedded-enu_6a46468fe73b3b793934d70768ab2c4ce11a03ab.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && _scrrun_dll>zero && _scrrun_dll<fver(5,7,6002,24514)) {
 		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4470118)");
 		XX(p3+"windowsxp-kb4470118-x86-embedded-enu_eb3fe70a186545d1745f48eda37ecf21a1d330d9.exe"+a1);
@@ -4983,14 +4992,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _msjet40_dll>zero && _msjet40_dll<fver(4,0,9801,8)) {
 		NN("2019-02 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4487385)");
 		XX(p3+"windowsxp-kb4487385-x86-embedded-enu_2556bb7bd7217d6295d877c731c07acd62c9c59c.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7654)) {
-		NN("2019-03 Update for POSReady 2009 for x86-based Systems (KB4487989)");
-		XX(p3+"windowsxp-kb4487989-x86-embedded-enu_3c32c4f284fcd7208b3cf4428320e95a27513c3a.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_POSREADY2009) && _tzchange_exe<fver(5,1,2600,7676)) {
-		NN("2019-04 Update for POSReady 2009 for x86-based Systems (KB4487990)");
-		XX(p3+"windowsxp-kb4487990-x86-embedded-enu_8a1f84ccfc4cdcb9536864fa91ae82ef62cb3e79.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && (_msfs_sys>zero && _msfs_sys<fver(5,1,2600,7657))) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489493)");
@@ -5405,6 +5406,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_wabmig_exe >zero && _wabmig_exe <fver(6,0,2800,1807)) )) {
 		NN("Cumulative Security Update for Outlook Express 6 Service Pack 1 (KB911567)");
 		XX(p1+"oe6.0sp1-kb911567-windows-2000-xp-x86-enu_4d946bdca2160231bd638c04c83f226cda161ca1.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _wab_exe>zero && _wab_exe<fver(6,0,2900,6040)) {
+		NN("Security Update for Windows XP (KB2423089)");
+		XX(p3+"WindowsXP-KB2423089-x86-ENU.exe"+a1);
 	}
 	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3198)) {
 		// KB941202 is replaced by KB978542 on SP2
