@@ -7010,6 +7010,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format 11 SDK (KB929773)");
 		XX(p3+"windowsmedia11-kb929773-x86-intl.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && _WMSPDMOE_dll>=fver(11,0,5721,5145) && _WMSPDMOE_dll<fver(11,0,5721,5210)) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB932390)");
+		XX(p3+"windowsmedia11-kb932390-x86-intl.exe"+a1);
+	}
 
 
 
