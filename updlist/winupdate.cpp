@@ -4388,11 +4388,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2922229)");
 		XX(p3+"WindowsXP-KB2922229-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( (_crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6459))
-					  ||  ( _xpsp4res_dll<fver(5,1,2600,6459)) )) {
-		NN("Security Update for Windows XP (KB2868626)");
-		XX(p3+"WindowsXP-KB2868626-x86-ENU.exe"+a1);
-	}
 	if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6479)) {
 		NN("Update for Windows XP (KB2904266)");
 		XX(p3+"WindowsXP-KB2904266-x86-ENU.exe"+a1);
@@ -4453,10 +4448,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975467)");
 		XX(p3+"windowsxp-kb975467-x86-enu_703673b065074bb9dd7d849f420e52ea0d343f8d.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6154) ) {
+		NN("Update for Windows XP (KB2641690)");
+		XX(p3+"WindowsXP-KB2641690-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && ( (_crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,6369))
 					  ||  ( _cryptdlg_dll >zero && _cryptdlg_dll <fver(5,1,2600,6369)) )) {
 		NN("Update for Windows XP (KB2808679)");
 		XX(p3+"WindowsXP-KB2808679-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && ( (_crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6459))
+					  /*||  ( _xpsp4res_dll<fver(5,1,2600,6459))*/ )) {
+		NN("Security Update for Windows XP (KB2868626)");
+		XX(p3+"WindowsXP-KB2868626-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (/*_aclayers_dll>zero &&*/ _aclayers_dll<fver(5,1,2600,6093)) )) {
 		NN("Update for Windows XP (KB2492386)");
