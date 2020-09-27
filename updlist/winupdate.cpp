@@ -524,6 +524,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
+	fver _PortableDeviceWMDRM_dll = getFileVer(System32+L"\\PortableDeviceWMDRM.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
@@ -7039,6 +7040,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && (sku & XP_ALL) && _qasf_dll>=fver(11,0,5721,5145) && _qasf_dll<fver(11,0,5721,5233)) {
 		NN("Hotfix for Windows Media Format 11 SDK (KB939209)");
 		XX(p3+"windowsmedia11-kb939209-x86-intl.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _PortableDeviceWMDRM_dll>=fver(5,2,5721,5145) && _PortableDeviceWMDRM_dll<fver(5,2,5721,5241)) {
+		NN("Hotfix for Windows Media Player 11 (KB944882)");
+		XX(p3+"windowsmedia11-kb944882-x86-intl.exe"+a1);
 	}
 
 
