@@ -4073,14 +4073,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2620712)");
 		XX(p3+"WindowsXP-KB2620712-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,6055))
-		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6055))
-					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6055))
-					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6055))
-					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6055)) )) {
-		NN("Security Update for Windows XP (KB2393802)");
-		XX(p3+"WindowsXP-KB2393802-x86-ENU.exe"+a1);
-	}
 	if( sp==3 && (sku & XP_ALL) && _lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,6058)) {
 		NN("Security Update for Windows XP (KB2478960)");
 		XX(p3+"WindowsXP-KB2478960-x86-ENU.exe"+a1);
@@ -4096,14 +4088,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && !checkCertificates("Disallowed")) {
 		NN("Update for Certificate Revocation List [March 2015] (KB3050995)");
 		XX(sw+p3+"rvkroots_3f2ce4676450c06f109b5b4e68bec252873ccc21.exe");
-	}
-	if( sp==3 && (sku & XP_ALL) && ( (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,6206))
-		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6206))
-					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6206))
-					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6206))
-					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6206)) )) {
-		NN("Security Update for Windows XP (KB2676562)");
-		XX(p3+"WindowsXP-KB2676562-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_afd_sys>zero && _afd_sys<fver(5,1,2600,5695))
 		              ||  (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,6089))
@@ -4211,6 +4195,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2807986)");
 		XX(p3+"WindowsXP-KB2807986-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && ( (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,6055))
+		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6055))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6055))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6055))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6055)) )) {
+		NN("Security Update for Windows XP (KB2393802)");
+		XX(p3+"WindowsXP-KB2393802-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && ( (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,6206))
+		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6206))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6206))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6206))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6206)) )) {
+		NN("Security Update for Windows XP (KB2676562)");
+		XX(p3+"WindowsXP-KB2676562-x86-ENU.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XP_ALL) && ( (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6368))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6368))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6368))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6368)) )) {
+		NN("Security Update for Windows XP (KB2813170)"); // Replaced by KB2859537
+		XX(p3+"WindowsXP-KB2813170-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && ( (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6419))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6419))
 					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6419))
