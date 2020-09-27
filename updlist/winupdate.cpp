@@ -4469,6 +4469,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==3 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6154) ) {
 		NN("Update for Windows XP (KB2641690)");
 		XX(p3+"WindowsXP-KB2641690-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6237) ) {
+		NN("Update for Windows XP (KB2718704)");
+		XX(p3+"WindowsXP-KB2718704-x86-ENU.exe"+a1);
 	}*/
 	if( sp==3 && (sku & XP_ALL) && ( (_crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,6369))
 					  ||  ( _cryptdlg_dll >zero && _cryptdlg_dll <fver(5,1,2600,6369)) )) {
