@@ -1332,6 +1332,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdiplus_dll_23746 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23746_x-ww_f761c0dd\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_23930 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23930_x-ww_f85cdf9a\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_23984 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.23984_x-ww_f861e0d9\\GdiPlus.dll",&status);
+	fver _gdiplus_dll_24017 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24017_x-ww_22732459\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_24064 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24064_x-ww_22782591\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_24072 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24072_x-ww_227925ce\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_24180 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6002.24180_x-ww_22f8358c\\GdiPlus.dll",&status);
@@ -4601,14 +4602,89 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB2926765)");
 		XX(p3+"windowsxp-kb2926765-x86-embedded-enu_fd1b4b0791354fab04ae68907436cab0c8676665.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23386<fver(5,2,6002,23386)) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB2957503)");
-		XX(p3+"windowsxp-kb2957503-x86-embedded-enu_34e002ae983c5a61dced1e5cb41d81e714a6cfbd.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5781))
 					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,5753)) )) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB2993651)");
 		XX(p3+"windowsxp-kb2993651-x86-embedded-enu_60107e4eed4850513f41778ad3a9caef35d893b8.exe"+a1);
+	}
+
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23386<fver(5,2,6002,23386)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB2957503)");
+		XX(p3+"windowsxp-kb2957503-x86-embedded-enu_34e002ae983c5a61dced1e5cb41d81e714a6cfbd.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23535<fver(5,2,6002,23535)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3013126)");
+		XX(p3+"windowsxp-kb3013126-x86-embedded-enu_a7485236ec7df12c907ac232c4d8778df1936f43.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23588<fver(5,2,6002,23588)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3029944)");
+		XX(p3+"windowsxp-kb3029944-x86-embedded-enu_ecdc1784751745ae36f14c6a964f1d9701baefad.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23609<fver(5,2,6002,23609)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3035132)");
+		XX(p3+"windowsxp-kb3035132-x86-embedded-enu_8e7607ac53706be4b440013f5c82725c2a94a6d2.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23693<fver(5,2,6002,23693)) {
+		NN("Update for WEPOS and POSReady 2009 (KB3065979)");
+		XX(p3+"windowsxp-kb3065979-x86-embedded-enu_fe0a4fbb1fcb7c6062ae3ff88dcbf388f1ec4b07.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( (_atmfd_dll>zero && _atmfd_dll<fver(5,1,2,245))
+					  ||  ( _gdiplus_dll_23746<fver(5,2,6002,23746)) )) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3078601)");
+		XX(p3+"windowsxp-kb3078601-x86-embedded-enu_9f428ed1e710bced0702b4097846d36429a93202.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7051))
+					  ||  ( _gdiplus_dll_23930<fver(5,2,6002,23930)) )) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3145739)");
+		XX(p3+"windowsxp-kb3145739-x86-embedded-enu_e958811dbe4188202eda69cdc9e797a4ae1dc923.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23984<fver(5,2,6002,23984)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB3178034)");
+		XX(p3+"windowsxp-kb3178034-x86-embedded-enu_cb20691577ade771359e8a680e75d8f0872ff5f4.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( _gdiplus_dll_24017<fver(5,2,6002,24017)
+					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7130)) )) {
+		NN("Security Update for WES09 and POSReady 2009 (KB3191203)");
+		XX(p3+"WindowsXP-KB3191203-x86-Embedded-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24072<fver(5,2,6002,24072)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4015383)");
+		XX(p3+"windowsxp-kb4015383-x86-embedded-enu_f2891bd693ccc72eac9aba102aed25687df5a85c.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ((_usp10_dll>zero && _usp10_dll<fver(1,420,2600,7334))
+		              ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7334))
+					  ||  (_gdiplus_dll_24180<fver(5,2,6002,24180)) )) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4039384)");
+		XX(p3+"windowsxp-kb4039384-x86-embedded-enu_6aabfe977264b12c8331500d97053134de7d0738.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7535))
+					  ||  ( _gdiplus_dll_24439<fver(5,2,6002,24439)) )) {
+		NN("2018-08 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4343674)");
+		XX(p3+"windowsxp-kb4343674-x86-embedded-enu_ca27aebe8d7a210ffbc67934c144627a9d6f5463.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,7553))
+		              ||  ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7553))
+					  ||  ( _gdiplus_dll_24465<fver(5,2,6002,24465)) )) {
+		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458000)");
+		XX(p3+"windowsxp-kb4458000-x86-embedded-enu_cd9e39263c1b198b9d0a22529100434d3bd20e90.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24489<fver(5,2,6002,24489)) {
+		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4462987)");
+		XX(p3+"windowsxp-kb4462987-x86-embedded-enu_2ca3c3b7b4e2f9bee24af4e46eeb7e4624aabd3d.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24533<fver(5,2,6002,24533)) {
+		NN("2018-12 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4473077)");
+		XX(p3+"windowsxp-kb4473077-x86-embedded-enu_2472bfb0a1921bccc30621166b26004b22203e63.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7663))
+					  ||  (_gdiplus_dll_24561<fver(5,2,6002,24561)) )) {
+		NN("Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4487085)");
+		XX(p3+"windowsxp-kb4487085-v2-x86-embedded-enu_667f051ffe98ff99495e9b6ede2b8c321aba1ca3.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ( ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7666))
+					  ||  ( _gdiplus_dll_24563<fver(5,2,6002,24563)) )) {
+		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4490385)");
+		XX(p3+"windowsxp-kb4490385-x86-embedded-enu_47b193ff117da1c86efc4d275b52a829c5cb00b9.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_mqac_sys>zero && _mqac_sys<fver(5,1,0,1111))
 					  ||  (_mqqm_dll>zero && _mqqm_dll<fver(5,1,0,1111)) )) {
@@ -4618,10 +4694,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _fastfat_sys>zero && _fastfat_sys<fver(5,1,2600,6630)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB2998579)");
 		XX(p3+"windowsxp-kb2998579-x86-embedded-enu_166f21272c3e54fa2430ca1231b65d870ac1a1bc.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23535<fver(5,2,6002,23535)) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3013126)");
-		XX(p3+"windowsxp-kb3013126-x86-embedded-enu_a7485236ec7df12c907ac232c4d8778df1936f43.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _tlntsess_exe>zero && _tlntsess_exe<fver(5,1,2600,6705)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3020393)");
@@ -4635,22 +4707,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB3004361)");
 		XX(p3+"windowsxp-kb3004361-x86-embedded-enu_47e4ec000eca37d76a17a45d1f17ac181849b45b.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23588<fver(5,2,6002,23588)) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3029944)");
-		XX(p3+"windowsxp-kb3029944-x86-embedded-enu_ecdc1784751745ae36f14c6a964f1d9701baefad.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && _msctf_dll>zero && _msctf_dll<fver(5,1,2600,6727)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3033889)");
 		XX(p3+"windowsxp-kb3033889-x86-embedded-enu_97084ab0bd0fe1c7097c6d176d61d85cc28a3609.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23609<fver(5,2,6002,23609)) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3035132)"); 
-		XX(p3+"windowsxp-kb3035132-x86-embedded-enu_8e7607ac53706be4b440013f5c82725c2a94a6d2.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( (_atmfd_dll>zero && _atmfd_dll<fver(5,1,2,245))
-					  ||  ( _gdiplus_dll_23746<fver(5,2,6002,23746)) )) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3078601)");
-		XX(p3+"windowsxp-kb3078601-x86-embedded-enu_9f428ed1e710bced0702b4097846d36429a93202.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_atmfd_dll>zero && _atmfd_dll<fver(5,1,2,246))
 					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,6908)) )) {
@@ -4703,11 +4762,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB3140709)");
 		XX(p3+"windowsxp-kb3140709-x86-embedded-enu_26891d26d98b012dd5b42112b7e692a5cae56cdf.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && ( (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7051))
-					  ||  ( _gdiplus_dll_23930<fver(5,2,6002,23930)) )) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3145739)");
-		XX(p3+"windowsxp-kb3145739-x86-embedded-enu_e958811dbe4188202eda69cdc9e797a4ae1dc923.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && ( (_lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,7049))
 					  ||  (_samsrv_dll>zero && _samsrv_dll<fver(5,1,2600,7049)) )) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3149090)");
@@ -4732,10 +4786,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_printui_dll>zero && _printui_dll<fver(5,1,2600,7094)) )) {
 		NN("Security Update for WES09 and POSReady 2009 (KB3170455)");
 		XX(p3+"windowsxp-kb3170455-x86-embedded-enu_c49f5af4f42870c20dc1f5bc1c848405dc8ad197.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23984<fver(5,2,6002,23984)) {
-		NN("Security Update for WES09 and POSReady 2009 (KB3178034)");
-		XX(p3+"windowsxp-kb3178034-x86-embedded-enu_cb20691577ade771359e8a680e75d8f0872ff5f4.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_user32_dll>zero && _user32_dll<fver(5,1,2600,7121))
 					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7121)) )) {
@@ -4770,10 +4820,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _asycfilt_dll>zero && _asycfilt_dll<fver(5,1,2600,7225)) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4014794)");
 		XX(p3+"windowsxp-kb4014794-x86-embedded-enu_ffefa30f0b989917a75cd5474576c6155d17d420.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24072<fver(5,2,6002,24072)) {
-		NN("Security Update for WES09 and POSReady 2009 (KB4015383)");
-		XX(p3+"windowsxp-kb4015383-x86-embedded-enu_f2891bd693ccc72eac9aba102aed25687df5a85c.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,7292)) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4022746)");
@@ -4813,12 +4859,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_msxbde40_dll>zero && _msxbde40_dll<fver(4,0,9801,0)) )) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4034775)");
 		XX(p3+"windowsxp-kb4034775-x86-embedded-enu_0c5c2f6822400aaf9fb2daf450e6373be2255e75.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ((_usp10_dll>zero && _usp10_dll<fver(1,420,2600,7334))
-		              ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7334))
-					  ||  (_gdiplus_dll_24180<fver(5,2,6002,24180)) )) {
-		NN("Security Update for WES09 and POSReady 2009 (KB4039384)");
-		XX(p3+"windowsxp-kb4039384-x86-embedded-enu_6aabfe977264b12c8331500d97053134de7d0738.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ((_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,7348))
 					  ||    (_srv_sys   >zero && _srv_sys   <fver(5,1,2600,7348)) )) {
@@ -4905,20 +4945,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-07 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4339291)");
 		XX(p3+"windowsxp-kb4339291-x86-embedded-enu_093848f3c816e2814c7cda1baab07f00e0ac5917.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && ( ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7535))
-					  ||  ( _gdiplus_dll_24439<fver(5,2,6002,24439)) )) {
-		NN("2018-08 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4343674)");
-		XX(p3+"windowsxp-kb4343674-x86-embedded-enu_ca27aebe8d7a210ffbc67934c144627a9d6f5463.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && _shell32_dll>zero && _shell32_dll<fver(6,0,2900,7551)) {
 		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4457163)");
 		XX(p3+"windowsxp-kb4457163-x86-embedded-enu_6079ca40413cb788b625ebc6c4b8b802fa3bca57.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,7553))
-		              ||  ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7553))
-					  ||  ( _gdiplus_dll_24465<fver(5,2,6002,24465)) )) {
-		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458000)");
-		XX(p3+"windowsxp-kb4458000-x86-embedded-enu_cd9e39263c1b198b9d0a22529100434d3bd20e90.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_fontsub_dll>zero && _fontsub_dll<fver(5,1,2600,7563))
 					  ||  (_t2embed_dll>zero && _t2embed_dll<fver(5,1,2600,7563)) )) {
@@ -4943,10 +4972,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,7570)) {
 		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4462935)");
 		XX(p3+"windowsxp-kb4462935-x86-embedded-enu_b5de399aa37284c81ca1e26ffb93893db035ec17.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24489<fver(5,2,6002,24489)) {
-		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4462987)");
-		XX(p3+"windowsxp-kb4462987-x86-embedded-enu_2ca3c3b7b4e2f9bee24af4e46eeb7e4624aabd3d.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,7581))
 		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7581))
@@ -4980,10 +5005,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4470118)");
 		XX(p3+"windowsxp-kb4470118-x86-embedded-enu_eb3fe70a186545d1745f48eda37ecf21a1d330d9.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_24533<fver(5,2,6002,24533)) {
-		NN("2018-12 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4473077)");
-		XX(p3+"windowsxp-kb4473077-x86-embedded-enu_2472bfb0a1921bccc30621166b26004b22203e63.exe"+a1);
-	}
 	if( sp==3 && (sku & XPE_2009) && _msrd3x40_dll>zero && _msrd3x40_dll<fver(4,0,9801,7)) {
 		NN("2019-01 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4481275)");
 		XX(p3+"windowsxp-kb4481275-x86-embedded-enu_5160cf8226e525f266f39e7279ce39e6176cece9.exe"+a1);
@@ -5004,11 +5025,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,7663)) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4486538)");
 		XX(p3+"windowsxp-kb4486538-x86-embedded-enu_b46b867293bb21b12fe5867ff98806a98ae50fa2.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7663))
-					  ||  (_gdiplus_dll_24561<fver(5,2,6002,24561)) )) {
-		NN("Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4487085)");
-		XX(p3+"windowsxp-kb4487085-v2-x86-embedded-enu_667f051ffe98ff99495e9b6ede2b8c321aba1ca3.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _hidparse_sys>zero && _hidparse_sys<fver(5,1,2600,7640)) {
 		NN("2019-02 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4487086)");
@@ -5034,11 +5050,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _comctl32_dll_7660<fver(6,0,2900,7660)) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4490228)");
 		XX(p3+"windowsxp-kb4490228-x86-embedded-enu_a81c03f3f775390169d890d6f99cd9d3e58cc62e.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( ( _mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,7666))
-					  ||  ( _gdiplus_dll_24563<fver(5,2,6002,24563)) )) {
-		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4490385)");
-		XX(p3+"windowsxp-kb4490385-x86-embedded-enu_47b193ff117da1c86efc4d275b52a829c5cb00b9.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ((_localspl_dll>zero && _localspl_dll<fver(5,1,2600,7661))
 		              ||  (_win32spl_dll>zero && _win32spl_dll<fver(5,1,2600,7661))
@@ -5092,10 +5103,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_gdiplus_dll_20488<fver(5,2,6003,20488)) )) {
 		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4495022)");
 		XX(p3+"windowsxp-kb4495022-x86-embedded-enu_6fce82c569aa5a6af6ff63769b2e901032d401ee.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _gdiplus_dll_23693<fver(5,2,6002,23693)) {
-		NN("Update for WEPOS and POSReady 2009 (KB3065979)");
-		XX(p3+"windowsxp-kb3065979-x86-embedded-enu_fe0a4fbb1fcb7c6062ae3ff88dcbf388f1ec4b07.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ((_dssenh_dll>zero && _dssenh_dll<fver(5,1,2600,7345))
 		              ||  (_ksecdd_sys>zero && _ksecdd_sys<fver(5,1,2600,7346))
