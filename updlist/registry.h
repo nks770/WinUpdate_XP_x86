@@ -10,5 +10,6 @@ std::wstring regQueryValue(const std::wstring& lpSubKey,const std::wstring& lpVa
 LPBYTE regQueryBinaryData(const std::wstring& lpSubKey,const std::wstring& lpValueName,int* status);
 DWORD regQueryDWORD(const std::wstring& lpSubKey,const std::wstring& lpValueName,int* status);
 bool regTestKey(const std::wstring& lpSubKey);
+bool regTestKey(HKEY hKey,const std::wstring& lpSubKey);
 
 #endif

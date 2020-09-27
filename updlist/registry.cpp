@@ -172,8 +172,12 @@ LPBYTE regQueryBinaryData(const std::wstring& lpSubKey,const std::wstring& lpVal
 }
 
 bool regTestKey(const std::wstring& lpSubKey) {
-
 	HKEY hKey = HKEY_LOCAL_MACHINE;
+	return regTestKey(hKey,lpSubKey);
+}
+
+bool regTestKey(HKEY hKey,const std::wstring& lpSubKey) {
+
 	DWORD ulOptions = NULL;
 	REGSAM samDesired = KEY_QUERY_VALUE; //KEY_ALL_ACCESS;
 	HKEY phkResult = NULL;

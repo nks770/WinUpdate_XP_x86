@@ -7030,6 +7030,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format 11 SDK (KB935552)");
 		XX(p3+"windowsmedia11-kb935552-x86-intl.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && _wmp_dll>=fver(11,0,5721,0)
+			&& ( regTestKey(HKEY_CLASSES_ROOT,L"CLSID\\{896E73F0-3851-11D3-AA54-00C04FD22F8C}")
+			|| regTestKey(L"SOFTWARE\\Microsoft\\MediaPlayer\\UIPlugins\\{292AE934-4F49-40bb-9E7E-6F6398ED9C31}")) ) {
+		NN("Hotfix for Windows Media Player 11 (KB935957)");
+		XX(p3+"windowsmedia11-kb935957-x86-intl.exe"+a1);
+	}
 
 
 
