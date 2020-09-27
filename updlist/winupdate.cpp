@@ -7036,6 +7036,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Player 11 (KB935957)");
 		XX(p3+"windowsmedia11-kb935957-x86-intl.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && _qasf_dll>=fver(11,0,5721,5145) && _qasf_dll<fver(11,0,5721,5233)) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB939209)");
+		XX(p3+"windowsmedia11-kb939209-x86-intl.exe"+a1);
+	}
 
 
 
