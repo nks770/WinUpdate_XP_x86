@@ -320,7 +320,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _imapi_exe    = getFileVer(System32+L"\\imapi.exe",&status);
 	fver _imapi2_dll   = getFileVer(System32+L"\\imapi2.dll",&status);
 	fver _imapi2fs_dll = getFileVer(System32+L"\\imapi2fs.dll",&status);
+	fver _imjp81_ime   = getFileVer(System32+L"\\imjp81.ime",&status);
+	fver _imjp81k_dll  = getFileVer(System32+L"\\imjp81k.dll",&status);
 	fver _imekr61_ime  = getFileVer(System32+L"\\imekr61.ime",&status);
+	fver _imeshare_dll = getFileVer(System32+L"\\imeshare.dll",&status);
 	fver _inetcomm_dll = getFileVer(System32+L"\\inetcomm.dll",&status);
 	fver _inetcpl_cpl  = getFileVer(System32+L"\\inetcpl.cpl",&status);
 	fver _inetmib1_dll = getFileVer(System32+L"\\inetmib1.dll",&status);
@@ -755,6 +758,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _unccplext_dll  = getFileVer(System32+L"\\unccplext.dll",&status);
 	fver _uncdms_dll  = getFileVer(System32+L"\\uncdms.dll",&status);
 	fver _uncne_dll  = getFileVer(System32+L"\\uncne.dll",&status);
+
+	// JP IME
+	std::wstring imjp81 = SystemRoot + L"ime\\imjp8_1";
+	fver _cplexe_exe  = getFileVer(imjp81+L"\\cplexe.exe",&status);
+	fver _imjpcic_dll = getFileVer(imjp81+L"\\imjpcic.dll",&status);
+	fver _imjpcus_dll = getFileVer(imjp81+L"\\imjpcus.dll",&status);
+	fver _imjpdct_dll = getFileVer(imjp81+L"\\imjpdct.dll",&status);
+	fver _imjpdsvr_exe =getFileVer(imjp81+L"\\imjpdsvr.exe",&status);
+	fver _imjpmig_exe = getFileVer(imjp81+L"\\imjpmig.exe",&status);
+	fver _imjprw_exe  = getFileVer(imjp81+L"\\imjprw.exe",&status);
+	fver _imjputy_exe = getFileVer(imjp81+L"\\imjputy.exe",&status);
+	fver _imjputyc_dll= getFileVer(imjp81+L"\\imjputyc.dll",&status);
+
+	fver _imjpcd_dic  = getFileVer(imjp81+L"\\DICTS\\imjpcd.dic",&status);
+	fver _voicepad_dll= getFileVer(imjp81+L"\\applets\\voicepad.dll",&status);
+	fver _voicesub_dll= getFileVer(imjp81+L"\\applets\\voicesub.dll",&status);
+
 
 	// Detect Windows Media Player version
 	fver wmp = _wmp_dll;
@@ -4077,6 +4097,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _tcpip_sys >zero && _tcpip_sys <fver(5,1,2600,2685)) )) {
 		NN("Update for Windows XP (KB889527)");
 		XX(p2+"WindowsXP-KB889527-v3-x86-ENU.exe"+a1);
+	}
+	if( (sp==1 || sp==2) && (sku & XP_ALL) && (
+		  ( _imeshare_dll >zero && _imeshare_dll <fver(9,2,4202,0))
+	  ||  ( _cplexe_exe   >zero && _cplexe_exe   <fver(8,1,4202,0))
+	  ||  ( _imjp81_ime   >zero && _imjp81_ime   <fver(8,1,4204,0))
+	  ||  ( _imjp81k_dll  >zero && _imjp81k_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpcd_dic   >zero && _imjpcd_dic   <fver(8,1,4202,0))
+	  ||  ( _imjpcic_dll  >zero && _imjpcic_dll  <fver(8,1,4203,0))
+	  ||  ( _imjpcus_dll  >zero && _imjpcus_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpdct_dll  >zero && _imjpdct_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpdsvr_exe >zero && _imjpdsvr_exe <fver(8,1,4202,0))
+	  ||  ( _imjpmig_exe  >zero && _imjpmig_exe  <fver(8,1,4202,0))
+	  ||  ( _imjprw_exe   >zero && _imjprw_exe   <fver(8,1,4202,0))
+	  ||  ( _imjputy_exe  >zero && _imjputy_exe  <fver(8,1,4202,0))
+	  ||  ( _imjputyc_dll >zero && _imjputyc_dll <fver(8,1,4202,0))
+	  ||  ( _voicepad_dll >zero && _voicepad_dll <fver(8,1,4202,0))
+	  ||  ( _voicesub_dll >zero && _voicesub_dll <fver(8,1,4202,0)) )) {
+		NN("Update for Windows XP (KB894395)");
+		XX(p2+"WindowsXP-KB894395-x86-ENU.exe"+a1);
 	}
 	
 
