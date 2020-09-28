@@ -3457,10 +3457,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB899587)");
 		XX(p2+"windowsxp-kb899587-x86-enu_95ef03f0da9761b044b9a98d445af90266777ea8.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _ipnat_sys>zero && _ipnat_sys<fver(5,1,2600,2524)) {
-		NN("Critical Update for Windows XP (KB886185)");
-		XX(p2+"windowsxp-kb886185-x86-enu_88123f8c8a9a8147529eac8ae4656b86c1018a8f.exe"+a6);
-	}
 	if( sp==2 && (sku & XP_ALL) && _imekr61_ime>zero && _imekr61_ime<fver(6,1,2600,3)) {
 		NN("Security Update for Windows XP (KB901190)");
 		XX(p2+"windowsxp-kb901190-x86-enu_2497a4e9957ddf13e2343858608f89ef6132efb2.exe"+a1);
@@ -4071,6 +4067,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _acgenral_dll  >zero && _acgenral_dll  <fver(5,1,2600,2558)) )) {
 		NN("Update for Windows XP (KB886716)");
 		XX(p2+"WindowsXP-KB886716-v2-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && (sku & XP_ALL) && _ipnat_sys>zero && _ipnat_sys<fver(5,1,2600,2524)) {
+		NN("Critical Update for Windows XP (KB886185)");
+		XX(p2+"windowsxp-kb886185-x86-enu_88123f8c8a9a8147529eac8ae4656b86c1018a8f.exe"+a6);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ipnat_sys >zero && _ipnat_sys <fver(5,1,2600,2604))
+	  ||  ( _tcpip_sys >zero && _tcpip_sys <fver(5,1,2600,2685)) )) {
+		NN("Update for Windows XP (KB889527)");
+		XX(p2+"WindowsXP-KB889527-v3-x86-ENU.exe"+a1);
 	}
 	
 
