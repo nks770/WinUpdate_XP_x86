@@ -2759,7 +2759,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB943485)");
 		XX(p+"windowsxp-kb943485-x86-enu_cb8bf0aa18299dda9578a70411ade45cbd3ae619.exe"+a1);
 	}*/
-	/*if( sp==2 && (sku & XP_ALL) && ( 
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  (_halmacpi_dll>zero && _halmacpi_dll<fver(5,1,2600,2765))
 					  ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2765))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2765))
@@ -3552,6 +3552,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// KB943729 requires KB915865 (which is an upgraded version of KB914783)
 		NN("Group Policy Preference Client Side Extensions for Windows XP (KB943729)");
 		XX(p3+"windows-kb943729-x86-enu_e174c41ce3dcbd5c8922d6d1c39df1be425a70e0.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _psisdecd_dll  >zero && _psisdecd_dll  <fver(6,5,2600,2640)) )) {
+		NN("Update for Windows XP (KB896626)");
+		XX(p2+"WindowsXP-KB896626-v2-x86-ENU.exe"+a1);
 	}
 
 
