@@ -330,7 +330,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _inetmib1_dll = getFileVer(System32+L"\\inetmib1.dll",&status);
 	fver _inetpp_dll   = getFileVer(System32+L"\\inetpp.dll",&status);
 	fver _inetres_dll  = getFileVer(System32+L"\\inetres.dll",&status);
+	fver _input_dll    = getFileVer(System32+L"\\input.dll",&status);
 	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
+	fver _intl_cpl     = getFileVer(System32+L"\\intl.cpl",&status);
 	fver _iphlpapi_dll = getFileVer(System32+L"\\iphlpapi.dll",&status);
 	fver _ipnathlp_dll = getFileVer(System32+L"\\ipnathlp.dll",&status);
 	fver _iprtrmgr_dll = getFileVer(System32+L"\\iprtrmgr.dll",&status);
@@ -780,6 +782,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _voicepad_dll= getFileVer(imjp81+L"\\applets\\voicepad.dll",&status);
 	fver _voicesub_dll= getFileVer(imjp81+L"\\applets\\voicesub.dll",&status);
 
+	// OOBE
+	fver _msobmain_dll= getFileVer(System32+L"\\oobe\\msobmain.dll",&status);
 
 	// Detect Windows Media Player version
 	fver wmp = _wmp_dll;
@@ -4170,6 +4174,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _firewall_cpl  >zero && _firewall_cpl  <fver(5,1,2600,2732)) )) {
 		NN("Update for Windows XP (KB897663)");
 		XX(p2+"WindowsXP-KB897663-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_STARTER ) && (
+		                  ( _explorer_exe >zero && _explorer_exe <fver(6,0,2900,2647))
+					  ||  ( _input_dll    >zero && _input_dll    <fver(5,1,2600,2609))
+					  ||  ( _intl_cpl     >zero && _intl_cpl     <fver(5,1,2600,2609))
+					  ||  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,2626))
+					  ||  ( _win32k_sys   >zero && _sxs_dll      <fver(5,1,2600,2622)) )) {
+		NN("Update for Windows XP (KB898543)");
+		XX(p2+"WindowsXP-KB898543-v3-x86-ENU.exe"+a1);
 	}
 	
 
