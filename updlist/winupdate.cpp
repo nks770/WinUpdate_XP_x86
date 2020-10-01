@@ -363,6 +363,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _kerberos_dll = getFileVer(System32+L"\\kerberos.dll",&status);
 	fver _kernel32_dll = getFileVer(System32+L"\\kernel32.dll",&status);
 	fver _krnl386_exe  = getFileVer(System32+L"\\krnl386.exe",&status);
+	fver _kswdmcap_ax  = getFileVer(System32+L"\\kswdmcap.ax",&status);
 	fver _l3codeca_acm = getFileVer(System32+L"\\l3codeca.acm",&status);
 	fver _l3codecx_ax  = getFileVer(System32+L"\\l3codecx.ax",&status);
 	fver _LAPRXY_dll   = getFileVer(System32+L"\\LAPRXY.dll",&status);
@@ -4189,6 +4190,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _netapi32_dll >zero && _netapi32_dll <fver(5,1,2600,2756)) )) {
 		NN("Update for Windows XP (KB898900)");
 		XX(p2+"WindowsXP-KB898900-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _kswdmcap_ax  >zero && _kswdmcap_ax  <fver(5,3,2600,2729))
+	  ||  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,2729)) )) {
+		NN("Update for USB Video Class (UVC) driver in Windows XP Home and Professional with Service Pack 2");
+		XX(p2+"WindowsXP-KB899271-v4-x86-ENU.exe"+a1);
 	}
 	
 
