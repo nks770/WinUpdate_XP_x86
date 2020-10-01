@@ -936,6 +936,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _afd_sys      = getFileVer(Drivers+L"\\afd.sys",&status);
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
+	fver _classpnp_sys = getFileVer(Drivers+L"\\classpnp.sys",&status);
 	fver _dmusic_sys   = getFileVer(Drivers+L"\\dmusic.sys",&status);
 	fver _dxg_sys      = getFileVer(Drivers+L"\\dxg.sys",&status);
 	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
@@ -4196,6 +4197,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,2729)) )) {
 		NN("Update for USB Video Class (UVC) driver in Windows XP Home and Professional with Service Pack 2");
 		XX(p2+"WindowsXP-KB899271-v4-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _classpnp_sys  >zero && _classpnp_sys  <fver(5,1,2600,2770)) )) {
+		NN("Update for Windows XP (KB902853)");
+		XX(p2+"WindowsXP-KB902853-x86-ENU.exe"+a1);
 	}
 	
 
