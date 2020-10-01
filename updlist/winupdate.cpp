@@ -353,6 +353,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _jscript_dll  = getFileVer(System32+L"\\jscript.dll",&status);
 	fver _jsproxy_dll  = getFileVer(System32+L"\\jsproxy.dll",&status);
 	fver _jview_exe    = getFileVer(System32+L"\\jview.exe",&status);
+	fver _kbdbhc_dll   = getFileVer(System32+L"\\kbdbhc.dll",&status);
+	fver _kbdiultn_dll = getFileVer(System32+L"\\kbdiultn.dll",&status);
+	fver _kbdnepr_dll  = getFileVer(System32+L"\\kbdnepr.dll",&status);
+	fver _kbdpash_dll  = getFileVer(System32+L"\\kbdpash.dll",&status);
 	fver _kerberos_dll = getFileVer(System32+L"\\kerberos.dll",&status);
 	fver _kernel32_dll = getFileVer(System32+L"\\kernel32.dll",&status);
 	fver _krnl386_exe  = getFileVer(System32+L"\\krnl386.exe",&status);
@@ -4140,6 +4144,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _voicesub_dll >zero && _voicesub_dll <fver(8,1,4202,0)) )) {
 		NN("Update for Windows XP (KB894395)");
 		XX(p2+"WindowsXP-KB894395-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && (sku & XP_ALL) && (
+		                  ( _kbdbhc_dll   <fver(5,1,2600,2687))
+					  ||  ( _kbdiultn_dll <fver(5,1,2600,2687))
+					  ||  ( _kbdnepr_dll  <fver(5,1,2600,2687))
+					  ||  ( _kbdpash_dll  <fver(5,1,2600,2687))
+					  ||  ( _kernel32_dll >zero && _kernel32_dll <fver(5,1,2600,2687))
+					  ||  ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,2687)) )) {
+		NN("Update for Windows XP Service Pack 2 (897338)"); // KB897338-v2 is replaced by KB897338-v3
+		XX(p2+"WindowsXP-KB897338-v2-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _kbdbhc_dll   <fver(5,1,2600,2906))
+					  ||  ( _kbdiultn_dll <fver(5,1,2600,2906))
+					  ||  ( _kbdnepr_dll  <fver(5,1,2600,2906))
+					  ||  ( _kbdpash_dll  <fver(5,1,2600,2906))
+					  ||  ( _kernel32_dll >zero && _kernel32_dll <fver(5,1,2600,2906))
+					  ||  ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,2906)) )) {
+		NN("Update for Windows XP Service Pack 2 (897338)");
+		XX(p2+"WindowsXP-KB897338-v3-x86-ENU.exe"+a1);
 	}
 	
 
