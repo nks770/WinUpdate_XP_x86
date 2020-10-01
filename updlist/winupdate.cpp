@@ -4184,6 +4184,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB898543)");
 		XX(p2+"WindowsXP-KB898543-v3-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _mup_sys      >zero && _mup_sys      <fver(5,1,2600,2756))
+	  ||  ( _netapi32_dll >zero && _netapi32_dll <fver(5,1,2600,2756)) )) {
+		NN("Update for Windows XP (KB898900)");
+		XX(p2+"WindowsXP-KB898900-v2-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
