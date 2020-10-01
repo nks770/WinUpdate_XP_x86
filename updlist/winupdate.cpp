@@ -269,6 +269,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _expsrv_dll   = getFileVer(System32+L"\\expsrv.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
 	fver _faultrep_dll = getFileVer(System32+L"\\faultrep.dll",&status);
+	fver _firewall_cpl = getFileVer(System32+L"\\firewall.cpl",&status);
 	fver _fldrclnr_dll = getFileVer(System32+L"\\fldrclnr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
 	fver _fltMc_exe    = getFileVer(System32+L"\\fltMc.exe",&status);
@@ -4164,6 +4165,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,2906)) )) {
 		NN("Update for Windows XP Service Pack 2 (897338)");
 		XX(p2+"WindowsXP-KB897338-v3-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _firewall_cpl  >zero && _firewall_cpl  <fver(5,1,2600,2732)) )) {
+		NN("Update for Windows XP (KB897663)");
+		XX(p2+"WindowsXP-KB897663-x86-ENU.exe"+a1);
 	}
 	
 
