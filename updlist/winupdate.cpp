@@ -247,6 +247,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
+	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
 	fver _dpcdll_dll   = getFileVer(System32+L"\\dpcdll.dll",&status);
@@ -4215,6 +4216,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		||(_ohci1394_sys_cache  <fver(5,1,2600,2738)) )) {
 		NN("Update for Windows XP (KB904412)");
 		XX(p2+"WindowsXP-KB904412-v2-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _dmdlgs_dll  >zero && _dmdlgs_dll  <fver(2600,2770,503,0))
+					  ||  ( _format_com  >zero && _format_com  <fver(5,1,2600,2770))
+					  ||  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,2770)) )) {
+		NN("Update for Windows XP (KB906472)"); // KB906472-v2 is replaced by KB906472-v4
+		XX(p2+"WindowsXP-KB906472-v2-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _dmdlgs_dll  >zero && _dmdlgs_dll  <fver(2600,3160,503,0))
+					  ||  ( _format_com  >zero && _format_com  <fver(5,1,2600,3160))
+					  ||  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,3160)) )) {
+		NN("Update for Windows XP (KB906472)");
+		XX(p2+"WindowsXP-KB906472-v4-x86-ENU.exe"+a1);
 	}
 	
 
