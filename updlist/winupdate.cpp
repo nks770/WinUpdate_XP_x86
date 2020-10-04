@@ -971,6 +971,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _npfs_sys     = getFileVer(Drivers+L"\\npfs.sys",&status);
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
+	fver _ohci1394_sys = getFileVer(Drivers+L"\\ohci1394.sys",&status);
 	fver _pci_sys      = getFileVer(Drivers+L"\\pci.sys",&status);
 	fver _portcls_sys  = getFileVer(Drivers+L"\\portcls.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
@@ -1016,6 +1017,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
+	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 
@@ -4207,6 +4209,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _imapi_sys  >zero && _imapi_sys  <fver(5,1,2600,2714)) )) {
 		NN("Update for Windows XP (KB903250)");
 		XX(p2+"WindowsXP-KB903250-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2738))
+		||(_ohci1394_sys_cache  <fver(5,1,2600,2738)) )) {
+		NN("Update for Windows XP (KB904412)");
+		XX(p2+"WindowsXP-KB904412-v2-x86-ENU.exe"+a1);
 	}
 	
 
