@@ -1000,6 +1000,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _secdrv_sys   = getFileVer(Drivers+L"\\secdrv.sys",&status);
 	fver _splitter_sys = getFileVer(Drivers+L"\\splitter.sys",&status);
 	fver _srv_sys      = getFileVer(Drivers+L"\\srv.sys",&status);
+	fver _stream_sys   = getFileVer(Drivers+L"\\stream.sys",&status);
 	fver _tcpip6_sys   = getFileVer(Drivers+L"\\tcpip6.sys",&status);
 	fver _tcpip_sys    = getFileVer(Drivers+L"\\tcpip.sys",&status);
 	fver _termdd_sys   = getFileVer(Drivers+L"\\termdd.sys",&status);
@@ -4291,6 +4292,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
 		NN("Update for Windows XP (KB907865)");
 		XX(p2+"WindowsXP-KB907865-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,2790)) )) {
+		NN("Update for Windows XP (KB909667)");
+		XX(p2+"WindowsXP-KB909667-x86-ENU.exe"+a1);
 	}
 	
 
