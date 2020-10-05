@@ -2567,7 +2567,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB950749)");
 		XX(p2+"windowsxp-kb950749-x86-enu_52c183782f97ebcc7c92e0d71e0525a540898507.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,3173)) {
+	/*if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll  >zero && _rpcrt4_dll  <fver(5,1,2600,2794)) {
+		// KB908521 is replaced by KB970238 on SP2
+		NN("Update for Windows XP (KB908521)");
+		XX(p2+"WindowsXP-KB908521-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,3173)) {
 		// KB933729 is replaced by KB970238 on SP2
 		NN("Security Update for Windows XP (KB933729)");
 		XX(p+"windowsxp-kb933729-x86-enu_5b4ed1a7e5586b93a367156607ace191dc4bf53a.exe"+a1);
@@ -4537,7 +4542,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2485663-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,6477))
-					  ||  (_xpsp4res_dll<fver(5,1,2600,6477)) )) {
+					  /*||  (_xpsp4res_dll<fver(5,1,2600,6477))*/ )) {
 		NN("Security Update for Windows XP (KB2898715)");
 		XX(p3+"WindowsXP-KB2898715-x86-ENU.exe"+a1);
 	}
