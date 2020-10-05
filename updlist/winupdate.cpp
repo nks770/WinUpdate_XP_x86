@@ -1176,6 +1176,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
+	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
 	fver _wbemess_dll  = getFileVer(wbem+L"\\wbemess.dll",&status);
 	fver _wmiprvsd_dll = getFileVer(wbem+L"\\wmiprvsd.dll",&status);
 	fver _wmiprvse_exe = getFileVer(wbem+L"\\wmiprvse.exe",&status);
@@ -4312,6 +4313,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,2790)) )) {
 		NN("Update for Windows XP (KB909667)");
 		XX(p2+"WindowsXP-KB909667-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _wbemcore_dll  >zero && _wbemcore_dll  <fver(5,1,2600,2829)) )) {
+		NN("Update for Windows XP (KB913538)");
+		XX(p2+"WindowsXP-KB913538-x86-ENU.exe"+a1);
 	}
 	
 
