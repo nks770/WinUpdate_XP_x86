@@ -3313,6 +3313,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB900725)");
 		XX(p2+"windowsxp-kb900725-x86-enu_21b409882b7f51a9d09c32bd698504fadb9fc433.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _linkinfo_dll >zero && _linkinfo_dll <fver(5,1,2600,2839))
+					  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2900,2839))
+					  ||  ( _shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2839))
+					  ||  ( _winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,2839)) )) {
+		NN("Update for Windows XP (KB909608)");
+		XX(p2+"WindowsXP-KB909608-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _icm32_dll >zero && _icm32_dll <fver(5,1,2600,1710))
 					  ||  ( _mscms_dll >zero && _mscms_dll <fver(5,1,2600,1710))))
