@@ -3683,6 +3683,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB891593)");
 		XX(p2+"WindowsXP-KB891593-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _qdvd_dll  >zero && _qdvd_dll  <fver(6,5,2600,2831)) )) {
+		NN("Update for Windows XP (KB912461)");
+		XX(p2+"windowsxp-kb912461-x86-enu.exe"+a1);
+	}
 	if( sp==0 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,18)) {
 		NN("Remote Assistance Connection");
 		XX(rtm+"q311889_wxp_27dba07edd39b4cc0b3e2c6db90178e7396cff1a.exe"+a7);
