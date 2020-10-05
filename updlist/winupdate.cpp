@@ -4266,6 +4266,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft Management Console 3.0 for Windows XP (KB907265)");
 		XX(p2+"WindowsXP-KB907265-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
+		NN("Update for Windows XP (KB907865)");
+		XX(p2+"WindowsXP-KB907865-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
