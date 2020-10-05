@@ -223,6 +223,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cdfview_dll  = getFileVer(System32+L"\\cdfview.dll",&status);
 	fver _cdosys_dll   = getFileVer(System32+L"\\cdosys.dll",&status);
 	fver _cewmdm_dll   = getFileVer(System32+L"\\cewmdm.dll",&status);
+	fver _cic_dll      = getFileVer(System32+L"\\cic.dll",&status);
 	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
@@ -382,7 +383,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mfc42_dll    = getFileVer(System32+L"\\mfc42.dll",&status);
 	fver _mfc42u_dll   = getFileVer(System32+L"\\mfc42u.dll",&status);
 	fver _mfplat_dll   = getFileVer(System32+L"\\mfplat.dll",&status);
+	fver _microsoft_managementconsole_dll = getFileVer(System32+L"\\microsoft.managementconsole.dll",&status);
 	fver _mlang_dll    = getFileVer(System32+L"\\mlang.dll",&status);
+	fver _mmc_exe      = getFileVer(System32+L"\\mmc.exe",&status);
+	fver _mmcbase_dll  = getFileVer(System32+L"\\mmcbase.dll",&status);
+	fver _mmcex_dll    = getFileVer(System32+L"\\mmcex.dll",&status);
+	fver _mmcfxcommon_dll = getFileVer(System32+L"\\mmcfxcommon.dll",&status);
+	fver _mmcndmgr_dll = getFileVer(System32+L"\\mmcndmgr.dll",&status);
+	fver _mmcperf_exe  = getFileVer(System32+L"\\mmcperf.exe",&status);
+	fver _mmcshext_dll = getFileVer(System32+L"\\mmcshext.dll",&status);
 	fver _mmsys_cpl    = getFileVer(System32+L"\\mmsys.cpl",&status);
 	fver _MP43DMOD_dll = getFileVer(System32+L"\\MP43DMOD.dll",&status);
 	fver _mp4sdecd_dll = getFileVer(System32+L"\\mp4sdecd.dll",&status);
@@ -786,6 +795,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	// OOBE
 	fver _msobmain_dll= getFileVer(System32+L"\\oobe\\msobmain.dll",&status);
+
+	// MMC Resources
+	fver _microsoft_managementconsole_resources_dll = getFileVer(System32+L"\\en\\microsoft.managementconsole.resources.dll",&status);
+	fver _mmcex_resources_dll                       = getFileVer(System32+L"\\en\\mmcex.resources.dll",&status);
+	fver _mmcfxcommon_resources_dll                 = getFileVer(System32+L"\\en\\mmcfxcommon.resources.dll",&status);
 
 	// Detect Windows Media Player version
 	fver wmp = _wmp_dll;
@@ -4235,6 +4249,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _msconfig_exe  >zero && _msconfig_exe  <fver(5,1,2600,2764)) )) {
 		NN("Update for Windows XP (KB906569)");
 		XX(p2+"WindowsXP-KB906569-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL ) && (
+		                  ( _cic_dll      >zero && _cic_dll      <fver(5,2,3790,2612))
+					  ||  ( _microsoft_managementconsole_dll    >zero && _microsoft_managementconsole_dll    <fver(5,2,3790,2612)) //mmc30.dll
+					  ||  ( _microsoft_managementconsole_resources_dll   >zero && _microsoft_managementconsole_resources_dll   <fver(5,2,3790,2565)) //mmc30r.dll
+					  ||  ( _mmc_exe      >zero && _mmc_exe      <fver(5,2,3790,2612))
+					  ||  ( _mmcbase_dll  >zero && _mmcbase_dll  <fver(5,2,3790,2612))
+					  ||  ( _mmcex_dll    >zero && _mmcex_dll    <fver(5,2,3790,2612))
+					  ||  ( _mmcex_resources_dll   >zero && _mmcex_resources_dll   <fver(5,2,3790,2565)) //mmcexr.dll
+					  ||  ( _mmcfxcommon_dll   >zero && _mmcfxcommon_dll   <fver(5,2,3790,2612))
+					  ||  ( _mmcfxcommon_resources_dll  >zero && _mmcfxcommon_resources_dll  <fver(5,2,3790,2565)) //mmcfxcr.dll
+					  ||  ( _mmcndmgr_dll >zero && _mmcndmgr_dll <fver(5,2,3790,2612))
+					  ||  ( _mmcperf_exe  >zero && _mmcperf_exe  <fver(5,2,3790,2612))
+					  ||  ( _mmcshext_dll >zero && _mmcshext_dll <fver(5,2,3790,2612)) )) {
+		NN("Microsoft Management Console 3.0 for Windows XP (KB907265)");
+		XX(p2+"WindowsXP-KB907265-x86-ENU.exe"+a1);
 	}
 	
 
