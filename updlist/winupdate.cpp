@@ -4318,10 +4318,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909667)");
 		XX(p2+"WindowsXP-KB909667-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		  ( _wbemcore_dll  >zero && _wbemcore_dll  <fver(5,1,2600,2829)) )) {
-		NN("Update for Windows XP (KB913538)");
-		XX(p2+"WindowsXP-KB913538-x86-ENU.exe"+a1);
+	if(qfe) {
+		if( sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _wbemcore_dll  >zero && _wbemcore_dll  <fver(5,1,2600,2979)) )) {
+			NN("Update for Windows XP (KB914463)");
+			XX(p2+"WindowsXP-KB914463-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+			  ( _wbemcore_dll  >zero && _wbemcore_dll  <fver(5,1,2600,2829)) )) {
+			NN("Update for Windows XP (KB913538)");
+			XX(p2+"WindowsXP-KB913538-x86-ENU.exe"+a1);
+		}
 	}
 	
 
