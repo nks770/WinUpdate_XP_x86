@@ -2435,6 +2435,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB914389)");
 		XX(p2+"windowsxp-kb914389-x86-enu_8c44336e9e4f287891ac384bee0219e9c2224523.exe"+a1);
 	}
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _cscdll_dll >zero && _cscdll_dll <fver(5,1,2600,1599))
+					  ||  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,1859))
+					  ||  ( _rdbss_sys  >zero && _rdbss_sys  <fver(5,1,2600,1836))
+					  ||  ( _srv_sys    >zero && _srv_sys    <fver(5,1,2600,1859)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
+		                  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,2934))
+					  ||  ( _srv_sys    >zero && _srv_sys    <fver(5,1,2600,2934)) ))) {
+		NN("Update for Windows XP (KB916846)");
+		XX(p2+"WindowsXP-KB916846-x86-ENU.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1885)) {
+		// KB923414 is replaced by KB971468 on SP2
+		NN("Security Update for Windows XP (KB923414)");
+		XX(p1+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
+	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
+		NN("Security Update for Windows XP (KB971468)");
+		XX(p2+"windowsxp-kb971468-x86-enu_68d7899c8b8462219daf40f02c6fb9f362b1ee6b.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && _mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,3675)) {
 	//if( sp==3 && (sku & XP_ALL) && _mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,5944)) {
 		NN("Security Update for Windows XP (KB980232)");
@@ -3088,16 +3109,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	//if( sp==3 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2900,5622)) {
 		NN("Update for Windows XP (KB967715)");
 		XX(p2+"windowsxp-kb967715-x86-enu_7d158e1f0dc6a7b5de75ca59bc89816017150ab4.exe"+a1);
-	}
-	if( sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1885)) {
-		// KB923414 is replaced by KB971468 on SP2
-		NN("Security Update for Windows XP (KB923414)");
-		XX(p1+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
-	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
-		NN("Security Update for Windows XP (KB971468)");
-		XX(p2+"windowsxp-kb971468-x86-enu_68d7899c8b8462219daf40f02c6fb9f362b1ee6b.exe"+a1);
 	}
 	if( sp==1 && (sku & XP_ALL) && _telnet_exe>zero && _telnet_exe<fver(5,1,2600,1684)) {
 	//if( sp==2 && (sku & XP_ALL) && _telnet_exe>zero && _telnet_exe<fver(5,1,2600,2674)) {
