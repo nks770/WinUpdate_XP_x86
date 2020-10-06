@@ -2635,6 +2635,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB932168)");
 		XX(p2+"windowsxp-kb932168-x86-enu_646e8c2d535461396b8b53ce8fe04410327925a2.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _oakley_dll  >zero && _oakley_dll  <fver(5,1,2600,2966)) )) {
+		NN("Update for Windows XP (KB914841)"); // KB914841 is replaced by KB974392
+		XX(p2+"WindowsXP-KB914841-v3-x86-ENU.exe"+a1);
+	}*/
 	if(   (sp==2 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,3632))
 		||(sp==3 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,5886))) {
 		NN("Security Update for Windows XP (KB974392)");
