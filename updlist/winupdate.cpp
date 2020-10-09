@@ -580,6 +580,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rpcrt4_dll   = getFileVer(System32+L"\\rpcrt4.dll",&status);
 	fver _rpcss_dll    = getFileVer(System32+L"\\rpcss.dll",&status);
 	fver _rsaenh_dll   = getFileVer(System32+L"\\rsaenh.dll",&status);
+	fver _rspndr_exe   = getFileVer(System32+L"\\rspndr.exe",&status);
 	fver _rtcdll_dll   = getFileVer(System32+L"\\rtcdll.dll",&status);
 	fver _safrslv_dll  = getFileVer(System32+L"\\safrslv.dll",&status);
 	fver _samsrv_dll   = getFileVer(System32+L"\\samsrv.dll",&status);
@@ -998,6 +999,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
 	fver _rdbss_sys    = getFileVer(Drivers+L"\\rdbss.sys",&status);
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
+	fver _rspndr_sys   = getFileVer(Drivers+L"\\rspndr.sys",&status);
 	fver _sbp2port_sys = getFileVer(Drivers+L"\\sbp2port.sys",&status);
 	fver _secdrv_sys   = getFileVer(Drivers+L"\\secdrv.sys",&status);
 	fver _splitter_sys = getFileVer(Drivers+L"\\splitter.sys",&status);
@@ -4368,6 +4370,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _ipnat_sys  >zero && _ipnat_sys  <fver(5,1,2600,2887)) )) {
 		NN("Update for Windows XP (KB917730)");
 		XX(p2+"WindowsXP-KB917730-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _rspndr_exe <fver(5,1,2600,3029))
+					  ||  ( _rspndr_sys <fver(5,1,2600,3029)) )) {
+		NN("Link Layer Topology Discovery (LLTD) Responder (KB922120)");
+		XX(p2+"WindowsXP-KB922120-v5-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && (
+		                  ( _rspndr_exe <fver(5,1,2600,5611))
+					  ||  ( _rspndr_sys <fver(5,1,2600,5611)) )) {
+		NN("Link Layer Topology Discovery (LLTD) Responder (KB922120)");
+		XX(p3+"WindowsXP-KB922120-v6-x86-ENU.exe"+a1);
 	}
 	
 
