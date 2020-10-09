@@ -3395,6 +3395,61 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB835409)");
 		XX(p1+"windowsxp-kb835409-x86-enu_bfb2828c3da695a07dfd25d76110cd35da03e044.exe"+a1);
 	}
+	if(qfe) {
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,66))
+					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,66))
+					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,66))
+					  ||  ( _clbcatq_dll  >zero && _clbcatq_dll  <fver(2001,12,4414,66))
+					  ||  ( _colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,66))
+					  ||  ( _comadmin_dll >zero && _comadmin_dll <fver(2001,12,4414,66))
+					  ||  ( _comrepl_dll  >zero && _comrepl_dll  <fver(2001,12,4414,66))
+					  ||  ( _comsvcs_dll  >zero && _comsvcs_dll  <fver(2001,12,4414,66))
+					  ||  ( _comuid_dll   >zero && _comuid_dll   <fver(2001,12,4414,66))
+					  ||  ( _es_dll       >zero && _es_dll       <fver(2001,12,4414,66))
+					  ||  ( _migregdb_exe >zero && _migregdb_exe <fver(2001,12,4414,66))
+					  ||  ( _msdtcprx_dll >zero && _msdtcprx_dll <fver(2001,12,4414,66))
+					  ||  ( _msdtctm_dll  >zero && _msdtctm_dll  <fver(2001,12,4414,66))
+					  ||  ( _msdtcuiu_dll >zero && _msdtcuiu_dll <fver(2001,12,4414,66))
+					  ||  ( _mtxclu_dll   >zero && _mtxclu_dll   <fver(2001,12,4414,66))
+					  ||  ( _mtxoci_dll   >zero && _mtxoci_dll   <fver(2001,12,4414,66))
+					  ||  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1871))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,1871))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,1871))
+					  ||  ( _rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,1361))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,1871))
+					  ||  ( _srrstr_dll   >zero && _srrstr_dll   <fver(5,1,2600,1765))
+					  ||  ( _stclient_dll >zero && _stclient_dll <fver(2001,12,4414,66))
+					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,66))
+					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,66))))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,312))
+					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,312))
+					  ||  ( _clbcatex_dll >zero && _clbcatex_dll <fver(2001,12,4414,312))
+					  ||  ( _clbcatq_dll  >zero && _clbcatq_dll  <fver(2001,12,4414,312))
+					  ||  ( _colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,312))
+					  ||  ( _comadmin_dll >zero && _comadmin_dll <fver(2001,12,4414,312))
+					  ||  ( _comrepl_dll  >zero && _comrepl_dll  <fver(2001,12,4414,312))
+					  ||  ( _comsvcs_dll  >zero && _comsvcs_dll  <fver(2001,12,4414,312))
+					  ||  ( _comuid_dll   >zero && _comuid_dll   <fver(2001,12,4414,312))
+					  ||  ( _es_dll       >zero && _es_dll       <fver(2001,12,4414,312))
+					  ||  ( _migregdb_exe >zero && _migregdb_exe <fver(2001,12,4414,312))
+					  ||  ( _msdtcprx_dll >zero && _msdtcprx_dll <fver(2001,12,4414,312))
+					  ||  ( _msdtctm_dll  >zero && _msdtctm_dll  <fver(2001,12,4414,312))
+					  ||  ( _msdtcuiu_dll >zero && _msdtcuiu_dll <fver(2001,12,4414,312))
+					  ||  ( _mtxclu_dll   >zero && _mtxclu_dll   <fver(2001,12,4414,312))
+					  ||  ( _mtxoci_dll   >zero && _mtxoci_dll   <fver(2001,12,4414,312))
+					  ||  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,2948))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,2948))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,2948))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2948))
+					  ||  ( _stclient_dll >zero && _stclient_dll <fver(2001,12,4414,312))
+					  ||  ( _txflog_dll   >zero && _txflog_dll   <fver(2001,12,4414,312))
+					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,312))))) {
+		NN("Windows XP COM+ Hotfix Rollup Package 14 (KB922668)");
+		XX(p2+"WindowsXP-KB922668-x86-ENU.exe"+a1);
+	}
+	} else {
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,64))
 					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,64))
@@ -3447,6 +3502,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _xolehlp_dll  >zero && _xolehlp_dll  <fver(2001,12,4414,310))))) {
 		NN("Windows Communication Foundation (KB912817)");
 		XX(p2+"WindowsXP-KB912817-v2-x86-ENU.exe"+a1);
+	}
 	}
 	if( sp==2 && (sku & XP_ALL) && _moviemk_exe>zero && _moviemk_exe<fver(2,1,4027,0)) {
 	//if( sp==3 && (sku & XP_ALL) && _moviemk_exe>zero && _moviemk_exe<fver(2,1,4027,0)) {
