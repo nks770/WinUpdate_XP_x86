@@ -187,8 +187,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
+	fver _acadproc_dll = getFileVer(SystemRoot+L"\\AppPatch\\acadproc.dll",&status);
 	fver _acgenral_dll = getFileVer(SystemRoot+L"\\AppPatch\\acgenral.dll",&status);
 	fver _aclayers_dll = getFileVer(SystemRoot+L"\\AppPatch\\aclayers.dll",&status);
+	fver _aclua_dll    = getFileVer(SystemRoot+L"\\AppPatch\\aclua.dll",&status);
 	fver _acspecfc_dll = getFileVer(SystemRoot+L"\\AppPatch\\acspecfc.dll",&status);
 	fver _acxtrnal_dll = getFileVer(SystemRoot+L"\\AppPatch\\acxtrnal.dll",&status);
 	fver _explorer_exe = getFileVer(SystemRoot+L"\\explorer.exe",&status);
@@ -4351,6 +4353,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _ntlanman_dll  >zero && _ntlanman_dll  <fver(5,1,2600,3109)) )) {
 		NN("Update for Windows XP (KB915377)");
 		XX(p2+"WindowsXP-KB915377-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _acadproc_dll >zero && _acadproc_dll <fver(5,1,2600,2993))
+					  ||  ( _acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,2993))
+					  ||  ( _aclayers_dll >zero && _aclayers_dll <fver(5,1,2600,2993))
+					  ||  ( _aclua_dll    >zero && _aclua_dll    <fver(5,1,2600,2993))
+					  ||  ( _acspecfc_dll >zero && _acspecfc_dll <fver(5,1,2600,2993))
+					  ||  ( _acxtrnal_dll >zero && _acxtrnal_dll <fver(5,1,2600,2993)) )) {
+		NN("Update for Windows XP (KB917140)");
+		XX(p2+"WindowsXP-KB917140-x86-ENU.exe"+a1);
 	}
 	
 
