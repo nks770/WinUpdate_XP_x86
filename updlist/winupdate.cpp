@@ -357,6 +357,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _jgdw400_dll  = getFileVer(System32+L"\\jgdw400.dll",&status);
 	fver _jgpl400_dll  = getFileVer(System32+L"\\jgpl400.dll",&status);
 	fver _jit_dll      = getFileVer(System32+L"\\jit.dll",&status);
+	fver _jpeg2x32_dll = getFileVer(System32+L"\\jpeg2x32.dll",&status);
 	fver _jscript_dll  = getFileVer(System32+L"\\jscript.dll",&status);
 	fver _jsproxy_dll  = getFileVer(System32+L"\\jsproxy.dll",&status);
 	fver _jview_exe    = getFileVer(System32+L"\\jview.exe",&status);
@@ -525,6 +526,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
 	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
 	fver _odbccp32_dll = getFileVer(System32+L"\\odbccp32.dll",&status);
+	fver _oieng400_dll = getFileVer(System32+L"\\oieng400.dll",&status);
 	fver _ole32_dll    = getFileVer(System32+L"\\ole32.dll",&status);
 	fver _oleacc_dll   = getFileVer(System32+L"\\oleacc.dll",&status);
 	fver _oleaccrc_dll = getFileVer(System32+L"\\oleaccrc.dll",&status);
@@ -629,6 +631,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _telnet_exe   = getFileVer(System32+L"\\telnet.exe",&status);
 	fver _termsrv_dll  = getFileVer(System32+L"\\termsrv.dll",&status);
 	fver _themeui_dll  = getFileVer(System32+L"\\themeui.dll",&status);
+	fver _tifflt_dll   = getFileVer(System32+L"\\tifflt.dll",&status);
 	fver _tlntsess_exe = getFileVer(System32+L"\\tlntsess.exe",&status);
 	fver _tsbyuv_dll   = getFileVer(System32+L"\\tsbyuv.dll",&status);
 	fver _tsgqec_dll   = getFileVer(System32+L"\\tsgqec.dll",&status);
@@ -1141,6 +1144,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _flash6_ocx = getFileVer(Flash+L"\\Flash6.ocx",&status);
 	fver _swflash_ocx = getFileVer(Flash+L"\\swflash.ocx",&status);
 	fver _moviemk_exe = getFileVer(MovieMaker+L"\\moviemk.exe",&status);
+	fver _kodakimg_exe = getFileVer(Accessories+L"\\ImageVue\\kodakimg.exe",&status);
+	fver _kodakprv_exe = getFileVer(Accessories+L"\\ImageVue\\kodakprv.exe",&status);
 
 	fver _helpctr_exe  = getFileVer(helpctr_binaries+L"\\helpctr.exe",&status);
 	fver _helphost_exe = getFileVer(helpctr_binaries+L"\\helphost.exe",&status);
@@ -4447,6 +4452,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _rspndr_sys <fver(5,1,2600,5611)) )) {
 		NN("Link Layer Topology Discovery (LLTD) Responder (KB922120)");
 		XX(p3+"WindowsXP-KB922120-v6-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _jpeg2x32_dll >zero && _jpeg2x32_dll <fver(5,0,2195,7136))
+					  ||  ( _kodakimg_exe >zero && _kodakimg_exe <fver(5,0,2195,7138))
+					  ||  ( _kodakprv_exe >zero && _kodakprv_exe <fver(5,0,2195,7138))
+					  ||  ( _oieng400_dll >zero && _oieng400_dll <fver(5,0,2195,7146))
+					  ||  ( _tifflt_dll   >zero && _tifflt_dll   <fver(5,0,3900,7136)) )) {
+		NN("Security Update for Windows XP (KB923810) - English");
+		XX(p2+"WindowsXP-KB923810-x86-ENU.exe"+a1);
 	}
 	
 
