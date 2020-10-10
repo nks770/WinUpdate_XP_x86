@@ -2419,10 +2419,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows Update Agent 3.0");
 		XX(p+"WindowsUpdateAgent30-x86.exe"+a5);
 	}
-	if((sp==1 && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,1613))
-	 ||(sp==2 && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,2577))) {
+	if((sp==1 &&         (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,1613))
+	 ||(sp==2 && !qfe && (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,2577))) {
 		NN("Security Update for Windows XP (KB888302)");
 		XX(p2+"windowsxp-kb888302-x86-enu_5c4ef905021d66aa78d9f5f112e5d05c40b1a909.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _srvsvc_dll  >zero && _srvsvc_dll  <fver(5,1,2600,3019)) )) {
+		NN("Update for Windows XP (KB926646)");
+		XX(p2+"WindowsXP-KB926646-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,2847)) {
 		// KB928843 is replaced with revised patch KB935448
