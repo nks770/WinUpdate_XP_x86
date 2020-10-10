@@ -555,6 +555,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
 	fver _qasf_dll     = getFileVer(System32+L"\\qasf.dll",&status);
+	fver _qcap_dll     = getFileVer(System32+L"\\qcap.dll",&status);
 	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
 	fver _qdvd_dll     = getFileVer(System32+L"\\qdvd.dll",&status);
 	fver _qedit_dll    = getFileVer(System32+L"\\qedit.dll",&status);
@@ -4489,6 +4490,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _usbhub_sys   >zero && _usbhub_sys   <fver(5,1,2600,2987)) )) {
 		NN("Update for Windows XP (KB924941)");
 		XX(p2+"WindowsXP-KB924941-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _qcap_dll   >zero && _qcap_dll   <fver(6,5,2600,3024))
+					  ||  ( _quartz_dll >zero && _quartz_dll <fver(6,5,2600,3024)) )) {
+		NN("Update for Windows XP (KB927544)");
+		XX(p2+"windowsxp-kb927544-x86-enu.exe"+a1);
 	}
 	
 
