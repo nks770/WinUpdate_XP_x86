@@ -2107,10 +2107,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("810272: Recommended Update");
 		XX(p1+"Q810272_WXP_SP2_x86_ENU.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _acgenral_dll>zero && _acgenral_dll<fver(5,1,2600,1170)) {
-		NN("814995: Recommended Update");
-		XX(p1+"q814995_wxp_sp2_x86_enu_9e15819376b7ecb637bc9f9bfac2d16.exe"+a7);
-	}
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,40))
 	   || (_aclayers_dll >zero && _aclayers_dll <fver(5,1,2600,40))
@@ -4281,11 +4277,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"WindowsXP-KB319740-v5-x86-ENU.exe"+a1);
 		}
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		  ( _acgenral_dll  >zero && _acgenral_dll  <fver(5,1,2600,2558)) )) {
-		NN("Update for Windows XP (KB886716)");
-		XX(p2+"WindowsXP-KB886716-v2-x86-ENU.exe"+a1);
-	}
 	/*if( sp==2 && (sku & XP_ALL) && _ipnat_sys>zero && _ipnat_sys<fver(5,1,2600,2524)) {
 		NN("Critical Update for Windows XP (KB886185)");
 		XX(p2+"windowsxp-kb886185-x86-enu_88123f8c8a9a8147529eac8ae4656b86c1018a8f.exe"+a6);
@@ -4444,6 +4435,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB915377)");
 		XX(p2+"WindowsXP-KB915377-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp==1 && (sku & XP_ALL) && _acgenral_dll>zero && _acgenral_dll<fver(5,1,2600,1170)) {
+		NN("814995: Recommended Update"); // Q814995 is replaced by KB928595
+		XX(p1+"q814995_wxp_sp2_x86_enu_9e15819376b7ecb637bc9f9bfac2d16.exe"+a7);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && !qfe && (
+		  ( _acgenral_dll  >zero && _acgenral_dll  <fver(5,1,2600,2558)) )) {
+		NN("Update for Windows XP (KB886716)"); // KB886716 is replaced by KB928595
+		XX(p2+"WindowsXP-KB886716-v2-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _acadproc_dll >zero && _acadproc_dll <fver(5,1,2600,2993))
 					  ||  ( _acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,2993))
@@ -4453,6 +4453,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _acxtrnal_dll >zero && _acxtrnal_dll <fver(5,1,2600,2993)) )) {
 		NN("Update for Windows XP (KB917140)");
 		XX(p2+"WindowsXP-KB917140-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && (sku & XP_ALL) && (
+		                  ( _acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,1892))
+					  ||  ( _acspecfc_dll >zero && _acspecfc_dll <fver(5,1,2600,1904)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
+		                  ( _acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,3163))
+					  ||  ( _acspecfc_dll >zero && _acspecfc_dll <fver(5,1,2600,3163)) ))) {
+		NN("Update for Windows XP (KB928595)");
+		XX(p2+"WindowsXP-KB928595-v5-x86-custom-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _ipnat_sys  >zero && _ipnat_sys  <fver(5,1,2600,2887)) )) {
