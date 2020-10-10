@@ -4900,6 +4900,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB971029)");
 		XX(p3+"WindowsXP-KB971029-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,3027)) )) {
+		NN("Update for Windows XP (KB927880)"); //KB927880 is replaced by KB968389
+		XX(p2+"WindowsXP-KB927880-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && (
 		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,3592))
 		||   ( _ksecdd_sys   < fver(5,1,2600,3592))
