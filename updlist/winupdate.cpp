@@ -216,6 +216,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _bcsprsrc_dll = getFileVer(System32+L"\\bcsprsrc.dll",&status);
 	fver _bitsprx2_dll = getFileVer(System32+L"\\bitsprx2.dll",&status);
 	fver _bitsprx3_dll = getFileVer(System32+L"\\bitsprx3.dll",&status);
+	fver _bitsprx4_dll = getFileVer(System32+L"\\bitsprx4.dll",&status);
 	fver _blackbox_dll = getFileVer(System32+L"\\blackbox.dll",&status);
 	fver _browser_dll  = getFileVer(System32+L"\\browser.dll",&status);
 	fver _browseui_dll = getFileVer(System32+L"\\browseui.dll",&status);
@@ -1459,6 +1460,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Background Intelligent Transfer Service (BITS) (KB883357)");
 		XX(p1+"windowsxp-kb883357-x86-enu_f4bd524df7dbf1db8bed916d4a4f63b0f29f777c.exe"+a6);
 	}*/
+	if( sp==2 && (sku & XP_ALL) && (
+	      (_bitsprx2_dll >zero && _bitsprx2_dll <fver(6,7,2600,3143))
+	   || (_bitsprx3_dll >zero && _bitsprx3_dll <fver(6,7,2600,3143))
+	   || (_bitsprx4_dll <fver(6,7,2600,3143))
+	   || (_qmgr_dll     >zero && _qmgr_dll     <fver(6,7,2600,3143))
+	   || (_qmgrprxy_dll >zero && _qmgrprxy_dll <fver(6,7,2600,3143)) )) {
+		NN("Background Intelligent Transfer Service (BITS) 2.5 for Windows XP (KB923845)");
+		XX(p2+"WindowsXP-KB923845-x86-ENU.exe"+a1);
+	}
 	if( sp==0 && (sku & XP_ALL) && _itircl_dll>zero && _itircl_dll<fver(5,2,3790,80)) {
 		NN("Security Update for Microsoft Windows XP (KB825119)");
 		XX(rtm+"windowsxp-kb825119-x86-enu_1b9f23b64b002d1e9d1eaba62f5f8fd.exe"+a7);
