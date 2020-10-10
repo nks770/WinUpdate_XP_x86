@@ -1155,6 +1155,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msconfig_exe = getFileVer(helpctr_binaries+L"\\msconfig.exe",&status);
 	fver _pchshell_dll = getFileVer(helpctr_binaries+L"\\pchshell.dll",&status);
 	fver _pchsvc_dll   = getFileVer(helpctr_binaries+L"\\pchsvc.dll",&status);
+	fver _StateChangeDiag_exe = getFileVer(helpctr_binaries+L"\\StateChangeDiag.exe",&status);
 	fver _srdiag_exe   = getFileVer(Restore+L"\\srdiag.exe",&status);
 	fver _uploadm_exe  = getFileVer(UploadLB+L"\\uploadm.exe",&status);
 
@@ -4471,6 +4472,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _tifflt_dll   >zero && _tifflt_dll   <fver(5,0,3900,7136)) )) {
 		NN("Security Update for Windows XP (KB923810) - English");
 		XX(p2+"WindowsXP-KB923810-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _StateChangeDiag_exe <fver(1,0,0,1)) )) {
+		NN("Change Analysis Diagnostic (KB924732)");
+		XX(p2+"WindowsXP-KB924732-x86-ENU.exe"+a1);
 	}
 	
 
