@@ -969,6 +969,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
 	fver _hdaudbus_sys = getFileVer(Drivers+L"\\hdaudbus.sys",&status);
 	fver _Hdaudio_sys  = getFileVer(Drivers+L"\\Hdaudio.sys",&status);
+	fver _hidclass_sys = getFileVer(Drivers+L"\\hidclass.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
 	fver _imapi_sys    = getFileVer(Drivers+L"\\imapi.sys",&status);
 	fver _intelppm_sys = getFileVer(Drivers+L"\\intelppm.sys",&status);
@@ -4477,6 +4478,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		                  ( _StateChangeDiag_exe <fver(1,0,0,1)) )) {
 		NN("Change Analysis Diagnostic (KB924732)");
 		XX(p2+"WindowsXP-KB924732-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _hidclass_sys >zero && _hidclass_sys <fver(5,1,2600,3024))
+					  ||  ( _usbhub_sys   >zero && _usbhub_sys   <fver(5,1,2600,2987)) )) {
+		NN("Update for Windows XP (KB924941)");
+		XX(p2+"WindowsXP-KB924941-v2-x86-ENU.exe"+a1);
 	}
 	
 
