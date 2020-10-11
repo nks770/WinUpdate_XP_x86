@@ -351,6 +351,7 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&CannotFindSystemRoot);
 	std::wstring System32 = SystemRoot + L"\\system32";
 
+	fver _adamdsa_dll  = getFileVer(SystemRoot+L"\\ADAM\\adamdsa.dll",&status);
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
 	fver _windowscodecs_dll = getFileVer(System32+L"\\windowscodecs.dll",&status);
@@ -382,6 +383,11 @@ int installServicePack(std::vector<std::string>* name, std::vector<std::string>*
 			                               +"|cannot be installed because newer parts of"
 							               +"|it are already present on the system.");
 		}
+	}
+	if( sp==2 && (sku & XP_ALL) && regTestKey(L"SYSTEM\\CurrentControlSet\\Services\\ADAM") && (
+		                  ( _adamdsa_dll   >zero && _adamdsa_dll   <fver(1,1,3790,4188)) )) {
+		NN("Security Update for Windows XP (KB931374) - English");
+		XX(p2+"WindowsXP-KB931374-x86-ENU.exe"+a1);
 	}
 	if((sku & XPE_FLP) && sp<3 ) {
 		r=3;

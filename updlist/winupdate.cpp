@@ -188,6 +188,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Read file version information
 	fver zero = fver(0,0,0,0);
 
+	fver _adamdsa_dll  = getFileVer(SystemRoot+L"\\ADAM\\adamdsa.dll",&status);
 	fver _acadproc_dll = getFileVer(SystemRoot+L"\\AppPatch\\acadproc.dll",&status);
 	fver _acgenral_dll = getFileVer(SystemRoot+L"\\AppPatch\\acgenral.dll",&status);
 	fver _aclayers_dll = getFileVer(SystemRoot+L"\\AppPatch\\aclayers.dll",&status);
@@ -4523,6 +4524,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _quartz_dll >zero && _quartz_dll <fver(6,5,2600,3024)) )) {
 		NN("Update for Windows XP (KB927544)");
 		XX(p2+"windowsxp-kb927544-x86-enu.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && regTestKey(L"SYSTEM\\CurrentControlSet\\Services\\ADAM") && (
+		                  ( _adamdsa_dll   >zero && _adamdsa_dll   <fver(1,1,3790,4188)) )) {
+		NN("Security Update for Windows XP (KB931374) - English");
+		XX(p2+"WindowsXP-KB931374-x86-ENU.exe"+a1);
 	}
 	
 
