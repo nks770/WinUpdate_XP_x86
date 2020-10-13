@@ -3222,9 +3222,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB952287)");
 		XX(p3+"windowsxp-kb952287-x86-enu_5bee5928c09f4ee44bc41cab109022cec820e5ff.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _update_sys>zero && _update_sys<fver(5,1,2600,3124)) {
-		NN("Update for Windows XP (KB936357)");
+	/*if( sp==2 && (sku & XP_ALL) && _update_sys>zero && _update_sys<fver(5,1,2600,3124)) {
+		NN("Update for Windows XP (KB936357)"); // KB936357-v1 is replaced by KB936357-v2
 		XX(p2+"windowsxp-kb936357-x86-enu_50f76a151743f032f20d6a9f6e71ed0b73fe7781.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _update_sys>zero && _update_sys<fver(5,1,2600,3218)) {
+		// Note This 32-bit package for Windows XP is the second version (v2) of the update which
+		// will not cause the "stop 0x7E" error. However, if you have already installed the v1
+		// package and do not encounter the "stop 0x7E" error, your system is running a CPU that
+		// supports microcode. In this situation, you do not have to install this v2 package.
+		NN("Update for Windows XP (KB936357)");
+		XX(p2+"WindowsXP-KB936357-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && _explorer_exe>zero && _explorer_exe<fver(6,0,2900,3156)) {
 		NN("Update for Windows XP (KB938828)");
