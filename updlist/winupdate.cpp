@@ -1192,6 +1192,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
+	fver _repdrvfs_dll = getFileVer(wbem+L"\\repdrvfs.dll",&status);
 	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
 	fver _wbemess_dll  = getFileVer(wbem+L"\\wbemess.dll",&status);
 	fver _wmiprvsd_dll = getFileVer(wbem+L"\\wmiprvsd.dll",&status);
@@ -4536,7 +4537,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB932578)");
 		XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
 	}
-
+	if( sp==2 && (sku & XP_ALL) && (
+		 ( _repdrvfs_dll   >zero && _repdrvfs_dll   <fver(5,1,2600,3138)) )) {
+		NN("Update for Windows XP (KB933062)");
+		XX(p2+"WindowsXP-KB933062-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
