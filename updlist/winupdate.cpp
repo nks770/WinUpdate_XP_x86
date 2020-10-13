@@ -559,6 +559,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _qasf_dll     = getFileVer(System32+L"\\qasf.dll",&status);
 	fver _qcap_dll     = getFileVer(System32+L"\\qcap.dll",&status);
 	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
+	fver _qdv_dll      = getFileVer(System32+L"\\qdv.dll",&status);
 	fver _qdvd_dll     = getFileVer(System32+L"\\qdvd.dll",&status);
 	fver _qedit_dll    = getFileVer(System32+L"\\qedit.dll",&status);
 	fver _qmgr_dll     = getFileVer(System32+L"\\qmgr.dll",&status);
@@ -4535,6 +4536,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB932578)");
 		XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
 	}
+
 	
 
 	// Windows XP SP3 updates;
@@ -5856,6 +5858,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_msdv_sys_cache <fver(5,3,2600,2601)) )){ // For DirectX 9.0b
 		NN("Update for Windows XP (KB893008)");
 		XX(p2+"windowsxp-kb893008-x86-enu.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		( _qdv_dll >zero && _qdv_dll <fver(6,5,2600,3079)) )) {
+		NN("Update for Windows XP (KB932662)");
+		XX(p2+"windowsxp-kb932662-x86-enu.exe"+a1);
 	}
 
 	// Outlook Express Updates
