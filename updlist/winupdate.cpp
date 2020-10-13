@@ -4569,6 +4569,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB934428)");
 		XX(p2+"WindowsXP-KB934428-v3-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (
+		 ( _usbaudio_sys   >zero && _usbaudio_sys   <fver(5,1,2600,3115)) )) {
+		NN("Update for Windows XP (KB935708)");
+		XX(p2+"WindowsXP-KB935708-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
