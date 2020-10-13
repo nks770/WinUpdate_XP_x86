@@ -3180,9 +3180,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB952954)");
 		XX(p3+"WindowsXP-KB952954-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _wiaservc_dll>zero && _wiaservc_dll<fver(5,1,2600,3051)) {
-		NN("Security Update for Windows XP (KB927802)");
-		XX(p2+"windowsxp-kb927802-x86-enu_94703f4083a9d9d6633d9134d0d0a85bfc405f3a.exe"+a1);
+	if(qfe) {
+		if( sp==2 && qfe && (sku & XP_ALL) && _wiaservc_dll>zero && _wiaservc_dll<fver(5,1,2600,3222)) {
+			NN("Update for Windows XP (KB935879)");
+			XX(p2+"WindowsXP-KB935879-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && _wiaservc_dll>zero && _wiaservc_dll<fver(5,1,2600,3051)) {
+			NN("Security Update for Windows XP (KB927802)");
+			XX(p2+"windowsxp-kb927802-x86-enu_94703f4083a9d9d6633d9134d0d0a85bfc405f3a.exe"+a1);
+		}
 	}
 	if((sp==2 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,3389))
 	 ||(sp==3 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,5620))) {
