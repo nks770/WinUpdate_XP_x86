@@ -1010,7 +1010,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
 	fver _rspndr_sys   = getFileVer(Drivers+L"\\rspndr.sys",&status);
 	fver _sbp2port_sys = getFileVer(Drivers+L"\\sbp2port.sys",&status);
+	fver _sdbus_sys    = getFileVer(Drivers+L"\\sdbus.sys",&status);
 	fver _secdrv_sys   = getFileVer(Drivers+L"\\secdrv.sys",&status);
+	fver _sffdisk_sys  = getFileVer(Drivers+L"\\sffdisk.sys",&status);
+	fver _sffp_mmc_sys = getFileVer(Drivers+L"\\sffp_mmc.sys",&status);
+	fver _sffp_sd_sys  = getFileVer(Drivers+L"\\sffp_sd.sys",&status);
 	fver _splitter_sys = getFileVer(Drivers+L"\\splitter.sys",&status);
 	fver _srv_sys      = getFileVer(Drivers+L"\\srv.sys",&status);
 	fver _stream_sys   = getFileVer(Drivers+L"\\stream.sys",&status);
@@ -4556,6 +4560,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _repdrvfs_dll   >zero && _repdrvfs_dll   <fver(5,1,2600,3138)) )) {
 		NN("Update for Windows XP (KB933062)");
 		XX(p2+"WindowsXP-KB933062-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3259))
+					  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3259))
+					  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3259))
+					  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3259)) )) {
+		NN("Update for Windows XP (KB934428)");
+		XX(p2+"WindowsXP-KB934428-v3-x86-ENU.exe"+a1);
 	}
 	
 
