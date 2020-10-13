@@ -4530,6 +4530,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB931374) - English");
 		XX(p2+"WindowsXP-KB931374-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3480))))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5712))))) {
+		NN("Update for Windows XP (KB932578)");
+		XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
