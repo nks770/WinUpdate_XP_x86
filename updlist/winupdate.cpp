@@ -3223,12 +3223,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB930916)");
 		XX(p2+"windowsxp-kb930916-x86-enu_f077461cd094716eafd9cfe353d257a0f71a4af2.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ( 
-		                  (_fltlib_dll >zero && _fltlib_dll <fver(5,1,2600,2978))
-					  ||  (_fltMc_exe  >zero && _fltMc_exe  <fver(5,1,2600,2978))
-					  ||  (_fltMgr_sys >zero && _fltMgr_sys <fver(5,1,2600,2978)) )) {
-		NN("Update for Windows XP (KB922582)");
-		XX(p2+"windowsxp-kb922582-x86-enu_4d2c05da13ad8b38b98d290938bbb7de3fd6d985.exe"+a1);
+	if(qfe) {
+		if( sp==2 && qfe && (sku & XP_ALL) && (
+							  ( _fltlib_dll >zero && _fltlib_dll <fver(5,1,2600,2978))
+						  ||  ( _fltMc_exe  >zero && _fltMc_exe  <fver(5,1,2600,2978))
+						  ||  ( _fltMgr_sys >zero && _fltMgr_sys <fver(5,1,2600,3124)) )) {
+			NN("Update for Windows XP (KB933215)");
+			XX(p2+"WindowsXP-KB933215-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+							  (_fltlib_dll >zero && _fltlib_dll <fver(5,1,2600,2978))
+						  ||  (_fltMc_exe  >zero && _fltMc_exe  <fver(5,1,2600,2978))
+						  ||  (_fltMgr_sys >zero && _fltMgr_sys <fver(5,1,2600,2978)) )) {
+			NN("Update for Windows XP (KB922582)");
+			XX(p2+"windowsxp-kb922582-x86-enu_4d2c05da13ad8b38b98d290938bbb7de3fd6d985.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2869)) {
 		NN("Update for Windows XP (KB916595)");
