@@ -960,6 +960,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _aec_sys      = getFileVer(Drivers+L"\\aec.sys",&status);
 	fver _afd_sys      = getFileVer(Drivers+L"\\afd.sys",&status);
+	fver _battc_sys    = getFileVer(Drivers+L"\\battc.sys",&status);
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
 	fver _classpnp_sys = getFileVer(Drivers+L"\\classpnp.sys",&status);
@@ -4615,6 +4616,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _usp10_dll   >zero && _usp10_dll   <fver(1,420,2600,3163)) )) {
 		NN("Update for Windows XP (KB939450)");
 		XX(p2+"WindowsXP-KB939450-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _battc_sys   >zero && _battc_sys   <fver(5,1,2600,3179)) )) {
+		NN("Update for Windows XP (KB939780)");
+		XX(p2+"WindowsXP-KB939780-v2-x86-ENU.exe"+a1);
 	}
 	
 
