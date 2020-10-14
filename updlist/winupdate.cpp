@@ -1037,6 +1037,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usbscan_sys  = getFileVer(Drivers+L"\\usbscan.sys",&status);
 	fver _usbuhci_sys  = getFileVer(Drivers+L"\\usbuhci.sys",&status);
 	fver _usbvideo_sys = getFileVer(Drivers+L"\\usbvideo.sys",&status);
+	fver _videoprt_sys = getFileVer(Drivers+L"\\videoprt.sys",&status);
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
@@ -4593,6 +4594,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _usbaudio_sys   >zero && _usbaudio_sys   <fver(5,1,2600,3115)) )) {
 		NN("Update for Windows XP (KB935708)");
 		XX(p2+"WindowsXP-KB935708-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _videoprt_sys   >zero && _videoprt_sys   <fver(5,1,2600,3147)) )) {
+		NN("Update for Windows XP (KB937930)");
+		XX(p2+"WindowsXP-KB937930-x86-ENU.exe"+a1);
 	}
 	
 
