@@ -2783,6 +2783,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB930178)");
 		XX(p2+"windowsxp-kb930178-x86-enu_5e02462613354e7679cdd79b0ee52083efd9aa30.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _crypt32_dll >zero && _crypt32_dll <fver(5,131,2600,3272))
+					  ||  ( _winsrv_dll  >zero && _winsrv_dll  <fver(5,1,2600,3272)) )) {
+		// KB940275: Several problems may occur after you apply security update 930178
+		NN("Update for Windows XP (KB940275)");
+		XX(p2+"WindowsXP-KB940275-v3-x86-ENU.exe"+a1);
+	}
 	if( sp>=2 && (sku & XP_ALL) && _atl_dll>zero && _atl_dll<fver(3,5,2284,2)) {
 		NN("Security Update for Windows XP (KB973507)");
 		XX(p3+"WindowsXP-KB973507-x86-ENU.exe"+a1);
