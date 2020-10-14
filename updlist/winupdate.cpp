@@ -3266,10 +3266,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"windowsxp-kb922582-x86-enu_4d2c05da13ad8b38b98d290938bbb7de3fd6d985.exe"+a1);
 		}
 	}
-	if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2869)) {
-		NN("Update for Windows XP (KB916595)");
-		XX(p2+"windowsxp-kb916595-x86-enu_d2e2d4f421b6578b739717a98f84aa8fface741f.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_kmixer_sys   >zero && _kmixer_sys   <fver(5,1,2600,2929))
 					  ||  (_splitter_sys >zero && _splitter_sys <fver(5,1,2600,2929))
@@ -5110,6 +5106,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2345886)");
 		XX(p3+"WindowsXP-KB2345886-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2869)) {
+		NN("Update for Windows XP (KB916595)"); // KB916595 is replaced by KB970430
+		XX(p2+"windowsxp-kb916595-x86-enu_d2e2d4f421b6578b739717a98f84aa8fface741f.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _http_sys    >zero && _http_sys    <fver(5,1,2600,3167))
+					  ||  ( _httpapi_dll >zero && _httpapi_dll <fver(5,1,2600,3167)) )) {
+		NN("Update for Windows XP (KB939786)"); // KB939786 is replaced by KB970430
+		XX(p2+"WindowsXP-KB939786-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_http_sys    >zero && _http_sys     <fver(5,1,2600,3637))
 		              ||  (_httpapi_dll  >zero && _httpapi_dll  <fver(5,1,2600,3637))
 					  ||  (_strmfilt_dll >zero && _strmfilt_dll <fver(6,0,2600,3637))))
