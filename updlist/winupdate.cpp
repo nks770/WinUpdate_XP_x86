@@ -4626,6 +4626,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB939780)");
 		XX(p2+"WindowsXP-KB939780-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _hhctrl_ocx   >zero && _hhctrl_ocx   <fver(5,2,3790,4110)) )) {
+		NN("Update for Windows XP (KB940350)");
+		XX(p2+"WindowsXP-KB940350-v2-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
