@@ -3682,7 +3682,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb885835-x86-enu_920ecebf9cd90610ec67a305820f98e4186ca748.exe"+a6);
 	}
 	if((sp==1 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1701))
-	 ||(sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698))) {
+	 /*||(sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698))*/) {
+		// On SP2, KB899587 is replaced by KB968389
 		NN("Security Update for Windows XP (KB899587)");
 		XX(p2+"windowsxp-kb899587-x86-enu_95ef03f0da9761b044b9a98d445af90266777ea8.exe"+a1);
 	}
@@ -5025,6 +5026,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		                  ( _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,3027)) )) {
 		NN("Update for Windows XP (KB927880)"); //KB927880 is replaced by KB968389
 		XX(p2+"WindowsXP-KB927880-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,3192))
+					  ||  ( _msv1_0_dll   >zero && _msv1_0_dll   <fver(5,1,2600,3192)) )) {
+		NN("Update for Windows XP (KB939850)"); // KB939850 is replaced by KB968389
+		XX(p2+"WindowsXP-KB939850-x86-ENU.exe"+a1);
 	}*/
 	if((sp==2 && (sku & XP_ALL) && (
 		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,3592))
