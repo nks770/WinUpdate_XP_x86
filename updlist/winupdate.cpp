@@ -4600,6 +4600,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB937930)");
 		XX(p2+"WindowsXP-KB937930-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,3478))
+					  ||  ( _wintrust_dll  >zero && _wintrust_dll  <fver(5,131,2600,3478)) ))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+		                  ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,5709))
+					  ||  ( _wintrust_dll  >zero && _wintrust_dll  <fver(5,131,2600,5709)) ))*/ ) {
+		// on SP2, wintrust.dll is replaced by KB978601, while this version of crypt32.dll is the latest!
+		// on SP3, wintrust.dll is replaced by KB2749655 and crypt32.dll by KB2868626
+		NN("Update for Windows XP (KB938759)");
+		XX(p2+"WindowsXP-KB938759-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
