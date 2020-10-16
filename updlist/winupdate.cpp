@@ -2705,9 +2705,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB974392)");
 		XX(p3+"WindowsXP-KB974392-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _sxs_dll>zero && _sxs_dll<fver(5,1,2600,3019)) {
-		NN("Security Update for Windows XP (KB926255)");
-		XX(p2+"windowsxp-kb926255-x86-enu_1737b8dde544dbbc79dddd6f123291b781313c04.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,3466))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,5699))) {
+			NN("Update for Windows XP (KB943232)");
+			XX(p3+"WindowsXP-KB943232-v2-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && _sxs_dll>zero && _sxs_dll<fver(5,1,2600,3019)) {
+			NN("Security Update for Windows XP (KB926255)");
+			XX(p2+"windowsxp-kb926255-x86-enu_1737b8dde544dbbc79dddd6f123291b781313c04.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && ( (_msftedit_dll>zero && _msftedit_dll<fver(5,41,15,1514))
 					  ||  (_riched20_dll>zero && _riched20_dll<fver(5,30,23,1228)) )) {
