@@ -3211,6 +3211,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB935839)");
 		XX(p+"windowsxp-kb935839-x86-enu_891b3c6e312494ccf2dd0dab00dfcc4c49f2ca85.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _kernel32_dll   >zero && _kernel32_dll   <fver(5,1,2600,3243)) )) {
+		NN("Update for Windows XP (KB944340)");
+		XX(p2+"WindowsXP-KB944340-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,3541))
 					  ||  (_secur32_dll>zero && _secur32_dll<fver(5,1,2600,3518))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,5781))
