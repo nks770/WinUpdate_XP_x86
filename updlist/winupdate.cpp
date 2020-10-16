@@ -204,6 +204,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _aaclient_dll = getFileVer(System32+L"\\aaclient.dll",&status);
 	fver _aaclient_dll_mui = getFileVer(System32+L"\\en-US\\aaclient.dll.mui",&status);
 	fver _accwiz_exe   = getFileVer(System32+L"\\accwiz.exe",&status);
+	fver _adsldp_dll   = getFileVer(System32+L"\\adsldp.dll",&status);
+	fver _adsmsext_dll = getFileVer(System32+L"\\adsmsext.dll",&status);
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
 	fver _advpack_dll  = getFileVer(System32+L"\\advpack.dll",&status);
 	fver _appwiz_cpl   = getFileVer(System32+L"\\appwiz.cpl",&status);
@@ -266,6 +268,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _drmupgds_exe = getFileVer(System32+L"\\drmupgds.exe",&status);
 	fver _drmv2clt_dll = getFileVer(System32+L"\\drmv2clt.dll",&status);
 	fver _dssenh_dll   = getFileVer(System32+L"\\dssenh.dll",&status);
+	fver _dsuiext_dll  = getFileVer(System32+L"\\dsuiext.dll",&status);
 	fver _dwwin_exe    = getFileVer(System32+L"\\dwwin.exe",&status);
 	fver _dxmasf_dll   = getFileVer(System32+L"\\dxmasf.dll",&status);
 	fver _dxmrtp_dll   = getFileVer(System32+L"\\dxmrtp.dll",&status);
@@ -510,12 +513,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _nddenb32_dll = getFileVer(System32+L"\\nddenb32.dll",&status);
 	fver _netapi32_dll = getFileVer(System32+L"\\netapi32.dll",&status);
 	fver _netdde_exe   = getFileVer(System32+L"\\netdde.exe",&status);
+	fver _netlogon_dll = getFileVer(System32+L"\\netlogon.dll",&status);
 	fver _netman_dll   = getFileVer(System32+L"\\netman.dll",&status);
 	fver _netsetup_exe = getFileVer(System32+L"\\netsetup.exe",&status);
 	fver _netsh_exe    = getFileVer(System32+L"\\netsh.exe",&status);
 	fver _netshell_dll = getFileVer(System32+L"\\netshell.dll",&status);
 	fver _newdev_dll   = getFileVer(System32+L"\\newdev.dll",&status);
 	fver _ntdll_dll    = getFileVer(System32+L"\\ntdll.dll",&status);
+	fver _ntdsapi_dll  = getFileVer(System32+L"\\ntdsapi.dll",&status);
 	fver _ntkrnlmp_exe = getFileVer(System32+L"\\ntkrnlmp.exe",&status);
 	fver _ntkrnlpa_exe = getFileVer(System32+L"\\ntkrnlpa.exe",&status);
 	fver _ntkrpamp_exe = getFileVer(System32+L"\\ntkrpamp.exe",&status);
@@ -670,6 +675,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _verclsid_exe = getFileVer(System32+L"\\verclsid.exe",&status);
 	fver _verifier_dll = getFileVer(System32+L"\\verifier.dll",&status);
 	fver _vmhelper_dll = getFileVer(System32+L"\\vmhelper.dll",&status);
+	fver _w32time_dll  = getFileVer(System32+L"\\w32time.dll",&status);
+	fver _w32tm_exe    = getFileVer(System32+L"\\w32tm.exe",&status);
 	fver _wdfapi_dll   = getFileVer(System32+L"\\wdfapi.dll",&status);
 	fver _WdfCoInstaller01007_dll = getFileVer(System32+L"\\WdfCoInstaller01007.dll",&status);
 	fver _wdfmgr_exe   = getFileVer(System32+L"\\wdfmgr.exe",&status);
@@ -1206,6 +1213,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
+	fver _policman_dll = getFileVer(wbem+L"\\policman.dll",&status);
 	fver _repdrvfs_dll = getFileVer(wbem+L"\\repdrvfs.dll",&status);
 	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
 	fver _wbemess_dll  = getFileVer(wbem+L"\\wbemess.dll",&status);
@@ -4702,6 +4710,37 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _cmd_exe   >zero && _cmd_exe   <fver(5,1,2600,3237)) )) {
 		NN("Update for Windows XP (KB943854)");
 		XX(p2+"WindowsXP-KB943854-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && (
+		  ( _adsldp_dll   >zero && _adsldp_dll   <fver(5,1,2600,3365))
+	  ||  ( _adsmsext_dll >zero && _adsmsext_dll <fver(5,1,2600,3365))
+	  ||  ( _dsuiext_dll  >zero && _dsuiext_dll  <fver(5,1,2600,3365))
+	  ||  ( _gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,3365))
+	  ||  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,3365))
+	  ||  ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,3365))
+	  ||  ( _msv1_0_dll   >zero && _msv1_0_dll   <fver(5,1,2600,3365))
+	  ||  ( _netlogon_dll >zero && _netlogon_dll <fver(5,1,2600,3365))
+	  ||  ( _ntdsapi_dll  >zero && _ntdsapi_dll  <fver(5,1,2600,3365))
+	  ||  ( _policman_dll >zero && _policman_dll <fver(5,1,2600,3365))
+	  ||  ( _w32time_dll  >zero && _w32time_dll  <fver(5,1,2600,3365))
+	  ||  ( _w32tm_exe    >zero && _w32tm_exe    <fver(5,1,2600,3365))
+	  ||  ( _wkssvc_dll   >zero && _wkssvc_dll   <fver(5,1,2600,3365)) ))
+	 ||(sp==3 && (sku & XP_ALL) && (
+		  ( _adsldp_dll   >zero && _adsldp_dll   <fver(5,1,2600,5582))
+	  ||  ( _adsmsext_dll >zero && _adsmsext_dll <fver(5,1,2600,5582))
+	  ||  ( _dsuiext_dll  >zero && _dsuiext_dll  <fver(5,1,2600,5582))
+	  ||  ( _gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,5582))
+	  ||  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,5582))
+	  ||  ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,5582))
+	  ||  ( _msv1_0_dll   >zero && _msv1_0_dll   <fver(5,1,2600,5594))
+	  ||  ( _netlogon_dll >zero && _netlogon_dll <fver(5,1,2600,5582))
+	  ||  ( _ntdsapi_dll  >zero && _ntdsapi_dll  <fver(5,1,2600,5582))
+	  ||  ( _policman_dll >zero && _policman_dll <fver(5,1,2600,5582))
+	  ||  ( _w32time_dll  >zero && _w32time_dll  <fver(5,1,2600,5582))
+	  ||  ( _w32tm_exe    >zero && _w32tm_exe    <fver(5,1,2600,5594))
+	  ||  ( _wkssvc_dll   >zero && _wkssvc_dll   <fver(5,1,2600,5582)) ))) {
+		NN("Update for Windows XP (KB944043)");
+		XX(p3+"WindowsXP-KB944043-v3-x86-ENU.exe"+a1);
 	}
 	
 
