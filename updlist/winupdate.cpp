@@ -808,6 +808,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	// OOBE
 	fver _msobmain_dll= getFileVer(System32+L"\\oobe\\msobmain.dll",&status);
+	fver _msobweb_dll = getFileVer(System32+L"\\oobe\\msobweb.dll",&status);
 
 	// MMC Resources
 	fver _microsoft_managementconsole_resources_dll = getFileVer(System32+L"\\en\\microsoft.managementconsole.resources.dll",&status);
@@ -4270,6 +4271,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB884575)");
 		XX(p2+"WindowsXP-KB884575-x86-ENU.exe"+a6);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _intelppm_sys  >zero && _intelppm_sys   <fver(5,1,2600,3205)) )) {
+		NN("Update for Windows XP (KB941837)");
+		XX(p2+"WindowsXP-KB941837-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && _mlang_dll >zero && _mlang_dll <fver(6,0,2800,1599))
 	 ||(sp==2 && (sku & XP_ALL) && _mlang_dll >zero && _mlang_dll <fver(6,0,2900,2530))) {
 		NN("Update for Windows XP (KB886677)");
@@ -4658,6 +4664,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _twext_dll   >zero && _twext_dll   <fver(6,0,3800,3190)) )) {
 		NN("Update for Windows XP (KB941133)");
 		XX(p2+"WindowsXP-KB941133-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _msobweb_dll   >zero && _msobweb_dll   <fver(5,1,2600,3217)) )) {
+		NN("Update for Windows XP (KB942603)");
+		XX(p2+"WindowsXP-KB942603-x86-ENU.exe"+a1);
 	}
 	
 
