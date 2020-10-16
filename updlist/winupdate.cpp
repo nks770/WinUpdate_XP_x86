@@ -641,6 +641,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _tsbyuv_dll   = getFileVer(System32+L"\\tsbyuv.dll",&status);
 	fver _tsgqec_dll   = getFileVer(System32+L"\\tsgqec.dll",&status);
 	fver _tspkg_dll    = getFileVer(System32+L"\\tspkg.dll",&status);
+	fver _twext_dll    = getFileVer(System32+L"\\twext.dll",&status);
 	fver _txflog_dll   = getFileVer(System32+L"\\txflog.dll",&status);
 	fver _tzchange_exe = getFileVer(System32+L"\\tzchange.exe",&status);
 	fver _uexfat_dll   = getFileVer(System32+L"\\uexfat.dll",&status);
@@ -1001,6 +1002,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
 	fver _ohci1394_sys = getFileVer(Drivers+L"\\ohci1394.sys",&status);
+	fver _partmgr_sys  = getFileVer(Drivers+L"\\partmgr.sys",&status);
 	fver _pci_sys      = getFileVer(Drivers+L"\\pci.sys",&status);
 	fver _portcls_sys  = getFileVer(Drivers+L"\\portcls.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
@@ -4646,6 +4648,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// On SP3, KB940648 is replaced by KB2535512 + KB971657
 		NN("Update for Windows XP (KB940648)");
 		XX(p2+"WindowsXP-KB940648-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _partmgr_sys   >zero && _partmgr_sys   <fver(5,1,2600,3197)) )) {
+		NN("Update for Windows XP (KB941036)");
+		XX(p2+"WindowsXP-KB941036-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _twext_dll   >zero && _twext_dll   <fver(6,0,3800,3190)) )) {
+		NN("Update for Windows XP (KB941133)");
+		XX(p2+"WindowsXP-KB941133-x86-ENU.exe"+a1);
 	}
 	
 
