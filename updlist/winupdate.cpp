@@ -3009,9 +3009,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB960225)");
 		XX(p2+"windowsxp-kb960225-x86-enu_bae2bc04b963c312a47f36bdea4a8236f7003d71.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _mrxdav_sys>zero && _mrxdav_sys<fver(5,1,2600,3276)) {
-		NN("Security Update for Windows XP (KB946026)");
-		XX(p2+"windowsxp-kb946026-x86-enu_09eb2e3ee66c5e1be768a4fee49f9f47a0f0b978.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,3365))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,5594))) {
+			NN("Update for Windows XP (KB945015)");
+			XX(p3+"WindowsXP-KB945015-v2-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && _mrxdav_sys>zero && _mrxdav_sys<fver(5,1,2600,3276)) {
+			NN("Security Update for Windows XP (KB946026)");
+			XX(p2+"windowsxp-kb946026-x86-enu_09eb2e3ee66c5e1be768a4fee49f9f47a0f0b978.exe"+a1);
+		}
 	}
 	if((sp==1 && (sku & XP_ALL) && ( 
 		                  (_6to4svc_dll  >zero && _6to4svc_dll  <fver(5,1,2600,1886))
