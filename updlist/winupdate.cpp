@@ -233,6 +233,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
 	fver _clspack_exe  = getFileVer(System32+L"\\clspack.exe",&status);
+	fver _cmd_exe      = getFileVer(System32+L"\\cmd.exe",&status);
 	fver _colbact_dll  = getFileVer(System32+L"\\colbact.dll",&status);
 	fver _comctl32_dll = getFileVer(System32+L"\\comctl32.dll",&status);
 	fver _comrepl_dll  = getFileVer(System32+L"\\comrepl.dll",&status);
@@ -273,6 +274,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _encdec_dll   = getFileVer(System32+L"\\encdec.dll",&status);
 	fver _es_dll       = getFileVer(System32+L"\\es.dll",&status);
 	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
+	fver _eventlog_dll = getFileVer(System32+L"\\eventlog.dll",&status);
 	fver _expsrv_dll   = getFileVer(System32+L"\\expsrv.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
 	fver _faultrep_dll = getFileVer(System32+L"\\faultrep.dll",&status);
@@ -4690,6 +4692,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		||(_usbser_sys_cache  <fver(5,1,2600,3234)) )) {
 		NN("Update for Windows XP (KB943198)");
 		XX(p2+"WindowsXP-KB943198-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _eventlog_dll   >zero && _eventlog_dll   <fver(5,1,2600,3227)) )) {
+		NN("Update for Windows XP (KB943303)");
+		XX(p2+"WindowsXP-KB943303-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _cmd_exe   >zero && _cmd_exe   <fver(5,1,2600,3237)) )) {
+		NN("Update for Windows XP (KB943854)");
+		XX(p2+"WindowsXP-KB943854-x86-ENU.exe"+a1);
 	}
 	
 
