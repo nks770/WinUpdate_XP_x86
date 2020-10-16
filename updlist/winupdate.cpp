@@ -691,6 +691,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wjview_exe   = getFileVer(System32+L"\\wjview.exe",&status);
 	fver _wksprt_exe   = getFileVer(System32+L"\\wksprt.exe",&status);
 	fver _wkssvc_dll   = getFileVer(System32+L"\\wkssvc.dll",&status);
+	fver _wlanapi_dll  = getFileVer(System32+L"\\wlanapi.dll",&status);
 	fver _wldap32_dll  = getFileVer(System32+L"\\wldap32.dll",&status);
 	fver _WMADMOD_dll  = getFileVer(System32+L"\\WMADMOD.dll",&status);
 	fver _WMADMOE_dll  = getFileVer(System32+L"\\WMADMOE.dll",&status);
@@ -4630,6 +4631,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _hhctrl_ocx   >zero && _hhctrl_ocx   <fver(5,2,3790,4110)) )) {
 		NN("Update for Windows XP (KB940350)");
 		XX(p2+"WindowsXP-KB940350-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _wlanapi_dll   >zero && _wlanapi_dll   <fver(5,1,2600,3185)) )) {
+		NN("Update for Windows XP (KB940541)");
+		XX(p2+"WindowsXP-KB940541-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _mup_sys    >zero && _mup_sys    <fver(5,1,2600,3360))
+					  ||  ( _wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,3360)) ))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+		                  ( _mup_sys    >zero && _mup_sys    <fver(5,1,2600,5589))
+					  ||  ( _wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,5589)) ))*/ ) {
+		// On SP3, KB940648 is replaced by KB2535512 + KB971657
+		NN("Update for Windows XP (KB940648)");
+		XX(p2+"WindowsXP-KB940648-x86-ENU.exe"+a1);
 	}
 	
 
