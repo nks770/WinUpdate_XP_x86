@@ -1038,8 +1038,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usbhub_sys   = getFileVer(Drivers+L"\\usbhub.sys",&status);
 	fver _usbohci_sys  = getFileVer(Drivers+L"\\usbohci.sys",&status);
 	fver _usbport_sys  = getFileVer(Drivers+L"\\usbport.sys",&status);
-	fver _usbstor_sys  = getFileVer(Drivers+L"\\usbstor.sys",&status);
 	fver _usbscan_sys  = getFileVer(Drivers+L"\\usbscan.sys",&status);
+	fver _usbser_sys   = getFileVer(Drivers+L"\\usbser.sys",&status);
+	fver _usbstor_sys  = getFileVer(Drivers+L"\\usbstor.sys",&status);
 	fver _usbuhci_sys  = getFileVer(Drivers+L"\\usbuhci.sys",&status);
 	fver _usbvideo_sys = getFileVer(Drivers+L"\\usbvideo.sys",&status);
 	fver _videoprt_sys = getFileVer(Drivers+L"\\videoprt.sys",&status);
@@ -1059,6 +1060,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
+	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
 	fver _wuapi_dll    = getFileVer(System32+L"\\wuapi.dll",&status);
@@ -4674,6 +4676,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _msobweb_dll   >zero && _msobweb_dll   <fver(5,1,2600,3217)) )) {
 		NN("Update for Windows XP (KB942603)");
 		XX(p2+"WindowsXP-KB942603-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		 ( _usbser_sys   >zero && _usbser_sys   <fver(5,1,2600,3234))
+		||(_usbser_sys_cache  <fver(5,1,2600,3234)) )) {
+		NN("Update for Windows XP (KB943198)");
+		XX(p2+"WindowsXP-KB943198-v2-x86-ENU.exe"+a1);
 	}
 	
 
