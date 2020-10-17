@@ -375,11 +375,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _kbdpash_dll  = getFileVer(System32+L"\\kbdpash.dll",&status);
 	fver _kerberos_dll = getFileVer(System32+L"\\kerberos.dll",&status);
 	fver _kernel32_dll = getFileVer(System32+L"\\kernel32.dll",&status);
+	fver _koc_dll      = getFileVer(System32+L"\\Setup\\koc.dll",&status);
 	fver _krnl386_exe  = getFileVer(System32+L"\\krnl386.exe",&status);
 	fver _kswdmcap_ax  = getFileVer(System32+L"\\kswdmcap.ax",&status);
 	fver _l3codeca_acm = getFileVer(System32+L"\\l3codeca.acm",&status);
 	fver _l3codecx_ax  = getFileVer(System32+L"\\l3codecx.ax",&status);
 	fver _LAPRXY_dll   = getFileVer(System32+L"\\LAPRXY.dll",&status);
+	fver _licdll_dll   = getFileVer(System32+L"\\licdll.dll",&status);
 	fver _licmgr10_dll = getFileVer(System32+L"\\licmgr10.dll",&status);
 	fver _linkinfo_dll = getFileVer(System32+L"\\linkinfo.dll",&status);
 	fver _localspl_dll = getFileVer(System32+L"\\localspl.dll",&status);
@@ -4792,6 +4794,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _unires_dll_cache   <fver(0,3,6001,22116)) )) {
 		NN("Update for Windows XP (KB948046)");
 		XX(p3+"WindowsXP-KB948046-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
+	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,3358))
+	  ||  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,3358))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,3358)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,5587))
+	  ||  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,5587))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,5587)) ))) {
+		NN("Update for Windows XP (KB948277)");
+		XX(p3+"WindowsXP-KB948277-x86-ENU.exe"+a1);
 	}
 	
 
