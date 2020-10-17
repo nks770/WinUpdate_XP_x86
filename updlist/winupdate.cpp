@@ -2925,6 +2925,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB889673)");
 		XX(p2+"WindowsXP-KB889673-x86-ENU.exe"+a6);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,3345))
+	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,3345))
+	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,3345))
+	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,3345))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,3345)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,5574))
+	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,5574))
+	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,5574))
+	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,5574))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,5574)) ))) {
+		NN("Update for Windows XP (KB951126)");
+		XX(p3+"WindowsXP-KB951126-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_halmacpi_dll>zero && _halmacpi_dll<fver(5,1,2600,3023))
 					  ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3023))
