@@ -981,6 +981,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
 	fver _classpnp_sys = getFileVer(Drivers+L"\\classpnp.sys",&status);
+	fver _disk_sys     = getFileVer(Drivers+L"\\disk.sys",&status);
 	fver _dmusic_sys   = getFileVer(Drivers+L"\\dmusic.sys",&status);
 	fver _dxg_sys      = getFileVer(Drivers+L"\\dxg.sys",&status);
 	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
@@ -4905,6 +4906,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _ipnathlp_dll >zero && _ipnathlp_dll <fver(5,1,2600,5589)) ))) {
 		NN("Update for Windows XP (KB951624)");
 		XX(p3+"WindowsXP-KB951624-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _disk_sys >zero && _disk_sys <fver(5,1,2600,3368)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _disk_sys >zero && _disk_sys <fver(5,1,2600,5597)) ))) {
+		NN("Update for Windows XP (KB951709)");
+		XX(p3+"WindowsXP-KB951709-x86-ENU.exe"+a1);
 	}
 	
 
