@@ -1067,8 +1067,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
+	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
+	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
+	fver _pcl5ures_dll_cache = getFileVer(DriverCache+L"\\pcl5ures.dll",&status);
+	fver _pclxl_dll_cache    = getFileVer(DriverCache+L"\\pclxl.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
+	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
+	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
+	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
@@ -4774,6 +4781,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,5672)) ))) {
 		NN("Update for Windows XP (KB950234)");
 		XX(p3+"WindowsXP-KB950234-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _pcl4res_dll_cache  <fver(0,3,5479,0))
+	  ||  ( _pcl5eres_dll_cache <fver(0,3,5479,0))
+	  ||  ( _pcl5ures_dll_cache <fver(0,3,5479,0))
+	  ||  ( _pclxl_dll_cache    <fver(0,3,5479,0))
+	  ||  ( _unidrv_dll_cache   <fver(0,3,6001,22116))
+	  ||  ( _unidrvui_dll_cache <fver(0,3,6001,22116))
+	  ||  ( _unires_dll_cache   <fver(0,3,6001,22116)) )) {
+		NN("Update for Windows XP (KB948046)");
+		XX(p3+"WindowsXP-KB948046-v2-x86-ENU.exe"+a1);
 	}
 	
 
