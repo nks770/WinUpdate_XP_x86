@@ -300,9 +300,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _h323msp_dll  = getFileVer(System32+L"\\h323msp.dll",&status);
 	fver _hal_dll      = getFileVer(System32+L"\\hal.dll",&status);
 	fver _hccoin_dll   = getFileVer(System32+L"\\hccoin.dll",&status);
-	fver _Hdaudprop_dll = getFileVer(System32+L"\\Hdaudprop.dll",&status);
-	fver _Hdaudpropres_dll = getFileVer(System32+L"\\Hdaudpropres.dll",&status);
-	fver _Hdaudpropshortcut_exe = getFileVer(System32+L"\\Hdaudpropshortcut.exe",&status);
+	fver _HdAProp_dll  = getFileVer(System32+L"\\HdAProp.dll",&status);
+	fver _HdAShCut_exe = getFileVer(System32+L"\\HdAShCut.exe",&status);
+	fver _HdAudRes_dll = getFileVer(System32+L"\\HdAudRes.dll",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
@@ -990,7 +990,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fastfat_sys  = getFileVer(Drivers+L"\\fastfat.sys",&status);
 	fver _fltMgr_sys   = getFileVer(Drivers+L"\\fltMgr.sys",&status);
 	fver _fs_rec_sys   = getFileVer(Drivers+L"\\fs_rec.sys",&status);
-	fver _hdaudbus_sys = getFileVer(Drivers+L"\\hdaudbus.sys",&status);
+	fver _Hdaudbus_sys = getFileVer(Drivers+L"\\Hdaudbus.sys",&status);
 	fver _Hdaudio_sys  = getFileVer(Drivers+L"\\Hdaudio.sys",&status);
 	fver _hidclass_sys = getFileVer(Drivers+L"\\hidclass.sys",&status);
 	fver _http_sys     = getFileVer(Drivers+L"\\http.sys",&status);
@@ -4375,23 +4375,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb909441-x86-enu.exe"+a1);
 	}
 	if( sp==1 && qfe && (sku & XP_ALL) && (
-		  ( _Hdaudprop_dll         >zero && _Hdaudprop_dll         <fver(5,10,1,5013))
-	  ||  ( _Hdaudpropres_dll      >zero && _Hdaudpropres_dll      <fver(5,10,1,5013))
-	  ||  ( _Hdaudpropshortcut_exe >zero && _Hdaudpropshortcut_exe <fver(5,10,1,5013))
-	  ||  ( _hdaudbus_sys          >zero && _hdaudbus_sys          <fver(5,10,1,5013))
-	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013))
-	  ||  ( _mssap_dll             >zero && _mssap_dll             <fver(9,0,0,3140))
-	  ||  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) )) {
+		  ( _HdAProp_dll  <fver(5,10,1,5013))
+	  ||  ( _HdAudRes_dll <fver(5,10,1,5013))
+	  ||  ( _HdAShCut_exe <fver(5,10,1,5013))
+	  ||  ( _Hdaudbus_sys <fver(5,10,1,5013))
+	  ||  ( _Hdaudio_sys  <fver(5,10,1,5013))
+	  ||  ( _mssap_dll    <fver(9,0,0,3140))
+	  ||  ( _portcls_sys  <fver(5,1,2600,1364)) )) {
 		NN("High Definition Audio Driver Package - KB888111");
 		XX(p1+"kb888111xpsp1.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _Hdaudprop_dll         >zero && _Hdaudprop_dll         <fver(5,10,1,5013))
-	  ||  ( _Hdaudpropres_dll      >zero && _Hdaudpropres_dll      <fver(5,10,1,5013))
-	  ||  ( _Hdaudpropshortcut_exe >zero && _Hdaudpropshortcut_exe <fver(5,10,1,5013))
-	  ||  ( _hdaudbus_sys          >zero && _hdaudbus_sys          <fver(5,10,1,5013))
-	  ||  ( _Hdaudio_sys           >zero && _Hdaudio_sys           <fver(5,10,1,5013))
-	  ||  ( _portcls_sys           >zero && _portcls_sys           <fver(5,1,2600,1364)) )) {
+		  ( _HdAProp_dll  <fver(5,10,1,5013))
+	  ||  ( _HdAudRes_dll <fver(5,10,1,5013))
+	  ||  ( _HdAShCut_exe <fver(5,10,1,5013))
+	  ||  ( _Hdaudbus_sys <fver(5,10,1,5013))
+	  ||  ( _Hdaudio_sys  <fver(5,10,1,5013))
+	  ||  ( _portcls_sys  <fver(5,1,2600,1364)) )) {
 		NN("High Definition Audio Driver Package - KB888111");
 		XX(p2+"kb888111xpsp2.exe"+a1);
 	}
