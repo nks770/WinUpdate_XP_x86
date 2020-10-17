@@ -621,6 +621,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
 	fver _shell32_dll  = getFileVer(System32+L"\\shell32.dll",&status);
 	fver _shgina_dll   = getFileVer(System32+L"\\shgina.dll",&status);
+	fver _shimeng_dll  = getFileVer(System32+L"\\shimeng.dll",&status);
 	fver _shimgvw_dll  = getFileVer(System32+L"\\shimgvw.dll",&status);
 	fver _shlwapi_dll  = getFileVer(System32+L"\\shlwapi.dll",&status);
 	fver _shmedia_dll  = getFileVer(System32+L"\\shmedia.dll",&status);
@@ -4850,6 +4851,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,5551)) ))) {
 		NN("Update for Windows XP (KB949764)");
 		XX(p3+"WindowsXP-KB949764-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _shimeng_dll >zero && _shimeng_dll <fver(5,1,2600,3325)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _shimeng_dll >zero && _shimeng_dll <fver(5,1,2600,5555)) ))) {
+		NN("Update for Windows XP (KB949900)");
+		XX(p3+"WindowsXP-KB949900-x86-ENU.exe"+a1);
 	}
 	
 
