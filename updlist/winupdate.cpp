@@ -4768,6 +4768,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB947460)");
 		XX(p3+"WindowsXP-KB947460-v3-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,3443)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,5672)) ))) {
+		NN("Update for Windows XP (KB950234)");
+		XX(p3+"WindowsXP-KB950234-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
