@@ -5186,10 +5186,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2834886)");
 		XX(p3+"WindowsXP-KB2834886-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,6157)) {
-		NN("Security Update for Windows XP (KB2544893)");
-		XX(p3+"WindowsXP-KB2544893-v2-x86-ENU.exe"+a1);
-	}
 	if( sp==3 && (sku & XP_ALL) && ( (_oleacc_dll>zero && _oleacc_dll<fver(7,0,2600,6153))
 		              ||  (_oleaccrc_dll>zero && _oleaccrc_dll<fver(7,0,2600,6153))
 					  ||  (_uiautomationcore_dll<fver(7,0,2600,6153)) )) {
@@ -6297,6 +6293,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Outlook Express for Windows XP (KB941202)");
 		XX(p+"windowsxp-kb941202-x86-enu_a82783a1dd4d11145d52b0fa0aa2f8dc172eefc3.exe"+a1);
 	}*/
+	/*if((sp==2 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3350)) ))
+	|| (sp==3 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,5579)) ))) {
+		NN("Security Update for Outlook Express for Windows XP (KB951066)"); // KB951066 is replaced by KB978542
+		XX(p3+"WindowsXP-KB951066-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3664))
 					  ||  (_msoe_dll>zero && _msoe_dll<fver(6,0,2900,3664))))
 	|| (sp==3 && (sku & XP_ALL) && ( (_inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,5931))
@@ -6321,6 +6322,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2900,3138)) )) {
 		NN("Cumulative Security Update for Outlook Express for Windows XP (KB929123)");
 		XX(p2+"windowsxp-kb929123-x86-enu_e0a3cac53fbefd5629a4cc6ec79803875ff473b3.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,6157)) {
+		NN("Security Update for Windows XP (KB2544893)");
+		XX(p3+"WindowsXP-KB2544893-v2-x86-ENU.exe"+a1);
 	}
 
 
