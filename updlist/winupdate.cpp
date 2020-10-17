@@ -4859,6 +4859,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB949900)");
 		XX(p3+"WindowsXP-KB949900-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _winsrv_dll >zero && _winsrv_dll <fver(5,1,2600,3356)) ))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _winsrv_dll >zero && _winsrv_dll <fver(5,1,2600,5585)) ))*/) {
+		// On SP3, KB950312 is replaced by KB2820917
+		NN("Update for Windows XP (KB950312)");
+		XX(p2+"WindowsXP-KB950312-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
@@ -4991,10 +4999,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2603381)");
 		XX(p3+"WindowsXP-KB2603381-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _winsrv_dll>zero && _winsrv_dll<fver(5,1,2600,6368)) {
-		NN("Security Update for Windows XP (KB2820917)");
-		XX(p3+"WindowsXP-KB2820917-x86-ENU.exe"+a1);
-	}
 	if( sp==3 && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2570947")) {
 		NN("Security Update for Windows XP (KB2570947)");
 		XX(p3+"WindowsXP-KB2570947-x86-ENU.exe"+a1);
@@ -5101,6 +5105,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_winsrv_dll>zero && _winsrv_dll<fver(5,1,2600,6104)) )) {
 		NN("Security Update for Windows XP (KB2507938)");
 		XX(p3+"WindowsXP-KB2507938-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _winsrv_dll>zero && _winsrv_dll<fver(5,1,2600,6368)) {
+		NN("Security Update for Windows XP (KB2820917)");
+		XX(p3+"WindowsXP-KB2820917-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_hidparse_sys>zero && _hidparse_sys<fver(5,1,2600,6418))
 					  ||  (_usbscan_sys>zero && _usbscan_sys<fver(5,1,2600,6418)) )) {
