@@ -4867,6 +4867,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB950312)");
 		XX(p2+"WindowsXP-KB950312-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _portcls_sys >zero && _portcls_sys <fver(5,1,2600,3337)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _portcls_sys >zero && _portcls_sys <fver(5,1,2600,5566)) ))) {
+		NN("Update for Windows XP (KB950616)");
+		XX(p3+"WindowsXP-KB950616-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
