@@ -615,6 +615,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _secur32_dll  = getFileVer(System32+L"\\secur32.dll",&status);
 	fver _services_exe = getFileVer(System32+L"\\services.exe",&status);
 	fver _sessmgr_exe  = getFileVer(System32+L"\\sessmgr.exe",&status);
+	fver _setupapi_dll = getFileVer(System32+L"\\setupapi.dll",&status);
 	fver _sfcfiles_dll = getFileVer(System32+L"\\sfcfiles.dll",&status);
 	fver _shdoclc_dll  = getFileVer(System32+L"\\shdoclc.dll",&status);
 	fver _shdocvw_dll  = getFileVer(System32+L"\\shdocvw.dll",&status);
@@ -4806,6 +4807,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,5587)) ))) {
 		NN("Update for Windows XP (KB948277)");
 		XX(p3+"WindowsXP-KB948277-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,3374)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,5603)) ))) {
+		NN("Update for Windows XP (KB948720)");
+		XX(p3+"WindowsXP-KB948720-x86-ENU.exe"+a1);
 	}
 	
 
