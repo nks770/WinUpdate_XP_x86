@@ -3946,6 +3946,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			NN("Update for Windows XP (KB923154)");
 			XX(p2+"WindowsXP-KB923154-x86-ENU.exe"+a1);
 		}
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2977))
+		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,3356)) ))
+		|| (sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,5585)) ))) {
+			NN("Update for Windows XP (KB949127)");
+			XX(p3+"WindowsXP-KB949127-v2-x86-ENU.exe"+a1);
+		}
 	}
 //	if( sp==2 && (sku & XP_MCE2005) && (
 //			(    _sbp2port_sys       <fver(5,1,2600,2688)
