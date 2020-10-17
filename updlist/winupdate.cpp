@@ -4924,6 +4924,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB950616)");
 		XX(p3+"WindowsXP-KB950616-x86-ENU.exe"+a1);
 	}
+	if( sp>=2 && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB951618-v2") ) {
+		NN("Update for Windows XP (KB951618)");
+		XX(p3+"windowsxp-kb951618-v2-x86-enu_4c2c32b6a5be717c3625e295e47373c8787cb388.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
