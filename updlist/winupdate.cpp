@@ -4815,6 +4815,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB948720)");
 		XX(p3+"WindowsXP-KB948720-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,3358))
+	  ||  ( _usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,3358))
+	  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,3358))
+	  ||  ( _usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,3358)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,5587)) ))) {
+		NN("Update for Windows XP (KB949033)");
+		XX(p3+"WindowsXP-KB949033-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
