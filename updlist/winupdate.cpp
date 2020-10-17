@@ -306,6 +306,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
+	fver _hnetcfg_dll  = getFileVer(System32+L"\\hnetcfg.dll",&status);
 	fver _html_iec     = getFileVer(System32+L"\\html.iec",&status);
 	fver _httpapi_dll  = getFileVer(System32+L"\\httpapi.dll",&status);
 	fver _hypertrm_dll = getFileVer(System32+L"\\hypertrm.dll",&status);
@@ -4927,6 +4928,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB951618-v2") ) {
 		NN("Update for Windows XP (KB951618)");
 		XX(p3+"windowsxp-kb951618-v2-x86-enu_4c2c32b6a5be717c3625e295e47373c8787cb388.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _hnetcfg_dll  >zero && _hnetcfg_dll  <fver(5,1,2600,3360))
+	  ||  ( _ipnathlp_dll >zero && _ipnathlp_dll <fver(5,1,2600,3360)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _hnetcfg_dll  >zero && _hnetcfg_dll  <fver(5,1,2600,5589))
+	  ||  ( _ipnathlp_dll >zero && _ipnathlp_dll <fver(5,1,2600,5589)) ))) {
+		NN("Update for Windows XP (KB951624)");
+		XX(p3+"WindowsXP-KB951624-x86-ENU.exe"+a1);
 	}
 	
 
