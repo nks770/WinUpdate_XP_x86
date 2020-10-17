@@ -2674,19 +2674,47 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB941644)");
 		XX(p+"windowsxp-kb941644-x86-enu_69bd9e4e22c97592dca087165e4fef304230f7a5.exe"+a1);
 	}*/
-	if( sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
-					  ||  (_afd_sys     >zero && _afd_sys     <fver(5,1,2600,3394))
-					  ||  (_dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,3394))
-					  ||  (_mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,3394))
-					  ||  (_tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,3394))
-					  ||  (_tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,3394)) )) {
-	//if( sp==3 && (sku & XP_ALL) && ( (_afd_sys     >zero && _afd_sys     <fver(5,1,2600,5625))
-	//				  ||  (_dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,5625))
-	//				  ||  (_mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,5625))
-	//				  ||  (_tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,5625))
-	//				  ||  (_tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,5625)) )) {
-		NN("Security Update for Windows XP (KB951748)");
-		XX(p2+"windowsxp-kb951748-x86-enu_6b7598e550ef967b83e9c088f8cd3409632f5d23.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _6to4svc_dll >zero && _6to4svc_dll <fver(5,1,2600,2975))
+		  ||  ( _afd_sys     >zero && _afd_sys     <fver(5,1,2600,3394))
+		  ||  ( _dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,3418))
+		  ||  ( _mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,3394))
+		  ||  ( _tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,3394))
+		  ||  ( _tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,3394)) ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _afd_sys     >zero && _afd_sys     <fver(5,1,2600,5649))
+		  ||  ( _dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,5649))
+		  ||  ( _mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,5649))
+		  ||  ( _tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,5649))
+		  ||  ( _tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,5649)) ))) {
+			NN("Update for Windows XP (KB951163)");
+			XX(p3+"WindowsXP-KB951163-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && ( (_6to4svc_dll>zero && _6to4svc_dll<fver(5,1,2600,2975))
+						  ||  (_afd_sys     >zero && _afd_sys     <fver(5,1,2600,3394))
+						  ||  (_dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,3394))
+						  ||  (_mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,3394))
+						  ||  (_tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,3394))
+						  ||  (_tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,3394)) )) {
+		//if( sp==3 && (sku & XP_ALL) && ( (_afd_sys     >zero && _afd_sys     <fver(5,1,2600,5625))
+		//				  ||  (_dnsapi_dll  >zero && _dnsapi_dll  <fver(5,1,2600,5625))
+		//				  ||  (_mswsock_dll >zero && _mswsock_dll <fver(5,1,2600,5625))
+		//				  ||  (_tcpip6_sys  >zero && _tcpip6_sys  <fver(5,1,2600,5625))
+		//				  ||  (_tcpip_sys   >zero && _tcpip_sys   <fver(5,1,2600,5625)) )) {
+			NN("Security Update for Windows XP (KB951748)"); // On SP3, KB951748 is replaced by KB2509553
+			XX(p2+"windowsxp-kb951748-x86-enu_6b7598e550ef967b83e9c088f8cd3409632f5d23.exe"+a1);
+		}
+	}
+	if( sp==3 && (sku & XP_ALL) && ( (_afd_sys>zero && _afd_sys<fver(5,1,2600,5695))
+		              ||  (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,6089))
+					  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,5797))
+					  ||  (_mswsock_dll>zero && _mswsock_dll<fver(5,1,2600,5625))
+					  ||  (_tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,5625))
+					  ||  (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,5625)) )) {
+		NN("Security Update for Windows XP (KB2509553)");
+		XX(p3+"WindowsXP-KB2509553-x86-ENU.exe"+a1);
 	}
 	if( (sp==2 && (sku & XP_ALL) && ( (_avifil32_dll>zero && _avifil32_dll<fver(5,1,2600,3649))
 		              ||  (_iyuv_32_dll  >zero && _iyuv_32_dll  <fver(5,1,2600,3649))
@@ -4927,15 +4955,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && !checkCertificates("Disallowed")) {
 		NN("Update for Certificate Revocation List [March 2015] (KB3050995)");
 		XX(sw+p3+"rvkroots_3f2ce4676450c06f109b5b4e68bec252873ccc21.exe");
-	}
-	if( sp==3 && (sku & XP_ALL) && ( (_afd_sys>zero && _afd_sys<fver(5,1,2600,5695))
-		              ||  (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,6089))
-					  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,5797))
-					  ||  (_mswsock_dll>zero && _mswsock_dll<fver(5,1,2600,5625))
-					  ||  (_tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,5625))
-					  ||  (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,5625)) )) {
-		NN("Security Update for Windows XP (KB2509553)");
-		XX(p3+"WindowsXP-KB2509553-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_usbccgp_sys>zero && _usbccgp_sys<fver(5,1,2600,6437))
 		              ||  (_usbd_sys>zero && _usbd_sys<fver(5,1,2600,6437))
