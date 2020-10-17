@@ -6536,6 +6536,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB947864)");
 		XX(p2+"WindowsXP-KB947864-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,3313)) )) {
+		NN("Update for Windows XP (KB947853)"); // KB947853 is replaced by KB958215
+		XX(p2+"WindowsXP-KB947853-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3462))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3462))
