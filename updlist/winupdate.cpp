@@ -8130,6 +8130,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("February 2007 CardSpace Update for Windows XP (KB925720)");
 		XX(p2+"windowsxp-kb925720-x86-enu_b9966c90242454bce1f2edb066141ad45851008f.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _osk_exe >zero && _osk_exe <fver(5,1,2600,3389))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _osk_exe >zero && _osk_exe <fver(5,1,2600,5620)) ) {
+		NN("Update for Windows XP (KB954232)");
+		XX(p3+"WindowsXP-KB954232-x86-ENU.exe"+a1);
+	}
 	
 	if( sp==2 && *rdp60) {
 		NN("Remote Desktop Connection (Terminal Services Client 6.0) for Windows XP (KB925876)");
