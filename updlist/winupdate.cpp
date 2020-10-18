@@ -3034,6 +3034,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB979683)");
 		XX(p2+"windowsxp-kb979683-x86-enu_8f9e90bf9b6ad58fd264cc1cf0f187f9a83223a5.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
+					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
+		NN("Security Update for Windows Media Player 6.4 (KB925398)");
+		XX(p3+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
+	}
+	/*if( sp>=2 && (sku & XP_ALL) && _strmdll_dll >zero && _strmdll_dll < fver(4,1,0,3937)) {
+		NN("Security Update for Windows XP (KB954600)"); // KB954600 is replaced by KB974112
+		XX(p3+"windowsxp-kb954600-x86-enu_9dfe178c96720381e72d92635bdcd1d6c498c1de.exe"+a1);
+	}*/
 	if( sp>=2 && (sku & XP_ALL) && _strmdll_dll>zero && _strmdll_dll<fver(4,1,0,3938)) {
 		NN("Security Update for Windows XP (KB974112)");
 		XX(p3+"WindowsXP-KB974112-x86-ENU.exe"+a1);
@@ -7588,11 +7597,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3802) && _wmp_dll<fver(10,0,0,4062)) {
 		NN("Hotfix for Windows Media Player 10 (KB949056)"); // Replaced by KB973540 on SP2+
 		XX(p1+"windowsmedia10-kb949056-x86-intl.exe"+a1);
-	}
-	if( sp>=2 && (sku & XP_ALL) && ( (_dxmasf_dll>=fver(6,4,9,0) && _dxmasf_dll<fver(6,4,9,1133))
-					  ||  (_strmdll_dll>=fver(4,1,0,0) && _strmdll_dll<fver(4,1,0,3936)) )) {
-		NN("Security Update for Windows Media Player 6.4 (KB925398)");
-		XX(p3+"windowsmedia6-kb925398-v2-x86-enu_c8b7d9a38ecbd2bd8925345d69c53697a285b917.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && _wmpeffects_dll>=fver(11,0,5721,5145) && _wmpeffects_dll<fver(11,0,5721,5252)) {
 		NN("Security Update for Windows XP (KB954154)");
