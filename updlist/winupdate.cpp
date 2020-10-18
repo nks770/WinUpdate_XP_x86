@@ -251,6 +251,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cscdll_dll   = getFileVer(System32+L"\\cscdll.dll",&status);
 	fver _cscript_exe  = getFileVer(System32+L"\\cscript.exe",&status);
 	fver _csrsrv_dll   = getFileVer(System32+L"\\csrsrv.dll",&status);
+	fver _d3d9_dll     = getFileVer(System32+L"\\d3d9.dll",&status);
 	fver _danim_dll    = getFileVer(System32+L"\\danim.dll",&status);
 	fver _dao360_dll   = getFileVer(System32+L"\\dao360.dll",&status);
 	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
@@ -6312,6 +6313,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_quartz_dll>zero && _quartz_dll<fver(6,5,2600,7218)) )) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4014652)");
 		XX(p3+"windowsxp-kb4014652-x86-embedded-enu_c2702e4f1e63d06a320c139a853fd3a578d5e228.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _d3d9_dll >zero && _d3d9_dll <fver(5,3,2600,3372))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _d3d9_dll >zero && _d3d9_dll <fver(5,3,2600,5601))) {
+		NN("Update for Windows XP (KB953028)");
+		XX(p3+"WindowsXP-KB953028-x86-ENU.exe"+a1);
 	}
 
 	// Outlook Express Updates
