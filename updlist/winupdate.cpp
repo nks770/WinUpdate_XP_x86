@@ -2754,11 +2754,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"windowsxp-kb926255-x86-enu_1737b8dde544dbbc79dddd6f123291b781313c04.exe"+a1);
 		}
 	}
-	if( sp==2 && (sku & XP_ALL) && ( (_msftedit_dll>zero && _msftedit_dll<fver(5,41,15,1514))
-					  ||  (_riched20_dll>zero && _riched20_dll<fver(5,30,23,1228)) )) {
-		NN("Security Update for Windows XP (KB918118)");
-		XX(p2+"windowsxp-kb918118-x86-enu_8c38e06d795c410b8a072506af40ad81d64f1d6d.exe"+a1);
+
+	if(qfe) {
+		if( sp>=2 && qfe && (sku & XP_ALL) && (
+			  ( _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1516))
+		  ||  ( _riched20_dll >zero && _riched20_dll <fver(5,30,23,1231)) )) {
+			NN("Update for Windows XP (KB953024)");
+			XX(p3+"WindowsXP-KB953024-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && ( (_msftedit_dll>zero && _msftedit_dll<fver(5,41,15,1514))
+						  ||  (_riched20_dll>zero && _riched20_dll<fver(5,30,23,1228)) )) {
+			NN("Security Update for Windows XP (KB918118)");
+			XX(p2+"windowsxp-kb918118-x86-enu_8c38e06d795c410b8a072506af40ad81d64f1d6d.exe"+a1);
+		}
 	}
+
 	if((sp==1 && (sku & XP_ALL) && (
 		      (_mswrd632_wpc>zero && _mswrd632_wpc<fver(2004,10,25,0))
 		   || (_wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,1606))
