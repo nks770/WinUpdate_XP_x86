@@ -2895,6 +2895,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB891781)");
 		XX(p1+"windowsxp-kb891781-x86-enu_32b11076df0189adeb0f36ce3bf7baa01cff1c29.exe"+a6);
 	}
+	/*if( sp>=2 && qfe && (sku & XP_ALL) && (
+		  ( _dhtmled_ocx >zero && _dhtmled_ocx <fver(6,1,0,9235))
+	  ||  ( _triedit_dll >zero && _triedit_dll <fver(6,1,0,9235)) )) {
+		NN("Update for Windows XP (KB955043)"); // KB955043 is replaced by KB973869+KB956844
+		XX(p3+"WindowsXP-KB955043-v2-x86-ENU.exe"+a1);
+	}*/
 	if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9247)) {
 		NN("Security Update for Windows XP (KB973869)");
 		XX(p3+"windowsxp-kb973869-x86-enu_c0679cb2d4c07f35f39ee5d8d7b973c5e4582d34.exe"+a1);
