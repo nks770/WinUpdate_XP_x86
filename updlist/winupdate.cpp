@@ -2740,16 +2740,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB932168)");
 		XX(p2+"windowsxp-kb932168-x86-enu_646e8c2d535461396b8b53ce8fe04410327925a2.exe"+a1);
 	}
-	/*if( sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _oakley_dll  >zero && _oakley_dll  <fver(5,1,2600,2966)) )) {
-		NN("Update for Windows XP (KB914841)"); // KB914841 is replaced by KB974392
-		XX(p2+"WindowsXP-KB914841-v3-x86-ENU.exe"+a1);
-	}*/
-	if(   (sp==2 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,3632))
-		||(sp==3 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,5886))) {
-		NN("Security Update for Windows XP (KB974392)");
-		XX(p3+"WindowsXP-KB974392-x86-ENU.exe"+a1);
-	}
 	if(qfe) {
 		if((sp==2 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,3466))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,5699))) {
@@ -5148,6 +5138,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,6142)) {
 		NN("Security Update for Windows XP (KB2592799)");
 		XX(p3+"WindowsXP-KB2592799-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _oakley_dll  >zero && _oakley_dll  <fver(5,1,2600,2966)) {
+		NN("Update for Windows XP (KB914841)"); // KB914841 is replaced by KB974392
+		XX(p2+"WindowsXP-KB914841-v3-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==3 && qfe && (sku & XP_ALL) && _oakley_dll >zero && _oakley_dll <fver(5,1,2600,5626)) {
+		NN("Update for Windows XP (KB954879)");
+		XX(p3+"WindowsXP-KB954879-x86-ENU.exe"+a1);
+	}*/
+	if(   (sp==2 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,3632))
+		||(sp==3 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,5886))) {
+		NN("Security Update for Windows XP (KB974392)");
+		XX(p3+"WindowsXP-KB974392-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _oakley_dll>zero && _oakley_dll<fver(5,1,2600,6462)) {
 		NN("Security Update for Windows XP (KB2862152)");
