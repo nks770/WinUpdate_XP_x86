@@ -4957,6 +4957,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB952117)");
 		XX(p3+"WindowsXP-KB952117-v2-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && (sku & XP_ALL) && (
+		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,1140,0))
+	  ||  ( _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1140,0))
+	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,1140,0)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,3006,0))
+	  ||  ( _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,3006,0))
+	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,3006,0)) ))) {
+		NN("Update for Windows XP (KB954920)");
+		XX(p3+"WindowsXP-KB954920-v2-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
