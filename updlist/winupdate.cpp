@@ -565,6 +565,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
 	fver _PortableDeviceWMDRM_dll = getFileVer(System32+L"\\PortableDeviceWMDRM.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
+	fver _psbase_dll   = getFileVer(System32+L"\\psbase.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
 	fver _qasf_dll     = getFileVer(System32+L"\\qasf.dll",&status);
@@ -4990,6 +4991,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _sbp2port_sys_cache <fver(5,1,2600,5636)))) {
 		NN("Update for Windows XP (KB955356)");
 		XX(p3+"WindowsXP-KB955356-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,3411))
+	 ||(sp==3 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,5642))) {
+		NN("Update for Windows XP (KB955417)");
+		XX(p3+"WindowsXP-KB955417-x86-ENU.exe"+a1);
 	}
 	
 
