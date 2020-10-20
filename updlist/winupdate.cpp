@@ -5122,6 +5122,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2508429)");
 		XX(p3+"WindowsXP-KB2508429-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _msado15_dll >zero && _msado15_dll <fver(2,81,1141,0))
+	  ||  ( _odbc32_dll  >zero && _odbc32_dll  <fver(3,525,1141,0)) ))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _msado15_dll >zero && _msado15_dll <fver(2,81,3007,0))
+	  ||  ( _odbc32_dll  >zero && _odbc32_dll  <fver(3,525,3007,0)) ))*/) {
+		NN("Update for Windows XP (KB955843)"); // On SP3, KB955843 is replaced by KB2419632
+		XX(p2+"WindowsXP-KB955843-v4-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && ( (_msadco_dll>zero && _msadco_dll<fver(2,81,3012,0))
 		              ||  (_msado15_dll>zero && _msado15_dll<fver(2,81,3012,0))
 					  ||  (_msadomd_dll>zero && _msadomd_dll<fver(2,81,3012,0))
@@ -5809,6 +5818,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-02 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4034044)");
 		XX(p3+"windowsxp-kb4034044-x86-embedded-enu_2eed2f8234cf7d6326ece957d4309979faf9d84a.exe"+a1);
 	}
+	if( sp==3 && (sku & XPE_2009) && ( (_msado15_dll>zero && _msado15_dll<fver(2,81,3016,0))
+					  ||  (_msado28_tlb>zero && _msado28_tlb<fver(2,81,3016,0)) )) {
+		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489973)");
+		XX(p3+"windowsxp-kb4489973-x86-embedded-enu_1c50f081b27c440d89300b59cd5df9ed689390b0.exe"+a1);
+	}
 	if( sp==3 && (sku & XPE_2009) && ((_msexcl40_dll>zero && _msexcl40_dll<fver(4,0,9801,0))
 		              ||  (_msjet40_dll>zero && _msjet40_dll<fver(4,0,9801,0))
 					  ||  (_msjetol1_dll>zero && _msjetol1_dll<fver(4,0,9801,0))
@@ -6031,11 +6045,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && (_msfs_sys>zero && _msfs_sys<fver(5,1,2600,7657))) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489493)");
 		XX(p3+"windowsxp-kb4489493-x86-embedded-enu_bf5786db231541e562a8f4dececac9b8fdc3cdce.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( (_msado15_dll>zero && _msado15_dll<fver(2,81,3016,0))
-					  ||  (_msado28_tlb>zero && _msado28_tlb<fver(2,81,3016,0)) )) {
-		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489973)");
-		XX(p3+"windowsxp-kb4489973-x86-embedded-enu_1c50f081b27c440d89300b59cd5df9ed689390b0.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _comctl32_dll_7660<fver(6,0,2900,7660)) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4490228)");
