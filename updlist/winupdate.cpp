@@ -4982,6 +4982,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB954920)");
 		XX(p3+"WindowsXP-KB954920-v2-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			( _sbp2port_sys >zero && _sbp2port_sys <fver(5,1,2600,3405))
+			|| _sbp2port_sys_cache <fver(5,1,2600,3405)))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			( _sbp2port_sys >zero && _sbp2port_sys <fver(5,1,2600,5636))
+			|| _sbp2port_sys_cache <fver(5,1,2600,5636)))) {
+		NN("Update for Windows XP (KB955356)");
+		XX(p3+"WindowsXP-KB955356-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
