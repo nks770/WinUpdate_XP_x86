@@ -4997,6 +4997,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955417)");
 		XX(p3+"WindowsXP-KB955417-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,3412))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,5643))) {
+		NN("Update for Windows XP (KB955567)");
+		XX(p3+"WindowsXP-KB955567-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
