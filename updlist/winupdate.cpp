@@ -5002,6 +5002,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955567)");
 		XX(p3+"WindowsXP-KB955567-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _tapisrv_dll >zero && _tapisrv_dll <fver(5,1,2600,3423))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _tapisrv_dll >zero && _tapisrv_dll <fver(5,1,2600,5654))) {
+		NN("Update for Windows XP (KB955576)");
+		XX(p3+"WindowsXP-KB955576-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
