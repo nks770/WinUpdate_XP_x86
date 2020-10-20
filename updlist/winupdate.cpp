@@ -3358,9 +3358,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB936357)");
 		XX(p2+"WindowsXP-KB936357-v2-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && _explorer_exe>zero && _explorer_exe<fver(6,0,2900,3156)) {
-		NN("Update for Windows XP (KB938828)");
-		XX(p2+"windowsxp-kb938828-x86-enu_ba3f0cbe4ba5736d4254732e41fe058697b76ebc.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && _explorer_exe >zero && _explorer_exe <fver(6,0,2900,3403))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && _explorer_exe >zero && _explorer_exe <fver(6,0,2900,5634))) {
+			NN("Update for Windows XP (KB955109)");
+			XX(p3+"WindowsXP-KB955109-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && _explorer_exe>zero && _explorer_exe<fver(6,0,2900,3156)) {
+			NN("Update for Windows XP (KB938828)");
+			XX(p2+"windowsxp-kb938828-x86-enu_ba3f0cbe4ba5736d4254732e41fe058697b76ebc.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && _ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,3081)) {
 		NN("Update for Windows XP (KB930916)");
