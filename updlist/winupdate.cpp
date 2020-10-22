@@ -2987,6 +2987,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB943092)"); // KB943092 is replaced by KB956572
 		XX(p2+"WindowsXP-KB943092-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==2 && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,3427))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,3427))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,3427))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,3427)) ))
+	 ||(sp==3 && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,5657))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,5657))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,5657))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,5657)) ))) {
+		NN("Security Update for Windows XP (KB956841)"); // KB956841 is replaced by KB956572
+		XX(p3+"windowsxp-kb956841-x86-enu_4aad78f18d39077a2cf92699b559de07f87263e2.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && (
 		                  (_advapi32_dll >zero && _advapi32_dll <fver(5,1,2600,3520))
 					  ||  (_colbact_dll  >zero && _colbact_dll  <fver(2001,12,4414,308))
@@ -4999,7 +5012,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,1140,0))
 	  ||  ( _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1140,0))
 	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,1140,0)) ))
-	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+	 ||(sp==3 && (sku & XP_ALL) && (
 		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,3006,0))
 	  ||  ( _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,3006,0))
 	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,3006,0)) ))) {
