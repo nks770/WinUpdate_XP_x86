@@ -1226,6 +1226,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msonsext_dll = getFileVer(WebFolders+L"\\msonsext.dll",&status);
 	fver _nsextint_dll = getFileVer(WebFolders+L"\\1033\\nsextint.dll",&status);
 
+	fver _cimwin32_dll = getFileVer(wbem+L"\\cimwin32.dll",&status);
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
 	fver _policman_dll = getFileVer(wbem+L"\\policman.dll",&status);
@@ -5021,6 +5022,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tapisrv_dll >zero && _tapisrv_dll <fver(5,1,2600,5654))) {
 		NN("Update for Windows XP (KB955576)");
 		XX(p3+"WindowsXP-KB955576-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,3423))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,5654))) {
+		NN("Update for Windows XP (KB955988)");
+		XX(p3+"WindowsXP-KB955988-x86-ENU.exe"+a1);
 	}
 	
 
