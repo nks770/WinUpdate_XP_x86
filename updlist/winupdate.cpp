@@ -3789,11 +3789,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB893756)");
 		XX(p2+"windowsxp-kb893756-x86-enu_0fff59c5188cc15ec8f138fda97cb8be1e22da66.exe"+a1);
 	}
-	if((sp==1 && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,1698))
-	 ||(sp==2 && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,2695))) {
-		NN("Security Update for Windows XP (KB899591)");
-		XX(p2+"windowsxp-kb899591-x86-enu_3022d995581878f4017098b693b4ba35f99dee5c.exe"+a1);
-	}
 	if((sp==1 && (sku & XP_ALL) && _cdosys_dll>zero && _cdosys_dll<fver(6,1,1002,0))
 	 ||(sp==2 && (sku & XP_ALL) && _cdosys_dll>zero && _cdosys_dll<fver(6,2,4,0))) {
 		NN("Security Update for Windows XP (KB901017)");
@@ -5073,6 +5068,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_usbport_sys>zero && _usbport_sys<fver(5,1,2600,6437)) )) {
 		NN("Security Update for Windows XP (KB2862330)");
 		XX(p3+"WindowsXP-KB2862330-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,1698))
+	 ||(sp==2 && !qfe && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,2695))) {
+		NN("Security Update for Windows XP (KB899591)");
+		XX(p2+"windowsxp-kb899591-x86-enu_3022d995581878f4017098b693b4ba35f99dee5c.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _rdpwd_sys >zero && _rdpwd_sys <fver(5,1,2600,3421))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && _rdpwd_sys >zero && _rdpwd_sys <fver(5,1,2600,5652))*/) {
+		NN("Update for Windows XP (KB956072)"); // On SP3, KB956072 is replaced by KB2723135
+		XX(p2+"WindowsXP-KB956072-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,6258)) {
 		NN("Security Update for Windows XP (KB2723135)");
