@@ -2514,6 +2514,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB923414)");
 		XX(p1+"windowsxp-kb923414-x86-enu_ed2b1047badbd832a971a76ca7ef4519d1a444f4.exe"+a1);
 	}
+	/*if((sp==2 && (sku & XP_ALL) && _srv_sys >zero && _srv_sys <fver(5,1,2600,3436))
+	 ||(sp==3 && (sku & XP_ALL) && _srv_sys >zero && _srv_sys <fver(5,1,2600,5671))) {
+		NN("Security Update for Windows XP (KB957095)"); // KB957095 is replaced by KB971468
+		XX(p3+"WindowsXP-KB957095-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
 	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
 		NN("Security Update for Windows XP (KB971468)");
@@ -5158,11 +5163,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2653956)");
 		XX(p3+"WindowsXP-KB2653956-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( (_srv_sys>zero && _srv_sys<fver(5,1,2600,6082))
-					  ||  ( _xpsp4res_dll<fver(5,1,2600,6082)) )) {
-		NN("Security Update for Windows XP (KB2508429)");
-		XX(p3+"WindowsXP-KB2508429-x86-ENU.exe"+a1);
-	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _msado15_dll >zero && _msado15_dll <fver(2,81,1141,0))
 	  ||  ( _odbc32_dll  >zero && _odbc32_dll  <fver(3,525,1141,0)) ))
@@ -5549,13 +5549,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		||   ( _pintool_exe  < fver(6,0,5066,164)) )) {
 		NN("Microsoft Base Smart Card Cryptographic Service Provider Package: x86 (KB909520)");
 		XX(p3+"Windows-KB909520-v1.000-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && ( ( _srv_sys    >zero && _srv_sys    <fver(5,1,2600,6031))
-					  ||   ( _srvsvc_dll >zero && _srvsvc_dll <fver(5,1,2600,6031)) )) {
-		// To use the features that this update includes, you must have Windows 7, Windows 2008 R2, or
-		// update 968389 installed on the computer.
-		NN("Update for Windows XP (KB2345886)");
-		XX(p3+"WindowsXP-KB2345886-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2869)) {
 		NN("Update for Windows XP (KB916595)"); // KB916595 is replaced by KB970430
@@ -6178,6 +6171,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"windowsxp-kb4012583-x86-embedded-custom-enu_b4ed0f4e2ec4ce15b7c699aeb5fd9547a64c1b4c.exe"+a1);
 	}
 
+	if( sp==3 && (sku & XP_ALL) && ( ( _srv_sys    >zero && _srv_sys    <fver(5,1,2600,6031))
+					  ||   ( _srvsvc_dll >zero && _srvsvc_dll <fver(5,1,2600,6031)) )) {
+		// To use the features that this update includes, you must have Windows 7, Windows 2008 R2, or
+		// update 968389 installed on the computer.
+		NN("Update for Windows XP (KB2345886)");
+		XX(p3+"WindowsXP-KB2345886-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && ( (_srv_sys>zero && _srv_sys<fver(5,1,2600,6082))
+					  /*||  ( _xpsp4res_dll<fver(5,1,2600,6082)) */ )) {
+		NN("Security Update for Windows XP (KB2508429)");
+		XX(p3+"WindowsXP-KB2508429-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_CLIENT) && _srv_sys>zero && _srv_sys<fver(5,1,2600,7208)) {
 		NN("Security Update for Windows XP SP3 (KB4012598)");
 		XX(p3+"windowsxp-kb4012598-x86-custom-enu_eceb7d5023bbb23c0dc633e46b9c2f14fa6ee9dd.exe"+a1);
