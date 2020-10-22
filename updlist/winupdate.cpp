@@ -2519,6 +2519,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB957095)"); // KB957095 is replaced by KB971468
 		XX(p3+"WindowsXP-KB957095-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==2 && (sku & XP_ALL) && _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,3467))
+	 ||(sp==3 && (sku & XP_ALL) && _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,5700))) {
+		NN("Security Update for Windows XP (KB957097)"); // KB957097 is replaced by KB980232
+		XX(p3+"WindowsXP-KB957097-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,3662)) {
 	//if( sp==3 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,5923)) {
 		NN("Security Update for Windows XP (KB971468)");
