@@ -8350,6 +8350,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //		NN("Update for Windows XP (KB968358)");
 //		XX(p3+"WindowsXP-KB968358-x86-ENU.exe"+a1);
 //	}
+	if( sp==3 && qfe && !*rdp70 && _mstscax_dll >= fver(6,0,6001,0) && _mstscax_dll <fver(6,0,6001,22307) ) {
+		NN("Update for Windows XP (KB958106)");
+		XX(p3+"WindowsXP-KB958106-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (!*rdp70 && ((sku & XP_ALL) && (_mstscax_dll >= fver(6,0,6001,0) && _mstscax_dll<=fver(6,0,6002,0))
 		              && ( *rdp61
 					  /* GDR */
