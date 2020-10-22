@@ -3358,6 +3358,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB932823)");
 		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _msctf_dll >zero && _msctf_dll <fver(5,1,2600,3425))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _msctf_dll >zero && _msctf_dll <fver(5,1,2600,5655))) {
+		NN("Update for Windows XP (KB956625)");
+		XX(p3+"WindowsXP-KB956625-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) /*&& _aclayers_dll>zero*/ && _aclayers_dll<fver(5,1,2600,3647)) {
 	//if( sp==3 && (sku & XP_ALL) /*&& _aclayers_dll>zero*/ && _aclayers_dll<fver(5,1,2600,5906)) {
 		NN("Update for Windows XP (KB955759)");

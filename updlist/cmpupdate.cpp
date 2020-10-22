@@ -20,6 +20,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
 	const std::string p2=p+"SP2\\";
+	const std::string p3=p+"SP3\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 
 	// Create SKU masks
@@ -160,45 +161,63 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 										   +"|Please try upgrading to SP3 and try again.");
 	}
 
-	if( sp==2 && (sku & XP_ALL) && _reg_exe>fver() && _msctf_dll<fver(5,1,2600,3319)) {
-		// If MSCTF.dll is already on the system, but not the required version, then
-		// KB932823 needs to be installed, and a system reboot will be needed so that the
-		// file can actually be replaced.
-		//
-		// If reg.exe is missing, then there is no point installing this update here
-		// because IE7/IE8 can't be installed anyway.
-		//
-		NN("Update for Windows XP (KB932823)");
-		XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
-		kb932823_ok=true;
-		if(_msctf_dll > fver()) {
-			// If the file was already present, then a reboot is needed before IE setup.
-			kb932823_ok=false;
-		//                                    ....V....1....V....2....V....3....V....4....V....5
-		notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
-			                               +"|on the system, but Internet Explorer 8"
-							               +"|requires version 5.1.2600.3319."
-							               +"| "
-							               +"|We will upgrade this DLL by installing"
-							               +"|KB932823, but a system reboot will be needed"
-										   +"|before you can continue installing Internet"
-										   +"|Explorer 8.");
+	if(sp==2) {
+		if( _reg_exe>fver() && _msctf_dll<fver(5,1,2600,3319)) {
+			// If MSCTF.dll is already on the system, but not the required version, then
+			// KB932823 needs to be installed, and a system reboot will be needed so that the
+			// file can actually be replaced.
+			//
+			// If reg.exe is missing, then there is no point installing this update here
+			// because IE7/IE8 can't be installed anyway.
+			//
+			NN("Update for Windows XP (KB932823)");
+			XX(p2+"windowsxp-kb932823-v3-x86-enu_d0806094569c5bbce9f6e0313cd67558316d048a.exe"+a1);
+			kb932823_ok=true;
+			if(_msctf_dll > fver()) {
+				// If the file was already present, then a reboot is needed before IE setup.
+				kb932823_ok=false;
+			//                                    ....V....1....V....2....V....3....V....4....V....5
+			notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
+											   +"|on the system, but Internet Explorer 8"
+											   +"|requires version 5.1.2600.3319."
+											   +"| "
+											   +"|We will upgrade this DLL by installing"
+											   +"|KB932823, but a system reboot will be needed"
+											   +"|before you can continue installing Internet"
+											   +"|Explorer 8.");
+			}
+		} else {
+			kb932823_ok=true;
 		}
-	} else {
-		kb932823_ok=true;
 	}
-	if( sp>2 && _msctf_dll<fver(5,1,2600,3319)) {
-		//                                    ....V....1....V....2....V....3....V....4....V....5
-		notifications->push_back(std::string("Internet Explorer 8 requires msctf.dll")
-			                               +"|version 5.1.2600.3319, which is not present"
-										   +"|on your system."
-							               +"| "
-							               +"|You should have installed KB932823 before"
-							               +"|upgrading to SP3.  Your best option at this"
-										   +"|point is to manually install msctf.dll and"
-										   +"|use regsvr32.exe to register it."
-										   +"| "
-										   +"|Internet Explorer 8 cannot be installed.");
+	if(sp==3) {
+		if( _reg_exe>fver() && _msctf_dll<fver(5,1,2600,3319)) {
+			// If MSCTF.dll is already on the system, but not the required version, then QFE
+			// KB956625 needs to be installed, and a system reboot will be needed so that the
+			// file can actually be replaced.
+			//
+			// If reg.exe is missing, then there is no point installing this update here
+			// because IE7/IE8 can't be installed anyway.
+			//
+			NN("Update for Windows XP (KB956625)");
+			XX(p3+"WindowsXP-KB956625-x86-ENU.exe"+a1);
+			kb932823_ok=true;
+			if(_msctf_dll > fver()) {
+				// If the file was already present, then a reboot is needed before IE setup.
+				kb932823_ok=false;
+			//                                    ....V....1....V....2....V....3....V....4....V....5
+			notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
+											   +"|on the system, but Internet Explorer 8"
+											   +"|requires version 5.1.2600.3319."
+											   +"| "
+											   +"|We will upgrade this DLL by installing"
+											   +"|KB956625, but a system reboot will be needed"
+											   +"|before you can continue installing Internet"
+											   +"|Explorer 8.");
+			}
+		} else {
+			kb932823_ok=true;
+		}
 	}
 	if((sku & XP_ALL) && kb932823_ok && _reg_exe>fver() && (  _iexplore_exe <fver(8,0,0,0) ) &&
 			( sp==2 || (sp==3 && _msctf_dll>fver()))) {
