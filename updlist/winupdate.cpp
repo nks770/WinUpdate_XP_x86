@@ -2983,6 +2983,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB951126)");
 		XX(p3+"WindowsXP-KB951126-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,3454))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,3454)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,5687))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,5687)) ))) {
+		NN("Update for Windows XP (KB958244)");
+		XX(p3+"WindowsXP-KB958244-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_halmacpi_dll>zero && _halmacpi_dll<fver(5,1,2600,3023))
 					  ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3023))
