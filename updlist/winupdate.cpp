@@ -4602,11 +4602,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB903250)");
 		XX(p2+"WindowsXP-KB903250-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2738))
-		||(_ohci1394_sys_cache  <fver(5,1,2600,2738)) )) {
-		NN("Update for Windows XP (KB904412)");
-		XX(p2+"WindowsXP-KB904412-v2-x86-ENU.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,3473))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,3473))))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,5706))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,5706))))) {
+			NN("Update for Windows XP (KB958149)");
+			XX(p3+"WindowsXP-KB958149-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2738))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,2738)) )) {
+			NN("Update for Windows XP (KB904412)");
+			XX(p2+"WindowsXP-KB904412-v2-x86-ENU.exe"+a1);
+		}
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _dmdlgs_dll  >zero && _dmdlgs_dll  <fver(2600,2770,503,0))
