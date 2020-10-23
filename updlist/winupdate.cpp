@@ -2813,16 +2813,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB923191)");
 		XX(p2+"windowsxp-kb923191-x86-enu_9d2cfed124f1f50804c20a6e8a881f84c266745f.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
-		// KB941693 is replaced by KB979559 on SP2
-		NN("Security Update for Windows XP (KB941693)");
-		XX(p+"windowsxp-kb941693-x86-enu_c2a97173c92d11672036e8a5e0a062f79460c6f1.exe"+a1);
-	}*/
-	if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3706)) {
-	//if( sp==3 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,5976)) {
-		NN("Security Update for Windows XP (KB979559)");
-		XX(p2+"windowsxp-kb979559-x86-enu_4d87c29e02a9f212a012f3e035f91e68c8fc60be.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) && _wintrust_dll>zero && _wintrust_dll<fver(5,131,2600,3661)) {
 	//if( sp==3 && (sku & XP_ALL) && _wintrust_dll>zero && _wintrust_dll<fver(5,131,2600,5922)) {
 		NN("Security Update for Windows XP (KB978601)");
@@ -5305,6 +5295,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _themeui_dll>zero && _themeui_dll<fver(6,0,2900,6437)) {
 		NN("Security Update for Windows XP (KB2864063)");
 		XX(p3+"WindowsXP-KB2864063-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
+		// KB941693 is replaced by KB979559 on SP2
+		NN("Security Update for Windows XP (KB941693)");
+		XX(p+"windowsxp-kb941693-x86-enu_c2a97173c92d11672036e8a5e0a062f79460c6f1.exe"+a1);
+	}*/
+	/*if((sp==2 && qfe && (sku & XP_ALL) && _win32k_sys >zero && _win32k_sys <fver(5,1,2600,3470))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _win32k_sys >zero && _win32k_sys <fver(5,1,2600,5703))) {
+		NN("Update for Windows XP (KB958282)"); // KB958282 is replaced by KB979559
+		XX(p3+"WindowsXP-KB958282-v2-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3706)) {
+	//if( sp==3 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,5976)) {
+		NN("Security Update for Windows XP (KB979559)");
+		XX(p2+"windowsxp-kb979559-x86-enu_4d87c29e02a9f212a012f3e035f91e68c8fc60be.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,6514)) {
 		NN("Security Update for Windows XP (KB2930275)");
