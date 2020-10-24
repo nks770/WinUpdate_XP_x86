@@ -8812,6 +8812,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB927891)");
 		XX(p2+"windowsxp-kb927891-v3-x86-enu_831fc2b9075b0a490adf15d2c5452e01e6feaa17.exe"+a1);
 	}
+	if( sp>=2 && (sku & XP_ALL) && ((_msi_dll>=fver(4,5,6001,22159) && _msi_dll<fver(4,5,6001,22299)) || *msi45 )) {
+		NN("Update for Windows XP (KB958655)");
+		XX(p3+"WindowsXP-KB958655-v2-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XPE_WES2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24556))
 		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
 					  ||  (_msihnd_dll>=fver(4,5,0,0) && _msihnd_dll<fver(4,5,6002,23415))
