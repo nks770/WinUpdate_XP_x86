@@ -2724,6 +2724,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"windowsxp-kb951748-x86-enu_6b7598e550ef967b83e9c088f8cd3409632f5d23.exe"+a1);
 		}
 	}
+	/*if((sp==2 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,3427))
+	 ||(sp==3 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,5657))) {
+		NN("Security Update for Windows XP (KB956803)"); // KB956803 is replaced by KB958752
+		XX(p2+"windowsxp-kb956803-x86-enu_d075d359a28ab8b058a35a2e7b466bd0bca8e9ef.exe"+a1);
+	}*/
+	if((sp==2 && (sku & XP_ALL) && _afd_sys >zero && _afd_sys <fver(5,1,2600,3463))
+	 /*||(sp==3 && (sku & XP_ALL) && _afd_sys >zero && _afd_sys <fver(5,1,2600,5695))*/) {
+		NN("Update for Windows XP (KB958752)"); // On SP3, KB958752 is replaced by KB2592799
+		XX(p2+"WindowsXP-KB958752-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,6142)) {
+		NN("Security Update for Windows XP (KB2592799)");
+		XX(p3+"WindowsXP-KB2592799-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && ( (_afd_sys>zero && _afd_sys<fver(5,1,2600,5695))
 		              ||  (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,6089))
 					  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,5797))
@@ -3321,11 +3335,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_tlntsess_exe>zero && _tlntsess_exe<fver(5,1,2600,5829))))) {
 		NN("Security Update for Windows XP (KB960859)");
 		XX(p3+"WindowsXP-KB960859-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,3427)) {
-	//if( sp==3 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,5657)) {
-		NN("Security Update for Windows XP (KB956803)");
-		XX(p2+"windowsxp-kb956803-x86-enu_d075d359a28ab8b058a35a2e7b466bd0bca8e9ef.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && _msgsc_dll>=fver(4,7,0,0) && _msgsc_dll<fver(4,7,0,3002)) {
 		NN("Security Update for Windows XP (KB946648)");
@@ -5286,10 +5295,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _dpnet_dll>zero && _dpnet_dll<fver(5,3,2600,6311)) {
 		NN("Security Update for Windows XP (KB2770660)");
 		XX(p3+"WindowsXP-KB2770660-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && _afd_sys>zero && _afd_sys<fver(5,1,2600,6142)) {
-		NN("Security Update for Windows XP (KB2592799)");
-		XX(p3+"WindowsXP-KB2592799-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _oakley_dll  >zero && _oakley_dll  <fver(5,1,2600,2966)) {
 		NN("Update for Windows XP (KB914841)"); // KB914841 is replaced by KB974392
