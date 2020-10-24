@@ -977,6 +977,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comadmin_dll = getFileVer(System32+L"\\Com\\comadmin.dll",&status);
 	fver _migregdb_exe = getFileVer(System32+L"\\Com\\migregdb.exe",&status);
 
+	fver _1394bus_sys  = getFileVer(Drivers+L"\\1394bus.sys",&status);
 	fver _aec_sys      = getFileVer(Drivers+L"\\aec.sys",&status);
 	fver _afd_sys      = getFileVer(Drivers+L"\\afd.sys",&status);
 	fver _battc_sys    = getFileVer(Drivers+L"\\battc.sys",&status);
@@ -1064,6 +1065,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
+	fver _1394bus_sys_cache  = getFileVer(DriverCache+L"\\1394bus.sys",&status);
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
 	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
 	fver _halacpi_dll        = getFileVer(DriverCache+L"\\halacpi.sys",&status);
@@ -5048,6 +5050,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _sbp2port_sys_cache <fver(5,1,2600,5636)))) {
 		NN("Update for Windows XP (KB955356)");
 		XX(p3+"WindowsXP-KB955356-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			( _1394bus_sys >zero && _1394bus_sys <fver(5,1,2600,3456))
+			|| _1394bus_sys_cache <fver(5,1,2600,3456)))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			( _1394bus_sys >zero && _1394bus_sys <fver(5,1,2600,5689))
+			|| _1394bus_sys_cache <fver(5,1,2600,5689)))) {
+		NN("Update for Windows XP (KB958347)");
+		XX(p3+"WindowsXP-KB958347-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,3411))
 	 ||(sp==3 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,5642))) {
