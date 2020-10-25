@@ -181,6 +181,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _film_320x240_vbr_wv9_md5[33];
 	strncpy_s(_film_320x240_vbr_wv9_md5,33,md5_ptr,33);
 
+	md5.digestFileW((SystemRoot+L"\\Fonts\\ariblk.ttf").c_str(),false);
+	char _ariblk_ttf_md5[33];
+	strncpy_s(_ariblk_ttf_md5,33,md5_ptr,33);
+
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
 //	printf("%s\n",_ssinc_dll_md5);
@@ -5133,6 +5137,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _msvcrt_dll_5701  <fver(7,0,2600,5701) ))) {
 		NN("Update for Windows XP (KB958817)");
 		XX(p3+"WindowsXP-KB958817-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && strncmp(_ariblk_ttf_md5,"47dbfa30035024e9a8aee82559e5ba92",32) != 0 ) {
+		NN("Update for Windows XP (KB959334)");
+		XX(p3+"WindowsXP-KB959334-x86-ENU.exe"+a1);
 	}
 	
 
