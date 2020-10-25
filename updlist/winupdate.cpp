@@ -185,6 +185,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _ariblk_ttf_md5[33];
 	strncpy_s(_ariblk_ttf_md5,33,md5_ptr,33);
 
+	md5.digestFileW((System32+L"\\locale.nls").c_str(),false);
+	char _locale_nls_md5[33];
+	strncpy_s(_locale_nls_md5,33,md5_ptr,33);
+
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
 //	printf("%s\n",_ssinc_dll_md5);
@@ -5182,6 +5186,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && qfe && (sku & XP_ALL) && strncmp(_ariblk_ttf_md5,"47dbfa30035024e9a8aee82559e5ba92",32) != 0 ) {
 		NN("Update for Windows XP (KB959334)");
 		XX(p3+"WindowsXP-KB959334-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && strncmp(_locale_nls_md5,"c209f827179d7e8edc1a8f87263cc677",32) != 0 )
+	 ||(sp==3 && (sku & XP_ALL) && strncmp(_locale_nls_md5,"7780eb6237f16ba8128312efa6363dbd",32) != 0 )) {
+		NN("Update for Windows XP (KB960680)");
+		XX(p3+"WindowsXP-KB960680-v2-x86-ENU.exe"+a1);
 	}
 	
 
