@@ -446,6 +446,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mscms_dll    = getFileVer(System32+L"\\mscms.dll",&status);
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
 	fver _msdart_dll   = getFileVer(System32+L"\\msdart.dll",&status);
+	fver _msdelta_dll  = getFileVer(System32+L"\\msdelta.dll",&status);
 	fver _msdrm_dll    = getFileVer(System32+L"\\msdrm.dll",&status);
 	fver _msdtclog_dll = getFileVer(System32+L"\\msdtclog.dll",&status);
 	fver _msdtcprx_dll = getFileVer(System32+L"\\msdtcprx.dll",&status);
@@ -1489,6 +1490,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,0,2195,4605) )) {
 		NN("Qfecheck.exe Update Check Utility (Q282784)");
 		XX("Extras\\Q282784_WXP_SP1_x86_ENU.exe"+a7);
+	}
+	if( sp>=1 && (sku & XP_ALL) && _msdelta_dll <fver(6,0,5600,16384)) {
+		NN("Microsoft Compression Client Pack 1.0 for Windows XP");
+		XX(p3+"WindowsXP-MSCompPackV1-x86.exe"+a1);
 	}
 	if( sp>=1 && (sku & XP_ALL) && (  _spcustom_dll_ref <fver(6,1,22,4)
 		              ||    _spmsg_dll_ref    <fver(6,1,22,4)
