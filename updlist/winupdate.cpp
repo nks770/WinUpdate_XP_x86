@@ -5110,6 +5110,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB954920-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,1143,0))
+	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,1143,0)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,3009,0))
+	  ||  ( _sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,3009,0)) ))) {
+		NN("Update for Windows XP (KB960071)");
+		XX(p3+"WindowsXP-KB960071-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _sbp2port_sys >zero && _sbp2port_sys <fver(5,1,2600,3405))
 			|| _sbp2port_sys_cache <fver(5,1,2600,3405)))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
