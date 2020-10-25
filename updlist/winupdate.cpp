@@ -4834,13 +4834,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB933062)");
 		XX(p2+"WindowsXP-KB933062-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		                  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3259))
-					  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3259))
-					  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3259))
-					  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3259)) )) {
-		NN("Update for Windows XP (KB934428)");
-		XX(p2+"WindowsXP-KB934428-v3-x86-ENU.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3493))
+		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3493))
+		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3493))
+		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3493))
+		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB959465") ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB959465") ))) {
+			NN("Update for Windows XP (KB959465)");
+			XX(p3+"WindowsXP-KB959465-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3259))
+		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3259))
+		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3259))
+		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3259)) )) {
+			NN("Update for Windows XP (KB934428)");
+			XX(p2+"WindowsXP-KB934428-v3-x86-ENU.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		 ( _usbaudio_sys   >zero && _usbaudio_sys   <fver(5,1,2600,3115)) )) {
