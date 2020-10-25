@@ -262,6 +262,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _d3d9_dll     = getFileVer(System32+L"\\d3d9.dll",&status);
 	fver _danim_dll    = getFileVer(System32+L"\\danim.dll",&status);
 	fver _dao360_dll   = getFileVer(System32+L"\\dao360.dll",&status);
+	fver _davclnt_dll  = getFileVer(System32+L"\\davclnt.dll",&status);
 	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
@@ -5208,6 +5209,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _tcpip_sys >zero && _tcpip_sys <fver(5,1,2600,6009)) {
 		NN("Update for Windows XP (KB2270406)");
 		XX(p3+"WindowsXP-KB2270406-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _davclnt_dll >zero && _davclnt_dll <fver(5,1,2600,6051))
+	  ||  ( _webclnt_dll >zero && _webclnt_dll <fver(5,1,2600,6051)) )) {
+		NN("Update for Windows XP (KB2454533)");
+		XX(p3+"WindowsXP-KB2454533-v2-x86-ENU.exe"+a1);
 	}
 	
 
