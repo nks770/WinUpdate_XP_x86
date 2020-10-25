@@ -3963,10 +3963,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("XMLLite for Windows XP (KB915865)");
 		XX(p3+"WindowsXP-KB915865-v11-x86-ENU.exe"+a1);
 	}
-	if( sp>=2 && (sku & XP_ALL) && _gpprefcl_dll <fver(5,2,3790,4568)) {
-		// KB943729 requires KB915865 (which is an upgraded version of KB914783)
-		NN("Group Policy Preference Client Side Extensions for Windows XP (KB943729)");
-		XX(p3+"windows-kb943729-x86-enu_e174c41ce3dcbd5c8922d6d1c39df1be425a70e0.exe"+a1);
+	if(qfe) {
+		if( sp>=2 && qfe && (sku & XP_ALL) && _gpprefcl_dll <fver(5,2,3790,4569)) {
+			// KB974266 requires KB915865 (which is an upgraded version of KB914783)
+			NN("Group Policy Preference Client Side Extensions for Windows XP (KB974266)");
+			XX(p3+"Windows-en-US-KB974266.exe"+a1);
+		}
+	} else {
+		if( sp>=2 && (sku & XP_ALL) && _gpprefcl_dll <fver(5,2,3790,4568)) {
+			// KB943729 requires KB915865 (which is an upgraded version of KB914783)
+			NN("Group Policy Preference Client Side Extensions for Windows XP (KB943729)");
+			XX(p3+"windows-kb943729-x86-enu_e174c41ce3dcbd5c8922d6d1c39df1be425a70e0.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _psisdecd_dll  >zero && _psisdecd_dll  <fver(6,5,2600,2640)) )) {
