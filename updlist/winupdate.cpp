@@ -3561,12 +3561,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Flash Player (KB923789)");
 		XX(p3+"WindowsXP-KB923789-x86-ENU.exe"+a2);
 	}
-	if((sp==1 && (sku & XP_ALL) && (
-		                  ( _umpnpmgr_dll    >zero && _umpnpmgr_dll    <fver(5,1,2600,1734))))
-	 ||(sp==2 && (sku & XP_ALL) && (
-		                  ( _umpnpmgr_dll    >zero && _umpnpmgr_dll    <fver(5,1,2600,2744))))) {
+	if((sp==1 &&         (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,1734))
+	 ||(sp==2 && !qfe && (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,2744))) {
 		NN("Security Update for Windows XP (KB905749)");
 		XX(p2+"windowsxp-kb905749-x86-enu_3f44b68f7e0a0e6332dd18997e134beab1027c73.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,3475))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,5708))) {
+		NN("Update for Windows XP (KB959267)");
+		XX(p3+"WindowsXP-KB959267-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
