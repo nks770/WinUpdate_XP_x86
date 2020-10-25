@@ -5205,6 +5205,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB960680)");
 		XX(p3+"WindowsXP-KB960680-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _tcpip_sys >zero && _tcpip_sys <fver(5,1,2600,6009)) {
+		NN("Update for Windows XP (KB2270406)");
+		XX(p3+"WindowsXP-KB2270406-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
