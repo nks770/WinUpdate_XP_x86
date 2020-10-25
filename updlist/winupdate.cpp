@@ -3146,10 +3146,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	if(qfe) {
-		if((sp==2 && qfe && (sku & XP_ALL) && _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,3365))
+		/*if((sp==2 && qfe && (sku & XP_ALL) && _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,3365))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,5594))) {
-			NN("Update for Windows XP (KB945015)");
+			NN("Update for Windows XP (KB945015)"); // KB945015 is replaced by KB959439
 			XX(p3+"WindowsXP-KB945015-v2-x86-ENU.exe"+a1);
+		}*/
+		if((sp==2 && qfe && (sku & XP_ALL) && ((_mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,3484))
+				|| regQueryDWORD(L"SYSTEM\\CurrentControlSet\\Services\\MRxDAV\\Parameters",L"DisableEFSOnWebDav",&status)!=1 ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && ((_mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,5716))
+				|| regQueryDWORD(L"SYSTEM\\CurrentControlSet\\Services\\MRxDAV\\Parameters",L"DisableEFSOnWebDav",&status)!=1 )) ) {
+			NN("Update for Windows XP (KB959439)");
+			XX(p3+"WindowsXP-KB959439-x86-ENU.exe"+a1+"\n"
+		// According to the documentation, a registry edit is needed to enable the hotfix.
+				 +"REG ADD \"HKLM\\SYSTEM\\CurrentControlSet\\Services\\MRxDAV\\Parameters\" /v DisableEFSOnWebDav /t REG_DWORD /d 1 /f\n");
 		}
 	} else {
 		if( sp==2 && (sku & XP_ALL) && _mrxdav_sys>zero && _mrxdav_sys<fver(5,1,2600,3276)) {
