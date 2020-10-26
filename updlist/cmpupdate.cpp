@@ -193,14 +193,16 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	if(sp==3) {
 		if( _reg_exe>fver() && _msctf_dll<fver(5,1,2600,3319)) {
 			// If MSCTF.dll is already on the system, but not the required version, then QFE
-			// KB956625 needs to be installed, and a system reboot will be needed so that the
+			// KB2629462 needs to be installed, and a system reboot will be needed so that the
 			// file can actually be replaced.
 			//
 			// If reg.exe is missing, then there is no point installing this update here
 			// because IE7/IE8 can't be installed anyway.
 			//
-			NN("Update for Windows XP (KB956625)");
-			XX(p3+"WindowsXP-KB956625-x86-ENU.exe"+a1);
+			//NN("Update for Windows XP (KB956625)");
+			//XX(p3+"WindowsXP-KB956625-x86-ENU.exe"+a1);
+			NN("Update for Windows XP (KB2629462)");
+			XX(p3+"WindowsXP-KB2629462-x86-ENU.exe"+a1);
 			kb932823_ok=true;
 			if(_msctf_dll > fver()) {
 				// If the file was already present, then a reboot is needed before IE setup.
@@ -208,10 +210,10 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 			//                                    ....V....1....V....2....V....3....V....4....V....5
 			notifications->push_back(std::string("msctf.dll version ")+_msctf_dll.format()+ " was found"
 											   +"|on the system, but Internet Explorer 8"
-											   +"|requires version 5.1.2600.3319."
+											   +"|requires at least version 5.1.2600.3319."
 											   +"| "
 											   +"|We will upgrade this DLL by installing"
-											   +"|KB956625, but a system reboot will be needed"
+											   +"|KB2629462, but a system reboot will be needed"
 											   +"|before you can continue installing Internet"
 											   +"|Explorer 8.");
 			}
