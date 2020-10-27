@@ -5271,6 +5271,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2862330)");
 		XX(p3+"WindowsXP-KB2862330-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,6368))
+	  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,6368))
+	  ||  ( _usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,6368)) )) {
+		NN("Update for Windows XP (KB2828030)");
+		XX(p3+"WWindowsXP-KB2828030-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,1698))
 	 ||(sp==2 && !qfe && (sku & XP_ALL) && _rdpwd_sys>zero && _rdpwd_sys<fver(5,1,2600,2695))) {
 		NN("Security Update for Windows XP (KB899591)");
