@@ -535,6 +535,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _netsh_exe    = getFileVer(System32+L"\\netsh.exe",&status);
 	fver _netshell_dll = getFileVer(System32+L"\\netshell.dll",&status);
 	fver _newdev_dll   = getFileVer(System32+L"\\newdev.dll",&status);
+	fver _ntbackup_exe = getFileVer(System32+L"\\ntbackup.exe",&status);
 	fver _ntdll_dll    = getFileVer(System32+L"\\ntdll.dll",&status);
 	fver _ntdsapi_dll  = getFileVer(System32+L"\\ntdsapi.dll",&status);
 	fver _ntkrnlmp_exe = getFileVer(System32+L"\\ntkrnlmp.exe",&status);
@@ -5240,6 +5241,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _regapi_dll >zero && _regapi_dll <fver(5,1,2600,6510)) {
 		NN("Update for Windows XP (KB2929729)");
 		XX(p3+"WindowsXP-KB2929729-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,5808)) {
+		NN("Update for Windows XP (KB817688)");
+		XX(p3+"WindowsXP-KB817688-x86-ENU.exe"+a1);
 	}
 	
 
