@@ -3152,9 +3152,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2585542)");
 		XX(p3+"WindowsXP-KB2585542-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && _schannel_dll>zero && _schannel_dll<fver(5,1,2600,6239)) {
-		NN("Security Update for Windows XP (KB2655992)");
-		XX(p3+"WindowsXP-KB2655992-x86-ENU.exe"+a1);
+	if(qfe) {
+		if( sp==3 && qfe && (sku & XP_ALL) && _schannel_dll >zero && _schannel_dll <fver(5,1,2600,6370)) {
+			NN("Update for Windows XP (KB2832214)");
+			XX(p3+"WindowsXP-KB2832214-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==3 && (sku & XP_ALL) && _schannel_dll>zero && _schannel_dll<fver(5,1,2600,6239)) {
+			NN("Security Update for Windows XP (KB2655992)");
+			XX(p3+"WindowsXP-KB2655992-x86-ENU.exe"+a1);
+		}
 	}
 
 	if(qfe) {
