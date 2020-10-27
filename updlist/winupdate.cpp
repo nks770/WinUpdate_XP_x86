@@ -602,6 +602,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rdchost_dll  = getFileVer(System32+L"\\rdchost.dll",&status);
 	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
 	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
+	fver _regapi_dll   = getFileVer(System32+L"\\regapi.dll",&status);
 	fver _remotesp_tsp = getFileVer(System32+L"\\remotesp.tsp",&status);
 	fver _rhttpaa_dll  = getFileVer(System32+L"\\rhttpaa.dll",&status);
 	fver _riched20_dll = getFileVer(System32+L"\\riched20.dll",&status);
@@ -5235,6 +5236,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _ipnathlp_dll >zero && _ipnathlp_dll <fver(5,1,2600,6454)) {
 		NN("Update for Windows XP (KB2892734)");
 		XX(p3+"WindowsXP-KB2892734-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _regapi_dll >zero && _regapi_dll <fver(5,1,2600,6510)) {
+		NN("Update for Windows XP (KB2929729)");
+		XX(p3+"WindowsXP-KB2929729-x86-ENU.exe"+a1);
 	}
 	
 
