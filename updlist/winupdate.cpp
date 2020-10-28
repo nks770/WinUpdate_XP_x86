@@ -657,6 +657,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _stclient_dll = getFileVer(System32+L"\\stclient.dll",&status);
 	fver _strmdll_dll  = getFileVer(System32+L"\\strmdll.dll",&status);
 	fver _strmfilt_dll = getFileVer(System32+L"\\strmfilt.dll",&status);
+	fver _svchost_exe  = getFileVer(System32+L"\\svchost.exe",&status);
 	fver _sxs_dll      = getFileVer(System32+L"\\sxs.dll",&status);
 	fver _synceng_dll  = getFileVer(System32+L"\\synceng.dll",&status);
 	fver _t2embed_dll  = getFileVer(System32+L"\\t2embed.dll",&status);
@@ -5245,6 +5246,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,5808)) {
 		NN("Update for Windows XP (KB817688)");
 		XX(p3+"WindowsXP-KB817688-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,3456))
+	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,3456)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,5689))
+	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,5689)) ))) {
+		NN("Update for Windows XP (KB897571)");
+		XX(p3+"WindowsXP-KB897571-x86-ENU.exe"+a1);
 	}
 	
 
