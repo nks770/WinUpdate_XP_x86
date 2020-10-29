@@ -5303,6 +5303,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB934401)");
 		XX(p3+"WindowsXP-KB934401-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,3357))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,5586))) {
+		NN("Update for Windows XP (KB945184)");
+		XX(p3+"WindowsXP-KB945184-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
