@@ -663,6 +663,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _svchost_exe  = getFileVer(System32+L"\\svchost.exe",&status);
 	fver _sxs_dll      = getFileVer(System32+L"\\sxs.dll",&status);
 	fver _synceng_dll  = getFileVer(System32+L"\\synceng.dll",&status);
+	fver _sysdm_cpl    = getFileVer(System32+L"\\sysdm.cpl",&status);
 	fver _t2embed_dll  = getFileVer(System32+L"\\t2embed.dll",&status);
 	fver _tapisrv_dll  = getFileVer(System32+L"\\tapisrv.dll",&status);
 	fver _tdc_ocx      = getFileVer(System32+L"\\tdc.ocx",&status);
@@ -1006,6 +1007,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _disk_sys     = getFileVer(Drivers+L"\\disk.sys",&status);
 	fver _dmusic_sys   = getFileVer(Drivers+L"\\dmusic.sys",&status);
 	fver _dxg_sys      = getFileVer(Drivers+L"\\dxg.sys",&status);
+	fver _dumpdrv_sys  = getFileVer(Drivers+L"\\dumpdrv.sys",&status);
 	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
 	fver _hidparse_sys = getFileVer(Drivers+L"\\hidparse.sys",&status);
 	fver _exfat_sys    = getFileVer(Drivers+L"\\exfat.sys",&status);
@@ -5251,6 +5253,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _offfilt_dll  >zero && _offfilt_dll  <fver(2006,0,5732,0)))) {
 		NN("Update for Windows XP (KB915800)");
 		XX(p3+"WindowsXP-KB915800-v4-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _dumpdrv_sys  <fver(5,1,2600,3601))
+	  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,2887))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,2887))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,2887))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,2887))
+	  ||  ( _sysdm_cpl    >zero && _sysdm_cpl    <fver(5,1,2600,2887)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _dumpdrv_sys  <fver(5,1,2600,5864)) ))) {
+		NN("Update for Windows XP (KB916157)");
+		XX(p3+"WindowsXP-KB916157-v6-x86-ENU.exe"+a1);
 	}
 	
 
