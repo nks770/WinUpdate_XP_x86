@@ -356,6 +356,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _input_dll    = getFileVer(System32+L"\\input.dll",&status);
 	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
 	fver _intl_cpl     = getFileVer(System32+L"\\intl.cpl",&status);
+	fver _ipconfig_exe = getFileVer(System32+L"\\ipconfig.exe",&status);
 	fver _iphlpapi_dll = getFileVer(System32+L"\\iphlpapi.dll",&status);
 	fver _ipnathlp_dll = getFileVer(System32+L"\\ipnathlp.dll",&status);
 	fver _iprtrmgr_dll = getFileVer(System32+L"\\iprtrmgr.dll",&status);
@@ -5276,6 +5277,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _dumpdrv_sys  <fver(5,1,2600,5864)) ))) {
 		NN("Update for Windows XP (KB916157)");
 		XX(p3+"WindowsXP-KB916157-v6-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _ipconfig_exe >zero && _ipconfig_exe <fver(5,1,2600,3448))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _ipconfig_exe >zero && _ipconfig_exe <fver(5,1,2600,5678))) {
+		NN("Update for Windows XP (KB934401)");
+		XX(p3+"WindowsXP-KB934401-x86-ENU.exe"+a1);
 	}
 	
 
