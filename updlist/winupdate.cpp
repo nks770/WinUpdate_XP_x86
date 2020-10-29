@@ -4767,6 +4767,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB929280)");
 		XX(p2+"WindowsXP-KB929280-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL ) && (
+		                  ( _cic_dll      >zero && _cic_dll      <fver(5,2,3790,4136))
+					  ||  ( _microsoft_managementconsole_dll    >zero && _microsoft_managementconsole_dll    <fver(5,2,3790,4136)) //mmc30.dll
+					  ||  ( _microsoft_managementconsole_resources_dll   >zero && _microsoft_managementconsole_resources_dll   <fver(5,2,3790,2560)) //mmc30r.dll
+					  ||  ( _mmc_exe      >zero && _mmc_exe      <fver(5,2,3790,4136))
+					  ||  ( _mmcbase_dll  >zero && _mmcbase_dll  <fver(5,2,3790,4136))
+					  ||  ( _mmcex_dll    >zero && _mmcex_dll    <fver(5,2,3790,4181))
+					  ||  ( _mmcex_resources_dll   >zero && _mmcex_resources_dll   <fver(5,2,3790,2560)) //mmcexr.dll
+					  ||  ( _mmcfxcommon_dll   >zero && _mmcfxcommon_dll   <fver(5,2,3790,4136))
+					  ||  ( _mmcfxcommon_resources_dll  >zero && _mmcfxcommon_resources_dll  <fver(5,2,3790,2560)) //mmcfxcr.dll
+					  ||  ( _mmcndmgr_dll >zero && _mmcndmgr_dll <fver(5,2,3790,4136))
+					  ||  ( _mmcperf_exe  >zero && _mmcperf_exe  <fver(5,2,3790,4136))
+					  ||  ( _mmcshext_dll >zero && _mmcshext_dll <fver(5,2,3790,4136)) )) {
+		NN("Update for Windows XP (KB942213)");
+		XX(p3+"WindowsXP-KB942213-v2-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
 		NN("Update for Windows XP (KB907865)");
