@@ -1057,6 +1057,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _scsiport_sys = getFileVer(Drivers+L"\\scsiport.sys",&status);
 	fver _sdbus_sys    = getFileVer(Drivers+L"\\sdbus.sys",&status);
 	fver _secdrv_sys   = getFileVer(Drivers+L"\\secdrv.sys",&status);
+	fver _serscan_sys  = getFileVer(Drivers+L"\\serscan.sys",&status);
 	fver _sffdisk_sys  = getFileVer(Drivers+L"\\sffdisk.sys",&status);
 	fver _sffp_mmc_sys = getFileVer(Drivers+L"\\sffp_mmc.sys",&status);
 	fver _sffp_sd_sys  = getFileVer(Drivers+L"\\sffp_sd.sys",&status);
@@ -1105,6 +1106,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pclxl_dll_cache    = getFileVer(DriverCache+L"\\pclxl.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
+	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
@@ -5173,6 +5175,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _1394bus_sys_cache <fver(5,1,2600,5689)))) {
 		NN("Update for Windows XP (KB958347)");
 		XX(p3+"WindowsXP-KB958347-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			( _serscan_sys >zero && _serscan_sys <fver(5,1,2600,3382))
+			|| _serscan_sys_cache <fver(5,1,2600,3382)))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			( _serscan_sys >zero && _serscan_sys <fver(5,1,2600,5612))
+			|| _serscan_sys_cache <fver(5,1,2600,5612)))) {
+		NN("Update for Windows XP (KB927436)");
+		XX(p3+"WindowsXP-KB927436-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,3411))
 	 ||(sp==3 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,5642))) {
