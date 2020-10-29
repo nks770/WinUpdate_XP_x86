@@ -1027,6 +1027,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _kmixer_sys   = getFileVer(Drivers+L"\\kmixer.sys",&status);
 	fver _ks_sys       = getFileVer(Drivers+L"\\ks.sys",&status);
 	fver _ksecdd_sys   = getFileVer(Drivers+L"\\ksecdd.sys",&status);
+	fver _memcard_sys  = getFileVer(Drivers+L"\\memcard.sys",&status);
 	fver _mqac_sys     = getFileVer(Drivers+L"\\mqac.sys",&status);
 	fver _mrxdav_sys   = getFileVer(Drivers+L"\\mrxdav.sys",&status);
 	fver _mrxsmb_sys   = getFileVer(Drivers+L"\\mrxsmb.sys",&status);
@@ -1099,6 +1100,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _halsp_dll          = getFileVer(DriverCache+L"\\halsp.sys",&status);
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
+	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
@@ -5216,6 +5218,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _serscan_sys_cache <fver(5,1,2600,5612)))) {
 		NN("Update for Windows XP (KB927436)");
 		XX(p3+"WindowsXP-KB927436-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			( _memcard_sys >zero && _memcard_sys <fver(5,1,2600,3320))
+			|| _memcard_sys_cache <fver(5,1,2600,3320)))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			( _memcard_sys >zero && _memcard_sys <fver(5,1,2600,5550))
+			|| _memcard_sys_cache <fver(5,1,2600,5550)))) {
+		NN("Update for Windows XP (KB948877)");
+		XX(p3+"WindowsXP-KB948877-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,3411))
 	 ||(sp==3 && (sku & XP_ALL) && _psbase_dll >zero && _psbase_dll <fver(5,1,2600,5642))) {
