@@ -1111,6 +1111,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
+	fver _usbccgp_sys_cache  = getFileVer(DriverCache+L"\\usbccgp.sys",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
@@ -5346,6 +5347,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && !checkCertificates("Disallowed")) {
 		NN("Update for Certificate Revocation List [March 2015] (KB3050995)");
 		XX(sw+p3+"rvkroots_3f2ce4676450c06f109b5b4e68bec252873ccc21.exe");
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,3356))
+			|| _usbccgp_sys_cache <fver(5,1,2600,3356)))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+			( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,5585))
+			|| _usbccgp_sys_cache <fver(5,1,2600,5585)))*/) {
+		NN("Update for Windows XP (KB945436)"); // On SP3, KB945436 is replaced by KB2862330
+		XX(p2+"WindowsXP-KB945436-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_usbccgp_sys>zero && _usbccgp_sys<fver(5,1,2600,6437))
 		              ||  (_usbd_sys>zero && _usbd_sys<fver(5,1,2600,6437))
