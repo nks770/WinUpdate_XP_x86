@@ -408,6 +408,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mfc42u_dll   = getFileVer(System32+L"\\mfc42u.dll",&status);
 	fver _mfplat_dll   = getFileVer(System32+L"\\mfplat.dll",&status);
 	fver _microsoft_managementconsole_dll = getFileVer(System32+L"\\microsoft.managementconsole.dll",&status);
+	fver _mimefilt_dll = getFileVer(System32+L"\\mimefilt.dll",&status);
 	fver _mlang_dll    = getFileVer(System32+L"\\mlang.dll",&status);
 	fver _mmc_exe      = getFileVer(System32+L"\\mmc.exe",&status);
 	fver _mmcbase_dll  = getFileVer(System32+L"\\mmcbase.dll",&status);
@@ -535,6 +536,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _netsh_exe    = getFileVer(System32+L"\\netsh.exe",&status);
 	fver _netshell_dll = getFileVer(System32+L"\\netshell.dll",&status);
 	fver _newdev_dll   = getFileVer(System32+L"\\newdev.dll",&status);
+	fver _nlhtml_dll   = getFileVer(System32+L"\\nlhtml.dll",&status);
 	fver _ntbackup_exe = getFileVer(System32+L"\\ntbackup.exe",&status);
 	fver _ntdll_dll    = getFileVer(System32+L"\\ntdll.dll",&status);
 	fver _ntdsapi_dll  = getFileVer(System32+L"\\ntdsapi.dll",&status);
@@ -553,6 +555,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
 	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
 	fver _odbccp32_dll = getFileVer(System32+L"\\odbccp32.dll",&status);
+	fver _offfilt_dll  = getFileVer(System32+L"\\offfilt.dll",&status);
 	fver _oieng400_dll = getFileVer(System32+L"\\oieng400.dll",&status);
 	fver _ole32_dll    = getFileVer(System32+L"\\ole32.dll",&status);
 	fver _oleacc_dll   = getFileVer(System32+L"\\oleacc.dll",&status);
@@ -5241,6 +5244,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,5808)) {
 		NN("Update for Windows XP (KB817688)");
 		XX(p3+"WindowsXP-KB817688-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && (
+		  ( _mimefilt_dll >zero && _mimefilt_dll <fver(2006,0,5732,0))
+	  ||  ( _nlhtml_dll   >zero && _nlhtml_dll   <fver(2006,0,5732,0))
+	  ||  ( _offfilt_dll  >zero && _offfilt_dll  <fver(2006,0,5732,0)))) {
+		NN("Update for Windows XP (KB915800)");
+		XX(p3+"WindowsXP-KB915800-v4-x86-ENU.exe"+a1);
 	}
 	
 
