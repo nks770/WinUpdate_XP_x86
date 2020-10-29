@@ -3580,6 +3580,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 							               +"|it are already present on the system.");
 		}
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _photometadatahandler_dll <fver(6,0,6001,22185)) {
+		NN("Update for Windows XP (KB945060)");
+		XX(p3+"WindowsXP-KB945060-v3-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
 					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1634))
