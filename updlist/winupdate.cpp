@@ -1090,6 +1090,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
+	std::wstring w32x86 = System32+L"\\spool\\drivers\\w32x86\\3";
+	fver _pcl4res_dll  = getFileVer(w32x86+L"\\pcl4res.dll",&status);
+	fver _pcl5eres_dll = getFileVer(w32x86+L"\\pcl5eres.dll",&status);
+	fver _pcl5ures_dll = getFileVer(w32x86+L"\\pcl5ures.dll",&status);
+	fver _pclxl_dll    = getFileVer(w32x86+L"\\pclxl.dll",&status);
+	fver _ps5ui_dll    = getFileVer(w32x86+L"\\ps5ui.dll",&status);
+	fver _pscript5_dll = getFileVer(w32x86+L"\\pscript5.dll",&status);
+	fver _unidrv_dll   = getFileVer(w32x86+L"\\unidrv.dll",&status);
+	fver _unidrvui_dll = getFileVer(w32x86+L"\\unidrvui.dll",&status);
+	fver _unires_dll   = getFileVer(w32x86+L"\\unires.dll",&status);
+
 	fver _1394bus_sys_cache  = getFileVer(DriverCache+L"\\1394bus.sys",&status);
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
 	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
@@ -1107,6 +1118,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
 	fver _pcl5ures_dll_cache = getFileVer(DriverCache+L"\\pcl5ures.dll",&status);
 	fver _pclxl_dll_cache    = getFileVer(DriverCache+L"\\pclxl.dll",&status);
+	fver _ps5ui_dll_cache    = getFileVer(DriverCache+L"\\ps5ui.dll",&status);
+	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
@@ -5056,8 +5069,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB950234)");
 		XX(p3+"WindowsXP-KB950234-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && qfe && (sku & XP_ALL) && (
-		  ( _pcl4res_dll_cache  <fver(0,3,5479,0))
+	if( sp>=2 && qfe && (sku & XP_ALL) && (
+		  ( _pcl4res_dll  >zero && _pcl4res_dll  <fver(0,3,5479,0))
+	  ||  ( _pcl5eres_dll >zero && _pcl5eres_dll <fver(0,3,5479,0))
+	  ||  ( _pcl5ures_dll >zero && _pcl5ures_dll <fver(0,3,5479,0))
+	  ||  ( _pclxl_dll    >zero && _pclxl_dll    <fver(0,3,5479,0))
+	  ||  ( _unidrv_dll   >zero && _unidrv_dll   <fver(0,3,6001,22116))
+	  ||  ( _unidrvui_dll >zero && _unidrvui_dll <fver(0,3,6001,22116))
+	  ||  ( _unires_dll   >zero && _unires_dll   <fver(0,3,6001,22116))
+	  ||  ( _pcl4res_dll_cache  <fver(0,3,5479,0))
 	  ||  ( _pcl5eres_dll_cache <fver(0,3,5479,0))
 	  ||  ( _pcl5ures_dll_cache <fver(0,3,5479,0))
 	  ||  ( _pclxl_dll_cache    <fver(0,3,5479,0))
@@ -5066,6 +5086,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _unires_dll_cache   <fver(0,3,6001,22116)) )) {
 		NN("Update for Windows XP (KB948046)");
 		XX(p3+"WindowsXP-KB948046-v2-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && (
+		  ( _ps5ui_dll    >zero && _ps5ui_dll    <fver(0,3,6001,22116))
+	  ||  ( _pscript5_dll >zero && _pscript5_dll <fver(0,3,6001,22116))
+	  ||  ( _ps5ui_dll_cache    <fver(0,3,6001,22116))
+	  ||  ( _pscript5_dll_cache <fver(0,3,6001,22116)) )) {
+		NN("Update for Windows XP (KB950305)");
+		XX(p3+"WindowsXP-KB950305-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
