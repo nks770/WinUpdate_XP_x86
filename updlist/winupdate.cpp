@@ -5194,11 +5194,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB956807)");
 		XX(p3+"WindowsXP-KB956807-x86-ENU.exe"+a1);
 	}
-	if((sp==2 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,3452))
-	 ||(sp==3 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,5685))) {
-		NN("Update for Windows XP (KB957263)");
-		XX(p3+"WindowsXP-KB957263-x86-ENU.exe"+a1);
-	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 			   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,3468))
 			|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3468))
@@ -5246,15 +5241,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,5808)) {
 		NN("Update for Windows XP (KB817688)");
 		XX(p3+"WindowsXP-KB817688-x86-ENU.exe"+a1);
-	}
-	if((sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,3456))
-	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,3456)) ))
-	 ||(sp==3 && qfe && (sku & XP_ALL) && (
-		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,5689))
-	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,5689)) ))) {
-		NN("Update for Windows XP (KB897571)");
-		XX(p3+"WindowsXP-KB897571-x86-ENU.exe"+a1);
 	}
 	
 
@@ -5490,15 +5476,34 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2930275)");
 		XX(p3+"WindowsXP-KB2930275-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && ( (_shell32_dll>zero && _shell32_dll<fver(6,0,2900,6072))
+					  ||  (_shimgvw_dll>zero && _shimgvw_dll<fver(6,0,2900,6072)) )) {
+		NN("Security Update for Windows XP (KB2483185)");
+		XX(p3+"WindowsXP-KB2483185-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && (sku & XP_ALL) && ( (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,6010))
 		              ||  (_wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,6010)) )) {
 		NN("Security Update for Windows XP (KB979687)");
 		XX(p3+"WindowsXP-KB979687-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_ALL) && ( (_shell32_dll>zero && _shell32_dll<fver(6,0,2900,6072))
-					  ||  (_shimgvw_dll>zero && _shimgvw_dll<fver(6,0,2900,6072)) )) {
-		NN("Security Update for Windows XP (KB2483185)");
-		XX(p3+"WindowsXP-KB2483185-x86-ENU.exe"+a1);
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,3456))
+	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,3456)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _ole32_dll   >zero && _ole32_dll   <fver(5,1,2600,5689))
+	  ||  ( _svchost_exe >zero && _svchost_exe <fver(5,1,2600,5689)) ))) {
+		NN("Update for Windows XP (KB897571)");
+		XX(p3+"WindowsXP-KB897571-x86-ENU.exe"+a1);
+	}
+	/*if((sp==2 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,3452))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,5685))) {
+		NN("Update for Windows XP (KB957263)"); // KB957263 is replaced by KB958259
+		XX(p3+"WindowsXP-KB957263-x86-ENU.exe"+a1);
+	}*/
+	if((sp==2 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,3460))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && _ole32_dll >zero && _ole32_dll <fver(5,1,2600,5692))*/) {
+		NN("Update for Windows XP (KB958259)"); // On SP3, KB958259 is replaced by KB2876217
+		XX(p2+"WindowsXP-KB958259-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _ole32_dll>zero && _ole32_dll<fver(5,1,2600,6435)) {
 		NN("Security Update for Windows XP (KB2876217)");
