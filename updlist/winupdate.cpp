@@ -399,6 +399,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _localspl_dll = getFileVer(System32+L"\\localspl.dll",&status);
 	fver _locator_exe  = getFileVer(System32+L"\\locator.exe",&status);
 	fver _logagent_exe = getFileVer(System32+L"\\logagent.exe",&status);
+	fver _logon_scr    = getFileVer(System32+L"\\logon.scr",&status);
 	fver _lsasrv_dll   = getFileVer(System32+L"\\lsasrv.dll",&status);
 	fver _magnify_exe  = getFileVer(System32+L"\\magnify.exe",&status);
 	fver _mciseq_dll   = getFileVer(System32+L"\\mciseq.dll",&status);
@@ -714,6 +715,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wiaservc_dll = getFileVer(System32+L"\\wiaservc.dll",&status);
 	fver _win32k_sys   = getFileVer(System32+L"\\win32k.sys",&status);
 	fver _win32spl_dll = getFileVer(System32+L"\\win32spl.dll",&status);
+	fver _winbrand_dll = getFileVer(System32+L"\\winbrand.dll",&status);
 	fver _windowscodecs_dll = getFileVer(System32+L"\\windowscodecs.dll",&status);
 	fver _windowscodecsext_dll = getFileVer(System32+L"\\windowscodecsext.dll",&status);
 	fver _winhttp_dll  = getFileVer(System32+L"\\winhttp.dll",&status);
@@ -5376,6 +5378,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _reg_exe >zero && _reg_exe <fver(5,1,2600,5598))) {
 		NN("Update for Windows XP (KB948698)");
 		XX(p3+"WindowsXP-KB948698-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _explorer_exe >zero && _explorer_exe <fver(6,0,2900,5577))
+	  ||  ( _logon_scr    >zero && _logon_scr    <fver(5,1,2600,5577))
+	  ||  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,5577))
+	  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2900,5577))
+	  ||  ( _shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,5577))
+	  ||  ( _sysdm_cpl    >zero && _sysdm_cpl    <fver(5,1,2600,5577))
+	  ||  ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,5577))
+	  ||  ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,5577))
+	  ||  ( _winbrand_dll >zero && _winbrand_dll <fver(5,1,2600,5577)) )) {
+		NN("Update for Windows XP (KB951159)");
+		XX(p3+"WindowsXP-KB951159-x86-ENU.exe"+a1);
 	}
 	
 
