@@ -300,6 +300,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _format_com   = getFileVer(System32+L"\\format.com",&status);
 	fver _ftp_exe      = getFileVer(System32+L"\\ftp.exe",&status);
 	fver _fxsclnt_exe  = getFileVer(System32+L"\\fxsclnt.exe",&status);
+	fver _fxscomex_dll = getFileVer(System32+L"\\fxscomex.dll",&status);
 	fver _fxscover_exe = getFileVer(System32+L"\\fxscover.exe",&status);
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
 	fver _gpkcsp_dll   = getFileVer(System32+L"\\gpkcsp.dll",&status);
@@ -8624,6 +8625,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _fxscover_exe>zero && _fxscover_exe<fver(5,2,2600,6078)) {
 		NN("Security Update for Windows XP (KB2491683)");
 		XX(p3+"WindowsXP-KB2491683-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _fxscomex_dll >zero && _fxscomex_dll <fver(5,2,2600,3359))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _fxscomex_dll >zero && _fxscomex_dll <fver(5,2,2600,5588))) {
+		NN("Update for Windows XP (KB951347)");
+		XX(p3+"WindowsXP-KB951347-x86-ENU.exe"+a1);
 	}
 	if( sp==0 && (sku & XP_ALL) && _smtpsvc_dll>zero && _smtpsvc_dll<fver(6,0,2600,28)) {
 		NN("Q313450: Security Update");
