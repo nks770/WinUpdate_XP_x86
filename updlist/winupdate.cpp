@@ -291,6 +291,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _expsrv_dll   = getFileVer(System32+L"\\expsrv.dll",&status);
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
 	fver _faultrep_dll = getFileVer(System32+L"\\faultrep.dll",&status);
+	fver _fc_exe       = getFileVer(System32+L"\\fc.exe",&status);
 	fver _firewall_cpl = getFileVer(System32+L"\\firewall.cpl",&status);
 	fver _fldrclnr_dll = getFileVer(System32+L"\\fldrclnr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
@@ -5401,6 +5402,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _reg_exe >zero && _reg_exe <fver(5,1,2600,5598))) {
 		NN("Update for Windows XP (KB948698)");
 		XX(p3+"WindowsXP-KB948698-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _fc_exe >zero && _fc_exe <fver(5,1,2600,3383))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _fc_exe >zero && _fc_exe <fver(5,1,2600,5614))) {
+		NN("Update for Windows XP (KB953930)");
+		XX(p3+"WindowsXP-KB953930-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _explorer_exe >zero && _explorer_exe <fver(6,0,2900,5577))
