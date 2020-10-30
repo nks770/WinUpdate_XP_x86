@@ -1094,6 +1094,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
 	std::wstring w32x86 = System32+L"\\spool\\drivers\\w32x86\\3";
+	fver _alpsres_dll  = getFileVer(w32x86+L"\\alpsres.dll",&status);
 	fver _pcl4res_dll  = getFileVer(w32x86+L"\\pcl4res.dll",&status);
 	fver _pcl5eres_dll = getFileVer(w32x86+L"\\pcl5eres.dll",&status);
 	fver _pcl5ures_dll = getFileVer(w32x86+L"\\pcl5ures.dll",&status);
@@ -1105,6 +1106,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _unires_dll   = getFileVer(w32x86+L"\\unires.dll",&status);
 
 	fver _1394bus_sys_cache  = getFileVer(DriverCache+L"\\1394bus.sys",&status);
+	fver _alpsres_dll_cache  = getFileVer(DriverCache+L"\\alpsres.dll",&status);
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
 	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
 	fver _halacpi_dll        = getFileVer(DriverCache+L"\\halacpi.sys",&status);
@@ -5102,6 +5104,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _pscript5_dll_cache <fver(0,3,6001,22116)) )) {
 		NN("Update for Windows XP (KB950305)");
 		XX(p3+"WindowsXP-KB950305-v2-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && (
+		  ( _alpsres_dll >zero && _alpsres_dll <fver(0,3,1282,0))
+	  ||  ( _alpsres_dll_cache <fver(0,3,6001,22116)) )) {
+		NN("Update for Windows XP (KB951822)");
+		XX(p3+"WindowsXP-KB951822-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
