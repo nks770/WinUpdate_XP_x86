@@ -3039,15 +3039,34 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,3345))
 	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,3345))
 	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,3345))
-	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,3345)) ))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,3345))
+	  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB951126")) )
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,5574))
 	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,5574))
 	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,5574))
 	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,5574))
-	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,5574)) ))) {
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,5574))
+	  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB951126")) )) {
 		NN("Update for Windows XP (KB951126)");
 		XX(p3+"WindowsXP-KB951126-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,3345))
+	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,3345))
+	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,3345))
+	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,3345))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,3345))
+	  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB954434")) )
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _halaacpi_dll >zero && _halaacpi_dll <fver(5,1,2600,5574))
+	  ||  ( _halacpi_dll  >zero && _halacpi_dll  <fver(5,1,2600,5574))
+	  ||  ( _halapic_dll  >zero && _halapic_dll  <fver(5,1,2600,5574))
+	  ||  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,5574))
+	  ||  ( _halmps_dll   >zero && _halmps_dll   <fver(5,1,2600,5574))
+	  || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB954434")) )) {
+		NN("Update for Windows XP (KB954434)");
+		XX(p3+"WindowsXP-KB954434-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _halmacpi_dll >zero && _halmacpi_dll <fver(5,1,2600,3454))
