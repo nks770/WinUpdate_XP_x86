@@ -4923,6 +4923,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if(qfe) {
 		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3492))
+		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3492))
+		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3492))
+		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3492))
+		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB952595") ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,5726))
+		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,5726))
+		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,5726))
+		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB952595") ))) {
+			NN("Update for Windows XP (KB952595)");
+			XX(p3+"WindowsXP-KB952595-v3-x86-ENU.exe"+a1);
+		}
+		if((sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3493))
 		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3493))
 		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3493))
