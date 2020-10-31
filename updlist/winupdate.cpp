@@ -5424,6 +5424,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB934401)");
 		XX(p3+"WindowsXP-KB934401-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			   ( _6to4svc_dll  >zero && _6to4svc_dll  <fver(5,1,2600,2975))
+			|| ( _afd_sys      >zero && _afd_sys      <fver(5,1,2600,3427))
+			|| ( _dnsapi_dll   >zero && _dnsapi_dll   <fver(5,1,2600,3574))
+			|| ( _dnsrslvr_dll >zero && _dnsrslvr_dll <fver(5,1,2600,3574))
+			|| ( _mswsock_dll  >zero && _mswsock_dll  <fver(5,1,2600,3394))
+			|| ( _tcpip6_sys   >zero && _tcpip6_sys   <fver(5,1,2600,3394))
+			|| ( _tcpip_sys    >zero && _tcpip_sys    <fver(5,1,2600,3394)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			   ( _afd_sys      >zero && _afd_sys      <fver(5,1,2600,5657))
+			|| ( _dnsapi_dll   >zero && _dnsapi_dll   <fver(5,1,2600,5817))
+			|| ( _dnsrslvr_dll >zero && _dnsrslvr_dll <fver(5,1,2600,5817))
+			|| ( _mswsock_dll  >zero && _mswsock_dll  <fver(5,1,2600,5625))
+			|| ( _tcpip6_sys   >zero && _tcpip6_sys   <fver(5,1,2600,5625))
+			|| ( _tcpip_sys    >zero && _tcpip_sys    <fver(5,1,2600,5625)) ))) {
+		NN("Update for Windows XP (KB959085)");
+		XX(p3+"WindowsXP-KB959085-x86-ENU.exe"+a1);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,3357))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,5586))) {
 		NN("Update for Windows XP (KB945184)");
