@@ -5444,6 +5444,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB953761)");
 		XX(p3+"WindowsXP-KB953761-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885222")
+		|| (_ohci1394_sys >zero && _ohci1394_sys < fver(5,1,2600,2549))
+		|| (_ohci1394_sys_cache < fver(5,1,2600,2549)) )) {
+		// On SP2, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
+		// This problem occurs because Windows XP SP2 changes 1394b ports to S100 speed.
+		NN("Update for Windows XP (KB885222)"); // cstupd1394sidspeed.dll version 5.1.2600.2549
+		XX(p2+"WindowsXP-KB885222-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB955408")) {
+		// On SP3, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
+		// This problem occurs because Windows XP SP3 changes 1394b ports to S100 speed.
+		NN("Update for Windows XP (KB955408)"); // CstUpd1394SidSpeed.dll version 5.1.2600.5657
+		XX(p3+"WindowsXP-KB955408-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
@@ -5589,10 +5603,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2893294-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2603381")) {
+		// MS12-002: The vulnerability could allow remote code execution if a user opens a legitimate file with an embedded packaged
+		// object that is located in the same network directory as a specially crafted executable file.  The security update addresses
+		// the vulnerability by correcting a registry key associated with the Windows Object Packager.
 		NN("Security Update for Windows XP (KB2603381)");
 		XX(p3+"WindowsXP-KB2603381-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2570947")) {
+		// MS11-071: The vulnerability could allow remote code execution if a user opens a legitimate rich text format file (.rtf),
+		// text file (.txt), or Word document (.doc) that is located in the same network directory as a specially crafted dynamic
+		// link library (DLL) file.  Security update 2570947 for Windows XP and Windows Server 2003 applies a change to the registry.
+		// No files are installed on the computer.
 		NN("Security Update for Windows XP (KB2570947)");
 		XX(p3+"WindowsXP-KB2570947-x86-ENU.exe"+a1);
 	}
