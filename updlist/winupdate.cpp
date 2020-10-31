@@ -1072,6 +1072,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _stream_sys   = getFileVer(Drivers+L"\\stream.sys",&status);
 	fver _tcpip6_sys   = getFileVer(Drivers+L"\\tcpip6.sys",&status);
 	fver _tcpip_sys    = getFileVer(Drivers+L"\\tcpip.sys",&status);
+	fver _tdtcp_sys    = getFileVer(Drivers+L"\\tdtcp.sys",&status);
 	fver _termdd_sys   = getFileVer(Drivers+L"\\termdd.sys",&status);
 	fver _tunmp_sys    = getFileVer(Drivers+L"\\tunmp.sys",&status);
 	fver _update_sys   = getFileVer(Drivers+L"\\update.sys",&status);
@@ -5457,6 +5458,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// This problem occurs because Windows XP SP3 changes 1394b ports to S100 speed.
 		NN("Update for Windows XP (KB955408)"); // CstUpd1394SidSpeed.dll version 5.1.2600.5657
 		XX(p3+"WindowsXP-KB955408-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,3599))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,5770))) {
+		NN("Update for Windows XP (KB955830)");
+		XX(p3+"WindowsXP-KB955830-v2-x86-ENU.exe"+a1);
 	}
 	
 
