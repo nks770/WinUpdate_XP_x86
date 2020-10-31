@@ -2687,6 +2687,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB971032)");
 		XX(p2+"windowsxp-kb971032-x86-enu_23f7ac835ed26257c74a7b1ef5caa6198182cf6c.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && ( (_mqac_sys>zero && _mqac_sys<fver(5,1,0,1111))
+					  ||  (_mqad_dll    >zero && _mqad_dll    <fver(5,1,0,1111))
+					  ||  (_mqdscli_dll >zero && _mqdscli_dll <fver(5,1,0,1111))
+					  ||  (_mqise_dll   >zero && _mqise_dll   <fver(5,1,0,1111))
+					  ||  (_mqqm_dll    >zero && _mqqm_dll    <fver(5,1,0,1111))
+					  ||  (_mqrt_dll    >zero && _mqrt_dll    <fver(5,1,0,1111))
+					  ||  (_mqsec_dll   >zero && _mqsec_dll   <fver(5,1,0,1111))
+					  ||  (_mqupgrd_dll >zero && _mqupgrd_dll <fver(5,1,0,1111))
+					  ||  (_mqutil_dll  >zero && _mqutil_dll  <fver(5,1,0,1111)) )) {
+		NN("Update for Windows XP (KB959682)");
+		XX(p3+"WindowsXP-KB959682-x86-ENU.exe"+a1);
+	}
 	if(    (sp==2 && (sku & XP_ALL) && _mswebdvd_dll>zero && _mswebdvd_dll<fver(6,5,2600,3610))
 		|| (sp==3 && (sku & XP_ALL) && _mswebdvd_dll>zero && _mswebdvd_dll<fver(6,5,2600,5857))) {
 		NN("Security Update for Windows XP (KB973815)");
