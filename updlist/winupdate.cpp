@@ -284,6 +284,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dxmrtp_dll   = getFileVer(System32+L"\\dxmrtp.dll",&status);
 	fver _dxtmsft_dll  = getFileVer(System32+L"\\dxtmsft.dll",&status);
 	fver _dxtrans_dll  = getFileVer(System32+L"\\dxtrans.dll",&status);
+	fver _eappgnui_dll = getFileVer(System32+L"\\eappgnui.dll",&status);
+	fver _eapphost_dll = getFileVer(System32+L"\\eapphost.dll",&status);
 	fver _encdec_dll   = getFileVer(System32+L"\\encdec.dll",&status);
 	fver _es_dll       = getFileVer(System32+L"\\es.dll",&status);
 	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
@@ -5467,6 +5469,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,5770))) {
 		NN("Update for Windows XP (KB955830)");
 		XX(p3+"WindowsXP-KB955830-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _eappgnui_dll >zero && _eappgnui_dll <fver(5,1,2600,5663))
+	  ||  ( _eapphost_dll >zero && _eapphost_dll <fver(5,1,2600,5663)) )) {
+		NN("Update for Windows XP (KB957218)");
+		XX(p3+"WindowsXP-KB957218-x86-ENU.exe"+a1);
 	}
 	
 
