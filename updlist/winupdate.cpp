@@ -3722,6 +3722,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB901214)");
 		XX(p2+"windowsxp-kb901214-x86-enu_2838831de819dad80ea0edaf5fb1e0bfb3c026c0.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _icm32_dll >zero && _icm32_dll <fver(5,1,2600,5839)) {
+		NN("Update for Windows XP (KB956048)");
+		XX(p3+"WindowsXP-KB956048-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _netman_dll    >zero && _netman_dll    <fver(5,1,2600,1733))))
 	 ||(sp==2 && (sku & XP_ALL) && (
