@@ -654,6 +654,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _shmedia_dll  = getFileVer(System32+L"\\shmedia.dll",&status);
 	fver _shmgrate_exe = getFileVer(System32+L"\\shmgrate.exe",&status);
 	fver _shsvcs_dll   = getFileVer(System32+L"\\shsvcs.dll",&status);
+	fver _sndrec32_exe = getFileVer(System32+L"\\sndrec32.exe",&status);
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
 	fver _snmpapi_dll  = getFileVer(System32+L"\\snmpapi.dll",&status);
 	fver _spiisupd_exe = getFileVer(System32+L"\\spiisupd.exe",&status);
@@ -5475,6 +5476,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _eapphost_dll >zero && _eapphost_dll <fver(5,1,2600,5663)) )) {
 		NN("Update for Windows XP (KB957218)");
 		XX(p3+"WindowsXP-KB957218-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _sndrec32_exe >zero && _sndrec32_exe <fver(5,1,2600,5671)) {
+		NN("Update for Windows XP (KB957495)");
+		XX(p3+"WindowsXP-KB957495-x86-ENU.exe"+a1);
 	}
 	
 
