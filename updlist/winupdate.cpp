@@ -2617,10 +2617,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB948590)");
 		XX(p+"windowsxp-kb948590-x86-enu_f94e1dbe8e74d3da8f3979e1cae71360c0c11a8e.exe"+a1);
 	}*/
-	if( sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3466)) {
-	//if( sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5698)) {
-		NN("Security Update for Windows XP (KB956802)");
-		XX(p2+"windowsxp-kb956802-x86-enu_bf0a8bfe0d01487a999fb8f66b3719957acf1f3a.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,3498))
+		 /*||(sp==3 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,5732))*/) {
+			NN("Update for Windows XP (KB959554)"); // On SP3, KB959554 is replaced by KB2876331
+			XX(p2+"WindowsXP-KB959554-x86-ENU.exe"+a1);
+		}
+	} else {
+		if((sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3466))
+		 /*||(sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5698))*/) {
+			NN("Security Update for Windows XP (KB956802)"); // On SP3, KB956802 is replaced by KB2876331
+			XX(p2+"windowsxp-kb956802-x86-enu_bf0a8bfe0d01487a999fb8f66b3719957acf1f3a.exe"+a1);
+		}
+	}
+	if( sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,6460)) {
+		NN("Security Update for Windows XP (KB2876331)");
+		XX(p3+"WindowsXP-KB2876331-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && ( (_msdtcprx_dll>zero && _msdtcprx_dll<fver(2001,12,4414,65))
 					  ||  (_msdtctm_dll>zero && _msdtctm_dll<fver(2001,12,4414,65))
@@ -5705,10 +5717,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6419)) )) {
 		NN("Security Update for Windows XP (KB2859537)");
 		XX(p3+"WindowsXP-KB2859537-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,6460)) {
-		NN("Security Update for Windows XP (KB2876331)");
-		XX(p3+"WindowsXP-KB2876331-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _usp10_dll>zero && _usp10_dll<fver(1,420,2600,6421)) {
 		NN("Security Update for Windows XP (KB2850869)");
