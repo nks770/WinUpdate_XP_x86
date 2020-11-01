@@ -678,6 +678,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sysdm_cpl    = getFileVer(System32+L"\\sysdm.cpl",&status);
 	fver _t2embed_dll  = getFileVer(System32+L"\\t2embed.dll",&status);
 	fver _tapisrv_dll  = getFileVer(System32+L"\\tapisrv.dll",&status);
+	fver _tcpmon_dll   = getFileVer(System32+L"\\tcpmon.dll",&status);
 	fver _tdc_ocx      = getFileVer(System32+L"\\tdc.ocx",&status);
 	fver _telnet_exe   = getFileVer(System32+L"\\telnet.exe",&status);
 	fver _termsrv_dll  = getFileVer(System32+L"\\termsrv.dll",&status);
@@ -5698,6 +5699,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _usbccid_sys_cache  <fver(5,2,3790,4476)) )) {
 		NN("Update for Windows XP (KB967048)");
 		XX(p3+"WindowsXP-KB967048-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,3555))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,5795))) {
+		NN("Update for Windows XP (KB970048)");
+		XX(p3+"WindowsXP-KB970048-x86-ENU.exe"+a1);
 	}
 	
 
