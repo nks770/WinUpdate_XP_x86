@@ -587,14 +587,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _p2pnetsh_dll = getFileVer(System32+L"\\p2pnetsh.dll",&status);
 	fver _p2psvc_dll   = getFileVer(System32+L"\\p2psvc.dll",&status);
 	fver _packager_exe = getFileVer(System32+L"\\packager.exe",&status);
+	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
 	fver _pintool_exe  = getFileVer(System32+L"\\pintool.exe",&status);
 	fver _pnrpnsp_dll  = getFileVer(System32+L"\\pnrpnsp.dll",&status);
-	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
 	fver _PortableDeviceWMDRM_dll = getFileVer(System32+L"\\PortableDeviceWMDRM.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
+	fver _proquota_exe = getFileVer(System32+L"\\proquota.exe",&status);
 	fver _psbase_dll   = getFileVer(System32+L"\\psbase.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
@@ -5777,6 +5778,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,5840))) {
 		NN("Update for Windows XP (KB971234)");
 		XX(p3+"WindowsXP-KB971234-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _proquota_exe >zero && _proquota_exe <fver(5,1,2600,5843)) {
+		NN("Update for Windows XP (KB971345)");
+		XX(p3+"WindowsXP-KB971345-x86-ENU.exe"+a1);
 	}
 	
 
