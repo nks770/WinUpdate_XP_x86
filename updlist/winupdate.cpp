@@ -5023,10 +5023,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB935708)");
 		XX(p2+"WindowsXP-KB935708-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && (
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _videoprt_sys   >zero && _videoprt_sys   <fver(5,1,2600,3147)) )) {
 		NN("Update for Windows XP (KB937930)");
 		XX(p2+"WindowsXP-KB937930-x86-ENU.exe"+a1);
+	}*/
+	if((sp==2 && qfe && (sku & XP_ALL) && _videoprt_sys >zero && _videoprt_sys <fver(5,1,2600,3512))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _videoprt_sys >zero && _videoprt_sys <fver(5,1,2600,5745))) {
+		NN("Update for Windows XP (KB960921)");
+		XX(p2+"WindowsXP-KB960921-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,3478))
