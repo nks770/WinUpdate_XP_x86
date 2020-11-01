@@ -696,6 +696,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ulib_dll     = getFileVer(System32+L"\\ulib.dll",&status);
 	fver _umandlg_dll  = getFileVer(System32+L"\\umandlg.dll",&status);
 	fver _umpnpmgr_dll = getFileVer(System32+L"\\umpnpmgr.dll",&status);
+	fver _unimdm_tsp   = getFileVer(System32+L"\\unimdm.tsp",&status);
 	fver _unregmp2_exe = getFileVer(SystemRoot+L"\\INF\\unregmp2.exe",&status);
 	fver _upnp_dll     = getFileVer(System32+L"\\upnp.dll",&status);
 	fver _upnphost_dll = getFileVer(System32+L"\\upnphost.dll",&status);
@@ -5708,6 +5709,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,5795))) {
 		NN("Update for Windows XP (KB970048)");
 		XX(p3+"WindowsXP-KB970048-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _unimdm_tsp >zero && _unimdm_tsp <fver(5,1,2600,5815)) {
+		NN("Update for Windows XP (KB970254)");
+		XX(p3+"WindowsXP-KB970254-x86-ENU.exe"+a1);
 	}
 	
 
