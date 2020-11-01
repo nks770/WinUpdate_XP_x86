@@ -4308,10 +4308,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,3390))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
 		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) ))
-		|| (sp==3 && qfe && (sku & XP_ALL) && (
-			  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,5621)) ))) {
-			NN("Update for Windows XP (KB953609)");
-			XX(p3+"WindowsXP-KB953609-x86-ENU.exe"+a1);
+		/*|| (sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,5621)) ))*/) {
+			NN("Update for Windows XP (KB953609)"); // On SP3, KB953609 is replaced by KB971455
+			XX(p2+"WindowsXP-KB953609-x86-ENU.exe"+a1);
+		}
+		if( sp==3 && qfe && (sku & XP_ALL) && _wzcdlg_dll >zero && _wzcdlg_dll <fver(5,1,2600,5815)) {
+			NN("Update for Windows XP (KB971455)");
+			XX(p3+"WindowsXP-KB971455-x86-ENU.exe"+a1);
 		}
 	}
 //	if( sp==2 && (sku & XP_MCE2005) && (
