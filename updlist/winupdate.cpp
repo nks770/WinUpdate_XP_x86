@@ -1310,6 +1310,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cimwin32_dll = getFileVer(wbem+L"\\cimwin32.dll",&status);
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
+	fver _framedyn_dll = getFileVer(wbem+L"\\framedyn.dll",&status);
 	fver _policman_dll = getFileVer(wbem+L"\\policman.dll",&status);
 	fver _repdrvfs_dll = getFileVer(wbem+L"\\repdrvfs.dll",&status);
 	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
@@ -5731,6 +5732,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _wdsmgmt_dll_mui  <fver(6,0,6000,16386)) )) {
 		NN("Update for Windows XP (KB970326)");
 		XX(p3+"WindowsXP-KB970326-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _framedyn_dll >zero && _framedyn_dll <fver(5,1,2600,3563))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _framedyn_dll >zero && _framedyn_dll <fver(5,1,2600,5804))) {
+		NN("Update for Windows XP (KB970413)");
+		XX(p3+"WindowsXP-KB970413-x86-ENU.exe"+a1);
 	}
 	
 
