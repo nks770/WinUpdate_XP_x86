@@ -1311,6 +1311,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
 	fver _framedyn_dll = getFileVer(wbem+L"\\framedyn.dll",&status);
+	fver _msiprov_dll  = getFileVer(wbem+L"\\msiprov.dll",&status);
 	fver _policman_dll = getFileVer(wbem+L"\\policman.dll",&status);
 	fver _repdrvfs_dll = getFileVer(wbem+L"\\repdrvfs.dll",&status);
 	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
@@ -9515,6 +9516,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && (sku & XP_ALL) && ((_msi_dll>=fver(4,5,6001,22159) && _msi_dll<fver(4,5,6001,22299)) || *msi45 )) {
 		NN("Update for Windows XP (KB958655)");
 		XX(p3+"WindowsXP-KB958655-v2-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(5,0,0,0)) || *msi45) &&
+		_msiprov_dll >zero && _msiprov_dll <fver(5,1,2600,5803) ) {
+		NN("Update for Windows XP (KB970553)");
+		XX(p3+"WindowsXP-KB970553-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_WES2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24556))
 		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
