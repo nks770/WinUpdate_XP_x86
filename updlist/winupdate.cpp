@@ -427,6 +427,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mmcperf_exe  = getFileVer(System32+L"\\mmcperf.exe",&status);
 	fver _mmcshext_dll = getFileVer(System32+L"\\mmcshext.dll",&status);
 	fver _mmsys_cpl    = getFileVer(System32+L"\\mmsys.cpl",&status);
+	fver _mountvol_exe = getFileVer(System32+L"\\mountvol.exe",&status);
 	fver _MP43DMOD_dll = getFileVer(System32+L"\\MP43DMOD.dll",&status);
 	fver _mp4sdecd_dll = getFileVer(System32+L"\\mp4sdecd.dll",&status);
 	fver _mp4sdmod_dll = getFileVer(System32+L"\\mp4sdmod.dll",&status);
@@ -1038,6 +1039,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ks_sys       = getFileVer(Drivers+L"\\ks.sys",&status);
 	fver _ksecdd_sys   = getFileVer(Drivers+L"\\ksecdd.sys",&status);
 	fver _memcard_sys  = getFileVer(Drivers+L"\\memcard.sys",&status);
+	fver _mountmgr_sys = getFileVer(Drivers+L"\\mountmgr.sys",&status);
 	fver _mqac_sys     = getFileVer(Drivers+L"\\mqac.sys",&status);
 	fver _mrxdav_sys   = getFileVer(Drivers+L"\\mrxdav.sys",&status);
 	fver _mrxsmb_sys   = getFileVer(Drivers+L"\\mrxsmb.sys",&status);
@@ -1128,6 +1130,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
+	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
@@ -5596,6 +5599,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _infosoft_dll >zero && _infosoft_dll <fver(5,1,2600,5726))) {
 		NN("Update for Windows XP (KB961067)");
 		XX(p3+"WindowsXP-KB961067-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _mountmgr_sys >zero && _mountmgr_sys <fver(5,1,2600,3572))
+	  ||  ( _mountvol_exe >zero && _mountvol_exe <fver(5,1,2600,3572))
+	  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,3520))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,3520))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,3520))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,3520))
+	  ||  ( _mountmgr_sys_cache <fver(5,1,2600,3572)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _mountmgr_sys >zero && _mountmgr_sys <fver(5,1,2600,5815))
+	  ||  ( _mountvol_exe >zero && _mountvol_exe <fver(5,1,2600,5815))
+	  ||  ( _mountmgr_sys_cache <fver(5,1,2600,5815)) ))) {
+		NN("Update for Windows XP (KB961187)");
+		XX(p3+"WindowsXP-KB961187-v2-x86-ENU.exe"+a1);
 	}
 	
 
