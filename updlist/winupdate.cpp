@@ -5258,6 +5258,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB948277-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3547))
+	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,3547))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,3547)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,5788))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,5788))
+	  ||  ( _dpcdll_dll   >zero && _dpcdll_dll   <fver(5,1,2600,5788)) ))) {
+		NN("Update for Windows XP (KB969557)");
+		XX(p3+"WindowsXP-KB969557-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,3374)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,5603)) ))) {
