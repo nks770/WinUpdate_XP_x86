@@ -1141,6 +1141,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _raspppoe_sys_cache = getFileVer(DriverCache+L"\\raspppoe.sys",&status);
+	fver _rmcast_sys_cache   = getFileVer(DriverCache+L"\\rmcast.sys",&status);
 	fver _rndismp_sys_cache  = getFileVer(DriverCache+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys_cache = getFileVer(DriverCache+L"\\rndismpx.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
@@ -1981,7 +1982,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB841356)");
 		XX(p1+"windowsxp-kb841356-x86-enu_c263b64a1074aa6b5bb34ee43935e7dc82f7acc9.exe"+a6);
 	}
-	if( sp==1 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,1873)) {
+	if( sp==1 && (sku & XP_ALL) && ((_rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,1873)) || _rmcast_sys_cache<fver(5,1,2600,1873))) {
 //	if( sp==2 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,2951)) {
 		// KB919007 is replaced by KB950762 on SP2
 		NN("Security Update for Windows XP (KB919007)");
@@ -2936,10 +2937,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978601)");
 		XX(p2+"windowsxp-kb978601-x86-enu_49ae6ac4f6e0a609124f2ce6f80fcef249273c02.exe"+a1);
 	}
-	if(   (sp==2 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,3369))
-		||(sp==3 && (sku & XP_ALL) && _rmcast_sys>zero && _rmcast_sys<fver(5,1,2600,5598))) {
-		NN("Security Update for Windows XP (KB950762)");
-		XX(p3+"windowsxp-kb950762-x86-enu_bfa04c9d2e62b4695d1bb8953486788c8a8c11e4.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _rmcast_sys >zero && _rmcast_sys <fver(5,1,2600,3572))
+		  ||  ( _rmcast_sys_cache <fver(5,1,2600,3572)) ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _rmcast_sys >zero && _rmcast_sys <fver(5,1,2600,5815))
+		  ||  ( _rmcast_sys_cache <fver(5,1,2600,5815)) ))) {
+			NN("Update for Windows XP (KB961605)");
+			XX(p3+"WindowsXP-KB961605-x86-ENU.exe"+a1);
+		}
+	} else {
+		if((sp==2 && (sku & XP_ALL) && (
+			  ( _rmcast_sys >zero && _rmcast_sys <fver(5,1,2600,3369))
+		  ||  ( _rmcast_sys_cache <fver(5,1,2600,3369)) ))
+		 ||(sp==3 && (sku & XP_ALL) && (
+			  ( _rmcast_sys >zero && _rmcast_sys <fver(5,1,2600,5598))
+		  ||  ( _rmcast_sys_cache <fver(5,1,2600,5598)) ))) {
+			NN("Security Update for Windows XP (KB950762)");
+			XX(p3+"windowsxp-kb950762-x86-enu_bfa04c9d2e62b4695d1bb8953486788c8a8c11e4.exe"+a1);
+		}
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 	             (_6to4svc_dll  >zero && _6to4svc_dll  <fver(5,1,2600,1847))
