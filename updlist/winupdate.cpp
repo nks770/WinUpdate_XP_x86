@@ -269,6 +269,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
+	fver _dot3msm_dll  = getFileVer(System32+L"\\dot3msm.dll",&status);
 	fver _dot3svc_dll  = getFileVer(System32+L"\\dot3svc.dll",&status);
 	fver _dpcdll_dll   = getFileVer(System32+L"\\dpcdll.dll",&status);
 	fver _dplayx_dll   = getFileVer(System32+L"\\dplayx.dll",&status);
@@ -5537,6 +5538,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _dot3svc_dll >zero && _dot3svc_dll <fver(5,1,2600,5745)) {
 		NN("Update for Windows XP (KB957931)");
 		XX(p3+"WindowsXP-KB957931-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _dot3msm_dll >zero && _dot3msm_dll <fver(5,1,2600,5745)) {
+		NN("Update for Windows XP (KB960655)");
+		XX(p3+"WindowsXP-KB960655-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _inetpp_dll >zero && _inetpp_dll <fver(5,1,2600,3484))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _inetpp_dll >zero && _inetpp_dll <fver(5,1,2600,5716))) {
