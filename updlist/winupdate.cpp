@@ -1168,6 +1168,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usbccgp_sys_cache  = getFileVer(DriverCache+L"\\usbccgp.sys",&status);
 	fver _usbccid_sys_cache  = getFileVer(DriverCache+L"\\usbccid.sys",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
+	fver _usbvideo_sys_cache = getFileVer(DriverCache+L"\\usbvideo.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
 	fver _wuapi_dll    = getFileVer(System32+L"\\wuapi.dll",&status);
@@ -4835,9 +4836,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _kswdmcap_ax  >zero && _kswdmcap_ax  <fver(5,3,2600,2729))
-	  ||  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,2729)) )) {
+	  ||  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,2729))
+	  ||  ( _usbvideo_sys_cache <fver(5,1,2600,2729) ))) {
 		NN("Update for USB Video Class (UVC) driver in Windows XP Home and Professional with Service Pack 2");
 		XX(p2+"WindowsXP-KB899271-v4-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,3570))
+	  ||  ( _usbvideo_sys_cache <fver(5,1,2600,3570)) ))
+	 /*||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _usbvideo_sys >zero && _usbvideo_sys <fver(5,1,2600,5811))
+	  ||  ( _usbvideo_sys_cache <fver(5,1,2600,5811)) ))*/) {
+		NN("Update for Windows XP (KB971323)"); // On SP3, KB971323 is replaced by KB2868038
+		XX(p2+"WindowsXP-KB971323-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & (XP_ALL)) && (
+		     ( _irbus_sys    > zero && _irbus_sys    < fver(5,1,2600,6425))
+		||   ( _usbaudio_sys > zero && _usbaudio_sys < fver(5,1,2600,6425))
+		||   ( _usbvideo_sys > zero && _usbvideo_sys < fver(5,1,2600,6425))
+		||   ( _usbvideo_sys_cache < fver(5,1,2600,6425)) )) {
+		NN("Security Update for Windows XP (KB2868038)");
+		XX(p3+"WindowsXP-KB2868038-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _classpnp_sys  >zero && _classpnp_sys  <fver(5,1,2600,2770)) )) {
@@ -6284,13 +6303,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && ( (/*_aclayers_dll>zero &&*/ _aclayers_dll<fver(5,1,2600,6093)) )) {
 		NN("Update for Windows XP (KB2492386)");
 		XX(p3+"WindowsXP-KB2492386-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && (sku & (XP_ALL)) && (
-		     ( _irbus_sys    > zero && _irbus_sys    < fver(5,1,2600,6425))
-		||   ( _usbaudio_sys > zero && _usbaudio_sys < fver(5,1,2600,6425))
-		||   ( _usbvideo_sys > zero && _usbvideo_sys < fver(5,1,2600,6425)) )) {
-		NN("Security Update for Windows XP (KB2868038)");
-		XX(p3+"WindowsXP-KB2868038-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_PLUS_FLP) && (
 		     ( _kerberos_dll > zero && _kerberos_dll < fver(5,1,2600,6059)) )) {
