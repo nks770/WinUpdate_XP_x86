@@ -1136,6 +1136,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ps5ui_dll_cache    = getFileVer(DriverCache+L"\\ps5ui.dll",&status);
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
+	fver _raspppoe_sys_cache = getFileVer(DriverCache+L"\\raspppoe.sys",&status);
 	fver _rndismp_sys_cache  = getFileVer(DriverCache+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys_cache = getFileVer(DriverCache+L"\\rndismpx.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
@@ -5031,7 +5032,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if((sp==2 && qfe && (sku & XP_ALL) && _videoprt_sys >zero && _videoprt_sys <fver(5,1,2600,3512))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _videoprt_sys >zero && _videoprt_sys <fver(5,1,2600,5745))) {
 		NN("Update for Windows XP (KB960921)");
-		XX(p2+"WindowsXP-KB960921-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB960921-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,3478))
@@ -5337,7 +5338,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955356)");
 		XX(p3+"WindowsXP-KB955356-x86-ENU.exe"+a1);
 	}
-	if((sp==2 && qfe && (sku & XP_ALL) && (
+	/*if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _1394bus_sys >zero && _1394bus_sys <fver(5,1,2600,3456))
 			|| _1394bus_sys_cache <fver(5,1,2600,3456)))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
@@ -5345,6 +5346,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			|| _1394bus_sys_cache <fver(5,1,2600,5689)))) {
 		NN("Update for Windows XP (KB958347)");
 		XX(p3+"WindowsXP-KB958347-x86-ENU.exe"+a1);
+	}*/
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _1394bus_sys  >zero && _1394bus_sys  <fver(5,1,2600,3516))
+	  ||  ( _1394bus_sys_cache  <fver(5,1,2600,3516)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _1394bus_sys  >zero && _1394bus_sys  <fver(5,1,2600,5749))
+	  ||  ( _1394bus_sys_cache  <fver(5,1,2600,5749)) ))) {
+		NN("Update for Windows XP (KB960970)");
+		XX(p3+"WindowsXP-KB960970-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _serscan_sys >zero && _serscan_sys <fver(5,1,2600,3382))
@@ -5575,7 +5585,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB959873)");
 		XX(p3+"WindowsXP-KB959873-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && qfe && (sku & XP_ALL) && _raspppoe_sys >zero && _raspppoe_sys <fver(5,1,2600,5815)) {
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _raspppoe_sys  >zero && _raspppoe_sys  <fver(5,1,2600,5815))
+	  ||  ( _raspppoe_sys_cache  <fver(5,1,2600,5749)) )) {
 		NN("Update for Windows XP (KB960519)");
 		XX(p3+"WindowsXP-KB960519-x86-ENU.exe"+a1);
 	}
