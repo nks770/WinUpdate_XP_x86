@@ -1157,6 +1157,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rndismp_sys_cache  = getFileVer(DriverCache+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys_cache = getFileVer(DriverCache+L"\\rndismpx.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
+	fver _sdbus_sys_cache    = getFileVer(DriverCache+L"\\sdbus.sys",&status);
 	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
@@ -5059,11 +5060,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3492))
 		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3492))
 		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3492))
+		  ||  ( _sdbus_sys_cache < fver(6,0,4069,3492))
 		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB952595") ))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && (
 			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,5726))
 		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,5726))
 		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,5726))
+		  ||  ( _sdbus_sys_cache < fver(6,0,4069,5726))
 		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB952595") ))) {
 			NN("Update for Windows XP (KB952595)");
 			XX(p3+"WindowsXP-KB952595-v3-x86-ENU.exe"+a1);
@@ -5073,11 +5076,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3493))
 		  ||  ( _sffp_mmc_sys >zero && _sffp_mmc_sys <fver(6,0,4069,3493))
 		  ||  ( _sffp_sd_sys  >zero && _sffp_sd_sys  <fver(6,0,4069,3493))
+		  ||  ( _sdbus_sys_cache < fver(6,0,4069,3493))
 		  ||  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB959465") ))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && (
 			  !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB959465") ))) {
 			NN("Update for Windows XP (KB959465)");
 			XX(p3+"WindowsXP-KB959465-x86-ENU.exe"+a1);
+		}
+		if( sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _sdbus_sys >zero && _sdbus_sys <fver(6,0,4069,5813))
+		  ||  ( _sdbus_sys_cache  <fver(6,0,4069,5813)) )) {
+			NN("Update for Windows XP (KB970685)");
+			XX(p3+"WindowsXP-KB970685-x86-ENU.exe"+a1);
 		}
 	} else {
 		if( sp==2 && (sku & XP_ALL) && (
