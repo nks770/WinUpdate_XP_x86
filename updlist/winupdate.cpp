@@ -4753,10 +4753,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB894395)");
 		XX(p2+"WindowsXP-KB894395-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && qfe && (sku & XP_ALL) && (
-		  ( _imjpcd_dic >zero && _imjpcd_dic <fver(8,1,4225,0)) )) {
+	if( sp==3 && qfe && (sku & XP_ALL) && _imjpcd_dic >zero && _imjpcd_dic <fver(8,1,4225,0)) {
 		NN("Update for Windows XP (KB950820)"); // Not blocked on SP2, but docs say SP3 is required.
 		XX(p3+"WindowsXP-KB950820-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _imjp81_ime >zero && _imjp81_ime <fver(8,1,4304,0)) {
+		NN("Update for Windows XP (KB967705)");
+		XX(p3+"WindowsXP-KB967705-v2-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && (
 		                  ( _kbdbhc_dll   <fver(5,1,2600,2687))
