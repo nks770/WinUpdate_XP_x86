@@ -3553,10 +3553,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb955759-x86-enu_32f91e0ecc35b55f6c9e51ad360b2adee1f74049.exe"+a1);
 	}
 	if(qfe){
-		if((sp==2 && qfe && (sku & XP_ALL) && _msadce_dll >zero && _msadce_dll <fver(2,81,1142,0))
+		/*if((sp==2 && qfe && (sku & XP_ALL) && _msadce_dll >zero && _msadce_dll <fver(2,81,1142,0))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && _msadce_dll >zero && _msadce_dll <fver(2,81,3008,0))) {
-			NN("Update for Windows XP (KB959237)");
+			NN("Update for Windows XP (KB959237)"); // KB959237 is replaced by KB961451
 			XX(p3+"WindowsXP-KB959237-x86-ENU.exe"+a1);
+		}*/
+		if((sp==2 && qfe && (sku & XP_ALL) && _msadce_dll >zero && _msadce_dll <fver(2,81,1144,0))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && _msadce_dll >zero && _msadce_dll <fver(2,81,3010,0))) {
+			NN("Update for Windows XP (KB961451)");
+			XX(p3+"WindowsXP-KB961451-v2-x86-ENU.exe"+a1);
 		}
 	} else {
 		if( (sp==2 && (sku & XP_ALL) && _msadce_dll>zero && _msadce_dll<fver(2,81,1135,0))
