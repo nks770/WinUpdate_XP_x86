@@ -1093,6 +1093,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usb8023x_sys = getFileVer(Drivers+L"\\usb8023x.sys",&status);
 	fver _usbaudio_sys = getFileVer(Drivers+L"\\usbaudio.sys",&status);
 	fver _usbccgp_sys  = getFileVer(Drivers+L"\\usbccgp.sys",&status);
+	fver _usbccid_sys  = getFileVer(Drivers+L"\\usbccid.sys",&status);
 	fver _usbd_sys     = getFileVer(Drivers+L"\\usbd.sys",&status);
 	fver _usbehci_sys  = getFileVer(Drivers+L"\\usbehci.sys",&status);
 	fver _usbhub_sys   = getFileVer(Drivers+L"\\usbhub.sys",&status);
@@ -1153,6 +1154,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usb8023_sys_cache  = getFileVer(DriverCache+L"\\usb8023.sys",&status);
 	fver _usb8023x_sys_cache = getFileVer(DriverCache+L"\\usb8023x.sys",&status);
 	fver _usbccgp_sys_cache  = getFileVer(DriverCache+L"\\usbccgp.sys",&status);
+	fver _usbccid_sys_cache  = getFileVer(DriverCache+L"\\usbccid.sys",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
 
 	fver _cdm_dll      = getFileVer(System32+L"\\cdm.dll",&status);
@@ -5653,6 +5655,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _oakley_dll   >zero && _oakley_dll   <fver(5,1,2600,5750)) )) {
 		NN("Update for Windows XP (KB965220)");
 		XX(p3+"WindowsXP-KB965220-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _usbccid_sys  >zero && _usbccid_sys  <fver(5,2,3790,4476))
+	  ||  ( _usbccid_sys_cache  <fver(5,2,3790,4476)) )) {
+		NN("Update for Windows XP (KB967048)");
+		XX(p3+"WindowsXP-KB967048-v2-x86-ENU.exe"+a1);
 	}
 	
 
