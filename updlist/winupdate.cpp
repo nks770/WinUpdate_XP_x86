@@ -1134,6 +1134,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
 	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
+	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
 	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
@@ -2289,7 +2290,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Critical Update for Windows XP (KB887811)");
 		XX(rtm+"windowsxp-kb887811-v2-x86-enu_092387bd05fc6f5d0d027df8fed841153f82c031.exe"+a6);
 	}
-	if( sp==0 && (sku & XP_ALL) && _ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,28)) {
+	if( sp==0 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,28)) || _ntfs_sys_cache <fver(5,1,2600,28))) {
 		NN("Critical Update, February 10, 2002");
 		XX(rtm+"q315403_9eae12a1a1e27d7aea96b89ab793a5a28c680ed8.exe"+a7);
 	}
@@ -3613,10 +3614,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			NN("Update for Windows XP (KB938828)");
 			XX(p2+"windowsxp-kb938828-x86-enu_ba3f0cbe4ba5736d4254732e41fe058697b76ebc.exe"+a1);
 		}
-	}
-	if( sp==2 && (sku & XP_ALL) && _ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,3081)) {
-		NN("Update for Windows XP (KB930916)");
-		XX(p2+"windowsxp-kb930916-x86-enu_f077461cd094716eafd9cfe353d257a0f71a4af2.exe"+a1);
 	}
 	if(qfe) {
 		if( sp==2 && qfe && (sku & XP_ALL) && (
@@ -5005,10 +5002,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB931374) - English");
 		XX(p2+"WindowsXP-KB931374-x86-ENU.exe"+a1);
 	}
-	if((sp==2 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3480))))
-	 ||(sp==3 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5712))))) {
-		NN("Update for Windows XP (KB932578)");
-		XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
+	if(qfe) {
+		/*if((sp==2 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3480))))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5712))))) {
+			NN("Update for Windows XP (KB932578)"); // KB932578 is replaced by KB969262
+			XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
+		}*/
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3542))
+		  ||  ( _ntfs_sys_cache <fver(5,1,2600,3542)) ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5782))
+		  ||  ( _ntfs_sys_cache <fver(5,1,2600,5782)) ))) {
+			NN("Update for Windows XP (KB969262)");
+			XX(p3+"WindowsXP-KB969262-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,3081)) || _ntfs_sys_cache <fver(5,1,2600,3081)))  {
+			NN("Update for Windows XP (KB930916)");
+			XX(p2+"windowsxp-kb930916-x86-enu_f077461cd094716eafd9cfe353d257a0f71a4af2.exe"+a1);
+		}
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		 ( _repdrvfs_dll   >zero && _repdrvfs_dll   <fver(5,1,2600,3138)) )) {
@@ -6687,7 +6700,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7581))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,7581))
 					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,7581))
-					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,7581)) )) {
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,7581))
+					  || _ntfs_sys_cache <fver(5,1,2600,7581))) {
 		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4463103)");
 		XX(p3+"windowsxp-kb4463103-x86-embedded-enu_1d7cc48a7f1902bdd5953a1ab980db5832631339.exe"+a1);
 	}
