@@ -4231,17 +4231,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Remote Assistance Connection");
 		XX(rtm+"q311889_wxp_27dba07edd39b4cc0b3e2c6db90178e7396cff1a.exe"+a7);
 	}
-	if(!qfe) {
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && _termsrv_dll >zero && _termsrv_dll<fver(5,1,2600,3501))
+		 /*||(sp==3 && qfe && (sku & XP_ALL) && _termsrv_dll >zero && _termsrv_dll<fver(5,1,2600,5733))*/) {
+			NN("Update for Windows XP (KB281981)"); // On SP2, KB281981 is replaced by KB971165
+			XX(p2+"WindowsXP-KB281981-x86-ENU.exe"+a1);
+		}
+		if( sp==3 && qfe && (sku & XP_ALL) && _termsrv_dll >zero && _termsrv_dll <fver(5,1,2600,5815)) {
+			NN("Update for Windows XP (KB971165)");
+			XX(p3+"WindowsXP-KB971165-x86-ENU.exe"+a1);
+		}
+	} else {
 		if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3352))
 		 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5581))) {
 			NN("Update for Windows XP (KB895961)");
 			XX(p3+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
-		}
-	} else {
-		if((sp==2 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,3501))
-		 ||(sp==3 && (sku & XP_ALL) && _termsrv_dll>zero && _termsrv_dll<fver(5,1,2600,5733))) {
-			NN("Update for Windows XP (KB281981)");
-			XX(p3+"WindowsXP-KB281981-x86-ENU.exe"+a1);
 		}
 	}
 	if( sp==1 && (sku & XP_ALL) && (
