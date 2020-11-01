@@ -265,6 +265,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _davclnt_dll  = getFileVer(System32+L"\\davclnt.dll",&status);
 	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
+	fver _dfrgntfs_exe = getFileVer(System32+L"\\dfrgntfs.exe",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
 	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
@@ -5752,6 +5753,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _framedyn_dll >zero && _framedyn_dll <fver(5,1,2600,5804))) {
 		NN("Update for Windows XP (KB970413)");
 		XX(p3+"WindowsXP-KB970413-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,3596))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,5840))) {
+		NN("Update for Windows XP (KB971234)");
+		XX(p3+"WindowsXP-KB971234-v2-x86-ENU.exe"+a1);
 	}
 	
 
