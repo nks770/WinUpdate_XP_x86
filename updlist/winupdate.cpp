@@ -1058,6 +1058,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
 	fver _processr_sys = getFileVer(Drivers+L"\\processr.sys",&status);
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
+	fver _raspppoe_sys = getFileVer(Drivers+L"\\raspppoe.sys",&status);
 	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
 	fver _rndismp_sys  = getFileVer(Drivers+L"\\rndismp.sys",&status);
@@ -5563,6 +5564,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _wldap32_dll >zero && _wldap32_dll <fver(5,1,2600,5740))) {
 		NN("Update for Windows XP (KB959873)");
 		XX(p3+"WindowsXP-KB959873-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _raspppoe_sys >zero && _raspppoe_sys <fver(5,1,2600,5815)) {
+		NN("Update for Windows XP (KB960519)");
+		XX(p3+"WindowsXP-KB960519-x86-ENU.exe"+a1);
 	}
 	
 
