@@ -359,6 +359,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _inetmib1_dll = getFileVer(System32+L"\\inetmib1.dll",&status);
 	fver _inetpp_dll   = getFileVer(System32+L"\\inetpp.dll",&status);
 	fver _inetres_dll  = getFileVer(System32+L"\\inetres.dll",&status);
+	fver _infosoft_dll = getFileVer(System32+L"\\infosoft.dll",&status);
 	fver _input_dll    = getFileVer(System32+L"\\input.dll",&status);
 	fver _inseng_dll   = getFileVer(System32+L"\\inseng.dll",&status);
 	fver _intl_cpl     = getFileVer(System32+L"\\intl.cpl",&status);
@@ -5590,6 +5591,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _raspppoe_sys_cache  <fver(5,1,2600,5749)) )) {
 		NN("Update for Windows XP (KB960519)");
 		XX(p3+"WindowsXP-KB960519-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _infosoft_dll >zero && _infosoft_dll <fver(5,1,2600,3493))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _infosoft_dll >zero && _infosoft_dll <fver(5,1,2600,5726))) {
+		NN("Update for Windows XP (KB961067)");
+		XX(p3+"WindowsXP-KB961067-x86-ENU.exe"+a1);
 	}
 	
 
