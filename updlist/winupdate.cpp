@@ -5642,6 +5642,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB961187)");
 		XX(p3+"WindowsXP-KB961187-v2-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _rdpdd_dll >zero && _rdpdd_dll <fver(5,1,2600,3516))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _rdpdd_dll >zero && _rdpdd_dll <fver(5,1,2600,5749))) {
+		NN("Update for Windows XP (KB963038)");
+		XX(p3+"WindowsXP-KB963038-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
