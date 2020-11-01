@@ -5166,6 +5166,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB944043)");
 		XX(p3+"WindowsXP-KB944043-v3-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _netlogon_dll >zero && _netlogon_dll <fver(5,1,2600,3520))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _netlogon_dll >zero && _netlogon_dll <fver(5,1,2600,5755))) {
+		NN("Update for Windows XP (KB961853)");
+		XX(p3+"WindowsXP-KB961853-v2-x86-ENU.exe"+a1);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,3404)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
