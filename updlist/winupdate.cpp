@@ -346,6 +346,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ieudinit_exe = getFileVer(System32+L"\\ieudinit.exe",&status);
 	fver _ifsutil_dll  = getFileVer(System32+L"\\ifsutil.dll",&status);
 	fver _ifxcardm_dll = getFileVer(System32+L"\\ifxcardm.dll",&status);
+	fver _imadmui_dll  = getFileVer(System32+L"\\imadmui.dll",&status);
+	fver _imadmui_dll_mui = getFileVer(System32+L"\\imadmui.dll.mui",&status);
 	fver _imagehlp_dll = getFileVer(System32+L"\\imagehlp.dll",&status);
 	fver _imapi_exe    = getFileVer(System32+L"\\imapi.exe",&status);
 	fver _imapi2_dll   = getFileVer(System32+L"\\imapi2.dll",&status);
@@ -722,6 +724,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _WdfCoInstaller01007_dll = getFileVer(System32+L"\\WdfCoInstaller01007.dll",&status);
 	fver _wdfmgr_exe   = getFileVer(System32+L"\\wdfmgr.exe",&status);
 	fver _wdigest_dll  = getFileVer(System32+L"\\wdigest.dll",&status);
+	fver _wdscsl_dll   = getFileVer(System32+L"\\wdscsl.dll",&status);
+	fver _wdsimage_dll = getFileVer(System32+L"\\wdsimage.dll",&status);
+	fver _wdsimage_dll_mui = getFileVer(System32+L"\\wdsimage.dll.mui",&status);
+	fver _wdsmgmt_dll  = getFileVer(System32+L"\\wdsmgmt.dll",&status);
+	fver _wdsmgmt_dll_mui = getFileVer(System32+L"\\wdsmgmt.dll.mui",&status);
 	fver _webcheck_dll = getFileVer(System32+L"\\webcheck.dll",&status);
 	fver _webclnt_dll  = getFileVer(System32+L"\\webclnt.dll",&status);
 	fver _wiaservc_dll = getFileVer(System32+L"\\wiaservc.dll",&status);
@@ -5713,6 +5720,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _unimdm_tsp >zero && _unimdm_tsp <fver(5,1,2600,5815)) {
 		NN("Update for Windows XP (KB970254)");
 		XX(p3+"WindowsXP-KB970254-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _imadmui_dll      <fver(5,1,2600,5812))
+	  ||  ( _imadmui_dll_mui  <fver(6,0,6000,16386))
+	  ||  ( _wdscsl_dll       <fver(6,0,6000,16386))
+	  ||  ( _wdsimage_dll     <fver(6,0,6000,16386))
+	  ||  ( _wdsimage_dll_mui <fver(6,0,6000,16386))
+	  ||  ( _wdsmgmt_dll      <fver(6,0,6000,16386))
+	  ||  ( _wdsmgmt_dll_mui  <fver(6,0,6000,16386)) )) {
+		NN("Update for Windows XP (KB970326)");
+		XX(p3+"WindowsXP-KB970326-x86-ENU.exe"+a1);
 	}
 	
 
