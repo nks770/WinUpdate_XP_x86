@@ -536,6 +536,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msyuv_dll    = getFileVer(System32+L"\\msyuv.dll",&status);
 	fver _mtxclu_dll   = getFileVer(System32+L"\\mtxclu.dll",&status);
 	fver _mtxoci_dll   = getFileVer(System32+L"\\mtxoci.dll",&status);
+	fver _napipsec_dll = getFileVer(System32+L"\\napipsec.dll",&status);
 	fver _narrator_exe = getFileVer(System32+L"\\narrator.exe",&status);
 	fver _nddenb32_dll = getFileVer(System32+L"\\nddenb32.dll",&status);
 	fver _netapi32_dll = getFileVer(System32+L"\\netapi32.dll",&status);
@@ -5646,6 +5647,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _rdpdd_dll >zero && _rdpdd_dll <fver(5,1,2600,5749))) {
 		NN("Update for Windows XP (KB963038)");
 		XX(p3+"WindowsXP-KB963038-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _napipsec_dll >zero && _napipsec_dll <fver(5,1,2600,5750))
+	  ||  ( _oakley_dll   >zero && _oakley_dll   <fver(5,1,2600,5750)) )) {
+		NN("Update for Windows XP (KB965220)");
+		XX(p3+"WindowsXP-KB965220-x86-ENU.exe"+a1);
 	}
 	
 
