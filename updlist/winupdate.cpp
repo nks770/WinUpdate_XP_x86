@@ -1563,8 +1563,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB898461-x86-ENU.exe"+a1);
 	}
 	if( sp<2 && (sku & XP_ALL) && (
-	      /*(_bitsinst_exe >zero && _bitsinst_exe <fver(6,6,2600,1580))
-	   ||*/ (_bitsprx2_dll >zero && _bitsprx2_dll <fver(6,6,2600,1569))
+	      (_bitsprx2_dll >zero && _bitsprx2_dll <fver(6,6,2600,1569))
 	   || (_bitsprx3_dll >zero && _bitsprx3_dll <fver(6,6,2600,1569))
 	   || (_qmgr_dll     >zero && _qmgr_dll     <fver(6,6,2600,1569))
 	   || (_qmgrprxy_dll >zero && _qmgrprxy_dll <fver(6,6,2600,1569))
@@ -1595,6 +1594,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_qmgrprxy_dll >zero && _qmgrprxy_dll <fver(6,7,2600,3143)) )) {
 		NN("Background Intelligent Transfer Service (BITS) 2.5 for Windows XP (KB923845)");
 		XX(p2+"WindowsXP-KB923845-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _bitsprx2_dll >zero && _bitsprx2_dll <fver(6,7,2600,3556))
+	  ||  ( _bitsprx3_dll >zero && _bitsprx3_dll <fver(6,7,2600,3556))
+	  ||  ( _bitsprx4_dll >zero && _bitsprx4_dll <fver(6,7,2600,3556))
+	  ||  ( _qmgr_dll     >zero && _qmgr_dll     <fver(6,7,2600,3556))
+	  ||  ( _qmgrprxy_dll >zero && _qmgrprxy_dll <fver(6,7,2600,3556)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _qmgr_dll     >zero && _qmgr_dll     <fver(6,7,2600,5796)) ))) {
+		NN("Update for Windows XP (KB969632)");
+		XX(p3+"WindowsXP-KB969632-x86-ENU.exe"+a1);
 	}
 	if( sp==0 && (sku & XP_ALL) && _itircl_dll>zero && _itircl_dll<fver(5,2,3790,80)) {
 		NN("Security Update for Microsoft Windows XP (KB825119)");
