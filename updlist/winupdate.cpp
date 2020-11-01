@@ -1060,6 +1060,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
 	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
+	fver _rndismp_sys  = getFileVer(Drivers+L"\\rndismp.sys",&status);
+	fver _rndismpx_sys = getFileVer(Drivers+L"\\rndismpx.sys",&status);
 	fver _rdbss_sys    = getFileVer(Drivers+L"\\rdbss.sys",&status);
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
 	fver _rspndr_sys   = getFileVer(Drivers+L"\\rspndr.sys",&status);
@@ -1132,11 +1134,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ps5ui_dll_cache    = getFileVer(DriverCache+L"\\ps5ui.dll",&status);
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
+	fver _rndismp_sys_cache  = getFileVer(DriverCache+L"\\rndismp.sys",&status);
+	fver _rndismpx_sys_cache = getFileVer(DriverCache+L"\\rndismpx.sys",&status);
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
+	fver _usb8023_sys_cache  = getFileVer(DriverCache+L"\\usb8023.sys",&status);
+	fver _usb8023x_sys_cache = getFileVer(DriverCache+L"\\usb8023x.sys",&status);
 	fver _usbccgp_sys_cache  = getFileVer(DriverCache+L"\\usbccgp.sys",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
 
@@ -5536,6 +5542,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB958910)");
 		XX(p3+"WindowsXP-KB958910-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,3483))
+	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,3483))
+	  ||  ( _usb8023_sys  >zero && _usb8023_sys  <fver(5,1,2600,3483))
+	  ||  ( _usb8023x_sys >zero && _usb8023x_sys <fver(5,1,2600,3483))
+	  ||  ( _rndismp_sys_cache  <fver(5,1,2600,3483))
+	  ||  ( _rndismpx_sys_cache <fver(5,1,2600,3483))
+	  ||  ( _usb8023_sys_cache  <fver(5,1,2600,3483))
+	  ||  ( _usb8023x_sys_cache <fver(5,1,2600,3483)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,5716))
+	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,5716))
+	  ||  ( _rndismp_sys_cache  <fver(5,1,2600,5716))
+	  ||  ( _rndismpx_sys_cache <fver(5,1,2600,5716)) ))) {
+		NN("Update for Windows XP (KB959765)");
+		XX(p3+"WindowsXP-KB959765-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
@@ -5696,7 +5719,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2570947-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && ( (_usb8023_sys>zero && _usb8023_sys<fver(5,1,2600,6352))
-					  ||  (_usb8023x_sys>zero && _usb8023x_sys<fver(5,1,2600,6352)) )) {
+					  ||  (_usb8023x_sys>zero && _usb8023x_sys<fver(5,1,2600,6352))
+					  || _usb8023_sys_cache < fver(5,1,2600,6352)
+					  || _usb8023x_sys_cache < fver(5,1,2600,6352) )) {
 		NN("Security Update for Windows XP (KB2807986)");
 		XX(p3+"WindowsXP-KB2807986-x86-ENU.exe"+a1);
 	}
