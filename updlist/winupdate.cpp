@@ -962,6 +962,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ContextTagger_dll = getFileVer(Ink+L"\\ContextTagger.dll",&status);
 	fver _TabTip_exe        = getFileVer(Ink+L"\\TabTip.exe",&status);
 	fver _TCServer_exe      = getFileVer(Ink+L"\\TCServer.exe",&status);
+	fver _tipband_dll       = getFileVer(Ink+L"\\tipband.dll",&status);
 	fver _TipLibrary_dll    = getFileVer(Ink+L"\\TipLibrary.dll",&status);
 	fver _tiptsf_dll        = getFileVer(Ink+L"\\tiptsf.dll",&status);
 
@@ -9354,6 +9355,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_nbdoc_dll    >zero && _nbdoc_dll    <fver(1,7,2600,6379)) )) {
 		NN("Security Update for Windows XP (KB2835364)");
 		XX(p3+"windowsxp-kb2835364-x86-enu_b055260207a810f44e7d68c2b93a151d6f8d9691.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_TABLET) && (
+		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,3452))
+	  ||  ( _tipband_dll >zero && _tipband_dll <fver(1,7,2600,3452)) ))
+	 ||(sp==3 && qfe && (sku & XP_TABLET) && (
+		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,5685)) ))) {
+		NN("Update for Windows XP (KB955534)");
+		XX(p3+"WindowsXP-KB955534-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,3454))
+	 /*||(sp==3 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,5687))*/) {
+		NN("Update for Windows XP (KB957282)"); // On SP3, KB957282 is replaced by KB981835
+		XX(p2+"WindowsXP-KB957282-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,5958)) {
 		NN("Update for Windows XP (KB981835)");
