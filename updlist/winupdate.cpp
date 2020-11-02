@@ -8477,6 +8477,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2632503)");
 		XX(p3+"IE8-WindowsXP-KB2632503-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && ( _iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0))
+		&& _vbscript_dll>zero && _vbscript_dll<fver(5,8,6001,23552)) {
+		NN("Security Update for Windows XP (KB2909210)");
+		XX(p3+"IE8-WindowsXP-KB2909210-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows Media Player Updates
