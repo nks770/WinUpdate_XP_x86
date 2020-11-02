@@ -1080,6 +1080,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rndismp_sys  = getFileVer(Drivers+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys = getFileVer(Drivers+L"\\rndismpx.sys",&status);
 	fver _rdbss_sys    = getFileVer(Drivers+L"\\rdbss.sys",&status);
+	fver _rdpdr_sys    = getFileVer(Drivers+L"\\rdpdr.sys",&status);
 	fver _rdpwd_sys    = getFileVer(Drivers+L"\\rdpwd.sys",&status);
 	fver _rspndr_sys   = getFileVer(Drivers+L"\\rspndr.sys",&status);
 	fver _sbp2port_sys = getFileVer(Drivers+L"\\sbp2port.sys",&status);
@@ -1155,6 +1156,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
 	fver _raspppoe_sys_cache = getFileVer(DriverCache+L"\\raspppoe.sys",&status);
+	fver _rdpdr_sys_cache    = getFileVer(DriverCache+L"\\rdpdr.sys",&status);
 	fver _rmcast_sys_cache   = getFileVer(DriverCache+L"\\rmcast.sys",&status);
 	fver _rndismp_sys_cache  = getFileVer(DriverCache+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys_cache = getFileVer(DriverCache+L"\\rndismpx.sys",&status);
@@ -5786,6 +5788,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _proquota_exe >zero && _proquota_exe <fver(5,1,2600,5843)) {
 		NN("Update for Windows XP (KB971345)");
 		XX(p3+"WindowsXP-KB971345-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rdpdr_sys >zero && _rdpdr_sys <fver(5,1,2600,3624))
+	  ||  ( _rdpdr_sys_cache <fver(5,1,2600,3624)) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _rdpdr_sys >zero && _rdpdr_sys <fver(5,1,2600,5875))
+	  ||  ( _rdpdr_sys_cache <fver(5,1,2600,5875)) ))) {
+		NN("Update for Windows XP (KB972422)");
+		XX(p3+"WindowsXP-KB972422-x86-ENU.exe"+a1);
 	}
 	
 
