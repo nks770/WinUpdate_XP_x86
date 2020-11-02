@@ -280,6 +280,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _drmstor_dll  = getFileVer(System32+L"\\drmstor.dll",&status);
 	fver _drmupgds_exe = getFileVer(System32+L"\\drmupgds.exe",&status);
 	fver _drmv2clt_dll = getFileVer(System32+L"\\drmv2clt.dll",&status);
+	fver _drprov_dll   = getFileVer(System32+L"\\drprov.dll",&status);
 	fver _dssenh_dll   = getFileVer(System32+L"\\dssenh.dll",&status);
 	fver _dsuiext_dll  = getFileVer(System32+L"\\dsuiext.dll",&status);
 	fver _dwwin_exe    = getFileVer(System32+L"\\dwwin.exe",&status);
@@ -5797,6 +5798,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _rdpdr_sys_cache <fver(5,1,2600,5875)) ))) {
 		NN("Update for Windows XP (KB972422)");
 		XX(p3+"WindowsXP-KB972422-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _drprov_dll >zero && _drprov_dll <fver(5,1,2600,5851)) {
+		NN("Update for Windows XP (KB972435)");
+		XX(p3+"WindowsXP-KB972435-x86-ENU.exe"+a1);
 	}
 	
 
