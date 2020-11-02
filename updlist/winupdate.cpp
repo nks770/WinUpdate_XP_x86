@@ -751,6 +751,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _winsrv_dll   = getFileVer(System32+L"\\winsrv.dll",&status);
 	fver _wintrust_dll = getFileVer(System32+L"\\wintrust.dll",&status);
 	fver _winusbcoinstaller_dll = getFileVer(System32+L"\\winusbcoinstaller.dll",&status);
+	fver _wisptis_exe  = getFileVer(System32+L"\\wisptis.exe",&status);
 	fver _wjview_exe   = getFileVer(System32+L"\\wjview.exe",&status);
 	fver _wksprt_exe   = getFileVer(System32+L"\\wksprt.exe",&status);
 	fver _wkssvc_dll   = getFileVer(System32+L"\\wkssvc.dll",&status);
@@ -9353,6 +9354,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_nbdoc_dll    >zero && _nbdoc_dll    <fver(1,7,2600,6379)) )) {
 		NN("Security Update for Windows XP (KB2835364)");
 		XX(p3+"windowsxp-kb2835364-x86-enu_b055260207a810f44e7d68c2b93a151d6f8d9691.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,5958)) {
+		NN("Update for Windows XP (KB981835)");
+		XX(p3+"WindowsXP-KB981835-v2-x86-ENU.exe"+a1);
 	}
 	if( sp>=2 && *pshell1) {
 		NN("Windows PowerShell 1.0 English-Language Installation Package for Windows XP (KB926139)");
