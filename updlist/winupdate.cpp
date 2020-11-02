@@ -1074,6 +1074,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _portcls_sys  = getFileVer(Drivers+L"\\portcls.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
 	fver _processr_sys = getFileVer(Drivers+L"\\processr.sys",&status);
+	fver _psched_sys   = getFileVer(Drivers+L"\\psched.sys",&status);
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
 	fver _raspppoe_sys = getFileVer(Drivers+L"\\raspppoe.sys",&status);
 	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
@@ -1156,6 +1157,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ps5ui_dll_cache    = getFileVer(DriverCache+L"\\ps5ui.dll",&status);
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
+	fver _psched_sys_cache   = getFileVer(DriverCache+L"\\psched.sys",&status);
 	fver _raspppoe_sys_cache = getFileVer(DriverCache+L"\\raspppoe.sys",&status);
 	fver _rdpdr_sys_cache    = getFileVer(DriverCache+L"\\rdpdr.sys",&status);
 	fver _rmcast_sys_cache   = getFileVer(DriverCache+L"\\rmcast.sys",&status);
@@ -5802,6 +5804,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _drprov_dll >zero && _drprov_dll <fver(5,1,2600,5851)) {
 		NN("Update for Windows XP (KB972435)");
 		XX(p3+"WindowsXP-KB972435-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && (
+		  ( _psched_sys  >zero && _psched_sys  <fver(5,1,2600,5848))
+	  ||  ( _psched_sys_cache  <fver(5,1,2600,5848)) )) {
+		NN("Update for Windows XP (KB972878)");
+		XX(p3+"WindowsXP-KB972878-x86-ENU.exe"+a1);
 	}
 	
 
