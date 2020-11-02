@@ -6320,6 +6320,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975467)");
 		XX(p3+"windowsxp-kb975467-x86-enu_703673b065074bb9dd7d849f420e52ea0d343f8d.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,3601))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,5846))) {
+		NN("Update for Windows XP (KB973624)");
+		XX(p3+"WindowsXP-KB973624-x86-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,6154) ) {
 		NN("Update for Windows XP (KB2641690)");
 		XX(p3+"WindowsXP-KB2641690-x86-ENU.exe"+a1);
