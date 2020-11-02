@@ -267,6 +267,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dfrgntfs_exe = getFileVer(System32+L"\\dfrgntfs.exe",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
+	fver _dimsroam_dll = getFileVer(System32+L"\\dimsroam.dll",&status);
 	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
@@ -5810,6 +5811,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _psched_sys_cache  <fver(5,1,2600,5848)) )) {
 		NN("Update for Windows XP (KB972878)");
 		XX(p3+"WindowsXP-KB972878-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && _dimsroam_dll <fver(5,1,2600,5843)) {
+		NN("Update for Windows XP (KB973502)");
+		XX(p3+"WindowsXP-KB973502-x86-ENU.exe"+a1);
 	}
 	
 
