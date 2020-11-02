@@ -3236,6 +3236,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB956572)");
 		XX(p3+"WindowsXP-KB956572-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _services_exe >zero && _services_exe <fver(5,1,2600,3661))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _services_exe >zero && _services_exe <fver(5,1,2600,5922))) {
+		NN("Update for Windows XP (KB978835)");
+		XX(p3+"WindowsXP-KB978835-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3670))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,3670))
