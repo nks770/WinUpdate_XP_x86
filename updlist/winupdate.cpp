@@ -1150,6 +1150,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
 	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
+	fver _mrxdav_sys_cache   = getFileVer(DriverCache+L"\\mrxdav.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
@@ -5822,6 +5823,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _dimsroam_dll <fver(5,1,2600,5843)) {
 		NN("Update for Windows XP (KB973502)");
 		XX(p3+"WindowsXP-KB973502-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && (
+		  ( _mrxdav_sys >zero && _mountmgr_sys <fver(5,1,2600,6007))
+	  ||  ( _ntdll_dll  >zero && _ntdll_dll    <fver(5,1,2600,6007))
+	  ||  ( _mrxdav_sys_cache <fver(5,1,2600,6007)) )) {
+		NN("Update for Windows XP (KB2264107)");
+		XX(p3+"WindowsXP-KB2264107-x86-ENU.exe"+a1);
 	}
 	
 
