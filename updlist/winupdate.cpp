@@ -8292,6 +8292,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP SP3 (KB4018271)");
 		XX(p3+"ie8-windowsxp-kb4018271-x86-custom-enu_122a1122404b9862e6998bcec0917de02c378de6.exe"+a1);
 	}
+	/*std::wstring JP_SNIFFING=L"SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\FEATURE_DISABLE_ISO_2022_JP_SNIFFING";
+	if( sp==3 && (sku & XP_ALL) && (
+		   regQueryDWORD(JP_SNIFFING,L"explorer.exe",&status)!=1
+		   || regQueryDWORD(JP_SNIFFING,L"iexplore.exe",&status)!=1 )) {
+		// The update that this article describes has been replaced by a newer update. To resolve this
+		// problem, install the most current cumulative security update for Internet Explorer.
+		NN("Update for Internet Explorer for Windows XP (KB2467659)");
+		XX(p3+"WindowsXP-KB2467659-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24159))
 		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24159))
