@@ -5835,6 +5835,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2836198)");
 		XX(p3+"WindowsXP-KB2836198-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && qfe && (sku & XP_ALL) && ( // Investigate whether this is actually only for XPE_POSREADY2009
+		  ( _dpcdll_dll   >zero && _dpcdll_dll   <fver(5,1,2600,6443))
+	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,6443))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,6443)) )) {
+		NN("Update for POSReady 2009 (KB2878379)");
+		XX(p3+"WindowsXP-KB2878379-v2-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
