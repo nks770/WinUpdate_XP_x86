@@ -479,6 +479,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msawt_dll    = getFileVer(System32+L"\\msawt.dll",&status);
 	fver _mscms_dll    = getFileVer(System32+L"\\mscms.dll",&status);
 	fver _msctf_dll    = getFileVer(System32+L"\\msctf.dll",&status);
+	fver _msctfime_ime = getFileVer(System32+L"\\msctfime.ime",&status);
 	fver _msdart_dll   = getFileVer(System32+L"\\msdart.dll",&status);
 	fver _msdelta_dll  = getFileVer(System32+L"\\msdelta.dll",&status);
 	fver _msdrm_dll    = getFileVer(System32+L"\\msdrm.dll",&status);
@@ -5891,6 +5892,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,6443)) )) {
 		NN("Update for POSReady 2009 (KB2878379)");
 		XX(p3+"WindowsXP-KB2878379-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,3531))
+	 ||(sp==3 && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,5768))) {
+		NN("Update for Windows XP (KB961503)");
+		XX(p3+"WindowsXP-KB961503-x86-ENU.exe"+a1);
 	}
 	
 
