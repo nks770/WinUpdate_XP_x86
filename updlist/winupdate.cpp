@@ -9433,6 +9433,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB963093)");
 		XX(p3+"WindowsServer2003.WindowsXP-KB963093-x86-ENU.exe"+a1);
 	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && (*wsearch4 || ((   _searchfilterhost_exe >=fver(7,0,6001,16503)
+		                                 && _searchindexer_exe >=fver(7,0,6001,16503)
+					                     && _searchprotocolhost_exe >=fver(7,0,6001,16503))
+							|| regQueryValue(L"SOFTWARE\\Microsoft\\Windows Search",L"CurrentVersion",&status)==L"04.00.6001.503")) && (
+	 ( _tquery_dll >zero && _tquery_dll < fver(7,0,6001,22341)) )) {
+		NN("Hotfix for Windows Search 4 (KB961184)");
+		XX(p3+"KB961184-en-US.exe"+a1);
+	}
 
 	if( sp>=0 && !(sku & XP_TABLET) && (*jview || (_jntview_exe>zero && _jntview_exe<fver(1,5,2315,3)))) {
 		NN("Microsoft Windows Journal Viewer 1.5");
