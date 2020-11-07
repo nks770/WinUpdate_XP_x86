@@ -190,6 +190,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _locale_nls_md5[33];
 	strncpy_s(_locale_nls_md5,33,md5_ptr,33);
 
+	md5.digestFileW((System32+L"\\cic.dll").c_str(),false);
+	char _cic_dll_md5[33];
+	strncpy_s(_cic_dll_md5,33,md5_ptr,33);
+
+	md5.digestFileW((System32+L"\\mmcbase.dll").c_str(),false);
+	char _mmcbase_dll_md5[33];
+	strncpy_s(_mmcbase_dll_md5,33,md5_ptr,33);
+
+	md5.digestFileW((System32+L"\\mmcndmgr.dll").c_str(),false);
+	char _mmcndmgr_dll_md5[33];
+	strncpy_s(_mmcndmgr_dll_md5,33,md5_ptr,33);
+
+	md5.digestFileW((System32+L"\\mmcshext.dll").c_str(),false);
+	char _mmcshext_dll_md5[33];
+	strncpy_s(_mmcshext_dll_md5,33,md5_ptr,33);
+
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
 //	printf("%s\n",_ssinc_dll_md5);
@@ -4965,7 +4981,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB929280)");
 		XX(p2+"WindowsXP-KB929280-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && qfe && (sku & XP_ALL ) && (
+	/*if( sp==3 && qfe && (sku & XP_ALL ) && (
 		                  ( _cic_dll      >zero && _cic_dll      <fver(5,2,3790,4136))
 					  ||  ( _microsoft_managementconsole_dll    >zero && _microsoft_managementconsole_dll    <fver(5,2,3790,4136)) //mmc30.dll
 					  ||  ( _microsoft_managementconsole_resources_dll   >zero && _microsoft_managementconsole_resources_dll   <fver(5,2,3790,2560)) //mmc30r.dll
@@ -4978,8 +4994,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _mmcndmgr_dll >zero && _mmcndmgr_dll <fver(5,2,3790,4136))
 					  ||  ( _mmcperf_exe  >zero && _mmcperf_exe  <fver(5,2,3790,4136))
 					  ||  ( _mmcshext_dll >zero && _mmcshext_dll <fver(5,2,3790,4136)) )) {
-		NN("Update for Windows XP (KB942213)");
+		NN("Update for Windows XP (KB942213)"); // KB942213 is replaced by KB957502
 		XX(p3+"WindowsXP-KB942213-v2-x86-ENU.exe"+a1);
+	}*/
+	if( sp==3 && qfe && (sku & XP_ALL ) && (
+		                  ( _cic_dll      >zero && _cic_dll      <=fver(5,2,3790,4136)
+								&& strncmp(_cic_dll_md5,"ff7a87cb72d93f49756d11dbf977337c",32) != 0)
+					  ||  ( _microsoft_managementconsole_dll    >zero && _microsoft_managementconsole_dll    <fver(5,2,3790,4136)) //mmc30.dll
+					  ||  ( _microsoft_managementconsole_resources_dll   >zero && _microsoft_managementconsole_resources_dll   <fver(5,2,3790,2560)) //mmc30r.dll
+					  ||  ( _mmc_exe      >zero && _mmc_exe      <fver(5,2,3790,4136))
+					  ||  ( _mmcbase_dll  >zero && _mmcbase_dll  <=fver(5,2,3790,4136)
+								&& strncmp(_mmcbase_dll_md5,"371d0dd6f2fd2a4f82fde200c690af3a",32) != 0)
+					  ||  ( _mmcex_dll    >zero && _mmcex_dll    <fver(5,2,3790,4181))
+					  ||  ( _mmcex_resources_dll   >zero && _mmcex_resources_dll   <fver(5,2,3790,2560)) //mmcexr.dll
+					  ||  ( _mmcfxcommon_dll   >zero && _mmcfxcommon_dll   <fver(5,2,3790,4136))
+					  ||  ( _mmcfxcommon_resources_dll  >zero && _mmcfxcommon_resources_dll  <fver(5,2,3790,2560)) //mmcfxcr.dll
+					  ||  ( _mmcndmgr_dll >zero && _mmcndmgr_dll <=fver(5,2,3790,4136)
+								&& strncmp(_mmcndmgr_dll_md5,"f8f105592941e9a524bf39009de2dbf0",32) != 0)
+					  ||  ( _mmcperf_exe  >zero && _mmcperf_exe  <fver(5,2,3790,4136))
+					  ||  ( _mmcshext_dll >zero && _mmcshext_dll <=fver(5,2,3790,4136)
+								&& strncmp(_mmcshext_dll_md5,"0376d2cda904ad48f2b51d543ae04de2",32) != 0) )) {
+		NN("Update for Windows XP (KB957502)");
+		XX(p3+"WindowsXP-KB957502-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
