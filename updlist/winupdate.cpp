@@ -8832,6 +8832,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 //		NN("Security Update for Windows XP with Windows Media Format Runtime 9 (KB923689)");
 //		XX(p+"windowsxp-kb923689-v2-x86-enu_2cd41423c99bd3bd35d64fd2afcbe1005fd92a62.exe"+a1);
 //	}
+	if( sp>=2 && qfe && (sku & XP_ALL) && (
+		_wmnetmgr_dll >= fver(11,0,5721,5145) && _wmnetmgr_dll < fver(11,0,5721,5269))){
+		NN("Hotfix for Windows Media Player 11 (KB974905)");
+		XX(p3+"WindowsMedia11-KB974905-x86-INTL.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ((_wmvcore_dll  >=fver(9,0,0,2980) /* WM9 Section */
 		                 && _wmvcore_dll < fver(9,0,0,3272))
 
