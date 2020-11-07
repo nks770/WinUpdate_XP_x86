@@ -162,6 +162,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool wmv9vcm_install = false;
 	bool wm9codecs_v1_install = false;
 	bool wm9codecs_v2_install = false;
+	bool wic_install = false;
 
 	// File MD5 hashes
 	MD5 md5;
@@ -3721,6 +3722,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			&& _wmphoto_dll              <=fver(6,0,5840,16388)) {
 			NN("Windows Imaging Component for Windows XP and Server 2003");
 			XX(p3+"wic_x86_enu.exe"+a1);
+			wic_install = true;
 		} else {
 		//                                    ....V....1....V....2....V....3....V....4....V....5
 		notifications->push_back(std::string("Windows Imaging Component is missing, but")
@@ -3731,6 +3733,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _photometadatahandler_dll <fver(6,0,6001,22185)) {
 		NN("Update for Windows XP (KB945060)");
 		XX(p3+"WindowsXP-KB945060-v3-x86-ENU.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && (wic_install || ( _windowscodecs_dll>zero && _windowscodecsext_dll>zero )) && (
+	   ( _windowscodecs_dll    <fver(6,0,6001,22211))
+	|| ( _windowscodecsext_dll <fver(6,0,6001,22211)) )) {
+		NN("Update for Windows XP (KB954708)");
+		XX(p3+"WindowsXP-KB954708-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
