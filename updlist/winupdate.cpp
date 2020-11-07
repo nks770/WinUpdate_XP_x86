@@ -579,6 +579,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntkrpamp_exe = getFileVer(System32+L"\\ntkrpamp.exe",&status);
 	fver _ntlanman_dll = getFileVer(System32+L"\\ntlanman.dll",&status);
 	fver _ntoskrnl_exe = getFileVer(System32+L"\\ntoskrnl.exe",&status);
+	fver _ntprint_dll  = getFileVer(System32+L"\\ntprint.dll",&status);
 	fver _ntvdm_exe    = getFileVer(System32+L"\\ntvdm.exe",&status);
 	fver _ntvdmd_dll   = getFileVer(System32+L"\\ntvdmd.dll",&status);
 	fver _nwapi32_dll  = getFileVer(System32+L"\\nwapi32.dll",&status);
@@ -5897,6 +5898,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,5768))) {
 		NN("Update for Windows XP (KB961503)");
 		XX(p3+"WindowsXP-KB961503-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && (sku & XP_ALL) && _ntprint_dll >zero && _ntprint_dll <fver(5,1,2600,3572))
+	 ||(sp==3 && (sku & XP_ALL) && _ntprint_dll >zero && _ntprint_dll <fver(5,1,2600,5815))) {
+		NN("Update for Windows XP (KB971314)");
+		XX(p3+"WindowsXP-KB971314-x86-ENU.exe"+a1);
 	}
 	
 
