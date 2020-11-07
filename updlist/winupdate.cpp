@@ -6276,9 +6276,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2904266)");
 		XX(p3+"WindowsXP-KB2904266-x86-ENU.exe"+a1);
 	}*/
-	if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6502)) {
+	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6502)) {
 		NN("Update for Windows XP (KB2922717)");
 		XX(p3+"WindowsXP-KB2922717-x86-ENU.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6524)) {
+		NN("Update for Windows XP (KB2935092)");
+		XX(p3+"WindowsXP-KB2935092-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
 		NN("Update for WES09 and POSReady 2009 (KB4468323)");
