@@ -5222,6 +5222,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB943198)");
 		XX(p2+"WindowsXP-KB943198-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && (
+		 ( _usbser_sys   >zero && _usbser_sys   <fver(5,1,2600,6442))
+		||(_usbser_sys_cache  <fver(5,1,2600,6442)) )) {
+		NN("Security Update for Windows XP (KB2884256)");
+		XX(p3+"WindowsXP-KB2884256-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _eventlog_dll   >zero && _eventlog_dll   <fver(5,1,2600,3227)) )) {
 		NN("Update for Windows XP (KB943303)");
