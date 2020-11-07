@@ -6086,6 +6086,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB979559)");
 		XX(p2+"windowsxp-kb979559-x86-enu_4d87c29e02a9f212a012f3e035f91e68c8fc60be.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XP_ALL) && _win32k_sys >zero && _win32k_sys <fver(5,1,2600,6442)) {
+		NN("Security Update for Windows XP (KB2883150)"); // KB2883150 is replaced by KB2930275
+		XX(p3+"WindowsXP-KB2883150-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,6514)) {
 		NN("Security Update for Windows XP (KB2930275)");
 		XX(p3+"WindowsXP-KB2930275-x86-ENU.exe"+a1);
