@@ -8988,6 +8988,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"windowsmedia10-kb3033890-x86-enu_ef4e82e7007462fb64ed10c4e127d828e5126efc.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && _wmp_dll>=fver(11,0,5721,0) && _wmp_dll<fver(11,0,5721,5293)) {
+		// An earlier version (windowsmedia11-KB3033890-x86-ENU.exe, v1.002) is replaced by this one (v1.003)
+		// The only difference appears to be some tweaks to KB3033890.cat
 		NN("Security Update for WEPOS and POSReady 2009 (KB3033890)");
 		XX(p3+"windowsmedia11-kb3033890-x86-enu_3da047c27ca7b35c2a15e2bdf4a87fd7243e2b49.exe"+a1);
 	}
