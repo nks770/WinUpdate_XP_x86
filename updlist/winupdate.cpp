@@ -616,6 +616,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
 	fver _PortableDeviceWMDRM_dll = getFileVer(System32+L"\\PortableDeviceWMDRM.dll",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
+	fver _prntvpt_dll  = getFileVer(System32+L"\\prntvpt.dll",&status);
 	fver _proquota_exe = getFileVer(System32+L"\\proquota.exe",&status);
 	fver _psbase_dll   = getFileVer(System32+L"\\psbase.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
@@ -835,6 +836,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _xpob2res_dll = getFileVer(System32+L"\\xpob2res.dll",&status);
 	fver _xpsp1hfm_exe = getFileVer(System32+L"\\xpsp1hfm.exe",&status);
 	fver _xpsp4res_dll = getFileVer(System32+L"\\xpsp4res.dll",&status);
+	fver _xpsshhdr_dll = getFileVer(System32+L"\\xpsshhdr.dll",&status);
+	fver _xpssvcs_dll  = getFileVer(System32+L"\\xpssvcs.dll",&status);
 	fver _zipfldr_dll  = getFileVer(System32+L"\\zipfldr.dll",&status);
 
 	// Windows Search System32 Files
@@ -1146,6 +1149,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	std::wstring w32x86 = System32+L"\\spool\\drivers\\w32x86\\3";
 	fver _alpsres_dll  = getFileVer(w32x86+L"\\alpsres.dll",&status);
+	fver _mxdwdrv_dll  = getFileVer(w32x86+L"\\mxdwdrv.dll",&status);
+	fver _mxdwdui_dll  = getFileVer(w32x86+L"\\mxdwdui.dll",&status);
 	fver _pcl4res_dll  = getFileVer(w32x86+L"\\pcl4res.dll",&status);
 	fver _pcl5eres_dll = getFileVer(w32x86+L"\\pcl5eres.dll",&status);
 	fver _pcl5ures_dll = getFileVer(w32x86+L"\\pcl5ures.dll",&status);
@@ -1155,10 +1160,33 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _unidrv_dll   = getFileVer(w32x86+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll = getFileVer(w32x86+L"\\unidrvui.dll",&status);
 	fver _unires_dll   = getFileVer(w32x86+L"\\unires.dll",&status);
+	fver _xpssvcs_dll_spool = getFileVer(w32x86+L"\\xpssvcs.dll",&status);
+
+	std::wstring prtprocs = System32+L"\\spool\\prtprocs";
+	fver _filterpipelineprintproc_amd64_dll = getFileVer(prtprocs+L"\\x64\\filterpipelineprintproc.dll",&status);
+	fver _filterpipelineprintproc_dll = getFileVer(prtprocs+L"\\w32x86\\filterpipelineprintproc.dll",&status);
+	fver _printfilterpipelinesvc_exe  = getFileVer(prtprocs+L"\\w32x86\\printfilterpipelinesvc.exe",&status);
+
+	std::wstring XPSEP = System32+L"\\spool\\XPSEP";
+	fver _filterpipelineprintproc_dll_xpsep = getFileVer(XPSEP+L"\\filterpipelineprintproc.dll",&status);
+	fver _filterpipelineprintproc_dll_amd64_xpsep = getFileVer(XPSEP+L"\\amd64\\filterpipelineprintproc.dll",&status);
+	fver _filterpipelineprintproc_dll_i386_xpsep = getFileVer(XPSEP+L"\\i386\\filterpipelineprintproc.dll",&status);
+	fver _mxdwdrv_dll_xpsep = getFileVer(XPSEP+L"\\mxdwdrv.dll",&status);
+	fver _mxdwdrv_amd64_dll = getFileVer(XPSEP+L"\\amd64\\mxdwdrv.dll",&status);
+	fver _mxdwdrv_i386_dll = getFileVer(XPSEP+L"\\i386\\mxdwdrv.dll",&status);
+	fver _mxdwdui_dll_xpsep  = getFileVer(XPSEP+L"\\mxdwdui.dll",&status);
+	fver _printfilterpipelinesvc_exe_xpsep  = getFileVer(XPSEP+L"\\printfilterpipelinesvc.exe",&status);
+	fver _unidrv_dll_xpsep   = getFileVer(XPSEP+L"\\unidrv.dll",&status);
+	fver _unidrvui_dll_xpsep = getFileVer(XPSEP+L"\\unidrvui.dll",&status);
+	fver _unires_dll_xpsep   = getFileVer(XPSEP+L"\\unires.dll",&status);
+	fver _xpssvcs_amd64_dll = getFileVer(XPSEP+L"\\amd64\\xpssvcs.dll",&status);
+	fver _xpssvcs_i386_dll = getFileVer(XPSEP+L"\\i386\\xpssvcs.dll",&status);
+	fver _xpssvcs_dll_xpsep = getFileVer(XPSEP+L"\\xpssvcs.dll",&status);
 
 	fver _1394bus_sys_cache  = getFileVer(DriverCache+L"\\1394bus.sys",&status);
 	fver _alpsres_dll_cache  = getFileVer(DriverCache+L"\\alpsres.dll",&status);
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
+	fver _filterpipelineprintproc_dll_cache = getFileVer(DriverCache+L"\\filterpipelineprintproc.dll",&status);
 	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
 	fver _halacpi_dll        = getFileVer(DriverCache+L"\\halacpi.sys",&status);
 	fver _halapic_dll        = getFileVer(DriverCache+L"\\halapic.sys",&status);
@@ -1171,6 +1199,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
 	fver _mrxdav_sys_cache   = getFileVer(DriverCache+L"\\mrxdav.sys",&status);
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
+	fver _mxdwdrv_dll_cache  = getFileVer(DriverCache+L"\\mxdwdrv.dll",&status);
+	fver _mxdwdui_dll_cache  = getFileVer(DriverCache+L"\\mxdwdui.dll",&status);
 	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
@@ -5374,6 +5404,42 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _alpsres_dll_cache <fver(0,3,6001,22116)) )) {
 		NN("Update for Windows XP (KB951822)");
 		XX(p3+"WindowsXP-KB951822-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_ALL) && (
+		  ( _filterpipelineprintproc_amd64_dll       < fver(6,1,3790,4316))
+	  ||  ( _filterpipelineprintproc_dll_amd64_xpsep < fver(6,1,3790,4316))
+	  ||  ( _filterpipelineprintproc_dll             < fver(6,1,2600,5863))
+	  ||  ( _filterpipelineprintproc_dll_cache       < fver(6,1,2600,5863))
+	  ||  ( _filterpipelineprintproc_dll_i386_xpsep  < fver(6,1,2600,5863))
+	  ||  ( _filterpipelineprintproc_dll_xpsep       < fver(6,1,2600,5863))
+	  ||  ( _mxdwdrv_amd64_dll                       < fver(0,3,6002,22136))
+	  ||  ( _mxdwdrv_i386_dll                        < fver(0,3,6002,22136))
+	  ||  ( _mxdwdrv_dll                             < fver(0,3,6002,22136))
+	  ||  ( _mxdwdrv_dll_cache                       < fver(0,3,6002,22136))
+	  ||  ( _mxdwdrv_dll_xpsep                       < fver(0,3,6002,22136))
+	  ||  ( _mxdwdui_dll                             < fver(0,3,6002,22136))
+	  ||  ( _mxdwdui_dll_cache                       < fver(0,3,6002,22136))
+	  ||  ( _mxdwdui_dll_xpsep                       < fver(0,3,6002,22136))
+	  ||  ( _printfilterpipelinesvc_exe              < fver(6,1,2600,5863))
+	  ||  ( _printfilterpipelinesvc_exe_xpsep        < fver(6,1,2600,5863))
+	  ||  ( _prntvpt_dll                             < fver(6,1,2600,5863))
+	  ||  ( _unidrv_dll                              < fver(0,3,6002,22136))
+	  ||  ( _unidrv_dll_xpsep                        < fver(0,3,6002,22136))
+	  ||  ( _unidrv_dll_cache                        < fver(0,3,6002,22136))
+	  ||  ( _unidrvui_dll                            < fver(0,3,6002,22136))
+	  ||  ( _unidrvui_dll_xpsep                      < fver(0,3,6002,22136))
+	  ||  ( _unidrvui_dll_cache                      < fver(0,3,6002,22136))
+	  ||  ( _unires_dll                              < fver(0,3,6002,22136))
+	  ||  ( _unires_dll_xpsep                        < fver(0,3,6002,22136))
+	  ||  ( _unires_dll_cache                        < fver(0,3,6002,22136))
+	  ||  ( _xpsshhdr_dll                            < fver(6,0,6002,22136))
+	  ||  ( _xpssvcs_amd64_dll                       < fver(6,0,6002,22136))
+	  ||  ( _xpssvcs_i386_dll                        < fver(6,0,6002,22136))
+	  ||  ( _xpssvcs_dll_xpsep                       < fver(6,0,6002,22136))
+	  ||  ( _xpssvcs_dll_spool                       < fver(6,0,6002,22136))
+	  ||  ( _xpssvcs_dll                             < fver(6,0,6002,22136)) )) {
+		NN("Update for Windows XP (KB971276)");
+		XX(p3+"WindowsXP-KB971276-v3-x86.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
