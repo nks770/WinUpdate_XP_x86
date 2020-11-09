@@ -2409,6 +2409,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q319322: Recommended Update");
 		XX(rtm+"q319322_x86_b46cee9fd3e75a80a63491fdf1cd5665d37ae82a.exe"+a7);
 	}
+	/*if( sp==0 && qfe && (sku & XP_ALL) && (
+	      (_imapi_exe >zero && _imapi_exe <fver(1,0,0,2))
+	   || (_imapi_sys >zero && _imapi_sys <fver(5,1,2600,16)) )) {
+		NN("Q309691: CD Burning Update"); // Q309691 is replaced by Q320174
+		XX(rtm+"Q309691_WXP_SP1_x86_ENU.exe"+a7);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (
 	      (_imapi_exe >zero && _imapi_exe <fver(1,0,0,3))
 	   || (_imapi_sys >zero && _imapi_sys <fver(5,1,2600,16)) )) {
