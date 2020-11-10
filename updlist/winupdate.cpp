@@ -8463,6 +8463,46 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer for Windows XP (KB2467659)");
 		XX(p3+"WindowsXP-KB2467659-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24022))
+		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24022))
+		|| (_dxtrans_dll      >zero && _dxtrans_dll      <fver(8,0,6001,24022))
+		|| (_hlink_dll        >zero && _hlink_dll        <fver(6,0,6001,24022))
+		|| (_html_iec         >zero && _html_iec         <fver(2018,0,0,24022))
+		|| (_ie4uinit_exe     >zero && _ie4uinit_exe     <fver(8,0,6001,24022))
+		|| (_iedkcs32_dll     >zero && _iedkcs32_dll     <fver(18,0,6001,24022))
+		|| (_iedvtool_dll     >zero && _iedvtool_dll     <fver(8,0,6001,24022))
+		|| (_ieframe_dll      >zero && _ieframe_dll      <fver(8,0,6001,24022))
+		|| (_iepeers_dll      >zero && _iepeers_dll      <fver(8,0,6001,24022))
+		|| (_ieproxy_dll      >zero && _ieproxy_dll      <fver(8,0,6001,24022))
+		|| (_iertutil_dll     >zero && _iertutil_dll     <fver(8,0,6001,24022))
+		|| (_iexplore_exe     >zero && _iexplore_exe     <fver(8,0,6001,24022))
+		|| (_inetcomm_dll     >zero && _inetcomm_dll     <fver(6,0,2900,7379))
+		|| (_inetcpl_cpl      >zero && _inetcpl_cpl      <fver(8,0,6001,24022))
+		|| (_jscript_dll      >zero && _jscript_dll      <fver(5,8,6001,24022))
+		|| (_jsdbgui_dll      >zero && _jsdbgui_dll      <fver(8,0,6001,24022))
+		|| (_jsprofilerui_dll >zero && _jsprofilerui_dll <fver(8,0,6001,24022))
+		|| (_jsproxy_dll      >zero && _jsproxy_dll      <fver(8,0,6001,24022))
+		|| (_licmgr10_dll     >zero && _licmgr10_dll     <fver(8,0,6001,24022))
+		|| (_msfeeds_dll      >zero && _msfeeds_dll      <fver(8,0,6001,24022))
+		|| (_msfeedsbs_dll    >zero && _msfeedsbs_dll    <fver(8,0,6001,24022))
+		|| (_mshtml_dll       >zero && _mshtml_dll       <fver(8,0,6001,24022))
+		|| (_mshtmled_dll     >zero && _mshtmled_dll     <fver(8,0,6001,24022))
+		|| (_msrating_dll     >zero && _msrating_dll     <fver(8,0,6001,24022))
+		|| (_mstime_dll       >zero && _mstime_dll       <fver(8,0,6001,24022))
+		|| (_occache_dll      >zero && _occache_dll      <fver(8,0,6001,24022))
+		|| (_tdc_ocx          >zero && _tdc_ocx          <fver(8,0,6001,24022))
+		|| (_url_dll          >zero && _url_dll          <fver(8,0,6001,24022))
+		|| (_urlmon_dll       >zero && _urlmon_dll       <fver(8,0,6001,24022))
+		|| (_vbscript_dll     >zero && _vbscript_dll     <fver(5,8,6001,24022))
+		|| (_vgx_dll          >zero && _vgx_dll          <fver(8,0,6001,24022))
+		|| (_webcheck_dll     >zero && _webcheck_dll     <fver(8,0,6001,24022))
+		|| (_wininet_dll      >zero && _wininet_dll      <fver(8,0,6001,24022))
+		|| (_xpshims_dll      >zero && _xpshims_dll      <fver(8,0,6001,24022))
+		)) {
+		NN("Cumulative Security Update for Internet Explorer 8 for WES09 and POSReady 2009 (KB4052978)");
+		XX(p3+"ie8-windowsxp-kb4052978-x86-embedded-enu_655de71433b5df451bbe435cd0912865302139f6.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24159))
 		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24159))
