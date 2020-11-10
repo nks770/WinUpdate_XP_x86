@@ -7781,6 +7781,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("824145: November 2003, Cumulative Patch for Internet Explorer 6 SP1");
 		XX(sw+rtm+"ie6.0sp1-q824145.exe"+a8);
 	}*/
+	/*if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1221)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (Q822350)"); // Q822350 is replaced by KB832894 (RTM) / KB896688 (SP1)
+		XX(sw+rtm+"q822350.exe"+a8);
+	}*/
 	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1400))
 		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1400))
