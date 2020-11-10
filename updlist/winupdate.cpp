@@ -6954,6 +6954,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-07 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4134651)");
 		XX(p3+"windowsxp-kb4134651-v2-x86-embedded-enu_df9272e617574b8645fdca35b58627930c394999.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XPE_2009) && _afd_sys>zero && _afd_sys<fver(5,1,2600,6578)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB2961072)"); // KB2961072 is replaced by KB4291391
+		XX(p3+"windowsxp-kb2961072-x86-embedded-enu_c6cf662597da9dd0d239150ead20a8eb1c04b3d0.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && ((_afd_sys>zero && _afd_sys<fver(5,1,2600,7510))
 		              ||  (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,7510))
 					  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,7510))
