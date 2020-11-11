@@ -6920,6 +6920,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-01 Security Update for Windows XP Embedded SP3 for x86-based Systems (KB4056941)");
 		XX(p3+"windowsxp-kb4056941-x86-embedded-enu_24ebcc41e3f03048c25cf02d8d8ab6107479aabd.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XPE_2009) && _msvidctl_dll>zero && _msvidctl_dll<fver(6,5,2600,7149)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB3198218)");
+		XX(p3+"windowsxp-kb3198218-x86-embedded-enu_13f96fece8c663df338a70654177569459d05d4c.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && _msvidctl_dll>zero && _msvidctl_dll<fver(6,5,2600,7431)) {
 		NN("2018-03 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4089082)");
 		XX(p3+"windowsxp-kb4089082-x86-embedded-enu_56a4c587452f40f8e91f3192168f4cf1193e801c.exe"+a1);
