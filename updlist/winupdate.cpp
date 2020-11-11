@@ -6612,6 +6612,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB2926765)");
 		XX(p3+"windowsxp-kb2926765-x86-embedded-enu_fd1b4b0791354fab04ae68907436cab0c8676665.exe"+a1);
 	}
+	if( sp==3 && (sku & XPE_2009) && (
+	   ( _imjp81k_dll  >zero && _atmfd_dll    <fver(8,1,4305,0))
+	|| ( _imjpdsvr_exe >zero && _imjpdsvr_exe <fver(8,1,4305,0))
+	|| ( _imjputy_exe  >zero && _imjputy_exe  <fver(8,1,4305,0))
+	|| ( _imjputyc_dll >zero && _imjputyc_dll <fver(8,1,4305,0)) )) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB2991963)");
+		XX(p3+"windowsxp-kb2991963-x86-embedded-enu_5dd02be95059523a66d5b8aff27391fa5e7b1aaa.exe"+a1);
+	}
 	if( sp==3 && (sku & XPE_2009) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,5781))
 					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,5753)) )) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB2993651)");
