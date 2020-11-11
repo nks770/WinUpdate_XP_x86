@@ -9899,6 +9899,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB970553)");
 		XX(p3+"WindowsXP-KB970553-x86-ENU.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XPE_2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24034))
+		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,23731))
+					  ||  (_msihnd_dll>=fver(4,5,0,0) && _msihnd_dll<fver(4,5,6002,23415))
+					  ||  *msi45 )) {
+		NN("Security Update for WES09 and POSReady 2009 (KB3196726)");
+		XX(p3+"windowsxp-kb3196726-x86-embedded-enu_5cd799b7d4a26146c6538a6bb79b524102173ca5.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24556))
 		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
 					  ||  (_msihnd_dll>=fver(4,5,0,0) && _msihnd_dll<fver(4,5,6002,23415))
