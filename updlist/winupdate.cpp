@@ -7028,6 +7028,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4462935)");
 		XX(p3+"windowsxp-kb4462935-x86-embedded-enu_b5de399aa37284c81ca1e26ffb93893db035ec17.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XPE_2009) && (
+	   (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7259))
+	|| (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,7259))
+	|| (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,7259))
+	|| (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,7259)) )) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4018490)"); // KB4018490 is replaced by KB4463103
+		XX(p3+"windowsxp-kb4018490-x86-embedded-enu_90402e1c8b25fdd2b5e92e8c1d6ff6a514f23ddc.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && ( (_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,7581))
 		              ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7581))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,7581))
@@ -7036,6 +7044,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  || _ntfs_sys_cache <fver(5,1,2600,7581))) {
 		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4463103)");
 		XX(p3+"windowsxp-kb4463103-x86-embedded-enu_1d7cc48a7f1902bdd5953a1ab980db5832631339.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && ((_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7649))
+		                || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB4486463"))) {
+		NN("2019-02 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4486463)");
+		XX(p3+"windowsxp-kb4486463-x86-embedded-enu_8ab6c1cbd442dbdd8667993af4ee093abf09fb41.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _msrd3x40_dll>zero && _msrd3x40_dll<fver(4,0,9801,5)) {
 		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4463573)");
@@ -7068,11 +7081,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _msrd3x40_dll>zero && _msrd3x40_dll<fver(4,0,9801,7)) {
 		NN("2019-01 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4481275)");
 		XX(p3+"windowsxp-kb4481275-x86-embedded-enu_5160cf8226e525f266f39e7279ce39e6176cece9.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ((_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,7649))
-		                || !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB4486463"))) {
-		NN("2019-02 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4486463)");
-		XX(p3+"windowsxp-kb4486463-x86-embedded-enu_8ab6c1cbd442dbdd8667993af4ee093abf09fb41.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _npfs_sys>zero && _npfs_sys<fver(5,1,2600,7661)) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4486468)");
