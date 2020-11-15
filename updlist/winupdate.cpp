@@ -7058,6 +7058,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WES09 and POSReady 2009 (KB3153704)");
 		XX(p3+"windowsxp-kb3153704-x86-embedded-enu_3f373be5e1ac2ba77eb8ac75ba927b90cd1dd22c.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7248))
+		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7248))
+					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7248))
+					  ||  (_oleaut32_dll>zero && _oleaut32_dll<fver(5,1,2600,7248))
+					  ||  (_rpcss_dll>zero && _rpcss_dll<fver(5,1,2600,7248)) )) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4018556)"); // KB4018556 is replaced by KB4466388
+		XX(p3+"windowsxp-kb4018556-v2-x86-embedded-enu_8532522cbd2663dac730235ee0645738538db8a1.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7594))
 		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7594))
 					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7594))
