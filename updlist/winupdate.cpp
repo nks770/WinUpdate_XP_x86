@@ -1337,6 +1337,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _helpsvc_exe  = getFileVer(helpctr_binaries+L"\\helpsvc.exe",&status);
 	fver _HscUpd_exe   = getFileVer(helpctr_binaries+L"\\HscUpd.exe",&status);
 	fver _msconfig_exe = getFileVer(helpctr_binaries+L"\\msconfig.exe",&status);
+	fver _msinfo_dll   = getFileVer(helpctr_binaries+L"\\msinfo.dll",&status);
 	fver _pchshell_dll = getFileVer(helpctr_binaries+L"\\pchshell.dll",&status);
 	fver _pchsvc_dll   = getFileVer(helpctr_binaries+L"\\pchsvc.dll",&status);
 	fver _StateChangeDiag_exe = getFileVer(helpctr_binaries+L"\\StateChangeDiag.exe",&status);
@@ -6839,6 +6840,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,7292)) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4022746)");
 		XX(p3+"windowsxp-kb4022746-x86-embedded-enu_c8cee9e23429d15d9a21529b7eaedde935b36699.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_2009) && _msinfo_dll>zero && _msinfo_dll<fver(6,0,0,1230)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4025398)");
+		XX(p3+"windowsxp-kb4025398-x86-embedded-enu_b411279fb7dcde2856026476b626f2f12b518a9d.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && _wldap32_dll>zero && _wldap32_dll<fver(5,1,2600,7313)) {
 		NN("Security Update for WES09 and POSReady 2009 (KB4025409)");
