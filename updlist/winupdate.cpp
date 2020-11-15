@@ -3560,15 +3560,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB958869)");
 		XX(p2+"windowsxp-kb958869-x86-enu_ec59d655f78bbc751bb5d664530615ba53929548.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
-		// KB929969 is replaced by KB938127 on SP2
-		NN("Security Update for Windows XP (KB929969)");
-		XX(p+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
-	}*/
-	if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
-		NN("Security Update for Windows XP Service Pack 2 (KB938127)");
-		XX(p2+"WindowsXP-KB938127-x86-ENU.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) && ( (_shell32_dll>zero && _shell32_dll<fver(6,0,2900,3051))
 					  ||  (_shsvcs_dll>zero && _shsvcs_dll<fver(6,0,2900,3051)) )) {
 		NN("Security Update for Windows XP (KB928255)");
@@ -8087,6 +8078,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 for Windows XP (KB946627)");
 		XX(p2+"windowsxp-kb946627-x86-enu_f46e072004e766768205a78b6cd207f871c5376e.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
+		// KB929969 is replaced by KB938127 on SP2
+		NN("Security Update for Windows XP (KB929969)");
+		XX(p+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
+		NN("Security Update for Windows XP Service Pack 2 (KB938127)");
+		XX(p2+"WindowsXP-KB938127-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,16414))
 		|| (_corpol_dll      >zero && _corpol_dll      <fver(7,0,6000,16414))
@@ -8318,6 +8318,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_mshtml_dll   >fver(7,0,6000,16788) && _mshtml_dll   <fver(7,0,6000,20973)) )) {
 		NN("Security Update for Internet Explorer 7 for Windows XP (KB960714)");
 		XX(p2+"IE7-WindowsXP-KB960714-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0))
+		&& _vgx_dll>zero && _vgx_dll<fver(7,0,6000,20628)) {
+		NN("Security Update for Internet Explorer 7 for Windows XP (KB938127)");
+		XX(p2+"IE7-WindowsXP-KB938127-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		/* GDR */
