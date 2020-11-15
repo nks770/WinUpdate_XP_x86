@@ -668,6 +668,11 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 				+"popd\n"
 				+"rd /S /Q %TEMP%\\KB979906");
 	}
+	if( sp==2 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
+		   ( _11_System_Windows_Forms_dll  < fver(1,1,4322,2379)) )) {
+		NN("Microsoft .NET Framework 1.1 Hotfix (KB925168)");
+		XX(p2+"NDP1.1sp1-KB925168-X86.exe"+n3);
+	}
 	if( sp==3 &&  ((*i_nfx11 && *v_nfx11>=0) || *v_nfx11>=1) && (
 		   ( _11_aspnet_filter_dll        < fver(1,1,4322,2503))
 		|| ( _11_aspnet_isapi_dll         < fver(1,1,4322,2503))
