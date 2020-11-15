@@ -7117,6 +7117,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4466388)");
 		XX(p3+"windowsxp-kb4466388-x86-embedded-enu_b177578d5bc6c95cf31dd1848a22ddbe10b9501b.exe"+a1);
 	}
+	/*if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7593))
+		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7593))
+					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7593))
+					  ||  (_rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,7593))
+					  ||  (_rpcss_dll>zero && _rpcss_dll<fver(5,1,2600,7593)) )) {
+		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4467689)"); // KB4467689 was quickly replaced by an amended patch
+		XX(p3+"windowsxp-kb4467689-x86-embedded-enu_471a3ffee9661ee17087bd244ecec7edee0eff55.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7594))
 		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7594))
 					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7594))
