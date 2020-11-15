@@ -8606,6 +8606,46 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 8 for WES09 and POSReady 2009 (KB4052978)");
 		XX(p3+"ie8-windowsxp-kb4052978-x86-embedded-enu_655de71433b5df451bbe435cd0912865302139f6.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24137))
+		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24137))
+		|| (_dxtrans_dll      >zero && _dxtrans_dll      <fver(8,0,6001,24137))
+		|| (_hlink_dll        >zero && _hlink_dll        <fver(6,0,6001,24137))
+		|| (_html_iec         >zero && _html_iec         <fver(2018,0,0,24137))
+		|| (_ie4uinit_exe     >zero && _ie4uinit_exe     <fver(8,0,6001,24137))
+		|| (_iedkcs32_dll     >zero && _iedkcs32_dll     <fver(18,0,6001,24137))
+		|| (_iedvtool_dll     >zero && _iedvtool_dll     <fver(8,0,6001,24137))
+		|| (_ieframe_dll      >zero && _ieframe_dll      <fver(8,0,6001,24137))
+		|| (_iepeers_dll      >zero && _iepeers_dll      <fver(8,0,6001,24137))
+		|| (_ieproxy_dll      >zero && _ieproxy_dll      <fver(8,0,6001,24137))
+		|| (_iertutil_dll     >zero && _iertutil_dll     <fver(8,0,6001,24137))
+		|| (_iexplore_exe     >zero && _iexplore_exe     <fver(8,0,6001,24137))
+		|| (_inetcomm_dll     >zero && _inetcomm_dll     <fver(6,0,2900,7610))
+		|| (_inetcpl_cpl      >zero && _inetcpl_cpl      <fver(8,0,6001,24137))
+		|| (_jscript_dll      >zero && _jscript_dll      <fver(5,8,6001,24137))
+		|| (_jsdbgui_dll      >zero && _jsdbgui_dll      <fver(8,0,6001,24137))
+		|| (_jsprofilerui_dll >zero && _jsprofilerui_dll <fver(8,0,6001,24137))
+		|| (_jsproxy_dll      >zero && _jsproxy_dll      <fver(8,0,6001,24137))
+		|| (_licmgr10_dll     >zero && _licmgr10_dll     <fver(8,0,6001,24137))
+		|| (_msfeeds_dll      >zero && _msfeeds_dll      <fver(8,0,6001,24137))
+		|| (_msfeedsbs_dll    >zero && _msfeedsbs_dll    <fver(8,0,6001,24137))
+		|| (_mshtml_dll       >zero && _mshtml_dll       <fver(8,0,6001,24137))
+		|| (_mshtmled_dll     >zero && _mshtmled_dll     <fver(8,0,6001,24137))
+		|| (_msrating_dll     >zero && _msrating_dll     <fver(8,0,6001,24137))
+		|| (_mstime_dll       >zero && _mstime_dll       <fver(8,0,6001,24137))
+		|| (_occache_dll      >zero && _occache_dll      <fver(8,0,6001,24137))
+		|| (_tdc_ocx          >zero && _tdc_ocx          <fver(8,0,6001,24137))
+		|| (_url_dll          >zero && _url_dll          <fver(8,0,6001,24137))
+		|| (_urlmon_dll       >zero && _urlmon_dll       <fver(8,0,6001,24137))
+		|| (_vbscript_dll     >zero && _vbscript_dll     <fver(5,8,6001,24137))
+		|| (_vgx_dll          >zero && _vgx_dll          <fver(8,0,6001,24137))
+		|| (_webcheck_dll     >zero && _webcheck_dll     <fver(8,0,6001,24137))
+		|| (_wininet_dll      >zero && _wininet_dll      <fver(8,0,6001,24137))
+		|| (_xpshims_dll      >zero && _xpshims_dll      <fver(8,0,6001,24137))
+		)) {
+		NN("2018-12 Cumulative Security Update for Internet Explorer 8 for WES09 and POSReady 2009 for x86-based systems (KB4470199)");
+		XX(p3+"ie8-windowsxp-kb4470199-x86-embedded-enu_8676c48635c687ad417a5b8e9bda6202855ee7f5.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,24159))
 		|| (_dxtmsft_dll      >zero && _dxtmsft_dll      <fver(8,0,6001,24159))
