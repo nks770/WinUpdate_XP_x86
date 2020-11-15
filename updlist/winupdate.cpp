@@ -6651,6 +6651,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB3078601)");
 		XX(p3+"windowsxp-kb3078601-x86-embedded-enu_9f428ed1e710bced0702b4097846d36429a93202.exe"+a1);
 	}
+	if( sp==3 && (sku & XPE_2009) && ( (_atmfd_dll>zero && _atmfd_dll<fver(5,1,2,246))
+					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,6908)) )) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3087039)");
+		XX(p3+"windowsxp-kb3087039-x86-embedded-enu_06ac33315eaa9c1d4728cb19651e72cad6186a97.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XPE_2009) && _atmfd_dll>zero && _atmfd_dll<fver(5,1,2,252)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4022883)");
+		XX(p3+"windowsxp-kb4022883-v2-x86-embedded-enu_3117ba3d6becf9eeaece5fabb87ba728ace7876e.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XPE_2009) && _atmfd_dll>zero && _atmfd_dll<fver(5,1,2,253)) {
+		NN("2018-01 Security Update for Windows XP Embedded SP3 for x86-based Systems (KB4056941)");
+		XX(p3+"windowsxp-kb4056941-x86-embedded-enu_24ebcc41e3f03048c25cf02d8d8ab6107479aabd.exe"+a1);
+	}
 	if( sp==3 && (sku & XPE_2009) && ( (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,7051))
 					  ||  ( _gdiplus_dll_23930<fver(5,2,6002,23930)) )) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3145739)");
@@ -6728,11 +6741,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XPE_2009) && _msctf_dll>zero && _msctf_dll<fver(5,1,2600,6727)) {
 		NN("Security Update for WEPOS and POSReady 2009 (KB3033889)");
 		XX(p3+"windowsxp-kb3033889-x86-embedded-enu_97084ab0bd0fe1c7097c6d176d61d85cc28a3609.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && ( (_atmfd_dll>zero && _atmfd_dll<fver(5,1,2,246))
-					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,6908)) )) {
-		NN("Security Update for WEPOS and POSReady 2009 (KB3087039)");
-		XX(p3+"windowsxp-kb3087039-x86-embedded-enu_06ac33315eaa9c1d4728cb19651e72cad6186a97.exe"+a1);
 	}
 	if( sp==3 && (sku & XPE_2009) && ( (_tcpip6_sys>zero && _tcpip6_sys<fver(5,1,2600,6935))
 					  ||  (_tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,6935)) )) {
@@ -6920,10 +6928,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (/*_tspkg_dll>zero &&*/ _tspkg_dll<fver(5,1,2600,7471)) )) {
 		NN("2018-05 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4056564)");
 		XX(p3+"windowsxp-kb4056564-v2-x86-embedded-enu_964310efb26058c35b0233f008f8b5f6ffd102af.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _atmfd_dll>zero && _atmfd_dll<fver(5,1,2,253)) {
-		NN("2018-01 Security Update for Windows XP Embedded SP3 for x86-based Systems (KB4056941)");
-		XX(p3+"windowsxp-kb4056941-x86-embedded-enu_24ebcc41e3f03048c25cf02d8d8ab6107479aabd.exe"+a1);
 	}
 	/*if( sp==3 && (sku & XPE_2009) && _msvidctl_dll>zero && _msvidctl_dll<fver(6,5,2600,7149)) {
 		NN("Security Update for WES09 and POSReady 2009 (KB3198218)");
