@@ -6853,10 +6853,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WES09 and POSReady 2009 (KB4025497)");
 		XX(p3+"windowsxp-kb4025497-x86-embedded-enu_4a37e35189bb8bbdc561962c3ea6e500638fccf5.exe"+a1);
 	}
-	if( sp==3 && (sku & XPE_2009) && _wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,7297)) {
-		NN("Security Update for WES09 and POSReady 2009 (KB4026061)");
-		XX(p3+"windowsxp-kb4026061-x86-embedded-enu_c9e64b9686dae23b9e299fd13669019f174e26b8.exe"+a1);
-	}
 	/*if( sp==3 && (sku & XPE_2009) && ( (_msado15_dll>zero && _msado15_dll<fver(2,81,3014,0))
 					  ||  (_msado28_tlb>zero && _msado28_tlb<fver(2,81,3014,0)) )) {
 		NN("Update for WES09 and POSReady 2009 (KB4020535)"); // KB4020535 is replaced by KB4489973
@@ -7001,6 +6997,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("2018-06 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4294413)");
 		XX(p3+"windowsxp-kb4294413-x86-embedded-enu_b211e66c425fcef8980fd16953483282cb4e6b14.exe"+a1);
 	}
+	if( sp==3 && (sku & XPE_2009) && _wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,7297)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4026061)");
+		XX(p3+"windowsxp-kb4026061-x86-embedded-enu_c9e64b9686dae23b9e299fd13669019f174e26b8.exe"+a1);
+	}
+	/*if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7330))
+		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7330))
+					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7330))
+					  ||  (_rpcss_dll>zero && _rpcss_dll<fver(5,1,2600,7330))
+					  ||  (_wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,7330)) )) {
+		NN("Update for WES09 and POSReady 2009 (KB4039111)"); // KB4039111 is replaced by KB4339291
+		XX(p3+"windowsxp-kb4039111-x86-embedded-enu_9b517bb7a6b7459d5c4c7159e4b8f247cf094feb.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && ((_kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,7512))
 		              ||  (_ntdll_dll>zero && _ntdll_dll<fver(5,1,2600,7512))
 					  ||  (_ole32_dll>zero && _ole32_dll<fver(5,1,2600,7512))
