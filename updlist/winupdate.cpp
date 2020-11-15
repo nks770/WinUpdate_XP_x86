@@ -9873,6 +9873,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WEPOS and POSReady 2009 (KB3076895)");
 		XX(p3+"windowsxp-kb3076895-x86-embedded-enu_81d14c91a129a51d4b7daa8fd32200660738be48.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1062,0)) {
+		NN("Security Update for WES09 and POSReady 2009 (KB4025240)");
+		XX(p3+"windowsxp-kb4025240-x86-embedded-enu_7bd19c74a66f361ed3b4d6a4294219b66f5b1378.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1064,0))
 					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2508,0)) )) {
 		NN("2019-03 Security Update for POSReady 2009 for x86-based Systems (KB4489974)");
