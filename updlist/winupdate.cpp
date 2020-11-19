@@ -285,6 +285,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dfrgntfs_exe = getFileVer(System32+L"\\dfrgntfs.exe",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
 	fver _dimsroam_dll = getFileVer(System32+L"\\dimsroam.dll",&status);
+	fver _dispex_dll   = getFileVer(System32+L"\\dispex.dll",&status);
 	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
 	fver _dnsapi_dll   = getFileVer(System32+L"\\dnsapi.dll",&status);
 	fver _dnsrslvr_dll = getFileVer(System32+L"\\dnsrslvr.dll",&status);
@@ -817,6 +818,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ws2_32_dll   = getFileVer(System32+L"\\ws2_32.dll",&status);
 	fver _wscript_exe  = getFileVer(System32+L"\\wscript.exe",&status);
 	fver _wscsvc_dll   = getFileVer(System32+L"\\wscsvc.dll",&status);
+	fver _wshcon_dll   = getFileVer(System32+L"\\wshcon.dll",&status);
 	fver _wshext_dll   = getFileVer(System32+L"\\wshext.dll",&status);
 	fver _wship6_dll   = getFileVer(System32+L"\\wship6.dll",&status);
 	fver _wshom_ocx    = getFileVer(System32+L"\\wshom.ocx",&status);
@@ -8921,6 +8923,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Jscript and Vbscript 5.7 (IE7)
+	if( sp<=3 && (sku & XP_ALL) && (
+	    ( _cscript_exe  <fver(5,7,0,16535))
+	 || ( _dispex_dll   <fver(5,7,0,16535))
+	 || ( _jscript_dll  <fver(5,7,0,16535))
+	 || ( _scrobj_dll   <fver(5,7,0,16535))
+	 || ( _scrrun_dll   <fver(5,7,0,16535))
+	 || ( _vbscript_dll <fver(5,7,0,16535))
+	 || ( _wscript_exe  <fver(5,7,0,16535))
+	 || ( _wshcon_dll   <fver(5,7,0,16535))
+	 || ( _wshext_dll   <fver(5,7,0,16535))
+	 || ( _wshom_ocx    <fver(5,7,0,16535)) )) {
+		NN("Windows Script 5.7 for Windows XP");
+		XX(p3+"scripten.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && _jscript_dll>=fver(5,7,0,0) && _jscript_dll<fver(5,7,6002,22145)) {
 		NN("Security Update for Jscript 5.7 for Windows XP (KB971961)");
 		XX(p2+"windowsxp-kb971961-js57-x86-enu_9722544230b316cbd21740ed56dc7a9e7af9603b.exe"+a1);
@@ -8930,14 +8946,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb981349-x86-enu_e5fec41b4a9647bc5050dbbd1a08b469d72c69f4.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && (
-		                  (_cscript_exe  >zero && _cscript_exe  <fver(5,7,0,18066))
-		              ||  (_jscript_dll  >zero && _jscript_dll  <fver(5,7,0,18066))
-					  ||  (_scrobj_dll   >zero && _scrobj_dll   <fver(5,7,0,18066))
-					  ||  (_scrrun_dll   >zero && _scrrun_dll   <fver(5,7,0,18066))
-					  ||  (_vbscript_dll >zero && _vbscript_dll <fver(5,7,0,18066))
-					  ||  (_wscript_exe  >zero && _wscript_exe  <fver(5,7,0,18066))
-					  ||  (_wshext_dll   >zero && _wshext_dll   <fver(5,7,0,18066))
-					  ||  (_wshom_ocx    >zero && _wshom_ocx    <fver(5,7,0,18066)) )) {
+	    (_cscript_exe  >=fver(5,7,0,0) && _cscript_exe  <fver(5,7,0,18066))
+	 || (_jscript_dll  >=fver(5,7,0,0) && _jscript_dll  <fver(5,7,0,18066))
+	 || (_scrobj_dll   >=fver(5,7,0,0) && _scrobj_dll   <fver(5,7,0,18066))
+	 || (_scrrun_dll   >=fver(5,7,0,0) && _scrrun_dll   <fver(5,7,0,18066))
+	 || (_vbscript_dll >=fver(5,7,0,0) && _vbscript_dll <fver(5,7,0,18066))
+	 || (_wscript_exe  >=fver(5,7,0,0) && _wscript_exe  <fver(5,7,0,18066))
+	 || (_wshext_dll   >=fver(5,7,0,0) && _wshext_dll   <fver(5,7,0,18066))
+	 || (_wshom_ocx    >=fver(5,7,0,0) && _wshom_ocx    <fver(5,7,0,18066)) )) {
 		NN("Update for Windows XP (KB951978)");
 		XX(p3+"WindowsXP-KB951978-x86-ENU.exe"+a1);
 	}
