@@ -79,6 +79,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string p1=p+"SP1\\";
 	const std::string p2=p+"SP2\\";
 	const std::string p3=p+"SP3\\";
+	const std::string sb=p+"SBSI\\";
 	const std::string vcredist=p+"vcredist\\";
 	const std::string mstsc=p+"mstsc\\";
 	const std::string np="NetFx\\";
@@ -124,6 +125,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring DriverCache = SystemRoot + L"\\Driver Cache\\i386";
 	std::wstring inetsrv = System32 + L"\\inetsrv";
 	std::wstring Restore = System32 + L"\\Restore";
+	std::wstring sbsi_training = System32 + L"\\Help\\SBSI\\Training";
 
 	std::wstring helpctr_binaries = SystemRoot + L"\\pchealth\\helpctr\\binaries";
 	std::wstring UploadLB = SystemRoot + L"\\pchealth\\UploadLB\\Binaries";
@@ -1345,6 +1347,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _StateChangeDiag_exe = getFileVer(helpctr_binaries+L"\\StateChangeDiag.exe",&status);
 	fver _srdiag_exe   = getFileVer(Restore+L"\\srdiag.exe",&status);
 	fver _uploadm_exe  = getFileVer(UploadLB+L"\\uploadm.exe",&status);
+
+	fver _lrun32_exe = getFileVer(sbsi_training+L"\\lrun32.exe",&status);
+	fver _mrun32_exe = getFileVer(sbsi_training+L"\\mrun32.exe",&status);
+	fver _orun32_exe = getFileVer(sbsi_training+L"\\orun32.exe",&status);
 
 	fver _directdb_dll = getFileVer(CommonFilesSystem+L"\\directdb.dll",&status);
 	fver _wab32_dll    = getFileVer(CommonFilesSystem+L"\\wab32.dll",&status);
@@ -10148,6 +10154,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  &&   _sllauncher_exe<fver(5,1,50918,0)))) {
 		NN("Update for Microsoft Silverlight (KB4481252)");
 		XX(sw+p+"silverlight_a6ea175976edbdeeddfbfb65e64d9d1cfded84a1.exe"+a2l);
+	}
+
+	if( sp<=3 && (sku & XP_ALL) && (
+	    ( _lrun32_exe >zero && _lrun32_exe <fver(3,6,0,112))
+	 || ( _mrun32_exe >zero && _mrun32_exe <fver(3,4,1,102))
+	 || ( _orun32_exe >zero && _orun32_exe <fver(3,5,0,118)) )) {
+		NN("Security Update for Windows (KB923723)");
+		XX(sb+"StepByStepInteractiveTraining-KB923723-x86-ENU.exe"+a1);
 	}
 	
 
