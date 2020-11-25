@@ -1377,6 +1377,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring WebFolders = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Web Folders";
 	fver _msonsext_dll = getFileVer(WebFolders+L"\\msonsext.dll",&status);
 	fver _nsextint_dll = getFileVer(WebFolders+L"\\1033\\nsextint.dll",&status);
+	fver _pkmws_dll    = getFileVer(WebFolders+L"\\pkmws.dll",&status);
 
 	fver _cimwin32_dll = getFileVer(wbem+L"\\cimwin32.dll",&status);
 	fver _CmdEvTgProv_dll = getFileVer(wbem+L"\\CmdEvTgProv.dll",&status);
@@ -1849,9 +1850,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		&& _msdapml_dll  > zero
 		&& _msonsext_dll > zero
 		&& _nsextint_dll > zero )) && (
-			    (_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,3216))
+			    /*(_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,7523))
+			||  (_fp4awec_dll  >zero && _fp4awec_dll  <fver(4,0,2,4715))
+			||  */(_msdaipp_dll  >zero && _msdaipp_dll  <fver(11,0,6715,15))
+			||  (_msdapml_dll  >zero && _msdapml_dll  <fver(11,0,5510,0))
+			||  (_msonsext_dll >zero && _msonsext_dll <fver(11,0,6715,15))
+			||  (_nsextint_dll >zero && _nsextint_dll <fver(11,0,5510,0))
+			||  (                       _pkmws_dll    <fver(11,0,5510,0)) )) {
+		//NN("Software Update for Web Folders (KB892211)");
+		NN("Software Update for Web Folders: January 25, 2005");
+		XX(sw+p3+"Webfldrs-KB892211-ENU.exe"+a2);
+	}
+	if( sp>=0 && (sku & XP_ALL) && ( *webfldrs || (
+		   _msdaipp_dll  > zero
+		&& _msdapml_dll  > zero
+		&& _msonsext_dll > zero
+		&& _nsextint_dll > zero )) && (
+			    /*(_fp4autl_dll  >zero && _fp4autl_dll  <fver(4,0,2,3216))
 			||  (_fp4awec_dll  >zero && _fp4awec_dll  <fver(4,0,2,2611))
-			||  (_msdaipp_dll  >zero && _msdaipp_dll  <fver(12,0,4518,1014))
+			||  */(_msdaipp_dll  >zero && _msdaipp_dll  <fver(12,0,4518,1014))
 			||  (_msdapml_dll  >zero && _msdapml_dll  <fver(12,0,4518,1014))
 			||  (_msonsext_dll >zero && _msonsext_dll <fver(12,0,4518,1014))
 			||  (_nsextint_dll >zero && _nsextint_dll <fver(12,0,4518,1014)) )) {
