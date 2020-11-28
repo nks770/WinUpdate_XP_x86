@@ -3706,6 +3706,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"windowsxp-kb952287-x86-enu_5bee5928c09f4ee44bc41cab109022cec820e5ff.exe"+a1);
 		}
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _update_sys>zero && _update_sys<fver(5,1,2600,2508)) {
+		NN("Critical Update for Windows XP (KB885626)");
+		XX(p2+"WindowsXP-KB885626-v2-x86-enu.exe"+a6);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _update_sys>zero && _update_sys<fver(5,1,2600,3124)) {
 		NN("Update for Windows XP (KB936357)"); // KB936357-v1 is replaced by KB936357-v2
 		XX(p2+"windowsxp-kb936357-x86-enu_50f76a151743f032f20d6a9f6e71ed0b73fe7781.exe"+a1);
