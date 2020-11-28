@@ -7436,6 +7436,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"windowsxp-kb4500331-x86-embedded-custom-enu_fb2ebfe3c0fe9d4eef23c32e53198bf4731d653d.exe"+a1);
 	}
 
+	/*if( sp>=0 &&  (*wga || ( (sku & XP_ALL)
+		    && ( _LegitCheckControl_dll>zero && _LegitCheckControl_dll<fver(1,7,17,0))
+			&& ( _WgaLogon_dll>zero          && _WgaLogon_dll         <fver(1,7,17,0))
+			&& ( _WgaTray_exe>zero           && _WgaTray_exe          <fver(1,7,17,0)) ))) {
+		NN("Windows Genuine Advantage Notification (KB905474)");
+		XX(p3+"windowsxp-kb905474-enu-x86_a79cf5c1515773fb6906b58d37bc9a7f3f0db0b6.exe"+a1);
+	}*/
 	if( sp>=0 &&  (*wga || ( (sku & XP_ALL)
 		    && ( _LegitCheckControl_dll>zero && _LegitCheckControl_dll<fver(1,9,40,0))
 			&& ( _WgaLogon_dll>zero          && _WgaLogon_dll         <fver(1,9,40,0))
