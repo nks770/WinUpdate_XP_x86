@@ -4133,6 +4133,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB896423)");
 		XX(p2+"windowsxp-kb896423-x86-enu_baba29a9d96e44e3f55045f749cc82cfa4038f0b.exe"+a1);
 	}
+	if((sp==1 && (sku & XP_ALL) && _nwwks_dll >zero && _nwwks_dll <fver(5,1,2600,1727))
+	 /*||(sp==2 && (sku & XP_ALL) && _nwwks_dll >zero && _nwwks_dll <fver(5,1,2600,2736)) */ ) {
+		NN("Security Update for Windows XP (KB899589)");
+		XX(p1+"WindowsXP-KB899589-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _nwapi32_dll  >zero && _nwapi32_dll  <fver(5,1,2600,3015))
 					  ||  ( _nwprovau_dll >zero && _nwprovau_dll <fver(5,1,2600,3015))
