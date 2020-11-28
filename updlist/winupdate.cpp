@@ -6403,6 +6403,34 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2922229)");
 		XX(p3+"WindowsXP-KB2922229-x86-ENU.exe"+a1);
 	}
+	if( sp==1 && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB918093")) {
+		NN("Update for Windows XP (KB918093)");
+		XX(p1+"WindowsXP-KB918093-x86-ENU.exe"+a1);
+	}
+	if( sp==1 && qfe && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB921028")) {
+		NN("Update for Windows XP (KB921028)");
+		XX(p1+"WindowsXP-KB921028-v5-x86-ENU.exe"+a1);
+	}
+	if( sp<2 && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{C098DAEC-29EF-4A59-B18E-0E950169CA3C}")) {
+		NN("Western Australian Time Zone Update (KB928939)");
+		if(_msiexec_exe  <fver(3,0,0,0)) {
+			XX(std::string("msiexec.exe /i ")+p1+"Windows-KB928939-ENU.msi /qb");
+		} else {
+			XX(std::string("msiexec.exe /i ")+p1+"Windows-KB928939-ENU.msi /passive");
+		}
+	}
+	/*if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,3037)) {
+		NN("Update for Windows XP (KB928388)");
+		XX(p2+"WindowsXP-KB928388-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,3073)) {
+		NN("Update for Windows XP (KB931836)");
+		XX(p2+"WindowsXP-KB931836-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,3180)) {
+		NN("Update for Windows XP (KB933360)");
+		XX(p2+"WindowsXP-KB933360-x86-ENU.exe"+a1);
+	}*/
 	/*if((sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,3341))
 	 ||(sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5570))) {
 		NN("Update for Windows XP (KB942763)");
