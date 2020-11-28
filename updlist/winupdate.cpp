@@ -6592,6 +6592,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft Base Smart Card Cryptographic Service Provider Package: x86 (KB909520)");
 		XX(p3+"Windows-KB909520-v1.000-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2525)) {
+		NN("Update for Windows XP (KB887742)");
+		XX(p2+"WindowsXP-KB887742-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _http_sys>zero && _http_sys<fver(5,1,2600,2869)) {
 		NN("Update for Windows XP (KB916595)"); // KB916595 is replaced by KB970430
 		XX(p2+"windowsxp-kb916595-x86-enu_d2e2d4f421b6578b739717a98f84aa8fface741f.exe"+a1);
