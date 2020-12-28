@@ -6523,6 +6523,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB971029)");
 		XX(p3+"WindowsXP-KB971029-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && (
+		                  ( _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,2784)) )) {
+		NN("Update for Windows XP (KB904942)"); //KB927880 is replaced by KB968389
+		XX(p2+"WindowsXP-KB904942-v2-x86-ENU_bd888c51d6b9db613b09d471442526e916608ae2.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		                  ( _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,2874)) )) {
+		NN("Update for Windows XP (KB904942)"); //KB927880 is replaced by KB968389
+		XX(p2+"WindowsXP-KB904942-v2-x86-ENU_ef8bb4ad1f8d8284d8630a0aa21e6c5766dc2ac4.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _wdigest_dll >zero && _wdigest_dll <fver(5,1,2600,3027)) )) {
 		NN("Update for Windows XP (KB927880)"); //KB927880 is replaced by KB968389
@@ -7530,6 +7540,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,4,2600,1106) && _quartz_dll<fver(6,4,2600,1738)) {
 		NN("Security Update for Windows XP (KB904706)");
+		//XX(p1+"WindowsXP-KB904706-x86-ENU.exe"+a1); // KB904706-v1 is replaced by KB904706-v2
 		XX(p1+"windowsxp-kb904706-v2-x86-enu_ec909ee2bab6b15d7d3545a1eaf07bbb066e038b.exe"+a1);
 	}
 	if( sp==1 && (sku & XP_ALL) && _quartz_dll>=fver(6,5,1,900) && _quartz_dll<fver(6,5,1,907)) {
