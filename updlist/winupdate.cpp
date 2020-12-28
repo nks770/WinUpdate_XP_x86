@@ -2741,6 +2741,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB920683)");
 		XX(p2+"windowsxp-kb920683-x86-enu_ef1482c5b88557e56563dace9b7549ebf6d7f9c7.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _oleaut32_dll>zero && _oleaut32_dll<fver(5,1,2600,3139)) {
+		NN("Security Update for Windows XP (KB921503)"); //KB921503 is replaced by KB943055
+		XX(p2+"WindowsXP-KB921503-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _oleaut32_dll>zero && _oleaut32_dll<fver(5,1,2600,3266)) {
 		NN("Security Update for Windows XP (KB943055)");
 		XX(p2+"windowsxp-kb943055-x86-enu_e160e1b140872892d2d0050449b1606cc85b5654.exe"+a1);
