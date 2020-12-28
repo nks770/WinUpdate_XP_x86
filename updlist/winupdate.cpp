@@ -4365,14 +4365,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
 	}
 	if(!qfe) {
-		if( sp==2 && (sku & XP_ALL) && (
+		/*if( sp==2 && (sku & XP_ALL) && (
 							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
 						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
 						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
 						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
 						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
-			NN("Update for Windows XP (KB899337)");
+			NN("Update for Windows XP (KB899337)"); // KB899337 is replaced by KB917021
 			XX(p2+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
+		}*/
+		if( sp==2 && (sku & XP_ALL) && (
+							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2977))
+						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
+						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
+						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
+						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) )) {
+			NN("Update for Windows XP (KB917021)");
+			XX(p2+"WindowsXP-KB917021-v3-x86-ENU.exe"+a1);
 		}
 	} else {
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
