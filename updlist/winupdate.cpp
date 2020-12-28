@@ -1342,6 +1342,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _HscUpd_exe   = getFileVer(helpctr_binaries+L"\\HscUpd.exe",&status);
 	fver _msconfig_exe = getFileVer(helpctr_binaries+L"\\msconfig.exe",&status);
 	fver _msinfo_dll   = getFileVer(helpctr_binaries+L"\\msinfo.dll",&status);
+	fver _ocadiagnostic_exe = getFileVer(helpctr_binaries+L"\\ocadiagnostic.exe",&status);
+	fver _OcaHistory_dll = getFileVer(helpctr_binaries+L"\\OcaHistory.dll",&status);
 	fver _pchshell_dll = getFileVer(helpctr_binaries+L"\\pchshell.dll",&status);
 	fver _pchsvc_dll   = getFileVer(helpctr_binaries+L"\\pchsvc.dll",&status);
 	fver _StateChangeDiag_exe = getFileVer(helpctr_binaries+L"\\StateChangeDiag.exe",&status);
@@ -1654,6 +1656,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_xpob2res_dll >zero && _xpob2res_dll <fver(5,1,2600,1570)) )) {
 		NN("Update for Background Intelligent Transfer Service (BITS) 2.0 and WinHTTP 5.1 (KB842773)");
 		XX(p1+"windowsxp-kb842773-v2-x86-enu_1d3d2bc417bf9d881206ed238ad6a4a9c189cfb3.exe"+a6);
+	}
+	if( sp<3 && (sku & XP_ALL) && (
+	    ( _ocadiagnostic_exe < fver(1,0,0,2))
+	 || ( _OcaHistory_dll    < fver(5,0,1,0)) )) {
+		NN("Offline Crash Diagnostic (KB923800)"); // Requires BITS 2.0, otherwise complains that winhttp.dll is missing
+		XX(p2+"WindowsXP-KB923800-x86-ENU.exe"+a1);
 	}
 	/*
 	// Hotfix KB883357 fixes a flaw with how KB842773 v1 writes a REG_MULTI_SZ value
