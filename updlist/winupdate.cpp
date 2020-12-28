@@ -4375,13 +4375,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
 		}*/
 		if( sp==2 && (sku & XP_ALL) && (
-							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2977))
-						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
-						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
-						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
-						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) )) {
+	       ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2977))
+	    || ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
+	    || ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
+	    || ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
+	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) )) {
 			NN("Update for Windows XP (KB917021)");
 			XX(p2+"WindowsXP-KB917021-v3-x86-ENU.exe"+a1);
+		}
+		if( sp==2 && (sku & XP_ALL) && (
+		   ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2658))
+	    || ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2658))
+	    || ( _wlanapi_dll  >zero && _wlanapi_dll  <fver(5,1,2600,3024))
+	    || ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2658))
+	    || ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2658))
+	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2658)) )) {
+			NN("Wireless LAN API (KB918997)");
+			XX(p2+"WindowsXP-KB918997-v6-x86-ENU.exe"+a1);
 		}
 	} else {
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
@@ -4427,6 +4437,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		if( sp==3 && qfe && (sku & XP_ALL) && _wzcdlg_dll >zero && _wzcdlg_dll <fver(5,1,2600,5815)) {
 			NN("Update for Windows XP (KB971455)");
 			XX(p3+"WindowsXP-KB971455-x86-ENU.exe"+a1);
+		}
+		if( sp==2 && qfe && (sku & XP_ALL) && _wlanapi_dll >zero && _wlanapi_dll <fver(5,1,2600,3185)) {
+			NN("Update for Windows XP (KB940541)");
+			XX(p2+"WindowsXP-KB940541-x86-ENU.exe"+a1);
+		}
+		if( sp==3 && qfe && (sku & XP_ALL) && _wlanapi_dll >zero && _wlanapi_dll <fver(5,1,2600,5684)) {
+			NN("Update for Windows XP (KB958071)");
+			XX(p3+"WindowsXP-KB958071-x86-ENU.exe"+a1);
 		}
 	}
 //	if( sp==2 && (sku & XP_MCE2005) && (
@@ -5299,14 +5317,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _hhctrl_ocx   >zero && _hhctrl_ocx   <fver(5,2,3790,4110)) )) {
 		NN("Update for Windows XP (KB940350)");
 		XX(p2+"WindowsXP-KB940350-v2-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _wlanapi_dll >zero && _wlanapi_dll <fver(5,1,2600,3185)) {
-		NN("Update for Windows XP (KB940541)");
-		XX(p2+"WindowsXP-KB940541-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && qfe && (sku & XP_ALL) && _wlanapi_dll >zero && _wlanapi_dll <fver(5,1,2600,5684)) {
-		NN("Update for Windows XP (KB958071)");
-		XX(p3+"WindowsXP-KB958071-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _mup_sys    >zero && _mup_sys    <fver(5,1,2600,3360))
