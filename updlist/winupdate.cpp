@@ -2054,9 +2054,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB892944)");
 		XX(p1+"windowsxp-kb892944-x86-enu_4bdf561e99e401a81737b04f5ce9f2dde640e06f.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && _kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,1869)) {
-		NN("Security Update for Windows XP (KB917422)");
+	/*if( sp==1 && (sku & XP_ALL) && _kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,1869)) {
+		NN("Security Update for Windows XP (KB917422)"); // KB917422 is replaced by KB924867
 		XX(p1+"windowsxp-kb917422-x86-enu_8a32d9119235c80bc6a82793403e0e5443c36789.exe"+a1);
+	}*/
+	if( sp==1 && (sku & XP_ALL) && _kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,1893)) {
+	//if( sp==2 && (sku & XP_ALL) && _kernel32_dll>zero && _kernel32_dll<fver(5,1,2600,2991)) {
+		NN("Update for Windows XP (KB924867)"); // KB924867 is replaced by KB959426 on SP2
+		XX(p1+"WindowsXP-KB924867-x86-ENU.exe"+a1);
 	}
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,149))
