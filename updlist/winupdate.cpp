@@ -5744,28 +5744,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB956807)");
 		XX(p3+"WindowsXP-KB956807-x86-ENU.exe"+a1);
 	}
-	if(qfe) {
-		if((sp==2 && qfe && (sku & XP_ALL) && (
-				   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,3468))
-				|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3468))
-				|| _msvcirt_dll_3468 <fver(7,0,2600,3468)
-				|| _msvcrt_dll_3468  <fver(7,0,2600,3468) ))
-		 ||(sp==3 && qfe && (sku & XP_ALL) && (
-				   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,5701))
-				|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,5701))
-				|| _msvcirt_dll_5701 <fver(7,0,2600,5701)
-				|| _msvcrt_dll_5701  <fver(7,0,2600,5701) ))) {
-			NN("Update for Windows XP (KB958817)");
-			XX(p3+"WindowsXP-KB958817-x86-ENU.exe"+a1);
-		}
-	} else {
-		if( sp==2 && (sku & XP_ALL) && (
-				 ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3085))
-				|| _msvcirt_dll_3085 <fver(7,0,2600,3085)
-				|| _msvcrt_dll_3085  <fver(7,0,2600,3085) )) {
-			NN("Update for Windows XP (KB932590)");
-			XX(p2+"WindowsXP-KB932590-x86-ENU.exe"+a1);
-		}
+	if( sp==2 && (sku & XP_ALL) && (
+			 ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3085))
+			|| _msvcirt_dll_3085 <fver(7,0,2600,3085)
+			|| _msvcrt_dll_3085  <fver(7,0,2600,3085) )) {
+		NN("Update for Windows XP (KB932590)");
+		XX(p2+"WindowsXP-KB932590-x86-ENU.exe"+a1);
+	}
+	if((sp==2 && qfe && (sku & XP_ALL) && (
+			   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,3468))
+			|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3468))
+			|| _msvcirt_dll_3468 <fver(7,0,2600,3468)
+			|| _msvcrt_dll_3468  <fver(7,0,2600,3468) ))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && (
+			   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,5701))
+			|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,5701))
+			|| _msvcirt_dll_5701 <fver(7,0,2600,5701)
+			|| _msvcrt_dll_5701  <fver(7,0,2600,5701) ))) {
+		NN("Update for Windows XP (KB958817)");
+		XX(p3+"WindowsXP-KB958817-x86-ENU.exe"+a1);
 	}
 	if( sp>=2 && qfe && (sku & XP_ALL) && strncmp(_ariblk_ttf_md5,"47dbfa30035024e9a8aee82559e5ba92",32) != 0 ) {
 		NN("Update for Windows XP (KB959334)");
