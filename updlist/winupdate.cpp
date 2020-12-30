@@ -1623,6 +1623,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mfc42_dll_9792   = getFileVer(WinSxS+L"\\x86_Microsoft.Tools.VisualCPlusPlus.Runtime-Libraries_6595b64144ccf1df_6.0.9792.0_x-ww_08a6620a\\mfc42.dll",&status);
 	fver _mfc42u_dll_9792  = getFileVer(WinSxS+L"\\x86_Microsoft.Tools.VisualCPlusPlus.Runtime-Libraries_6595b64144ccf1df_6.0.9792.0_x-ww_08a6620a\\mfc42u.dll",&status);
 	fver _msvcp60_dll_9792 = getFileVer(WinSxS+L"\\x86_Microsoft.Tools.VisualCPlusPlus.Runtime-Libraries_6595b64144ccf1df_6.0.9792.0_x-ww_08a6620a\\msvcp60.dll",&status);
+
+	fver _msvcirt_dll_3085 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.CPlusPlusRuntime_6595b64144ccf1df_7.0.2600.3085_x-ww_e059201c\\msvcirt.dll",&status);
+	fver _msvcrt_dll_3085  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.CPlusPlusRuntime_6595b64144ccf1df_7.0.2600.3085_x-ww_e059201c\\msvcrt.dll",&status);
 	fver _msvcirt_dll_3468 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.CPlusPlusRuntime_6595b64144ccf1df_7.0.2600.3468_x-ww_e24f5da5\\msvcirt.dll",&status);
 	fver _msvcrt_dll_3468  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.CPlusPlusRuntime_6595b64144ccf1df_7.0.2600.3468_x-ww_e24f5da5\\msvcrt.dll",&status);
 	fver _msvcirt_dll_5701 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.CPlusPlusRuntime_6595b64144ccf1df_7.0.2600.5701_x-ww_40d12c25\\msvcirt.dll",&status);
@@ -5741,18 +5744,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB956807)");
 		XX(p3+"WindowsXP-KB956807-x86-ENU.exe"+a1);
 	}
-	if((sp==2 && qfe && (sku & XP_ALL) && (
-			   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,3468))
-			|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3468))
-			|| _msvcirt_dll_3468 <fver(7,0,2600,3468)
-			|| _msvcrt_dll_3468  <fver(7,0,2600,3468) ))
-	 ||(sp==3 && qfe && (sku & XP_ALL) && (
-			   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,5701))
-			|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,5701))
-			|| _msvcirt_dll_5701 <fver(7,0,2600,5701)
-			|| _msvcrt_dll_5701  <fver(7,0,2600,5701) ))) {
-		NN("Update for Windows XP (KB958817)");
-		XX(p3+"WindowsXP-KB958817-x86-ENU.exe"+a1);
+	if(qfe) {
+		if((sp==2 && qfe && (sku & XP_ALL) && (
+				   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,3468))
+				|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3468))
+				|| _msvcirt_dll_3468 <fver(7,0,2600,3468)
+				|| _msvcrt_dll_3468  <fver(7,0,2600,3468) ))
+		 ||(sp==3 && qfe && (sku & XP_ALL) && (
+				   ( _msvcirt_dll >zero && _msvcirt_dll <fver(7,0,2600,5701))
+				|| ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,5701))
+				|| _msvcirt_dll_5701 <fver(7,0,2600,5701)
+				|| _msvcrt_dll_5701  <fver(7,0,2600,5701) ))) {
+			NN("Update for Windows XP (KB958817)");
+			XX(p3+"WindowsXP-KB958817-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==2 && (sku & XP_ALL) && (
+				 ( _msvcrt_dll  >zero && _msvcrt_dll  <fver(7,0,2600,3085))
+				|| _msvcirt_dll_3085 <fver(7,0,2600,3085)
+				|| _msvcrt_dll_3085  <fver(7,0,2600,3085) )) {
+			NN("Update for Windows XP (KB932590)");
+			XX(p2+"WindowsXP-KB932590-x86-ENU.exe"+a1);
+		}
 	}
 	if( sp>=2 && qfe && (sku & XP_ALL) && strncmp(_ariblk_ttf_md5,"47dbfa30035024e9a8aee82559e5ba92",32) != 0 ) {
 		NN("Update for Windows XP (KB959334)");
@@ -10052,6 +10065,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if( sp>=2 && *pshell1) {
 		NN("Windows PowerShell 1.0 English-Language Installation Package for Windows XP (KB926139)");
+		//XX(p2+"WindowsXP-KB926139-x86-ENU.exe"+a1);
 		XX(p2+"WindowsXP-KB926139-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && *pshell2) {
