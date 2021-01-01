@@ -10293,6 +10293,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2757638)");
 		XX(p3+"WindowsXP-KB2757638-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_EMBEDDED) && !(sku & XPE_2009) && _msxml3_dll>zero && _msxml3_dll<fver(8,100,1060,0)) {
+		NN("Security Update for WEPOS and POSReady 2009 (KB3146963)");
+		XX(p3+"WindowsXP-KB3146963-x86-Embedded-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XPE_2009) && ( (_msxml3_dll>zero && _msxml3_dll<fver(8,100,1063,0))
 					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2506,0)) )) {
 		NN("2018-09 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4458003)");
