@@ -7767,6 +7767,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2423089)");
 		XX(p3+"WindowsXP-KB2423089-x86-ENU.exe"+a1);
 	}
+	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3100)) {
+		NN("Update for Windows XP (KB933612)"); // KB933612 is replaced by KB978542
+		XX(p2+"WindowsXP-KB933612-x86-ENU.exe"+a1);
+	}*/
 	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3198)) {
 		// KB941202 is replaced by KB978542 on SP2
 		NN("Security Update for Outlook Express for Windows XP (KB941202)");
@@ -9882,6 +9886,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB2813345-x86-ENU.exe"+a1);
 	}
 
+	/*if( sp==2 && (*imapi2 ||
+		( sp==2 && (sku & XP_ALL) && (_imapi2_dll >zero && _imapi2fs_dll >zero)
+		&& ((_cdrom_sys   <fver(5,1,2600,3126))
+		||  (_imapi2_dll  <fver(5,1,2600,3126))
+		||  (_imapi2fs_dll<fver(5,1,2600,3126))) ))) {
+		NN("Image Mastering API v2.0 (IMAPIv2.0) for Windows XP (KB932716)");
+		XX(p2+"WindowsXP-KB932716-x86-ENU.exe"+a1);
+	}*/
 	if( sp>=2 && (*imapi2 || 
 		( sp==2 && (sku & XP_ALL) && (_imapi2_dll >zero && _imapi2fs_dll >zero)
 		&& ((_cdrom_sys   <fver(5,1,2600,3364))
