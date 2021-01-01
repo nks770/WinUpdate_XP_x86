@@ -2765,6 +2765,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB943055)");
 		XX(p2+"windowsxp-kb943055-x86-enu_e160e1b140872892d2d0050449b1606cc85b5654.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3159)) {
+		NN("Security Update for Windows XP (KB938829) - English"); // KB938829 is replaced by KB956802
+		XX(p2+"WindowsXP-KB938829-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3316)) {
 		// KB948590 is replaced by KB956802 in SP2
 		NN("Security Update for Windows XP (KB948590)");
