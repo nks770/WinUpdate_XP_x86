@@ -3164,13 +3164,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB920670)");
 		XX(p2+"windowsxp-kb920670-x86-enu_a71ac163b276057101fe92739c06c6e6d143ccf8.exe"+a1);
 	}
-	if( sp==2 && (sku & XP_ALL) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3099))
-					  ||  (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,3099))
-					  ||  (_user32_dll>zero && _user32_dll<fver(5,1,2600,3099))
-					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,3099)) )) {
-		NN("Security Update for Windows XP (KB925902)");
-		XX(p2+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
-	}
 	if( sp==1 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
 //	if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
 		// KB891781 is replaced by KB973869 on SP2
@@ -6298,6 +6291,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2864063)");
 		XX(p3+"WindowsXP-KB2864063-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && (sku & XP_ALL) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3099))
+					  ||  (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,3099))
+					  ||  (_user32_dll>zero && _user32_dll<fver(5,1,2600,3099))
+					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,3099)) )) {
+		NN("Security Update for Windows XP (KB925902)");
+		XX(p2+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
+	}
+	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3115)) {
+		// Install this update to resolve an issue where you receive a 0x0000007f stop error
+		// after installing security update KB925902 (MS07-017)
+		NN("Update for Windows XP (KB935843)"); // KB935843 is replaced by KB979559
+		XX(p2+"WindowsXP-KB935843-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
 		// KB941693 is replaced by KB979559 on SP2
 		NN("Security Update for Windows XP (KB941693)");
