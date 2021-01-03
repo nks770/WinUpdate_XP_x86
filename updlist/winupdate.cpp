@@ -188,6 +188,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _ariblk_ttf_md5[33];
 	strncpy_s(_ariblk_ttf_md5,33,md5_ptr,33);
 
+	md5.digestFileW((SystemRoot+L"\\Fonts\\msgoth04.ttc").c_str(),false);
+	char _msgoth04_ttc_md5[33];
+	strncpy_s(_msgoth04_ttc_md5,33,md5_ptr,33);
+
+	md5.digestFileW((SystemRoot+L"\\Fonts\\msmin04.ttc").c_str(),false);
+	char _msmin04_ttc_md5[33];
+	strncpy_s(_msmin04_ttc_md5,33,md5_ptr,33);
+
 	md5.digestFileW((System32+L"\\locale.nls").c_str(),false);
 	char _locale_nls_md5[33];
 	strncpy_s(_locale_nls_md5,33,md5_ptr,33);
@@ -10324,6 +10332,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  (_msxml6_dll>zero && _msxml6_dll<fver(6,20,2509,0)) )) {
 		NN("2019-04 Security Update for POSReady 2009 for x86-based Systems (KB4493790)");
 		XX(p3+"windowsxp-kb4493790-x86-embedded-enu_e078da675e389cbfaba2354eae8040e438a42476.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && regQueryValue(L"SYSTEM\\CurrentControlSet\\Control\\Nls\\Language Groups",L"7",&status)==L"1"
+	    && ( strncmp(_msgoth04_ttc_md5,"0af5b29cc28bdabef5e5d75ed26e7032",32) != 0
+		||   strncmp(_msmin04_ttc_md5, "3c319c1ef8fd02cedded047856bdb33b",32) != 0 )) {
+		// Requires East Asian Language support to be installed first
+		NN("Microsoft MS Gothic and MS Mincho JIS2004 Support Fonts (KB927489)");
+		XX(p3+"WindowsXP.WindowsServer2003-KB927489-x86-ENU.exe"+a1);
 	}
 
 	if( sp>=2 && ((sku & XP_ALL) && _agcore_debug_dll>zero
