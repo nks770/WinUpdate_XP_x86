@@ -981,22 +981,6 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
-			( _20_aspnet_wp_exe                     < fver(2,0,50727,3658))
-		 || ( _20_System_Web_RegularExpressions_dll < fver(2,0,50727,3658))
-		 || ( _20_webengine_dll                     < fver(2,0,50727,3658))
-		 || ( _20_System_Web_dll                    < fver(2,0,50727,3658))
-		 || ( _20_System_dll                        < fver(2,0,50727,3614))
-		/* QFE */
-		 || ( _20_aspnet_wp_exe                     > fver(2,0,50727,3658) && _20_aspnet_wp_exe                     < fver(2,0,50727,7046))
-		 || ( _20_System_Web_RegularExpressions_dll > fver(2,0,50727,3658) && _20_System_Web_RegularExpressions_dll < fver(2,0,50727,7046))
-		 || ( _20_webengine_dll                     > fver(2,0,50727,3658) && _20_webengine_dll                     < fver(2,0,50727,7046))
-		 || ( _20_System_Web_dll                    > fver(2,0,50727,3658) && _20_System_Web_dll                    < fver(2,0,50727,7046))
-		 || ( _20_System_dll                        > fver(2,0,50727,3677) && _20_System_dll                        < fver(2,0,50727,4443)) )) {
-		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2901111)");
-		XX(p3+"NDP20SP2-KB2901111-x86.exe"+n6);
-	}
-	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
-		/* GDR */
 			( _20_System_Data_dll < fver(2,0,50727,3678))
 		/* QFE */
 		 || ( _20_System_Data_dll > fver(2,0,50727,3678) && _20_System_Data_dll < fver(2,0,50727,8692)) )) {
@@ -1050,6 +1034,21 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2604092)");
 		XX(p3+"NDP20SP2-KB2604092-x86.exe"+n6);
 	}
+	/*if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
+		// GDR
+			( _20_aspnet_wp_exe                     < fver(2,0,50727,3653))
+		 || ( _20_System_Web_RegularExpressions_dll < fver(2,0,50727,3653))
+		 || ( _20_webengine_dll                     < fver(2,0,50727,3653))
+		 || ( _20_System_Web_dll                    < fver(2,0,50727,3653))
+		// QFE
+		 || ( _20_aspnet_wp_exe                     > fver(2,0,50727,3658) && _20_aspnet_wp_exe                     < fver(2,0,50727,7033))
+		 || ( _20_System_Web_RegularExpressions_dll > fver(2,0,50727,3658) && _20_System_Web_RegularExpressions_dll < fver(2,0,50727,7033))
+		 || ( _20_webengine_dll                     > fver(2,0,50727,3658) && _20_webengine_dll                     < fver(2,0,50727,7033))
+		 || ( _20_System_Web_dll                    > fver(2,0,50727,3658) && _20_System_Web_dll                    < fver(2,0,50727,7033)) )) {
+		// KB2836941 is replaced by KB2901111
+		NN("Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2836941)");
+		XX(p3+"ndp20sp2-kb2836941-v2-x86_9e8d176f3476dc920c9ac845647ec47fdbfc5d38.exe"+n6);
+	}*/
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* GDR */
 			( _20_aspnet_wp_exe                     < fver(2,0,50727,3657))
@@ -1067,6 +1066,22 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _20_System_dll                        > fver(2,0,50727,3677) && _20_System_dll                        < fver(2,0,50727,4443)) )) {
 		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 (KB2894843)");
 		XX(p3+"ndp20sp2-kb2894843-x86_36228a0825744e86a31a0d0d020ada3b2d0da9fa.exe"+n6);
+	}
+	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
+		/* GDR */
+			( _20_aspnet_wp_exe                     < fver(2,0,50727,3658))
+		 || ( _20_System_Web_RegularExpressions_dll < fver(2,0,50727,3658))
+		 || ( _20_webengine_dll                     < fver(2,0,50727,3658))
+		 || ( _20_System_Web_dll                    < fver(2,0,50727,3658))
+		 || ( _20_System_dll                        < fver(2,0,50727,3614))
+		/* QFE */
+		 || ( _20_aspnet_wp_exe                     > fver(2,0,50727,3658) && _20_aspnet_wp_exe                     < fver(2,0,50727,7046))
+		 || ( _20_System_Web_RegularExpressions_dll > fver(2,0,50727,3658) && _20_System_Web_RegularExpressions_dll < fver(2,0,50727,7046))
+		 || ( _20_webengine_dll                     > fver(2,0,50727,3658) && _20_webengine_dll                     < fver(2,0,50727,7046))
+		 || ( _20_System_Web_dll                    > fver(2,0,50727,3658) && _20_System_Web_dll                    < fver(2,0,50727,7046))
+		 || ( _20_System_dll                        > fver(2,0,50727,3677) && _20_System_dll                        < fver(2,0,50727,4443)) )) {
+		NN("Security Update for Microsoft .NET Framework 2.0 SP2 on Windows Server 2003 and Windows XP x86 (KB2901111)");
+		XX(p3+"NDP20SP2-KB2901111-x86.exe"+n6);
 	}
 	if( sp==3 &&  (*i_nfx20 || *v_nfx20==2) && (
 		/* No GDR */
