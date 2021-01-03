@@ -8615,6 +8615,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer for Windows XP (KB2936068)");
 		XX(p3+"WindowsXP-KB2936068-x86-ENU.exe"+a1);
 	}
+	if( sp==3 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,6550)) )) {
+		NN("Security Update for Internet Explorer for Windows XP (KB2964358)");
+		XX(p3+"WindowsXP-KB2964358-x86-custom-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XP_PLUS_FLP) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,21357))
 	    || (_corpol_dll      >zero && _corpol_dll      <fver(2007,0,0,21306))
@@ -8698,6 +8703,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		)) {
 		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP (KB2936068)");
 		XX(p3+"IE7-WindowsXP-KB2936068-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XP_PLUS_FLP) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		   (_mshtml_dll      >zero && _mshtml_dll      <fver(7,0,6000,21383)) )) {
+		NN("Security Update for Internet Explorer 7 for Windows XP (KB2964358)");
+		XX(p3+"IE7-WindowsXP-KB2964358-x86-custom-ENU.exe"+a1);
 	}
 	/*if( sp==3 && (sku & XPE_2009) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		// KB3148198 is replaced by KB4018271
@@ -8849,6 +8859,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_xpshims_dll      >zero && _xpshims_dll      <fver(8,0,6001,23580)) )) {
 		NN("Cumulative Security Update for Internet Explorer 8 for Windows XP (KB2936068)");
 		XX(p3+"IE8-WindowsXP-KB2936068-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && (sku & XPE_FLP) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
+		   (_mshtml_dll       >zero && _mshtml_dll       <fver(8,0,6001,23588)) )) {
+		NN("Security Update for Internet Explorer 8 for Windows XP (KB2964358)");
+		XX(p3+"IE8-WindowsXP-KB2964358-x86-custom-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_CLIENT) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		   (_corpol_dll       >zero && _corpol_dll       <fver(2008,0,0,23942))
