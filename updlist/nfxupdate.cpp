@@ -1540,25 +1540,44 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		NN("Security Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2789642)");
 		XX(p3+"NDP40-KB2789642-x86.exe"+n6);
 	}
-//	if( sp==3 &&  (NFX40) && (
-//		/* GDR */
-//			( _40_ServiceModelReg_exe              < fver(4,0,30319,1016))
-//		 || ( _40_aspnet_wp_exe             > zero && _40_aspnet_wp_exe             < fver(4,0,30319,1016)) // Full Profile Only
-//		 || ( _40_System_Web_Extensions_dll > zero && _40_System_Web_Extensions_dll < fver(4,0,30319,1016)) // Full Profile Only
-//		 || ( _40_System_Web_dll            > zero && _40_System_Web_dll            < fver(4,0,30319,1016)) // Full Profile Only
-//		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,1016)) // Full Profile Only
-//		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,1016)) // Full Profile Only
-//		/* QFE */
-//		 || ( _40_ServiceModelReg_exe              > fver(4,0,30319,1025) && _40_ServiceModelReg_exe              < fver(4,0,30319,2026))
-//		 || ( _40_aspnet_wp_exe                    > fver(4,0,30319,1025) && _40_aspnet_wp_exe                    < fver(4,0,30319,2026))
-//		 || ( _40_System_Web_Extensions_dll        > fver(4,0,30319,1025) && _40_System_Web_Extensions_dll        < fver(4,0,30319,2026))
-//		 || ( _40_System_Web_dll                   > fver(4,0,30319,1025) && _40_System_Web_dll                   < fver(4,0,30319,2026))
-//		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2026))
-//		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2026)) )) {
-//		 // KB2836939 is replaced by KB2858302
-//		NN("Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2836939)");
-//		XX(p3+"ndp40-kb2836939-v3-x86_5f7e7f9811136bd3dfeb994d75a96aece646ea3d.exe"+n6);
-//	}
+	/*if( sp==3 &&  (NFX40) && (
+		// GDR
+			( _40_ServiceModelReg_exe              < fver(4,0,30319,1008))
+		 || ( _40_aspnet_wp_exe             > zero && _40_aspnet_wp_exe             < fver(4,0,30319,1008)) // Full Profile Only
+		 || ( _40_System_Web_Extensions_dll > zero && _40_System_Web_Extensions_dll < fver(4,0,30319,1008)) // Full Profile Only
+		 || ( _40_System_Web_dll            > zero && _40_System_Web_dll            < fver(4,0,30319,1008)) // Full Profile Only
+		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,1008)) // Full Profile Only
+		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,1008)) // Full Profile Only
+		// QFE
+		 || ( _40_ServiceModelReg_exe              > fver(4,0,30319,1025) && _40_ServiceModelReg_exe              < fver(4,0,30319,2012))
+		 || ( _40_aspnet_wp_exe                    > fver(4,0,30319,1025) && _40_aspnet_wp_exe                    < fver(4,0,30319,2012))
+		 || ( _40_System_Web_Extensions_dll        > fver(4,0,30319,1025) && _40_System_Web_Extensions_dll        < fver(4,0,30319,2012))
+		 || ( _40_System_Web_dll                   > fver(4,0,30319,1025) && _40_System_Web_dll                   < fver(4,0,30319,2012))
+		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2012))
+		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2012)) )) {
+		 // KB2836939 is replaced by KB2836939-v3
+		NN("Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2836939)");
+		XX(p3+"NDP40-KB2836939-x86.exe"+n6);
+	}
+	if( sp==3 &&  (NFX40) && (
+		// GDR
+			( _40_ServiceModelReg_exe              < fver(4,0,30319,1016))
+		 || ( _40_aspnet_wp_exe             > zero && _40_aspnet_wp_exe             < fver(4,0,30319,1016)) // Full Profile Only
+		 || ( _40_System_Web_Extensions_dll > zero && _40_System_Web_Extensions_dll < fver(4,0,30319,1016)) // Full Profile Only
+		 || ( _40_System_Web_dll            > zero && _40_System_Web_dll            < fver(4,0,30319,1016)) // Full Profile Only
+		 || ( _40_webengine4_dll            > zero && _40_webengine4_dll            < fver(4,0,30319,1016)) // Full Profile Only
+		 || ( _40_webengine_dll             > zero && _40_webengine_dll             < fver(4,0,30319,1016)) // Full Profile Only
+		// QFE
+		 || ( _40_ServiceModelReg_exe              > fver(4,0,30319,1025) && _40_ServiceModelReg_exe              < fver(4,0,30319,2026))
+		 || ( _40_aspnet_wp_exe                    > fver(4,0,30319,1025) && _40_aspnet_wp_exe                    < fver(4,0,30319,2026))
+		 || ( _40_System_Web_Extensions_dll        > fver(4,0,30319,1025) && _40_System_Web_Extensions_dll        < fver(4,0,30319,2026))
+		 || ( _40_System_Web_dll                   > fver(4,0,30319,1025) && _40_System_Web_dll                   < fver(4,0,30319,2026))
+		 || ( _40_webengine4_dll                   > fver(4,0,30319,1025) && _40_webengine4_dll                   < fver(4,0,30319,2026))
+		 || ( _40_webengine_dll                    > fver(4,0,30319,1025) && _40_webengine_dll                    < fver(4,0,30319,2026)) )) {
+		 // KB2836939-v3 is replaced by KB2858302
+		NN("Update for Microsoft .NET Framework 4 on XP, Server 2003, Vista, Windows 7, Server 2008 x86 (KB2836939)");
+		XX(p3+"ndp40-kb2836939-v3-x86_5f7e7f9811136bd3dfeb994d75a96aece646ea3d.exe"+n6);
+	}*/
 	if( sp==3 &&  (NFX40) && (
 		/* GDR */
 			( _40_ServiceModelReg_exe              < fver(4,0,30319,1016))
