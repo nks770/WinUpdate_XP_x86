@@ -10363,9 +10363,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB927891)");
 		XX(p2+"windowsxp-kb927891-v3-x86-enu_831fc2b9075b0a490adf15d2c5452e01e6feaa17.exe"+a1);
 	}
-	if( sp==3 && qfe && !*msi45 && (sku & XP_ALL) && (  _msi_dll <fver(3,1,4001,5662) )) {
-		NN("Update for Windows XP (KB957217)");
+	/*if( sp==3 && qfe && !*msi45 && (sku & XP_ALL) && (  _msi_dll <fver(3,1,4001,5662) )) {
+		NN("Update for Windows XP (KB957217)"); // KB957217 is replaced by KB971913
 		XX(p3+"WindowsXP-KB957217-x86-ENU.exe"+a1);
+	}*/
+	if( sp==3 && qfe && !*msi45 && (sku & XP_ALL) && (  _msi_dll <fver(3,1,4001,5841) )) {
+		NN("Update for Windows XP (KB971913)");
+		XX(p3+"WindowsXP-KB971913-x86-ENU.exe"+a1);
 	}
 	if( sp>=2 && (sku & XP_ALL) && ((_msi_dll>=fver(4,5,6001,22159) && _msi_dll<fver(4,5,6001,22299)) || *msi45 )) {
 		NN("Update for Windows XP (KB958655)");
