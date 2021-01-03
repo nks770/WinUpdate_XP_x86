@@ -6121,6 +6121,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Root Certificates for Windows XP [March 2014] (KB931125)");
 		XX(sw+p3+"rootsupd_01a26e5c75ff5b3e34fb6b763ace486fe6836aac.exe");
 	}
+	/*if( sp>=2 && !checkCertificates("Disallowed")) {
+		NN("Security Update for Windows XP and Windows Server 2003 (KB2917500)");
+		XX(sw+p3+"rvkroots_131210_kb2917500.exe");
+	}*/
 	if( sp>=2 && !checkCertificates("Disallowed")) {
 		NN("Update for Certificate Revocation List [March 2015] (KB3050995)");
 		XX(sw+p3+"rvkroots_3f2ce4676450c06f109b5b4e68bec252873ccc21.exe");
