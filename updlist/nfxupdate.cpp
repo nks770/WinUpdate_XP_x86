@@ -205,6 +205,9 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 	bool NFX40=(*v_nfx40c>=0 || *v_nfx40f>=0);
 	bool NFX40_EXT=(*v_nfx40c>=0 && *v_nfx40f>=0);
 
+	bool kb976576 = false;
+	bool kb977354 = false;
+
 	const std::string sw="start /wait ";
 	const std::string p="Packages\\";
 	const std::string p1=p+"SP1\\";
@@ -1413,10 +1416,11 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _sbs_system_data_dll                  > fver(4,0,30902,0) && _sbs_system_data_dll                  < fver(4,0,31106,0))
 		 || ( _sbs_system_enterpriseservices_dll    > fver(4,0,30902,0) && _sbs_system_enterpriseservices_dll    < fver(4,0,31106,0))
 		 || ( _sbs_wminet_utils_dll                 > fver(4,0,30902,0) && _sbs_wminet_utils_dll                 < fver(4,0,31106,0)) )) {
-		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
-		XX(p3+"NDP20SP2-KB976576-x86.exe"+n6);
+		//NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
+		//XX(p3+"NDP20SP2-KB976576-x86.exe"+n6);
 		// Article http://support.microsoft.com/kb/982524/
 		// Rolls up KB976576 and KB977354
+		kb976576 = true;
 	}
 	if( sp>=2 &&  (*i_nfx30 || *v_nfx30==2 ) && (
 		/* GDR */
@@ -1431,58 +1435,23 @@ void nfxUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,wi
 		 || ( _30_PresentationFramework_dll > fver(3,0,6920,4016) && _30_PresentationFramework_dll < fver(3,0,6920,4030))
 		 || ( _30_PresentationHostDLL_dll   > fver(3,0,6920,4016) && _30_PresentationHostDLL_dll   < fver(3,0,6920,4030))
 		 || ( _30_WindowsBase_dll           > fver(3,0,6920,4016) && _30_WindowsBase_dll           < fver(3,0,6920,4030)) )) {
-		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
-		XX(p3+"ndp30sp2-kb977354-v2-x86_36d5f7b86e33e09d4e1934c43bbfab04c64a280e.exe"+n6);
+		//NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
+		//XX(p3+"ndp30sp2-kb977354-v2-x86_36d5f7b86e33e09d4e1934c43bbfab04c64a280e.exe"+n6);
 		// Article http://support.microsoft.com/kb/982524/
 		// Rolls up KB976576 and KB977354
+		kb977354 = true;
 	}
-	/*if( sp>=2 &&  (*i_nfx20 || *i_nfx35 || *v_nfx20==2 || *v_nfx35==1 || *i_nfx30 || *v_nfx30==2  ) && (
-		// GDR
-			( _dfshim_dll                           < fver(4,0,31106,0))
-		 || ( _mscoree_dll                          < fver(4,0,31106,0))
-		 || ( _mscorees_dll                         < fver(4,0,31106,0))
-		 || ( _netfxperf_dll                        < fver(4,0,31106,0))
-		 || ( _NETFXSBS10_exe                       < fver(4,0,31106,0))
-		 || ( _sbs_diasymreader_dll                 < fver(4,0,30902,0))
-		 || ( _sbs_microsoft_jscript_dll            < fver(4,0,30902,0))
-		 || ( _sbs_mscordbi_dll                     < fver(4,0,30902,0))
-		 || ( _sbs_mscorrc_dll                      < fver(4,0,30902,0))
-		 || ( _sbs_mscorsec_dll                     < fver(4,0,30902,0))
-		 || ( _sbs_system_configuration_install_dll < fver(4,0,30902,0))
-		 || ( _sbs_system_data_dll                  < fver(4,0,30902,0))
-		 || ( _sbs_system_enterpriseservices_dll    < fver(4,0,30902,0))
-		 || ( _sbs_wminet_utils_dll                 < fver(4,0,30902,0))
-		 || ( _sbscmp10_dll                         < fver(4,0,31106,0))
-		 || ( _sbscmp20_mscorwks_dll                < fver(4,0,31106,0))
-		 || ( _sbscmp20_mscorlib_dll                < fver(4,0,31106,0))
-		 || ( _sbscmp20_perfcounter_dll             < fver(4,0,31106,0))
-		 || ( _SharedReg12_dll                      < fver(4,0,31106,0))
-		 || ( _30_PresentationCore_dll      < fver(3,0,6920,4016))
-		 || ( _30_PresentationFramework_dll < fver(3,0,6920,4016))
-		 || ( _30_PresentationHostDLL_dll   < fver(3,0,6920,4016))
-		 || ( _30_WindowsBase_dll           < fver(3,0,6920,4016))
-		 || ( _PresentationHostProxy_dll    < fver(4,0,31106,0))
-		 || ( _PresentationHost_exe         < fver(4,0,40305,0))
-		// QFE
-		 || ( _sbs_diasymreader_dll                 > fver(4,0,30902,0) && _sbs_diasymreader_dll                 < fver(4,0,31106,0))
-		 || ( _sbs_microsoft_jscript_dll            > fver(4,0,30902,0) && _sbs_microsoft_jscript_dll            < fver(4,0,31106,0))
-		 || ( _sbs_mscordbi_dll                     > fver(4,0,30902,0) && _sbs_mscordbi_dll                     < fver(4,0,31106,0))
-		 || ( _sbs_mscorrc_dll                      > fver(4,0,30902,0) && _sbs_mscorrc_dll                      < fver(4,0,31106,0))
-		 || ( _sbs_mscorsec_dll                     > fver(4,0,30902,0) && _sbs_mscorsec_dll                     < fver(4,0,31106,0))
-		 || ( _sbs_system_configuration_install_dll > fver(4,0,30902,0) && _sbs_system_configuration_install_dll < fver(4,0,31106,0))
-		 || ( _sbs_system_data_dll                  > fver(4,0,30902,0) && _sbs_system_data_dll                  < fver(4,0,31106,0))
-		 || ( _sbs_system_enterpriseservices_dll    > fver(4,0,30902,0) && _sbs_system_enterpriseservices_dll    < fver(4,0,31106,0))
-		 || ( _sbs_wminet_utils_dll                 > fver(4,0,30902,0) && _sbs_wminet_utils_dll                 < fver(4,0,31106,0))
-		 || ( _30_PresentationCore_dll      > fver(3,0,6920,4016) && _30_PresentationCore_dll      < fver(3,0,6920,4030))
-		 || ( _30_PresentationFramework_dll > fver(3,0,6920,4016) && _30_PresentationFramework_dll < fver(3,0,6920,4030))
-		 || ( _30_PresentationHostDLL_dll   > fver(3,0,6920,4016) && _30_PresentationHostDLL_dll   < fver(3,0,6920,4030))
-		 || ( _30_WindowsBase_dll           > fver(3,0,6920,4016) && _30_WindowsBase_dll           < fver(3,0,6920,4030)))) {
+	if( kb976576 && kb977354 ) {
 		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB982524)");
 		XX(p3+"NDP30SP2-KB982524-x86.exe"+n6);
-		// Article http://support.microsoft.com/kb/982524/
-		// This is the combined version that contains both KB976576 and KB977354.  This patch is not necessary if you
-		// have the other two separately.
-	}*/
+	} else if( kb976576 ) {
+		NN("Microsoft .NET Framework 3.5 SP1 and .NET Framework 2.0 SP2 Update for Windows Server 2003 and Windows XP x86 (KB976576)");
+		XX(p3+"NDP20SP2-KB976576-x86.exe"+n6);
+	} else if( kb977354 ) {
+		NN("Microsoft .NET Framework 3.5 Service Pack 1 Update for Windows Server 2003 and Windows XP (KB977354)");
+		XX(p3+"ndp30sp2-kb977354-v2-x86_36d5f7b86e33e09d4e1934c43bbfab04c64a280e.exe"+n6);
+	}
+
 	if( sp>=2 &&  (*i_nfx35 || *v_nfx35==1) && (
 		    ( _ntprint_cat != 1089593 && _ntprint_cat != 1089601 )) ) {
 		NN("Update for Windows XP (KB961118)");
