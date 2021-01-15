@@ -10,7 +10,7 @@
 void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,
 					  int sp,std::vector<std::string> *notifications);
 
-void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku);
+void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp);
 
 int installServicePack(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp,
 					   std::vector<std::string> *notifications);

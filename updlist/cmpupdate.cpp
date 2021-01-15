@@ -254,7 +254,7 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 
 }
 
-void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku) {
+void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,winsku sku,int sp) {
 
 	int status=0;
 
@@ -312,7 +312,7 @@ void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,w
 //		NN("Microsoft Windows Installer 3.1");
 //		XX(p+"WindowsInstaller-KB893803-v2-x86.exe"+a1);
 //	}
-	if((sku & XP_ALL) && (  _cdm_dll      <fver(7,0,6000,374)
+	/*if((sku & XP_ALL) && (  _cdm_dll      <fver(7,0,6000,374)
 		              ||    _wuapi_dll    <fver(7,0,6000,374)
 					  ||    _wuauclt_exe  <fver(7,0,6000,374)
 					  ||    _wuaucpl_cpl  <fver(7,0,6000,374)
@@ -324,6 +324,32 @@ void installMBSA(std::vector<std::string>* name, std::vector<std::string>* exe,w
 					  ||    _wuweb_dll    <fver(7,0,6000,374) )) {
 		NN("Windows Update Agent 3.0");
 		XX(p+"WindowsUpdateAgent30-x86.exe"+a5);
+	}*/
+	if( sp<3 && (sku & XP_ALL) && (  _cdm_dll      <fver(7,6,7600,243)
+		              ||    _wuapi_dll    <fver(7,6,7600,243)
+					  ||    _wuauclt_exe  <fver(7,6,7600,243)
+					  ||    _wuaucpl_cpl  <fver(7,6,7600,243)
+					  ||    _wuaueng_dll  <fver(7,6,7600,243)
+					  //||    _wuauserv_dll <fver(7,6,7600,243)
+					  ||    _wucltui_dll  <fver(7,6,7600,243)
+					  ||    _wups2_dll    <fver(7,6,7600,243)
+					  ||    _wups_dll     <fver(7,6,7600,243)
+					  ||    _wuweb_dll    <fver(7,6,7600,243) )) {
+		NN("Windows Update Agent 3.0");
+		XX(p+"WindowsUpdateAgent30-x86-7.6.7600.243.exe"+a5);
+	}
+	if( sp==3 && (sku & XP_ALL) && (  _cdm_dll      <fver(7,4,7600,256)
+		              ||    _wuapi_dll    <fver(7,6,7600,256)
+					  ||    _wuauclt_exe  <fver(7,6,7600,256)
+					  ||    _wuaucpl_cpl  <fver(7,6,7600,256)
+					  ||    _wuaueng_dll  <fver(7,6,7600,256)
+					  //||    _wuauserv_dll <fver(7,6,7600,256)
+					  ||    _wucltui_dll  <fver(7,6,7600,256)
+					  ||    _wups2_dll    <fver(7,6,7600,256)
+					  ||    _wups_dll     <fver(7,6,7600,256)
+					  ||    _wuweb_dll    <fver(7,6,7600,256) )) {
+		NN("Windows Update Agent 7.6.7600.256");
+		XX(sw+p+"WindowsUpdateAgent-7.6-x86.exe"+a5);
 	}
 
 	if((sku & XP_ALL) && (  _mbsa_exe     <fver(2,2,2170,0)

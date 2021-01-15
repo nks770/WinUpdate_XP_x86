@@ -23,7 +23,7 @@
 
 using namespace std;
 
-#define PROGRAM_DATE "13-Jan-2021"
+#define PROGRAM_DATE "14-Jan-2021"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 
@@ -156,7 +156,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 	} else if(install_sp) {
 		sp_to_be_installed=installServicePack(&name,&exe,sku,sp_to_int(splevel),&notifications);
 	} else if(install_mbsa) {
-		installMBSA(&name,&exe,sku);
+		installMBSA(&name,&exe,sku,sp_to_int(splevel));
 	} else if(install_vcredist) {
 		installVC(&name,&exe,sp_to_int(splevel));
 	} else if(install_netfx) {

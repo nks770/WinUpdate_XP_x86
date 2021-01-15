@@ -2698,7 +2698,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||    _wups2_dll    <fver(7,6,7600,256)
 					  ||    _wups_dll     <fver(7,6,7600,256)
 					  ||    _wuweb_dll    <fver(7,6,7600,256) )) {
-		NN("Windows Update Agent 7.6");
+		NN("Windows Update Agent 7.6.7600.256");
 		XX(sw+p+"WindowsUpdateAgent-7.6-x86.exe"+a5);
 	}
 	if((sp==1 &&         (sku & XP_ALL) && _srvsvc_dll>zero && _srvsvc_dll<fver(5,1,2600,1613))
