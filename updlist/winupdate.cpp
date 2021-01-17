@@ -7493,6 +7493,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WES09 and POSReady 2009 (KB4048970)"); // KB4048970 is replaced by KB4486924
 		XX(p3+"windowsxp-kb4048970-x86-embedded-enu_aaacd2cae6ec37fb9f89e0bb8253a56da31ea53b.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,7571)) {
+		NN("2018-10 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4463545)"); // KB4463545 is replaced by KB4486924
+		XX(p3+"windowsxp-kb4463545-x86-embedded-enu_2ef9f04e3467ca43b77de3ea7b96b847886a9f48.exe"+a1);
+	}*/
 	/*if( sp==3 && (sku & XPE_2009) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,7590)) {
 		NN("2018-11 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4470198)"); // KB4470198 is replaced by KB4486924
 		XX(p3+"windowsxp-kb4470198-x86-embedded-enu_7b13aaf44e4587d599a456d888e42f40e8b5ff3b.exe"+a1);
