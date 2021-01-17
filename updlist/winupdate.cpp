@@ -6601,6 +6601,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for WES09 and POSReady 2009 (KB4051956)"); // KB4051956 is replaced by KB4468323
 		XX(p3+"windowsxp-kb4051956-x86-embedded-enu_e76901d3d9bdd043e614dfb0bb7e916262e6c8b5.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7528)) {
+		NN("Update for WES09 and POSReady 2009 (KB4339284)");
+		XX(p3+"windowsxp-kb4339284-x86-embedded-enu_2a06b4e2d2bafea70a1f56eb3fd1ee2dc5717bbd.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
 		NN("Update for WES09 and POSReady 2009 (KB4468323)");
 		XX(p3+"windowsxp-kb4468323-x86-embedded-enu_6a46468fe73b3b793934d70768ab2c4ce11a03ab.exe"+a1);
