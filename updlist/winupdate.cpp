@@ -10545,6 +10545,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for WES09 and POSReady 2009 (KB3196726)");
 		XX(p3+"windowsxp-kb3196726-x86-embedded-enu_5cd799b7d4a26146c6538a6bb79b524102173ca5.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XPE_2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24433))
+		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
+					  ||  (_msihnd_dll>=fver(4,5,0,0) && _msihnd_dll<fver(4,5,6002,23415))
+					  ||  *msi45 )) {
+		NN("2018-08 Security Update for WES09 and POSReady 2009 for x86-based Systems (KB4340937)");
+		XX(p3+"windowsxp-kb4340937-x86-embedded-enu_055b6495b6799ac6e75755cb1f7947feb4ca199d.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XPE_WES2009) && ((_msi_dll>=fver(4,5,0,0) && _msi_dll<fver(4,5,6002,24556))
 		              ||  (_msiexec_exe>=fver(4,5,0,0) && _msiexec_exe<fver(4,5,6002,24433))
 					  ||  (_msihnd_dll>=fver(4,5,0,0) && _msihnd_dll<fver(4,5,6002,23415))
