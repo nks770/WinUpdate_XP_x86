@@ -817,6 +817,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _wmvdecod_dll = getFileVer(System32+L"\\wmvdecod.dll",&status);
 	fver _wmvdmod_dll  = getFileVer(System32+L"\\wmvdmod.dll",&status);
 	fver _wmvdmoe2_dll = getFileVer(System32+L"\\wmvdmoe2.dll",&status);
+	fver _wmvencod_dll = getFileVer(System32+L"\\wmvencod.dll",&status);
 	fver _wow32_dll    = getFileVer(System32+L"\\wow32.dll",&status);
 	fver _wpdconns_dll = getFileVer(System32+L"\\wpdconns.dll",&status);
 	fver _wpdmtp_dll   = getFileVer(System32+L"\\wpdmtp.dll",&status);
@@ -9882,6 +9883,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			  || _wmvdecod_dll < fver(11,0,5721,5250) )) {
 		NN("Hotfix for Windows Media Player 11 (KB954067)"); // Replaced by KB978695+KB2834904 on SP3
 		XX(p2+"windowsmedia11-kb954067-x86-intl.exe"+a1);
+	}
+	if( sp>=2 && (sku & XP_ALL) && _wmvencod_dll>=fver(11,0,5721,5145) && _wmvencod_dll<fver(11,0,5721,5253)) {
+		NN("Hotfix for Windows Media Format 11 SDK (KB954069)");
+		XX(p3+"windowsmedia11-kb954069-x86-intl.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && _wmvdecod_dll>=fver(11,0,5721,5145) && _wmvdecod_dll<fver(11,0,5721,5268)) {
 		NN("Hotfix for Windows Media Format 11 SDK (KB973442)"); // Replaced by KB2834904 on SP3
