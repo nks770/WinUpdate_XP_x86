@@ -8217,6 +8217,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p1+"ie6.0sp1-kb925486-windowsxp-x86-enu_08de2f06f64de1e2225032d8e49e45b6f31eb8ba.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		// GDR
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2578))
+	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,2573))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2604))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,2573))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2604))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2573))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2573))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2574))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,2577))
+		// QFE
+		|| (_browseui_dll >fver(6,0,2900,2573) && _browseui_dll <fver(6,0,2900,2598))
+		|| (_shdocvw_dll  >fver(6,0,2900,2573) && _shdocvw_dll  <fver(6,0,2900,2598))
+		|| (_urlmon_dll   >fver(6,0,2900,2573) && _urlmon_dll   <fver(6,0,2900,2598))
+		|| (_wininet_dll  >fver(6,0,2900,2573) && _wininet_dll  <fver(6,0,2900,2598)) )) {
+		NN("Cumulative Security Update for Internet Explorer for XP Service Pack 2 (KB867282)");
+		XX(p2+"WindowsXP-KB867282-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3059))
 		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3059))
 		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
