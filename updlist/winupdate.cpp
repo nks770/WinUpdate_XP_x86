@@ -2296,6 +2296,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB839645)");
 		XX(p1+"windowsxp-kb839645-x86-enu_18b27da784cef2d2f9c1888ef3aa2619e02b402a.exe"+a6);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _shell32_dll > zero && _shell32_dll <fver(6,0,2900,2531)) {
+		NN("Update for Windows XP (KB870979)"); // KB870979 is replaced by KB822686
+		XX(p2+"WindowsXP-KB870979-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1659))
