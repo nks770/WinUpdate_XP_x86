@@ -2329,6 +2329,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB908531)");
 		XX(p2+"windowsxp-kb908531-v2-x86-enu_0f04352bbc21b3c173cc8dd8c9e63c082b34b676.exe"+a1);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2800,1588))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2900,2515))) {
+		NN("Update for Windows XP (KB870975)"); // KB870975 is replaced by KB900725
+		XX(p2+"WindowsXP-KB870975-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 					  ||  ( _linkinfo_dll >zero && _linkinfo_dll <fver(5,1,2600,1740))
