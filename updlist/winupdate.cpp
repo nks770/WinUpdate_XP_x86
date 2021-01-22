@@ -1968,6 +1968,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update, February 12, 2002");
 		XX(rtm+"q314147_4448f8c22d771895880c0cbd09491b03670c483a.exe"+a7);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _wsnmp32_dll >zero && _wsnmp32_dll <fver(5,1,2600,1583))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _wsnmp32_dll >zero && _wsnmp32_dll <fver(5,1,2600,2505))) {
+		NN("Update for Windows XP (KB867795)");
+		XX(p2+"WindowsXP-KB867795-x86-ENU.exe"+a6);
+	}
 	if( sp<2 && (sku & XP_ALL) && (
                   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1181))
 			  ||  ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
@@ -8184,7 +8189,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1612))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1485))
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1485)) )) {
-		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)");
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)"); // FIXME: Add QFE versions
 		XX(p1+"ie6.0sp1-kb867282-windows-2000-xp-x86-enu_261bd11af527fd33c1c30bb16789cfee73d0f7d9.exe"+a6);
 	}
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
