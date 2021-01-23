@@ -1171,6 +1171,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pclxl_dll    = getFileVer(w32x86+L"\\pclxl.dll",&status);
 	fver _ps5ui_dll    = getFileVer(w32x86+L"\\ps5ui.dll",&status);
 	fver _pscript5_dll = getFileVer(w32x86+L"\\pscript5.dll",&status);
+	fver _tty_dll      = getFileVer(w32x86+L"\\tty.dll",&status);
+	fver _ttyres_dll   = getFileVer(w32x86+L"\\ttyres.dll",&status);
+	fver _ttyui_dll    = getFileVer(w32x86+L"\\ttyui.dll",&status);
 	fver _unidrv_dll   = getFileVer(w32x86+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll = getFileVer(w32x86+L"\\unidrvui.dll",&status);
 	fver _unires_dll   = getFileVer(w32x86+L"\\unires.dll",&status);
@@ -1234,6 +1237,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 	fver _sdbus_sys_cache    = getFileVer(DriverCache+L"\\sdbus.sys",&status);
 	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
+	fver _tty_dll_cache      = getFileVer(DriverCache+L"\\tty.dll",&status);
+	fver _ttyres_dll_cache   = getFileVer(DriverCache+L"\\ttyres.dll",&status);
+	fver _ttyui_dll_cache    = getFileVer(DriverCache+L"\\ttyui.dll",&status);
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
@@ -5522,6 +5528,39 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,5672)) ))) {
 		NN("Update for Windows XP (KB950234)");
 		XX(p3+"WindowsXP-KB950234-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _pcl5eres_dll >zero && _pcl5eres_dll <fver(0,3,1296,1))
+	  ||  ( _pclxl_dll    >zero && _pclxl_dll    <fver(0,3,1296,1))
+	  ||  ( _ps5ui_dll    >zero && _ps5ui_dll    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll >zero && _pscript5_dll <fver(0,3,3790,231))
+	  ||  ( _tty_dll      >zero && _tty_dll      <fver(0,3,1296,1))
+	  ||  ( _ttyres_dll   >zero && _ttyres_dll   <fver(5,2,3790,120))
+	  ||  ( _ttyui_dll    >zero && _ttyui_dll    <fver(0,3,1296,1))
+	  ||  ( _unidrv_dll   >zero && _unidrv_dll   <fver(0,3,3790,231))
+	  ||  ( _unidrvui_dll >zero && _unidrvui_dll <fver(0,3,3790,231))
+	  ||  ( _unires_dll   >zero && _unires_dll   <fver(0,3,1296,1))
+	  ||  ( _pcl5eres_dll_cache <fver(0,3,1296,1))
+	  ||  ( _pclxl_dll_cache    <fver(0,3,1296,1))
+	  ||  ( _ps5ui_dll_cache    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll_cache <fver(0,3,3790,231))
+	  ||  ( _tty_dll_cache      <fver(0,3,1296,1))
+	  ||  ( _ttyres_dll_cache   <fver(5,2,3790,120))
+	  ||  ( _ttyui_dll_cache    <fver(0,3,1296,1))
+	  ||  ( _unidrv_dll_cache   <fver(0,3,3790,231))
+	  ||  ( _unidrvui_dll_cache <fver(0,3,3790,231))
+	  ||  ( _unires_dll_cache   <fver(0,3,1296,1))))
+	/*|| (sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ps5ui_dll    >zero && _ps5ui_dll    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll >zero && _pscript5_dll <fver(0,3,3790,231))
+	  ||  ( _unidrv_dll   >zero && _unidrv_dll   <fver(0,3,3790,231))
+	  ||  ( _unidrvui_dll >zero && _unidrvui_dll <fver(0,3,3790,231))
+	  ||  ( _ps5ui_dll_cache    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll_cache <fver(0,3,3790,231))
+	  ||  ( _unidrv_dll_cache   <fver(0,3,3790,231))
+	  ||  ( _unidrvui_dll_cache <fver(0,3,3790,231)) ))*/) {
+		NN("Update for Windows XP (KB870981)"); // KB870981 is replaced by KB948046+KB950305 on SP2
+		XX(p1+"WindowsXP-KB870981-v2-x86-ENU.exe"+a1);
 	}
 	if( sp>=2 && qfe && (sku & XP_ALL) && (
 		  ( _pcl4res_dll  >zero && _pcl4res_dll  <fver(0,3,5479,0))
