@@ -234,6 +234,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hh_exe       = getFileVer(SystemRoot+L"\\hh.exe",&status);
 	fver _kb913800_exe = getFileVer(SystemRoot+L"\\kb913800.exe",&status);
 	fver _srchui_dll   = getFileVer(SystemRoot+L"\\srchasst\\srchui.dll",&status);
+	fver _srchctls_dll = getFileVer(SystemRoot+L"\\srchasst\\srchctls.dll",&status);
 
 	fver _6to4svc_dll  = getFileVer(System32+L"\\6to4svc.dll",&status);
 	fver _aaclient_dll = getFileVer(System32+L"\\aaclient.dll",&status);
@@ -6217,6 +6218,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))) {
 		NN("Update for Windows XP (KB842520)");
 		XX(p2+"WindowsXP-KB842520-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _srchctls_dll >zero && _srchctls_dll <fver(1,0,0,5326))
+	  ||  ( _srchui_dll   >zero && _srchui_dll   <fver(1,0,0,5326)) )) {
+		NN("Update for Windows XP (KB872966)");
+		XX(p2+"WindowsXP-KB872966-x86-ENU.exe"+a1);
 	}
 	
 
