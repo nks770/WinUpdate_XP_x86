@@ -6223,7 +6223,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _srchctls_dll >zero && _srchctls_dll <fver(1,0,0,5326))
 	  ||  ( _srchui_dll   >zero && _srchui_dll   <fver(1,0,0,5326)) )) {
 		NN("Update for Windows XP (KB872966)");
-		XX(p2+"WindowsXP-KB872966-x86-ENU.exe"+a1);
+		XX(p2+"WindowsXP-KB872966-x86-ENU.exe"+a6);
 	}
 	
 
