@@ -701,6 +701,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _snmp_exe     = getFileVer(System32+L"\\snmp.exe",&status);
 	fver _snmpapi_dll  = getFileVer(System32+L"\\snmpapi.dll",&status);
 	fver _spiisupd_exe = getFileVer(System32+L"\\spiisupd.exe",&status);
+	fver _spoolss_dll  = getFileVer(System32+L"\\spoolss.dll",&status);
 	fver _spoolsv_exe  = getFileVer(System32+L"\\spoolsv.exe",&status);
 	fver _sqlsrv32_dll = getFileVer(System32+L"\\sqlsrv32.dll",&status);
 	fver _srvsvc_dll   = getFileVer(System32+L"\\srvsvc.dll",&status);
@@ -3308,6 +3309,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && (sku & XP_ALL) && _triedit_dll>zero && _triedit_dll<fver(6,1,0,9246)) {
 		NN("Security Update for Windows XP (KB956844)");
 		XX(p3+"windowsxp-kb956844-x86-enu_926002701569eabda17630d8f9cb45d8ced0ab71.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,1587))
+	  ||  ( _spoolss_dll  >zero && _spoolss_dll  <fver(5,1,2600,1587)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2508)) ))*/) {
+		NN("Update for Windows XP (KB873396)"); // KB873396 is replaced by KB961501 on SP2
+		XX(p1+"WindowsXP-KB873396-x86-ENU.exe"+a6);
 	}
 	/*if((sp==2 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,3510))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,5743))) {
