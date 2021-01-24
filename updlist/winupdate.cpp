@@ -590,6 +590,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntkrnlpa_exe = getFileVer(System32+L"\\ntkrnlpa.exe",&status);
 	fver _ntkrpamp_exe = getFileVer(System32+L"\\ntkrpamp.exe",&status);
 	fver _ntlanman_dll = getFileVer(System32+L"\\ntlanman.dll",&status);
+	fver _ntmarta_dll  = getFileVer(System32+L"\\ntmarta.dll",&status);
 	fver _ntoskrnl_exe = getFileVer(System32+L"\\ntoskrnl.exe",&status);
 	fver _ntprint_dll  = getFileVer(System32+L"\\ntprint.dll",&status);
 	fver _ntvdm_exe    = getFileVer(System32+L"\\ntvdm.exe",&status);
@@ -6251,6 +6252,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _srchui_dll   >zero && _srchui_dll   <fver(1,0,0,5326)) )) {
 		NN("Update for Windows XP (KB872966)");
 		XX(p2+"WindowsXP-KB872966-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _ntmarta_dll >zero && _ntmarta_dll <fver(5,1,2600,1588))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _ntmarta_dll >zero && _ntmarta_dll <fver(5,1,2600,2515))) {
+		NN("Update for Windows XP (KB873407)");
+		XX(p2+"WindowsXP-KB873407-x86-ENU.exe"+a6);
 	}
 	
 
