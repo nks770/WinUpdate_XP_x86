@@ -5144,6 +5144,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB902853)");
 		XX(p2+"WindowsXP-KB902853-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _imapi_sys  >zero && _imapi_sys  <fver(5,1,2600,2505)) )) {
+		NN("Update for Windows XP (KB883523)"); // KB883523 is replaced by KB903250
+		XX(p2+"WindowsXP-KB883523-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _imapi_sys  >zero && _imapi_sys  <fver(5,1,2600,2714)) )) {
 		NN("Update for Windows XP (KB903250)");
