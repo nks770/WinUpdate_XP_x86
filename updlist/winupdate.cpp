@@ -4268,6 +4268,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB899589)");
 		XX(p1+"WindowsXP-KB899589-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _nwprovau_dll>zero && _nwprovau_dll<fver(5,1,2600,2505)) {
+		NN("Update for Windows XP (KB883507)"); // KB883507 is replaced by KB923980
+		XX(p2+"WindowsXP-KB883507-v2-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _nwapi32_dll  >zero && _nwapi32_dll  <fver(5,1,2600,3015))
 					  ||  ( _nwprovau_dll >zero && _nwprovau_dll <fver(5,1,2600,3015))
