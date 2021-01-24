@@ -8483,6 +8483,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB929969)");
 		XX(p+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,2574)) {
+		NN("Update for Windows XP (KB873397)");
+		XX(p2+"WindowsXP-KB873397-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
 		NN("Security Update for Windows XP Service Pack 2 (KB938127)");
 		XX(p2+"WindowsXP-KB938127-x86-ENU.exe"+a1);
