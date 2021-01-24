@@ -3967,6 +3967,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB954708)");
 		XX(p3+"WindowsXP-KB954708-x86-ENU.exe"+a1);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1604))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1604))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1604))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1604)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,2532))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,2532))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,2532))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,2532)) ))) {
+		NN("Update for Windows XP (KB883517)"); // KB883517 is replaced by KB890859
+		XX(p2+"WindowsXP-KB883517-v2-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
 					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1634))
