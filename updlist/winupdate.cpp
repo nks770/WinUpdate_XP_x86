@@ -3164,6 +3164,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	if(qfe) {
+		/*if( sp==2 && qfe && (sku & XP_ALL) && _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1510)) {
+			NN("Update for Windows XP (KB883483)"); // KB883483 is replaced by KB970063
+			XX(p2+"WindowsXP-KB883483-x86-ENU.exe"+a6);
+		}*/
 		if( sp>=2 && qfe && (sku & XP_ALL) && (
 			  ( _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1516))
 		  ||  ( _riched20_dll >zero && _riched20_dll <fver(5,30,23,1231)) )) {
