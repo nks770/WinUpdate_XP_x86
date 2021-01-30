@@ -3992,6 +3992,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB883517)"); // KB883517 is replaced by KB890859
 		XX(p2+"WindowsXP-KB883517-v2-x86-ENU.exe"+a6);
 	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1592))
+	|| ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1592)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,2518)) ))) {
+		NN("Update for Windows XP (KB884539)"); // KB884539 is replaced by KB890859
+		XX(p2+"WindowsXP-KB884539-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
 					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1634))
