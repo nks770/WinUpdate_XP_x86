@@ -629,6 +629,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _p2psvc_dll   = getFileVer(System32+L"\\p2psvc.dll",&status);
 	fver _packager_exe = getFileVer(System32+L"\\packager.exe",&status);
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
+	fver _perfos_dll   = getFileVer(System32+L"\\perfos.dll",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
 	fver _pintool_exe  = getFileVer(System32+L"\\pintool.exe",&status);
 	fver _pnrpnsp_dll  = getFileVer(System32+L"\\pnrpnsp.dll",&status);
@@ -6336,6 +6337,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _odtext32_dll >zero && _odtext32_dll <fver(4,0,6305,0)) )) {
 		NN("Update for Windows XP (KB884038)");
 		XX(p2+"WindowsXP-KB884038-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _perfos_dll >zero && _perfos_dll <fver(5,1,2600,1587))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _perfos_dll >zero && _perfos_dll <fver(5,1,2600,2508))) {
+		NN("Update for Windows XP (KB884558)");
+		XX(p2+"WindowsXP-KB884558-x86-ENU.exe"+a6);
 	}
 	
 
