@@ -8316,7 +8316,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB831167)");
 		XX(sw+rtm+"Q831167.exe"+a8);
 	}
-	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+	/*if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
 		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2800,1485))
@@ -8326,9 +8326,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1612))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1485))
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1485)) )) {
-		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)"); // FIXME: Add QFE versions
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB867282)"); // KB867282 is replaced by KB896688
 		XX(p1+"ie6.0sp1-kb867282-windows-2000-xp-x86-enu_261bd11af527fd33c1c30bb16789cfee73d0f7d9.exe"+a6);
-	}
+	}*/
+	/*if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1622))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2800,1496))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2800,1469))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1505))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2800,1623))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2800,1505))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1658))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1612))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1485))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1505)) )) { // KB883939 is replaced by KB896688
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 for Windows XP and Windows 2000 (KB883939)");
+		XX(p1+"IE6.0sp1-KB883939-Windows-2000-XP-x86-ENU.exe"+a1);
+	}*/
 	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1692))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
@@ -8376,6 +8391,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll  >fver(6,0,2900,2573) && _wininet_dll  <fver(6,0,2900,2598)) )) {
 		NN("Cumulative Security Update for Internet Explorer for XP Service Pack 2 (KB867282)");
 		XX(p2+"WindowsXP-KB867282-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2668))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,2668))
+		|| (_iedw_exe     >zero && _iedw_exe     <fver(5,1,2600,2668))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2668))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,2668))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2668))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,2668))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,2668))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2900,2668))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2668))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2668))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2668))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,2668)) )) { // KB883939 is replaced by KB958215
+		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB883939)");
+		XX(p2+"WindowsXP-KB883939-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3059))
