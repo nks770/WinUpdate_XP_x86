@@ -2072,6 +2072,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		//XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
 		XX(sw+p1+"ENU_Q832483_MDAC_x86.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	      (_gdi32_dll       >zero && _gdi32_dll       <fver(5,1,2600,1599))
+	   || (_mf3216_dll      >zero && _mf3216_dll      <fver(5,1,2600,1596)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+	      (_gdi32_dll       >zero && _gdi32_dll       <fver(5,1,2600,2530)) ))*/) {
+		NN("Update for Windows XP (KB884562)"); // KB884562 is replaced by KB959554 on SP2
+		XX(p1+"WindowsXP-KB884562-x86-ENU.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1755))
+	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331))
+	   || (_user32_dll >zero && _user32_dll <fver(5,1,2600,1634))
+	   || (_win32k_sys >zero && _win32k_sys <fver(5,1,2600,1755)) )) {
+		NN("Security Update for Windows XP (KB896424)");
+		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
+	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1789))
 	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331)) )) {
@@ -2287,14 +2303,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==1 && (sku & XP_ALL) && _raspptp_sys>zero && _raspptp_sys<fver(5,1,2600,1129))) {
 		NN("Security Update for Windows XP (329834)");
 		XX(p1+"q329834_wxp_sp2_en_be9ddcff9200ff0d4879ed5939e73ed.exe"+a7);
-	}
-	if( sp==1 && (sku & XP_ALL) && (
-	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1755))
-	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331))
-	   || (_user32_dll >zero && _user32_dll <fver(5,1,2600,1634))
-	   || (_win32k_sys >zero && _win32k_sys <fver(5,1,2600,1755)) )) {
-		NN("Security Update for Windows XP (KB896424)");
-		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
 	}
 	if(sp==1 && (sku & XP_ALL) && (
 	      (_shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1348))
