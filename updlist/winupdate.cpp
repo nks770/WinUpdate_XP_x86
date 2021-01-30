@@ -603,6 +603,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
 	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
 	fver _odbccp32_dll = getFileVer(System32+L"\\odbccp32.dll",&status);
+	fver _odbcji32_dll = getFileVer(System32+L"\\odbcji32.dll",&status);
+	fver _odbcjt32_dll = getFileVer(System32+L"\\odbcjt32.dll",&status);
+	fver _oddbse32_dll = getFileVer(System32+L"\\oddbse32.dll",&status);
+	fver _odexl32_dll  = getFileVer(System32+L"\\odexl32.dll",&status);
+	fver _odfox32_dll  = getFileVer(System32+L"\\odfox32.dll",&status);
+	fver _odpdx32_dll  = getFileVer(System32+L"\\odpdx32.dll",&status);
+	fver _odtext32_dll = getFileVer(System32+L"\\odtext32.dll",&status);
 	fver _offfilt_dll  = getFileVer(System32+L"\\offfilt.dll",&status);
 	fver _oieng400_dll = getFileVer(System32+L"\\oieng400.dll",&status);
 	fver _ole32_dll    = getFileVer(System32+L"\\ole32.dll",&status);
@@ -6301,6 +6308,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,2505))) {
 		NN("Update for Windows XP (KB884018)");
 		XX(p2+"WindowsXP-KB884018-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _odbcji32_dll >zero && _odbcji32_dll <fver(4,0,6305,0))
+	  ||  ( _odbcjt32_dll >zero && _odbcjt32_dll <fver(4,0,6305,0))
+	  ||  ( _oddbse32_dll >zero && _oddbse32_dll <fver(4,0,6305,0))
+	  ||  ( _odexl32_dll  >zero && _odexl32_dll  <fver(4,0,6305,0))
+	  ||  ( _odfox32_dll  >zero && _odfox32_dll  <fver(4,0,6305,0))
+	  ||  ( _odpdx32_dll  >zero && _odpdx32_dll  <fver(4,0,6305,0))
+	  ||  ( _odtext32_dll >zero && _odtext32_dll <fver(4,0,6305,0)) )) {
+		NN("Update for Windows XP (KB884038)");
+		XX(p2+"WindowsXP-KB884038-x86-ENU.exe"+a6);
 	}
 	
 
