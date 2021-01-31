@@ -1007,6 +1007,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sqlse20_dll  = getFileVer(ehome+L"\\sqlse20.dll",&status);
 
 	fver _ContextTagger_dll = getFileVer(Ink+L"\\ContextTagger.dll",&status);
+	fver _InkObj_dll        = getFileVer(Ink+L"\\InkObj.dll",&status);
 	fver _TabTip_exe        = getFileVer(Ink+L"\\TabTip.exe",&status);
 	fver _TCServer_exe      = getFileVer(Ink+L"\\TCServer.exe",&status);
 	fver _tipband_dll       = getFileVer(Ink+L"\\tipband.dll",&status);
@@ -2028,6 +2029,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,1756)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,2771)) ))) {
+	// KB904423 replaces KB884573.  KB884573 was discontinued due to it causing more issues than it fixed.
 		NN("Update for Windows XP (KB904423)");
 		XX(p2+"WindowsXP-KB904423-x86-ENU.exe"+a1);
 	}
@@ -10560,6 +10562,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,5685)) ))) {
 		NN("Update for Windows XP (KB955534)");
 		XX(p3+"WindowsXP-KB955534-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_TABLET) && _InkObj_dll >zero && _InkObj_dll <fver(2,7,2600,2508)) {
+		NN("Update for Windows XP (KB884861)");
+		XX(p2+"WindowsXP-KB884861-x86-ENU.exe"+a6);
 	}
 	if((sp==2 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,3454))
 	 /*||(sp==3 && qfe && (sku & XP_TABLET) && _wisptis_exe >zero && _wisptis_exe <fver(1,7,2600,5687))*/) {
