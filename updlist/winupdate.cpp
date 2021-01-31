@@ -553,6 +553,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msv1_0_dll   = getFileVer(System32+L"\\msv1_0.dll",&status);
 	fver _msvcirt_dll  = getFileVer(System32+L"\\msvcirt.dll",&status);
 	fver _msvcrt_dll   = getFileVer(System32+L"\\msvcrt.dll",&status);
+	fver _msvfw32_dll  = getFileVer(System32+L"\\msvfw32.dll",&status);
 	fver _msvidc32_dll = getFileVer(System32+L"\\msvidc32.dll",&status);
 	fver _msvidctl_dll = getFileVer(System32+L"\\msvidctl.dll",&status);
 	fver _msw3prt_dll  = getFileVer(System32+L"\\msw3prt.dll",&status);
@@ -6350,6 +6351,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _perfos_dll >zero && _perfos_dll <fver(5,1,2600,2508))) {
 		NN("Update for Windows XP (KB884558)");
 		XX(p2+"WindowsXP-KB884558-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _msvfw32_dll >zero && _msvfw32_dll <fver(5,1,2600,1596))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _msvfw32_dll >zero && _msvfw32_dll <fver(5,1,2600,2524))) {
+		NN("Update for Windows XP (KB884568)");
+		XX(p2+"WindowsXP-KB884568-x86-ENU.exe"+a6);
 	}
 	
 
