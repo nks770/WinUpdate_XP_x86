@@ -2022,6 +2022,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB841873)");
 		XX(p1+"windowsxp-kb841873-x86-enu_f0f4cb2c535f8adf154e72f2f2c60d6f9b710d6d.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _mstask_dll   >zero && _mstask_dll   <fver(5,1,2600,1756))
+	  ||  ( _mstinit_exe  >zero && _mstinit_exe  <fver(5,1,2600,1756))
+	  ||  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,1756)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,2771)) ))) {
+		NN("Update for Windows XP (KB904423)");
+		XX(p2+"WindowsXP-KB904423-x86-ENU.exe"+a1);
+	}
 	if((sp==0 && (sku & XP_ALL) && _shmedia_dll>zero && _shmedia_dll<fver(6,0,2600,101))
 	 ||(sp==1 && (sku & XP_ALL) && _shmedia_dll>zero && _shmedia_dll<fver(6,0,2800,1125))) {
 		NN("Q329390: Security Update");
