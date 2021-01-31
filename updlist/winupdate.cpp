@@ -1119,6 +1119,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _netbt_sys    = getFileVer(Drivers+L"\\netbt.sys",&status);
 	fver _npfs_sys     = getFileVer(Drivers+L"\\npfs.sys",&status);
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
+	fver _nwlnkipx_sys = getFileVer(Drivers+L"\\nwlnkipx.sys",&status);
 	fver _nwrdr_sys    = getFileVer(Drivers+L"\\nwrdr.sys",&status);
 	fver _ohci1394_sys = getFileVer(Drivers+L"\\ohci1394.sys",&status);
 	fver _partmgr_sys  = getFileVer(Drivers+L"\\partmgr.sys",&status);
@@ -1232,7 +1233,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msdv_sys_cache     = getFileVer(DriverCache+L"\\msdv.sys",&status);
 	fver _mxdwdrv_dll_cache  = getFileVer(DriverCache+L"\\mxdwdrv.dll",&status);
 	fver _mxdwdui_dll_cache  = getFileVer(DriverCache+L"\\mxdwdui.dll",&status);
+	fver _ndis_sys_cache     = getFileVer(DriverCache+L"\\ndis.sys",&status);
+	fver _ndisuio_sys_cache  = getFileVer(DriverCache+L"\\ndisuio.sys",&status);
 	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
+	fver _nwlnkipx_sys_cache = getFileVer(DriverCache+L"\\nwlnkipx.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
 	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
@@ -4541,24 +4545,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"WindowsXP-KB895961-v4-x86-ENU.exe"+a1);
 		}
 	}
-	if( sp==1 && (sku & XP_ALL) && (
-	      (_dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1264))
-	   || (_ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1254))
-	   || (_ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1254))
-	   || (_netshell_dll >zero && _netshell_dll <fver(5,1,2600,1254))
-	   || (_wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1276))
-	   || (_wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1276))
-	   || (_wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1276)) )) {
-		NN("Update for Microsoft Windows XP (KB826942)");
-		XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
-	}
+	
 	if(!qfe) {
+		if( sp==1 && (sku & XP_ALL) && (
+			  (_dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1264))
+		   || (_ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1254))
+		   || (_ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1254))
+		   || (_netshell_dll >zero && _netshell_dll <fver(5,1,2600,1254))
+		   || (_wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1276))
+		   || (_wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1276))
+		   || (_wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1276))
+		   || (_ndis_sys_cache    <fver(5,1,2600,1254))
+		   || (_ndisuio_sys_cache <fver(5,1,2600,1254)) )) {
+			NN("Update for Microsoft Windows XP (KB826942)");
+			XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
+		}
 		/*if( sp==2 && (sku & XP_ALL) && (
 							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
 						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
 						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
 						  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2626))
-						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626)) )) {
+						  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2626))
+						  ||  ( _ndisuio_sys_cache   <fver(5,1,2600,2626)) )) {
 			NN("Update for Windows XP (KB899337)"); // KB899337 is replaced by KB917021
 			XX(p2+"WindowsXP-KB899337-v2-x86-ENU.exe"+a1);
 		}*/
@@ -4567,7 +4575,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	    || ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
 	    || ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
 	    || ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
-	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) )) {
+	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977))
+		|| ( _ndisuio_sys_cache   <fver(5,1,2600,2977)) )) {
 			NN("Update for Windows XP (KB917021)");
 			XX(p2+"WindowsXP-KB917021-v3-x86-ENU.exe"+a1);
 		}
@@ -4577,17 +4586,36 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	    || ( _wlanapi_dll  >zero && _wlanapi_dll  <fver(5,1,2600,3024))
 	    || ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2658))
 	    || ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2658))
-	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2658)) )) {
+	    || ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2658))
+		|| ( _ndisuio_sys_cache   <fver(5,1,2600,2658)) )) {
 			NN("Wireless LAN API (KB918997)");
 			XX(p2+"WindowsXP-KB918997-v6-x86-ENU.exe"+a1);
 		}
 	} else {
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  ( _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1612))
+		  ||  ( _ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1612))
+		  ||  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1612))
+		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,1612))
+		  ||  ( _nwlnkipx_sys >zero && _nwlnkipx_sys <fver(5,1,2600,1612))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1612))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1612))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1612))
+		  ||  ( _ndis_sys_cache     <fver(5,1,2600,1612))
+		  ||  ( _ndisuio_sys_cache  <fver(5,1,2600,1612))
+		  ||  ( _nwlnkipx_sys_cache <fver(5,1,2600,1612)) ))
+		/*|| (sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2573)) ))*/) {
+			NN("Update for Windows XP (KB884862)"); // KB884862 is replaced by KB949127 on SP2
+			XX(p1+"WindowsXP-KB884862-v2-x86-ENU.exe"+a6);
+		}
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2858))
 		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2858))
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2858))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2858))
-		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858)) )) {
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2858))
+		  ||  ( _ndisuio_sys_cache <fver(5,1,2600,2858)) )) {
 			NN("Update for Windows XP (KB915428)"); // KB915428 is replaced by KB923154
 			XX(p2+"WindowsXP-KB915428-x86-ENU.exe"+a1);
 		}*/
@@ -4596,7 +4624,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2979))
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2979))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2979))
-		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2979)) )) {
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2979))
+		  ||  ( _ndisuio_sys_cache <fver(5,1,2600,2979)) )) {
 			NN("Update for Windows XP (KB923154)");
 			XX(p2+"WindowsXP-KB923154-x86-ENU.exe"+a1);
 		}
@@ -4605,7 +4634,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2977))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
-		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,3356)) ))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,3356))
+		  ||  ( _ndisuio_sys_cache   <fver(5,1,2600,2977)) ))
 		|| (sp==3 && qfe && (sku & XP_ALL) && (
 			  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,5585)) ))) {
 			NN("Update for Windows XP (KB949127)");
@@ -4616,7 +4646,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2977))
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,3390))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2977))
-		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977)) ))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2977))
+		  ||  ( _ndisuio_sys_cache   <fver(5,1,2600,2977)) ))
 		/*|| (sp==3 && qfe && (sku & XP_ALL) && (
 			  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,5621)) ))*/) {
 			NN("Update for Windows XP (KB953609)"); // On SP3, KB953609 is replaced by KB971455
