@@ -2613,16 +2613,37 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q326830: Security Update (Windows XP)");
 		XX(rtm+"q326830_wxp_sp1_en_592a4e341f97da6d1bb0479ef1deecd.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && (
-	      (_hccoin_dll  >zero && _hccoin_dll  <fver(5,1,2600,1243))
-	   || (_usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,1243))
-	   || (_usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,1243))
-	   || (_usbhub_sys  >zero && _usbhub_sys  <fver(5,1,2600,1243))
-	   || (_usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,1243))
-	   || (_usbport_sys >zero && _usbport_sys <fver(5,1,2600,1243))
-	   || (_usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,1243)) )) {
-		NN("Recommended Update for Windows XP SP1 (KB822603)");
-		XX(p1+"windowsxp-kb822603-x86-enu_d5007e34cf81d51e58b8eb4fb8912fb.exe"+a7);
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _usbhub_sys   >zero && _usbhub_sys   <fver(5,1,2600,2515)) )) {
+		NN("Update for Windows XP (KB884868)"); // KB884868 is replaced by KB884868-v2
+		XX(p2+"WindowsXP-KB884868-x86-ENU.exe"+a6);
+	}*/
+	if(qfe) {
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  (                       _hccoin_dll  <fver(5,1,2600,1694))
+		  ||  ( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,1694))
+		  ||  (                       _usbehci_sys <fver(5,1,2600,1694))
+		  ||  ( _usbhub_sys  >zero && _usbhub_sys  <fver(5,1,2600,1694))
+		  ||  ( _usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,1694))
+		  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,1694))
+		  ||  ( _usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,1694)) ))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _usbhub_sys >zero && _usbhub_sys <fver(5,1,2600,2685)) ))*/ ) {
+			NN("Update for Windows XP (KB884868)"); // KB884868-v2 is replaced by KB949483 on SP2
+			XX(p1+"WindowsXP-KB884868-v2-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==1 && (sku & XP_ALL) && (
+			  (                      _hccoin_dll  <fver(5,1,2600,1243))
+		   || (_usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,1243))
+		   || (                      _usbehci_sys <fver(5,1,2600,1243))
+		   || (_usbhub_sys  >zero && _usbhub_sys  <fver(5,1,2600,1243))
+		   || (_usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,1243))
+		   || (_usbport_sys >zero && _usbport_sys <fver(5,1,2600,1243))
+		   || (_usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,1243)) )) {
+			NN("Recommended Update for Windows XP SP1 (KB822603)");
+			XX(p1+"windowsxp-kb822603-x86-enu_d5007e34cf81d51e58b8eb4fb8912fb.exe"+a7);
+		}
 	}
 	if( sp==0 && (sku & XP_ALL) && _pci_sys>zero && _pci_sys<fver(5,1,2600,21)) {
 		NN("Resuming From Standby Update");
