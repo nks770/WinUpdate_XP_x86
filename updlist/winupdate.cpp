@@ -1651,6 +1651,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
 	fver _comctl32_dll_1873 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1873_x-ww_7d39bb85\\comctl32.dll",&status);
 	fver _comctl32_dll_1891 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1891_x-ww_7d3bbc01\\comctl32.dll",&status);
+	fver _comctl32_dll_2649 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2649_x-ww_aac16c8b\\comctl32.dll",&status);
 	fver _comctl32_dll_2982 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2982_x-ww_ac3f9c03\\comctl32.dll",&status);
 	fver _comctl32_dll_7660 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.7660_x-ww_936580bb\\comctl32.dll",&status);
 
@@ -2345,15 +2346,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB873392)"); // KB873392 is replaced by KB822686
 		XX(p2+"WindowsXP-KB873392-x86-ENU.exe"+a6);
 	}*/
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1659))
 		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
 		|| ( _comctl32_dll_1659 < fver(6,0,2800,1659)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2649)) ))) {
-		NN("Update for Windows XP (KB822686)");
+		NN("Update for Windows XP (KB822686)"); // KB822686 is replaced by KB884883+KB908531
 		XX(p2+"WindowsXP-KB822686-x86-ENU.exe"+a1);
+	}*/
+	if((sp==1 && (sku & XP_ALL) && (
+	   ( _explorer_exe >zero && _explorer_exe <fver(6,0,2800,1659))
+	|| ( _fldrclnr_dll  >zero && _fldrclnr_dll  <fver(6,0,2800,1579))
+	|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1659))
+	|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+	|| ( _comctl32_dll >zero && _comctl32_dll <fver(5,82,2800,1659))
+	|| ( _comctl32_dll_1659 < fver(6,0,2800,1659)) ))
+	 ||(sp==2 && (sku & XP_ALL) && (
+	   (_comctl32_dll>zero && _comctl32_dll<fver(5,82,2900,2649))
+	|| ( _explorer_exe  >zero && _explorer_exe  <fver(6,0,2900,2649))
+	|| ( _comctl32_dll_2649 < fver(6,0,2900,2649))))) {
+		NN("Update for Windows XP (KB884883)");
+		XX(p2+"WindowsXP-KB884883-v8-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
