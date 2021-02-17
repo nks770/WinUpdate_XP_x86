@@ -4614,6 +4614,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p1+"windowsxp-kb826942-x86-enu_66c94466abeca8e6a2ce8d52a4e900f.exe"+a6);
 		}
 		/*if( sp==2 && (sku & XP_ALL) && (
+							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2550))
+						  ||  ( _ndisuio_sys_cache   <fver(5,1,2600,2550)) )) {
+			NN("Update for Windows XP (KB885293)"); // KB885293 is replaced by KB917021
+			XX(p2+"WindowsXP-KB885293-v2-x86-ENU.exe"+a6);
+		}*/
+		/*if( sp==2 && (sku & XP_ALL) && (
 							  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
 						  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2626))
 						  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2676))
