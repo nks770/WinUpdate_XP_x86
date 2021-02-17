@@ -5940,6 +5940,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB951618)");
 		XX(p3+"windowsxp-kb951618-v2-x86-enu_4c2c32b6a5be717c3625e295e47373c8787cb388.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _ipnathlp_dll   >zero && _ipnathlp_dll   <fver(5,1,2600,2508)) )) {
+		NN("Update for Windows XP (KB885295)"); // KB885295 is replaced by KB951624
+		XX(p2+"WindowsXP-KB885295-x86-ENU.exe"+a6);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _hnetcfg_dll  >zero && _hnetcfg_dll  <fver(5,1,2600,3360))
 	  ||  ( _ipnathlp_dll >zero && _ipnathlp_dll <fver(5,1,2600,3360)) ))
