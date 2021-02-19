@@ -5299,6 +5299,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB903250-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2524))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,2524)) )) {
+			NN("Update for Windows XP (KB885464)"); // KB885464 is replaced by KB958149
+			XX(p2+"WindowsXP-KB885464-x86-ENU.exe"+a6);
+		}*/
 		if((sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,3473))
 			||(_ohci1394_sys_cache  <fver(5,1,2600,3473))))
@@ -5315,6 +5321,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			NN("Update for Windows XP (KB904412)");
 			XX(p2+"WindowsXP-KB904412-v2-x86-ENU.exe"+a1);
 		}
+	}
+	if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885222")
+		|| (_ohci1394_sys >zero && _ohci1394_sys < fver(5,1,2600,2549))
+		|| (_ohci1394_sys_cache < fver(5,1,2600,2549)) )) {
+		// On SP2, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
+		// This problem occurs because Windows XP SP2 changes 1394b ports to S100 speed.
+		NN("Update for Windows XP (KB885222)"); // cstupd1394sidspeed.dll version 5.1.2600.2549
+		XX(p2+"WindowsXP-KB885222-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==3 && qfe && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB955408")) {
+		// On SP3, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
+		// This problem occurs because Windows XP SP3 changes 1394b ports to S100 speed.
+		NN("Update for Windows XP (KB955408)"); // CstUpd1394SidSpeed.dll version 5.1.2600.5657
+		XX(p3+"WindowsXP-KB955408-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _dmdlgs_dll  >zero && _dmdlgs_dll  <fver(2600,2770,503,0))
@@ -6223,20 +6243,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
 		NN("Update for Windows XP (KB953761)");
 		XX(p3+"WindowsXP-KB953761-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB885222")
-		|| (_ohci1394_sys >zero && _ohci1394_sys < fver(5,1,2600,2549))
-		|| (_ohci1394_sys_cache < fver(5,1,2600,2549)) )) {
-		// On SP2, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
-		// This problem occurs because Windows XP SP2 changes 1394b ports to S100 speed.
-		NN("Update for Windows XP (KB885222)"); // cstupd1394sidspeed.dll version 5.1.2600.2549
-		XX(p2+"WindowsXP-KB885222-v2-x86-ENU.exe"+a1);
-	}
-	if( sp==3 && qfe && (sku & XP_ALL) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB955408")) {
-		// On SP3, the performance of your 1394a or 1394b FireWire devices may be greatly decreased.
-		// This problem occurs because Windows XP SP3 changes 1394b ports to S100 speed.
-		NN("Update for Windows XP (KB955408)"); // CstUpd1394SidSpeed.dll version 5.1.2600.5657
-		XX(p3+"WindowsXP-KB955408-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,3599))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,5770))) {
