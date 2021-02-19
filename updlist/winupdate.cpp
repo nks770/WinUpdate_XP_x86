@@ -3511,6 +3511,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB896256-v4-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  (_mup_sys     >zero && _mup_sys     <fver(5,1,2600,2573))
+					  ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2573))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2573))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,2573))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,2573)) )) {
+		NN("Update for Windows XP (KB885443)"); // KB885443 is replaced by KB898900+KB896256
+		XX(p2+"WindowsXP-KB885443-v3-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _advapi32_dll   >zero && _advapi32_dll   <fver(5,1,2600,3227)) )) {
 		NN("Update for Windows XP (KB943092)"); // KB943092 is replaced by KB956572
 		XX(p2+"WindowsXP-KB943092-x86-ENU.exe"+a1);
