@@ -1646,6 +1646,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comctl32_dll_1342 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1331_x-ww_7abf6d02\\comctl32.dll",&status);
 	fver _comctl32_dll_1515 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1515_x-ww_7bb98b8a\\comctl32.dll",&status);
 	fver _comctl32_dll_1579 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1579_x-ww_7bbf8d08\\comctl32.dll",&status);
+	fver _comctl32_dll_1592 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1592_x-ww_7bc18d7f\\comctl32.dll",&status);
 	fver _comctl32_dll_1659 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1659_x-ww_7c3b9c0b\\comctl32.dll",&status);
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
@@ -2356,6 +2357,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB822686)"); // KB822686 is replaced by KB884883+KB908531
 		XX(p2+"WindowsXP-KB822686-x86-ENU.exe"+a1);
 	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1592))
+		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1592))
+		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1592))
+		|| ( _comctl32_dll_1592 < fver(6,0,2800,1592)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2518)) ))*/) {
+		NN("Update for Windows XP (KB885843)"); // KB885843 is replaced by KB908531 on SP2
+		XX(p1+"WindowsXP-KB885843-x86-ENU.exe"+a6);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 	   ( _explorer_exe >zero && _explorer_exe <fver(6,0,2800,1659))
 	|| ( _fldrclnr_dll  >zero && _fldrclnr_dll  <fver(6,0,2800,1579))
