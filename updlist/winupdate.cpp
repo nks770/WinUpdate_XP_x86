@@ -3756,6 +3756,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB969059)");
 		XX(p3+"WindowsXP-KB969059-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _rastls_dll >zero && _rastls_dll <fver(5,1,2600,2523) ) {
+		NN("Update for Windows XP (KB885453)"); // KB885453 is replaced by KB974318
+		XX(p2+"WindowsXP-KB885453-x86-ENU.exe"+a6);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_raschap_dll>zero && _raschap_dll<fver(5,1,2600,3632))
 					  ||  (_rastls_dll>zero && _rastls_dll<fver(5,1,2600,3632))))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_raschap_dll>zero && _raschap_dll<fver(5,1,2600,5886))
