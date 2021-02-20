@@ -6255,6 +6255,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB951159)");
 		XX(p3+"WindowsXP-KB951159-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2524)) {
+		NN("Update for Windows XP (KB953761)");
+		XX(p2+"WindowsXP-KB885865-x86-ENU.exe"+a6);
+	}
 	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
 		NN("Update for Windows XP (KB953761)");
 		XX(p3+"WindowsXP-KB953761-x86-ENU.exe"+a1);
