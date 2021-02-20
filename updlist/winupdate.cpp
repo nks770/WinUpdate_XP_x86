@@ -11000,6 +11000,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft Windows Installer 3.1");
 		XX(p+"WindowsInstaller-KB893803-v2-x86.exe"+a1);
 	}
+	/*if( sp==2 && qfe && !*msi45 && (sku & XP_ALL) && (
+	   ( _msi_dll     > zero && _msi_dll     <fver(3,0,3790,2518))
+	|| ( _msiexec_exe > zero && _msiexec_exe <fver(3,0,3790,2537)) )) {
+		NN("Update for Windows XP (KB885898)"); // KB885898 is superseded by KB893803-v2
+		XX(p2+"WindowsXP-KB885898-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && !*msi45 && (sku & XP_ALL) && (  _msi_dll <fver(3,1,4000,4039) )) {
 		NN("Update for Windows XP (KB927891)");
 		XX(p2+"windowsxp-kb927891-v3-x86-enu_831fc2b9075b0a490adf15d2c5452e01e6feaa17.exe"+a1);
