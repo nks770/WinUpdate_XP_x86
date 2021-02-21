@@ -6261,7 +6261,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB951159-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2524)) {
-		NN("Update for Windows XP (KB953761)");
+		NN("Update for Windows XP (KB885865)");
 		XX(p2+"WindowsXP-KB885865-x86-ENU.exe"+a6);
 	}
 	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
@@ -8782,16 +8782,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 for Windows XP (KB946627)");
 		XX(p2+"windowsxp-kb946627-x86-enu_f46e072004e766768205a78b6cd207f871c5376e.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_ALL) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
-		// KB929969 is replaced by KB938127 on SP2
-		NN("Security Update for Windows XP (KB929969)");
-		XX(p+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
-	}*/
-	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,2574)) {
-		NN("Update for Windows XP (KB873397)");
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _vgx_dll>zero && _vgx_dll<fver(6,0,2900,2539)) {
+		NN("Update for Windows XP (KB885932)"); // KB885932 is replaced by KB938127
+		XX(p2+"WindowsXP-KB885932-v2-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _vgx_dll>zero && _vgx_dll<fver(6,0,2900,2574)) {
+		NN("Update for Windows XP (KB873397)"); // KB873397 is replaced by KB938127
 		XX(p2+"WindowsXP-KB873397-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3051)) {
+		NN("Security Update for Windows XP (KB929969)"); // KB929969 is replaced by KB938127 on SP2
+		XX(p2+"windowsxp-kb929969-x86-enu_1237547f1cb90f54269bdb73c9985f263e85d48c.exe"+a1);
 	}*/
-	if( sp==2 && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
+	if( sp==2 && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _vgx_dll>zero && _vgx_dll<fver(6,0,2900,3164)) {
 		NN("Security Update for Windows XP Service Pack 2 (KB938127)");
 		XX(p2+"WindowsXP-KB938127-x86-ENU.exe"+a1);
 	}
