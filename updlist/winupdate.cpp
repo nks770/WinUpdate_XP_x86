@@ -6080,6 +6080,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955356)");
 		XX(p3+"WindowsXP-KB955356-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			( _1394bus_sys >zero && _1394bus_sys <fver(5,1,2600,2532))
+			|| _1394bus_sys_cache <fver(5,1,2600,2532) )) {
+		NN("Update for Windows XP (KB887170)"); // KB887170 is replaced by KB960970
+		XX(p2+"WindowsXP-KB887170-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _1394bus_sys >zero && _1394bus_sys <fver(5,1,2600,3456))
 			|| _1394bus_sys_cache <fver(5,1,2600,3456)))
