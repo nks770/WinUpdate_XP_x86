@@ -664,6 +664,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rastls_dll   = getFileVer(System32+L"\\rastls.dll",&status);
 	fver _rdchost_dll  = getFileVer(System32+L"\\rdchost.dll",&status);
 	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
+	fver _rdpsnd_dll   = getFileVer(System32+L"\\rdpsnd.dll",&status);
 	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
 	fver _regapi_dll   = getFileVer(System32+L"\\regapi.dll",&status);
 	fver _remotesp_tsp = getFileVer(System32+L"\\remotesp.tsp",&status);
@@ -6514,6 +6515,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _msvfw32_dll >zero && _msvfw32_dll <fver(5,1,2600,2524))) {
 		NN("Update for Windows XP (KB884568)");
 		XX(p2+"WindowsXP-KB884568-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _rdpsnd_dll>zero && _rdpsnd_dll<fver(5,1,2600,2524)) {
+		NN("Update for Windows XP (KB886199)");
+		XX(p2+"WindowsXP-KB886199-x86-ENU.exe"+a6);
 	}
 	
 
