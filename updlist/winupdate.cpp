@@ -7098,6 +7098,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB927880)"); //KB927880 is replaced by KB968389
 		XX(p2+"WindowsXP-KB927880-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,2524)) {
+		NN("Update for Windows XP (KB887535)"); // KB885887 is replaced by KB968389
+		XX(p2+"WindowsXP-KB887535-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,2565)) {
 		NN("Update for Windows XP (KB885887)"); // KB885887 is replaced by KB968389
 		XX(p2+"WindowsXP-KB885887-x86-ENU.exe"+a6);
