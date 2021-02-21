@@ -6029,6 +6029,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB951709)");
 		XX(p3+"WindowsXP-KB951709-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _ndiswan_sys >zero && _ndiswan_sys <fver(5,1,2600,2524)) {
+		NN("Update for Windows XP (KB886809)"); // KB886809 is replaced by KB952117
+		XX(p2+"WindowsXP-KB886809-x86-ENU.exe"+a6);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _ndis_sys    >zero && _ndis_sys    <fver(5,1,2600,3359))
 	  ||  ( _ndiswan_sys >zero && _ndiswan_sys <fver(5,1,2600,3359)) ))
