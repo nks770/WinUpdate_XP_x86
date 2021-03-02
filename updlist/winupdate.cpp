@@ -8593,6 +8593,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB831167)");
 		XX(sw+rtm+"Q831167.exe"+a8);
 	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2800,1480)) )) {
+		// KB888092 is replaced by KB896688 on SP1
+		NN("Update for Internet Explorer 6 Service Pack 1 - Windows XP and Windows 2000 (KB888092)");
+		XX(rtm+"IE6.0sp1-KB888092-Windows-2000-XP-x86-ENU.exe"+a6);
+	}
 	/*if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1612))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
