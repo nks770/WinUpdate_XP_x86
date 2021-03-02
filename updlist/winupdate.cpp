@@ -8270,9 +8270,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Outlook Express 6 SP1 (KB823353)");
 		XX(sw+rtm+"ie6.0sp1-kb823353-x86-enu_fc5e431c90275cbf25628c46712a6aa7fe86acd9.exe"+a8);
 	}
+	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		                  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2800,1478))
+					  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2800,1478))
+					  ||  ( _wab32_dll    >zero && _wab32_dll    <fver(6,0,2800,1478))
+					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2800,1478)) )) {
+		// KB887797 is replaced by KB911567 on SP1
+		NN("Cumulative Update for Outlook Express 6 Service Pack 1 (KB887797)");
+		XX(rtm+"IE6.0sp1-KB887797-Windows-2000-XP-x86-ENU.exe"+a6);
+	}
 	if( sp==1 && (sku & XP_ALL) && (
 	      (_directdb_dll   >zero && _directdb_dll   <fver(6,0,2800,1807))
-//	   || (_iecustom_dll  >zero && _iecustom_dll  <fver(6,0,2800,1502))
 	   || (_inetcomm_dll >zero && _inetcomm_dll  <fver(6,0,2800,1807))
 	   || (_inetres_dll >zero && _inetres_dll  <fver(6,0,2800,1807))
 	   || (_msident_dll >zero && _msident_dll  <fver(6,0,2800,1807))
@@ -8317,6 +8325,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB978542)");
 		XX(p3+"WindowsXP-KB978542-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && (
+		                  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,2527))
+					  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2900,2527))
+					  ||  ( _wab32_dll    >zero && _wab32_dll    <fver(6,0,2900,2527))
+					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2900,2527)) )) {
+		// KB887797 is replaced by KB929123
+		// GDR installs 6,0,2900,2527 ; QFE installs 6,0,2900,2530
+		NN("Cumulative Update for Outlook Express for Windows XP (KB887797)");
+		XX(p2+"WindowsXP-KB887797-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (
 		                  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,2869))
 					  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2900,2869))
