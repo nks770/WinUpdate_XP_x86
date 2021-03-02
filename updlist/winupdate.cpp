@@ -6796,8 +6796,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,2507)) {
 		// KB872789 is replaced by KB979559
-		NN("Security Update for Windows XP (KB872789)");
+		NN("Update for Windows XP (KB872789)");
 		XX(p2+"WindowsXP-KB872789-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,2578)) {
+		// KB887589 is replaced by KB979559
+		NN("Update for Windows XP (KB887589)");
+		XX(p2+"WindowsXP-KB887589-x86-ENU.exe"+a6);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
 		// KB941693 is replaced by KB979559 on SP2
@@ -8594,8 +8599,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(sw+rtm+"Q831167.exe"+a8);
 	}
 	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
-		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2800,1480)) )) {
+		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2800,1479)) )) {
 		// KB888092 is replaced by KB896688 on SP1
+		// GDR installs 6,0,2800,1479 ; QFE installs 6,0,2800,1480
 		NN("Update for Internet Explorer 6 Service Pack 1 - Windows XP and Windows 2000 (KB888092)");
 		XX(rtm+"IE6.0sp1-KB888092-Windows-2000-XP-x86-ENU.exe"+a6);
 	}
