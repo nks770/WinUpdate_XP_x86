@@ -2300,6 +2300,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB840987)");
 		XX(p1+"windowsxp-kb840987-x86-enu_60b89d9ecf98d6f749d0f9c87ff99c4758ef0de7.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _basesrv_dll  >zero && _basesrv_dll  <fver(5,1,2600,1604))
+	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,1596))
+	  ||  ( _vdmdbg_dll   >zero && _vdmdbg_dll   <fver(5,1,2600,1604))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,1596)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _basesrv_dll  >zero && _basesrv_dll  <fver(5,1,2600,2534))
+	  ||  ( _vdmdbg_dll   >zero && _vdmdbg_dll   <fver(5,1,2600,2534)) ))) {
+		NN("Update for Windows XP (KB887820)");
+		XX(p2+"WindowsXP-KB887820-x86-ENU.exe"+a6);
+	}
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_msgsvc_dll >zero && _msgsvc_dll <fver(5,1,2600,121))
 	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,121))))
