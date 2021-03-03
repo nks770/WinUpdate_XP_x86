@@ -726,6 +726,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sxs_dll      = getFileVer(System32+L"\\sxs.dll",&status);
 	fver _synceng_dll  = getFileVer(System32+L"\\synceng.dll",&status);
 	fver _sysdm_cpl    = getFileVer(System32+L"\\sysdm.cpl",&status);
+	fver _syssetup_dll = getFileVer(System32+L"\\syssetup.dll",&status);
 	fver _t2embed_dll  = getFileVer(System32+L"\\t2embed.dll",&status);
 	fver _tapisrv_dll  = getFileVer(System32+L"\\tapisrv.dll",&status);
 	fver _tcpmon_dll   = getFileVer(System32+L"\\tcpmon.dll",&status);
@@ -6547,6 +6548,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _usbstor_sys>zero && _usbstor_sys<fver(5,1,2600,2586))) {
 		NN("Update for Windows XP (KB887173)");
 		XX(p2+"WindowsXP-KB887173-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,1599))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2530))*/) {
+		NN("Update for Windows XP (KB887816)"); // KB887816 is replaced by KB887816-v2 on SP2
+		XX(p1+"WindowsXP-KB887816-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2573)) {
+		NN("Update for Windows XP (KB887816)");
+		XX(p2+"WindowsXP-KB887816-v2-x86-ENU.exe"+a6);
 	}
 	
 
