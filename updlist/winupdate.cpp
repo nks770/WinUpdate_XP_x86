@@ -7051,17 +7051,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for WES09 and POSReady 2009 (KB4339284)");
 		XX(p3+"windowsxp-kb4339284-x86-embedded-enu_2a06b4e2d2bafea70a1f56eb3fd1ee2dc5717bbd.exe"+a1);
 	}*/
-	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
+	/*if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7607)) {
 		NN("Update for WES09 and POSReady 2009 (KB4468323)");
 		XX(p3+"windowsxp-kb4468323-x86-embedded-enu_6a46468fe73b3b793934d70768ab2c4ce11a03ab.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7654)) {
+	}*/
+	/*if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7654)) {
 		NN("2019-03 Update for POSReady 2009 for x86-based Systems (KB4487989)");
 		XX(p3+"windowsxp-kb4487989-x86-embedded-enu_3c32c4f284fcd7208b3cf4428320e95a27513c3a.exe"+a1);
-	}
-	if( sp==3 && (sku & XPE_POSREADY2009) && _tzchange_exe<fver(5,1,2600,7676)) {
+	}*/
+	/*if( sp==3 && (sku & XPE_POSREADY2009) && _tzchange_exe<fver(5,1,2600,7676)) {
 		NN("2019-04 Update for POSReady 2009 for x86-based Systems (KB4487990)");
 		XX(p3+"windowsxp-kb4487990-x86-embedded-enu_8a1f84ccfc4cdcb9536864fa91ae82ef62cb3e79.exe"+a1);
+	}*/
+	if( sp==3 && (sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,7728)) {
+		NN("2019-06 Update for POSReady 2009 for x86-based Systems (KB4501226)");
+		XX(p3+"windowsxp-kb4501226-x86-embedded-enu_708fe12ecfbbb070821a87fd538af3b6b6fd3084.exe"+a1);
 	}
 	
 	if((sp==2 && (sku & XP_ALL) && ( ( _exfat_sys   < fver(5,1,2600,3453))
