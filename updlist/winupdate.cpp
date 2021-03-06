@@ -2405,6 +2405,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB923191)");
 		XX(p2+"windowsxp-kb923191-x86-enu_9d2cfed124f1f50804c20a6e8a881f84c266745f.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+		|| ( _imapi_exe    >zero && _imapi_exe    <fver(5,1,2600,1611))
+		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1611))
+		|| ( _shsvcs_dll   >zero && _shsvcs_dll   <fver(6,0,2800,1611))
+		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+		|| ( _comctl32_dll_1579                   <fver(6,0,2800,1579)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _imapi_exe     >zero && _imapi_exe    <fver(5,1,2600,2569))
+	   || ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2572))
+	   || ( _shsvcs_dll    >zero && _shsvcs_dll   <fver(6,0,2900,2569)) ))) {
+		NN("Update for Windows XP (KB888083)");
+		XX(p2+"WindowsXP-KB888083-x86-ENU.exe"+a6);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 					  ||  ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1816))
@@ -3401,6 +3415,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB952004)");
 		XX(p3+"WindowsXP-KB952004-x86-ENU.exe"+a1);
 	}
+	/*if( (sp==1||sp==2) && (sku & XP_ALL) && _hlink_dll>zero && _hlink_dll<fver(5,2,3790,227)) {
+		NN("Security Update for Windows XP (KB888113)"); // KB888113 is replaced by KB920670
+		XX(p2+"WindowsXP-KB888113-x86-ENU.exe"+a6);
+	}*/
 	if( (sp==1||sp==2) && (sku & XP_ALL) && _hlink_dll>zero && _hlink_dll<fver(5,2,3790,2748)) {
 		NN("Security Update for Windows XP (KB920670)");
 		XX(p2+"windowsxp-kb920670-x86-enu_a71ac163b276057101fe92739c06c6e6d143ccf8.exe"+a1);
