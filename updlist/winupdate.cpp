@@ -8727,6 +8727,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB885838)");
 		XX(p1+"IE6.0sp1-KB885838-Windows-2000-XP-x86-ENU.exe"+a6);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_iedkcs32_dll >zero && _iedkcs32_dll <fver(16,0,2900,2575)) )) {
+		NN("Update for Windows XP (KB888254)");
+		XX(p2+"WindowsXP-KB888254-x86-ENU.exe"+a6);
+	}
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		// GDR
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2578))
@@ -8867,6 +8872,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,3313)) )) {
 		NN("Update for Windows XP (KB947853)"); // KB947853 is replaced by KB958215
 		XX(p2+"WindowsXP-KB947853-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _extmgr_dll>zero && _extmgr_dll<fver(6,0,2900,2538)) {
+		NN("Update for Internet Explorer 6 for XP Service Pack 2 (KB888240)"); // KB888240 is replaced by KB958215
+		XX(p2+"WindowsXP-KB888240-x86-ENU.exe"+a6);
 	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3462))
