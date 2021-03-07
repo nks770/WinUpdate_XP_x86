@@ -5596,6 +5596,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB931374-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		/*if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,2562)) || _ntfs_sys_cache <fver(5,1,2600,2562)))  {
+			NN("Update for Windows XP (KB888413)"); // KB888413 is replaced by KB969262
+			XX(p2+"WindowsXP-KB888413-x86-ENU.exe"+a6);
+		}*/
 		/*if((sp==2 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3480))))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5712))))) {
 			NN("Update for Windows XP (KB932578)"); // KB932578 is replaced by KB969262
