@@ -5727,6 +5727,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB941036-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  ( _twext_dll >zero && _twext_dll <fver(6,0,3800,1621)) ))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _twext_dll >zero && _twext_dll <fver(6,0,3800,2606)) ))*/) {
+			// On SP1, KB835732 must be installed before KB888603
+			NN("Update for Windows XP (KB888603)"); // KB888603 is replaced by KB941133 on SP2
+			XX(p1+"WindowsXP-KB888603-x86-ENU.exe"+a6);
+		}
 		if( sp==2 && qfe && (sku & XP_ALL) && (
 			 ( _twext_dll   >zero && _twext_dll   <fver(6,0,3800,3190)) )) {
 			NN("Update for Windows XP (KB941133)");
