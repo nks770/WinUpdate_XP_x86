@@ -6615,6 +6615,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB887173)");
 		XX(p2+"WindowsXP-KB887173-x86-ENU.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _udfs_sys>zero && _udfs_sys<fver(5,1,2600,1616))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _udfs_sys>zero && _udfs_sys<fver(5,1,2600,2586))) {
+		NN("Update for Windows XP (KB888622)");
+		XX(p2+"WindowsXP-KB888622-x86-ENU.exe"+a6);
+	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,1599))
 	 /*||(sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2530))*/) {
 		NN("Update for Windows XP (KB887816)"); // KB887816 is replaced by KB887816-v2 on SP2
