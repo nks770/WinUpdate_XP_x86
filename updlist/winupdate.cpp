@@ -717,6 +717,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sqlsrv32_dll = getFileVer(System32+L"\\sqlsrv32.dll",&status);
 	fver _srvsvc_dll   = getFileVer(System32+L"\\srvsvc.dll",&status);
 	fver _srrstr_dll   = getFileVer(System32+L"\\srrstr.dll",&status);
+	fver _srsvc_dll    = getFileVer(System32+L"\\srsvc.dll",&status);
 	fver _ssdpapi_dll  = getFileVer(System32+L"\\ssdpapi.dll",&status);
 	fver _ssdpsrv_dll  = getFileVer(System32+L"\\ssdpsrv.dll",&status);
 	fver _stclient_dll = getFileVer(System32+L"\\stclient.dll",&status);
@@ -6607,6 +6608,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _msobmain_dll>zero && _msobmain_dll<fver(5,1,2600,2572)) {
 		NN("Update for Windows XP (KB888239)");
 		XX(p2+"WindowsXP-KB888239-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _srrstr_dll >zero && _srrstr_dll <fver(5,1,2600,2567))
+	  ||  ( _srsvc_dll  >zero && _srsvc_dll  <fver(5,1,2600,2567)) )) {
+		NN("Update for Windows XP (KB888402)");
+		XX(p2+"WindowsXP-KB888402-x86-ENU.exe"+a6);
 	}
 	
 
