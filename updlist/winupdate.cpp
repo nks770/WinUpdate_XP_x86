@@ -6554,9 +6554,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB816045-x86-ENU.exe"+a1);
 	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && _userenv_dll >zero && _userenv_dll <fver(5,1,2600,1714))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && _userenv_dll >zero && _userenv_dll <fver(5,1,2600,2713))) {
-		NN("Update for Windows XP (KB816045)");
-		XX(p2+"WindowsXP-KB816045-v3-x86-ENU.exe"+a1);
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _userenv_dll >zero && _userenv_dll <fver(5,1,2600,2713))*/) {
+		NN("Update for Windows XP (KB816045)"); // KB816045-v3 is replaced by KB319440 on SP2
+		XX(p1+"WindowsXP-KB816045-v3-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _userenv_dll >zero && _userenv_dll <fver(5,1,2600,2913)) {
+		NN("Update for Windows XP (KB319440)");
+		XX(p2+"WindowsXP-KB319440-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,1581))
