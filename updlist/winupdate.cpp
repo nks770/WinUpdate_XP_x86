@@ -266,6 +266,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cdfview_dll  = getFileVer(System32+L"\\cdfview.dll",&status);
 	fver _cdosys_dll   = getFileVer(System32+L"\\cdosys.dll",&status);
 	fver _cewmdm_dll   = getFileVer(System32+L"\\cewmdm.dll",&status);
+	fver _cfgbkend_dll = getFileVer(System32+L"\\cfgbkend.dll",&status);
 	fver _cic_dll      = getFileVer(System32+L"\\cic.dll",&status);
 	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
@@ -653,6 +654,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _qmgrprxy_dll = getFileVer(System32+L"\\qmgrprxy.dll",&status);
 	fver _quartz_dll   = getFileVer(System32+L"\\quartz.dll",&status);
 	fver _query_dll    = getFileVer(System32+L"\\query.dll",&status);
+	fver _racpldlg_dll = getFileVer(System32+L"\\racpldlg.dll",&status);
 	fver _rasadhlp_dll = getFileVer(System32+L"\\rasadhlp.dll",&status);
 	fver _rasapi32_dll = getFileVer(System32+L"\\rasapi32.dll",&status);
 	fver _raschap_dll  = getFileVer(System32+L"\\raschap.dll",&status);
@@ -738,6 +740,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _tifflt_dll   = getFileVer(System32+L"\\tifflt.dll",&status);
 	fver _tlntsess_exe = getFileVer(System32+L"\\tlntsess.exe",&status);
 	fver _tsbyuv_dll   = getFileVer(System32+L"\\tsbyuv.dll",&status);
+	fver _tscfgwmi_dll = getFileVer(System32+L"\\tscfgwmi.dll",&status);
 	fver _tsgqec_dll   = getFileVer(System32+L"\\tsgqec.dll",&status);
 	fver _tspkg_dll    = getFileVer(System32+L"\\tspkg.dll",&status);
 	fver _twext_dll    = getFileVer(System32+L"\\twext.dll",&status);
@@ -6638,6 +6641,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _srsvc_dll  >zero && _srsvc_dll  <fver(5,1,2600,2567)) )) {
 		NN("Update for Windows XP (KB888402)");
 		XX(p2+"WindowsXP-KB888402-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	      (_cfgbkend_dll >zero && _cfgbkend_dll <fver(5,1,2600,1684))
+	   || (_pchsvc_dll   >zero && _pchsvc_dll   <fver(5,1,2600,1684))
+	   || (_racpldlg_dll >zero && _racpldlg_dll <fver(5,1,2600,1684))
+	   || (_regapi_dll   >zero && _regapi_dll   <fver(5,1,2600,1684))
+	   || (_safrslv_dll  >zero && _safrslv_dll  <fver(5,1,2600,1684))
+	   || (_sessmgr_exe  >zero && _sessmgr_exe  <fver(5,1,2600,1684))
+	   || (_termsrv_dll  >zero && _termsrv_dll  <fver(5,1,2600,1684))
+	   || (_tscfgwmi_dll >zero && _tscfgwmi_dll <fver(5,1,2600,1684)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	      (_sessmgr_exe  >zero && _sessmgr_exe  <fver(5,1,2600,2674)) ))) {
+		NN("Update for Windows XP (KB307711)");
+		XX(p2+"WindowsXP-KB307711-v2-x86-ENU.exe"+a1);
 	}
 	
 
