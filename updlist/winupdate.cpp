@@ -10573,6 +10573,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows Media Format 11 SDK (KB973442)"); // Replaced by KB2834904 on SP3
 		XX(p2+"windowsmedia11-kb973442-x86-intl.exe"+a1);
 	}
+	if( sp>=1 && qfe && (sku & XP_ALL) && (
+		   (_wmp_dll     >=fver(10,0,0,3646) && _wmp_dll      <fver(10,0,0,3923))
+		|| (_wmvcore_dll >=fver(10,0,0,3646) && _wmvcore_dll  <fver(10,0,0,3923))
+		|| (_wmvdmod_dll >=fver(10,0,0,3646) && _wmvdmod_dll  <fver(10,0,0,3923)) )) {
+		NN("Windows Media Player 10 Hotfix - KB888656");
+		XX(p3+"windowsmedia10-kb888656-x86-global-enu.exe"+a1);
+	}
 
 
 	if( sp==3 && (sku & XP_ALL) && _infocomm_dll>zero && _infocomm_dll<fver(6,0,2600,6018)) {
