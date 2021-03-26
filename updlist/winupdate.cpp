@@ -2365,6 +2365,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB873392)"); // KB873392 is replaced by KB822686
 		XX(p2+"WindowsXP-KB873392-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _shell32_dll > zero && _shell32_dll <fver(6,0,2900,2572)) {
+		NN("Update for Windows XP (KB889085)"); // KB889085 is replaced by KB822686
+		XX(p2+"WindowsXP-KB889085-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1659))
