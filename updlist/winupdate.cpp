@@ -1124,6 +1124,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ndiswan_sys  = getFileVer(Drivers+L"\\ndiswan.sys",&status);
 	fver _ndproxy_sys  = getFileVer(Drivers+L"\\ndproxy.sys",&status);
 	fver _netbt_sys    = getFileVer(Drivers+L"\\netbt.sys",&status);
+	fver _nic1394_sys  = getFileVer(Drivers+L"\\nic1394.sys",&status);
 	fver _npfs_sys     = getFileVer(Drivers+L"\\npfs.sys",&status);
 	fver _ntfs_sys     = getFileVer(Drivers+L"\\ntfs.sys",&status);
 	fver _nwlnkipx_sys = getFileVer(Drivers+L"\\nwlnkipx.sys",&status);
@@ -1242,6 +1243,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mxdwdui_dll_cache  = getFileVer(DriverCache+L"\\mxdwdui.dll",&status);
 	fver _ndis_sys_cache     = getFileVer(DriverCache+L"\\ndis.sys",&status);
 	fver _ndisuio_sys_cache  = getFileVer(DriverCache+L"\\ndisuio.sys",&status);
+	fver _nic1394_sys_cache  = getFileVer(DriverCache+L"\\nic1394.sys",&status);
 	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
 	fver _nwlnkipx_sys_cache = getFileVer(DriverCache+L"\\nwlnkipx.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
@@ -6174,6 +6176,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB958347)");
 		XX(p3+"WindowsXP-KB958347-x86-ENU.exe"+a1);
 	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+			( _nic1394_sys >zero && _nic1394_sys <fver(5,1,2600,2578))
+			|| _nic1394_sys_cache <fver(5,1,2600,2578) )) {
+		NN("Update for Windows XP (KB889315)");
+		XX(p2+"WindowsXP-KB889315-x86-ENU.exe"+a6);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _1394bus_sys  >zero && _1394bus_sys  <fver(5,1,2600,3516))
 	  ||  ( _1394bus_sys_cache  <fver(5,1,2600,3516)) ))
