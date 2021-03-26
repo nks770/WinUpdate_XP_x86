@@ -4165,6 +4165,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB884539)"); // KB884539 is replaced by KB890859
 		XX(p2+"WindowsXP-KB884539-x86-ENU.exe"+a6);
 	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1607))
+	|| ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1581)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,2562)) ))) {
+		NN("Update for Windows XP (KB889321)"); // KB889321 is replaced by KB890859
+		XX(p2+"WindowsXP-KB889321-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,1634))
 					  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1634))
@@ -6761,6 +6769,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2727528)");
 		XX(p3+"WindowsXP-KB2727528-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,2586)) )) {
+		NN("Update for Windows XP (KB889320)"); // KB889320 is replaced by KB889320-v2
+		XX(p2+"WindowsXP-KB889320-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,3345)) )) {
 	//if( sp==3 && (sku & XP_ALL) && ( (_browser_dll>zero && _browser_dll<fver(5,1,2600,5574)) )) {
 		NN("Update for Windows XP (KB889320)");
