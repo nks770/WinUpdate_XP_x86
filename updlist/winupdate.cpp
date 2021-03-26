@@ -379,6 +379,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ieudinit_exe = getFileVer(System32+L"\\ieudinit.exe",&status);
 	fver _ifsutil_dll  = getFileVer(System32+L"\\ifsutil.dll",&status);
 	fver _ifxcardm_dll = getFileVer(System32+L"\\ifxcardm.dll",&status);
+	fver _iis_dll      = getFileVer(System32+L"\\Setup\\iis.dll",&status);
 	fver _imadmui_dll  = getFileVer(System32+L"\\imadmui.dll",&status);
 	fver _imadmui_dll_mui = getFileVer(System32+L"\\imadmui.dll.mui",&status);
 	fver _imagehlp_dll = getFileVer(System32+L"\\imagehlp.dll",&status);
@@ -6659,6 +6660,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	      (_sessmgr_exe  >zero && _sessmgr_exe  <fver(5,1,2600,2674)) ))) {
 		NN("Update for Windows XP (KB307711)");
 		XX(p2+"WindowsXP-KB307711-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _iis_dll>zero && _iis_dll<fver(6,0,2600,2560)) {
+		NN("Update for Windows XP (KB889073)");
+		XX(p2+"WindowsXP-KB889073-x86-ENU.exe"+a6);
 	}
 	
 
