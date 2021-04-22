@@ -1247,6 +1247,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntfs_sys_cache     = getFileVer(DriverCache+L"\\ntfs.sys",&status);
 	fver _nwlnkipx_sys_cache = getFileVer(DriverCache+L"\\nwlnkipx.sys",&status);
 	fver _ohci1394_sys_cache = getFileVer(DriverCache+L"\\ohci1394.sys",&status);
+	fver _pci_sys_cache      = getFileVer(DriverCache+L"\\pci.sys",&status);
 	fver _pcl4res_dll_cache  = getFileVer(DriverCache+L"\\pcl4res.dll",&status);
 	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
 	fver _pcl5ures_dll_cache = getFileVer(DriverCache+L"\\pcl5ures.dll",&status);
@@ -6704,6 +6705,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _iis_dll>zero && _iis_dll<fver(6,0,2600,2560)) {
 		NN("Update for Windows XP (KB889073)");
 		XX(p2+"WindowsXP-KB889073-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _pci_sys >zero && _pci_sys <fver(5,1,2600,1615))
+	  ||  ( _pci_sys_cache <fver(5,1,2600,1615)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _pci_sys >zero && _pci_sys <fver(5,1,2600,2585))
+	  ||  ( _pci_sys_cache <fver(5,1,2600,2585)) ))) {
+		NN("Update for Windows XP (KB890463)");
+		XX(p2+"WindowsXP-KB890463-x86-ENU.exe"+a6);
 	}
 	
 
