@@ -2487,10 +2487,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows (KB823182)");
 		XX(p1+"windowsxp-kb823182-x86-enu_211ee84995ef332148cf9b6657c9038.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,558)) {
-		NN("Security Update for Windows XP (KB922616)");
-		XX(p1+"windowsxp-kb922616-x86-enu_cf1ee106a318c1fe135978f94ec0867312cea73b.exe"+a7);
-	}
 	/*if(    (sp==0 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,119))
 		|| (sp==1 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,1274))) {
 		// KB828028 is replaced by KB835732
@@ -2927,11 +2923,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB926646)");
 		XX(p2+"WindowsXP-KB926646-x86-ENU.exe"+a1);
 	}
+	/*if((sp==1 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,233))
+	 ||(sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,1280))) {
+		NN("Security Update for Windows XP (KB890175)"); // KB890175 is replaced by KB922616+KB935448
+		XX(p2+"WindowsXP-KB890175-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,2847)) {
 		// KB928843 is replaced with revised patch KB935448
 		NN("Security Update for Windows XP (KB928843)");
 		XX(p+"windowsxp-kb928843-x86-enu_80eb8779856aefa25bceab8926940fbdebabdc23.exe"+a1);
 	}*/
+	if( sp==1 && (sku & XP_ALL) && _hhctrl_ocx>zero && _hhctrl_ocx<fver(5,2,3790,558)) {
+		NN("Security Update for Windows XP (KB922616)");
+		XX(p1+"windowsxp-kb922616-x86-enu_cf1ee106a318c1fe135978f94ec0867312cea73b.exe"+a7);
+	}
 	if( sp==2 && (sku & XP_ALL) && _hhctrl_ocx>zero && (
 				_hhctrl_ocx<fver(5,2,3790,2847)
 				|| !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB935448")) ) {
