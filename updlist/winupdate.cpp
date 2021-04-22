@@ -9970,6 +9970,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update, February 14, 2002 (Internet Explorer 6)");
 		XX(sw+rtm+"VBS56NEN.EXE"+a8);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) &&
+		( _jscript_dll <= fver(5,6,0,8827) && _vbscript_dll <= fver(5,6,0,8827)) &&
+		(                 (_jscript_dll >=fver(5,6,0,0) && _jscript_dll <fver(5,6,0,8827))
+		              ||  (_vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,8827)) )) {
+		NN("Update for Windows XP (KB890048)"); // KB890048 is replaced by KB944338
+		XX(p2+"WindowsXP-KB890048-v2-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && 
 		( _jscript_dll <= fver(5,6,0,8835) && _vbscript_dll <= fver(5,6,0,8835)) &&
 		(                 (_jscript_dll >=fver(5,6,0,0) && _jscript_dll <fver(5,6,0,8835))
