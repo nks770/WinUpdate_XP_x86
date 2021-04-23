@@ -5195,6 +5195,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update Rollup for Windows XP Media Center Edition 2005 (KB925766)");
 		XX(p3+"windowsxpmediacenter2005-kb925766-enu_30e90395a057a5e974768536ee7eaf014670ed2c.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_MCE2005) && ( kb900325
+		              || ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2578))
+					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2578)) )) {
+		NN("Update for Windows XP (KB890546)"); // KB890546 is replaced by KB912024
+		XX(p2+"WindowsXP-KB890546-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_MCE2005) && ( kb900325
 		              || ( _hidir_sys >zero && _hidir_sys <fver(5,1,2600,2825))
 					  || ( _irbus_sys >zero && _irbus_sys <fver(5,1,2600,2825)) )) {
@@ -5209,7 +5215,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB911990)");
 		XX(p2+"WindowsXP-KB911990-x86-ENU.exe"+a1);
 	}
-	/*if( sp==2 && (sku & XP_MCE2005) && _ehplayer_dll >zero && _ehplayer_dll <fver(5,1,2700,2615)) {
+	/*if( sp>=2 && (sku & XP_MCE2005) && _ehplayer_dll >zero && _ehplayer_dll <fver(5,1,2700,2615)) {
 		NN("Windows XP Media Center Edition 2005 Zoom Update (KB890629)"); // KB890629 is replaced by KB900325
 		XX(p2+"KB890629.exe"+a6);
 	}*/
