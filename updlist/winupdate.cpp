@@ -3185,6 +3185,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB954193)");
 		XX(p3+"WindowsXP-KB954193-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _rpcrt4_dll  >zero && _rpcrt4_dll  <fver(5,1,2600,2593)) {
+		NN("Update for Windows XP (KB890552)"); // KB890552 is replaced by KB970238
+		XX(p2+"WindowsXP-KB890552-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll  >zero && _rpcrt4_dll  <fver(5,1,2600,2794)) {
 		// KB908521 is replaced by KB970238 on SP2
 		NN("Update for Windows XP (KB908521)");
