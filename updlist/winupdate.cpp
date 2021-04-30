@@ -6263,6 +6263,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955576)");
 		XX(p3+"WindowsXP-KB955576-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,2572)) {
+		NN("Update for Windows XP (KB890558)"); // KB890558 is replaced by KB955988
+		XX(p2+"WindowsXP-KB890558-x86-ENU.exe"+a6);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,3423))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,5654))) {
 		NN("Update for Windows XP (KB955988)");
