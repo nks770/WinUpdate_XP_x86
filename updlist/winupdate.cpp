@@ -6966,6 +6966,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2864063)");
 		XX(p3+"WindowsXP-KB2864063-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	    (_user32_dll>zero && _user32_dll<fver(5,1,2600,2643))
+	 || (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,2643)) )) {
+		NN("Update for Windows XP (KB890582)"); // KB890582 is replaced by KB925902
+		XX(p2+"WindowsXP-KB890582-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3099))
 					  ||  (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,3099))
 					  ||  (_user32_dll>zero && _user32_dll<fver(5,1,2600,3099))
