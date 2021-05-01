@@ -5675,6 +5675,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB933062-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,2))
+		  ||  ( _sdbus_sys_cache < fver(6,0,4069,2)))) {
+			NN("Update for Windows XP (KB890644)"); // KB890644 is replaced by KB959465
+			XX(p2+"WindowsXP-KB890644-v2-x86-ENU.exe"+a6);
+		}*/
 		if((sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _sdbus_sys    >zero && _sdbus_sys    <fver(6,0,4069,3492))
 		  ||  ( _sffdisk_sys  >zero && _sffdisk_sys  <fver(6,0,4069,3492))
