@@ -1086,6 +1086,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _atapi_sys    = getFileVer(Drivers+L"\\atapi.sys",&status);
 	fver _battc_sys    = getFileVer(Drivers+L"\\battc.sys",&status);
 	fver _bthport_sys  = getFileVer(Drivers+L"\\bthport.sys",&status);
+	fver _bthprint_sys = getFileVer(Drivers+L"\\bthprint.sys",&status);
 	fver _cdrom_sys    = getFileVer(Drivers+L"\\cdrom.sys",&status);
 	fver _classpnp_sys = getFileVer(Drivers+L"\\classpnp.sys",&status);
 	fver _disk_sys     = getFileVer(Drivers+L"\\disk.sys",&status);
@@ -1225,6 +1226,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _1394bus_sys_cache  = getFileVer(DriverCache+L"\\1394bus.sys",&status);
 	fver _alpsres_dll_cache  = getFileVer(DriverCache+L"\\alpsres.dll",&status);
 	fver _atapi_sys_cache    = getFileVer(DriverCache+L"\\atapi.sys",&status);
+	fver _bthprint_sys_cache = getFileVer(DriverCache+L"\\bthprint.sys",&status);
 //	fver _dmusic_sys_cache   = getFileVer(DriverCache+L"\\dmusic.sys",&status);
 	fver _filterpipelineprintproc_dll_cache = getFileVer(DriverCache+L"\\filterpipelineprintproc.dll",&status);
 	fver _halaacpi_dll       = getFileVer(DriverCache+L"\\halaacpi.sys",&status);
@@ -6734,6 +6736,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _pci_sys_cache <fver(5,1,2600,2585)) ))) {
 		NN("Update for Windows XP (KB890463)");
 		XX(p2+"WindowsXP-KB890463-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _bthprint_sys       <fver(5,1,2600,2574))
+	  ||  ( _bthprint_sys_cache <fver(5,1,2600,2574)) )) {
+		NN("Update for Windows XP (KB890733)");
+		XX(p2+"WindowsXP-KB890733-x86-ENU.exe"+a6);
 	}
 	
 
