@@ -686,6 +686,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _samsrv_dll   = getFileVer(System32+L"\\samsrv.dll",&status);
 	fver _sbe_dll      = getFileVer(System32+L"\\sbe.dll",&status);
 	fver _sc_exe       = getFileVer(System32+L"\\sc.exe",&status);
+	fver _scecli_dll   = getFileVer(System32+L"\\scecli.dll",&status);
 	fver _scesrv_dll   = getFileVer(System32+L"\\scesrv.dll",&status);
 	fver _schannel_dll = getFileVer(System32+L"\\schannel.dll",&status);
 	fver _schedsvc_dll = getFileVer(System32+L"\\schedsvc.dll",&status);
@@ -6655,6 +6656,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,2505))) {
 		NN("Update for Windows XP (KB884018)");
 		XX(p2+"WindowsXP-KB884018-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,1621))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,2604))) {
+		NN("Update for Windows XP (KB890737)");
+		XX(p2+"WindowsXP-KB890737-x86-ENU.exe"+a6);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _odbcji32_dll >zero && _odbcji32_dll <fver(4,0,6305,0))
