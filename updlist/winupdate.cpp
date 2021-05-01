@@ -1511,6 +1511,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _shtml_exe = getFileVer(vtibin+L"\\shtml.exe",&status);
 
 	fver DirectXVersion = fver(regQueryValue(L"SOFTWARE\\Microsoft\\DirectX",L"Version",&status).c_str());
+	//fver MDACVersion = fver(regQueryValue(L"SOFTWARE\\Microsoft\\DataAccess",L"FullInstallVer",&status).c_str());
 
 	fver _agcore_dll = getFileVer(MicrosoftSilverlight+L"\\agcore.dll",&status);
 	fver _slup_exe = getFileVer(MicrosoftSilverlight+L"\\slup.exe",&status);
@@ -6179,6 +6180,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB952117)");
 		XX(p3+"WindowsXP-KB952117-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp>=2 && qfe && MDACVersion >= fver(2,81,0,0) && MDACVersion <= fver(2,81,1118,0)
+		&& _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1118,0) ) {
+		// In normal circumstances, this hotfix should only be relevant for XP SP2
+		NN("Update for Windows XP (KB890841)"); // KB890841 is replaced by KB954920
+		XX(p2+"WindowsXP-KB890841-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && (
 		  ( _odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,1140,0))
 	  ||  ( _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1140,0))
