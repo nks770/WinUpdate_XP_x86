@@ -6731,6 +6731,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB888402)");
 		XX(p2+"WindowsXP-KB888402-x86-ENU.exe"+a6);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+	      (_cfgbkend_dll >zero && _cfgbkend_dll <fver(5,1,2600,1633))
+	   || (_pchsvc_dll   >zero && _pchsvc_dll   <fver(5,1,2600,1633))
+	   || (_racpldlg_dll >zero && _racpldlg_dll <fver(5,1,2600,1633))
+	   || (_regapi_dll   >zero && _regapi_dll   <fver(5,1,2600,1633))
+	   || (_safrslv_dll  >zero && _safrslv_dll  <fver(5,1,2600,1633))
+	   || (_sessmgr_exe  >zero && _sessmgr_exe  <fver(5,1,2600,1633))
+	   || (_termsrv_dll  >zero && _termsrv_dll  <fver(5,1,2600,1633))
+	   || (_tscfgwmi_dll >zero && _tscfgwmi_dll <fver(5,1,2600,1633)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	      (_sessmgr_exe  >zero && _sessmgr_exe  <fver(5,1,2600,2620)) ))) {
+		NN("Update for Windows XP (KB890864)"); // KB890864 is replaced by KB307711
+		XX(p2+"WindowsXP-KB890864-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 	      (_cfgbkend_dll >zero && _cfgbkend_dll <fver(5,1,2600,1684))
 	   || (_pchsvc_dll   >zero && _pchsvc_dll   <fver(5,1,2600,1684))
