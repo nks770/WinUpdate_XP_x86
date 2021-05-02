@@ -3408,6 +3408,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB914388)");
 		XX(p2+"windowsxp-kb914388-x86-enu_21992f2ad7f7fd8ab28e854ce364ebc4f8baf810.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2524)) {
+		NN("Update for Windows XP (KB885865)"); // KB885865 is replaced by KB914388
+		XX(p2+"WindowsXP-KB885865-x86-ENU.exe"+a6);
+	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1620))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2601)) ) {
+		NN("Update for Windows XP (KB890946)"); // KB890946 is replaced by KB914388
+		XX(p2+"WindowsXP-KB890946-x86-ENU.exe"+a6);
+	}*/
+	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
+		NN("Update for Windows XP (KB953761)");
+		XX(p3+"WindowsXP-KB953761-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && _winsrv_dll>zero && _winsrv_dll<fver(5,1,2600,3103)) {
 		NN("Security Update for Windows XP (KB930178)");
 		XX(p2+"windowsxp-kb930178-x86-enu_5e02462613354e7679cdd79b0ee52083efd9aa30.exe"+a1);
@@ -6437,14 +6450,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _winbrand_dll >zero && _winbrand_dll <fver(5,1,2600,5577)) )) {
 		NN("Update for Windows XP (KB951159)");
 		XX(p3+"WindowsXP-KB951159-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2524)) {
-		NN("Update for Windows XP (KB885865)");
-		XX(p2+"WindowsXP-KB885865-x86-ENU.exe"+a6);
-	}
-	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
-		NN("Update for Windows XP (KB953761)");
-		XX(p3+"WindowsXP-KB953761-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,3599))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tdtcp_sys >zero && _tdtcp_sys <fver(5,1,2600,5770))) {
