@@ -6470,6 +6470,39 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB958910)");
 		XX(p3+"WindowsXP-KB958910-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,2573))
+	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,2573))
+	  ||  ( _usb8023_sys  >zero && _usb8023_sys  <fver(5,1,2600,2578))
+	  ||  ( _usb8023x_sys >zero && _usb8023x_sys <fver(5,1,2600,2578))
+	  ||  ( _rndismp_sys_cache  <fver(5,1,2600,2573))
+	  ||  ( _rndismpx_sys_cache <fver(5,1,2600,2573))
+	  ||  ( _usb8023_sys_cache  <fver(5,1,2600,2578))
+	  ||  ( _usb8023x_sys_cache <fver(5,1,2600,2578)) )) {
+		NN("Update for Windows XP (KB890927)"); // KB890927-v3 is replaced by KB890927-v6
+		XX(p2+"WindowsXP-KB890927-v3-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,1624))
+	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,1624))
+	  ||  ( _usb8023_sys  >zero && _usb8023_sys  <fver(5,1,2600,1624))
+	  ||  ( _usb8023x_sys >zero && _usb8023x_sys <fver(5,1,2600,1624))
+	  ||  ( _rndismp_sys_cache  <fver(5,1,2600,1624))
+	  ||  ( _rndismpx_sys_cache <fver(5,1,2600,1624))
+	  ||  ( _usb8023_sys_cache  <fver(5,1,2600,1624))
+	  ||  ( _usb8023x_sys_cache <fver(5,1,2600,1624)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,2604))
+	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,2604))
+	  ||  ( _usb8023_sys  >zero && _usb8023_sys  <fver(5,1,2600,2604))
+	  ||  ( _usb8023x_sys >zero && _usb8023x_sys <fver(5,1,2600,2604))
+	  ||  ( _rndismp_sys_cache  <fver(5,1,2600,2604))
+	  ||  ( _rndismpx_sys_cache <fver(5,1,2600,2604))
+	  ||  ( _usb8023_sys_cache  <fver(5,1,2600,2604))
+	  ||  ( _usb8023x_sys_cache <fver(5,1,2600,2604)) ))*/) {
+		NN("Update for Windows XP (KB890927)"); // KB890927 is replaced by KB959765 on SP2
+		XX(p1+"WindowsXP-KB890927-v6-x86-ENU.exe"+a6);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _rndismp_sys  >zero && _rndismp_sys  <fver(5,1,2600,3483))
 	  ||  ( _rndismpx_sys >zero && _rndismpx_sys <fver(5,1,2600,3483))
