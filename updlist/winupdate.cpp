@@ -8957,6 +8957,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB883939-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2627))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,2627))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2627))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,2627))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2627))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,2627))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2627))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2627))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2627))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,2627)) )) { // KB890923 is replaced by KB958215
+		NN("Cumulative Security Update for Internet Explorer for XP Service Pack 2 (KB890923)");
+		XX(p2+"WindowsXP-KB890923-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3059))
 		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3059))
 		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
