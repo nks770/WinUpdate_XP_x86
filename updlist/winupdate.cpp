@@ -3529,6 +3529,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p+"windowsxp-kb943485-x86-enu_cb8bf0aa18299dda9578a70411ade45cbd3ae619.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2591))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2591))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,2591))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,2591)) )) {
+		NN("Update for Windows XP (KB891070)"); // KB891070 is replaced by KB979683
+		XX(p2+"WindowsXP-KB891070-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  (_halmacpi_dll>zero && _halmacpi_dll<fver(5,1,2600,2765))
 					  ||  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2765))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2765))
