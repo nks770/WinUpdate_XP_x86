@@ -725,6 +725,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ssdpapi_dll  = getFileVer(System32+L"\\ssdpapi.dll",&status);
 	fver _ssdpsrv_dll  = getFileVer(System32+L"\\ssdpsrv.dll",&status);
 	fver _stclient_dll = getFileVer(System32+L"\\stclient.dll",&status);
+	fver _stdole2_tlb  = getFileVer(System32+L"\\stdole2.tlb",&status);
+	fver _stdole32_tlb = getFileVer(System32+L"\\stdole32.tlb",&status);
 	fver _strmdll_dll  = getFileVer(System32+L"\\strmdll.dll",&status);
 	fver _strmfilt_dll = getFileVer(System32+L"\\strmfilt.dll",&status);
 	fver _svchost_exe  = getFileVer(System32+L"\\svchost.exe",&status);
@@ -3151,6 +3153,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	//if( sp==3 && (sku & XP_ALL) && _winhttp_dll>zero && _winhttp_dll<fver(5,1,2600,5868)) {
 		NN("Update for Windows XP (KB971737)");
 		XX(p2+"windowsxp-kb971737-x86-enu_e2aa4340aaf68e97a5dbdd278edb9182c4383ed7.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _asycfilt_dll >zero && _asycfilt_dll <fver(5,1,2600,2580))
+	|| ( _oleaut32_dll >zero && _oleaut32_dll <fver(5,1,2600,2580))
+	|| ( _olepro32_dll >zero && _olepro32_dll <fver(5,1,2600,2580))
+	|| ( _stdole2_tlb  >zero && _stdole2_tlb  <fver(5,1,2600,2580))
+	|| ( _stdole32_tlb >zero && _stdole32_tlb <fver(2,10,3027,1)) )) {
+		NN("Update for Windows XP (KB891117)");
+		XX(p2+"WindowsXP-KB891117-x86-ENU.exe"+a6);
 	}
 	if(    (sp==2 && (sku & XP_ALL) && _asycfilt_dll>zero && _asycfilt_dll<fver(5,1,2600,3680))
 		|| (sp==3 && (sku & XP_ALL) && _asycfilt_dll>zero && _asycfilt_dll<fver(5,1,2600,5949))) {
