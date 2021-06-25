@@ -671,6 +671,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
 	fver _regapi_dll   = getFileVer(System32+L"\\regapi.dll",&status);
 	fver _remotesp_tsp = getFileVer(System32+L"\\remotesp.tsp",&status);
+	fver _rexec_exe    = getFileVer(System32+L"\\rexec.exe",&status);
 	fver _rhttpaa_dll  = getFileVer(System32+L"\\rhttpaa.dll",&status);
 	fver _riched20_dll = getFileVer(System32+L"\\riched20.dll",&status);
 	fver _RmActivate_exe = getFileVer(System32+L"\\RmActivate.exe",&status);
@@ -680,6 +681,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rpcrt4_dll   = getFileVer(System32+L"\\rpcrt4.dll",&status);
 	fver _rpcss_dll    = getFileVer(System32+L"\\rpcss.dll",&status);
 	fver _rsaenh_dll   = getFileVer(System32+L"\\rsaenh.dll",&status);
+	fver _rsh_exe      = getFileVer(System32+L"\\rsh.exe",&status);
 	fver _rspndr_exe   = getFileVer(System32+L"\\rspndr.exe",&status);
 	fver _rtcdll_dll   = getFileVer(System32+L"\\rtcdll.dll",&status);
 	fver _safrslv_dll  = getFileVer(System32+L"\\safrslv.dll",&status);
@@ -6865,6 +6867,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890733)");
 		XX(p2+"WindowsXP-KB890733-x86-ENU.exe"+a6);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rexec_exe >zero && _rexec_exe <fver(5,1,2600,2601))
+	  ||  ( _rsh_exe   >zero && _rsh_exe   <fver(5,1,2600,2601)) )) {
+		NN("Update for Windows XP (KB892099)");
+		XX(p2+"WindowsXP-KB892099-x86-ENU.exe"+a6);
+	}
 	
 
 	// Windows XP SP3 updates;
@@ -9205,7 +9213,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2641))
 	    || ( _urlmon_dll >zero && _urlmon_dll <fver(6,0,2900,2641)) )) {
 		NN("Update for Windows XP (KB892056)"); // KB892056 is replaced by KB958215
-		XX(p2+"WindowsXP-KB892056-x86-ENU.exe"+a6);
+		XX(p2+"WindowsXP-KB892056-x86-ENU.exe"+a1);
 	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3462))
