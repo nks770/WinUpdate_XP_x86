@@ -8508,6 +8508,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB912461)");
 		XX(p2+"windowsxp-kb912461-x86-enu.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,2578)) {
+		NN("Windows XP Hotfix - KB891220"); // KB891220 is replaced by KB975562
+		XX(p2+"windowsxp-kb891220-x86-enu.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,3665)) {
 	//if( sp==3 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,5933)) {
 		NN("Security Update for Windows XP (KB975562)");
