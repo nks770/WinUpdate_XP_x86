@@ -2326,6 +2326,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB887820)");
 		XX(p2+"WindowsXP-KB887820-x86-ENU.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _basesrv_dll  >zero && _basesrv_dll  <fver(5,1,2600,1709)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _basesrv_dll  >zero && _basesrv_dll  <fver(5,1,2600,2708)) ))) {
+		NN("Update for Windows XP (KB891566)");
+		XX(p2+"WindowsXP-KB891566-v4-x86-ENU.exe"+a1);
+	}
 	if((sp==0 && (sku & XP_ALL) && (
 	      (_msgsvc_dll >zero && _msgsvc_dll <fver(5,1,2600,121))
 	   || (_wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,121))))
