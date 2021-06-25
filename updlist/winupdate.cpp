@@ -329,6 +329,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _extmgr_dll   = getFileVer(System32+L"\\extmgr.dll",&status);
 	fver _faultrep_dll = getFileVer(System32+L"\\faultrep.dll",&status);
 	fver _fc_exe       = getFileVer(System32+L"\\fc.exe",&status);
+	fver _fdeploy_dll  = getFileVer(System32+L"\\fdeploy.dll",&status);
 	fver _firewall_cpl = getFileVer(System32+L"\\firewall.cpl",&status);
 	fver _fldrclnr_dll = getFileVer(System32+L"\\fldrclnr.dll",&status);
 	fver _fltlib_dll   = getFileVer(System32+L"\\fltlib.dll",&status);
@@ -6872,6 +6873,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _rsh_exe   >zero && _rsh_exe   <fver(5,1,2600,2601)) )) {
 		NN("Update for Windows XP (KB892099)");
 		XX(p2+"WindowsXP-KB892099-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,1618))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,2594))) {
+		NN("Update for Windows XP (KB892227)");
+		XX(p2+"WindowsXP-KB892227-x86-ENU.exe"+a6);
 	}
 	
 
