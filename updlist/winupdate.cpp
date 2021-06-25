@@ -10322,13 +10322,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Media Player 8 for Windows XP (KB917734)");
 		XX(p1+"windowsmedia8-kb917734-x86-enu_4733e6d1a9dc7f044197a7be6dc83223c797b3cf.exe"+a1);
 	}
+	/*if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3263)) {
+		NN("Windows Media Player 9 Hotfix - KB892313"); // KB892313 is replaced by KB917734
+		XX(p1+"windowsxp-kb892313-x86-enu.exe"+a6);
+	}
+	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3263)) {
+		NN("Windows Media Player 9 Hotfix - KB892313"); // KB892313 is replaced by KB917734
+		XX(p1+"windowsmedia9-kb892313-x86-intl.exe"+a1);
+	}*/
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(9,0,0,3349)) {
 		NN("Security Update for Windows Media Player 9 (KB917734)");
 		XX(p1+"windowsmedia9-kb917734-x86-enu_6e46e8d786614f9306b1307c2991e5acaa4dceac.exe"+a1);
 	}
+	/*if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3901)) {
+		NN("Windows Media Player 10 Hotfix - KB892313"); // KB892313 is replaced by KB917734
+		XX(p1+"windowsmedia10-kb892313-x86-intl.exe"+a1);
+	}*/
 	/*if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,3909)) {
-		// KB895572 is replaced by KB917734
-		NN("Update for Windows XP (KB895572)");
+		NN("Update for Windows XP (KB895572)"); // KB895572 is replaced by KB917734
 		XX(p1+"windowsmedia10-kb895572-x86-enu.exe"+a1);
 	}*/
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,4036)) {
