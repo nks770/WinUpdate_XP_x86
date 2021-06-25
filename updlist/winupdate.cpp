@@ -2407,7 +2407,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2649)) ))) {
 		NN("Update for Windows XP (KB892346)"); // KB892346 is replaced by KB884883+KB908531
-		XX(p1+"WindowsXP-KB892346-x86-ENU.exe"+a6);
+		XX(p1+"WindowsXP-KB892346-x86-ENU.exe"+a1);
 	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
@@ -6199,6 +6199,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB950312)");
 		XX(p2+"WindowsXP-KB950312-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _portcls_sys >zero && _portcls_sys <fver(5,1,2600,2585) ) {
+		NN("Update for Windows XP (KB892559)"); // KB892559 is replaced by KB892559-v2
+		XX(p2+"WindowsXP-KB892559-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _portcls_sys >zero && _portcls_sys <fver(5,1,2600,2637) ) {
+		NN("Update for Windows XP (KB892559)"); // KB892559-v2 is replaced by KB950616
+		XX(p2+"WindowsXP-KB892559-v2-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _portcls_sys >zero && _portcls_sys <fver(5,1,2600,3337)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
