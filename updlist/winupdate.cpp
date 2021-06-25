@@ -2396,8 +2396,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| ( _comctl32_dll_1659 < fver(6,0,2800,1659)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2649)) ))) {
-		NN("Update for Windows XP (KB822686)"); // KB822686 is replaced by KB884883+KB908531
+		NN("Update for Windows XP (KB822686)"); // KB822686 is replaced by KB892346
 		XX(p2+"WindowsXP-KB822686-x86-ENU.exe"+a1);
+	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1659))
+		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+		|| ( _comctl32_dll_1659 < fver(6,0,2800,1659)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2649)) ))) {
+		NN("Update for Windows XP (KB892346)"); // KB892346 is replaced by KB884883+KB908531
+		XX(p1+"WindowsXP-KB892346-x86-ENU.exe"+a6);
 	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
