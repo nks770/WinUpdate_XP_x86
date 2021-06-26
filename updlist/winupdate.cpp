@@ -244,6 +244,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _aaclient_dll = getFileVer(System32+L"\\aaclient.dll",&status);
 	fver _aaclient_dll_mui = getFileVer(System32+L"\\en-US\\aaclient.dll.mui",&status);
 	fver _accwiz_exe   = getFileVer(System32+L"\\accwiz.exe",&status);
+	fver _aclui_dll    = getFileVer(System32+L"\\aclui.dll",&status);
 	fver _adsldp_dll   = getFileVer(System32+L"\\adsldp.dll",&status);
 	fver _adsmsext_dll = getFileVer(System32+L"\\adsmsext.dll",&status);
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
@@ -6155,7 +6156,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,1651))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,2638))) {
 		NN("Update for Windows XP (KB894069)"); // KB894069 is replaced by KB893376
-		XX(p1+"WindowsXP-KB894069-x86-ENU.exe"+a1);
+		XX(p2+"WindowsXP-KB894069-x86-ENU.exe"+a1);
 	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,1695))
 	 /*||(sp==2 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,2687))*/) {
@@ -6982,6 +6983,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _cmdial32_dll >zero && _cmdial32_dll <fver(7,2,2600,2606))) {
 		NN("Update for Windows XP (KB893609)");
 		XX(p2+"WindowsXP-KB893609-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _aclui_dll >zero && _aclui_dll <fver(5,1,2600,2625)) {
+		NN("Update for Windows XP (KB894075)");
+		XX(p2+"WindowsXP-KB894075-x86-ENU.exe"+a1);
 	}
 	
 
