@@ -216,6 +216,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _mmcshext_dll_md5[33];
 	strncpy_s(_mmcshext_dll_md5,33,md5_ptr,33);
 
+	md5.digestFileW((SystemRoot+L"\\inf\\mdmirmdm.inf").c_str(),false);
+	char _mdmirmdm_inf_md5[33];
+	strncpy_s(_mdmirmdm_inf_md5,33,md5_ptr,33);
+
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
 //	printf("%s\n",_ssinc_dll_md5);
@@ -6956,6 +6960,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _fastfat_sys>zero && _fastfat_sys<fver(5,1,2600,2609)) {
 		NN("Update for Windows XP (KB892233)");
 		XX(p2+"WindowsXP-KB892233-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB893476")
+		|| strncmp(_mdmirmdm_inf_md5,"ca58dadedcae3730b796f5da2cd2dde4",32) != 0 )) {
+		NN("Update for Windows XP (KB893476)");
+		XX(p2+"WindowsXP-KB893476-x86-ENU.exe"+a6);
 	}
 	
 
