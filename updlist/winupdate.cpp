@@ -6105,6 +6105,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890837)"); // KB890837 is replaced by KB948277
 		XX(p2+"WindowsXP-KB890837-v3-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,2603) ) {
+		NN("Update for Windows XP (KB893056)"); // KB893056 is replaced by KB948277
+		XX(p2+"WindowsXP-KB893056-x86-ENU.exe"+a6);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
 	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,3358))
