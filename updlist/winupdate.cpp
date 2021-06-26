@@ -277,6 +277,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
 	fver _clspack_exe  = getFileVer(System32+L"\\clspack.exe",&status);
 	fver _cmd_exe      = getFileVer(System32+L"\\cmd.exe",&status);
+	fver _cmdial32_dll = getFileVer(System32+L"\\cmdial32.dll",&status);
 	fver _colbact_dll  = getFileVer(System32+L"\\colbact.dll",&status);
 	fver _comctl32_dll = getFileVer(System32+L"\\comctl32.dll",&status);
 	fver _comrepl_dll  = getFileVer(System32+L"\\comrepl.dll",&status);
@@ -6971,6 +6972,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _isign32_dll >zero && _isign32_dll <fver(6,0,2900,2634))) {
 		NN("Update for Windows XP (KB893605)");
 		XX(p2+"WindowsXP-KB893605-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _cmdial32_dll >zero && _cmdial32_dll <fver(7,2,2600,1621))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _cmdial32_dll >zero && _cmdial32_dll <fver(7,2,2600,2606))) {
+		NN("Update for Windows XP (KB893609)");
+		XX(p2+"WindowsXP-KB893609-x86-ENU.exe"+a6);
 	}
 	
 
