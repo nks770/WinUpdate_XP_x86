@@ -1139,6 +1139,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ohci1394_sys = getFileVer(Drivers+L"\\ohci1394.sys",&status);
 	fver _partmgr_sys  = getFileVer(Drivers+L"\\partmgr.sys",&status);
 	fver _pci_sys      = getFileVer(Drivers+L"\\pci.sys",&status);
+	fver _pcmcia_sys   = getFileVer(Drivers+L"\\pcmcia.sys",&status);
 	fver _portcls_sys  = getFileVer(Drivers+L"\\portcls.sys",&status);
 	fver _powerfil_sys = getFileVer(Drivers+L"\\powerfil.sys",&status);
 	fver _processr_sys = getFileVer(Drivers+L"\\processr.sys",&status);
@@ -1260,6 +1261,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pcl5eres_dll_cache = getFileVer(DriverCache+L"\\pcl5eres.dll",&status);
 	fver _pcl5ures_dll_cache = getFileVer(DriverCache+L"\\pcl5ures.dll",&status);
 	fver _pclxl_dll_cache    = getFileVer(DriverCache+L"\\pclxl.dll",&status);
+	fver _pcmcia_sys_cache   = getFileVer(DriverCache+L"\\pcmcia.sys",&status);
 	fver _ps5ui_dll_cache    = getFileVer(DriverCache+L"\\ps5ui.dll",&status);
 	fver _pscript5_dll_cache = getFileVer(DriverCache+L"\\pscript5.dll",&status);
 	fver _powerfil_sys_cache = getFileVer(DriverCache+L"\\powerfil.sys",&status);
@@ -6899,6 +6901,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _pci_sys_cache <fver(5,1,2600,2585)) ))) {
 		NN("Update for Windows XP (KB890463)");
 		XX(p2+"WindowsXP-KB890463-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,1640))
+	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,1640)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,2627))
+	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,2627)) ))) {
+		NN("Update for Windows XP (KB893089)");
+		XX(p2+"WindowsXP-KB893089-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _bthprint_sys       <fver(5,1,2600,2574))
