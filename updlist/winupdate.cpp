@@ -2170,10 +2170,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows (KB824105)");
 		XX(p1+"windowsxp-kb824105-x86-enu_92192cc7a15f27eda4f0e6a932db355.exe"+a7);
 	}
-	if( sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1831)) {
-		NN("Security Update for Windows XP (KB917953)");
-		XX(p1+"windowsxp-kb917953-x86-enu_a1c66e00d1a487f25ca16af5a7f858858136c228.exe"+a1);
-	}
 	/*if((sp==0 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2600,115))
 	 ||(sp==1 && (sku & XP_ALL) && _shell32_dll>zero && _shell32_dll<fver(6,0,2800,1233))) {
 		// KB821557 is replaced by KB841356
@@ -3238,6 +3234,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	//if( sp==3 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,5795)) {
 		NN("Security Update for Windows XP (KB970238)");
 		XX(p2+"windowsxp-kb970238-x86-enu_82bd58dd365d93afa746a4beaf2a1ad5b8d5181a.exe"+a1);
+	}
+	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1693))
+	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2685))) {
+		NN("Security Update for Windows XP (KB893066)"); // KB893066 is replaced by KB917953+KB951748
+		XX(p2+"WindowsXP-KB893066-v2-x86-ENU.exe"+a1);
+	}*/
+	if( sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1831)) {
+		NN("Security Update for Windows XP (KB917953)");
+		XX(p1+"windowsxp-kb917953-x86-enu_a1c66e00d1a487f25ca16af5a7f858858136c228.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2505)) {
 		NN("Update for Windows XP Service Pack 2 (KB884020)");
