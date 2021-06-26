@@ -1667,6 +1667,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comctl32_dll_1579 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1579_x-ww_7bbf8d08\\comctl32.dll",&status);
 	fver _comctl32_dll_1592 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1592_x-ww_7bc18d7f\\comctl32.dll",&status);
 	fver _comctl32_dll_1612 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1612_x-ww_7c379b08\\comctl32.dll",&status);
+	fver _comctl32_dll_1643 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1643_x-ww_7c3a9bc6\\comctl32.dll",&status);
 	fver _comctl32_dll_1659 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1659_x-ww_7c3b9c0b\\comctl32.dll",&status);
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
@@ -2414,6 +2415,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2578)) ))*/) {
 		NN("Security Update for Windows XP (KB890047)"); // KB890047 is replaced by KB908531 on SP2
 		XX(p1+"WindowsXP-KB890047-X86-ENU.exe"+a6);
+	}
+	if((sp==1 && (sku & XP_ALL) && (
+		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1643))
+		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+		|| ( _comctl32_dll_1643 < fver(6,0,2800,1643)) ))
+	 /*||(sp==2 && (sku & XP_ALL) && (
+		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2620)) ))*/) {
+		NN("Security Update for Windows XP (KB893086)"); // KB893086 is replaced by KB908531 on SP2
+		XX(p1+"WindowsXP-KB893086-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1592))
