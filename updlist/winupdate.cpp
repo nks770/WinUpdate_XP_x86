@@ -253,6 +253,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _asycfilt_dll = getFileVer(System32+L"\\asycfilt.dll",&status);
 	fver _atl_dll      = getFileVer(System32+L"\\atl.dll",&status);
 	fver _atmfd_dll    = getFileVer(System32+L"\\atmfd.dll",&status);
+	fver _audiodev_dll = getFileVer(System32+L"\\audiodev.dll",&status);
 	fver _authz_dll    = getFileVer(System32+L"\\authz.dll",&status);
 	fver _avifil32_dll = getFileVer(System32+L"\\avifil32.dll",&status);
 	fver _axaltocm_dll = getFileVer(System32+L"\\axaltocm.dll",&status);
@@ -10513,6 +10514,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=1 && (sku & XP_ALL) && _wmnetmgr_dll >=fver(10,0,0,3646) && _wmnetmgr_dll <fver(10,0,0,3921)) {
 		NN("Windows Media Player 10 Hotfix - KB893241");
 		XX(p3+"windowsmedia10-kb893241-x86-enu.exe"+a1);
+	}
+	if( sp>=1 && (sku & XP_ALL) && (
+		   _mswmdm_dll   >=fver(10,0,3790,3646)
+		&& _audiodev_dll >=fver(5,2,3790,3646)
+		&& _wpdsp_dll    >=fver(5,2,3790,3646)) && (
+		   _mswmdm_dll   < fver(10,0,3790,3911)
+		|| _audiodev_dll < fver(5,2,3810,3911)
+		|| _wpdsp_dll    < fver(5,2,3810,3911)) ) {
+		NN("Windows Media Player 10 Hotfix - KB895316");
+		XX(p3+"windowsmedia10-kb895316-x86-enu.exe"+a1);
 	}
 	if( sp==1 && (sku & XP_ALL) && _wmp_dll>=fver(10,0,0,3646) && _wmp_dll<fver(10,0,0,4036)) {
 		NN("Security Update for Windows Media Player 10 for Windows XP (KB917734)");
