@@ -3024,6 +3024,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB896427)"); // KB896427-v3 is replaced by KB916846
 		XX(p2+"WindowsXP-KB896427-v3-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==1 && (sku & XP_ALL) && (
+		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
+					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1620))
+					  ||  (_rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,1658))))
+	 ||(sp==2 && (sku & XP_ALL) && _rdbss_sys>zero && _rdbss_sys<fver(5,1,2600,2646) )) {
+		NN("Update for Windows XP (KB894463)"); // KB894463 is replaced by KB914389
+		XX(p2+"WindowsXP-KB894463-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
 					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1836))
