@@ -10929,6 +10929,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975558)");
 		XX(p3+"WindowsXP-WindowsMedia-KB975558-x86-ENU.exe"+a1);
 	}
+	if( sp>=1 && (sku & XP_ALL) && _mp4sdmod_dll >=fver(9,0,0,2980) && _mp4sdmod_dll <fver(10,0,0,3911)) {
+		NN("Windows Media Hotfix - KB895181");
+		XX(p3+"windowsmedia-kb895181-x86-enu.exe"+a1);
+	}
 	if( sp>=2 && (sku & XP_ALL) && ( _unregmp2_exe >= fver(11,0,5721,5145) && _unregmp2_exe < fver(11,0,5721,5235))) {
 		NN("Update for Windows Media Player 11 for Windows XP (KB939683)");
 		XX(p3+"windowsmedia11-kb939683-x86-enu_17d48a1cb35ad4f1cac39bd758158efe690730b5.exe"+a1);
