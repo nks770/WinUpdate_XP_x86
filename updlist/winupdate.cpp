@@ -861,6 +861,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ws2_32_dll   = getFileVer(System32+L"\\ws2_32.dll",&status);
 	fver _wscript_exe  = getFileVer(System32+L"\\wscript.exe",&status);
 	fver _wscsvc_dll   = getFileVer(System32+L"\\wscsvc.dll",&status);
+	fver _wsecedit_dll = getFileVer(System32+L"\\wsecedit.dll",&status);
 	fver _wshcon_dll   = getFileVer(System32+L"\\wshcon.dll",&status);
 	fver _wshext_dll   = getFileVer(System32+L"\\wshext.dll",&status);
 	fver _wship6_dll   = getFileVer(System32+L"\\wship6.dll",&status);
@@ -7026,8 +7027,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB894075-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,2653)) {
-		NN("Update for Windows XP (KB894472)");
+		NN("Update for Windows XP (KB894472)"); // FIXME - check if this is necessary
 		XX(p2+"WindowsXP-KB894472-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _wsecedit_dll >zero && _wsecedit_dll <fver(5,1,2600,2622)) {
+		NN("Update for Windows XP (KB894794)");
+		XX(p2+"WindowsXP-KB894794-x86-ENU.exe"+a1);
 	}
 	
 
