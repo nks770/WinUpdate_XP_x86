@@ -3491,10 +3491,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB885865)"); // KB885865 is replaced by KB914388
 		XX(p2+"WindowsXP-KB885865-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2540)) {
+		NN("Update for Windows XP (KB885270)"); // KB885270 is replaced by KB914388
+		XX(p2+"WindowsXP-KB885270-v2-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1620))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2601)) ) {
 		NN("Update for Windows XP (KB890946)"); // KB890946 is replaced by KB914388
 		XX(p2+"WindowsXP-KB890946-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,2629)) {
+		NN("Update for Windows XP (KB895246)"); // KB895246 is replaced by KB914388
+		XX(p2+"WindowsXP-KB895246-x86-ENU.exe"+a1);
 	}*/
 	if( sp==3 && qfe && (sku & XP_ALL) && _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,5614)) {
 		NN("Update for Windows XP (KB953761)");
