@@ -6916,18 +6916,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB888622)");
 		XX(p2+"WindowsXP-KB888622-x86-ENU.exe"+a6);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,1599))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2530))*/) {
-		NN("Update for Windows XP (KB887816)"); // KB887816 is replaced by KB887816-v2 on SP2
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,1599))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2530))) {
+		NN("Update for Windows XP (KB887816)"); // KB887816 is replaced by KB894871
 		XX(p1+"WindowsXP-KB887816-x86-ENU.exe"+a6);
-	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2573)) {
-		NN("Update for Windows XP (KB887816)");
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2573)) {
+		NN("Update for Windows XP (KB887816)"); // KB887816-v2 is replaced by KB894871
 		XX(p2+"WindowsXP-KB887816-v2-x86-ENU.exe"+a6);
-	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _msobmain_dll>zero && _msobmain_dll<fver(5,1,2600,2572)) {
-		NN("Update for Windows XP (KB888239)");
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _msobmain_dll>zero && _msobmain_dll<fver(5,1,2600,2572)) {
+		NN("Update for Windows XP (KB888239)"); // KB888239 is replaced by KB894871
 		XX(p2+"WindowsXP-KB888239-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,1670))
+	  ||  ( _syssetup_dll >zero && _syssetup_dll <fver(5,1,2600,1670))))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,2659))
+	  ||  ( _syssetup_dll >zero && _syssetup_dll <fver(5,1,2600,2659))))) {
+		NN("Update for Windows XP (KB894871)");
+		XX(p2+"WindowsXP-KB894871-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _srrstr_dll >zero && _srrstr_dll <fver(5,1,2600,2567))
