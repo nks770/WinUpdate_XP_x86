@@ -9345,6 +9345,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB890923-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2753))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,2753))
+		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,147))
+		|| (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2900,2753))
+		|| (_extmgr_dll   >zero && _extmgr_dll   <fver(6,0,2900,2753))
+		|| (_iedw_exe     >zero && _iedw_exe     <fver(5,1,2600,2753))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2753))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,2753))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2769))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,2753))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,2753))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2900,2753))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2900,2753))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2753))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2753))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2753))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,2753)) )) {
+		// KB896688 is replaced by KB947864
+		NN("Cumulative Update for Internet Explorer for Windows XP Service Pack 2 (KB896688)");
+		XX(p2+"WindowsXP-KB896688-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3059))
 		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3059))
 		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
