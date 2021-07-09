@@ -6861,6 +6861,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for POSReady 2009 (KB2878379)");
 		XX(p3+"WindowsXP-KB2878379-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,2649)) {
+		NN("Update for Windows XP (KB896684)"); // KB896684 is replaced by KB961503
+		XX(p2+"WindowsXP-KB896684-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,3531))
 	 ||(sp==3 && (sku & XP_ALL) && _msctfime_ime <fver(5,1,2600,5768))) {
 		NN("Update for Windows XP (KB961503)");
