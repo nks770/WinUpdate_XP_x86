@@ -7035,11 +7035,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890733)");
 		XX(p2+"WindowsXP-KB890733-x86-ENU.exe"+a6);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && (
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _rexec_exe >zero && _rexec_exe <fver(5,1,2600,2601))
 	  ||  ( _rsh_exe   >zero && _rsh_exe   <fver(5,1,2600,2601)) )) {
-		NN("Update for Windows XP (KB892099)");
+		NN("Update for Windows XP (KB892099)"); // KB892099 is replaced by KB896336
 		XX(p2+"WindowsXP-KB892099-x86-ENU.exe"+a6);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rexec_exe >zero && _rexec_exe <fver(5,1,2600,2643))
+	  ||  ( _rsh_exe   >zero && _rsh_exe   <fver(5,1,2600,2643)) )) {
+		NN("Update for Windows XP (KB896336)");
+		XX(p2+"WindowsXP-KB896336-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,1618))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,2594))) {
