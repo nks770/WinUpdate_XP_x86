@@ -7078,6 +7078,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB894794)");
 		XX(p2+"WindowsXP-KB894794-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _shimgvw_dll >zero && _shimgvw_dll <fver(6,0,2800,1690))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _shimgvw_dll >zero && _shimgvw_dll <fver(6,0,2900,2680))) {
+		NN("Update for Windows XP (KB896269)");
+		XX(p2+"WindowsXP-KB896269-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
