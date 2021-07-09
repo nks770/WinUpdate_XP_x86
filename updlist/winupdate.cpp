@@ -7020,14 +7020,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890463)");
 		XX(p2+"WindowsXP-KB890463-x86-ENU.exe"+a6);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,1640))
 	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,1640)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,2627))
 	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,2627)) ))) {
-		NN("Update for Windows XP (KB893089)");
+		NN("Update for Windows XP (KB893089)"); // KB893089 is replaced by KB896360
 		XX(p2+"WindowsXP-KB893089-x86-ENU.exe"+a1);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,1682))
+	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,1682)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _pcmcia_sys >zero && _pcmcia_sys <fver(5,1,2600,2672))
+	  ||  ( _pcmcia_sys_cache <fver(5,1,2600,2672)) ))) {
+		NN("Update for Windows XP (KB896360)");
+		XX(p2+"WindowsXP-KB896360-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _bthprint_sys       <fver(5,1,2600,2574))
