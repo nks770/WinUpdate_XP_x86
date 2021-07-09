@@ -3418,7 +3418,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		}*/
 		if((sp==1 && qfe && (sku & XP_ALL) && _riched20_dll >zero && _riched20_dll <fver(5,30,23,1225))
 		 /*||(sp==2 && qfe && (sku & XP_ALL) && _riched20_dll >zero && _riched20_dll <fver(5,30,23,1226))*/) {
-			NN("Update for Windows XP (KB896430)"); // KB884047 is replaced by KB953024 on SP2
+			NN("Update for Windows XP (KB896430)"); // KB896430 is replaced by KB953024 on SP2
 			XX(p1+"WindowsXP-KB896430-x86-ENU.exe"+a1);
 		}
 		if( sp>=2 && qfe && (sku & XP_ALL) && (
@@ -6223,6 +6223,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB885423)"); // KB883529 is replaced by KB948277 on SP2
 		XX(p1+"WindowsXP-KB885423-x86-ENU.exe"+a6);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,2645))
+	  ||  ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,2645))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,2645)) )) {
+		NN("Update for Windows XP (KB896613)"); // KB896613 is replaced by KB948277+KB956572
+		XX(p2+"WindowsXP-KB896613-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,2604) ) {
 		NN("Update for Windows XP (KB890837)"); // KB890837 is replaced by KB948277
 		XX(p2+"WindowsXP-KB890837-v3-x86-ENU.exe"+a6);
@@ -6847,7 +6854,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2836198)");
 		XX(p3+"WindowsXP-KB2836198-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && qfe && (sku & XP_ALL) && ( // Investigate whether this is actually only for XPE_POSREADY2009
+	if( sp==3 && qfe && (sku & XP_ALL) && ( // FIXME: Investigate whether this is actually only for XPE_POSREADY2009
 		  ( _dpcdll_dll   >zero && _dpcdll_dll   <fver(5,1,2600,6443))
 	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,6443))
 	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,6443)) )) {
