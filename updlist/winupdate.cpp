@@ -7703,10 +7703,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890953)"); // KB890953 is replaced by KB975467
 		XX(p2+"WindowsXP-KB890953-x86-ENU.exe"+a6);
 	}*/
-	if((sp==1 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,1618))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,2578))*/) {
-		NN("Update for Windows XP (KB890953)"); // KB890953-v3 is replaced by KB975467 on SP2
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,1618))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,2578))) {
+		NN("Update for Windows XP (KB890953)"); // KB890953-v3 is replaced by KB896166
 		XX(p1+"WindowsXP-KB890953-v3-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,1652))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,2639))*/) {
+		NN("Update for Windows XP (KB896166)"); // KB896166 is replaced by KB975467 on SP2
+		XX(p1+"WindowsXP-KB896166-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && _msv1_0_dll>zero && _msv1_0_dll<fver(5,1,2600,3625))
 	 ||(sp==3 && (sku & XP_ALL) && _msv1_0_dll>zero && _msv1_0_dll<fver(5,1,2600,5876))) {
