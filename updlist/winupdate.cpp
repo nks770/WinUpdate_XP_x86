@@ -702,6 +702,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _schedsvc_dll = getFileVer(System32+L"\\schedsvc.dll",&status);
 	fver _scrobj_dll   = getFileVer(System32+L"\\scrobj.dll",&status);
 	fver _scrrun_dll   = getFileVer(System32+L"\\scrrun.dll",&status);
+	fver _secedit_exe  = getFileVer(System32+L"\\secedit.exe",&status);
 	fver _seclogon_dll = getFileVer(System32+L"\\seclogon.dll",&status);
 	fver _SecProc_dll  = getFileVer(System32+L"\\SecProc.dll",&status);
 	fver _SecProc_isv_dll = getFileVer(System32+L"\\SecProc_isv.dll",&status);
@@ -7127,6 +7128,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _ntvdm_exe >zero && _ntvdm_exe <fver(5,1,2600,2650)) {
 		NN("Update for Windows XP (KB896896)");
 		XX(p2+"WindowsXP-KB896896-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _secedit_exe >zero && _secedit_exe <fver(5,1,2600,1666))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _secedit_exe >zero && _secedit_exe <fver(5,1,2600,2655))) {
+		NN("Update for Windows XP (KB897327)");
+		XX(p2+"WindowsXP-KB897327-x86-ENU.exe"+a1);
 	}
 	
 
