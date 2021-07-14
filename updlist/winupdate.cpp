@@ -11893,7 +11893,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(sw+p+"silverlight_a6ea175976edbdeeddfbfb65e64d9d1cfded84a1.exe"+a2l);
 	}
 
-	if( sp<=3 && (sku & XP_ALL) && (
+	/*if( (sku & XP_ALL) && (
+	    ( _lrun32_exe >zero && _lrun32_exe <fver(3,6,0,111))
+	 || ( _mrun32_exe >zero && _mrun32_exe <fver(3,4,1,101))
+	 || ( _orun32_exe >zero && _orun32_exe <fver(3,5,0,117)) )) {
+		NN("Security Update for Windows (KB898458)"); // KB898458 is replaced by KB923723
+		XX(sb+"StepByStepInteractiveTraining-KB898458-x86-ENU.exe"+a1);
+	}*/
+	if( (sku & XP_ALL) && (
 	    ( _lrun32_exe >zero && _lrun32_exe <fver(3,6,0,112))
 	 || ( _mrun32_exe >zero && _mrun32_exe <fver(3,4,1,102))
 	 || ( _orun32_exe >zero && _orun32_exe <fver(3,5,0,118)) )) {
