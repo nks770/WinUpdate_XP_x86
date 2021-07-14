@@ -2409,6 +2409,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB889085)"); // KB889085 is replaced by KB822686
 		XX(p2+"WindowsXP-KB889085-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _shell32_dll > zero && _shell32_dll <fver(6,0,2900,2659)) {
+		NN("Update for Windows XP (KB898444)"); // KB898444 is replaced by KB943460
+		XX(p2+"WindowsXP-KB898444-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		( _shell32_dll  > zero && _shell32_dll  <fver(6,0,2900,2688))
 	 || ( _xpsp3res_dll > zero && _xpsp3res_dll <fver(5,1,2600,2688)) )) {
@@ -6351,6 +6355,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		 ( _usbehci_sys   >zero && _usbehci_sys   <fver(5,1,2600,2644)) )) {
 		NN("Update for Windows XP (KB892050)"); // KB892050 is replaced by KB918005
 		XX(p2+"WindowsXP-KB892050-v3-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,2730))
+	  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,2730)) )) {
+		NN("Update for Windows XP (KB898108)"); // KB898108 is replaced by KB918005
+		XX(p2+"WindowsXP-KB898108-v4-x86-ENU.exe"+a1);
 	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,3020))
