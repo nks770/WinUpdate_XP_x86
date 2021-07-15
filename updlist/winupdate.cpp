@@ -6869,6 +6869,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB970048)");
 		XX(p3+"WindowsXP-KB970048-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _unimdm_tsp >zero && _unimdm_tsp <fver(5,1,2600,2679)) {
+		NN("Update for Windows XP (KB899418)");
+		XX(p2+"WindowsXP-KB899418-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && qfe && (sku & XP_ALL) && _unimdm_tsp >zero && _unimdm_tsp <fver(5,1,2600,5815)) {
 		NN("Update for Windows XP (KB970254)");
 		XX(p3+"WindowsXP-KB970254-x86-ENU.exe"+a1);
