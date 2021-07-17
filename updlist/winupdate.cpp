@@ -4062,9 +4062,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB911280)");
 		XX(p2+"windowsxp-kb911280-v2-x86-enu_3a49ae105416eb7b37dbbaccbedc9c20069ef1d9.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		(_ipsec_sys   >zero && _ipsec_sys   <fver(5,1,2600,2689))
+	 || (_ipsecsvc_dll>zero && _ipsecsvc_dll<fver(5,1,2600,2689)) )) {
+		NN("Update for Windows XP (KB900624)"); // KB900624 is replaced by KB900624-v2 and KB907865
+		XX(p2+"WindowsXP-KB900624-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && _ipsec_sys >zero && _ipsec_sys <fver(5,1,2600,2806)) {
 		NN("Update for Windows XP (KB900624)");
 		XX(p2+"WindowsXP-KB900624-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && (sku & XP_ALL) && (
+		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
+		NN("Update for Windows XP (KB907865)");
+		XX(p2+"WindowsXP-KB907865-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB956391")
 		                        || !kb956391_installed())) {
@@ -5800,11 +5811,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 								&& strncmp(_mmcshext_dll_md5,"0376d2cda904ad48f2b51d543ae04de2",32) != 0) )) {
 		NN("Update for Windows XP (KB957502)");
 		XX(p3+"WindowsXP-KB957502-x86-ENU.exe"+a1);
-	}
-	if( sp==2 && (sku & XP_ALL) && (
-		  ( _ipsecsvc_dll  >zero && _ipsecsvc_dll  <fver(5,1,2600,2760)) )) {
-		NN("Update for Windows XP (KB907865)");
-		XX(p2+"WindowsXP-KB907865-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,2790)) )) {
