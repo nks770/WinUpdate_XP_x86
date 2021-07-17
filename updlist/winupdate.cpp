@@ -4409,6 +4409,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Flash Player (KB923789)");
 		XX(p3+"WindowsXP-KB923789-x86-ENU.exe"+a2);
 	}
+	/*if((sp==1 &&         (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,1711))
+	 ||(sp==2 && !qfe && (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,2710))) {
+		NN("Security Update for Windows XP (KB899588)"); // KB899588 is replaced by KB905749
+		XX(p2+"WindowsXP-KB899588-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 &&         (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,1734))
 	 ||(sp==2 && !qfe && (sku & XP_ALL) && _umpnpmgr_dll >zero && _umpnpmgr_dll <fver(5,1,2600,2744))) {
 		NN("Security Update for Windows XP (KB905749)");
