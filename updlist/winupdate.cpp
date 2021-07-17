@@ -4062,6 +4062,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB911280)");
 		XX(p2+"windowsxp-kb911280-v2-x86-enu_3a49ae105416eb7b37dbbaccbedc9c20069ef1d9.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _ipsec_sys >zero && _ipsec_sys <fver(5,1,2600,2806)) {
+		NN("Update for Windows XP (KB900624)");
+		XX(p2+"WindowsXP-KB900624-v2-x86-ENU.exe"+a1);
+	}
 	/*if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB956391")
 		                        || !kb956391_installed())) {
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB956391)");
