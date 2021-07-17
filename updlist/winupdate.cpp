@@ -4087,6 +4087,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB980195)");
 		XX(p2+"windowsxp-kb980195-x86-enu_5e9692a99ed5f78af0ce82f7aa5e87b1cd5bf958.exe"+a1);
 	}
+	if( sp<2 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) &&
+	  regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{03D9F3F2-B0E3-11D2-B081-006008039BF0}",L"Compatibility Flags",&status) != 1024 ) {
+		NN("Security Update for JView Profiler (KB903235)");
+		XX(sw+p1+"IE-KB903235-x86-ENU.exe"+a8);
+	}
+	if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB903235")
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{03D9F3F2-B0E3-11D2-B081-006008039BF0}",L"Compatibility Flags",&status) != 1024 )) {
+		NN("Security Update for JView Profiler (KB903235)");
+		XX(p2+"WindowsXP-KB903235-x86-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2695962")
 		                        || !kb2695962_installed() )) {
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB2695962)");
