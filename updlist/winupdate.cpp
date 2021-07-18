@@ -1187,6 +1187,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usb8023_sys  = getFileVer(Drivers+L"\\usb8023.sys",&status);
 	fver _usb8023x_sys = getFileVer(Drivers+L"\\usb8023x.sys",&status);
 	fver _usbaudio_sys = getFileVer(Drivers+L"\\usbaudio.sys",&status);
+	fver _usbcamd_sys  = getFileVer(Drivers+L"\\usbcamd.sys",&status);
+	fver _usbcamd2_sys = getFileVer(Drivers+L"\\usbcamd2.sys",&status);
 	fver _usbccgp_sys  = getFileVer(Drivers+L"\\usbccgp.sys",&status);
 	fver _usbccid_sys  = getFileVer(Drivers+L"\\usbccid.sys",&status);
 	fver _usbd_sys     = getFileVer(Drivers+L"\\usbd.sys",&status);
@@ -1294,6 +1296,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
 	fver _usb8023_sys_cache  = getFileVer(DriverCache+L"\\usb8023.sys",&status);
 	fver _usb8023x_sys_cache = getFileVer(DriverCache+L"\\usb8023x.sys",&status);
+	fver _usbcamd_sys_cache  = getFileVer(DriverCache+L"\\usbcamd.sys",&status);
+	fver _usbcamd2_sys_cache  = getFileVer(DriverCache+L"\\usbcamd2.sys",&status);
 	fver _usbccgp_sys_cache  = getFileVer(DriverCache+L"\\usbccgp.sys",&status);
 	fver _usbccid_sys_cache  = getFileVer(DriverCache+L"\\usbccid.sys",&status);
 	fver _usbser_sys_cache   = getFileVer(DriverCache+L"\\usbser.sys",&status);
@@ -7252,6 +7256,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _rastapi_dll >zero && _rastapi_dll <fver(5,1,2600,2717)) {
 		NN("Update for Windows XP (KB903737)");
 		XX(p2+"WindowsXP-KB903737-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _usbcamd_sys  >zero && _usbcamd_sys  <fver(5,1,2600,2736))
+	 || ( _usbcamd2_sys >zero && _usbcamd2_sys <fver(5,1,2600,2736))
+	 || _usbcamd_sys_cache  <fver(5,1,2600,2736)
+	 || _usbcamd2_sys_cache <fver(5,1,2600,2736) )) {
+		NN("Update for Windows XP (KB905816)");
+		XX(p2+"WindowsXP-KB905816-x86-ENU.exe"+a1);
 	}
 	
 
