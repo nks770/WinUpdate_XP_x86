@@ -6178,6 +6178,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB940350)");
 		XX(p2+"WindowsXP-KB940350-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _mup_sys   >zero && _mup_sys   <fver(5,1,2600,2763)) )) {
+		NN("Update for Windows XP (KB906866)"); // KB906866 is replaced by KB940648
+		XX(p2+"WindowsXP-KB906866-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _mup_sys    >zero && _mup_sys    <fver(5,1,2600,3360))
 					  ||  ( _wkssvc_dll >zero && _wkssvc_dll <fver(5,1,2600,3360)) ))
