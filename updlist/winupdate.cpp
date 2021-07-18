@@ -5550,6 +5550,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update Rollup for Windows XP Media Center Edition 2005 (KB912067)");
 		XX(p3+"WindowsXPMediaCenter2005-kb912067-ENU.exe"+a1);
 	}*/
+	/*if(sp>=2 && (sku & XP_MCE2005)
+		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
+		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,2883))
+		     || (_ehepg_dll    >zero && _ehepg_dll    <fver(5,1,2715,2883))
+		     || (_ehglid_dll   >zero && _ehglid_dll   <fver(5,1,2715,2883))
+		     || (_ehkeyctl_dll >zero && _ehkeyctl_dll <fver(5,1,2715,2883))
+		     || (_ehrecvr_exe  >zero && _ehrecvr_exe  <fver(5,1,2715,2883))
+		     || (_ehshell_exe  >zero && _ehshell_exe  <fver(5,1,2715,2883))
+		     || (_ehui_dll     >zero && _ehui_dll     <fver(5,1,2715,2883))
+		     || (_encdec_dll   >zero && _encdec_dll   <fver(6,5,2715,2883))
+		     || (_mstvcapn_dll >zero && _mstvcapn_dll <fver(5,1,2715,2883))
+		     || (_msvidctl_dll >zero && _msvidctl_dll <fver(6,5,2715,2883))
+		     || (_psisdecd_dll >zero && _psisdecd_dll <fver(6,5,2715,2883))
+		     || (_psisrndr_ax  >zero && _psisrndr_ax  <fver(6,5,2715,2883))
+		     || (_pxdrv_dll    >zero && _pxdrv_dll    <fver(1,1,63,0))
+		     || (_sbe_dll      >zero && _sbe_dll      <fver(6,5,2715,2883)) )) {
+		NN("Update Rollup for Windows XP Media Center 2005 (KB914548)"); // KB914548 is replaced by KB925766
+		XX(p3+"WindowsXPMediaCenter2005-KB914548-ENU.exe"+a1);
+	}*/
 	if(sp>=2 && (sku & XP_MCE2005)
 		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
 		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,3011))
