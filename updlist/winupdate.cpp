@@ -8124,6 +8124,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB970430)");
 		XX(p3+"WindowsXP-KB970430-x86-ENU.exe"+a1);
 	}
+	if((sp==2 && qfe && (sku & XP_ALL) && _cryptsvc_dll >zero && _cryptsvc_dll <fver(5,1,2600,3712))
+	 ||(sp==3 && qfe && (sku & XP_ALL) && _cryptsvc_dll >zero && _cryptsvc_dll <fver(5,1,2600,5988))) {
+		NN("Update for Windows XP (KB2095711)");
+		XX(p3+"WindowsXP-KB2095711-x86-ENU.exe"+a1);
+	}
 
 	// Updates for Microsoft Visual C++ Runtime Versions
 	if( sp==2 && (sku & XP_ALL) && ( (_mfc40u_dll>zero && _mfc40u_dll<fver(4,1,0,6141))
