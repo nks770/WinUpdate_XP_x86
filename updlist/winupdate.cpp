@@ -9139,6 +9139,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB975560)");
 		XX(p3+"WindowsXP-KB975560-x86-ENU.exe"+a1);
 	}
+	/*if( sp==3 && qfe && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,6010)) {
+		NN("Update for Windows XP (KB2282612)"); // KB2282612 is replaced by KB2780091
+		XX(p3+"WindowsXP-KB2282612-x86-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_ALL) && ( (_mpg2splt_ax>zero && _mpg2splt_ax<fver(6,5,2600,6333))
 					  ||  (_quartz_dll>zero && _quartz_dll<fver(6,5,2600,6333)) )) {
 		NN("Security Update for Windows XP (KB2780091)");
