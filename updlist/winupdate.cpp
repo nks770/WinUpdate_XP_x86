@@ -9055,6 +9055,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2423089)");
 		XX(p3+"WindowsXP-KB2423089-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && (sku & XP_ALL) && (
+		  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,2670))
+	  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2900,2670)) )) {
+		NN("Update for Windows XP (KB900930)"); // KB900930 is replaced by KB978542
+		XX(p2+"WindowsXP-KB900930-x86-ENU.exe"+a1);
+	}*/
 	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3100)) {
 		NN("Update for Windows XP (KB933612)"); // KB933612 is replaced by KB978542
 		XX(p2+"WindowsXP-KB933612-x86-ENU.exe"+a1);
