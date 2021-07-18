@@ -8938,6 +8938,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Hotfix for Windows XP (KB900411)"); // KB900411 is replaced by KB975562
 		XX(p2+"windowsxp-kb900411-x86-enu.exe"+a1);
 	}*/
+	/*if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,2727)) {
+		NN("Hotfix for Windows XP (KB904636)"); // KB904636 is replaced by KB975562
+		XX(p2+"windowsxp-kb904636-x86-enu.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,3665)) {
 	//if( sp==3 && (sku & XP_ALL) && _quartz_dll>zero && _quartz_dll<fver(6,5,2600,5933)) {
 		NN("Security Update for Windows XP (KB975562)");
