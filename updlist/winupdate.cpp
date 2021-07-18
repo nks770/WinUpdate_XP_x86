@@ -672,6 +672,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rasmans_dll  = getFileVer(System32+L"\\rasmans.dll",&status);
 	fver _rasmxs_dll   = getFileVer(System32+L"\\rasmxs.dll",&status);
 	fver _rassapi_dll  = getFileVer(System32+L"\\rassapi.dll",&status);
+	fver _rastapi_dll  = getFileVer(System32+L"\\rastapi.dll",&status);
 	fver _rastls_dll   = getFileVer(System32+L"\\rastls.dll",&status);
 	fver _rdchost_dll  = getFileVer(System32+L"\\rdchost.dll",&status);
 	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
@@ -7238,6 +7239,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _secedit_exe >zero && _secedit_exe <fver(5,1,2600,2655))) {
 		NN("Update for Windows XP (KB897327)");
 		XX(p2+"WindowsXP-KB897327-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _rastapi_dll >zero && _rastapi_dll <fver(5,1,2600,2717)) {
+		NN("Update for Windows XP (KB903737)");
+		XX(p2+"WindowsXP-KB903737-x86-ENU.exe"+a1);
 	}
 	
 
