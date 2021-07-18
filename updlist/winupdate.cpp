@@ -11621,6 +11621,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Remote Desktop Connection (Terminal Services Client 6.1) for Windows XP (KB952155)");
 		XX(mstsc+"WindowsXP-KB952155-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0))) && (
+					      (_mstscax_dll     >zero && _mstscax_dll  <fver(5,1,2600,1743)) ))
+	 /*||(sp==2 && qfe && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0))) && (
+					      (_mstscax_dll     >zero && _mstscax_dll  <fver(5,1,2600,2756)) ))*/) {
+		NN("Update for Windows XP (KB907572)"); // KB907572 is replaced by KB958470 on SP2
+		XX(p1+"WindowsXP-KB907572-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0)))
 		              && (
 					  /* GDR and QFE */
