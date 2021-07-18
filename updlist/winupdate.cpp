@@ -7282,6 +7282,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Certificate Revocation List [March 2015] (KB3050995)");
 		XX(sw+p3+"rvkroots_3f2ce4676450c06f109b5b4e68bec252873ccc21.exe");
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,2700))
+			|| _usbccgp_sys_cache <fver(5,1,2600,2700))) {
+		NN("Update for Windows XP (KB901122)"); // KB901122 is replaced by KB945436
+		XX(p2+"WindowsXP-KB901122-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,3356))
 			|| _usbccgp_sys_cache <fver(5,1,2600,3356)))
