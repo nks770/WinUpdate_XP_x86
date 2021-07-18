@@ -5110,6 +5110,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p1+"WindowsXP-KB884862-v2-x86-ENU.exe"+a6);
 		}
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
+		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2767))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2767))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2767))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2767))
+		  ||  ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2767))
+		  ||  ( _ndisuio_sys_cache <fver(5,1,2600,2626)) )) {
+			NN("Update for Windows XP (KB907405)"); // KB907405 is replaced by KB923154
+			XX(p2+"WindowsXP-KB907405-x86-ENU.exe"+a1);
+		}*/
+		/*if( sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2858))
 		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2858))
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2858))
@@ -5125,6 +5136,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2979))
 		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2979))
 		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2979))
+		  ||  ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2979))
 		  ||  ( _ndisuio_sys_cache <fver(5,1,2600,2979)) )) {
 			NN("Update for Windows XP (KB923154)");
 			XX(p2+"WindowsXP-KB923154-x86-ENU.exe"+a1);
