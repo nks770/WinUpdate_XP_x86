@@ -9730,6 +9730,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB302224)");
 		XX(p2+"WindowsXP-KB302224-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _ieakeng_dll >zero && _ieakeng_dll <fver(6,0,2900,2699) ) {
+		NN("Update for Windows XP (KB900732)");
+		XX(p2+"WindowsXP-KB900732-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,16414))
 		|| (_corpol_dll      >zero && _corpol_dll      <fver(7,0,6000,16414))
