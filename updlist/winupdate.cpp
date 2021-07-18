@@ -5524,6 +5524,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP Media Center Edition 2005 (KB888316)");
 		XX(p3+"KB888316_enu.exe"+a6);
 	}*/
+	/*if(sp>=2 && (sku & XP_MCE2005)
+		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
+		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,2773))
+		     || (_ehepg_dll    >zero && _ehepg_dll    <fver(5,1,2715,2773))
+		     || (_ehglid_dll   >zero && _ehglid_dll   <fver(5,1,2715,2773))
+		     || (_ehrecvr_exe  >zero && _ehrecvr_exe  <fver(5,1,2715,2773))
+		     || (_ehshell_exe  >zero && _ehshell_exe  <fver(5,1,2715,2773))
+		     || (_msvidctl_dll >zero && _msvidctl_dll <fver(6,5,2715,2773))
+		     || (_pxdrv_dll    >zero && _pxdrv_dll    <fver(1,1,63,0)) )) { // KB908250 is replaced by KB925766
+		NN("Update Rollup KB908250 for Update Rollup 2 for Microsoft Windows XP Media Center Edition 2005");
+		XX(p3+"WindowsXPMediaCenter2005-kb908250-enu.exe"+a1);
+	}*/
 	if(sp>=2 && (sku & XP_MCE2005)
 		&& ( kb900325 || regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"4.0" )
 		&& (    (_ehcm_dll     >zero && _ehcm_dll     <fver(5,1,2715,3011))
