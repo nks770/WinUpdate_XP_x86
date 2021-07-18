@@ -127,6 +127,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring Restore = System32 + L"\\Restore";
 	std::wstring sbsi_training = System32 + L"\\Help\\SBSI\\Training";
 
+	std::wstring Framework = SystemRoot+L"\\Microsoft.NET\\Framework\\";
+	std::wstring p_nfx10 = Framework+L"v1.0.3705";
+
 	std::wstring helpctr_binaries = SystemRoot + L"\\pchealth\\helpctr\\binaries";
 	std::wstring UploadLB = SystemRoot + L"\\pchealth\\UploadLB\\Binaries";
 
@@ -1027,9 +1030,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _medctrro_exe = getFileVer(ehome+L"\\medctrro.exe",&status);
 	fver _microsoft_mediacenter_dll = getFileVer(ehome+L"\\Microsoft.MediaCenter.dll",&status);
 	fver _mstvcapn_dll = getFileVer(ehome+L"\\mstvcapn.dll",&status);
+	fver _snchk_exe    = getFileVer(ehome+L"\\snchk.exe",&status);
 	fver _sqldb20_dll  = getFileVer(ehome+L"\\sqldb20.dll",&status);
 	fver _sqlqp20_dll  = getFileVer(ehome+L"\\sqlqp20.dll",&status);
 	fver _sqlse20_dll  = getFileVer(ehome+L"\\sqlse20.dll",&status);
+
+	fver _gacutil_exe = getFileVer(p_nfx10+L"\\gacutil.exe",&status);
 
 	fver _ContextTagger_dll = getFileVer(Ink+L"\\ContextTagger.dll",&status);
 	fver _InkObj_dll        = getFileVer(Ink+L"\\InkObj.dll",&status);
@@ -4920,12 +4926,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Critical Update for Microsoft Windows XP Media Center Edition Infrared Receiver (KB832418)");
 		XX(p1+"windowsxp-kb832418-x86-enu_7f380619f4113b382546291911af7d1.exe"+a6);
 	}
-	if( sp>=1 && (sku & XP_MCE)
-		&& regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"2.7"
-		&& (( _ehshell_exe >zero && _ehshell_exe <fver(5,1,2600,1378)) )) {
-		NN("Critical Update for Windows XP Media Center Edition 2004 (KB838358)");
-		XX(p1+"kb838358_mce2004_x86_enu_8468b88ac30fa21b96f12588ed76278cb865ba8a.exe"+a6);
-	}
 	if( sp==2 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,0) && (
 		                  (_blackbox_dll >zero && _blackbox_dll <fver(10,0,0,3802))
 		              ||  (_cewmdm_dll   >zero && _cewmdm_dll   <fver(10,0,3790,3802))
@@ -5181,6 +5181,32 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft .NET Framework 1.1 Service Pack 1 (KB867460)");
 		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+a2);
 	}
+
+	if( sp>=1 && (sku & XP_MCE2002) && (
+	   ( _ehepg_dll    <fver(5,1,2600,1142))
+	 ||( _ehepgdat_dll <fver(5,1,2600,1142))
+	 ||( _ehiproxy_dll <fver(6,0,2600,0))
+	 ||( _ehplayer_dll <fver(5,1,2600,1142))
+	 ||( _ehproxy_dll  <fver(5,1,2600,1142))
+	 ||( _ehrecobj_dll <fver(5,1,2600,1142))
+	 ||( _ehsched_exe  <fver(5,1,2600,1142))
+	 ||( _ehshell_exe  <fver(5,1,2600,1142))
+	 ||( _ehtray_exe   <fver(5,1,2600,1142))
+	 ||( _encdec_dll   <fver(6,4,2600,1142))
+	 ||( _gacutil_exe  <fver(1,0,3705,0))
+	 ||( _medctrro_exe <fver(5,1,2600,1142))
+	 ||( _sbe_dll      <fver(6,4,2600,1142))
+	 ||( _snchk_exe    <fver(5,1,2600,1142)) )) {
+		NN("Q329979: Critical Update for Windows XP Media Center Edition");
+		XX(p2+"Q329979_WXP_SP2_x86_ENU.exe"+a7);
+	}
+	if( sp>=1 && (sku & XP_MCE2004)
+		&& regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"2.7"
+		&& (( _ehshell_exe >zero && _ehshell_exe <fver(5,1,2600,1378)) )) {
+		NN("Critical Update for Windows XP Media Center Edition 2004 (KB838358)");
+		XX(p1+"kb838358_mce2004_x86_enu_8468b88ac30fa21b96f12588ed76278cb865ba8a.exe"+a6);
+	}
+
 	/*if( sp>=2 && (sku & XP_MCE2005) && (
 		    ( _ehcm_dll                  <fver(5,1,2700,2230))
 		||  ( _ehcommon_dll              <fver(5,1,2700,2230))
