@@ -5182,7 +5182,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"NDP1.1sp1-KB867460-X86.exe"+a2);
 	}
 
-	if( sp>=1 && (sku & XP_MCE2002) && (
+	/*if( sp>=1 && (sku & XP_MCE2002) && (
 	   ( _ehepg_dll    <fver(5,1,2600,1142))
 	 ||( _ehepgdat_dll <fver(5,1,2600,1142))
 	 ||( _ehiproxy_dll <fver(6,0,2600,0))
@@ -5197,8 +5197,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||( _medctrro_exe <fver(5,1,2600,1142))
 	 ||( _sbe_dll      <fver(6,4,2600,1142))
 	 ||( _snchk_exe    <fver(5,1,2600,1142)) )) {
-		NN("Q329979: Critical Update for Windows XP Media Center Edition");
+		NN("Q329979: Critical Update for Windows XP Media Center Edition"); // Q329979 is replaced by Q815487
 		XX(p2+"Q329979_WXP_SP2_x86_ENU.exe"+a7);
+	}*/
+	if( sp>=1 && (sku & XP_MCE2002) && (
+	   ( _ehepg_dll    <fver(5,1,2600,1181))
+	 ||( _ehepgdat_dll <fver(5,1,2600,1142))
+	 ||( _ehiproxy_dll <fver(6,0,2600,0))
+	 ||( _ehplayer_dll <fver(5,1,2600,1142))
+	 ||( _ehproxy_dll  <fver(5,1,2600,1142))
+	 ||( _ehrecobj_dll <fver(5,1,2600,1181))
+	 ||( _ehsched_exe  <fver(5,1,2600,1142))
+	 ||( _ehshell_exe  <fver(5,1,2600,1142))
+	 ||( _ehtray_exe   <fver(5,1,2600,1142))
+	 ||( _encdec_dll   <fver(6,4,2600,1142))
+	 ||( _gacutil_exe  <fver(1,0,3705,0))
+	 ||( _medctrro_exe <fver(5,1,2600,1142))
+	 ||( _sbe_dll      <fver(6,4,2600,1142))
+	 ||( _snchk_exe    <fver(5,1,2600,1142)) )) {
+		NN("Q815487: Critical update for Windows XP Media Center Edition");
+		XX(p2+"Q815487_WxP_SP2_i386_ENU.exe"+a7);
 	}
 	if( sp>=1 && (sku & XP_MCE2004)
 		&& regQueryValue(L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Media Center",L"Ident",&status)==L"2.7"
