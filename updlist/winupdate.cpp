@@ -1294,6 +1294,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sbp2port_sys_cache = getFileVer(DriverCache+L"\\sbp2port.sys",&status);
 	fver _sdbus_sys_cache    = getFileVer(DriverCache+L"\\sdbus.sys",&status);
 	fver _serscan_sys_cache  = getFileVer(DriverCache+L"\\serscan.sys",&status);
+	fver _stream_sys_cache   = getFileVer(DriverCache+L"\\stream.sys",&status);
 	fver _tty_dll_cache      = getFileVer(DriverCache+L"\\tty.dll",&status);
 	fver _ttyres_dll_cache   = getFileVer(DriverCache+L"\\ttyres.dll",&status);
 	fver _ttyui_dll_cache    = getFileVer(DriverCache+L"\\ttyui.dll",&status);
@@ -5884,8 +5885,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB957502)");
 		XX(p3+"WindowsXP-KB957502-x86-ENU.exe"+a1);
 	}
+	if( sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,1164))
+		|| _stream_sys_cache  <fver(5,3,2600,1164) )) {
+		NN("Q812035: A Crash Occurs in Ks.sys on Computers with Intel Hyper-Threading CPU");
+		XX(p1+"Q812035_WXP_SP2_x86_ENU.exe"+a7);
+	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,2790)) )) {
+		  ( _stream_sys  >zero && _stream_sys  <fver(5,3,2600,2790))
+	    || _stream_sys_cache  <fver(5,3,2600,2790) )) {
 		NN("Update for Windows XP (KB909667)");
 		XX(p2+"WindowsXP-KB909667-x86-ENU.exe"+a1);
 	}
