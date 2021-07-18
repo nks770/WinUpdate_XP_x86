@@ -6233,6 +6233,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB870981)"); // KB870981 is replaced by KB948046+KB950305 on SP2
 		XX(p1+"WindowsXP-KB870981-v2-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _ps5ui_dll    >zero && _ps5ui_dll    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll >zero && _pscript5_dll <fver(0,3,3790,399))
+	  ||  ( _ps5ui_dll_cache    <fver(0,3,3790,288))
+	  ||  ( _pscript5_dll_cache <fver(0,3,3790,399)) ))
+	/*|| (sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _pscript5_dll >zero && _pscript5_dll <fver(0,3,3790,399))
+	  ||  ( _pscript5_dll_cache <fver(0,3,3790,399)) ))*/) {
+		NN("Update for Windows XP (KB906688)"); // KB906688 is replaced by KB950305 on SP2
+		XX(p1+"WindowsXP-KB906688-x86-ENU.exe"+a1);
+	}
 	if( sp>=2 && qfe && (sku & XP_ALL) && (
 		  ( _pcl4res_dll  >zero && _pcl4res_dll  <fver(0,3,5479,0))
 	  ||  ( _pcl5eres_dll >zero && _pcl5eres_dll <fver(0,3,5479,0))
