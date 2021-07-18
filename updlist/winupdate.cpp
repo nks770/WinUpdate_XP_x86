@@ -10832,10 +10832,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB895572)"); // KB895572 is replaced by KB917734
 		XX(p1+"windowsmedia10-kb895572-x86-enu.exe"+a1);
 	}*/
-	if( sp>=1 && (sku & XP_ALL)  && _wmvcore_dll >=fver(10,0,0,3802)
+	/*if( sp>=1 && (sku & XP_ALL)  && _wmvcore_dll >=fver(10,0,0,3802)
 			&& _drmv2clt_dll >=fver(10,0,0,3802) && _drmv2clt_dll <fver(10,0,0,3903)) {
-		NN("Windows Media Format SDK Hotfix - KB893240");
+		NN("Windows Media Format SDK Hotfix - KB893240"); // KB893240 is replaced by KB904555
 		XX(p3+"windowsmedia10-kb893240-x86-enu.exe"+a1);
+	}*/
+	if( sp>=1 && (sku & XP_ALL)  && _wmvcore_dll >=fver(10,0,0,3802)
+			&& _drmv2clt_dll >=fver(10,0,0,3646) && _drmv2clt_dll <fver(10,0,0,3940)) {
+		NN("Hotfix for Windows Media Format SDK (KB904555)");
+		XX(p3+"windowsmedia10-kb904555-x86-intl.exe"+a1);
 	}
 	if( sp>=1 && (sku & XP_ALL) && _wmnetmgr_dll >=fver(10,0,0,3646) && _wmnetmgr_dll <fver(10,0,0,3921)) {
 		NN("Windows Media Player 10 Hotfix - KB893241");
