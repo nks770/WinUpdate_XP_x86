@@ -4440,6 +4440,27 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB890859)");
 		XX(p2+"windowsxp-kb890859-x86-enu_813f47d987b772bacae20e7dec9b5f6f16079303.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1746))
+	|| ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1634)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,2759)) ))*/) {
+		NN("Update for Windows XP (KB906693)"); // KB906693 is replaced by KB925902 on SP2
+		XX(p1+"WindowsXP-KB906693-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	    (_user32_dll>zero && _user32_dll<fver(5,1,2600,2643))
+	 || (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,2643)) )) {
+		NN("Update for Windows XP (KB890582)"); // KB890582 is replaced by KB925902
+		XX(p2+"WindowsXP-KB890582-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3099))
+					  ||  (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,3099))
+					  ||  (_user32_dll>zero && _user32_dll<fver(5,1,2600,3099))
+					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,3099)) )) {
+		NN("Security Update for Windows XP (KB925902)");
+		XX(p2+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
+	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _authz_dll   >zero && _authz_dll   <fver(5,1,2600,3106)) )) {
 		NN("Update for Windows XP (KB934161)");
@@ -7619,19 +7640,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==3 && (sku & XP_ALL) && _themeui_dll>zero && _themeui_dll<fver(6,0,2900,6437)) {
 		NN("Security Update for Windows XP (KB2864063)");
 		XX(p3+"WindowsXP-KB2864063-x86-ENU.exe"+a1);
-	}
-	/*if( sp==2 && qfe && (sku & XP_ALL) && (
-	    (_user32_dll>zero && _user32_dll<fver(5,1,2600,2643))
-	 || (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,2643)) )) {
-		NN("Update for Windows XP (KB890582)"); // KB890582 is replaced by KB925902
-		XX(p2+"WindowsXP-KB890582-x86-ENU.exe"+a1);
-	}*/
-	if( sp==2 && (sku & XP_ALL) && ( (_gdi32_dll>zero && _gdi32_dll<fver(5,1,2600,3099))
-					  ||  (_mf3216_dll>zero && _mf3216_dll<fver(5,1,2600,3099))
-					  ||  (_user32_dll>zero && _user32_dll<fver(5,1,2600,3099))
-					  ||  (_win32k_sys>zero && _win32k_sys<fver(5,1,2600,3099)) )) {
-		NN("Security Update for Windows XP (KB925902)");
-		XX(p2+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
 	}
 	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3115)) {
 		// Install this update to resolve an issue where you receive a 0x0000007f stop error
