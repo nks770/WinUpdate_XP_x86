@@ -4910,6 +4910,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Q811632: Critical Update (Windows XP Media Center Edition Product Activation Hotfix)");
 		XX(p1+"q811632_xp_eec81e99c580646b731e53c7186d7e9c9741ef42.exe"+a7);
 	}
+	/*if( sp==1 && (sku & XP_MCE) && _irbus_sys <fver(5,1,2600,1145)) {
+		NN("Q331913: Keys on Windows XP Media Center Remote Sensor Device Appear to Stick"); // Q331913 is replaced by KB832418
+		XX(p1+"Q331913_WXP_SP2_x86_ENU.exe"+a7);
+	}*/
 	if( sp==1 && (sku & XP_MCE) && (
 		                 ( /*_hidir_sys >zero &&*/ _hidir_sys <fver(5,1,2600,1321))
 					  || ( /*_irbus_sys >zero &&*/ _irbus_sys <fver(5,1,2600,1321)) )) {
