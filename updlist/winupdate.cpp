@@ -3618,16 +3618,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _spoolss_dll  >zero && _spoolss_dll  <fver(5,1,2600,1587)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2508)) ))) {
-		NN("Update for Windows XP (KB873396)"); // KB873396 is replaced by KB884897
-		XX(p1+"WindowsXP-KB873396-x86-ENU.exe"+a6);
+		NN("Update for Windows XP (KB873396)"); // KB873396 is replaced by KB905519
+		XX(p2+"WindowsXP-KB873396-x86-ENU.exe"+a6);
 	}*/
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,1614))
 	  ||  ( _spoolss_dll  >zero && _spoolss_dll  <fver(5,1,2600,1612)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2584)) ))) {
+		NN("Update for Windows XP (KB884897)"); // KB884897 is replaced by KB905519
+		XX(p2+"WindowsXP-KB884897-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,1723))
+	  ||  ( _spoolss_dll  >zero && _spoolss_dll  <fver(5,1,2600,1723))
+	  ||  ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1723)) ))
 	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2584)) ))*/) {
-		NN("Update for Windows XP (KB884897)"); // KB884897 is replaced by KB961501 on SP2
-		XX(p1+"WindowsXP-KB884897-x86-ENU.exe"+a6);
+		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2730)) ))*/) {
+		NN("Update for Windows XP (KB905519)"); // KB905519 is replaced by KB961501 on SP2
+		XX(p1+"WindowsXP-KB905519-x86-ENU.exe"+a1);
 	}
 	/*if((sp==2 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,3510))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,5743))) {
