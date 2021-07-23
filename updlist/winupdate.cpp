@@ -7648,6 +7648,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2676562)");
 		XX(p3+"WindowsXP-KB2676562-x86-ENU.exe"+a1);
 	}
+	/*if( sp==3 && qfe && (sku & XP_ALL) && ( (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6272))
+					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6272))
+					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6272))
+					  ||  (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,6272)) )) {
+		NN("Update for Windows XP (KB2732488)"); // KB2732488 is replaced by KB2859537
+		XX(p3+"WindowsXP-KB2732488-v2-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==3 && (sku & XP_ALL) && ( (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,6368))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,6368))
 					  ||  (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,6368))
