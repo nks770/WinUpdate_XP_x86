@@ -7926,10 +7926,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955839)");
 		XX(p3+"WindowsXP-KB955839-x86-ENU.exe"+a1);
 	}*/
-	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5971)) {
-		NN("Update for Windows XP (KB981793)");
+	/*if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5971)) {
+		NN("Update for Windows XP (KB981793)"); // KB981793 is replaced by KB2681116
 		XX(p2+"windowsxp-kb981793-x86-enu_e1363fb1d582b860c3e25b2bbfbc0b7f38a8b44b.exe"+a1);
-	}
+	}*/
 	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6103)) {
 		NN("Update for Windows XP (KB2543367)");
 		XX(p3+"WindowsXP-KB2543367-x86-ENU.exe"+a1);
@@ -7938,6 +7938,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2657025)");
 		XX(p3+"WindowsXP-KB2657025-x86-ENU.exe"+a1);
 	}*/
+	if( sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6197)) {
+		NN("Update for Windows XP (KB2681116)");
+		XX(p2+"WindowsXP-KB2681116-x86-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6479)) {
 		NN("Update for Windows XP (KB2904266)");
 		XX(p3+"WindowsXP-KB2904266-x86-ENU.exe"+a1);
