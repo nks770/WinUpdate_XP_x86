@@ -7048,6 +7048,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB961067)");
 		XX(p3+"WindowsXP-KB961067-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _mountmgr_sys >zero && _mountmgr_sys <fver(5,1,2600,3222))
+	  ||  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,3222))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,3222))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,3222))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,3222))
+	  ||  ( _mountmgr_sys_cache <fver(5,1,2600,3222)) )) {
+		NN("Update for Windows XP (KB297694)"); // KB297694 is replaced by KB961187
+		XX(p2+"WindowsXP-KB297694-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _mountmgr_sys >zero && _mountmgr_sys <fver(5,1,2600,3572))
 	  ||  ( _mountvol_exe >zero && _mountvol_exe <fver(5,1,2600,3572))
@@ -7142,8 +7152,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"WindowsXP-KB973502-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_ALL) && (
-		  ( _mrxdav_sys >zero && _mountmgr_sys <fver(5,1,2600,6007))
-	  ||  ( _ntdll_dll  >zero && _ntdll_dll    <fver(5,1,2600,6007))
+		  ( _mrxdav_sys >zero && _mrxdav_sys <fver(5,1,2600,6007))
+	  ||  ( _ntdll_dll  >zero && _ntdll_dll  <fver(5,1,2600,6007))
 	  ||  ( _mrxdav_sys_cache <fver(5,1,2600,6007)) )) {
 		NN("Update for Windows XP (KB2264107)");
 		XX(p3+"WindowsXP-KB2264107-x86-ENU.exe"+a1);
