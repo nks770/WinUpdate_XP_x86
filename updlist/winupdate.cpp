@@ -4793,10 +4793,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows Messenger (KB887472)");
 		XX(p2+"windowsxp-kb887472-x86-enu_5edc4ccc759d65f4afba8542435172ed54515135.exe"+a6);
 	}
-	if((sp==1 && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,1609))
-	 ||(sp==2 && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,2563))) {
-		NN("Security Update for Windows XP (KB873339)");
-		XX(p2+"windowsxp-kb873339-x86-enu_fd28098f5f0e8e629e5b7f64e5cd6b6b722a35a7.exe"+a6);
+	if(qfe) {
+		if((sp==1 && qfe && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,1610))
+		 ||(sp==2 && qfe && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,2567))) {
+			NN("Update for Windows XP (KB274261)");
+			XX(p2+"WindowsXP-KB274261-x86-ENU.exe"+a6);
+		}
+	} else {
+		if((sp==1 && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,1609))
+		 ||(sp==2 && (sku & XP_ALL) && _hypertrm_dll>zero && _hypertrm_dll<fver(5,1,2600,2563))) {
+			NN("Security Update for Windows XP (KB873339)");
+			XX(p2+"windowsxp-kb873339-x86-enu_fd28098f5f0e8e629e5b7f64e5cd6b6b722a35a7.exe"+a6);
+		}
 	}
 	if(( sp==1 && (sku & XP_ALL) && (
 		                  ( _spoolsv_exe  >zero && _spoolsv_exe  <fver(5,1,2600,1699))
