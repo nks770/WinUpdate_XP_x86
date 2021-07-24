@@ -7958,7 +7958,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6294)) {
 		NN("Update for Windows XP (KB2769756)");
-		XX(p2+"WindowsXP-KB2769756-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB2769756-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6362)) {
+		NN("Update for Windows XP (KB2821346)");
+		XX(p3+"WindowsXP-KB2821346-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,6479)) {
 		NN("Update for Windows XP (KB2904266)");
