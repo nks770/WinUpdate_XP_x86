@@ -7988,6 +7988,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for WEPOS and POSReady 2009 (KB3039024)");
 		XX(p3+"WindowsXP-KB3039024-x86-Embedded-ENU.exe"+a1);
 	}*/
+	/*if( sp==3 && (sku & XP_EMBEDDED) && !(sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,6777)) {
+		NN("Update for WEPOS and POSReady 2009 (KB3049874)");
+		XX(p3+"WindowsXP-KB3049874-x86-Embedded-ENU.exe"+a1);
+	}*/
 	if( sp==3 && (sku & XP_EMBEDDED) && !(sku & XPE_2009) && _tzchange_exe<fver(5,1,2600,6861)) {
 		NN("Update for WEPOS and POSReady 2009 (KB3077715)");
 		XX(p3+"WindowsXP-KB3077715-x86-Embedded-ENU.exe"+a1);
