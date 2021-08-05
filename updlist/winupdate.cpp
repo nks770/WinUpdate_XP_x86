@@ -160,6 +160,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	bool _secdrv_sys_exist   = fileExists(Drivers+L"\\secdrv.sys");
 	bool _undo_guimode_txt   = fileExists(System32+L"\\undo_guimode.txt");
+	bool _simsun_ttc_exist   = fileExists(SystemRoot+L"\\Fonts\\simsun.ttc");
 	bool kb891122 = false;
 	bool kb900325 = false;
 	bool kb913800 = false;
@@ -198,6 +199,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	md5.digestFileW((SystemRoot+L"\\Fonts\\msmin04.ttc").c_str(),false);
 	char _msmin04_ttc_md5[33];
 	strncpy_s(_msmin04_ttc_md5,33,md5_ptr,33);
+
+	md5.digestFileW((SystemRoot+L"\\Fonts\\simsun.ttc").c_str(),false);
+	char _simsun_ttc_md5[33];
+	strncpy_s(_simsun_ttc_md5,33,md5_ptr,33);
 
 	md5.digestFileW((System32+L"\\locale.nls").c_str(),false);
 	char _locale_nls_md5[33];
@@ -6848,6 +6853,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && qfe && (sku & XP_ALL) && strncmp(_ariblk_ttf_md5,"47dbfa30035024e9a8aee82559e5ba92",32) != 0 ) {
 		NN("Update for Windows XP (KB959334)");
 		XX(p3+"WindowsXP-KB959334-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) &&
+			_simsun_ttc_exist && strncmp(_simsun_ttc_md5,"c743fc187a5197fcf8265eb9d7089232",32) != 0 ) {
+		NN("Update for Windows XP (KB332134)");
+		XX(p2+"WindowsXP-KB332134-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && (sku & XP_ALL) && strncmp(_locale_nls_md5,"c209f827179d7e8edc1a8f87263cc677",32) != 0 )
 	 ||(sp==3 && (sku & XP_ALL) && strncmp(_locale_nls_md5,"7780eb6237f16ba8128312efa6363dbd",32) != 0 )) {
