@@ -3335,8 +3335,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2505)) {
 		NN("Update for Windows XP Service Pack 2 (KB884020)");
 		XX(p2+"WindowsXP-KB884020-x86-enu.exe"+a6);
-	}
-	if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,3244)) {
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2507)) {
+		NN("Update for Windows XP (KB824838)"); // KB824838 is replaced by KB951748
+		XX(p2+"WindowsXP-KB824838-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,3244)) {
 		// KB941644 is replaced by KB951748 on SP2
 		NN("Security Update for Windows XP (KB941644)");
 		XX(p+"windowsxp-kb941644-x86-enu_69bd9e4e22c97592dca087165e4fef304230f7a5.exe"+a1);
