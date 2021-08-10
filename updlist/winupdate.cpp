@@ -1725,7 +1725,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Qfecheck.exe Update Check Utility (Q282784)");
 		XX("Extras\\QfeCheck\\Q282784_WXP_SP1_x86_ENU.exe"+a7);
 	}
-	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,1,2600,1271) )) {
+	if( sp>=1 && (sku & XP_ALL) && (  _qfecheck_exe <fver(5,1,2600,1271) )) {
 		NN("Qfecheck.exe Update Check Utility (KB828854)");
 		XX("Extras\\QfeCheck\\WindowsXP-KB828854-x86-ENU.exe /x:%systemroot%\\system32 /u");
 	}
@@ -6357,12 +6357,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB961853)");
 		XX(p3+"WindowsXP-KB961853-v2-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,1610)) ))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,2567)) )) */ ) {
-		NN("Update for Windows XP (KB888432)"); // KB888432 is replaced by KB944043 on SP2
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,2567)) ))  ) {
+		NN("Update for Windows XP (KB888432)"); // KB888432 is replaced by KB830092
 		XX(p1+"WindowsXP-KB888432-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,1706)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,2705)) ))*/ ) {
+		NN("Update for Windows XP (KB830092)"); // KB830092 is replaced by KB944043(5,1,2600,3365) on SP2
+		XX(p1+"WindowsXP-KB830092-v3-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,3404)) ))
