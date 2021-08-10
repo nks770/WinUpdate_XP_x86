@@ -1723,7 +1723,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Windows XP RTM Updates
 	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,0,2195,4605) )) {
 		NN("Qfecheck.exe Update Check Utility (Q282784)");
-		XX("Extras\\Q282784_WXP_SP1_x86_ENU.exe"+a7);
+		XX("Extras\\QfeCheck\\Q282784_WXP_SP1_x86_ENU.exe"+a7);
+	}
+	if((sku & XP_ALL) && (  _qfecheck_exe <fver(5,1,2600,1271) )) {
+		NN("Qfecheck.exe Update Check Utility (KB828854)");
+		XX("Extras\\QfeCheck\\WindowsXP-KB828854-x86-ENU.exe /x:%systemroot%\\system32 /u");
 	}
 	if( sp>=1 && (sku & XP_ALL) && _msdelta_dll <fver(6,0,5600,16384)) {
 		NN("Microsoft Compression Client Pack 1.0 for Windows XP");
