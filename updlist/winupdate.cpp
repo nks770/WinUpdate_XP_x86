@@ -7957,6 +7957,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB942763)");
 		XX(p3+"WindowsXP-KB942763-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL ) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB824995")) {
+		NN("Update for Windows XP (KB824995)"); // KB824995 is replaced by KB955839
+		XX(p2+"WindowsXP-KB824995-v2-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==2 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,3466))
 	 ||(sp==3 && (sku & XP_ALL) && _tzchange_exe<fver(5,1,2600,5699))) {
 		NN("Update for Windows XP (KB955839)");
