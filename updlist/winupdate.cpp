@@ -2483,15 +2483,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB893086)"); // KB893086 is replaced by KB908531 on SP2
 		XX(p1+"WindowsXP-KB893086-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1592))
 		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1592))
 		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1592))
 		|| ( _comctl32_dll_1592 < fver(6,0,2800,1592)) ))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2518)) ))*/) {
-		NN("Update for Windows XP (KB885843)"); // KB885843 is replaced by KB908531 on SP2
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2518)) ))) {
+		NN("Update for Windows XP (KB885843)"); // KB885843 is replaced by KB841978
 		XX(p1+"WindowsXP-KB885843-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _browseui_dll >zero && _browseui_dll <fver(6,0,2800,1596))
+	|| ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1592))
+	|| ( _shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1602))
+	|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1602))
+	|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1592))
+	|| ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1592))
+	|| ( _comctl32_dll_1592 < fver(6,0,2800,1592)) ))
+	 /*||(sp==2 && (sku & XP_ALL) && (
+	   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2530))
+	|| ( _shell32_dll >zero && _shell32_dll <fver(6,0,2900,2531)) ))*/) {
+		NN("Update for Windows XP (KB841978)"); // KB841978 is replaced by KB908531+KB958215 on SP2
+		XX(p1+"WindowsXP-KB841978-x86-ENU.exe"+a6);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 	   ( _explorer_exe >zero && _explorer_exe <fver(6,0,2800,1659))
