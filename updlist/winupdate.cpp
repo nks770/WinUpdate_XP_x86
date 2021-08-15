@@ -6568,6 +6568,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB893056)"); // KB893056 is replaced by KB948277
 		XX(p2+"WindowsXP-KB893056-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,2586))
+	  ||  ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2586)) )) {
+		NN("Update for Windows XP (KB837022)"); // KB837022 is replaced by KB948277
+		XX(p2+"WindowsXP-KB837022-v3-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,1621))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _msgina_dll >zero && _msgina_dll <fver(5,1,2600,2604))) {
 		NN("Update for Windows XP (KB893226)"); // KB893226 is replaced by KB893376
@@ -6587,7 +6593,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _koc_dll      >zero && _koc_dll      <fver(5,1,2600,3358))
 	  ||  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,3358))
 	  ||  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,3358))
-	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,3358)) ))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,3358))
+	  ||  ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,3314)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,5587))
 	  ||  ( _msgina_dll   >zero && _msgina_dll   <fver(5,1,2600,5587))
