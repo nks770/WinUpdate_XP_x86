@@ -366,8 +366,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hal_dll      = getFileVer(System32+L"\\hal.dll",&status);
 	fver _hccoin_dll   = getFileVer(System32+L"\\hccoin.dll",&status);
 	fver _HdAProp_dll  = getFileVer(System32+L"\\HdAProp.dll",&status);
+	fver _Hdaudprop_dll= getFileVer(System32+L"\\Hdaudprop.dll",&status);
 	fver _HdAShCut_exe = getFileVer(System32+L"\\HdAShCut.exe",&status);
+	fver _Hdaudpropshortcut_exe = getFileVer(System32+L"\\Hdaudpropshortcut.exe",&status);
 	fver _HdAudRes_dll = getFileVer(System32+L"\\HdAudRes.dll",&status);
+	fver _Hdaudpropres_dll = getFileVer(System32+L"\\Hdaudpropres.dll",&status);
 	fver _hhctrl_ocx   = getFileVer(System32+L"\\hhctrl.ocx",&status);
 	fver _hhsetup_dll  = getFileVer(System32+L"\\hhsetup.dll",&status);
 	fver _hlink_dll    = getFileVer(System32+L"\\hlink.dll",&status);
@@ -5720,6 +5723,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _mmsys_cpl  >zero && _mmsys_cpl  <fver(5,1,2600,2776)) )) {
 		NN("Update for Windows XP (KB909441)");
 		XX(p2+"windowsxp-kb909441-x86-enu.exe"+a1);
+	}
+	if( sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _Hdaudprop_dll         <fver(5,10,0,5011))
+	  ||  ( _Hdaudpropres_dll      <fver(5,10,0,5011))
+	  ||  ( _Hdaudpropshortcut_exe <fver(5,10,0,5011))
+	  ||  ( _Hdaudbus_sys          <fver(5,10,0,5011))
+	  ||  ( _Hdaudio_sys           <fver(5,10,0,5011))
+	  ||  ( _mssap_dll             <fver(9,0,0,3140))
+	  ||  ( _portcls_sys           <fver(5,1,2600,1364)) )) {
+		NN("Update for Windows XP (KB835221)"); // KB835221 is replaced by KB888111
+		XX(p1+"WindowsXP-KB835221-x86-ENU.exe"+a1);
 	}
 	if( sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _HdAProp_dll  <fver(5,10,1,5013))
