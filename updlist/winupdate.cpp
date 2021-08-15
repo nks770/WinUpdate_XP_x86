@@ -7853,11 +7853,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2347290)");
 		XX(p3+"WindowsXP-KB2347290-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_CLIENT) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
+	if( sp==3 && (sku & XP_CLIENT) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2686509")) {
 		NN("Security Update for Windows XP (KB2686509)");
 		XX(p3+"WindowsXP-KB2686509-x86-ENU.exe"+a1);
 	}
-	if( sp==3 && (sku & XP_EMBEDDED_PLUS_FLP) && !regTestKey(L"SOFTWARE\\Microsoft\\\Updates\\Windows XP\\SP4\\KB2686509")) {
+	if( sp==3 && (sku & XP_EMBEDDED_PLUS_FLP) && !regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB2686509")) {
 		NN("Security Update for Windows XP Embedded (KB2686509)");
 		XX(p3+"WindowsXPEmbedded-KB2686509-x86-ENU.exe"+a1);
 	}
