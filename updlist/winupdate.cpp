@@ -4899,6 +4899,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB911927)");
 		XX(p2+"windowsxp-kb911927-x86-enu_db8cbad537f3f0453deac488f8eb629b3c3a832b.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _advapi32_dll>zero && _advapi32_dll<fver(5,1,2600,3039))
+	 || ( _webclnt_dll >zero && _webclnt_dll <fver(5,1,2600,3039)) )){
+		NN("Update for Windows XP (KB842827)");
+		XX(p2+"WindowsXP-KB842827-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _cscdll_dll   >zero && _cscdll_dll   <fver(5,1,2600,1599))
 					  ||  ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,1597))
