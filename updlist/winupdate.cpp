@@ -298,6 +298,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _credssp_dll  = getFileVer(System32+L"\\credssp.dll",&status);
 	fver _crypt32_dll  = getFileVer(System32+L"\\crypt32.dll",&status);
 	fver _cryptdlg_dll = getFileVer(System32+L"\\cryptdlg.dll",&status);
+	fver _cryptnet_dll = getFileVer(System32+L"\\cryptnet.dll",&status);
 	fver _cryptsvc_dll = getFileVer(System32+L"\\cryptsvc.dll",&status);
 	fver _cryptui_dll  = getFileVer(System32+L"\\cryptui.dll",&status);
 	fver _cscdll_dll   = getFileVer(System32+L"\\cscdll.dll",&status);
@@ -336,6 +337,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dxtrans_dll  = getFileVer(System32+L"\\dxtrans.dll",&status);
 	fver _eappgnui_dll = getFileVer(System32+L"\\eappgnui.dll",&status);
 	fver _eapphost_dll = getFileVer(System32+L"\\eapphost.dll",&status);
+	fver _efsadu_dll   = getFileVer(System32+L"\\efsadu.dll",&status);
 	fver _encdec_dll   = getFileVer(System32+L"\\encdec.dll",&status);
 	fver _es_dll       = getFileVer(System32+L"\\es.dll",&status);
 	fver _esent_dll    = getFileVer(System32+L"\\esent.dll",&status);
@@ -6250,6 +6252,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// on SP3, wintrust.dll is replaced by KB2749655 and crypt32.dll by KB2868626
 		NN("Update for Windows XP (KB938759)");
 		XX(p2+"WindowsXP-KB938759-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	      ( _crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1596))
+	   || ( _cryptnet_dll >zero && _cryptnet_dll <fver(5,131,2600,1596))
+	   || ( _efsadu_dll   >zero && _efsadu_dll   <fver(5,1,2600,1592))
+	   || ( _winhttp_dll  >zero && _winhttp_dll  <fver(5,1,2600,1592))
+	   || ( _wintrust_dll >zero && _wintrust_dll <fver(5,131,2600,1592))
+	   || ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1592)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	      ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,2524))
+	   || ( _cryptnet_dll  >zero && _cryptnet_dll  <fver(5,131,2600,2524)) )) ) {
+		NN("Update for Windows XP (KB842735)");
+		XX(p2+"WindowsXP-KB842735-x86-ENU.exe"+a6);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _usp10_dll   >zero && _usp10_dll   <fver(1,420,2600,3163)) )) {
