@@ -5811,6 +5811,25 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB889527)");
 		XX(p2+"WindowsXP-KB889527-v3-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _imeshare_dll >zero && _imeshare_dll <fver(9,2,4202,0))
+	  ||  ( _cplexe_exe   >zero && _cplexe_exe   <fver(8,1,4202,0))
+	  ||  ( _imjp81_ime   >zero && _imjp81_ime   <fver(8,1,4202,0))
+	  ||  ( _imjp81k_dll  >zero && _imjp81k_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpcd_dic   >zero && _imjpcd_dic   <fver(8,1,4202,0))
+	  ||  ( _imjpcic_dll  >zero && _imjpcic_dll  <fver(8,1,4203,0))
+	  ||  ( _imjpcus_dll  >zero && _imjpcus_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpdct_dll  >zero && _imjpdct_dll  <fver(8,1,4202,0))
+	  ||  ( _imjpdsvr_exe >zero && _imjpdsvr_exe <fver(8,1,4202,0))
+	  ||  ( _imjpmig_exe  >zero && _imjpmig_exe  <fver(8,1,4202,0))
+	  ||  ( _imjprw_exe   >zero && _imjprw_exe   <fver(8,1,4202,0))
+	  ||  ( _imjputy_exe  >zero && _imjputy_exe  <fver(8,1,4202,0))
+	  ||  ( _imjputyc_dll >zero && _imjputyc_dll <fver(8,1,4202,0))
+	  ||  ( _voicepad_dll >zero && _voicepad_dll <fver(8,1,4202,0))
+	  ||  ( _voicesub_dll >zero && _voicesub_dll <fver(8,1,4202,0)) )) {
+		NN("Update for Windows XP (KB867554)"); // KB867554 is replaced by KB894395
+		XX(p2+"WindowsXP-KB867554-v3-x86-ENU.exe"+a1);
+	}*/
 	if( (sp==1 || sp==2) && (sku & XP_ALL) && (
 		  ( _imeshare_dll >zero && _imeshare_dll <fver(9,2,4202,0))
 	  ||  ( _cplexe_exe   >zero && _cplexe_exe   <fver(8,1,4202,0))
