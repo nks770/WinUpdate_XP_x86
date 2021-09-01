@@ -3296,6 +3296,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB979309)");
 		XX(p3+"WindowsXP-KB979309-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	     (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
+	  || (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9025,0))
+	  || (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,9025,0))
+	  || (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
+	  || (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
+	  || (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
+		NN("Update for Windows XP (KB870753)"); // KB870753 is replaced by KB950749
+		XX(p2+"WindowsXP-KB870753-x86-ENU.exe"+a6);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( (_dao360_dll>zero && _dao360_dll<fver(3,60,9512,0))
 					  ||  (_msexch40_dll >zero && _msexch40_dll <fver(4,0,9502,0))
 					  ||  (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9502,0))
@@ -5828,7 +5838,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _voicepad_dll >zero && _voicepad_dll <fver(8,1,4202,0))
 	  ||  ( _voicesub_dll >zero && _voicesub_dll <fver(8,1,4202,0)) )) {
 		NN("Update for Windows XP (KB867554)"); // KB867554 is replaced by KB894395
-		XX(p2+"WindowsXP-KB867554-v3-x86-ENU.exe"+a1);
+		XX(p2+"WindowsXP-KB867554-v3-x86-ENU.exe"+a6);
 	}*/
 	if( (sp==1 || sp==2) && (sku & XP_ALL) && (
 		  ( _imeshare_dll >zero && _imeshare_dll <fver(9,2,4202,0))
