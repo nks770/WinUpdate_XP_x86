@@ -9828,6 +9828,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)");
 		XX(p1+"ie6.0sp1-kb896688-windows-2000-xp-x86-enu_57950e4fbed19228cd32acf537946a9077d4b6d5.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2520) ) {
+		NN("Update for Windows XP (KB872942)"); // KB872942 is replaced by KB924496
+		XX(p2+"WindowsXP-KB872942-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
 					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
 	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
