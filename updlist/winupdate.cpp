@@ -1516,6 +1516,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	std::wstring admisapi_scripts = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\admisapi\\scripts";
 	std::wstring vtibin = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\_vti_bin";
 	std::wstring isapi = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\40\\isapi";
+	std::wstring wse_bin_2002 = ProgramFiles+L"\\Common Files\\Microsoft Shared\\web server extensions\\50\\bin";
 
 	fver _admin_dll = getFileVer(isapi_vtiadm+L"\\admin.dll",&status);
 	fver _admin_exe = getFileVer(vtibin_vtiadm+L"\\admin.exe",&status);
@@ -1528,6 +1529,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fp4avss_dll = getFileVer(wse_bin+L"\\fp4avss.dll",&status);
 	fver _fp4awec_dll = getFileVer(wse_bin+L"\\fp4awec.dll",&status);
 	fver _fp4awel_dll = getFileVer(wse_bin+L"\\fp4awel.dll",&status);
+	fver _fp5awel_dll = getFileVer(wse_bin_2002+L"\\fp5awel.dll",&status);
 	fver _fpencode_dll = getFileVer(wse_bin+L"\\fpencode.dll",&status);
 	fver _fpexedll_dll = getFileVer(wse_bin+L"\\fpexedll.dll",&status);
 	fver _fpmmc_dll = getFileVer(wse_bin+L"\\fpmmc.dll",&status);
@@ -1952,6 +1954,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			||  (_tcptest_exe  >zero && _tcptest_exe    <fver(4,0,2,7523)) )) {
 		NN("Security Update for Windows XP (KB810217)");
 		XX(p1+"windowsxp-kb810217-x86-enu_696190f151ea0bcb063f0a89471e45b.exe"+a7);
+	}
+	if( _fp5awel_dll >zero && _fp5awel_dll <fver(10,0,4330,0)) {
+		NN("FrontPage 2002 Server Extensions Security update: September 25, 2002");
+		XX(sw+"\"Extras\\FrontPage 2002 Server Extensions\\fpse1002.exe\""+a8);
 	}
 	if( sp>=0 && (sku & XP_ALL) && ( *webfldrs || (
 		   _msdaipp_dll  > zero
