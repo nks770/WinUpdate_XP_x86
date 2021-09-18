@@ -9837,7 +9837,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 for Windows XP and Windows 2000 (KB896727)");
 		XX(p1+"IE6.0sp1-KB896727-Windows-2000-XP-x86-ENU.exe"+a1);
 	}*/
-	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+	/*if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1692))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
 		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,147))
@@ -9852,8 +9852,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1740))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1519))
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1511)) )) {
-		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)");
+		NN("Cumulative Security Update for Internet Explorer 6 Service Pack 1 (KB896688)"); // KB896688 is replaced by KB905915
 		XX(p1+"ie6.0sp1-kb896688-windows-2000-xp-x86-enu_57950e4fbed19228cd32acf537946a9077d4b6d5.exe"+a1);
+	}*/
+	if( sp==1 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2800,1692))
+	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2800,1612))
+		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
+		|| (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2800,1525))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2800,1496))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2800,1469))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2800,1528))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2800,1623))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2800,1525))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2800,1505))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1762))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1740))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1525))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1525)) )) {
+		NN("Cumulative Update for Internet Explorer 6 SP1 (KB905915)");
+		XX(p1+"IE6.0sp1-KB905915-Windows-2000-XP-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2520) ) {
 		NN("Update for Windows XP (KB872942)"); // KB872942 is replaced by KB924496
@@ -9973,6 +9991,28 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		// KB896727 is replaced by KB958215
 		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB896727)");
 		XX(p2+"WindowsXP-KB896727-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2802))
+		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,2781))
+		|| (_danim_dll    >zero && _danim_dll    <fver(6,3,1,148))
+		|| (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2900,2781))
+		|| (_extmgr_dll   >zero && _extmgr_dll   <fver(6,0,2900,2781))
+		|| (_iedw_exe     >zero && _iedw_exe     <fver(5,1,2600,2781))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2781))
+		|| (_inseng_dll   >zero && _inseng_dll   <fver(6,0,2900,2781))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2802))
+		|| (_mshtmled_dll >zero && _mshtmled_dll <fver(6,0,2900,2781))
+		|| (_msrating_dll >zero && _msrating_dll <fver(6,0,2900,2781))
+		|| (_mstime_dll   >zero && _mstime_dll   <fver(6,0,2900,2781))
+		|| (_pngfilt_dll  >zero && _pngfilt_dll  <fver(6,0,2900,2781))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2805))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2781))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2790))
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2900,2781)) )) {
+		// KB905915 is replaced by KB958215
+		NN("Cumulative Update for Internet Explorer for Windows XP Service Pack 2 (KB905915)");
+		XX(p2+"WindowsXP-KB905915-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3059))
