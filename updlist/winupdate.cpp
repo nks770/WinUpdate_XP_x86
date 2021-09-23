@@ -169,6 +169,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool wm9codecs_v1_install = false;
 	bool wm9codecs_v2_install = false;
 	bool wic_install = false;
+	bool _installed_kb302224 = false;
+	bool _installed_kb834158 = false;
 
 	// File MD5 hashes
 	MD5 md5;
@@ -9787,8 +9789,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB831167)");
 		XX(sw+rtm+"Q831167.exe"+a8);
 	}
+	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+	     (_mshtml_dll  >zero && _mshtml_dll  <fver(6,0,2800,1443))
+	  || (_shdoclc_dll >zero && _shdoclc_dll <fver(6,0,2800,1443)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (KB834158)");
+		XX(sw+p1+"IE6.0sp1-KB834158-x86-ENU.exe"+a8);
+		_installed_kb834158 = true;
+	}
 	if( sp==0 && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
-		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2800,1479)) )) {
+		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2800,1479))
+		 || _installed_kb834158 )) {
 		// KB888092 is replaced by KB896688 on SP1
 		// GDR installs 6,0,2800,1479 ; QFE installs 6,0,2800,1480
 		NN("Update for Internet Explorer 6 Service Pack 1 - Windows XP and Windows 2000 (KB888092)");
@@ -9887,7 +9897,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2800,1815))
 		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1740))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1537))
-		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1534)) )) {
+		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1534))
+		|| _installed_kb834158 )) {
 		NN("Cumulative Update for Internet Explorer 6 SP1 (KB912812)");
 		XX(p1+"IE6.0sp1-KB912812-Windows-2000-XP-x86-ENU.exe"+a1);
 	}
@@ -9915,6 +9926,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  || (_iedkcs32_dll >zero && _iedkcs32_dll <fver(16,0,2800,1451)) )) {
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB302224)");
 		XX(sw+p1+"IE6.0sp1-KB302224-x86-ENU.exe"+a8);
+		_installed_kb302224 = true;
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _ieaksie_dll>zero && _ieaksie_dll<fver(6,0,2900,2659)) {
@@ -9922,7 +9934,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB302224-x86-ENU.exe"+a1);
 	}
 	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
-		   (_iedkcs32_dll >zero && _iedkcs32_dll <fver(16,0,2800,1473)) )) {
+		   (_iedkcs32_dll >zero && _iedkcs32_dll <fver(16,0,2800,1473))
+		 || _installed_kb302224 )) {
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB885838)");
 		XX(p1+"IE6.0sp1-KB885838-Windows-2000-XP-x86-ENU.exe"+a6);
 	}
