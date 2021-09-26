@@ -593,7 +593,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msxml4_dll   = getFileVer(System32+L"\\msxml4.dll",&status);
 	fver _msxml4r_dll  = getFileVer(System32+L"\\msxml4r.dll",&status);
 	fver _msxml6_dll   = getFileVer(System32+L"\\msxml6.dll",&status);
-	fver _msxml6r_dll   = getFileVer(System32+L"\\msxml6r.dll",&status);
+	fver _msxml6r_dll  = getFileVer(System32+L"\\msxml6r.dll",&status);
+	fver _msxml_dll    = getFileVer(System32+L"\\msxml.dll",&status);
 	fver _msyuv_dll    = getFileVer(System32+L"\\msyuv.dll",&status);
 	fver _mtxclu_dll   = getFileVer(System32+L"\\mtxclu.dll",&status);
 	fver _mtxoci_dll   = getFileVer(System32+L"\\mtxoci.dll",&status);
@@ -12343,6 +12344,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 
 	// Microsoft XML Core Services
+	if( sp>=0 && qfe && (sku & XP_ALL) && _msxml_dll>zero && _msxml_dll<fver(8,0,7002,0)) {
+		NN("Microsoft XML (MSXML 2.5) Critical Update for Windows");
+		XX(sw+p3+"KB832414_MSXML2.5_x86.exe /Q:U /R:N /C:\"dahotfix.exe /q /n\"");
+	}
 	/*if( sp==0 && (sku & XP_ALL) && _msxml2_dll>zero && _msxml2_dll<fver(8,2,8307,0)) {
 		// Q318202 is replaced by KB887606
 		NN("Security Update, February 13, 2002 (MSXML 2.6)");
