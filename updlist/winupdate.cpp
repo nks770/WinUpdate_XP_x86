@@ -3652,7 +3652,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if(    (sp==2 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,3624))
 		|| (sp==3 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,5875))) {
 		NN("Security Update for Windows XP (KB974571)");
-		XX(p3+"WindowsXP-KB974571-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB974571-x86-ENU.exe"+a1
+			+"\n"+p+"ocsasnfix.exe");
 	}
 	if((sp==2 && (sku & XP_ALL) && ( (_msdtclog_dll >zero && _msdtclog_dll <fver(2001,12,4414,320))
 		              ||             (_msdtcprx_dll >zero && _msdtcprx_dll <fver(2001,12,4414,320))
