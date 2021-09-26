@@ -274,6 +274,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _bitsprx3_dll = getFileVer(System32+L"\\bitsprx3.dll",&status);
 	fver _bitsprx4_dll = getFileVer(System32+L"\\bitsprx4.dll",&status);
 	fver _blackbox_dll = getFileVer(System32+L"\\blackbox.dll",&status);
+	fver _browselc_dll = getFileVer(System32+L"\\browselc.dll",&status);
 	fver _browser_dll  = getFileVer(System32+L"\\browser.dll",&status);
 	fver _browseui_dll = getFileVer(System32+L"\\browseui.dll",&status);
 	fver _cabview_dll  = getFileVer(System32+L"\\cabview.dll",&status);
@@ -9791,6 +9792,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   (_wininet_dll   >zero && _wininet_dll   <fver(6,0,2800,1405)) )) {
 		NN("Update for Internet Explorer 6 Service Pack 1 (KB831167)");
 		XX(sw+rtm+"Q831167.exe"+a8);
+	}
+	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_browselc_dll   >zero && _browselc_dll   <fver(6,0,2800,1146)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (Q331485)");
+		XX(sw+p1+"q331485.exe"+a8);
 	}
 	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 	     (_mshtml_dll  >zero && _mshtml_dll  <fver(6,0,2800,1443))
