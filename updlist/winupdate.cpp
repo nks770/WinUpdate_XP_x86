@@ -534,6 +534,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msftedit_dll = getFileVer(System32+L"\\msftedit.dll",&status);
 	fver _msgina_dll   = getFileVer(System32+L"\\msgina.dll",&status);
 	fver _msgsvc_dll   = getFileVer(System32+L"\\msgsvc.dll",&status);
+	fver _mshta_exe    = getFileVer(System32+L"\\mshta.exe",&status);
 	fver _mshtml_dll   = getFileVer(System32+L"\\mshtml.dll",&status);
 	fver _mshtmled_dll = getFileVer(System32+L"\\mshtmled.dll",&status);
 	fver _msi_dll      = getFileVer(System32+L"\\msi.dll",&status);
@@ -9797,6 +9798,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   (_browselc_dll   >zero && _browselc_dll   <fver(6,0,2800,1146)) )) {
 		NN("Update for Internet Explorer 6 Service Pack 1 (Q331485)");
 		XX(sw+p1+"q331485.exe"+a8);
+	}
+	if( sp<2 && qfe && (sku & XP_ALL) && _mshta_exe>zero && _mshta_exe<fver(6,0,2800,1182)) {
+		NN("Update for Internet Explorer 6 (Q816362)");
+		XX(sw+p1+"q816362.exe"+a8);
 	}
 	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
 	     (_mshtml_dll  >zero && _mshtml_dll  <fver(6,0,2800,1443))
