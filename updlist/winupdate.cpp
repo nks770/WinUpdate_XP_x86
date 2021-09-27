@@ -410,6 +410,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _imapi_exe    = getFileVer(System32+L"\\imapi.exe",&status);
 	fver _imapi2_dll   = getFileVer(System32+L"\\imapi2.dll",&status);
 	fver _imapi2fs_dll = getFileVer(System32+L"\\imapi2fs.dll",&status);
+	fver _imgutil_dll  = getFileVer(System32+L"\\imgutil.dll",&status);
 	fver _imjp81_ime   = getFileVer(System32+L"\\imjp81.ime",&status);
 	fver _imjp81k_dll  = getFileVer(System32+L"\\imjp81k.dll",&status);
 	fver _imekr61_ime  = getFileVer(System32+L"\\imekr61.ime",&status);
@@ -9798,6 +9799,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   (_browselc_dll   >zero && _browselc_dll   <fver(6,0,2800,1146)) )) {
 		NN("Update for Internet Explorer 6 Service Pack 1 (Q331485)");
 		XX(sw+p1+"q331485.exe"+a8);
+	}
+	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_imgutil_dll   >zero && _imgutil_dll   <fver(6,0,2800,1236)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (Q824220)");
+		XX(sw+p1+"q824220.exe"+a8);
 	}
 	if( sp<2 && qfe && (sku & XP_ALL) && _mshta_exe>zero && _mshta_exe<fver(6,0,2800,1182)) {
 		NN("Update for Internet Explorer 6 (Q816362)");
