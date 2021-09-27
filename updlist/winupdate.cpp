@@ -171,6 +171,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool wic_install = false;
 	bool _installed_kb302224 = false;
 	bool _installed_kb834158 = false;
+	bool _installed_q830849 = false;
 
 	// File MD5 hashes
 	MD5 md5;
@@ -9805,6 +9806,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Internet Explorer 6 Service Pack 1 (Q824220)");
 		XX(sw+p1+"q824220.exe"+a8);
 	}
+	if( sp<=1 && qfe && (sku & XP_ALL) && (_shdocvw_dll>=fver(6,0,2800,1106) && _shdocvw_dll<fver(6,0,2900,0)) && (
+		   (_inetcpl_cpl   >zero && _inetcpl_cpl   <fver(6,0,2800,1413))
+		|| (_shdocvw_dll   >zero && _shdocvw_dll   <fver(6,0,2800,1413)) )) {
+		NN("Update for Internet Explorer 6 Service Pack 1 (Q830849)");
+		XX(sw+p1+"Q830849.exe"+a8);
+		_installed_q830849 = true;
+	}
 	if( sp<2 && qfe && (sku & XP_ALL) && _mshta_exe>zero && _mshta_exe<fver(6,0,2800,1182)) {
 		NN("Update for Internet Explorer 6 (Q816362)");
 		XX(sw+p1+"q816362.exe"+a8);
@@ -9925,7 +9933,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2800,1740))
 		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2800,1537))
 		|| (_wininet_dll  >zero && _wininet_dll  <fver(6,0,2800,1534))
-		|| _installed_kb834158 )) {
+		|| _installed_kb834158 || _installed_q830849 )) {
 		NN("Cumulative Update for Internet Explorer 6 SP1 (KB912812)");
 		XX(p1+"IE6.0sp1-KB912812-Windows-2000-XP-x86-ENU.exe"+a1);
 	}
