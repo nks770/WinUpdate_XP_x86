@@ -1364,6 +1364,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _npdsplay_dll = getFileVer(WindowsMediaPlayer+L"\\npdsplay.dll",&status);
 	fver _setup_wm_exe = getFileVer(WindowsMediaPlayer+L"\\setup_wm.exe",&status);
 	fver _wmplayer_exe = getFileVer(WindowsMediaPlayer+L"\\wmplayer.exe",&status);
+	fver _wmpns_dll    = getFileVer(WindowsMediaPlayer+L"\\wmpns.dll",&status);
 	fver _wmsetsdk_exe = getFileVer(WindowsMediaPlayer+L"\\wmsetsdk.exe",&status);
 
 	fver _vgx_dll      = getFileVer(VGX+L"\\vgx.dll",&status);
@@ -11967,6 +11968,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wmvdmod_dll >=fver(10,0,0,3646) && _wmvdmod_dll  <fver(10,0,0,3923)) )) {
 		NN("Windows Media Player 10 Hotfix - KB888656");
 		XX(p3+"windowsmedia10-kb888656-x86-global-enu.exe"+a1);
+	}
+	if( sp>=0 && (sku & XP_ALL) && _wmp_dll>=fver(9,0,0,2980) && _wmp_dll<fver(10,0,0,0) && (
+		(_wmpns_dll > zero && _wmpns_dll<fver(9,0,0,3002)) )){
+		NN("Windows Media Update 817885");
+		XX(sw+p3+"WindowsMedia9-KB817885-x86-ENU.exe"+a8);
 	}
 
 
