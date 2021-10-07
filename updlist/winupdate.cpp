@@ -10372,6 +10372,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_urlmon_dll      >zero && _urlmon_dll      <fver(7,0,6000,16414))
 		|| (_webcheck_dll    >zero && _webcheck_dll    <fver(7,0,6000,16414))
 		|| (_wininet_dll     >zero && _wininet_dll     <fver(7,0,6000,16414)) )) {
+		// NOTE: KB928090 would be replaced by KB958215, but KB958215 does not update corpol.dll
 		NN("Cumulative Update for Internet Explorer 7 for Windows XP Service Pack 2 (KB928090)");
 		XX(p2+"IE7-KB928090-WindowsXP-x86-enu.exe"+a1);
 	}
@@ -10433,6 +10434,69 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_wininet_dll     >fver(7,0,6000,16762) && _wininet_dll     <fver(7,0,6000,20627)))) {
 		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP Service Pack 2 (KB937143)");
 		XX(p2+"IE7-WindowsXP-KB937143-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
+		// GDR
+		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,16574))
+		|| (_dxtrans_dll     >zero && _dxtrans_dll     <fver(7,0,6000,16574))
+		|| (_extmgr_dll      >zero && _extmgr_dll      <fver(7,0,6000,16574))
+		|| (_icardie_dll     >zero && _icardie_dll     <fver(7,0,6000,16574))
+		|| (_ie4uinit_exe    >zero && _ie4uinit_exe    <fver(7,0,6000,16574))
+		|| (_ieakeng_dll     >zero && _ieakeng_dll     <fver(7,0,6000,16574))
+		|| (_ieaksie_dll     >zero && _ieaksie_dll     <fver(7,0,6000,16574))
+		|| (_ieakui_dll      >zero && _ieakui_dll      <fver(7,0,6000,16574))
+		|| (_ieapfltr_dat    >zero && _ieapfltr_dat    <fver(7,0,6011,0))
+		|| (_ieapfltr_dll    >zero && _ieapfltr_dll    <fver(7,0,6000,16461))
+		|| (_iedkcs32_dll    >zero && _iedkcs32_dll    <fver(17,0,6000,16574))
+		|| (_ieframe_dll     >zero && _ieframe_dll     <fver(7,0,6000,16574))
+		|| (_ieframe_dll_mui >zero && _ieframe_dll_mui <fver(7,0,6000,16414))
+		|| (_iernonce_dll    >zero && _iernonce_dll    <fver(7,0,6000,16574))
+		|| (_iertutil_dll    >zero && _iertutil_dll    <fver(7,0,6000,16574))
+		|| (_ieudinit_exe    >zero && _ieudinit_exe    <fver(7,0,6000,16574))
+		|| (_iexplore_exe    >zero && _iexplore_exe    <fver(7,0,6000,16574))
+		|| (_inetcpl_cpl     >zero && _inetcpl_cpl     <fver(7,0,6000,16574))
+		|| (_jsproxy_dll     >zero && _jsproxy_dll     <fver(7,0,6000,16574))
+		|| (_msfeeds_dll     >zero && _msfeeds_dll     <fver(7,0,6000,16574))
+		|| (_msfeedsbs_dll   >zero && _msfeedsbs_dll   <fver(7,0,6000,16574))
+		|| (_mshtml_dll      >zero && _mshtml_dll      <fver(7,0,6000,16587))
+		|| (_mshtmled_dll    >zero && _mshtmled_dll    <fver(7,0,6000,16574))
+		|| (_msrating_dll    >zero && _msrating_dll    <fver(7,0,6000,16574))
+		|| (_mstime_dll      >zero && _mstime_dll      <fver(7,0,6000,16574))
+		|| (_occache_dll     >zero && _occache_dll     <fver(7,0,6000,16574))
+		|| (_url_dll         >zero && _url_dll         <fver(7,0,6000,16574))
+		|| (_urlmon_dll      >zero && _urlmon_dll      <fver(7,0,6000,16574))
+		|| (_webcheck_dll    >zero && _webcheck_dll    <fver(7,0,6000,16574))
+		|| (_wininet_dll     >zero && _wininet_dll     <fver(7,0,6000,16574))
+		// QFE
+		|| (_advpack_dll     >fver(7,0,6000,16574) && _advpack_dll     <fver(7,0,6000,20696))
+		|| (_dxtrans_dll     >fver(7,0,6000,16574) && _dxtrans_dll     <fver(7,0,6000,20696))
+		|| (_extmgr_dll      >fver(7,0,6000,16574) && _extmgr_dll      <fver(7,0,6000,20696))
+		|| (_icardie_dll     >fver(7,0,6000,16574) && _icardie_dll     <fver(7,0,6000,20696))
+		|| (_ie4uinit_exe    >fver(7,0,6000,16574) && _ie4uinit_exe    <fver(7,0,6000,20696))
+		|| (_ieakeng_dll     >fver(7,0,6000,16574) && _ieakeng_dll     <fver(7,0,6000,20696))
+		|| (_ieaksie_dll     >fver(7,0,6000,16574) && _ieaksie_dll     <fver(7,0,6000,20696))
+		|| (_ieakui_dll      >fver(7,0,6000,16574) && _ieakui_dll      <fver(7,0,6000,20696))
+		|| (_iedkcs32_dll    >fver(17,0,6000,16574)&& _iedkcs32_dll    <fver(17,0,6000,20696))
+		|| (_ieframe_dll     >fver(7,0,6000,16574) && _ieframe_dll     <fver(7,0,6000,20696))
+		|| (_iernonce_dll    >fver(7,0,6000,16574) && _iernonce_dll    <fver(7,0,6000,20696))
+		|| (_iertutil_dll    >fver(7,0,6000,16574) && _iertutil_dll    <fver(7,0,6000,20696))
+		|| (_ieudinit_exe    >fver(7,0,6000,16574) && _ieudinit_exe    <fver(7,0,6000,20696))
+		|| (_iexplore_exe    >fver(7,0,6000,16574) && _iexplore_exe    <fver(7,0,6000,20696))
+		|| (_inetcpl_cpl     >fver(7,0,6000,16574) && _inetcpl_cpl     <fver(7,0,6000,20696))
+		|| (_jsproxy_dll     >fver(7,0,6000,16574) && _jsproxy_dll     <fver(7,0,6000,20696))
+		|| (_msfeeds_dll     >fver(7,0,6000,16574) && _msfeeds_dll     <fver(7,0,6000,20696))
+		|| (_msfeedsbs_dll   >fver(7,0,6000,16574) && _msfeedsbs_dll   <fver(7,0,6000,20696))
+		|| (_mshtml_dll      >fver(7,0,6000,16587) && _mshtml_dll      <fver(7,0,6000,20710))
+		|| (_mshtmled_dll    >fver(7,0,6000,16574) && _mshtmled_dll    <fver(7,0,6000,20696))
+		|| (_msrating_dll    >fver(7,0,6000,16574) && _msrating_dll    <fver(7,0,6000,20696))
+		|| (_mstime_dll      >fver(7,0,6000,16574) && _mstime_dll      <fver(7,0,6000,20696))
+		|| (_occache_dll     >fver(7,0,6000,16574) && _occache_dll     <fver(7,0,6000,20696))
+		|| (_url_dll         >fver(7,0,6000,16574) && _url_dll         <fver(7,0,6000,20696))
+		|| (_urlmon_dll      >fver(7,0,6000,16574) && _urlmon_dll      <fver(7,0,6000,20696))
+		|| (_webcheck_dll    >fver(7,0,6000,16574) && _webcheck_dll    <fver(7,0,6000,20696))
+		|| (_wininet_dll     >fver(7,0,6000,16574) && _wininet_dll     <fver(7,0,6000,20696)) )) {
+		NN("Cumulative Security Update for Internet Explorer 7 for Windows XP Service Pack 2 (KB942615)"); // KB942615 is replaced by KB958215
+		XX(p2+"IE7-WindowsXP-KB942615-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		// GDR
