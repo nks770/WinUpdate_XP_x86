@@ -313,6 +313,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dao360_dll   = getFileVer(System32+L"\\dao360.dll",&status);
 	fver _davclnt_dll  = getFileVer(System32+L"\\davclnt.dll",&status);
 	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
+	fver _dbnmpntw_dll = getFileVer(System32+L"\\dbnmpntw.dll",&status);
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dfrgntfs_exe = getFileVer(System32+L"\\dfrgntfs.exe",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
@@ -1455,6 +1456,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _msadce_dll = getFileVer(msadc+L"\\msadce.dll",&status);
 	fver _msadco_dll = getFileVer(msadc+L"\\msadco.dll",&status);
+	fver _msadcs_dll = getFileVer(msadc+L"\\msadcs.dll",&status);
+	fver _msadds_dll = getFileVer(msadc+L"\\msadds.dll",&status);
 	fver _msado15_dll = getFileVer(ado+L"\\msado15.dll",&status);
 	fver _msadomd_dll = getFileVer(ado+L"\\msadomd.dll",&status);
 	fver _msador15_dll = getFileVer(ado+L"\\msador15.dll",&status);
@@ -1468,9 +1471,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msado26_tlb = getFileVer(ado+L"\\msado26.tlb",&status);
 	fver _msado27_tlb = getFileVer(ado+L"\\msado27.tlb",&status);
 	fver _msado28_tlb = getFileVer(ado+L"\\msado28.tlb",&status);
+	fver _msadrh15_dll = getFileVer(ado+L"\\msadrh15.dll",&status);
 	fver _msdaora_dll = getFileVer(OleDB+L"\\msdaora.dll",&status);
+	fver _msdaprst_dll = getFileVer(msadc+L"\\msdaprst.dll",&status);
+	fver _msdasql_dll = getFileVer(OleDB+L"\\msdasql.dll",&status);
 	fver _oledb32_dll = getFileVer(OleDB+L"\\oledb32.dll",&status);
 	fver _sqloledb_dll = getFileVer(OleDB+L"\\sqloledb.dll",&status);
+	fver _sqlxmlx_dll = getFileVer(OleDB+L"\\sqlxmlx.dll",&status);
 
 	std::wstring WebFolders = ProgramFiles+L"\\Common Files\\Microsoft Shared\\Web Folders";
 	fver _msonsext_dll = getFileVer(WebFolders+L"\\msonsext.dll",&status);
@@ -2144,6 +2151,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p1+"q815021_wxp_sp2_x86_enu_b56c13ca24cdeefbe85e72cdbf34fb0.exe"+a7);
 	}
 	if((sp==0 && (sku & XP_ALL) && (
+		// MDAC 2.7 RTM on Windows XP
 	      (_dbnetlib_dll >fver(2000,80,747,0)  && _dbnetlib_dll <fver(2000,81,9002,0))
 //	   || (_msdart_dll   >zero                 && _msdart_dll   <fver(2,71,9042,0))
 	   || (_odbc32_dll   >fver(3,520,7502,0)   && _odbc32_dll   <fver(3,520,9002,0))
@@ -2153,6 +2161,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_sqloledb_dll >fver(2000,80,747,0)  && _sqloledb_dll <fver(2000,81,9002,0))
 	   || (_sqlsrv32_dll >fver(2000,80,747,0)  && _sqlsrv32_dll <fver(2000,81,9002,0)) ))
 	 ||(sp==1 && (sku & XP_ALL) && (
+	   // MDAC 2.7 SP1 on Windows XP SP1
 	      (_dbnetlib_dll >fver(2000,81,9002,0) && _dbnetlib_dll <fver(2000,81,9042,0))
 //	   || (_msdart_dll   >zero                 && _msdart_dll   <fver(2,71,9042,0))
 	   || (_odbc32_dll   >fver(3,520,9002,0)   && _odbc32_dll   <fver(3,520,9042,0))
@@ -2160,10 +2169,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   || (_odbccp32_dll >fver(3,520,9002,0)   && _odbccp32_dll <fver(3,520,9042,0))
 	   || (_oledb32_dll  >fver(2,70,9002,0)    && _oledb32_dll  <fver(2,71,9042,0))
 	   || (_sqloledb_dll >fver(2000,81,9002,0)  && _sqloledb_dll <fver(2000,81,9042,0))
-	   || (_sqlsrv32_dll >fver(2000,81,9002,0)  && _sqlsrv32_dll <fver(2000,81,9042,0)) ))) {
+	   || (_sqlsrv32_dll >fver(2000,81,9002,0)  && _sqlsrv32_dll <fver(2000,81,9042,0)) ))
+       // MDAC 2.8 RTM on Windows XP RTM or Windows XP SP1
+	||(sp<2 && (sku & XP_ALL) && (
+	      (_odbcbcp_dll  >fver(2000,81,9042,0) && _odbcbcp_dll  <fver(2000,85,1025,0))
+	   || (_sqlsrv32_dll >fver(2000,81,9042,0) && _sqlsrv32_dll <fver(2000,85,1025,0)) ))) {
 		NN("Security Update for Microsoft Data Access Components (KB823718)");
-		//XX(p1+"ENU_Q832483_MDAC_x86.EXE"+a2);
-		XX(sw+p1+"ENU_Q832483_MDAC_x86.exe /Q:A /R:N /C:\"dahotfix.exe /q /n\"");
+		XX(sw+p1+"ENU_Q832483_MDAC_x86.exe /Q:U /R:N /C:\"dahotfix.exe /q /n\"");
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 	      (_gdi32_dll       >zero && _gdi32_dll       <fver(5,1,2600,1599))
@@ -4118,6 +4130,31 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,81,1124,0))) {
 		NN("Security Update for Windows XP (KB911562)");
 		XX(p2+"windowsxp-kb911562-x86-enu_7d16ad9701607a354e0ca2602a3fef485c8d9929.exe"+a1);
+	}
+	if( sp<2 && (sku & XP_ALL) && (
+	    (_dbnetlib_dll >=fver(2000,85,1022,0) && _dbnetlib_dll <fver(2000,85,1062,0))
+	 || (_dbnmpntw_dll >=fver(2000,85,1022,0) && _dbnmpntw_dll <fver(2000,85,1062,0))
+	 || (_msadce_dll   >=fver(2,80,1022,0)    && _msadce_dll   <fver(2,80,1062,0))
+	 || (_msadco_dll   >=fver(2,80,1022,0)    && _msadco_dll   <fver(2,80,1062,0))
+	 || (_msadcs_dll   >=fver(2,80,1022,0)    && _msadcs_dll   <fver(2,80,1062,0))
+	 || (_msadds_dll   >=fver(2,80,1022,0)    && _msadds_dll   <fver(2,80,1062,0))
+	 || (_msado15_dll  >=fver(2,80,1022,0)    && _msado15_dll  <fver(2,80,1062,0))
+	 || (_msadomd_dll  >=fver(2,80,1022,0)    && _msadomd_dll  <fver(2,80,1062,0))
+	 || (_msadox_dll   >=fver(2,80,1022,0)    && _msadox_dll   <fver(2,80,1062,0))
+	 || (_msadrh15_dll >=fver(2,80,1022,0)    && _msadrh15_dll <fver(2,80,1062,0))
+	 || (_msdaora_dll  >=fver(2,80,1022,0)    && _msdaora_dll  <fver(2,80,1062,0))
+	 || (_msdaprst_dll >=fver(2,80,1022,0)    && _msdaprst_dll <fver(2,80,1062,0))
+	 || (_msdart_dll   >=fver(2,80,1022,0)    && _msdart_dll   <fver(2,80,1062,0))
+	 || (_msdasql_dll  >=fver(2,80,1022,0)    && _msdasql_dll  <fver(2,80,1062,0))
+	 || (_msorcl32_dll >=fver(2,575,1022,0)   && _msorcl32_dll <fver(2,575,1062,0))
+	 || (_odbc32_dll   >=fver(3,525,1022,0)   && _odbc32_dll   <fver(3,525,1062,0))
+	 || (_odbcbcp_dll  >=fver(2000,85,1022,0) && _odbcbcp_dll  <fver(2000,85,1062,0))
+	 || (_oledb32_dll  >=fver(2,80,1022,0)    && _oledb32_dll  <fver(2,80,1062,0))
+	 || (_sqloledb_dll >=fver(2000,85,1022,0) && _sqloledb_dll <fver(2000,85,1062,0))
+	 || (_sqlsrv32_dll >=fver(2000,85,1022,0) && _sqlsrv32_dll <fver(2000,85,1062,0))
+	 || (_sqlxmlx_dll  >=fver(2000,85,1022,0) && _sqlxmlx_dll  <fver(2000,85,1062,0)) )) {
+		NN("Security Update for Microsoft Data Access Components 2.8 (KB911562)");
+		XX(p1+"MDAC28-KB911562-x86-ENU.exe"+a1);
 	}
 	/*if( sp==1 && (sku & XP_ALL) && (
 	      (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1234))

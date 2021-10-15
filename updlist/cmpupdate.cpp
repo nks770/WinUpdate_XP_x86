@@ -64,6 +64,34 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 
 	fver _ehshell_exe  = getFileVer(ehome+L"\\ehshell.exe",&status);
 
+	// MDAC components
+	std::wstring CommonFilesSystem = ProgramFiles + L"\\Common Files\\System";
+	std::wstring msadc = CommonFilesSystem + L"\\msadc";
+	std::wstring ado = CommonFilesSystem + L"\\ado";
+	std::wstring OleDB = CommonFilesSystem + L"\\Ole DB";
+
+	fver _dbnetlib_dll = getFileVer(System32+L"\\dbnetlib.dll",&status);
+	fver _dbnmpntw_dll = getFileVer(System32+L"\\dbnmpntw.dll",&status);
+	fver _msadce_dll = getFileVer(msadc+L"\\msadce.dll",&status);
+	fver _msadco_dll = getFileVer(msadc+L"\\msadco.dll",&status);
+	fver _msadcs_dll = getFileVer(msadc+L"\\msadcs.dll",&status);
+	fver _msadds_dll = getFileVer(msadc+L"\\msadds.dll",&status);
+	fver _msado15_dll = getFileVer(ado+L"\\msado15.dll",&status);
+	fver _msadomd_dll = getFileVer(ado+L"\\msadomd.dll",&status);
+	fver _msadox_dll = getFileVer(ado+L"\\msadox.dll",&status);
+	fver _msadrh15_dll = getFileVer(ado+L"\\msadrh15.dll",&status);
+	fver _msdaora_dll = getFileVer(OleDB+L"\\msdaora.dll",&status);
+	fver _msdaprst_dll = getFileVer(msadc+L"\\msdaprst.dll",&status);
+	fver _msdart_dll   = getFileVer(System32+L"\\msdart.dll",&status);
+	fver _msdasql_dll = getFileVer(OleDB+L"\\msdasql.dll",&status);
+	fver _msorcl32_dll = getFileVer(System32+L"\\msorcl32.dll",&status);
+	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
+	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
+	fver _oledb32_dll = getFileVer(OleDB+L"\\oledb32.dll",&status);
+	fver _sqloledb_dll = getFileVer(OleDB+L"\\sqloledb.dll",&status);
+	fver _sqlsrv32_dll = getFileVer(System32+L"\\sqlsrv32.dll",&status);
+	fver _sqlxmlx_dll = getFileVer(OleDB+L"\\sqlxmlx.dll",&status);
+
 	bool kb932823_ok = false;
 
 	// Default to get version of wmplayer, but fall back to mplayer2 if needed.
@@ -72,6 +100,32 @@ void componentUpdates(std::vector<std::string>* name, std::vector<std::string>* 
 	if(wmp==fver()) { wmp=_msdxm_ocx; }
 
 	// Flag updates;
+	if( sp<2 && (sku & XP_ALL) && (
+	    _dbnetlib_dll < fver(2000,85,1022,0)
+	 || _dbnmpntw_dll < fver(2000,85,1022,0)
+	 || _msadce_dll   < fver(2,80,1022,0)
+	 || _msadco_dll   < fver(2,80,1022,0)
+	 || _msadcs_dll   < fver(2,80,1022,0)
+	 || _msadds_dll   < fver(2,80,1022,0)
+	 || _msado15_dll  < fver(2,80,1022,0)
+	 || _msadomd_dll  < fver(2,80,1022,0)
+	 || _msadox_dll   < fver(2,80,1022,0)
+	 || _msadrh15_dll < fver(2,80,1022,0)
+	 || _msdaora_dll  < fver(2,80,1022,0)
+	 || _msdaprst_dll < fver(2,80,1022,0)
+	 || _msdart_dll   < fver(2,80,1022,0)
+	 || _msdasql_dll  < fver(2,80,1022,0)
+	 || _msorcl32_dll < fver(2,575,1022,0)
+	 || _odbc32_dll   < fver(3,525,1022,0)
+	 || _odbcbcp_dll  < fver(2000,85,1022,0)
+	 || _oledb32_dll  < fver(2,80,1022,0)
+	 || _sqloledb_dll < fver(2000,85,1022,0)
+	 || _sqlsrv32_dll < fver(2000,85,1022,0)
+	 || _sqlxmlx_dll  < fver(2000,85,1022,0) )) {
+	    // Note: the correct MDAC_TYP.EXE has md5sum 469ccba3746d2f5069a99fe04a02e73e
+		NN("Microsoft Data Access Components (MDAC) 2.8");
+		XX(sw+"\"Extras\\MDAC 2.8\\MDAC_TYP.EXE\" /q /c:\"dasetup.exe /q:d /n\"");
+	}
 	if( sp>1 && (sku & XP_ALL) && (  _D3DCompiler_43_dll <fver(9,29,952,3111)
 		              ||    _d3dcsx_43_dll  <fver(9,29,952,3111)
 					  ||    _d3dx10_43_dll  <fver(9,29,952,3111)
