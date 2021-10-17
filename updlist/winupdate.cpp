@@ -2080,6 +2080,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB867795)");
 		XX(p2+"WindowsXP-KB867795-x86-ENU.exe"+a6);
 	}
+	/*if( sp==0 && (sku & XP_ALL) && (
+	   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,41))
+	|| ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,41))
+	|| ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,41))
+	|| ( _spiisupd_exe <fver(5,1,2600,40))
+	|| ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,41)) )) {
+		NN("Cumulative Patch for Internet Information Services (Q319733)"); // Q319733 is replaced by Q811114
+		XX(p1+"Q319733_WXP_SP1_x86_ENU.exe"+a7);
+	}*/
 	if( sp<2 && (sku & XP_ALL) && (
                   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1181))
 			  ||  ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
