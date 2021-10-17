@@ -12565,6 +12565,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p3+"msxml4-KB936181-enu.exe"+a3);
 		}
 	}*/
+	/*if( sp<3 && (*msxml4 || ((sku & XP_ALL) && (
+		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9839,0))
+					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
+		NN("Vulnerabilities in Microsoft XML Core Services 4.0 SP2 Could Allow Remote Code Execution (925672)");
+		if(_msiexec_exe  <fver(3,0,0,0)) {
+			XX(p2+"msxml4-KB925672-enu.exe REBOOT=ReallySuppress /qb");
+		} else {
+			XX(p2+"msxml4-KB925672-enu.exe"+a3);
+		}
+	}*/
 	if( sp<2 && (*msxml4 || ((sku & XP_ALL) && (
 		                  (_msxml4_dll  >zero && _msxml4_dll  <fver(4,20,9841,0))
 					  ||  (_msxml4r_dll >zero && _msxml4r_dll <fver(4,10,9404,0)))))) {
@@ -12601,6 +12611,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Microsoft Core XML Services (MSXML) 6.0");
 		XX(std::string("msiexec.exe /package ")+p+"msxml6.msi /passive /norestart");
 	}
+	/*if( sp==1 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
+		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,0,3888,0))
+					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
+		NN("Vulnerabilities in Microsoft XML Core Services 6.0 RTM Could Allow Remote Code Execution (925673)");
+		XX(p1+"msxml6-KB925673-enu-x86.exe"+a3);
+	}*/
 	if( sp==1 && (_msiexec_exe >=fver(3,1,4000,1823)) && (*msxml6 || ((sku & XP_ALL) && ( 
 		                  ( _msxml6_dll  >zero && _msxml6_dll  <fver(6,0,3890,0))
 					  ||  ( _msxml6r_dll >zero && _msxml6r_dll <fver(6,0,3883,0)))))) {
