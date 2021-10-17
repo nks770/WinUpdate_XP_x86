@@ -4219,6 +4219,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB956391)");
 		XX(p2+"WindowsXP-KB956391-x86-ENU.exe"+a1);
 	}*/
+	if( (sku & XP_ALL) && (
+	     regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{81361155-FAF9-11D3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{81361143-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{81361146-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{81361149-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{8136114B-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{8136114D-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{8136114F-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{81361152-FAF9-11d3-B0D3-00C04F612FF1}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{E87A6788-1D0F-4444-8898-1D25829B6755}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{9088e688-063a-4806-a3db-6522712fc061}",L"Compatibility Flags",&status) != 1024
+	  || regQueryDWORD(L"SOFTWARE\\Microsoft\\Internet Explorer\\ActiveX Compatibility\\{29c13b62-b9f7-4cd3-8cef-0a58a1a99441}",L"Compatibility Flags",&status) != 1024
+	  )) {
+		NN("MSN Chat Security Fix (Q321661)");
+		XX(sw+p3+"MSNChatSecFix.exe"+a8);
+	}
 	if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB980195")
 		                        || !kb980195_installed())) {
 		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB980195)");
