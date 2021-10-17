@@ -2080,6 +2080,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB867795)");
 		XX(p2+"WindowsXP-KB867795-x86-ENU.exe"+a6);
 	}
+	if( sp<2 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,1123)) {
+		NN("Q329115: Security Update (Windows XP)");
+		XX(p1+"q329115_wxp_sp2_x86_1d09793faf21249febcc160d341612338dfd3154.exe"+a7);
+	}
 	/*if( sp==0 && (sku & XP_ALL) && (
 	   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,41))
 	|| ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,41))
@@ -2134,10 +2138,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==1 && (sku & XP_ALL) && _shmedia_dll>zero && _shmedia_dll<fver(6,0,2800,1125))) {
 		NN("Q329390: Security Update");
 		XX(p1+"q329390_wxp_3f60064794271f0053892985402fe5b6679d3f2d.exe"+a7);
-	}
-	if( sp<2 && (sku & XP_ALL) && _crypt32_dll>zero && _crypt32_dll<fver(5,131,2600,1123)) {
-		NN("Q329115: Security Update (Windows XP)");
-		XX(p1+"q329115_wxp_sp2_x86_1d09793faf21249febcc160d341612338dfd3154.exe"+a7);
 	}
 	if( sp==1 && (sku & XP_ALL) && (_flash_ocx>zero || _swflash_ocx>zero) && _flash_ocx<fver(6,0,84,0)) {
 		NN("Security Update for Flash Player (KB913433)");
