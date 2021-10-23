@@ -82,6 +82,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string sb=p+"SBSI\\";
 	const std::string vcredist=p+"vcredist\\";
 	const std::string mstsc=p+"mstsc\\";
+	const std::string sfu=p+"sfu\\";
 	const std::string np="NetFx\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string a2=" /Q";
@@ -107,6 +108,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	// Identify system paths
 	int CannotFindSystemRoot=0;
 	int CannotFindProgramFiles=0;
+	int CannotFindSFU=0;
 	std::wstring SystemRoot = regQueryValue(L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion",L"SystemRoot",&CannotFindSystemRoot);
 	std::wstring WinSxS = SystemRoot + L"\\WinSxS";
 	std::wstring System32 = SystemRoot + L"\\system32";
@@ -158,6 +160,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	std::wstring wxp_x86_0409_v1 = System32+L"\\PreInstall\\WinSE\\wxp_x86_0409_v1";
 
+	std::wstring ServicesForUNIX = regQueryValue(L"SOFTWARE\\Microsoft\\Services for UNIX",L"InstallPath",&CannotFindSFU);
+
 	bool _secdrv_sys_exist   = fileExists(Drivers+L"\\secdrv.sys");
 	bool _undo_guimode_txt   = fileExists(System32+L"\\undo_guimode.txt");
 	bool _simsun_ttc_exist   = fileExists(SystemRoot+L"\\Fonts\\simsun.ttc");
@@ -172,6 +176,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	bool _installed_kb302224 = false;
 	bool _installed_kb834158 = false;
 	bool _installed_q830849 = false;
+
+	bool _librpclib_a_exist = fileExists(ServicesForUNIX+L"\\usr\\lib\\librpclib.a");
+	bool _librpclib_so_3_exist = fileExists(ServicesForUNIX+L"\\usr\\lib\\librpclib.so.3");
 
 	// File MD5 hashes
 	MD5 md5;
@@ -230,6 +237,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	md5.digestFileW((SystemRoot+L"\\inf\\mdmirmdm.inf").c_str(),false);
 	char _mdmirmdm_inf_md5[33];
 	strncpy_s(_mdmirmdm_inf_md5,33,md5_ptr,33);
+
+	md5.digestFileW((ServicesForUNIX+L"\\usr\\lib\\librpclib.a").c_str(),false);
+	char _librpclib_a_md5[33];
+	strncpy_s(_librpclib_a_md5,33,md5_ptr,33);
+
+	md5.digestFileW((ServicesForUNIX+L"\\usr\\lib\\librpclib.so.3").c_str(),false);
+	char _librpclib_so_3_md5[33];
+	strncpy_s(_librpclib_so_3_md5,33,md5_ptr,33);
+
 
 //	printf("%s\n",_shgina_dll_md5);
 //	printf("%s\n",_httpodbc_dll_md5);
@@ -2093,18 +2109,31 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Patch for Internet Information Services (Q319733)"); // Q319733 is replaced by Q811114
 		XX(p1+"Q319733_WXP_SP1_x86_ENU.exe"+a7);
 	}*/
+	/*if( sp<2 && (sku & XP_ALL) && (
+		   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1125))
+		|| ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1125))
+		|| ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1125))
+		|| ( _httpodbc_dll >zero && _httpodbc_dll <fver(5,1,2600,1125))
+		|| ( _infocomm_dll >zero && _infocomm_dll <fver(6,0,2600,1125))
+		|| ( _isatq_dll    >zero && _isatq_dll    <fver(6,0,2600,1125))
+		|| ( _spiisupd_exe >zero && _spiisupd_exe <fver(5,1,2600,1125))
+		|| ( _ssinc_dll    >zero && _ssinc_dll    <fver(5,1,2600,1125))
+		|| ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,1125)) )) {
+		NN("Windows XP Security Patch: October IIS5.1 Cumulative Security Patch"); // Q327696 is replaced by Q811114
+		XX(p1+"Q327696_WXP_SP2_x86_ENU.exe"+a7);
+	}*/
 	if( sp<2 && (sku & XP_ALL) && (
-                  ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1181))
-			  ||  ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
-			  ||  ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1189))
-			  ||  ( _httpodbc_dll >zero && _httpodbc_dll <fver(5,1,2600,1172))
-			  ||  ( _iischema_dll >zero && _iischema_dll <fver(5,1,2600,1152))
-			  ||  ( _infocomm_dll >zero && _infocomm_dll <fver(6,0,2600,1167))
-			  ||  ( _isatq_dll    >zero && _isatq_dll    <fver(6,0,2600,1182))
-			  ||  ( _lonsint_dll  >zero && _lonsint_dll  <fver(6,0,2600,1167))
-			  ||  ( /*_spiisupd_exe >zero &&*/ _spiisupd_exe <fver(5,1,2600,1152))
-			  ||  ( _ssinc_dll    >zero && _ssinc_dll    <fver(5,1,2600,1152))
-			  ||  ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,1166)) )) {
+		   ( _asp_dll      >zero && _asp_dll      <fver(5,1,2600,1181))
+		|| ( _ftpsvc2_dll  >zero && _ftpsvc2_dll  <fver(5,1,2600,1173))
+		|| ( _httpext_dll  >zero && _httpext_dll  <fver(6,0,2600,1189))
+		|| ( _httpodbc_dll >zero && _httpodbc_dll <fver(5,1,2600,1172))
+		|| ( _iischema_dll >zero && _iischema_dll <fver(5,1,2600,1152))
+		|| ( _infocomm_dll >zero && _infocomm_dll <fver(6,0,2600,1167))
+		|| ( _isatq_dll    >zero && _isatq_dll    <fver(6,0,2600,1182))
+		|| ( _lonsint_dll  >zero && _lonsint_dll  <fver(6,0,2600,1167))
+		|| ( /*_spiisupd_exe >zero &&*/ _spiisupd_exe <fver(5,1,2600,1152))
+		|| ( _ssinc_dll    >zero && _ssinc_dll    <fver(5,1,2600,1152))
+		|| ( _w3svc_dll    >zero && _w3svc_dll    <fver(5,1,2600,1166)) )) {
 		NN("Q811114: Security Update (Windows XP or Windows XP Service Pack 1)");
 		XX(p1+"q811114_wxp_sp2_x86_enu_63cfc7cfc1fb0ad0b7df3c483b75760.exe"+a7);
 	}
@@ -2346,6 +2375,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB837001)");
 		XX(p1+"windowsxp-kb837001-x86-enu_09e9d2c15ee5ee9323b210decd84941.exe"+a6);
 	}
+	/*if((sp==0 && (sku & XP_ALL) && (
+	      (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,104))
+	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,104))
+	   || (_winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,104)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
+	      (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,1134))
+	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1134))
+	   || (_winsrv_dll   >zero && _winsrv_dll   <fver(5,1,2600,1134)) ))) {
+		NN("Windows XP Patch: Flaw in Windows WM_TIMER Message Handling Could Enable Privilege Elevation");
+		XX(p1+"Q328310_WXP_SP2_x86_ENU.exe"+a7); // Q328310 is replaced by KB840987
+	}*/
 	/*if((sp==0 && (sku & XP_ALL) && (
 	      (_user32_dll      >zero && _user32_dll <fver(5,1,2600,118))
 	   || ( _win32k_sys     >zero && _win32k_sys <fver(5,1,2600,115)) ))
@@ -8452,6 +8492,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2095711)");
 		XX(p3+"WindowsXP-KB2095711-x86-ENU.exe"+a1);
 	}
+
+
+	// Microsoft Windows Services For UNIX
+	if( (sku & XP_ALL) && regQueryValue(L"SOFTWARE\\Microsoft\\Services for UNIX",L"Current_Release",&status)==L"3.0" && (
+	   ( _librpclib_a_exist    && strncmp(_librpclib_a_md5,   "9385f07a47505326d1e45b047469e025",32) != 0 )
+	|| ( _librpclib_so_3_exist && strncmp(_librpclib_so_3_md5,"0296239cb3ab71b05aca41d9ccf60041",32) != 0 ) )) {
+		NN("Flaw in Services for Unix 3.0 Interix SDK Could Allow Code Execution (Q329209)");
+		XX(sw+sfu+"q329209_sfu_3_x86_en.exe -m -z");
+	}
+
 
 	// Updates for Microsoft Visual C++ Runtime Versions
 	if( sp==2 && (sku & XP_ALL) && ( (_mfc40u_dll>zero && _mfc40u_dll<fver(4,1,0,6141))
