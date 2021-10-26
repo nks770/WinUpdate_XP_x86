@@ -82,7 +82,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string sb=p+"SBSI\\";
 	const std::string vcredist=p+"vcredist\\";
 	const std::string mstsc=p+"mstsc\\";
-	const std::string sfu=p+"sfu\\";
+	const std::string sfu=p+"SFU\\";
 	const std::string np="NetFx\\";
 	const std::string a1=" /passive /norestart /overwriteoem /nobackup";
 	const std::string a2=" /Q";
@@ -684,6 +684,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
 	fver _PortableDeviceWMDRM_dll = getFileVer(System32+L"\\PortableDeviceWMDRM.dll",&status);
+	fver _posix_exe    = getFileVer(System32+L"\\posix.exe",&status);
 	fver _printui_dll  = getFileVer(System32+L"\\printui.dll",&status);
 	fver _prntvpt_dll  = getFileVer(System32+L"\\prntvpt.dll",&status);
 	fver _proctexe_ocx = getFileVer(System32+L"\\proctexe.ocx",&status);
@@ -691,6 +692,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _psbase_dll   = getFileVer(System32+L"\\psbase.dll",&status);
 	fver _psisdecd_dll = getFileVer(System32+L"\\psisdecd.dll",&status);
 	fver _psisrndr_ax  = getFileVer(System32+L"\\psisrndr.ax",&status);
+	fver _psxdll_dll   = getFileVer(System32+L"\\psxdll.dll",&status);
+	fver _psxrun_exe   = getFileVer(System32+L"\\psxrun.exe",&status);
+	fver _psxss_exe    = getFileVer(System32+L"\\psxss.exe",&status);
 	fver _qasf_dll     = getFileVer(System32+L"\\qasf.dll",&status);
 	fver _qcap_dll     = getFileVer(System32+L"\\qcap.dll",&status);
 	fver _qfecheck_exe = getFileVer(System32+L"\\qfecheck.exe",&status);
@@ -8500,6 +8504,22 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	|| ( _librpclib_so_3_exist && strncmp(_librpclib_so_3_md5,"0296239cb3ab71b05aca41d9ccf60041",32) != 0 ) )) {
 		NN("Flaw in Services for Unix 3.0 Interix SDK Could Allow Code Execution (Q329209)");
 		XX(sw+sfu+"q329209_sfu_3_x86_en.exe -m -z");
+	}
+	if( (sku & XP_ALL) && regQueryValue(L"SOFTWARE\\Microsoft\\Services for UNIX",L"Current_Release",&status)==L"3.0" && (
+	   ( _posix_exe  > zero && _posix_exe  < fver(7,0,1701,46))
+	|| ( _psxdll_dll > zero && _psxdll_dll < fver(7,0,1701,46))
+	|| ( _psxrun_exe > zero && _psxrun_exe < fver(7,0,1701,46))
+	|| ( _psxss_exe  > zero && _psxss_exe  < fver(7,0,1701,46)) )) {
+		NN("Security Update for Microsoft Windows Services for UNIX Version 3.0 (KB939778)");
+		XX(sw+sfu+"SFU3-KB939778-X86-ENU.exe -m -z");
+	}
+	if( (sku & XP_ALL) && regQueryValue(L"SOFTWARE\\Microsoft\\Services for UNIX",L"Current_Release",&status)==L"3.5" && (
+	   ( _posix_exe  > zero && _posix_exe  < fver(8,0,1969,58))
+	|| ( _psxdll_dll > zero && _psxdll_dll < fver(8,0,1969,58))
+	|| ( _psxrun_exe > zero && _psxrun_exe < fver(8,0,1969,58))
+	|| ( _psxss_exe  > zero && _psxss_exe  < fver(8,0,1969,58)) )) {
+		NN("Security Update for Microsoft Windows Services for UNIX Version 3.5 (KB939778)");
+		XX(sw+sfu+"SFU35-KB939778-X86-ENU.exe -m -z");
 	}
 
 
