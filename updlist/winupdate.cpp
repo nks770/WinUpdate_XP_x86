@@ -1840,6 +1840,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(rtm+"windowsxp-kb825119-x86-enu_1b9f23b64b002d1e9d1eaba62f5f8fd.exe"+a7);
 	}
 	/*if((sp==0 && (sku & XP_ALL) && (
+		(_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,105)) ))
+	 ||(sp==1 && (sku & XP_ALL) && (
+		(_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,1140)) ))) {
+		NN("Windows XP Security Patch: Flaw in Remote Procedure Call Could Enable Denial of Service Attacks"); // Q331953 is replaced by KB826939
+		XX(p1+"Q331953_WXP_SP2_x86_ENU.exe"+a7);
+	}*/
+	/*if((sp==0 && (sku & XP_ALL) && (
 			    (_ole32_dll  >zero && _ole32_dll  <fver(5,1,2600,118))
 			||  (_rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,109))
 			||  (_rpcss_dll  >zero && _rpcss_dll  <fver(5,1,2600,118))))
