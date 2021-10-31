@@ -9676,6 +9676,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB900930)"); // KB900930 is replaced by KB978542
 		XX(p2+"WindowsXP-KB900930-x86-ENU.exe"+a1);
 	}*/
+	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,2962)) {
+		// KB941202 is replaced by KB978542 on SP2
+		NN("Security Update for Outlook Express for Windows XP (KB920214)");
+		XX(p2+"WindowsXP-KB920214-x86-ENU.exe"+a1);
+	}*/
 	/*if(sp==2 && (sku & XP_ALL) && _inetcomm_dll>zero && _inetcomm_dll<fver(6,0,2900,3100)) {
 		NN("Update for Windows XP (KB933612)"); // KB933612 is replaced by KB978542
 		XX(p2+"WindowsXP-KB933612-x86-ENU.exe"+a1);
