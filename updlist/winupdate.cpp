@@ -3213,6 +3213,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB896422)"); // KB896422 is replaced by KB916846
 		XX(p2+"WindowsXP-KB896422-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==1 && (sku & XP_ALL) && _srv_sys >zero && _srv_sys <fver(5,1,2600,1832))
+	 ||(sp==2 && (sku & XP_ALL) && _srv_sys >zero && _srv_sys <fver(5,1,2600,2893))) {
+		NN("Security Update for Windows XP (KB917159)"); // KB917159 is replaced by KB916846
+		XX(p2+"WindowsXP-KB917159-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _cscdll_dll >zero && _cscdll_dll <fver(5,1,2600,1599))
 					  ||  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,1859))
