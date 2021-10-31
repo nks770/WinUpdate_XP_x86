@@ -9721,6 +9721,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Outlook Express for Windows XP (KB911567)");
 		XX(p2+"windowsxp-kb911567-x86-enu_3322015f70b63fd2c82af81148ed88055a6f7e5b.exe"+a1);
 	}*/
+	/*if( sp==2 && (sku & XP_ALL) && (
+		                  ( _directdb_dll >zero && _directdb_dll <fver(6,0,2900,3028))
+					  ||  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,3028))
+					  ||  ( _msoe_dll     >zero && _msoe_dll     <fver(6,0,2900,3028))
+					  ||  ( _wab32_dll    >zero && _wab32_dll    <fver(6,0,2900,3028))
+					  ||  ( _wabimp_dll   >zero && _wabimp_dll   <fver(6,0,2900,3028)) )) {
+		NN("Cumulative Security Update for Outlook Express for Windows XP (KB923694)"); // KB923694 is replaced by KB929123
+		XX(p2+"WindowsXP-KB923694-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _directdb_dll >zero && _directdb_dll <fver(6,0,2900,3138))
 					  ||  ( _inetcomm_dll >zero && _inetcomm_dll <fver(6,0,2900,3138))
