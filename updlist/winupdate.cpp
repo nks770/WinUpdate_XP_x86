@@ -3454,10 +3454,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB970238)");
 		XX(p2+"windowsxp-kb970238-x86-enu_82bd58dd365d93afa746a4beaf2a1ad5b8d5181a.exe"+a1);
 	}
-	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1693))
-	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2685))) {
+	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1630))
+	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2631))) {
 		NN("Security Update for Windows XP (KB893066)"); // KB893066 is replaced by KB917953+KB951748
+		XX(p2+"WindowsXP-KB893066-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1693))
+	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2685))) {
+		NN("Security Update for Windows XP (KB893066)"); // KB893066-v2 is replaced by KB917953+KB951748
 		XX(p2+"WindowsXP-KB893066-v2-x86-ENU.exe"+a1);
+	}*/
+	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1792))
+	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2827))) {
+		NN("Security Update for Windows XP (KB913446)"); // KB913446 is replaced by KB917953+KB951748
+		XX(p2+"WindowsXP-KB913446-x86-ENU.exe"+a1);
 	}*/
 	if( sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1831)) {
 		NN("Security Update for Windows XP (KB917953)");
@@ -4245,6 +4255,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB895406)"); // KB895406 is replaced by KB907865 on SP2
 		XX(p1+"WindowsXP-KB895406-v4-x86-ENU.exe"+a1);
 	}
+	/*if(( sp==1 && (sku & XP_ALL) && (
+	    (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1581))
+	 || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1842))
+	 || (_ipsecsnp_dll >zero && _ipsecsnp_dll <fver(5,1,2600,1842))
+	 || (_ipsecsvc_dll >zero && _ipsecsvc_dll <fver(5,1,2600,1842))
+	 || (_ipsmsnap_dll >zero && _ipsmsnap_dll <fver(5,1,2600,1842))
+	 || (_oakley_dll   >zero && _oakley_dll   <fver(5,1,2600,1842))
+	 || (_polstore_dll >zero && _polstore_dll <fver(5,1,2600,1842))
+	 || (_rasmans_dll  >zero && _rasmans_dll  <fver(5,1,2600,1842))
+	 || (_winipsec_dll >zero && _winipsec_dll <fver(5,1,2600,1842)) ))
+	 ||( sp==2 && (sku & XP_ALL) && _rasmans_dll>zero && _rasmans_dll<fver(5,1,2600,2908))) {
+		NN("Security Update for Windows XP (KB911280)"); // KB911280 is replaced by KB911280-v2
+		XX(p2+"WindowsXP-KB911280-x86-ENU.exe"+a1);
+	}*/
 	if(( sp==1 && (sku & XP_ALL) && (
 	    (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1581))
 	 || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1842))
