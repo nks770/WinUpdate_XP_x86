@@ -4303,9 +4303,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB907865)");
 		XX(p2+"WindowsXP-KB907865-x86-ENU.exe"+a1);
 	}
+	/*if( sp>=2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB950760")
+		                        || !kb950760_installed())) {
+		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB950760)"); // KB950760 is replaced by KB980195
+		XX(p2+"WindowsXP-KB950760-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP4\\KB956391")
 		                        || !kb956391_installed())) {
-		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB956391)");
+		NN("Cumulative Security Update for ActiveX Killbits for Windows XP (KB956391)"); // KB956391 is replaced by KB980195
 		XX(p2+"WindowsXP-KB956391-x86-ENU.exe"+a1);
 	}*/
 	if( (sku & XP_ALL) && (
@@ -6368,7 +6373,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=2 && (sku & XP_ALL) && regTestKey(L"SYSTEM\\CurrentControlSet\\Services\\ADAM") && (
 		                  ( _adamdsa_dll   >zero && _adamdsa_dll   <fver(1,1,3790,4276)) )) {
 		NN("Security Update for Windows XP (KB949269)");
-		XX(p2+"WindowsXP-KB949269-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB949269-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
 		/*if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,2562)) || _ntfs_sys_cache <fver(5,1,2600,2562)))  {
