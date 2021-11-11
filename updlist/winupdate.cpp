@@ -2167,6 +2167,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB841873)");
 		XX(p1+"windowsxp-kb841873-x86-enu_f0f4cb2c535f8adf154e72f2f2c60d6f9b710d6d.exe"+a6);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _mstask_dll   >zero && _mstask_dll   <fver(5,1,2600,1677))
+	  ||  ( _mstinit_exe  >zero && _mstinit_exe  <fver(5,1,2600,1677))
+	  ||  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,1677))
+	  ||  ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1677)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _schedsvc_dll >zero && _schedsvc_dll <fver(5,1,2600,2667)) ))) {
+		NN("Update for Windows XP (KB887572)"); // KB887572 is replaced by KB904423
+		XX(p2+"WindowsXP-KB887572-v4-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _mstask_dll   >zero && _mstask_dll   <fver(5,1,2600,1756))
 	  ||  ( _mstinit_exe  >zero && _mstinit_exe  <fver(5,1,2600,1756))
