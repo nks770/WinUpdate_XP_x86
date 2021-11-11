@@ -452,6 +452,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ipsmsnap_dll = getFileVer(System32+L"\\ipsmsnap.dll",&status);
 	fver _ipv6_exe     = getFileVer(System32+L"\\ipv6.exe",&status);
 	fver _ipv6mon_dll  = getFileVer(System32+L"\\ipv6mon.dll",&status);
+	fver _irmon_dll    = getFileVer(System32+L"\\irmon.dll",&status);
 	fver _isign32_dll  = getFileVer(System32+L"\\isign32.dll",&status);
 	fver _itircl_dll   = getFileVer(System32+L"\\itircl.dll",&status);
 	fver _itss_dll     = getFileVer(System32+L"\\itss.dll",&status);
@@ -1304,6 +1305,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _halsp_dll          = getFileVer(DriverCache+L"\\halsp.sys",&status);
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
+	fver _irmon_dll_cache    = getFileVer(DriverCache+L"\\irmon.dll",&status);
 	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
 	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
 	fver _mrxdav_sys_cache   = getFileVer(DriverCache+L"\\mrxdav.sys",&status);
@@ -7709,6 +7711,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _bthprint_sys_cache <fver(5,1,2600,2574)) )) {
 		NN("Update for Windows XP (KB890733)");
 		XX(p2+"WindowsXP-KB890733-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _irmon_dll       <fver(5,1,2600,2524))
+	  ||  ( _irmon_dll_cache <fver(5,1,2600,2524)) )) {
+		NN("Update for Windows XP (KB885855)");
+		XX(p2+"WindowsXP-KB885855-x86-ENU.exe"+a6);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _rexec_exe >zero && _rexec_exe <fver(5,1,2600,2601))
