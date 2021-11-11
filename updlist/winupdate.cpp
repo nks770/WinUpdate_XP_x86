@@ -276,6 +276,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _adsmsext_dll = getFileVer(System32+L"\\adsmsext.dll",&status);
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
 	fver _advpack_dll  = getFileVer(System32+L"\\advpack.dll",&status);
+	fver _appmgmts_dll = getFileVer(System32+L"\\appmgmts.dll",&status);
 	fver _appwiz_cpl   = getFileVer(System32+L"\\appwiz.cpl",&status);
 	fver _asycfilt_dll = getFileVer(System32+L"\\asycfilt.dll",&status);
 	fver _atl_dll      = getFileVer(System32+L"\\atl.dll",&status);
@@ -4433,6 +4434,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"windowsxp-kb927802-x86-enu_94703f4083a9d9d6633d9134d0d0a85bfc405f3a.exe"+a1);
 		}
 	}
+	/*if((sp==2 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,3351))
+	 ||(sp==3 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,5580))) {
+		NN("Security Update for Windows XP (KB951376)"); // KB951376 is replaced by KB951376-v2
+		XX(p3+"WindowsXP-KB951376-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,3389))
 	 ||(sp==3 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,5620))) {
 		NN("Security Update for Windows XP (KB951376)");
@@ -7710,6 +7716,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	  ||  ( _rsh_exe   >zero && _rsh_exe   <fver(5,1,2600,2643)) )) {
 		NN("Update for Windows XP (KB896336)");
 		XX(p2+"WindowsXP-KB896336-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,1613))
+	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,1613)) ))
+	 ||(sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,2544))
+	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,2544)) ))) {
+		NN("Update for Windows XP (KB884882)");
+		XX(p2+"WindowsXP-KB884882-v3-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,1618))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,2594))) {
