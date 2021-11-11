@@ -3460,6 +3460,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB970238)");
 		XX(p2+"windowsxp-kb970238-x86-enu_82bd58dd365d93afa746a4beaf2a1ad5b8d5181a.exe"+a1);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1593))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2523))) {
+		NN("Security Update for Windows XP (KB885267)"); // KB885267 is replaced by KB917953+KB951748
+		XX(p2+"WindowsXP-KB885267-x86-ENU.exe"+a6);
+	}*/
 	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1630))
 	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2631))) {
 		NN("Security Update for Windows XP (KB893066)"); // KB893066 is replaced by KB917953+KB951748
