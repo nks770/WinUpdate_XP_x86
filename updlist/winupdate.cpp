@@ -317,6 +317,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comuid_dll   = getFileVer(System32+L"\\comuid.dll",&status);
 	fver _corpol_dll   = getFileVer(System32+L"\\corpol.dll",&status);
 	fver _credssp_dll  = getFileVer(System32+L"\\credssp.dll",&status);
+	fver _credui_dll   = getFileVer(System32+L"\\credui.dll",&status);
 	fver _crypt32_dll  = getFileVer(System32+L"\\crypt32.dll",&status);
 	fver _cryptdlg_dll = getFileVer(System32+L"\\cryptdlg.dll",&status);
 	fver _cryptnet_dll = getFileVer(System32+L"\\cryptnet.dll",&status);
@@ -7763,7 +7764,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,1613))
 	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,1613)) ))
-	 ||(sp==1 && qfe && (sku & XP_ALL) && (
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,2544))
 	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,2544)) ))) {
 		NN("Update for Windows XP (KB884882)");
@@ -7836,6 +7837,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || _usbcamd2_sys_cache <fver(5,1,2600,2736) )) {
 		NN("Update for Windows XP (KB905816)");
 		XX(p2+"WindowsXP-KB905816-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _credui_dll >zero && _credui_dll <fver(5,1,2600,1615))
+	 || ( _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,1615)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _credui_dll >zero && _credui_dll <fver(5,1,2600,2586))
+	 || ( _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2586)) ))) {
+		NN("Update for Windows XP (KB887710)");
+		XX(p2+"WindowsXP-KB887710-x86-ENU.exe"+a6);
 	}
 	
 
