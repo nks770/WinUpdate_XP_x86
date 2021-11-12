@@ -7794,6 +7794,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB893609)");
 		XX(p2+"WindowsXP-KB893609-x86-ENU.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _aclui_dll >zero && _aclui_dll <fver(5,1,2600,1599))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _aclui_dll >zero && _aclui_dll <fver(5,1,2600,2527))*/) {
+		NN("Update for Windows XP (KB887601)");
+		XX(p1+"WindowsXP-KB887601-x86-ENU.exe"+a6);
+	}
 	if( sp==2 && qfe && (sku & XP_ALL) && _aclui_dll >zero && _aclui_dll <fver(5,1,2600,2625)) {
 		NN("Update for Windows XP (KB894075)");
 		XX(p2+"WindowsXP-KB894075-x86-ENU.exe"+a1);
