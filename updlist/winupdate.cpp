@@ -1713,6 +1713,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 
 	fver _gdiplus_dll_0     = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.0.1_x-ww_8d353f14\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_1360  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1360_x-ww_24a2ed47\\GdiPlus.dll",&status);
+	fver _gdiplus_dll_2700  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2700_x-ww_551bfa90\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_3430  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.3430_x-ww_822b9d89\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_5660  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.5660_x-ww_e0385ec6\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22319 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df\\GdiPlus.dll",&status);
@@ -7166,6 +7167,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,5654))) {
 		NN("Update for Windows XP (KB955988)");
 		XX(p3+"WindowsXP-KB955988-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _gdiplus_dll_2700 <fver(5,1,3102,2700)) {
+		NN("Update for Windows XP (KB887590)");
+		XX(p2+"WindowsXP-KB887590-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _gdiplus_dll_3430 <fver(5,1,3102,3430))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _gdiplus_dll_5660 <fver(5,1,3102,5660))) {
