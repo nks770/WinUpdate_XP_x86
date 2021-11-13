@@ -5101,6 +5101,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB887186)"); // KB887186 is replaced by KB923980
 		XX(p2+"WindowsXP-KB887186-x86-ENU.exe"+a6);
 	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _nwrdr_sys >zero && _nwrdr_sys <fver(5,1,2600,1611))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _nwrdr_sys >zero && _nwrdr_sys <fver(5,1,2600,2563))*/ ) {
+		NN("Update for Windows XP (KB889093)"); // KB889093 is replaced by KB923980 on SP1
+		XX(p1+"WindowsXP-KB889093-v2-x86-ENU.exe"+a6);
+	}
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( _nwapi32_dll  >zero && _nwapi32_dll  <fver(5,1,2600,3015))
 					  ||  ( _nwprovau_dll >zero && _nwprovau_dll <fver(5,1,2600,3015))
