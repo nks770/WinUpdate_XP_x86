@@ -7836,9 +7836,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB896269)");
 		XX(p2+"WindowsXP-KB896269-x86-ENU.exe"+a1);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _ntvdm_exe >zero && _ntvdm_exe <fver(5,1,2600,2650)) {
-		NN("Update for Windows XP (KB896896)");
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _ntvdm_exe >zero && _ntvdm_exe <fver(5,1,2600,2650)) {
+		NN("Update for Windows XP (KB896896)"); // KB896896 is replaced by KB890067
 		XX(p2+"WindowsXP-KB896896-x86-ENU.exe"+a1);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _krnl386_exe >zero && _krnl386_exe <fver(3,10,0,103))
+	 || ( _ntvdm_exe >zero && _ntvdm_exe <fver(5,1,2600,1715))
+	 || ( _wow32_dll >zero && _wow32_dll <fver(5,1,2600,1562)) ))
+	 || ( sp==2 && qfe && (sku & XP_ALL) && _ntvdm_exe >zero && _ntvdm_exe <fver(5,1,2600,2715))) {
+		NN("Update for Windows XP (KB890067)");
+		XX(p2+"WindowsXP-KB890067-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _secedit_exe >zero && _secedit_exe <fver(5,1,2600,1666))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _secedit_exe >zero && _secedit_exe <fver(5,1,2600,2655))) {
