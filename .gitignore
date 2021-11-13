@@ -38,3 +38,4 @@ updlist.ncb
 *.user
 debug
 updlist/Debug
+update-token.sh

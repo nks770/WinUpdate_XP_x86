@@ -10509,6 +10509,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Security Update for Internet Explorer for Windows XP Service Pack 2 (KB947864)");
 		XX(p2+"WindowsXP-KB947864-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _iepeers_dll >zero && _iepeers_dll <fver(6,0,2900,2606)) {
+		NN("Update for Windows XP (KB889333)"); // KB889333 is replaced by KB958215
+		XX(p2+"WindowsXP-KB889333-v2-x86-ENU.exe"+a6);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_wininet_dll   >zero && _wininet_dll   <fver(6,0,2900,2625)) )) {
 		NN("Update for Windows XP (KB843518)"); // KB843518 is replaced by KB958215
@@ -10946,6 +10951,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		&& _vgx_dll>zero && _vgx_dll<fver(7,0,6000,20628)) {
 		NN("Security Update for Internet Explorer 7 for Windows XP (KB938127)");
 		XX(p2+"IE7-WindowsXP-KB938127-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0))
+		&& _iepeers_dll>zero && _iepeers_dll<fver(7,0,6000,20661)) {
+		NN("Update for Internet Explorer 7 for Windows XP (KB889333)");
+		XX(p2+"IE7-WindowsXP-KB889333-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		/* GDR */
