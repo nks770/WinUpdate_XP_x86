@@ -3854,9 +3854,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"windowsxp-kb961501-x86-enu_a5360324a1fe219a9aa9f0e513edffe7305176e4.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,2580)) {
-		// KB890951 is replaced by KB956572
-		NN("Update for Windows XP (KB890951)");
+		NN("Update for Windows XP (KB890951)"); // KB890951 is replaced by KB956572
 		XX(p2+"WindowsXP-KB890951-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,2644)) {
+		NN("Update for Windows XP (KB888516)"); // KB888516 is replaced by KB956572
+		XX(p2+"WindowsXP-KB888516-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _lsasrv_dll>zero && _lsasrv_dll<fver(5,1,2600,3249)) {
 		// KB943485 is replaced by KB956572 in SP2
