@@ -3208,6 +3208,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
+					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1633))
+					  ||  (_rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,1599))))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,2620) )) {
+		NN("Update for Windows XP (KB890671)"); // KB890671 is replaced by KB916846
+		XX(p2+"WindowsXP-KB890671-x86-ENU.exe"+a1);
+	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
 					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1642))
 					  ||  (_rdbss_sys >zero && _rdbss_sys <fver(5,1,2600,1599))))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,2628) )) {
