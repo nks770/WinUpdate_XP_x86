@@ -5423,7 +5423,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"WindowsXP-KB918997-v6-x86-ENU.exe"+a1);
 		}
 	} else {
-		if((sp==1 && qfe && (sku & XP_ALL) && (
+		/*if((sp==1 && qfe && (sku & XP_ALL) && (
 			  ( _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1612))
 		  ||  ( _ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1612))
 		  ||  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1612))
@@ -5435,10 +5435,31 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ||  ( _ndis_sys_cache     <fver(5,1,2600,1612))
 		  ||  ( _ndisuio_sys_cache  <fver(5,1,2600,1612))
 		  ||  ( _nwlnkipx_sys_cache <fver(5,1,2600,1612)) ))
-		/*|| (sp==2 && qfe && (sku & XP_ALL) && (
-			  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2573)) ))*/) {
-			NN("Update for Windows XP (KB884862)"); // KB884862 is replaced by KB949127 on SP2
+		|| (sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2573)) ))) {
+			NN("Update for Windows XP (KB884862)"); // KB884862 is replaced by KB892087
 			XX(p1+"WindowsXP-KB884862-v2-x86-ENU.exe"+a6);
+		}*/
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  ( _dhcpcsvc_dll >zero && _dhcpcsvc_dll <fver(5,1,2600,1612))
+		  ||  ( _ndis_sys     >zero && _ndis_sys     <fver(5,1,2600,1612))
+		  ||  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,1612))
+		  ||  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,1618))
+		  ||  ( _nwlnkipx_sys >zero && _nwlnkipx_sys <fver(5,1,2600,1612))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,1618))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,1612))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,1612))
+		  ||  ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1612))
+		  ||  ( _ndis_sys_cache     <fver(5,1,2600,1612))
+		  ||  ( _ndisuio_sys_cache  <fver(5,1,2600,1612))
+		  ||  ( _nwlnkipx_sys_cache <fver(5,1,2600,1612)) ))
+		/*|| (sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _netshell_dll >zero && _netshell_dll <fver(5,1,2600,2594))
+		  ||  ( _wzcdlg_dll   >zero && _wzcdlg_dll   <fver(5,1,2600,2594))
+		  ||  ( _wzcsapi_dll  >zero && _wzcsapi_dll  <fver(5,1,2600,2594))
+		  ||  ( _wzcsvc_dll   >zero && _wzcsvc_dll   <fver(5,1,2600,2594)) ))*/) {
+			NN("Update for Windows XP (KB892087)"); // KB892087 is replaced by KB949127 on SP2
+			XX(p1+"WindowsXP-KB892087-x86-ENU.exe"+a6);
 		}
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ndisuio_sys  >zero && _ndisuio_sys  <fver(5,1,2600,2626))
