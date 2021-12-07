@@ -4310,6 +4310,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Recommended Update for Windows XP (818043)");
 		XX(p1+"windowsxp-kb818043-x86-enu_49e447d62b9abcf6b6482de5a668033.exe"+a7);
 	}*/
+	/*if(( sp==1 && qfe && (sku & XP_ALL) && (
+	    (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1687))
+	 || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1687))
+	 || (_ipsecsnp_dll >zero && _ipsecsnp_dll <fver(5,1,2600,1687))
+	 || (_ipsecsvc_dll >zero && _ipsecsvc_dll <fver(5,1,2600,1687))
+	 || (_ipsmsnap_dll >zero && _ipsmsnap_dll <fver(5,1,2600,1687))
+	 || (_oakley_dll   >zero && _oakley_dll   <fver(5,1,2600,1687))
+	 || (_polstore_dll >zero && _polstore_dll <fver(5,1,2600,1687))
+	 || (_rasmans_dll  >zero && _rasmans_dll  <fver(5,1,2600,1687))
+	 || (_winipsec_dll >zero && _winipsec_dll <fver(5,1,2600,1687)) ))
+	 ||( sp==2 && qfe && (sku & XP_ALL) && _gptext_dll>zero && _gptext_dll<fver(5,1,2600,2645))) {
+		NN("Update for Windows XP (KB892496)"); // KB892496-v3 is replaced by KB895406-v4 + KB944043
+		XX(p2+"WindowsXP-KB892496-v3-x86-ENU.exe"+a1);
+	}*/
 	if(( sp==1 && qfe && (sku & XP_ALL) && (
 	    (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1694))
 	 || (_ipsec_sys    >zero && _ipsec_sys    <fver(5,1,2600,1694))
