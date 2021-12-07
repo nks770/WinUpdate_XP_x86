@@ -591,6 +591,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _msrle32_dll  = getFileVer(System32+L"\\msrle32.dll",&status);
 	fver _mssap_dll    = getFileVer(System32+L"\\mssap.dll",&status);
 	fver _msscp_dll    = getFileVer(System32+L"\\msscp.dll",&status);
+	fver _msscript_ocx = getFileVer(System32+L"\\msscript.ocx",&status);
 	fver _mstask_dll   = getFileVer(System32+L"\\mstask.dll",&status);
 	fver _mstext40_dll = getFileVer(System32+L"\\mstext40.dll",&status);
 	fver _mstime_dll   = getFileVer(System32+L"\\mstime.dll",&status);
@@ -7926,6 +7927,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || ( _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2586)) ))) {
 		NN("Update for Windows XP (KB887710)");
 		XX(p2+"WindowsXP-KB887710-x86-ENU.exe"+a6);
+	}
+	if( (sp==1 || sp==2) && qfe && (sku & XP_ALL)
+			&& _msscript_ocx >zero && _msscript_ocx <fver(1,0,0,8827)) {
+		NN("Update for Windows XP (KB892296)");
+		XX(p2+"WindowsXP-KB892296-x86-ENU.exe"+a1);
 	}
 	
 
