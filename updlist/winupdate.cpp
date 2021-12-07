@@ -7460,6 +7460,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB959765)");
 		XX(p3+"WindowsXP-KB959765-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,2676))
+	|| ( _wldap32_dll  >zero && _wldap32_dll  <fver(5,1,2600,2676)) )) {
+		NN("Update for Windows XP (KB892090)"); // KB892090 is replaced by KB959873+KB968389
+		XX(p2+"WindowsXP-KB892090-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && _wldap32_dll >zero && _wldap32_dll <fver(5,1,2600,3507))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _wldap32_dll >zero && _wldap32_dll <fver(5,1,2600,5740))) {
 		NN("Update for Windows XP (KB959873)");
