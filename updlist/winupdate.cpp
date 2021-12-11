@@ -7981,6 +7981,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB892296)");
 		XX(p2+"WindowsXP-KB892296-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _advapi32_dll >zero && _advapi32_dll <fver(5,1,2600,2604))
+	 || ( _authz_dll    >zero && _authz_dll    <fver(5,1,2600,2604))
+	 || ( _eventlog_dll >zero && _eventlog_dll <fver(5,1,2600,2606))
+	 || ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,2604))
+	 || ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2604)) )) {
+		NN("Update for Windows XP (KB893359)"); // KB893359 is replaced by KB956572+KB934161+KB943303
+		XX(p2+"WindowsXP-KB893359-x86-ENU.exe"+a6);
+	}*/
 	
 
 	// Windows XP SP3 updates;
