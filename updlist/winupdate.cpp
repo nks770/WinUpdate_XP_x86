@@ -7750,6 +7750,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB888239)"); // KB888239 is replaced by KB894871
 		XX(p2+"WindowsXP-KB888239-x86-ENU.exe"+a6);
 	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,1620)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,2601)) ))) {
+		NN("Update for Windows XP (KB892540)"); // KB892540 is replaced by KB894871
+		XX(p2+"WindowsXP-KB892540-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _msobmain_dll >zero && _msobmain_dll <fver(5,1,2600,1670))
 	  ||  ( _syssetup_dll >zero && _syssetup_dll <fver(5,1,2600,1670))))
