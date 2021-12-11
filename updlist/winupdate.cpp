@@ -311,6 +311,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cmdial32_dll = getFileVer(System32+L"\\cmdial32.dll",&status);
 	fver _colbact_dll  = getFileVer(System32+L"\\colbact.dll",&status);
 	fver _comctl32_dll = getFileVer(System32+L"\\comctl32.dll",&status);
+	fver _comdlg32_dll = getFileVer(System32+L"\\comdlg32.dll",&status);
 	fver _comrepl_dll  = getFileVer(System32+L"\\comrepl.dll",&status);
 	fver _comrepl_exe  = getFileVer(System32+L"\\Com\\comrepl.exe",&status);
 	fver _comsvcs_dll  = getFileVer(System32+L"\\comsvcs.dll",&status);
@@ -3868,6 +3869,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _localspl_dll >zero && _localspl_dll <fver(5,1,2600,2730)) ))*/) {
 		NN("Update for Windows XP (KB905519)"); // KB905519 is replaced by KB961501 on SP2
 		XX(p1+"WindowsXP-KB905519-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _comdlg32_dll >zero && _comdlg32_dll <fver(6,0,2900,2697))
+	  ||  ( _spoolss_dll  >zero && _spoolss_dll  <fver(5,1,2600,2697)) )) {
+		NN("Update for Windows XP (KB893225)");
+		XX(p2+"WindowsXP-KB893225-v2-x86-ENU.exe"+a1);
 	}
 	/*if((sp==2 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,3510))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _localspl_dll >zero && _localspl_dll <fver(5,1,2600,5743))) {
