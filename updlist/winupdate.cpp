@@ -4961,6 +4961,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows XP COM+ Hotfix Rollup Package 11 (KB897696)"); // KB897696 is replaced by KB922668
 		XX(p2+"WindowsXP-KB897696-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+		                  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1619))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,1612))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,1619))
+					  ||  ( _rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,1361))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,1619)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,2606))
+					  ||  ( _olecli32_dll >zero && _olecli32_dll <fver(5,1,2600,2573))
+					  ||  ( _olecnv32_dll >zero && _olecnv32_dll <fver(5,1,2600,2606))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2606)) ))) {
+		NN("Update for Windows XP (KB894194)"); // KB894194 is replaced by KB922668
+		XX(p2+"WindowsXP-KB894194-x86-ENU.exe"+a6);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		                  ( _catsrv_dll   >zero && _catsrv_dll   <fver(2001,12,4414,66))
 					  ||  ( _catsrvut_dll >zero && _catsrvut_dll <fver(2001,12,4414,66))
