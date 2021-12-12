@@ -477,6 +477,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _kbdpash_dll  = getFileVer(System32+L"\\kbdpash.dll",&status);
 	fver _kerberos_dll = getFileVer(System32+L"\\kerberos.dll",&status);
 	fver _kernel32_dll = getFileVer(System32+L"\\kernel32.dll",&status);
+	fver _keymgr_dll   = getFileVer(System32+L"\\keymgr.dll",&status);
 	fver _koc_dll      = getFileVer(System32+L"\\Setup\\koc.dll",&status);
 	fver _krnl386_exe  = getFileVer(System32+L"\\krnl386.exe",&status);
 	fver _kswdmcap_ax  = getFileVer(System32+L"\\kswdmcap.ax",&status);
@@ -8071,6 +8072,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || (_rsaenh_dll>zero && _rsaenh_dll<fver(5,1,2600,2645)) )) {
 		NN("Update for Windows XP (KB894088)");
 		XX(p2+"WindowsXP-KB894088-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _keymgr_dll >zero && _keymgr_dll <fver(5,1,2600,2663)) {
+		NN("Update for Windows XP (KB894686)");
+		XX(p2+"WindowsXP-KB894686-x86-ENU.exe"+a1);
 	}
 	
 
