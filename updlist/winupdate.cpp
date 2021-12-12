@@ -8019,6 +8019,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB893359)"); // KB893359 is replaced by KB956572+KB934161+KB943303
 		XX(p2+"WindowsXP-KB893359-x86-ENU.exe"+a6);
 	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    (_dssenh_dll>zero && _dssenh_dll<fver(5,1,2600,2645))
+	 || (_rsaenh_dll>zero && _rsaenh_dll<fver(5,1,2600,2645)) )) {
+		NN("Update for Windows XP (KB894088)");
+		XX(p2+"WindowsXP-KB894088-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
