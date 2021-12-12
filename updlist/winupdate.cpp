@@ -3652,6 +3652,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			NN("Update for Windows XP (KB884047)"); // KB884047 is replaced by KB896430
 			XX(p1+"WindowsXP-KB884047-x86-ENU.exe"+a6);
 		}*/
+		/*if((sp==1 && qfe && (sku & XP_ALL) && _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1508))
+		 ||(sp==2 && qfe && (sku & XP_ALL) && _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1511))) {
+			NN("Update for Windows XP (KB894551)"); // KB894551 is replaced by KB871228
+			XX(p2+"WindowsXP-KB894551-x86-ENU.exe"+a1);
+		}*/
 		if((sp==1 && qfe && (sku & XP_ALL) && _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1509))
 		 /*||(sp==2 && qfe && (sku & XP_ALL) && _msftedit_dll >zero && _msftedit_dll <fver(5,41,15,1512))*/) {
 			NN("Update for Windows XP (KB871228)"); // KB871228 is replaced by KB970063 on SP2
