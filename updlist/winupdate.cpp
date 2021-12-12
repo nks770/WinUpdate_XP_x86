@@ -2252,14 +2252,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p1+"WindowsXP-KB884562-x86-ENU.exe"+a6);
 	}
 	if( sp==1 && (sku & XP_ALL) && (
-	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1755))
-	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331))
-	   || (_user32_dll >zero && _user32_dll <fver(5,1,2600,1634))
-	   || (_win32k_sys >zero && _win32k_sys <fver(5,1,2600,1755)) )) {
-		NN("Security Update for Windows XP (KB896424)");
-		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
-	}
-	if( sp==1 && (sku & XP_ALL) && (
 	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1789))
 	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331)) )) {
 		NN("Security Update for Windows XP (KB912919)");
@@ -4774,6 +4766,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB890859)");
 		XX(p2+"windowsxp-kb890859-x86-enu_813f47d987b772bacae20e7dec9b5f6f16079303.exe"+a1);
 	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1617))
+	|| ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1658)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,2646)) ))) {
+		NN("Update for Windows XP (KB893614)"); // KB893614 is replaced by KB906693+KB896424+KB925902
+		XX(p1+"WindowsXP-KB893614-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,1746))
 	|| ( _win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,1634)) ))
@@ -4781,6 +4781,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	   ( _user32_dll   >zero && _user32_dll   <fver(5,1,2600,2759)) ))*/) {
 		NN("Update for Windows XP (KB906693)"); // KB906693 is replaced by KB925902 on SP2
 		XX(p1+"WindowsXP-KB906693-x86-ENU.exe"+a1);
+	}
+	if( sp==1 && (sku & XP_ALL) && (
+	      (_gdi32_dll  >zero && _gdi32_dll  <fver(5,1,2600,1755))
+	   || (_mf3216_dll >zero && _mf3216_dll <fver(5,1,2600,1331))
+	   || (_user32_dll >zero && _user32_dll <fver(5,1,2600,1634))
+	   || (_win32k_sys >zero && _win32k_sys <fver(5,1,2600,1755)) )) {
+		NN("Security Update for Windows XP (KB896424)");
+		XX(p1+"windowsxp-kb896424-x86-enu_bc0a35c5dd2dded71405dab707d0c61831b2a58f.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 	    (_user32_dll>zero && _user32_dll<fver(5,1,2600,2643))
