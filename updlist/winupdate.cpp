@@ -2912,6 +2912,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB884868-x86-ENU.exe"+a6);
 	}*/
 	if(qfe) {
+		/*if((sp==1 && qfe && (sku & XP_ALL) && (
+			  (                       _hccoin_dll  <fver(5,1,2600,1657))
+		  ||  ( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,1657))
+		  ||  (                       _usbehci_sys <fver(5,1,2600,1657))
+		  ||  ( _usbhub_sys  >zero && _usbhub_sys  <fver(5,1,2600,1657))
+		  ||  ( _usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,1657))
+		  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,1657))
+		  ||  ( _usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,1657)) ))
+		 ||(sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,2645)) )) ) {
+			NN("Update for Windows XP (KB894618)"); // KB894618 is replaced by KB884868-v2 + KB949764
+			XX(p2+"WindowsXP-KB894618-x86-ENU.exe"+a1);
+		}*/
 		if((sp==1 && qfe && (sku & XP_ALL) && (
 			  (                       _hccoin_dll  <fver(5,1,2600,1694))
 		  ||  ( _usbccgp_sys >zero && _usbccgp_sys <fver(5,1,2600,1694))
