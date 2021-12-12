@@ -3163,6 +3163,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB926247)");
 		XX(p2+"windowsxp-kb926247-x86-enu_f465277dda6008156bb6f81bc77c72253a91d303.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _wordpad_exe >zero && _wordpad_exe <fver(5,1,2600,1650))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _wordpad_exe >zero && _wordpad_exe <fver(5,1,2600,2637))*/) {
+		NN("Update for Windows XP (KB894072)"); // KB894072 is replaced by KB923561 on SP2
+		XX(p1+"WindowsXP-KB894072-x86-ENU.exe"+a1);
+	}
 	if( sp>=2 && (sku & XP_ALL) && (
 		           (sp==2 && _wordpad_exe>zero && _wordpad_exe<fver(5,1,2600,3355))
 				|| (sp==2 && _mswrd8_wpc >zero && _mswrd8_wpc <fver(10,0,803,10))
