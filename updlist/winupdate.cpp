@@ -7224,6 +7224,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB891570)"); // KB891570 is replaced by KB955356
 		XX(p2+"WindowsXP-KB891570-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+			( _sbp2port_sys >zero && _sbp2port_sys <fver(5,1,2600,2650))
+			|| _sbp2port_sys_cache <fver(5,1,2600,2650) )) {
+		NN("Update for Windows XP (KB894480)"); // KB894480 is replaced by KB955356
+		XX(p2+"WindowsXP-KB894480-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 			( _sbp2port_sys >zero && _sbp2port_sys <fver(5,1,2600,3405))
 			|| _sbp2port_sys_cache <fver(5,1,2600,3405)))
