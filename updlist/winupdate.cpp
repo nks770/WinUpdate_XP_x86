@@ -647,6 +647,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ntmarta_dll  = getFileVer(System32+L"\\ntmarta.dll",&status);
 	fver _ntoskrnl_exe = getFileVer(System32+L"\\ntoskrnl.exe",&status);
 	fver _ntprint_dll  = getFileVer(System32+L"\\ntprint.dll",&status);
+	fver _ntmsdba_dll  = getFileVer(System32+L"\\ntmsdba.dll",&status);
+	fver _ntmssvc_dll  = getFileVer(System32+L"\\ntmssvc.dll",&status);
 	fver _ntvdm_exe    = getFileVer(System32+L"\\ntvdm.exe",&status);
 	fver _ntvdmd_dll   = getFileVer(System32+L"\\ntvdmd.dll",&status);
 	fver _nwapi32_dll  = getFileVer(System32+L"\\nwapi32.dll",&status);
@@ -8094,6 +8096,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _keymgr_dll >zero && _keymgr_dll <fver(5,1,2600,2663)) {
 		NN("Update for Windows XP (KB894686)");
 		XX(p2+"WindowsXP-KB894686-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _ntmsdba_dll  >zero && _ntmsdba_dll  <fver(5,1,2600,1684))
+	 || ( _ntmssvc_dll  >zero && _ntmssvc_dll  <fver(5,1,2400,1684))
+	 || ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1684))
+	 || ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,1684)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _ntmsdba_dll  >zero && _ntmsdba_dll  <fver(5,1,2600,2674))
+	 || ( _ntmssvc_dll  >zero && _ntmssvc_dll  <fver(5,1,2400,2674))
+	 || ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2674))))) {
+		NN("Update for Windows XP (KB895173)");
+		XX(p2+"WindowsXP-KB895173-v5-x86-ENU.exe"+a1);
 	}
 	
 
