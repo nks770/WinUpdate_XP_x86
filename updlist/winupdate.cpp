@@ -3450,14 +3450,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB971737)");
 		XX(p2+"windowsxp-kb971737-x86-enu_e2aa4340aaf68e97a5dbdd278edb9182c4383ed7.exe"+a1);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && (
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 	   ( _asycfilt_dll >zero && _asycfilt_dll <fver(5,1,2600,2580))
 	|| ( _oleaut32_dll >zero && _oleaut32_dll <fver(5,1,2600,2580))
 	|| ( _olepro32_dll >zero && _olepro32_dll <fver(5,1,2600,2580))
 	|| ( _stdole2_tlb  >zero && _stdole2_tlb  <fver(5,1,2600,2580))
 	|| ( _stdole32_tlb >zero && _stdole32_tlb <fver(2,10,3027,1)) )) {
-		NN("Update for Windows XP (KB891117)");
+		NN("Update for Windows XP (KB891117)"); // KB891117 is replaced by KB895321
 		XX(p2+"WindowsXP-KB891117-x86-ENU.exe"+a6);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _asycfilt_dll >zero && _asycfilt_dll <fver(5,1,2600,2626))
+	|| ( _oleaut32_dll >zero && _oleaut32_dll <fver(5,1,2600,2626))
+	|| ( _olepro32_dll >zero && _olepro32_dll <fver(5,1,2600,2626))
+	|| ( _stdole2_tlb  >zero && _stdole2_tlb  <fver(5,1,2600,2626))
+	|| ( _stdole32_tlb >zero && _stdole32_tlb <fver(2,10,3027,1)) )) {
+		NN("Update for Windows XP (KB895321)");
+		XX(p2+"WindowsXP-KB895321-x86-ENU.exe"+a1);
 	}
 	if(    (sp==2 && (sku & XP_ALL) && _asycfilt_dll>zero && _asycfilt_dll<fver(5,1,2600,3680))
 		|| (sp==3 && (sku & XP_ALL) && _asycfilt_dll>zero && _asycfilt_dll<fver(5,1,2600,5949))) {
