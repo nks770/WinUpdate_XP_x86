@@ -6394,6 +6394,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB903250-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,1643))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,1643))))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2629))
+			||(_ohci1394_sys_cache  <fver(5,1,2600,2629))))*/) {
+			NN("Update for Windows XP (KB895312)"); // KB895312 is replaced by KB958149 on SP2
+			XX(p1+"WindowsXP-KB895312-x86-ENU.exe"+a1);
+		}
 		/*if( sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ohci1394_sys  >zero && _ohci1394_sys  <fver(5,1,2600,2524))
 			||(_ohci1394_sys_cache  <fver(5,1,2600,2524)) )) {
