@@ -295,6 +295,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _browselc_dll = getFileVer(System32+L"\\browselc.dll",&status);
 	fver _browser_dll  = getFileVer(System32+L"\\browser.dll",&status);
 	fver _browseui_dll = getFileVer(System32+L"\\browseui.dll",&status);
+	fver _c_g18030_dll = getFileVer(System32+L"\\c_g18030.dll",&status);
 	fver _cabview_dll  = getFileVer(System32+L"\\cabview.dll",&status);
 	fver _catsrv_dll   = getFileVer(System32+L"\\catsrv.dll",&status);
 	fver _catsrvut_dll = getFileVer(System32+L"\\catsrvut.dll",&status);
@@ -1528,6 +1529,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _admin_exe_dllcache    = getFileVer(dllcache+L"\\admin.exe",&status);
 	fver _author_dll_dllcache   = getFileVer(dllcache+L"\\author.dll",&status);
 	fver _author_exe_dllcache   = getFileVer(dllcache+L"\\author.exe",&status);
+	fver _c_g18030_dll_dllcache = getFileVer(dllcache+L"\\c_g18030.dll",&status);
 	fver _cfgwiz_exe_dllcache   = getFileVer(dllcache+L"\\cfgwiz.exe",&status);
 	fver _fp4amsft_dll_dllcache = getFileVer(dllcache+L"\\fp4amsft.dll",&status);
 	fver _fp4anscp_dll_dllcache = getFileVer(dllcache+L"\\fp4anscp.dll",&status);
@@ -8187,6 +8189,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2674))))) {
 		NN("Update for Windows XP (KB895173)");
 		XX(p2+"WindowsXP-KB895173-v5-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _c_g18030_dll           >zero && _c_g18030_dll           <fver(5,1,2600,1736))
+	 || ( _c_g18030_dll_dllcache  >zero && _c_g18030_dll_dllcache  <fver(5,1,2600,1736)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _c_g18030_dll           >zero && _c_g18030_dll           <fver(5,1,2600,2746))
+	 || ( _c_g18030_dll_dllcache  >zero && _c_g18030_dll_dllcache  <fver(5,1,2600,2746)) ))) {
+		NN("Update for Windows XP (KB895542)");
+		XX(p2+"WindowsXP-KB895542-v2-x86-ENU.exe"+a1);
 	}
 	
 
