@@ -8815,6 +8815,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890042)"); // KB890042 is replaced by KB968389
 		XX(p2+"WindowsXP-KB890042-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,2626)) {
+		NN("Update for Windows XP (KB895325)"); // KB895325 is replaced by KB968389
+		XX(p2+"WindowsXP-KB895325-x86-ENU.exe"+a1);
+	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1612))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2573))) {
 		NN("Update for Windows XP (KB891849)"); // KB891849 is replaced by KB899587
