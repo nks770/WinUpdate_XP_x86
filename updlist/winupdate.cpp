@@ -8158,6 +8158,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB887710)");
 		XX(p2+"WindowsXP-KB887710-x86-ENU.exe"+a6);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,1708))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2707))*/) {
+		NN("Update for Windows XP (KB895570)"); // KB895570 is replaced by KB968389/KB956572/KB924270/KB944043 on SP2
+		XX(p1+"WindowsXP-KB895570-x86-ENU.exe"+a1);
+	}
 	if( (sp==1 || sp==2) && qfe && (sku & XP_ALL)
 			&& _msscript_ocx >zero && _msscript_ocx <fver(1,0,0,8827)) {
 		NN("Update for Windows XP (KB892296)");
