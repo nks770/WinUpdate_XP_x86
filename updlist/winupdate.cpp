@@ -7897,9 +7897,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB883667-x86-ENU.exe"+a6);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,1582))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,2505))) {
-		NN("Update for Windows XP (KB884018)");
-		XX(p2+"WindowsXP-KB884018-x86-ENU.exe"+a6);
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,2505))*/) {
+		NN("Update for Windows XP (KB884018)"); // KB884018 is replaced by KB895997 on SP2
+		XX(p1+"WindowsXP-KB884018-x86-ENU.exe"+a6);
+	}
+	if(sp==2 && qfe && (sku & XP_ALL) && _scesrv_dll >zero && _scesrv_dll <fver(5,1,2600,2692)) {
+		NN("Update for Windows XP (KB895997)");
+		XX(p2+"WindowsXP-KB895997-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,1621))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,2604))) {
