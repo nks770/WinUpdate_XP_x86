@@ -272,6 +272,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _aaclient_dll_mui = getFileVer(System32+L"\\en-US\\aaclient.dll.mui",&status);
 	fver _accwiz_exe   = getFileVer(System32+L"\\accwiz.exe",&status);
 	fver _aclui_dll    = getFileVer(System32+L"\\aclui.dll",&status);
+	fver _activeds_dll = getFileVer(System32+L"\\activeds.dll",&status);
 	fver _adsldp_dll   = getFileVer(System32+L"\\adsldp.dll",&status);
 	fver _adsmsext_dll = getFileVer(System32+L"\\adsmsext.dll",&status);
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
@@ -6677,6 +6678,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		                  ( _adamdsa_dll   >zero && _adamdsa_dll   <fver(1,1,3790,4276)) )) {
 		NN("Security Update for Windows XP (KB949269)");
 		XX(p3+"WindowsXP-KB949269-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _activeds_dll >zero && _activeds_dll <fver(5,1,2600,1664))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _activeds_dll >zero && _activeds_dll <fver(5,1,2600,2653))) {
+		NN("Update for Windows XP (KB896354)");
+		XX(p2+"WindowsXP-KB896354-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
 		/*if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,2562)) || _ntfs_sys_cache <fver(5,1,2600,2562)))  {
