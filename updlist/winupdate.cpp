@@ -3890,11 +3890,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB920670)");
 		XX(p2+"windowsxp-kb920670-x86-enu_a71ac163b276057101fe92739c06c6e6d143ccf8.exe"+a1);
 	}
-	if( sp==1 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
-//	if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
-		// KB891781 is replaced by KB973869 on SP2
-		NN("Security Update for Windows XP (KB891781)");
-		XX(p1+"windowsxp-kb891781-x86-enu_32b11076df0189adeb0f36ce3bf7baa01cff1c29.exe"+a6);
+	if( qfe ) {
+		if((sp==1 && qfe && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9233))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9233))*/) {
+			NN("Update for Windows XP (KB896180)"); // KB896180 is replaced by KB973869 on SP2
+			XX(p1+"WindowsXP-KB896180-x86-ENU.exe"+a1);
+		}
+	} else {
+		if( sp==1 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
+	//	if( sp>=2 && (sku & XP_ALL) && _dhtmled_ocx>zero && _dhtmled_ocx<fver(6,1,0,9232)) {
+			// KB891781 is replaced by KB973869 on SP2
+			NN("Security Update for Windows XP (KB891781)");
+			XX(p1+"windowsxp-kb891781-x86-enu_32b11076df0189adeb0f36ce3bf7baa01cff1c29.exe"+a6);
+		}
 	}
 	/*if( sp>=2 && qfe && (sku & XP_ALL) && (
 		  ( _dhtmled_ocx >zero && _dhtmled_ocx <fver(6,1,0,9235))
