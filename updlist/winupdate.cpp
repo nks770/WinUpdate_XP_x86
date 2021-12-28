@@ -2744,6 +2744,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Microsoft Windows (KB823182)");
 		XX(p1+"windowsxp-kb823182-x86-enu_211ee84995ef332148cf9b6657c9038.exe"+a7);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _cryptui_dll >zero && _cryptui_dll <fver(5,131,2600,2649)) {
+		NN("Update for Windows XP (KB896687)");
+		XX(p2+"WindowsXP-KB896687-x86-ENU.exe"+a1);
+	}
 	/*if(    (sp==0 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,119))
 		|| (sp==1 && (sku & XP_ALL) && _msasn1_dll>zero && _msasn1_dll<fver(5,1,2600,1274))) {
 		// KB828028 is replaced by KB835732
