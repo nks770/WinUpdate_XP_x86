@@ -457,6 +457,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _ipv6_exe     = getFileVer(System32+L"\\ipv6.exe",&status);
 	fver _ipv6mon_dll  = getFileVer(System32+L"\\ipv6mon.dll",&status);
 	fver _irmon_dll    = getFileVer(System32+L"\\irmon.dll",&status);
+	fver _irftp_exe    = getFileVer(System32+L"\\irftp.exe",&status);
 	fver _isign32_dll  = getFileVer(System32+L"\\isign32.dll",&status);
 	fver _itircl_dll   = getFileVer(System32+L"\\itircl.dll",&status);
 	fver _itss_dll     = getFileVer(System32+L"\\itss.dll",&status);
@@ -1314,6 +1315,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _hidir_sys_cache    = getFileVer(DriverCache+L"\\hidir.sys",&status);
 	fver _irbus_sys_cache    = getFileVer(DriverCache+L"\\irbus.sys",&status);
 	fver _irmon_dll_cache    = getFileVer(DriverCache+L"\\irmon.dll",&status);
+	fver _irftp_exe_cache    = getFileVer(DriverCache+L"\\irftp.exe",&status);
 	fver _memcard_sys_cache  = getFileVer(DriverCache+L"\\memcard.sys",&status);
 	fver _mountmgr_sys_cache = getFileVer(DriverCache+L"\\mountmgr.sys",&status);
 	fver _mrxdav_sys_cache   = getFileVer(DriverCache+L"\\mrxdav.sys",&status);
@@ -8127,11 +8129,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB890733)");
 		XX(p2+"WindowsXP-KB890733-x86-ENU.exe"+a6);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && (
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _irmon_dll       <fver(5,1,2600,2524))
 	  ||  ( _irmon_dll_cache <fver(5,1,2600,2524)) )) {
-		NN("Update for Windows XP (KB885855)");
+		NN("Update for Windows XP (KB885855)"); // KB885855 is replaced by KB896984
 		XX(p2+"WindowsXP-KB885855-x86-ENU.exe"+a6);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _irmon_dll > zero && _irmon_dll <fver(5,1,2600,2659))
+	  ||  ( _irftp_exe > zero && _irftp_exe <fver(5,1,2600,2659))
+	  ||  ( _irmon_dll_cache <fver(5,1,2600,2659))
+	  ||  ( _irftp_exe_cache <fver(5,1,2600,2659)) )) {
+		NN("Update for Windows XP (KB896984)");
+		XX(p2+"WindowsXP-KB896984-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _rexec_exe >zero && _rexec_exe <fver(5,1,2600,2601))
