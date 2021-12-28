@@ -10689,6 +10689,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB873414)"); // KB873414 is replaced by KB924496
 		XX(p2+"WindowsXP-KB873414-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2624)) )) {
+		NN("Update for Windows XP (KB894179)"); // KB894179 is replaced by KB958215
+		XX(p2+"WindowsXP-KB894179-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2640)) )) {
+		NN("Update for Windows XP (KB896017)"); // KB896017 is replaced by KB958215
+		XX(p2+"WindowsXP-KB896017-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2676)) )) {
+		NN("Update for Windows XP (KB897169)"); // KB897169 is replaced by KB958215 (6,0,2900,3462)
+		XX(p2+"WindowsXP-KB897169-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
 					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
 	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
@@ -11074,16 +11089,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	    || ( _urlmon_dll >zero && _urlmon_dll <fver(6,0,2900,2641)) )) {
 		NN("Update for Windows XP (KB892056)"); // KB892056 is replaced by KB958215
 		XX(p2+"WindowsXP-KB892056-x86-ENU.exe"+a1);
-	}*/
-	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
-		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2624)) )) {
-		NN("Update for Windows XP (KB894179)"); // KB894179 is replaced by KB958215
-		XX(p2+"WindowsXP-KB894179-x86-ENU.exe"+a1);
-	}*/
-	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
-		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2640)) )) {
-		NN("Update for Windows XP (KB896017)"); // KB896017 is replaced by KB958215
-		XX(p2+"WindowsXP-KB896017-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2737)) {
