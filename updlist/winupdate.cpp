@@ -3581,8 +3581,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2631))) {
 		NN("Security Update for Windows XP (KB893066)"); // KB893066 is replaced by KB917953+KB951748
 		XX(p2+"WindowsXP-KB893066-x86-ENU.exe"+a1);
-	}
-	if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1693))
+	}*/
+	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1680))
+	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2670))) {
+		NN("Update for Windows XP (KB898060)"); // KB898060 is replaced by KB917953+KB951748
+		XX(p2+"WindowsXP-KB898060-x86-ENU.exe"+a1);
+	}*/
+	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1693))
 	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2685))) {
 		NN("Security Update for Windows XP (KB893066)"); // KB893066-v2 is replaced by KB917953+KB951748
 		XX(p2+"WindowsXP-KB893066-v2-x86-ENU.exe"+a1);
