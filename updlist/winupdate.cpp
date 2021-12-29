@@ -8013,10 +8013,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB896414)");
 		XX(p2+"WindowsXP-KB896414-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,1621))
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,1621))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,2604))) {
-		NN("Update for Windows XP (KB890737)");
+		NN("Update for Windows XP (KB890737)"); // KB890737 is replaced by KB898062
 		XX(p2+"WindowsXP-KB890737-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,1672))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _scecli_dll >zero && _scecli_dll <fver(5,1,2600,2661))) {
+		NN("Update for Windows XP (KB898062)");
+		XX(p2+"WindowsXP-KB898062-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _odbcji32_dll >zero && _odbcji32_dll <fver(4,0,6305,0))
