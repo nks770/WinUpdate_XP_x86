@@ -1350,6 +1350,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _tty_dll_cache      = getFileVer(DriverCache+L"\\tty.dll",&status);
 	fver _ttyres_dll_cache   = getFileVer(DriverCache+L"\\ttyres.dll",&status);
 	fver _ttyui_dll_cache    = getFileVer(DriverCache+L"\\ttyui.dll",&status);
+	//fver _udfs_sys_cache     = getFileVer(DriverCache+L"\\udfs.sys",&status);
 	fver _unidrv_dll_cache   = getFileVer(DriverCache+L"\\unidrv.dll",&status);
 	fver _unidrvui_dll_cache = getFileVer(DriverCache+L"\\unidrvui.dll",&status);
 	fver _unires_dll_cache   = getFileVer(DriverCache+L"\\unires.dll",&status);
@@ -8029,6 +8030,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB899527)");
 		XX(p2+"WindowsXP-KB899527-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	   (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2670))
+	|| (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2670))
+	|| (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,2670))
+	|| (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,2670))
+	|| ( _ntfs_sys   >zero && _ntfs_sys    <fver(5,1,2600,2670))
+	|| ( _udfs_sys   >zero && _udfs_sys    <fver(5,1,2600,2670))
+	|| ( _ntfs_sys_cache                   <fver(5,1,2600,2670))
+	|| ( _udfs_sys_cache                   <fver(5,1,2600,2670)) )) {
+		NN("Update for Windows XP (KB897574)"); // KB897574 is replaced by KB899527+KB969262+KB979683
+		XX(p2+"WindowsXP-KB897574-x86-ENU.exe"+a1);
+	}*/
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,1599))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _syssetup_dll>zero && _syssetup_dll<fver(5,1,2600,2530))) {
 		NN("Update for Windows XP (KB887816)"); // KB887816 is replaced by KB894871
