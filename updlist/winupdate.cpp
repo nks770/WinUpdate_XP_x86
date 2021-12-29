@@ -7977,11 +7977,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,1581))
 	  ||  ( _atapi_sys_cache <fver(5,1,2600,1581)) ))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2505))
-	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))) {
-		NN("Update for Windows XP (KB842520)");
-		XX(p2+"WindowsXP-KB842520-x86-ENU.exe"+a6);
+	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))*/) {
+		NN("Update for Windows XP (KB842520)"); // KB842520 is replaced by KB898439 on SP2
+		XX(p1+"WindowsXP-KB842520-x86-ENU.exe"+a6);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2714))
+	  ||  ( _atapi_sys_cache               <fver(5,1,2600,2714)) )) {
+		NN("Update for Windows XP (KB898439)");
+		XX(p2+"WindowsXP-KB898439-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _srchctls_dll >zero && _srchctls_dll <fver(1,0,0,5326))
