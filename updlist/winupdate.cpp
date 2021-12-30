@@ -728,6 +728,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rastapi_dll  = getFileVer(System32+L"\\rastapi.dll",&status);
 	fver _rastls_dll   = getFileVer(System32+L"\\rastls.dll",&status);
 	fver _rdchost_dll  = getFileVer(System32+L"\\rdchost.dll",&status);
+	fver _rdpclip_exe  = getFileVer(System32+L"\\rdpclip.exe",&status);
 	fver _rdpdd_dll    = getFileVer(System32+L"\\rdpdd.dll",&status);
 	fver _rdpsnd_dll   = getFileVer(System32+L"\\rdpsnd.dll",&status);
 	fver _reg_exe      = getFileVer(System32+L"\\reg.exe",&status);
@@ -13049,6 +13050,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  /*||  (_msrdp_ocx       >zero && _msrdp_ocx    <fver(5,2,3790,4522))*/ )) {
 		NN("Security Update for Windows XP (KB958470)");
 		XX(p2+"windowsxp-kb958470-x86-enu_887a259c39636eaf1ab9bfec71172203224415cc.exe"+a1);
+	}
+	if( sp==2 && qfe && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0))) && (
+	   (_mstscax_dll     >zero && _mstscax_dll  <fver(5,1,2600,2699))
+	|| (_rdpclip_exe     >zero && _rdpclip_exe  <fver(5,1,2600,2699)) )){
+		NN("Update for Windows XP (KB899266)");
+		XX(p2+"WindowsXP-KB899266-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		// Update for RDP 6.0
