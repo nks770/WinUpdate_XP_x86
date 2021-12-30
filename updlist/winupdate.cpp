@@ -11143,6 +11143,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2694)) {
+		NN("Update for Windows XP (KB899102)"); // KB899102 is replaced by KB958215
+		XX(p2+"WindowsXP-KB899102-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2694)) {
 		NN("Update for Windows XP (KB896616)"); // KB896616 is replaced by KB958215
 		XX(p2+"WindowsXP-KB896616-x86-ENU.exe"+a1);
 	}*/
