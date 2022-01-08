@@ -6893,18 +6893,30 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB938759)");
 		XX(p2+"WindowsXP-KB938759-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	if(/*(sp==1 && qfe && (sku & XP_ALL) && (
 	      ( _crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1596))
 	   || ( _cryptnet_dll >zero && _cryptnet_dll <fver(5,131,2600,1596))
 	   || ( _efsadu_dll   >zero && _efsadu_dll   <fver(5,1,2600,1592))
 	   || ( _winhttp_dll  >zero && _winhttp_dll  <fver(5,1,2600,1592))
 	   || ( _wintrust_dll >zero && _wintrust_dll <fver(5,131,2600,1592))
 	   || ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1592)) ))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	 ||*/(sp==2 && qfe && (sku & XP_ALL) && (
 	      ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,2524))
 	   || ( _cryptnet_dll  >zero && _cryptnet_dll  <fver(5,131,2600,2524)) )) ) {
-		NN("Update for Windows XP (KB842735)");
+		NN("Update for Windows XP (KB842735)"); // KB842735 is replaced by KB899420 on SP1
 		XX(p2+"WindowsXP-KB842735-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	      ( _crypt32_dll  >zero && _crypt32_dll  <fver(5,131,2600,1686))
+	   || ( _cryptnet_dll >zero && _cryptnet_dll <fver(5,131,2600,1686))
+	   || ( _efsadu_dll   >zero && _efsadu_dll   <fver(5,1,2600,1686))
+	   || ( _winhttp_dll  >zero && _winhttp_dll  <fver(5,1,2600,1686))
+	   || ( _wintrust_dll >zero && _wintrust_dll <fver(5,131,2600,1686))
+	   || ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1686)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	      ( _crypt32_dll   >zero && _crypt32_dll   <fver(5,131,2600,2676)) )) ) {
+		NN("Update for Windows XP (KB899420)");
+		XX(p2+"WindowsXP-KB899420-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _usp10_dll   >zero && _usp10_dll   <fver(1,420,2600,3163)) )) {
