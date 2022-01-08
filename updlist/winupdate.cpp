@@ -605,6 +605,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _mstsc_exe_mui = getFileVer(System32+L"\\en-US\\mstsc.exe.mui",&status);
 	fver _mstscax_dll  = getFileVer(System32+L"\\mstscax.dll",&status);
 	fver _mstscax_dll_mui = getFileVer(System32+L"\\en-US\\mstscax.dll.mui",&status);
+	fver _msutb_dll    = getFileVer(System32+L"\\msutb.dll",&status);
 	fver _msv1_0_dll   = getFileVer(System32+L"\\msv1_0.dll",&status);
 	fver _msvcirt_dll  = getFileVer(System32+L"\\msvcirt.dll",&status);
 	fver _msvcrt_dll   = getFileVer(System32+L"\\msvcrt.dll",&status);
@@ -8411,6 +8412,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || ( _c_g18030_dll_dllcache  >zero && _c_g18030_dll_dllcache  <fver(5,1,2600,2746)) ))) {
 		NN("Update for Windows XP (KB895542)");
 		XX(p2+"WindowsXP-KB895542-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _msutb_dll >zero && _msutb_dll <fver(5,1,2600,2699)) {
+		NN("Update for Windows XP (KB899815)");
+		XX(p2+"WindowsXP-KB899815-x86-ENU.exe"+a1);
 	}
 	
 
