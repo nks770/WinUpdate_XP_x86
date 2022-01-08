@@ -6686,6 +6686,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"WindowsXP-KB913538-x86-ENU.exe"+a1);
 		}
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ntlanman_dll  >zero && _ntlanman_dll  <fver(5,1,2600,2686)) )) {
+		NN("Update for Windows XP (KB899409)"); // KB899409 is replaced by KB915377
+		XX(p2+"WindowsXP-KB899409-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _ntlanman_dll  >zero && _ntlanman_dll  <fver(5,1,2600,3109)) )) {
 		NN("Update for Windows XP (KB915377)");
