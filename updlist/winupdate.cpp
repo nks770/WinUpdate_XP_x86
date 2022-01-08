@@ -3480,6 +3480,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB960803)");
 		XX(p3+"WindowsXP-KB960803-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _winhttp_dll>zero && _winhttp_dll<fver(5,1,2600,1838))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _winhttp_dll>zero && _winhttp_dll<fver(5,1,2600,2904))*/) {
+		NN("Update for Windows XP (KB899900)"); // KB899900 is replaced by KB971737 on SP2
+		XX(p1+"WindowsXP-KB899900-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && _winhttp_dll>zero && _winhttp_dll<fver(5,1,2600,3619)) {
 	//if( sp==3 && (sku & XP_ALL) && _winhttp_dll>zero && _winhttp_dll<fver(5,1,2600,5868)) {
 		NN("Update for Windows XP (KB971737)");
