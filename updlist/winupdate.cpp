@@ -3304,6 +3304,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB885936)"); // KB885936 is replaced by KB914389
 		XX(p2+"WindowsXP-KB885936-v3-x86-ENU.exe"+a1);
 	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
+	    ( _cscdll_dll   >zero && _cscdll_dll   <fver(5,1,2600,1599))    // KB914389(mrxsmb.sys 5,1,2600,1599)
+	  ||( _mrxsmb_sys   >zero && _mrxsmb_sys   <fver(5,1,2600,1696))    // KB914389(mrxsmb.sys 5,1,2600,1836)
+	  ||( _rdbss_sys    >zero && _rdbss_sys    <fver(5,1,2600,1599))    // KB914389(rdbss.sys 5,1,2600,1836)
+	  ||( _tcpip_sys    >zero && _tcpip_sys    <fver(5,1,2600,1696)) )) // KB917953(tcpip.sys 5,1,2600,1831)
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _mrxsmb_sys   >zero && _mrxsmb_sys   <fver(5,1,2600,2688))    // KB914389(mrxsmb.sys 5,1,2600,2902)
+	  ||( _tcpip_sys    >zero && _tcpip_sys    <fver(5,1,2600,2688)) ))) { // KB951748(tcpip.sys 5,1,2600,3394)
+		NN("Update for Windows XP (KB900387)"); // KB900387 is replaced by KB914389+KB917953+KB951748
+		XX(p2+"WindowsXP-KB900387-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  (_cscdll_dll>zero && _cscdll_dll<fver(5,1,2600,1599))
 					  ||  (_mrxsmb_sys>zero && _mrxsmb_sys<fver(5,1,2600,1836))
