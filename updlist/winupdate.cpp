@@ -10805,6 +10805,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB897169)"); // KB897169 is replaced by KB958215 (6,0,2900,3462)
 		XX(p2+"WindowsXP-KB897169-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2754)) )) {
+		NN("Update for Windows XP (KB899811)"); // KB899811 is replaced by KB958215 (6,0,2900,3462)
+		XX(p2+"WindowsXP-KB899811-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
 					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
 	 ||(sp==2 && (sku & XP_ALL) && _shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2900,2987))) {
