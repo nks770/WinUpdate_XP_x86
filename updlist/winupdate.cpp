@@ -7913,6 +7913,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB967048)");
 		XX(p3+"WindowsXP-KB967048-v2-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,1724))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,2731))*/) {
+		NN("Update for Windows XP (KB901377)"); // KB901377 is replaced by KB970048 on SP2
+		XX(p1+"WindowsXP-KB901377-x86-ENU.exe"+a1);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,3555))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _tcpmon_dll >zero && _tcpmon_dll <fver(5,1,2600,5795))) {
 		NN("Update for Windows XP (KB970048)");
