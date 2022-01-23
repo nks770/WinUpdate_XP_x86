@@ -8297,9 +8297,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB892227)");
 		XX(p2+"WindowsXP-KB892227-x86-ENU.exe"+a6);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && _fastfat_sys>zero && _fastfat_sys<fver(5,1,2600,2609)) {
-		NN("Update for Windows XP (KB892233)");
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _fastfat_sys>zero && _fastfat_sys<fver(5,1,2600,2609)) {
+		NN("Update for Windows XP (KB892233)"); // KB892233 is replaced by KB900626
 		XX(p2+"WindowsXP-KB892233-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _fastfat_sys >zero && _fastfat_sys <fver(5,1,2600,1717))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _fastfat_sys >zero && _fastfat_sys <fver(5,1,2600,2719))) {
+		NN("Update for Windows XP (KB900626)");
+		XX(p2+"WindowsXP-KB900626-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		!regTestKey(L"SOFTWARE\\Microsoft\\Updates\\Windows XP\\SP3\\KB893476")
