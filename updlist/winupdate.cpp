@@ -12357,6 +12357,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Jscript 5.6 for Windows XP (KB971961)");
 		XX(p2+"windowsxp-kb971961-js56-x86-enu_9ce6ccd0ed6a7b00212e2a90afe2b4747017b3a5.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,8828)) {
+		NN("Update for Windows XP (KB901104)"); // KB901104 is replaced by KB981350
+		XX(p2+"WindowsXP-KB901104-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,8838)) {
 		NN("Security Update for Windows XP (KB981350)");
 		XX(p2+"windowsxp-kb981350-x86-enu_9fc0909c468c17870ab868d0d7f4eb815b309045.exe"+a1);
