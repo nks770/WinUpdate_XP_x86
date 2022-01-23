@@ -7665,6 +7665,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2270406)");
 		XX(p3+"WindowsXP-KB2270406-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _davclnt_dll >zero && _davclnt_dll <fver(5,1,2600,1747))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _davclnt_dll >zero && _davclnt_dll <fver(5,1,2600,2760))) {
+		NN("Update for Windows XP (KB901155)");
+		XX(p2+"WindowsXP-KB901155-v4-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _davclnt_dll >zero && _davclnt_dll <fver(5,1,2600,6051))
 	  ||  ( _webclnt_dll >zero && _webclnt_dll <fver(5,1,2600,6051)) )) {
