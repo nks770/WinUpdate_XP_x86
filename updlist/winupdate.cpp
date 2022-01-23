@@ -1526,6 +1526,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _fastprox_dll = getFileVer(wbem+L"\\fastprox.dll",&status);
 	fver _framedyn_dll = getFileVer(wbem+L"\\framedyn.dll",&status);
 	fver _msiprov_dll  = getFileVer(wbem+L"\\msiprov.dll",&status);
+	fver _ntevt_dll    = getFileVer(wbem+L"\\ntevt.dll",&status);
 	fver _policman_dll = getFileVer(wbem+L"\\policman.dll",&status);
 	fver _repdrvfs_dll = getFileVer(wbem+L"\\repdrvfs.dll",&status);
 	fver _wbemcore_dll = getFileVer(wbem+L"\\wbemcore.dll",&status);
@@ -8467,6 +8468,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _msutb_dll >zero && _msutb_dll <fver(5,1,2600,2699)) {
 		NN("Update for Windows XP (KB899815)");
 		XX(p2+"WindowsXP-KB899815-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _ntevt_dll >zero && _ntevt_dll <fver(5,1,2600,2699)) {
+		NN("Update for Windows XP (KB902346)");
+		XX(p2+"WindowsXP-KB902346-x86-ENU.exe"+a1);
 	}
 	
 
