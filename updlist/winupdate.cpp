@@ -264,6 +264,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _explorer_exe = getFileVer(SystemRoot+L"\\explorer.exe",&status);
 	fver _hh_exe       = getFileVer(SystemRoot+L"\\hh.exe",&status);
 	fver _kb913800_exe = getFileVer(SystemRoot+L"\\kb913800.exe",&status);
+	fver _regedit_exe  = getFileVer(SystemRoot+L"\\regedit.exe",&status);
 	fver _srchui_dll   = getFileVer(SystemRoot+L"\\srchasst\\srchui.dll",&status);
 	fver _srchctls_dll = getFileVer(SystemRoot+L"\\srchasst\\srchctls.dll",&status);
 
@@ -7726,6 +7727,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,5586))) {
 		NN("Update for Windows XP (KB945184)");
 		XX(p3+"WindowsXP-KB945184-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _regedit_exe >zero && _regedit_exe <fver(5,1,2600,1705))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _regedit_exe >zero && _regedit_exe <fver(5,1,2600,2703))) { // Also updates nonversioned file _system_adm
+		NN("Update for Windows XP (KB900462)");
+		XX(p2+"WindowsXP-KB900462-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _reg_exe >zero && _reg_exe <fver(5,1,2600,3369))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _reg_exe >zero && _reg_exe <fver(5,1,2600,5598))) {
