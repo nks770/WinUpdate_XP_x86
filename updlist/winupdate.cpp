@@ -689,6 +689,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _p2pnetsh_dll = getFileVer(System32+L"\\p2pnetsh.dll",&status);
 	fver _p2psvc_dll   = getFileVer(System32+L"\\p2psvc.dll",&status);
 	fver _packager_exe = getFileVer(System32+L"\\packager.exe",&status);
+	fver _pautoenr_dll = getFileVer(System32+L"\\pautoenr.dll",&status);
 	fver _pdh_dll      = getFileVer(System32+L"\\pdh.dll",&status);
 	fver _perfos_dll   = getFileVer(System32+L"\\perfos.dll",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
@@ -8491,6 +8492,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _ntevt_dll >zero && _ntevt_dll <fver(5,1,2600,2699)) {
 		NN("Update for Windows XP (KB902346)");
 		XX(p2+"WindowsXP-KB902346-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _pautoenr_dll >zero && _pautoenr_dll <fver(5,1,2600,1722))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _pautoenr_dll >zero && _pautoenr_dll <fver(5,1,2600,2728))) {
+		NN("Update for Windows XP (KB903930)");
+		XX(p2+"WindowsXP-KB903930-x86-ENU.exe"+a1);
 	}
 	
 
