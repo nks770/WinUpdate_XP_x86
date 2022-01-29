@@ -8446,7 +8446,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	if((sp==1 && qfe && (sku & XP_ALL) && _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,1721))
 	 /*||(sp==2 && qfe && (sku & XP_ALL) && _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2727))*/) {
-		NN("Update for Windows XP (KB904829)"); // KB895570 is replaced by KB968389(5,1,2600,3592) on SP2
+		NN("Update for Windows XP (KB904829)"); // KB904829 is replaced by KB968389(5,1,2600,3592) on SP2
 		XX(p1+"WindowsXP-KB904829-x86-ENU.exe"+a1); // KB956572(5,1,2600,3520) / KB924270(5,1,2600,2976) / KB944043(5,1,2600,3365)
 	}
 	if( (sp==1 || sp==2) && qfe && (sku & XP_ALL)
@@ -11307,6 +11307,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2694)) {
 		NN("Update for Windows XP (KB896616)"); // KB896616 is replaced by KB958215
 		XX(p2+"WindowsXP-KB896616-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0) && (
+	    ( _mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2739))
+	 || ( _shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2739)) )) {
+		NN("Update for Windows XP (KB905498)"); // KB905498 is replaced by KB958215(6,0,2900,3462)
+		XX(p2+"WindowsXP-KB905498-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2961)) {
