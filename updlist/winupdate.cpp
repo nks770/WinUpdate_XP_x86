@@ -7618,15 +7618,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB955576)");
 		XX(p3+"WindowsXP-KB955576-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,1637))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,2625))*/) {
-		NN("Update for Windows XP (KB893606)"); // KB893606 is replaced by KB955988 on SP2
-		XX(p1+"WindowsXP-KB893606-v2-x86-ENU.exe"+a1);
-	}
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,1637))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,2625))) {
+		NN("Update for Windows XP (KB893606)"); // KB893606 is replaced by KB905654
+		XX(p2+"WindowsXP-KB893606-v2-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,2572)) {
 		NN("Update for Windows XP (KB890558)"); // KB890558 is replaced by KB955988
 		XX(p2+"WindowsXP-KB890558-x86-ENU.exe"+a6);
 	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,1727))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,2736))*/) {
+		NN("Update for Windows XP (KB905654)"); // KB905654 is replaced by KB955988 on SP2
+		XX(p1+"WindowsXP-KB905654-x86-ENU.exe"+a1);
+	}
 	if((sp==2 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,3423))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _cimwin32_dll >zero && _cimwin32_dll <fver(5,1,2600,5654))) {
 		NN("Update for Windows XP (KB955988)");
