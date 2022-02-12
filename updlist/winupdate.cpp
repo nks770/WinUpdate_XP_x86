@@ -234,6 +234,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	char _mmcshext_dll_md5[33];
 	strncpy_s(_mmcshext_dll_md5,33,md5_ptr,33);
 
+	md5.digestFileW((SystemRoot+L"\\inf\\mchgr.inf").c_str(),false);
+	char _mchgr_inf_md5[33];
+	strncpy_s(_mchgr_inf_md5,33,md5_ptr,33);
+	
 	md5.digestFileW((SystemRoot+L"\\inf\\mdmirmdm.inf").c_str(),false);
 	char _mdmirmdm_inf_md5[33];
 	strncpy_s(_mdmirmdm_inf_md5,33,md5_ptr,33);
@@ -8528,6 +8532,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _locator_exe >zero && _locator_exe <fver(5,1,2600,2724)) {
 		NN("Update for Windows XP (KB904767)");
 		XX(p2+"WindowsXP-KB904767-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && strncmp(_mchgr_inf_md5,"a672867f3cfdd75a48fa58b71fa4294d",32) != 0 ) {
+		NN("Update for Windows XP (KB906232)");
+		XX(p2+"WindowsXP-KB906232-x86-ENU.exe"+a1);
 	}
 	
 
