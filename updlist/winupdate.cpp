@@ -392,6 +392,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdi32_dll    = getFileVer(System32+L"\\gdi32.dll",&status);
 	fver _gpkcsp_dll   = getFileVer(System32+L"\\gpkcsp.dll",&status);
 	fver _gpprefcl_dll = getFileVer(System32+L"\\gpprefcl.dll",&status);
+	fver _gpresult_exe = getFileVer(System32+L"\\gpresult.exe",&status);
 	fver _gptext_dll   = getFileVer(System32+L"\\gptext.dll",&status);
 	fver _grpconv_exe  = getFileVer(System32+L"\\grpconv.exe",&status);
 	fver _h323_tsp     = getFileVer(System32+L"\\h323.tsp",&status);
@@ -8545,6 +8546,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && strncmp(_mchgr_inf_md5,"a672867f3cfdd75a48fa58b71fa4294d",32) != 0 ) {
 		NN("Update for Windows XP (KB906232)");
 		XX(p2+"WindowsXP-KB906232-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _gpresult_exe >zero && _gpresult_exe <fver(5,1,2600,2781)) {
+		NN("Update for Windows XP (KB906450)");
+		XX(p2+"WindowsXP-KB906450-x86-ENU.exe"+a1);
 	}
 	
 
