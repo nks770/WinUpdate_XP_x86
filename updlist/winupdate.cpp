@@ -7301,14 +7301,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB883529)"); // KB883529 is replaced by KB885423
 		XX(p1+"WindowsXP-KB883529-x86-ENU.exe"+a6);
 	}*/
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,1596))
 	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,1596)) ))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,2524))
-	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,2524)) ))*/) {
-		NN("Update for Windows XP (KB885423)"); // KB883529 is replaced by KB948277 on SP2
-		XX(p1+"WindowsXP-KB885423-x86-ENU.exe"+a6);
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,2524)) ))) {
+		NN("Update for Windows XP (KB885423)"); // KB885423 is replaced by KB906277
+		XX(p2+"WindowsXP-KB885423-x86-ENU.exe"+a6);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,1746))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,1746)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,2759))
+	  ||  ( _winlogon_exe >zero && _winlogon_exe <fver(5,1,2600,2759)) ))*/) {
+		NN("Update for Windows XP (KB906277)"); // KB906277 is replaced by KB948277(5,1,2600,3358) on SP2
+		XX(p1+"WindowsXP-KB906277-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _licdll_dll   >zero && _licdll_dll   <fver(5,1,2600,2645))
