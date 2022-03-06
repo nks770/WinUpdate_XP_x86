@@ -9197,14 +9197,21 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB891849-x86-ENU.exe"+a6);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,2749)) {
-		NN("Update for Windows XP (KB906681)"); // KB906681 is replaced by KB968389
+		NN("Update for Windows XP (KB906681)"); // KB906681 is replaced by KB968389(5,1,2600,3592)
 		XX(p2+"WindowsXP-KB906681-x86-ENU.exe"+a1);
 	}*/
-	if((sp==1 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1701))
-	 /*||(sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698))*/) {
-		// On SP2, KB899587 is replaced by KB968389
-		NN("Security Update for Windows XP (KB899587)");
-		XX(p2+"windowsxp-kb899587-x86-enu_95ef03f0da9761b044b9a98d445af90266777ea8.exe"+a1);
+	if(qfe) {
+		if((sp==1 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1735))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2745))*/) {
+			NN("Update for Windows XP (KB906524)"); // KB906524 is replaced by KB968389(5,1,2600,3592) on SP2
+			XX(p1+"WindowsXP-KB906524-x86-ENU.exe"+a1);
+		}
+	} else {
+		if((sp==1 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1701))
+		 /*||(sp==2 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2698))*/) {
+			NN("Security Update for Windows XP (KB899587)"); // On SP2, KB899587 is replaced by KB968389(5,1,2600,3592)
+			XX(p1+"windowsxp-kb899587-x86-enu_95ef03f0da9761b044b9a98d445af90266777ea8.exe"+a1);
+		}
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,3192))
