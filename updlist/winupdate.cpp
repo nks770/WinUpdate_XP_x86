@@ -283,6 +283,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _advapi32_dll = getFileVer(System32+L"\\advapi32.dll",&status);
 	fver _advpack_dll  = getFileVer(System32+L"\\advpack.dll",&status);
 	fver _appmgmts_dll = getFileVer(System32+L"\\appmgmts.dll",&status);
+	fver _appmgr_dll   = getFileVer(System32+L"\\appmgr.dll",&status);
 	fver _appwiz_cpl   = getFileVer(System32+L"\\appwiz.cpl",&status);
 	fver _asycfilt_dll = getFileVer(System32+L"\\asycfilt.dll",&status);
 	fver _atl_dll      = getFileVer(System32+L"\\atl.dll",&status);
@@ -8558,6 +8559,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _gpresult_exe >zero && _gpresult_exe <fver(5,1,2600,2781)) {
 		NN("Update for Windows XP (KB906450)");
 		XX(p2+"WindowsXP-KB906450-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _appmgr_dll >zero && _appmgr_dll <fver(5,1,2600,1756))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _appmgr_dll >zero && _appmgr_dll <fver(5,1,2600,2771))) {
+		NN("Update for Windows XP (KB906667)");
+		XX(p2+"WindowsXP-KB906667-x86-ENU.exe"+a1);
 	}
 	
 
