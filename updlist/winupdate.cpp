@@ -3639,7 +3639,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1593))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2523))) {
-		NN("Security Update for Windows XP (KB885267)"); // KB885267 is replaced by KB917953+KB951748
+		NN("Update for Windows XP (KB885267)"); // KB885267 is replaced by KB917953+KB951748
 		XX(p2+"WindowsXP-KB885267-x86-ENU.exe"+a6);
 	}*/
 	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1630))
@@ -3656,6 +3656,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2685))) {
 		NN("Security Update for Windows XP (KB893066)"); // KB893066-v2 is replaced by KB917953+KB951748
 		XX(p2+"WindowsXP-KB893066-v2-x86-ENU.exe"+a1);
+	}*/
+	/*if((sp==1 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1741))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2752))) {
+		NN("Update for Windows XP (KB906882)"); // KB906882 is replaced by KB913446
+		XX(p2+"WindowsXP-KB906882-x86-ENU.exe"+a1);
 	}*/
 	/*if((sp==1 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,1792))
 	 ||(sp==2 && (sku & XP_ALL) && _tcpip_sys>zero && _tcpip_sys<fver(5,1,2600,2827))) {
