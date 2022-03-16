@@ -6886,6 +6886,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			NN("Update for Windows XP (KB932578)"); // KB932578 is replaced by KB969262
 			XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
 		}*/
+		if((sp==1 && qfe && (sku & XP_ALL) && (
+			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,1779))
+		  ||  ( _ntfs_sys_cache <fver(5,1,2600,1779)) ))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,2803))
+		  ||  ( _ntfs_sys_cache <fver(5,1,2600,2803)) ))*/) {
+			NN("Update for Windows XP (KB907870)"); // KB907870 is replaced by KB969262(5,1,2600,3542) on SP2
+			XX(p1+"WindowsXP-KB907870-x86-ENU.exe"+a1);
+		}
 		if((sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3542))
 		  ||  ( _ntfs_sys_cache <fver(5,1,2600,3542)) ))
