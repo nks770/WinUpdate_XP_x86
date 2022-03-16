@@ -7781,6 +7781,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB2929729)");
 		XX(p3+"WindowsXP-KB2929729-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,1748))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,2761))) {
+		NN("Update for Windows XP (KB908069)");
+		XX(p2+"WindowsXP-KB908069-x86-ENU.exe"+a1);
+	}
 	if( sp==3 && qfe && (sku & XP_ALL) && _ntbackup_exe >zero && _ntbackup_exe <fver(5,1,2600,5808)) {
 		NN("Update for Windows XP (KB817688)");
 		XX(p3+"WindowsXP-KB817688-x86-ENU.exe"+a1);
