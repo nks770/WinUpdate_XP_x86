@@ -309,6 +309,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cdfview_dll  = getFileVer(System32+L"\\cdfview.dll",&status);
 	fver _cdosys_dll   = getFileVer(System32+L"\\cdosys.dll",&status);
 	fver _cewmdm_dll   = getFileVer(System32+L"\\cewmdm.dll",&status);
+	fver _certmgr_dll  = getFileVer(System32+L"\\certmgr.dll",&status);
 	fver _cfgbkend_dll = getFileVer(System32+L"\\cfgbkend.dll",&status);
 	fver _cic_dll      = getFileVer(System32+L"\\cic.dll",&status);
 	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
@@ -344,6 +345,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _devenum_dll  = getFileVer(System32+L"\\devenum.dll",&status);
 	fver _dfrgntfs_exe = getFileVer(System32+L"\\dfrgntfs.exe",&status);
 	fver _dhcpcsvc_dll = getFileVer(System32+L"\\dhcpcsvc.dll",&status);
+	fver _dimsntfy_dll = getFileVer(System32+L"\\dimsntfy.dll",&status);
 	fver _dimsroam_dll = getFileVer(System32+L"\\dimsroam.dll",&status);
 	fver _dispex_dll   = getFileVer(System32+L"\\dispex.dll",&status);
 	fver _dmdlgs_dll   = getFileVer(System32+L"\\dmdlgs.dll",&status);
@@ -8565,9 +8567,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB902346-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _pautoenr_dll >zero && _pautoenr_dll <fver(5,1,2600,1722))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && _pautoenr_dll >zero && _pautoenr_dll <fver(5,1,2600,2728))) {
-		NN("Update for Windows XP (KB903930)");
-		XX(p2+"WindowsXP-KB903930-x86-ENU.exe"+a1);
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _pautoenr_dll >zero && _pautoenr_dll <fver(5,1,2600,2728))*/) {
+		NN("Update for Windows XP (KB903930)"); // KB903930 is replaced by KB907247 on SP2
+		XX(p1+"WindowsXP-KB903930-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _certmgr_dll  >zero  && _certmgr_dll   <fver(5,1,2600,2914))
+	 || (                         _dimsntfy_dll  <fver(5,1,2600,2914))
+	 || (                         _dimsroam_dll  <fver(5,1,2600,2914))
+	 || ( _pautoenr_dll >zero  && _pautoenr_dll  <fver(5,1,2600,2914)) )) {
+		NN("Update for Windows XP (KB907247)");
+		XX(p2+"WindowsXP-KB907247-v3-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && _locator_exe >zero && _locator_exe <fver(5,1,2600,2724)) {
 		NN("Update for Windows XP (KB904767)");
