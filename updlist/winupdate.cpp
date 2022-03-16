@@ -7468,6 +7468,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB948101)"); // On SP2, KB948101 is replaced by KB949033
 		XX(p3+"WindowsXP-KB948101-v3-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,3182))
+	  ||  ( _usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,3182))
+	  ||  ( _usbport_sys >zero && _usbport_sys <fver(5,1,2600,3182))
+	  ||  ( _usbuhci_sys >zero && _usbuhci_sys <fver(5,1,2600,3182)) )) {
+		NN("Update for Windows XP (KB908673)"); // KB908673 is replaced by KB949033(5,1,2600,3358)
+		XX(p2+"WindowsXP-KB908673-v2-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,3358))
 	  ||  ( _usbohci_sys >zero && _usbohci_sys <fver(5,1,2600,3358))
