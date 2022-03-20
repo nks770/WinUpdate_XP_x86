@@ -11465,6 +11465,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB896616-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2771)) {
+		NN("Update for Windows XP (KB908917)"); // KB908917 is replaced by KB958215(6,0,2900,3462)
+		XX(p2+"WindowsXP-KB908917-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2795)) {
 		NN("Update for Windows XP (KB907316)"); // KB907316 is replaced by KB958215(6,0,2900,3462)
 		XX(p2+"WindowsXP-KB907316-x86-ENU.exe"+a1);
