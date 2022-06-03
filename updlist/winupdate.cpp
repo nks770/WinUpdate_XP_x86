@@ -3773,15 +3773,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB977914)");
 		XX(p3+"WindowsXP-KB977914-x86-ENU.exe"+a1);
 	}
-	/*if( sp==2 && qfe && (sku & XP_ALL) && _dnsapi_dll >zero && _dnsapi_dll <fver(5,1,2600,2643)) {
-		NN("Update for Windows XP (KB890210)"); // KB890210 is replaced by KB945553
-		XX(p2+"WindowsXP-KB890210-x86-ENU.exe"+a1);
-	}*/
-	if( sp==2 && (sku & XP_ALL) && ( (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,3316))
-					  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,3316)) )) {
-		NN("Security Update for Windows XP (KB945553)");
-		XX(p2+"windowsxp-kb945553-x86-enu_94dfff615b4f4fb15d3db5ef261a964d65f60492.exe"+a1);
-	}
 	if( sp==2 && (sku & XP_ALL) && ( (_agentdp2_dll>zero && _agentdp2_dll<fver(2,0,0,3424))
 					  ||  (_agentdpv_dll>zero && _agentdpv_dll<fver(2,0,0,3424))
 					  ||  (_agentsvr_exe>zero && _agentsvr_exe<fver(2,0,0,3424)) )) {
@@ -7838,6 +7829,26 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _ipconfig_exe >zero && _ipconfig_exe <fver(5,1,2600,5678))) {
 		NN("Update for Windows XP (KB934401)");
 		XX(p3+"WindowsXP-KB934401-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _dnsapi_dll   >zero && _dnsapi_dll   <fver(5,1,2600,1787))
+	  ||  ( _dnsrslvr_dll >zero && _dnsrslvr_dll <fver(5,1,2600,1787)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _dnsapi_dll   >zero && _dnsapi_dll   <fver(5,1,2600,2817))
+	  ||  ( _dnsrslvr_dll >zero && _dnsrslvr_dll <fver(5,1,2600,2817)) ))*/) {
+		NN("Update for Windows XP (KB909390)"); // KB909390 is replaced by KB959085(5,1,2600,3574)
+		XX(p1+"WindowsXP-KB909390-v2-x86-ENU.exe"+a1);
+	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _dnsapi_dll >zero && _dnsapi_dll <fver(5,1,2600,2643)) {
+		NN("Update for Windows XP (KB890210)"); // KB890210 is replaced by KB959085(5,1,2600,3574)
+		XX(p2+"WindowsXP-KB890210-x86-ENU.exe"+a1);
+	}*/
+	if(!qfe) {
+		if( sp==2 && (sku & XP_ALL) && ( (_dnsapi_dll>zero && _dnsapi_dll<fver(5,1,2600,3316))
+						  ||  (_dnsrslvr_dll>zero && _dnsrslvr_dll<fver(5,1,2600,3316)) )) {
+			NN("Security Update for Windows XP (KB945553)");
+			XX(p2+"windowsxp-kb945553-x86-enu_94dfff615b4f4fb15d3db5ef261a964d65f60492.exe"+a1);
+		}
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 			   ( _6to4svc_dll  >zero && _6to4svc_dll  <fver(5,1,2600,2975))
