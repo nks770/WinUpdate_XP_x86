@@ -10234,11 +10234,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p3+"windowsxp-kb4022747-x86-embedded-custom-enu_dbdadefb4204e0b5e63542c0ac09e351fc65063a.exe"+a1);
 	}
 
-	if( sp==2 && qfe && (sku & XP_ALL) && (
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,2651))
 	  ||  ( _rasdlg_dll   >zero && _rasdlg_dll   <fver(5,1,2600,2651)) )) {
-		NN("Update for Windows XP (KB892235)");
+		NN("Update for Windows XP (KB892235)"); // KB892235 is replaced by KB909347
 		XX(p2+"WindowsXP-KB892235-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _rasapi32_dll >zero && _rasapi32_dll <fver(5,1,2600,2782))
+	  ||  ( _rasdlg_dll   >zero && _rasdlg_dll   <fver(5,1,2600,2782)) )) {
+		NN("Update for Windows XP (KB909347)");
+		XX(p2+"WindowsXP-KB909347-x86-ENU.exe"+a1);
 	}
 	if( sp==3 && (sku & XP_CLIENT) && (
 		                  (_iprtrmgr_dll >zero && _iprtrmgr_dll <fver(5,1,2600,7272))
