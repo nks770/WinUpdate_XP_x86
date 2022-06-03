@@ -7195,6 +7195,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB830092)"); // KB830092 is replaced by KB944043(5,1,2600,3365) on SP2
 		XX(p1+"WindowsXP-KB830092-v3-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _w32time_dll >zero && _w32time_dll <fver(5,1,2600,2775)) {
+		NN("Update for Windows XP (KB909279)"); // KB909279 is replaced by KB951531(5,1,2600,3404) on SP2
+		XX(p2+"WindowsXP-KB909279-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _w32time_dll >zero && _w32time_dll <fver(5,1,2600,3404)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
