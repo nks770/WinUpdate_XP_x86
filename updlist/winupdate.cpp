@@ -879,6 +879,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _winmm_dll    = getFileVer(System32+L"\\winmm.dll",&status);
 	fver _winspool_drv = getFileVer(System32+L"\\winspool.drv",&status);
 	fver _winsrv_dll   = getFileVer(System32+L"\\winsrv.dll",&status);
+	fver _winssnap_dll = getFileVer(System32+L"\\winssnap.dll",&status);
 	fver _wintrust_dll = getFileVer(System32+L"\\wintrust.dll",&status);
 	fver _winusbcoinstaller_dll = getFileVer(System32+L"\\winusbcoinstaller.dll",&status);
 	fver _wisptis_exe  = getFileVer(System32+L"\\wisptis.exe",&status);
@@ -1805,6 +1806,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp>=1 && (sku & XP_ALL) && (  _qfecheck_exe <fver(5,1,2600,1271) )) {
 		NN("Qfecheck.exe Update Check Utility (KB828854)");
 		XX("Extras\\QfeCheck\\WindowsXP-KB828854-x86-ENU.exe /x:%systemroot%\\system32 /u");
+	}
+	if( sp>=1 && qfe && (sku & XP_ALL) && _winssnap_dll>=fver(5,2,3790,1830) && _winssnap_dll <fver(5,2,3790,2631)) {
+		NN("Update for Windows XP (KB909195)");
+		XX("\"Extras\\Windows Server 2003 AdminPak\\WindowsXP-KB909195-v2-x86-ENU.exe\" /x:%systemroot%\\system32 /u");
 	}
 	if( sp>=1 && (sku & XP_ALL) && _msdelta_dll <fver(6,0,5600,16384)) {
 		NN("Microsoft Compression Client Pack 1.0 for Windows XP");
