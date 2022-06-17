@@ -5550,6 +5550,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909422)"); // KB909422 is replaced by KB911927
 		XX(p2+"WindowsXP-KB909422-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _mrxdav_sys  >zero && _mrxdav_sys  <fver(5,1,2600,2788))
+					  ||  ( _webclnt_dll >zero && _webclnt_dll <fver(5,1,2600,2788)) )) {
+		NN("Update for Windows XP (KB909423)"); // KB909423 is replaced by KB911927(5,1,2600,2821) and KB946026(5,1,2600,3276)
+		XX(p2+"WindowsXP-KB909423-x86-ENU.exe"+a1);
+	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _mrxdav_sys  >zero && _mrxdav_sys  <fver(5,1,2600,1673))
 					  ||  ( _webclnt_dll >zero && _webclnt_dll <fver(5,1,2600,1790)) ))
