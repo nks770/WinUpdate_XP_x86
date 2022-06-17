@@ -4279,6 +4279,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB978835)");
 		XX(p3+"WindowsXP-KB978835-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,1763))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,1763))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,1763))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,1763)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ntkrnlmp_exe >zero && _ntkrnlmp_exe <fver(5,1,2600,2780))
+	  ||  ( _ntkrnlpa_exe >zero && _ntkrnlpa_exe <fver(5,1,2600,2780))
+	  ||  ( _ntkrpamp_exe >zero && _ntkrpamp_exe <fver(5,1,2600,2780))
+	  ||  ( _ntoskrnl_exe >zero && _ntoskrnl_exe <fver(5,1,2600,2780)) ))*/) {
+		NN("Update for Windows XP (KB909547)"); // KB909547 is replaced by KB979683 on SP2
+		XX(p1+"WindowsXP-KB909547-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,3670))
 					  ||  (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,3670))
