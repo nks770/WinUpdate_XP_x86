@@ -8498,14 +8498,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB896336)");
 		XX(p2+"WindowsXP-KB896336-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,1613))
 	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,1613)) ))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 	    ( _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,2544))
 	 || ( _fdeploy_dll >zero  && _fdeploy_dll  <fver(5,1,2600,2544)) ))) {
-		NN("Update for Windows XP (KB884882)");
+		NN("Update for Windows XP (KB884882)"); // KB884882 is replaced by KB892227+KB909985
 		XX(p2+"WindowsXP-KB884882-v3-x86-ENU.exe"+a1);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,1766))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _appmgmts_dll >zero && _appmgmts_dll <fver(5,1,2600,2786))) {
+		NN("Update for Windows XP (KB909985)");
+		XX(p2+"WindowsXP-KB909985-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,1618))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _fdeploy_dll >zero && _fdeploy_dll <fver(5,1,2600,2594))) {
