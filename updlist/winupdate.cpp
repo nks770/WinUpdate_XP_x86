@@ -79,6 +79,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string p1=p+"SP1\\";
 	const std::string p2=p+"SP2\\";
 	const std::string p3=p+"SP3\\";
+
+	const std::string q3=p+"QFE\\SP3\\";
+
 	const std::string sb=p+"SBSI\\";
 	const std::string vcredist=p+"vcredist\\";
 	const std::string mstsc=p+"mstsc\\";
@@ -11442,6 +11445,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB889333)"); // KB889333 is replaced by KB958215
 		XX(p2+"WindowsXP-KB889333-v2-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _iepeers_dll >zero && _iepeers_dll <fver(6,0,2900,2796)) {
+		NN("Update for Windows XP (KB910365)"); // KB910365 is replaced by KB958215(6,0,2900,3462)
+		XX(q3+"WindowsXP-KB910365-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_wininet_dll   >zero && _wininet_dll   <fver(6,0,2900,2625)) )) {
 		NN("Update for Windows XP (KB843518)"); // KB843518 is replaced by KB958215
@@ -11701,6 +11709,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			&& _ieakeng_dll >zero && _ieakeng_dll <fver(6,0,2900,2699) ) {
 		NN("Update for Windows XP (KB900732)");
 		XX(p2+"WindowsXP-KB900732-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _inetcpl_cpl >zero && _inetcpl_cpl <fver(6,0,2900,2795) ) {
+		NN("Update for Windows XP (KB910329)");
+		XX(q3+"WindowsXP-KB910329-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0)) && (
 		   (_advpack_dll     >zero && _advpack_dll     <fver(7,0,6000,16414))
