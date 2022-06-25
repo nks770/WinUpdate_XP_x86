@@ -11666,6 +11666,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB907338)"); // KB907338 is replaced by KB958215
 		XX(p2+"WindowsXP-KB907338-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2870))
+	    || (_dxtrans_dll  >zero && _dxtrans_dll  <fver(6,3,2900,2870))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2870))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2870))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2870))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2870))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2870))
+		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2870)) )) {
+		NN("Update for Windows XP (KB910645)"); // KB910645 is replaced by KB958215
+		XX(q3+"WindowsXP-KB910645-v3-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3462))
 	    || (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3462))
