@@ -2423,40 +2423,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB921398)"); // KB921398 is replaced by KB943460 on SP2
 		XX(p1+"windowsxp-kb921398-x86-enu_47a6965d63200295eb57c1d7a5440d26c43d90d1.exe"+a1);
 	}
-	if( sp<2 && (sku & XP_ALL) && (
-	      (_dao360_dll   >zero && _dao360_dll   <fver(3,60,8618,0))
-	   || (_expsrv_dll   >zero && _expsrv_dll   <fver(6,0,72,9589))
-	   || (_msexch40_dll >zero && _msexch40_dll <fver(4,0,6807,0))
-	   || (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,8618,0))
-	   || (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,8618,0))
-	   || (_msjetol1_dll >zero && _msjetol1_dll <fver(4,0,8227,0))
-	   || (_msjint40_dll >zero && _msjint40_dll <fver(4,0,6508,0))
-	   || (_msjter40_dll >zero && _msjter40_dll <fver(4,0,6508,0))
-	   || (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,8618,0))
-	   || (_msltus40_dll >zero && _msltus40_dll <fver(4,0,6508,0))
-	   || (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,8015,0))
-	   || (_msrd2x40_dll >zero && _msrd2x40_dll <fver(4,0,7328,0))
-	   || (_msrd3x40_dll >zero && _msrd3x40_dll <fver(4,0,6508,0))
-	   || (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,8015,0))
-	   || (_mstext40_dll >zero && _mstext40_dll <fver(4,0,8015,0))
-	   || (_mswdat10_dll >zero && _mswdat10_dll <fver(4,0,6508,0))
-	   || (_mswstr10_dll >zero && _mswstr10_dll <fver(4,0,6508,0))
-	   || (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,8025,0))
-	   || (_vbajet32_dll >zero && _vbajet32_dll <fver(6,0,1,9431)) )) {
-		NN("Security Update for Windows XP (KB837001)");
-		XX(p1+"windowsxp-kb837001-x86-enu_09e9d2c15ee5ee9323b210decd84941.exe"+a6);
-	}
-	if((sp==1 || sp==2) && qfe && (sku & XP_ALL) && (
-	      (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
-	   || (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9413,0))
-	   || (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,9025,0))
-	   || (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
-	   || (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
-	   || (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
-	   // Jet 4.0 Database Engine post-837001 hotfix package: April 12, 2005
-		NN("Update for Windows XP (KB895751)");
-		XX(p2+"WindowsXP-KB895751-v2-x86-ENU.exe"+a1);
-	}
 	/*if((sp==0 && (sku & XP_ALL) && (
 	      (_user32_dll   >zero && _user32_dll   <fver(5,1,2600,104))
 	   || (_win32k_sys   >zero && _win32k_sys   <fver(5,1,2600,104))
@@ -3606,6 +3572,51 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB870753)"); // KB870753 is replaced by KB950749
 		XX(p2+"WindowsXP-KB870753-x86-ENU.exe"+a6);
 	}*/
+	if( sp<2 && (sku & XP_ALL) && (
+	      (_dao360_dll   >zero && _dao360_dll   <fver(3,60,8618,0))
+	   || (_expsrv_dll   >zero && _expsrv_dll   <fver(6,0,72,9589))
+	   || (_msexch40_dll >zero && _msexch40_dll <fver(4,0,6807,0))
+	   || (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,8618,0))
+	   || (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,8618,0))
+	   || (_msjetol1_dll >zero && _msjetol1_dll <fver(4,0,8227,0))
+	   || (_msjint40_dll >zero && _msjint40_dll <fver(4,0,6508,0))
+	   || (_msjter40_dll >zero && _msjter40_dll <fver(4,0,6508,0))
+	   || (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,8618,0))
+	   || (_msltus40_dll >zero && _msltus40_dll <fver(4,0,6508,0))
+	   || (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,8015,0))
+	   || (_msrd2x40_dll >zero && _msrd2x40_dll <fver(4,0,7328,0))
+	   || (_msrd3x40_dll >zero && _msrd3x40_dll <fver(4,0,6508,0))
+	   || (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,8015,0))
+	   || (_mstext40_dll >zero && _mstext40_dll <fver(4,0,8015,0))
+	   || (_mswdat10_dll >zero && _mswdat10_dll <fver(4,0,6508,0))
+	   || (_mswstr10_dll >zero && _mswstr10_dll <fver(4,0,6508,0))
+	   || (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,8025,0))
+	   || (_vbajet32_dll >zero && _vbajet32_dll <fver(6,0,1,9431)) )) {
+		NN("Security Update for Windows XP (KB837001)");
+		XX(p1+"windowsxp-kb837001-x86-enu_09e9d2c15ee5ee9323b210decd84941.exe"+a6);
+	}
+	/*if((sp==1 || sp==2) && qfe && (sku & XP_ALL) && (
+	      (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
+	   || (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9413,0))
+	   || (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,9025,0))
+	   || (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
+	   || (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
+	   || (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
+	   // Jet 4.0 Database Engine post-837001 hotfix package: April 12, 2005
+		NN("Update for Windows XP (KB895751)"); // KB895751 is replaced by KB910906
+		XX(q3+"WindowsXP-KB895751-v2-x86-ENU.exe"+a1);
+	}*/
+	if( (sp==1 /*||sp==2*/) && qfe && (sku & XP_ALL) && (
+	   (_dao360_dll   >zero && _dao360_dll   <fver(3,60,9420,0))
+	|| (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
+	|| (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9413,0))
+	|| (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,9025,0))
+	|| (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
+	|| (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
+	|| (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
+		NN("Update for Windows XP (KB910906)"); // KB910906 is replaced by KB950749 on SP2
+		XX(q3+"WindowsXP-KB910906-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( (_dao360_dll>zero && _dao360_dll<fver(3,60,9512,0))
 					  ||  (_msexch40_dll >zero && _msexch40_dll <fver(4,0,9502,0))
 					  ||  (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9502,0))
