@@ -4123,6 +4123,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB896256-v3-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	   (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2868))
+	|| (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2868))
+	|| (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,2868))
+	|| (_ntoskrnl_exe>zero && _ntoskrnl_exe<fver(5,1,2600,2868)) )) {
+		NN("Update for Windows XP (KB910623)"); // KB910623 is replaced by KB979683
+		XX(q3+"WindowsXP-KB910623-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 	   (_ntkrnlmp_exe>zero && _ntkrnlmp_exe<fver(5,1,2600,2885))
 	|| (_ntkrnlpa_exe>zero && _ntkrnlpa_exe<fver(5,1,2600,2885))
 	|| (_ntkrpamp_exe>zero && _ntkrpamp_exe<fver(5,1,2600,2885))
