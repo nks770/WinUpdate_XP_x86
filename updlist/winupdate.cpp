@@ -13890,6 +13890,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP Tablet PC Edition 2005 (KB895953)");
 		XX(p2+"windowsxp-kb895953-v4-x86-enu_9e8006f0a1303efca8503b73f9a4243cfba236ff.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_TABLET) && _tiptsf_dll >zero && _tiptsf_dll <fver(1,7,2600,2886)) {
+		NN("Update for Windows XP Tablet PC Edition 2005 (KB911071)");
+		XX(q3+"WindowsXP-KB911071-x86-ENU.exe"+a1);
+	}
 	/*if( sp==3 && (sku & XP_TABLET) && ( // KB2660649 is replaced by KB2835364
 		                  (_jntfiltr_dll >zero && _jntfiltr_dll <fver(1,7,2600,6189))
 		              ||  (_jnwdrv_dll   >zero && _jnwdrv_dll   <fver(0,3,7,0))
