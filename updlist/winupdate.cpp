@@ -6860,6 +6860,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909918)"); // KB909918 is replaced by KB917140 on SP2
 		XX(p1+"WindowsXP-KB909918-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _acadproc_dll >zero && _acadproc_dll <fver(5,1,2600,2795)) {
+		NN("Update for Windows XP (KB910678)"); // KB910678 is replaced by KB917140
+		XX(q3+"WindowsXP-KB910678-v2-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _acadproc_dll >zero && _acadproc_dll <fver(5,1,2600,2993))
 					  ||  ( _acgenral_dll >zero && _acgenral_dll <fver(5,1,2600,2993))
