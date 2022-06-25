@@ -7074,6 +7074,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB899420)");
 		XX(p2+"WindowsXP-KB899420-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _usp10_dll   >zero && _usp10_dll   <fver(1,420,2600,2791)) )) {
+		NN("Update for Windows XP (KB910466)"); // KB910466 is replaced by KB939450
+		XX(q3+"WindowsXP-KB910466-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _usp10_dll   >zero && _usp10_dll   <fver(1,420,2600,3163)) )) {
 		NN("Update for Windows XP (KB939450)");
