@@ -1276,6 +1276,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _usbuhci_sys  = getFileVer(Drivers+L"\\usbuhci.sys",&status);
 	fver _usbvideo_sys = getFileVer(Drivers+L"\\usbvideo.sys",&status);
 	fver _videoprt_sys = getFileVer(Drivers+L"\\videoprt.sys",&status);
+	fver _wacompen_sys = getFileVer(Drivers+L"\\wacompen.sys",&status);
 	fver _wdmaud_sys   = getFileVer(Drivers+L"\\wdmaud.sys",&status);
 	fver _wpdusb_sys   = getFileVer(Drivers+L"\\wpdusb.sys",&status);
 
@@ -13893,6 +13894,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_TABLET) && _tiptsf_dll >zero && _tiptsf_dll <fver(1,7,2600,2886)) {
 		NN("Update for Windows XP Tablet PC Edition 2005 (KB911071)");
 		XX(q3+"WindowsXP-KB911071-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_TABLET) && _wacompen_sys >zero && _wacompen_sys <fver(1,7,2600,2804)) {
+		NN("Update for Windows XP Tablet PC Edition 2005 (KB911133)");
+		XX(q3+"WindowsXP-KB911133-x86-ENU.exe"+a1);
 	}
 	/*if( sp==3 && (sku & XP_TABLET) && ( // KB2660649 is replaced by KB2835364
 		                  (_jntfiltr_dll >zero && _jntfiltr_dll <fver(1,7,2600,6189))
