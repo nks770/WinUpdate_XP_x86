@@ -765,6 +765,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _rspndr_exe   = getFileVer(System32+L"\\rspndr.exe",&status);
 	fver _rtcdll_dll   = getFileVer(System32+L"\\rtcdll.dll",&status);
 	fver _safrslv_dll  = getFileVer(System32+L"\\safrslv.dll",&status);
+	fver _samlib_dll   = getFileVer(System32+L"\\samlib.dll",&status);
 	fver _samsrv_dll   = getFileVer(System32+L"\\samsrv.dll",&status);
 	fver _sbe_dll      = getFileVer(System32+L"\\sbe.dll",&status);
 	fver _sc_exe       = getFileVer(System32+L"\\sc.exe",&status);
@@ -8841,6 +8842,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _alg_exe >zero && _alg_exe <fver(5,1,2600,2811)) {
 		NN("Update for Windows XP (KB911162)");
 		XX(q3+"WindowsXP-KB911162-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _samlib_dll >zero && _samlib_dll <fver(5,1,2600,2853)) {
+		NN("Update for Windows XP (KB912143)");
+		XX(q3+"WindowsXP-KB912143-x86-ENU.exe"+a1);
 	}
 	
 
