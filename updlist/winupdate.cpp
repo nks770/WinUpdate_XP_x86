@@ -11434,18 +11434,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Cumulative Update for Internet Explorer for Windows XP Service Pack 2 (KB912812)");
 		XX(p2+"WindowsXP-KB912812-x86-ENU.exe"+a1);
 	}*/
-	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
-		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2870))
-		|| (_dxtrans_dll  >zero && _cdfview_dll  <fver(6,3,2900,2870))
-		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2870))
-		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2870))
-		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2870))
-		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2870))
-		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2870))
-		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2870)) )) { // KB908676 is replaced by KB958215
-		NN("Update for Windows XP (KB908676)");
-		XX(p2+"WindowsXP-KB908676-v3-x86-ENU.exe"+a1);
-	}*/
 	/*if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,3020))
 		|| (_cdfview_dll  >zero && _cdfview_dll  <fver(6,0,2900,3020))
@@ -11768,6 +11756,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2838)) )) {
 		NN("Update for Windows XP (KB907338)"); // KB907338 is replaced by KB958215
 		XX(p2+"WindowsXP-KB907338-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2838))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2838))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2838))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2838))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2838))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2838))
+		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2838)) )) {
+		NN("Update for Windows XP (KB911740)"); // KB911740 is replaced by KB958215
+		XX(q3+"WindowsXP-KB911740-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2870))
+		|| (_dxtrans_dll  >zero && _cdfview_dll  <fver(6,3,2900,2870))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2870))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2870))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2870))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2870))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2870))
+		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2870)) )) {
+		NN("Update for Windows XP (KB908676)"); // KB908676 is replaced by KB958215
+		XX(p2+"WindowsXP-KB908676-v3-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2870))
