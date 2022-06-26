@@ -8240,6 +8240,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB971234)");
 		XX(p3+"WindowsXP-KB971234-v2-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _proquota_exe >zero && _proquota_exe <fver(5,1,2600,2829)) {
+		NN("Update for Windows XP (KB911589)"); // KB911589 is replaced by KB884859
+		XX(q3+"WindowsXP-KB911589-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && _proquota_exe >zero && _proquota_exe <fver(5,1,2600,2904)) {
 		NN("Update for Windows XP (KB884859)");
 		XX(p2+"WindowsXP-KB884859-x86-ENU.exe"+a1);
