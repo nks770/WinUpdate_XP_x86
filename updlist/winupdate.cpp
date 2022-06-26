@@ -11769,6 +11769,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(q3+"WindowsXP-KB911740-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2838))
+		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2838))
+		|| (_mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2838))
+		|| (_shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2838))
+		|| (_shlwapi_dll  >zero && _shlwapi_dll  <fver(6,0,2900,2838))
+		|| (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,2838))
+		|| (_xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2838)) )) {
+		NN("Update for Windows XP (KB911929)"); // KB911929 is replaced by KB958215
+		XX(q3+"WindowsXP-KB911929-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_browseui_dll >zero && _browseui_dll <fver(6,0,2900,2870))
 		|| (_dxtrans_dll  >zero && _cdfview_dll  <fver(6,3,2900,2870))
 		|| (_iepeers_dll  >zero && _iepeers_dll  <fver(6,0,2900,2870))
