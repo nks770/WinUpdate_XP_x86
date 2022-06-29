@@ -2708,18 +2708,23 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb923191-x86-enu_9d2cfed124f1f50804c20a6e8a881f84c266745f.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
-		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
-		|| ( _imapi_exe    >zero && _imapi_exe    <fver(5,1,2600,1611))
-		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1611))
+		   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))    // replaced by KB908531
+		|| ( _imapi_exe    >zero && _imapi_exe    <fver(5,1,2600,1611))    // replaced by KB912666
+		|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1611))    // replaced by KB908531
 		|| ( _shsvcs_dll   >zero && _shsvcs_dll   <fver(6,0,2800,1611))
-		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
-		|| ( _comctl32_dll_1579                   <fver(6,0,2800,1579)) ))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && (
-		  ( _imapi_exe     >zero && _imapi_exe    <fver(5,1,2600,2569))
-	   || ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2572))
-	   || ( _shsvcs_dll    >zero && _shsvcs_dll   <fver(6,0,2900,2569)) ))) {
-		NN("Update for Windows XP (KB888083)");
-		XX(p2+"WindowsXP-KB888083-x86-ENU.exe"+a6);
+		|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))    // replaced by KB908531
+		|| ( _comctl32_dll_1579                   <fver(6,0,2800,1579)) )) // replaced by KB841356
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _imapi_exe     >zero && _imapi_exe    <fver(5,1,2600,2569))    // replaced by KB912666
+	   || ( _shell32_dll   >zero && _shell32_dll  <fver(6,0,2900,2572))    // replaced by KB908531
+	   || ( _shsvcs_dll    >zero && _shsvcs_dll   <fver(6,0,2900,2569)) ))*/) { // replaced by KB928255
+		NN("Update for Windows XP (KB888083)"); // KB888083 is replaced by KB912666 on SP2
+		XX(q3+"WindowsXP-KB888083-x86-ENU.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _imapi_exe >zero && _imapi_exe <fver(5,1,2600,1786))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _imapi_exe >zero && _imapi_exe <fver(5,1,2600,2816))) {
+		NN("Update for Windows XP (KB912666)");
+		XX(q3+"WindowsXP-KB912666-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
