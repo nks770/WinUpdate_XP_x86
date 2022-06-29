@@ -318,6 +318,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _cfgbkend_dll = getFileVer(System32+L"\\cfgbkend.dll",&status);
 	fver _cic_dll      = getFileVer(System32+L"\\cic.dll",&status);
 	fver _ciodm_dll    = getFileVer(System32+L"\\ciodm.dll",&status);
+	fver _cipher_exe   = getFileVer(System32+L"\\cipher.exe",&status);
 	fver _clbcatex_dll = getFileVer(System32+L"\\clbcatex.dll",&status);
 	fver _clbcatq_dll  = getFileVer(System32+L"\\clbcatq.dll",&status);
 	fver _clspack_exe  = getFileVer(System32+L"\\clspack.exe",&status);
@@ -8871,6 +8872,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _azroles_dll >zero && _azroles_dll <fver(5,2,3790,2729)) {
 		NN("Update for Windows XP (KB912572)");
 		XX(q3+"WindowsXP-KB912572-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _cipher_exe   >zero && _cipher_exe   <fver(5,1,2600,2819))
+	 || ( _lsasrv_dll   >zero && _lsasrv_dll   <fver(5,1,2600,2819))
+	 || ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2900,2819))
+	 || ( _xpsp3res_dll >zero && _xpsp3res_dll <fver(5,1,2600,2819)) )) {
+		NN("Update for Windows XP (KB912761)");
+		XX(q3+"WindowsXP-KB912761-x86-ENU.exe"+a1);
 	}
 	
 
