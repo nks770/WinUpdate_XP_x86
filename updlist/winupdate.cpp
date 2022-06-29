@@ -296,6 +296,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _authz_dll    = getFileVer(System32+L"\\authz.dll",&status);
 	fver _avifil32_dll = getFileVer(System32+L"\\avifil32.dll",&status);
 	fver _axaltocm_dll = getFileVer(System32+L"\\axaltocm.dll",&status);
+	fver _azroles_dll  = getFileVer(System32+L"\\azroles.dll",&status);
 	fver _basecsp_dll  = getFileVer(System32+L"\\basecsp.dll",&status);
 	fver _basesrv_dll  = getFileVer(System32+L"\\basesrv.dll",&status);
 	fver _bcsprsrc_dll = getFileVer(System32+L"\\bcsprsrc.dll",&status);
@@ -8855,6 +8856,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _samlib_dll >zero && _samlib_dll <fver(5,1,2600,2853)) {
 		NN("Update for Windows XP (KB912143)");
 		XX(q3+"WindowsXP-KB912143-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _azroles_dll >zero && _azroles_dll <fver(5,2,3790,2729)) {
+		NN("Update for Windows XP (KB912572)");
+		XX(q3+"WindowsXP-KB912572-v2-x86-ENU.exe"+a1);
 	}
 	
 
