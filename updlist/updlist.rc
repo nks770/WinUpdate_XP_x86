@@ -62,7 +62,7 @@ IDI_ICON1               ICON                    "wlsetup.ico"
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 2022,6,26,0
+ FILEVERSION 2022,6,28,0
  PRODUCTVERSION 5,1,2600,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -80,7 +80,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Swensoft Corporation"
             VALUE "FileDescription", "WinUpdate Update List Generator"
-            VALUE "FileVersion", "2022, 6, 26, 0"
+            VALUE "FileVersion", "2022, 6, 28, 0"
             VALUE "InternalName", "updlist"
             VALUE "LegalCopyright", "Copyright (C) 2022"
             VALUE "OriginalFilename", "updlist.exe"
