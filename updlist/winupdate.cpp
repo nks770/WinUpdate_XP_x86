@@ -4739,6 +4739,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB909486)"); // KB909486 is replaced by KB943460
 		XX(p2+"WindowsXP-KB909486-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		(_shell32_dll >zero && _shell32_dll <fver(6,0,2900,2818))
+	 || (_xpsp3res_dll>zero && _xpsp3res_dll<fver(5,1,2600,2818)) )) {
+		NN("Update for Windows XP (KB912680)"); // KB912680 is replaced by KB943460
+		XX(q3+"WindowsXP-KB912680-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		(_shell32_dll >zero && _shell32_dll <fver(6,0,2900,3241))
 	 || (_xpsp3res_dll>zero && _xpsp3res_dll<fver(5,1,2600,3243)) )) {
