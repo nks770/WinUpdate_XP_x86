@@ -8881,6 +8881,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB912761)");
 		XX(q3+"WindowsXP-KB912761-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _ks_sys >zero && _ks_sys <fver(5,3,2600,2818)) {
+		NN("Update for Windows XP (KB912784)");
+		XX(q3+"WindowsXP-KB912784-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
