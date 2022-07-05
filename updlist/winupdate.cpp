@@ -13679,6 +13679,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2290570)");
 		XX(p3+"WindowsXP-KB2290570-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _win32spl_dll >zero && _win32spl_dll <fver(5,1,2600,2846)) {
+		NN("Update for Windows XP (KB913478)"); // KB913478 is replaced by KB953155
+		XX(q3+"WindowsXP-KB913478-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && (sku & XP_ALL) && ( (_msw3prt_dll >zero && _msw3prt_dll <fver(5,1,2600,3435))
 	                             ||  (_win32spl_dll>zero && _win32spl_dll<fver(5,1,2600,3435)) ))
 	 ||(sp==3 && (sku & XP_ALL) && ( (_msw3prt_dll> zero && _msw3prt_dll <fver(5,1,2600,5664))
