@@ -7002,6 +7002,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB907717)"); // KB907717 is replaced by KB917730
 		XX(p2+"WindowsXP-KB907717-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ipnat_sys  >zero && _ipnat_sys  <fver(5,1,2600,2831)) )) {
+		NN("Update for Windows XP (KB913522)"); // KB913522 is replaced by KB917730
+		XX(q3+"WindowsXP-KB913522-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		  ( _ipnat_sys  >zero && _ipnat_sys  <fver(5,1,2600,2887)) )) {
 		NN("Update for Windows XP (KB917730)");
