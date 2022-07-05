@@ -1870,6 +1870,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Background Intelligent Transfer Service (BITS) (KB883357)");
 		XX(p1+"windowsxp-kb883357-x86-enu_f4bd524df7dbf1db8bed916d4a4f63b0f29f777c.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _qmgr_dll >zero && _qmgr_dll <fver(6,6,2600,2848)) {
+		NN("Update for Windows XP (KB913460)"); // KB913460 is replaced by KB923845
+		XX(q3+"WindowsXP-KB913460-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 	      (_bitsprx2_dll >zero && _bitsprx2_dll <fver(6,7,2600,3143))
 	   || (_bitsprx3_dll >zero && _bitsprx3_dll <fver(6,7,2600,3143))
