@@ -1191,6 +1191,8 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _dumpdrv_sys  = getFileVer(Drivers+L"\\dumpdrv.sys",&status);
 	fver _hidir_sys    = getFileVer(Drivers+L"\\hidir.sys",&status);
 	fver _hidparse_sys = getFileVer(Drivers+L"\\hidparse.sys",&status);
+	fver _hidusb_sys   = getFileVer(Drivers+L"\\hidusb.sys",&status);
+	fver _hidusb_sys_dllcache = getFileVer(dllcache+L"\\hidusb.sys",&status);
 	fver _exfat_sys    = getFileVer(Drivers+L"\\exfat.sys",&status);
 	fver _fastfat_sys  = getFileVer(Drivers+L"\\fastfat.sys",&status);
 	fver _fltMgr_sys   = getFileVer(Drivers+L"\\fltMgr.sys",&status);
@@ -8919,6 +8921,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _ks_sys >zero && _ks_sys <fver(5,3,2600,2818)) {
 		NN("Update for Windows XP (KB912784)");
 		XX(q3+"WindowsXP-KB912784-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _hidusb_sys >zero && _hidusb_sys <fver(5,1,2600,2962))
+	 || ( _hidusb_sys_dllcache <fver(5,1,2600,2962)) )) {
+		NN("Update for Windows XP (KB914015)");
+		XX(q3+"WindowsXP-KB914015-x86-ENU.exe"+a1);
 	}
 	
 
