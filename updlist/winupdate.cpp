@@ -13799,6 +13799,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB899266)");
 		XX(p2+"WindowsXP-KB899266-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && !(*rdp60 || *rdp61) && ((sku & XP_ALL) && (_mstscax_dll >= fver(5,1,0,0) && _mstscax_dll<=fver(5,2,0,0))) && (
+	   (_mstscax_dll     >zero && _mstscax_dll  <fver(5,1,2600,2862)) )){
+		NN("Update for Windows XP (KB914144)"); // KB914144 is replaced by KB958470
+		XX(q3+"WindowsXP-KB914144-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && (
 		// Update for RDP 6.0
 		(*rdp60 || ( _mstscax_dll >= fver(6,0,6000,0) && _mstscax_dll<fver(6,0,6000,16865)))
