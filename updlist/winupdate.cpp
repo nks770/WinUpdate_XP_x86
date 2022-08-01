@@ -3694,6 +3694,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB911262)"); // KB911262 is replaced by KB970238
 		XX(q3+"WindowsXP-KB911262-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _rpcrt4_dll >zero && _rpcrt4_dll <fver(5,1,2600,2859)) {
+		NN("Update for Windows XP (KB914301)"); // KB914301 is replaced by KB970238(5,1,2600,3555)
+		XX(q3+"WindowsXP-KB914301-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _rpcrt4_dll>zero && _rpcrt4_dll<fver(5,1,2600,3173)) {
 		// KB933729 is replaced by KB970238 on SP2
 		NN("Security Update for Windows XP (KB933729)");
