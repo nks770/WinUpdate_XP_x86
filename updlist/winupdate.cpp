@@ -4957,6 +4957,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"windowsxp-kb922582-x86-enu_4d2c05da13ad8b38b98d290938bbb7de3fd6d985.exe"+a1);
 		}
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+	    ( _splitter_sys >zero && _splitter_sys <fver(5,1,2600,2878))
+	 || ( _splitter_sys_cache <fver(5,1,2600,2878)) )) {
+		NN("Update for Windows XP (KB914399)"); // KB914399 is replaced by KB920872
+		XX(q3+"WindowsXP-KB914399-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_kmixer_sys   >zero && _kmixer_sys   <fver(5,1,2600,2929))
 					  ||  (_splitter_sys >zero && _splitter_sys <fver(5,1,2600,2929))
