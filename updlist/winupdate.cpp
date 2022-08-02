@@ -821,6 +821,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _sysdm_cpl    = getFileVer(System32+L"\\sysdm.cpl",&status);
 	fver _syssetup_dll = getFileVer(System32+L"\\syssetup.dll",&status);
 	fver _t2embed_dll  = getFileVer(System32+L"\\t2embed.dll",&status);
+	fver _tabsrv_dll   = getFileVer(System32+L"\\tabsrv.dll",&status);
 	fver _tapisrv_dll  = getFileVer(System32+L"\\tapisrv.dll",&status);
 	fver _tcpmon_dll   = getFileVer(System32+L"\\tcpmon.dll",&status);
 	fver _tdc_ocx      = getFileVer(System32+L"\\tdc.ocx",&status);
@@ -14088,6 +14089,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_TABLET) && _wacompen_sys >zero && _wacompen_sys <fver(1,7,2600,2804)) {
 		NN("Update for Windows XP Tablet PC Edition 2005 (KB911133)");
 		XX(q3+"WindowsXP-KB911133-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_TABLET) && _tabsrv_dll >zero && _tabsrv_dll <fver(1,7,2600,2846)) {
+		NN("Update for Windows XP Tablet PC Edition 2005 (KB914444)");
+		XX(q3+"WindowsXP-KB914444-x86-ENU.exe"+a1);
 	}
 	/*if( sp==3 && (sku & XP_TABLET) && ( // KB2660649 is replaced by KB2835364
 		                  (_jntfiltr_dll >zero && _jntfiltr_dll <fver(1,7,2600,6189))
