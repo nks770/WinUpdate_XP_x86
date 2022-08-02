@@ -1791,6 +1791,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
 	fver _comctl32_dll_1755 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1755_x-ww_7cb9ab88\\comctl32.dll",&status);
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
+	fver _comctl32_dll_1844 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1844_x-ww_7d36bac9\\comctl32.dll",&status);
 	fver _comctl32_dll_1873 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1873_x-ww_7d39bb85\\comctl32.dll",&status);
 	fver _comctl32_dll_1891 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1891_x-ww_7d3bbc01\\comctl32.dll",&status);
 	fver _comctl32_dll_2649 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.2649_x-ww_aac16c8b\\comctl32.dll",&status);
@@ -2744,6 +2745,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 					  ||  ( _verclsid_exe   >zero && _verclsid_exe   <fver(5,1,2600,2869))))) {
 		NN("Security Update for Windows XP (KB908531)");
 		XX(p2+"windowsxp-kb908531-v2-x86-enu_0f04352bbc21b3c173cc8dd8c9e63c082b34b676.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+	|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1844))
+	|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+	|| ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1844))
+	|| ( _comctl32_dll_1844 < fver(6,0,2800,1844)) ))
+		/*||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _shell32_dll    >zero && _shell32_dll    <fver(6,0,2900,2909))
+	|| ( _xpsp3res_dll   >zero && _xpsp3res_dll   <fver(5,1,2600,2909)) )) */ ) {
+		NN("Update for Windows XP (KB914437)"); // KB914437 is replaced by KB928255(6,0,2900,3051) on SP2
+		XX(q3+"WindowsXP-KB914437-x86-ENU.exe"+a1);
 	}
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2800,1588))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2900,2515))) {
