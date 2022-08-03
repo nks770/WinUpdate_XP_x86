@@ -1240,6 +1240,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _pxhelp20_sys = getFileVer(Drivers+L"\\pxhelp20.sys",&status);
 	fver _raspppoe_sys = getFileVer(Drivers+L"\\raspppoe.sys",&status);
 	fver _raspptp_sys  = getFileVer(Drivers+L"\\raspptp.sys",&status);
+	fver _redbook_sys  = getFileVer(Drivers+L"\\redbook.sys",&status);
 	fver _rmcast_sys   = getFileVer(Drivers+L"\\rmcast.sys",&status);
 	fver _rndismp_sys  = getFileVer(Drivers+L"\\rndismp.sys",&status);
 	fver _rndismpx_sys = getFileVer(Drivers+L"\\rndismpx.sys",&status);
@@ -8962,6 +8963,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || ( _hidusb_sys_dllcache <fver(5,1,2600,2962)) )) {
 		NN("Update for Windows XP (KB914015)");
 		XX(q3+"WindowsXP-KB914015-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _redbook_sys >zero && _redbook_sys <fver(5,1,2600,2858)) {
+		NN("Update for Windows XP (KB915326)");
+		XX(q3+"WindowsXP-KB915326-x86-ENU.exe"+a1);
 	}
 	
 
