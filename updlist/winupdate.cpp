@@ -2354,9 +2354,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(q3+"WindowsXP-KB915365-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,1621))
-	 ||(sp==2 && qfe && (sku & XP_ALL) && _nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,2608))) {
-		NN("Update for Windows XP (KB894083)");
-		XX(p2+"WindowsXP-KB894083-x86-ENU.exe"+a6);
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && _nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,2608))*/) {
+		NN("Update for Windows XP (KB894083)"); // KB894083 is replaced by KB915365 on SP2
+		XX(q3+"WindowsXP-KB894083-x86-ENU.exe"+a6);
 	}
 	if((sp==0 && (sku & XP_ALL) && _netbt_sys>zero && _netbt_sys<fver(5,1,2600,117))
 	 ||(sp==1 && (sku & XP_ALL) && _netbt_sys>zero && _netbt_sys<fver(5,1,2600,1243))) {
@@ -2395,15 +2395,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB919007)");
 		XX(p1+"windowsxp-kb919007-x86-enu_dc2307d635a64c87bbf1f216442104ef4b4ada0b.exe"+a1);
 	}
-	if((sp==0 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2600,101))
+	/*if((sp==0 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2600,101))
 	 ||(sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1126))) {
-		NN("Q329048: Security Update");
-		XX(p1+"q329048_xp_bdcca3f0c06417895bf3ee93b6db09f6d04d0282.exe"+a7);
-	}
+		NN("Q329048: Security Update"); // Q329048 is replaced by KB873376
+		XX(p2+"q329048_xp_bdcca3f0c06417895bf3ee93b6db09f6d04d0282.exe"+a7);
+	}*/
 	if((sp==0 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2750,167))
 	 ||(sp==1 && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1584))) {
 		NN("Security Update for Windows XP (KB873376)");
-		XX(p1+"windowsxp-kb873376-x86-enu_5c67061f5227844ef8b5f1eec8596bd2520c542d.exe"+a6);
+		XX(p2+"windowsxp-kb873376-x86-enu_5c67061f5227844ef8b5f1eec8596bd2520c542d.exe"+a6);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2800,1883))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && _zipfldr_dll>zero && _zipfldr_dll<fver(6,0,2900,2970))) {
+		NN("Update for Windows XP (KB915389)");
+		XX(q3+"WindowsXP-KB915389-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==1 && (sku & XP_ALL) && _msieftp_dll>zero && _msieftp_dll<fver(6,0,2800,1724)) {
 		NN("Security Update for Windows XP (KB905495)");
