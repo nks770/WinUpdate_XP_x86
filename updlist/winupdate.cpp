@@ -1754,9 +1754,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _gdiplus_dll_0     = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.0.1_x-ww_8d353f14\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_1360  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1360_x-ww_24a2ed47\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_1698  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1698_x-ww_26201c8f\\GdiPlus.dll",&status);
+	fver _gdiplus_dll_1892  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.1892_x-ww_271c3b8b\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_2695  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2695_x-ww_54a6ed4b\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_2700  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2700_x-ww_551bfa90\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_2758  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2758_x-ww_5520fbd3\\GdiPlus.dll",&status);
+	fver _gdiplus_dll_2997  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.2997_x-ww_56211bd0\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_3430  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.3430_x-ww_822b9d89\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_5660  = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.2600.5660_x-ww_e0385ec6\\GdiPlus.dll",&status);
 	fver _gdiplus_dll_22319 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.GdiPlus_6595b64144ccf1df_1.0.6001.22319_x-ww_f0b4c2df\\GdiPlus.dll",&status);
@@ -2434,7 +2436,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 	      ( _gdiplus_dll_2695 < fver(5,1,3102,2695)) ))) {
 		NN("Update for Windows XP (KB901026)");
-		XX(p2+"WindowsXP-KB901026-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB901026-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	      (_sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+	   || ( _gdiplus_dll_1892 < fver(5,1,3102,1892)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+	      ( _gdiplus_dll_2997 < fver(5,1,3102,2997)) ))) {
+		NN("Update for Windows XP (KB915415)");
+		XX(q3+"WindowsXP-KB915415-v2-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && (sku & XP_ALL) && (
 	      (_fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
