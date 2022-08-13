@@ -2347,6 +2347,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB841533)");
 		XX(p1+"windowsxp-kb841533-x86-enu_755d3599e96f8b8131966683e1cf15c860cde2dd.exe"+a6);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	      (_nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,2868))
+	   || (_netdde_exe   >zero && _netdde_exe   <fver(5,1,2600,2868)) )) {
+		NN("Update for Windows XP (KB915365)");
+		XX(q3+"WindowsXP-KB915365-v2-x86-ENU.exe"+a1);
+	}
 	if((sp==1 && qfe && (sku & XP_ALL) && _nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,1621))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _nddenb32_dll >zero && _nddenb32_dll <fver(5,1,2600,2608))) {
 		NN("Update for Windows XP (KB894083)");
