@@ -9682,6 +9682,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		}
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _lsasrv_dll >zero && _lsasrv_dll <fver(5,1,2600,2908))
+					  ||  ( _msv1_0_dll >zero && _msv1_0_dll <fver(5,1,2600,2908)) )) {
+		NN("Update for Windows XP (KB916204)"); // KB916204 is replaced by KB968389(5,1,2600,3592)
+		XX(q3+"WindowsXP-KB916204-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		                  ( _kerberos_dll >zero && _kerberos_dll <fver(5,1,2600,3192))
 					  ||  ( _msv1_0_dll   >zero && _msv1_0_dll   <fver(5,1,2600,3192)) )) {
 		NN("Update for Windows XP (KB939850)"); // KB939850 is replaced by KB968389
