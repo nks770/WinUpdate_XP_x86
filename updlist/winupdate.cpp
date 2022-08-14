@@ -4626,11 +4626,6 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB924270)");
 		XX(p2+"windowsxp-kb924270-x86-enu_3b1af30dc7a2f51f60a415eaf2cc01f9bf779dab.exe"+a1);
 	}
-	if((sp==1 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,71,9053,0))
-	 ||(sp==2 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,81,1124,0))) {
-		NN("Security Update for Windows XP (KB911562)");
-		XX(p2+"windowsxp-kb911562-x86-enu_7d16ad9701607a354e0ca2602a3fef485c8d9929.exe"+a1);
-	}
 	if( sp<2 && (sku & XP_ALL) && (
 	    (_dbnetlib_dll >=fver(2000,85,1022,0) && _dbnetlib_dll <fver(2000,85,1062,0))
 	 || (_dbnmpntw_dll >=fver(2000,85,1022,0) && _dbnmpntw_dll <fver(2000,85,1062,0))
@@ -4654,7 +4649,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 || (_sqlsrv32_dll >=fver(2000,85,1022,0) && _sqlsrv32_dll <fver(2000,85,1062,0))
 	 || (_sqlxmlx_dll  >=fver(2000,85,1022,0) && _sqlxmlx_dll  <fver(2000,85,1062,0)) )) {
 		NN("Security Update for Microsoft Data Access Components 2.8 (KB911562)");
-		XX(p1+"MDAC28-KB911562-x86-ENU.exe"+a1);
+		XX(p+"MDAC28-KB911562-x86-ENU.exe"+a1);
 	}
 	/*if( sp==1 && (sku & XP_ALL) && (
 	      (_gptext_dll   >zero && _gptext_dll   <fver(5,1,2600,1234))
@@ -4901,6 +4896,24 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	 ||(sp==3 && (sku & XP_ALL) && _bthport_sys<fver(5,1,2600,5620))) {
 		NN("Security Update for Windows XP (KB951376)");
 		XX(p3+"WindowsXP-KB951376-v2-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,71,9053,0))
+	 ||(sp==2 && (sku & XP_ALL) && _msadco_dll>zero && _msadco_dll<fver(2,81,1124,0))) {
+		NN("Security Update for Windows XP (KB911562)");
+		XX(p3+"windowsxp-kb911562-x86-enu_7d16ad9701607a354e0ca2602a3fef485c8d9929.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && (
+	   (_msadco_dll   >zero && _msadco_dll   <fver(2,81,1125,0)) // Newest available for SP2
+	|| (_msado15_dll  >zero && _msado15_dll  <fver(2,81,1125,0)) // repl by KB927779
+	|| (_msadomd_dll  >zero && _msadomd_dll  <fver(2,81,1125,0)) // repl by KB927779
+	|| (_msadox_dll   >zero && _msadox_dll   <fver(2,81,1125,0)) // repl by KB927779
+	|| (_msdasql_dll  >zero && _msdasql_dll  <fver(2,81,1125,0)) // Newest available for SP2
+	|| (_msjro_dll    >zero && _msjro_dll    <fver(2,81,1125,0)) // repl by KB927779
+	|| (_odbcbcp_dll  >zero && _odbcbcp_dll  <fver(2000,85,1125,0)) // repl by KB960071
+	|| (_sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1125,0)) // repl by KB954920
+	|| (_sqlsrv32_dll >zero && _sqlsrv32_dll <fver(2000,85,1125,0)) )) { // repl by KB960071
+		NN("Update for Windows XP (KB916528)");
+		XX(q3+"WindowsXP-KB916528-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && ( 
 		                  (_msado15_dll>zero && _msado15_dll<fver(2,81,1128,0))
