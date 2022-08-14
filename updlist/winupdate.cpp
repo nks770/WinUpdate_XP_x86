@@ -710,6 +710,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _perfos_dll   = getFileVer(System32+L"\\perfos.dll",&status);
 	fver _photometadatahandler_dll = getFileVer(System32+L"\\photometadatahandler.dll",&status);
 	fver _pintool_exe  = getFileVer(System32+L"\\pintool.exe",&status);
+	fver _pjlmon_dll   = getFileVer(System32+L"\\pjlmon.dll",&status);
 	fver _pnrpnsp_dll  = getFileVer(System32+L"\\pnrpnsp.dll",&status);
 	fver _pngfilt_dll  = getFileVer(System32+L"\\pngfilt.dll",&status);
 	fver _polstore_dll = getFileVer(System32+L"\\polstore.dll",&status);
@@ -9001,6 +9002,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _wbemcntl_dll >zero && _wbemcntl_dll <fver(5,1,2600,2884)) {
 		NN("Update for Windows XP (KB915843)");
 		XX(q3+"WindowsXP-KB915843-v2-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _pjlmon_dll >zero && _pjlmon_dll <fver(5,1,2600,2861)) {
+		NN("Update for Windows XP (KB916094)");
+		XX(q3+"WindowsXP-KB916094-x86-ENU.exe"+a1);
 	}
 	
 
