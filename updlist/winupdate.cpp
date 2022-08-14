@@ -8385,6 +8385,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB970413)");
 		XX(p3+"WindowsXP-KB970413-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,2869)) {
+		NN("Update for Windows XP (KB916731)"); // KB916731 is replaced by KB971234
+		XX(q3+"WindowsXP-KB916731-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,3596))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && _dfrgntfs_exe >zero && _dfrgntfs_exe <fver(5,1,2600,5840))) {
 		NN("Update for Windows XP (KB971234)");
