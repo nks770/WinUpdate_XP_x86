@@ -9292,6 +9292,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB887589)");
 		XX(p2+"WindowsXP-KB887589-x86-ENU.exe"+a6);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,2868)) {
+		NN("Update for Windows XP (KB916199)"); // KB916199 is replaced by KB979559
+		XX(q3+"WindowsXP-KB916199-v2-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _win32k_sys>zero && _win32k_sys<fver(5,1,2600,3335)) {
 		// KB941693 is replaced by KB979559 on SP2
 		NN("Security Update for Windows XP (KB941693)");
