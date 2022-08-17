@@ -3472,7 +3472,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if(qfe) {
 		/*if( sp==2 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,2785)) {
 			NN("Update for Windows XP (KB904563)"); // KB904563 is replaced by KB959554
-			XX(p2+"WindowsXP-KB904563-v2-x86-ENU.exe"+a1);
+			XX(q3+"WindowsXP-KB904563-v2-x86-ENU.exe"+a1);
+		}*/
+		/*if( sp==2 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,2886)) {
+			NN("Update for Windows XP (KB918014)"); // KB918014 is replaced by KB959554
+			XX(q3+"WindowsXP-KB918014-x86-ENU.exe"+a1);
 		}*/
 		if((sp==2 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,3498))
 		 /*||(sp==3 && qfe && (sku & XP_ALL) && _gdi32_dll >zero && _gdi32_dll <fver(5,1,2600,5732))*/) {
