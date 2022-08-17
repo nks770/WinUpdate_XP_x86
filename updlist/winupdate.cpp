@@ -11948,6 +11948,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(q3+"WindowsXP-KB917772-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2882)) {
+		NN("Update for Windows XP (KB917783)"); // KB917783 is replaced by KB958215(6,0,2900,3462)
+		XX(q3+"WindowsXP-KB917783-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2910)) {
 		NN("Update for Windows XP (KB914300)"); // KB914300 is replaced by KB958215(6,0,2900,3462)
 		XX(q3+"WindowsXP-KB914300-v2-x86-ENU.exe"+a1);
@@ -11960,7 +11965,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   (_urlmon_dll   >zero && _urlmon_dll   <fver(6,0,2900,3313)) )) {
 		NN("Update for Windows XP (KB947853)"); // KB947853 is replaced by KB958215
-		XX(p2+"WindowsXP-KB947853-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB947853-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _extmgr_dll>zero && _extmgr_dll<fver(6,0,2900,2538)) {
