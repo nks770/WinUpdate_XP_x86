@@ -81,6 +81,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	const std::string p3=p+"SP3\\";
 
 	const std::string q3=p+"QFE\\SP3\\";
+	const std::string q4=p+"QFE\\SP4\\";
 
 	const std::string sb=p+"SBSI\\";
 	const std::string vcredist=p+"vcredist\\";
@@ -5008,10 +5009,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB936357-v2-x86-ENU.exe"+a1);
 	}
 	if(qfe) {
+		/*if( sp==2 && qfe && (sku & XP_ALL) && _explorer_exe>zero && _explorer_exe<fver(6,0,2900,2894)) {
+			NN("Update for Windows XP (KB918033)"); // KB918033 is replaced by KB955109
+			XX(q3+"WindowsXP-KB918033-x86-ENU.exe"+a1);
+		}*/
 		if((sp==2 && qfe && (sku & XP_ALL) && _explorer_exe >zero && _explorer_exe <fver(6,0,2900,3403))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && _explorer_exe >zero && _explorer_exe <fver(6,0,2900,5634))) {
 			NN("Update for Windows XP (KB955109)");
-			XX(p3+"WindowsXP-KB955109-x86-ENU.exe"+a1);
+			XX(q4+"WindowsXP-KB955109-x86-ENU.exe"+a1);
 		}
 	} else {
 		if( sp==2 && (sku & XP_ALL) && _explorer_exe>zero && _explorer_exe<fver(6,0,2900,3156)) {
