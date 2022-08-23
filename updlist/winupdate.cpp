@@ -1798,6 +1798,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _comctl32_dll_1740 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1740_x-ww_7cb8ab44\\comctl32.dll",&status);
 	fver _comctl32_dll_1755 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1755_x-ww_7cb9ab88\\comctl32.dll",&status);
 	fver _comctl32_dll_1816 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1816_x-ww_7d33ba0e\\comctl32.dll",&status);
+	fver _comctl32_dll_1838 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1838_x-ww_7d35ba8e\\comctl32.dll",&status);
 	fver _comctl32_dll_1844 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1844_x-ww_7d36bac9\\comctl32.dll",&status);
 	fver _comctl32_dll_1873 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1873_x-ww_7d39bb85\\comctl32.dll",&status);
 	fver _comctl32_dll_1891 = getFileVer(WinSxS+L"\\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.1891_x-ww_7d3bbc01\\comctl32.dll",&status);
@@ -2774,6 +2775,18 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 	   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
+	|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1838))
+	|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
+	|| ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1838))
+	|| ( _comctl32_dll_1838 < fver(6,0,2800,1838)) ))
+		/*||(sp==2 && qfe && (sku & XP_ALL) && (
+	   ( _shell32_dll    >zero && _shell32_dll    <fver(6,0,2900,2904))
+	|| ( _xpsp3res_dll   >zero && _xpsp3res_dll   <fver(5,1,2600,2904)) )) */ ) {
+		NN("Update for Windows XP (KB918204)"); // KB918204 is replaced by KB928255(6,0,2900,3051) on SP2
+		XX(q3+"WindowsXP-KB918204-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+	   ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
 	|| ( _shell32_dll  >zero && _shell32_dll  <fver(6,0,2800,1844))
 	|| ( _sxs_dll      >zero && _sxs_dll      <fver(5,1,2600,1579))
 	|| ( _xpsp2res_dll >zero && _xpsp2res_dll <fver(5,1,2600,1844))
@@ -2787,7 +2800,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if((sp==1 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2800,1588))
 	 ||(sp==2 && qfe && (sku & XP_ALL) && _shlwapi_dll >zero && _shlwapi_dll <fver(6,0,2900,2515))) {
 		NN("Update for Windows XP (KB870975)"); // KB870975 is replaced by KB900725
-		XX(p2+"WindowsXP-KB870975-x86-ENU.exe"+a6);
+		XX(q3+"WindowsXP-KB870975-x86-ENU.exe"+a6);
 	}*/
 	if((sp==1 && (sku & XP_ALL) && (
 		                  ( _fldrclnr_dll >zero && _fldrclnr_dll <fver(6,0,2800,1579))
