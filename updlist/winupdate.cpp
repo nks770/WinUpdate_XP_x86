@@ -3665,7 +3665,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB895751)"); // KB895751 is replaced by KB910906
 		XX(q3+"WindowsXP-KB895751-v2-x86-ENU.exe"+a1);
 	}*/
-	if( (sp==1 /*||sp==2*/) && qfe && (sku & XP_ALL) && (
+	/*if( (sp==1 ||sp==2) && qfe && (sku & XP_ALL) && (
 	   (_dao360_dll   >zero && _dao360_dll   <fver(3,60,9420,0))
 	|| (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
 	|| (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9413,0))
@@ -3673,9 +3673,9 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	|| (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
 	|| (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
 	|| (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
-		NN("Update for Windows XP (KB910906)"); // KB910906 is replaced by KB950749 on SP2
+		NN("Update for Windows XP (KB910906)"); // KB910906 is replaced by KB918144
 		XX(q3+"WindowsXP-KB910906-x86-ENU.exe"+a1);
-	}
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 	   (_dao360_dll   >zero && _dao360_dll   <fver(3,60,9420,0))
 	|| (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
@@ -3689,6 +3689,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB913178)"); // KB913178 is replaced by KB950749
 		XX(q3+"WindowsXP-KB913178-x86-ENU.exe"+a1);
 	}*/
+	if( (sp==1 /*|| sp==2*/) && qfe && (sku & XP_ALL) && (
+	   (_dao360_dll   >zero && _dao360_dll   <fver(3,60,9420,0))
+	|| (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9025,0))
+	|| (_msjet40_dll  >zero && _msjet40_dll  <fver(4,0,9425,0))
+	|| (_msjtes40_dll >zero && _msjtes40_dll <fver(4,0,9424,0))
+	|| (_mspbde40_dll >zero && _mspbde40_dll <fver(4,0,9025,0))
+	|| (_msrepl40_dll >zero && _msrepl40_dll <fver(4,0,9025,0))
+	|| (_mswdat10_dll >zero && _mswdat10_dll <fver(4,0,9422,0))
+	|| (_mswstr10_dll >zero && _mswstr10_dll <fver(4,0,9422,0))
+	|| (_msxbde40_dll >zero && _msxbde40_dll <fver(4,0,9025,0)) )) {
+		NN("Update for Windows XP (KB918144)"); // KB918144 is replaced by KB950749 on SP2
+		XX(q3+"WindowsXP-KB918144-v2-x86-ENU.exe"+a1);
+	}
 	if( sp==2 && (sku & XP_ALL) && ( (_dao360_dll>zero && _dao360_dll<fver(3,60,9512,0))
 					  ||  (_msexch40_dll >zero && _msexch40_dll <fver(4,0,9502,0))
 					  ||  (_msexcl40_dll >zero && _msexcl40_dll <fver(4,0,9502,0))
