@@ -2420,6 +2420,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB905495)");
 		XX(p1+"windowsxp-kb905495-x86-enu_10db795016004f5543ea1e556c4b41f471f5f99f.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _msieftp_dll>zero && _msieftp_dll<fver(6,0,2900,2891)) {
+		NN("Update for Windows XP (KB918208)");
+		XX(q3+"WindowsXP-KB918208-x86-ENU.exe"+a1);
+	}
 	if((sp==0 && (sku & XP_ALL) && _locator_exe>zero && _locator_exe<fver(5,1,2600,108))
 	 ||(sp==1 && (sku & XP_ALL) && _locator_exe>zero && _locator_exe<fver(5,1,2600,1147))) {
 		NN("810833: Security Update (Windows XP)");
