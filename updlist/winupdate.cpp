@@ -3431,7 +3431,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		                  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,2934))
 					  ||  ( _srv_sys    >zero && _srv_sys    <fver(5,1,2600,2934)) ))) {
 		NN("Update for Windows XP (KB916846)");
-		XX(p2+"WindowsXP-KB916846-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB916846-x86-ENU.exe"+a1);
+	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		                  ( _cscdll_dll >zero && _cscdll_dll <fver(5,1,2600,1599)) // repl by KB916846
+					  ||  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,1856)) // repl by KB916846
+					  ||  ( _rdbss_sys  >zero && _rdbss_sys  <fver(5,1,2600,1856)) )) // most recent
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+		                  ( _mrxsmb_sys >zero && _mrxsmb_sys <fver(5,1,2600,2930)) // repl by KB980232 (5,1,2600,3675)
+					  ||  ( _rdbss_sys  >zero && _rdbss_sys  <fver(5,1,2600,2930)) ))*/) { // repl by KB955567 (5,1,2600,3412)
+		NN("Update for Windows XP (KB918334)");
+		XX(q3+"WindowsXP-KB918334-x86-ENU.exe"+a1);
 	}
 	if( sp==1 && (sku & XP_ALL) && _srv_sys>zero && _srv_sys<fver(5,1,2600,1885)) {
 		// KB923414 is replaced by KB971468 on SP2
