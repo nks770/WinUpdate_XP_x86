@@ -7198,12 +7198,20 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if(qfe) {
 		/*if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,2562)) || _ntfs_sys_cache <fver(5,1,2600,2562)))  {
 			NN("Update for Windows XP (KB888413)"); // KB888413 is replaced by KB969262
-			XX(p2+"WindowsXP-KB888413-x86-ENU.exe"+a6);
+			XX(q3+"WindowsXP-KB888413-x86-ENU.exe"+a6);
+		}*/
+		/*if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,2900)) || _ntfs_sys_cache <fver(5,1,2600,2900)))  {
+			NN("Update for Windows XP (KB918338)"); // KB918338 is replaced by KB969262
+			XX(q3+"WindowsXP-KB918338-x86-ENU.exe"+a1);
+		}
+		if( sp==2 && (sku & XP_ALL) && ((_ntfs_sys>zero && _ntfs_sys<fver(5,1,2600,3081)) || _ntfs_sys_cache <fver(5,1,2600,3081)))  {
+			NN("Update for Windows XP (KB918338)"); // KB918338 is replaced by KB969262
+			XX(q3+"WindowsXP-KB918338-v2-x86-ENU.exe"+a1);
 		}*/
 		/*if((sp==2 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3480))))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && (( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,5712))))) {
 			NN("Update for Windows XP (KB932578)"); // KB932578 is replaced by KB969262
-			XX(p3+"WindowsXP-KB932578-x86-ENU.exe"+a1);
+			XX(q4+"WindowsXP-KB932578-x86-ENU.exe"+a1);
 		}*/
 		if((sp==1 && qfe && (sku & XP_ALL) && (
 			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,1779))
@@ -7212,7 +7220,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,2803))
 		  ||  ( _ntfs_sys_cache <fver(5,1,2600,2803)) ))*/) {
 			NN("Update for Windows XP (KB907870)"); // KB907870 is replaced by KB969262(5,1,2600,3542) on SP2
-			XX(p1+"WindowsXP-KB907870-x86-ENU.exe"+a1);
+			XX(q3+"WindowsXP-KB907870-x86-ENU.exe"+a1);
 		}
 		if((sp==2 && qfe && (sku & XP_ALL) && (
 			  ( _ntfs_sys >zero && _ntfs_sys <fver(5,1,2600,3542))
