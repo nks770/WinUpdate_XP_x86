@@ -12073,12 +12073,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		   ( _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2641))
 	    || ( _urlmon_dll >zero && _urlmon_dll <fver(6,0,2900,2641)) )) {
 		NN("Update for Windows XP (KB892056)"); // KB892056 is replaced by KB958215
-		XX(p2+"WindowsXP-KB892056-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB892056-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2737)) {
 		NN("Update for Windows XP (KB905299)"); // KB905299 is replaced by KB958215
-		XX(p2+"WindowsXP-KB905299-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB905299-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2991)) {
+		NN("Update for Windows XP (KB918690)"); // KB918690 is replaced by KB958215
+		XX(q3+"WindowsXP-KB918690-v2-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,3070)) {
