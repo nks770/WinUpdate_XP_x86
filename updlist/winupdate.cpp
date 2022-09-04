@@ -7964,7 +7964,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _ndiswan_sys >zero && _ndiswan_sys <fver(5,1,2600,2524)) {
 		NN("Update for Windows XP (KB886809)"); // KB886809 is replaced by KB952117
-		XX(p2+"WindowsXP-KB886809-x86-ENU.exe"+a6);
+		XX(q3+"WindowsXP-KB886809-x86-ENU.exe"+a6);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _ndis_sys    >zero && _ndis_sys    <fver(5,1,2600,2899))
+	  ||  ( _ndis_sys_cache <fver(5,1,2600,2899)) )) {
+		NN("Update for Windows XP (KB918837)"); // KB918837 is replaced by KB952117
+		XX(q3+"WindowsXP-KB918837-x86-ENU.exe"+a1);
 	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _ndis_sys    >zero && _ndis_sys    <fver(5,1,2600,3359))
@@ -7973,7 +7979,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _ndis_sys    >zero && _ndis_sys    <fver(5,1,2600,5587))
 	  ||  ( _ndiswan_sys >zero && _ndiswan_sys <fver(5,1,2600,5587)) ))) {
 		NN("Update for Windows XP (KB952117)");
-		XX(p3+"WindowsXP-KB952117-v2-x86-ENU.exe"+a1);
+		XX(q4+"WindowsXP-KB952117-v2-x86-ENU.exe"+a1);
 	}
 	/*if( sp>=2 && qfe && MDACVersion >= fver(2,81,0,0) && MDACVersion <= fver(2,81,1118,0)
 		&& _sqloledb_dll >zero && _sqloledb_dll <fver(2000,85,1118,0) ) {
