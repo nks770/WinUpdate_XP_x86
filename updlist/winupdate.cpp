@@ -853,6 +853,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _urlmon_dll   = getFileVer(System32+L"\\urlmon.dll",&status);
 	fver _user32_dll   = getFileVer(System32+L"\\user32.dll",&status);
 	fver _userenv_dll  = getFileVer(System32+L"\\userenv.dll",&status);
+	fver _userinit_exe = getFileVer(System32+L"\\userinit.exe",&status);
 	fver _usp10_dll    = getFileVer(System32+L"\\usp10.dll",&status);
 	fver _utilman_exe  = getFileVer(System32+L"\\utilman.exe",&status);
 	fver _uwdf_exe     = getFileVer(System32+L"\\uwdf.exe",&status);
@@ -9114,6 +9115,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _pjlmon_dll >zero && _pjlmon_dll <fver(5,1,2600,2861)) {
 		NN("Update for Windows XP (KB916094)");
 		XX(q3+"WindowsXP-KB916094-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _userinit_exe >zero && _userinit_exe <fver(5,1,2600,2943)) {
+		NN("Update for Windows XP (KB918495)");
+		XX(q3+"WindowsXP-KB918495-v2-x86-ENU.exe"+a1);
 	}
 	
 
