@@ -13286,13 +13286,17 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB944338)");
 		XX(p2+"windowsxp-kb944338-v2-x86-enu_d8cade8456591867f22cdae4c42db7f473afbd67.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe<fver(7,0,0,0) && _jscript_dll>=fver(5,6,0,0) && _jscript_dll<fver(5,6,0,8832)) {
+		NN("Update for Windows XP (KB919237)"); // KB919237 is replaced by kb971961 (5,6,0,8837)
+		XX(q3+"WindowsXP-KB919237-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && (sku & XP_ALL) && _jscript_dll>=fver(5,6,0,0) && _jscript_dll<fver(5,6,0,8837)) {
 		NN("Security Update for Jscript 5.6 for Windows XP (KB971961)");
 		XX(p2+"windowsxp-kb971961-js56-x86-enu_9ce6ccd0ed6a7b00212e2a90afe2b4747017b3a5.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,8828)) {
 		NN("Update for Windows XP (KB901104)"); // KB901104 is replaced by KB981350
-		XX(p2+"WindowsXP-KB901104-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB901104-x86-ENU.exe"+a1);
 	}*/
 	if( sp==2 && (sku & XP_ALL) && _vbscript_dll>=fver(5,6,0,0) && _vbscript_dll<fver(5,6,0,8838)) {
 		NN("Security Update for Windows XP (KB981350)");
