@@ -7316,10 +7316,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			XX(p2+"WindowsXP-KB934428-v3-x86-ENU.exe"+a1);
 		}
 	}
-	if( sp==2 && (sku & XP_ALL) && (
-		 ( _usbaudio_sys   >zero && _usbaudio_sys   <fver(5,1,2600,3115)) )) {
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _usbaudio_sys >zero && _usbaudio_sys <fver(5,1,2600,2937)) {
+		NN("Update for Windows XP (KB919484)"); // KB919484 is replaced by KB935708 (5,1,2600,3115)
+		XX(q3+"WindowsXP-KB919484-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && (sku & XP_ALL) && _usbaudio_sys >zero && _usbaudio_sys <fver(5,1,2600,3115)) {
 		NN("Update for Windows XP (KB935708)");
-		XX(p2+"WindowsXP-KB935708-x86-ENU.exe"+a1);
+		XX(p3+"WindowsXP-KB935708-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _videoprt_sys >zero && _videoprt_sys <fver(5,1,2600,2896)) {
 		NN("Update for Windows XP (KB912112)"); // KB912112 is replaced by KB960921
