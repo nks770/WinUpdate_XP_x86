@@ -9144,6 +9144,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB918495)");
 		XX(q3+"WindowsXP-KB918495-v2-x86-ENU.exe"+a1);
 	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _netbt_sys >zero && _netbt_sys <fver(5,1,2600,2910)) {
+		NN("Update for Windows XP (KB919408)");
+		XX(q3+"WindowsXP-KB919408-x86-ENU.exe"+a1);
+	}
 	
 
 	// Windows XP SP3 updates;
