@@ -12022,13 +12022,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2795)) {
 		NN("Update for Windows XP (KB907316)"); // KB907316 is replaced by KB958215(6,0,2900,3462)
-		XX(p2+"WindowsXP-KB907316-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB907316-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0) && (
 	    ( _mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,2739))
 	 || ( _shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,2739)) )) {
 		NN("Update for Windows XP (KB905498)"); // KB905498 is replaced by KB958215(6,0,2900,3462)
-		XX(p2+"WindowsXP-KB905498-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB905498-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0) && (
+	    ( _mshtml_dll   >zero && _mshtml_dll   <fver(6,0,2900,3038))
+	 || ( _shdocvw_dll  >zero && _shdocvw_dll  <fver(6,0,2900,3038)) )) {
+		NN("Update for Windows XP (KB918965)"); // KB918965 is replaced by KB958215(6,0,2900,3462)
+		XX(q3+"WindowsXP-KB918965-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2882)) {
@@ -12049,6 +12055,11 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2910)) {
 		NN("Update for Windows XP (KB918366)"); // KB918366 is replaced by KB958215(6,0,2900,3462)
 		XX(q3+"WindowsXP-KB918366-v2-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
+			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2910)) {
+		NN("Update for Windows XP (KB918962)"); // KB918962 is replaced by KB958215(6,0,2900,3462)
+		XX(q3+"WindowsXP-KB918962-v2-x86-ENU.exe"+a1);
 	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)
 			&& _mshtml_dll >zero && _mshtml_dll <fver(6,0,2900,2961)) {
