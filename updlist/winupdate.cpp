@@ -8635,6 +8635,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB910366)"); // KB910366 is replaced by multiple patches
 		XX(q3+"WindowsXP-KB910366-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _ntdll_dll >zero && _ntdll_dll <fver(5,1,2600,2925)) {
+		NN("Update for Windows XP (KB919490)"); // KB919490 is replaced by KB956572 (5,1,2600,3520)
+		XX(q3+"WindowsXP-KB919490-x86-ENU.exe"+a1);
+	}*/
 	/*if( sp==2 && qfe && (sku & XP_ALL) && _user32_dll >zero && _user32_dll <fver(5,1,2600,2877)) {
 		NN("Update for Windows XP (KB917462)"); // KB917462 is replaced by KB925902 (5,1,2600,3099)
 		XX(q3+"WindowsXP-KB917462-x86-ENU.exe"+a1);
@@ -8645,7 +8649,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && _userenv_dll >zero && _userenv_dll <fver(5,1,2600,2913)) {
 		NN("Update for Windows XP (KB319440)");
-		XX(p2+"WindowsXP-KB319440-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB319440-x86-ENU.exe"+a1);
 	}
 	if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,1581))
@@ -8654,7 +8658,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2505))
 	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))*/) {
 		NN("Update for Windows XP (KB842520)"); // KB842520 is replaced by KB898439 on SP2
-		XX(p1+"WindowsXP-KB842520-x86-ENU.exe"+a6);
+		XX(q3+"WindowsXP-KB842520-x86-ENU.exe"+a6);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2714))
