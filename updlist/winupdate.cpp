@@ -677,6 +677,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	fver _nwprovau_dll = getFileVer(System32+L"\\nwprovau.dll",&status);
 	fver _nwwks_dll    = getFileVer(System32+L"\\nwwks.dll",&status);
 	fver _oakley_dll   = getFileVer(System32+L"\\oakley.dll",&status);
+	fver _objsel_dll   = getFileVer(System32+L"\\objsel.dll",&status);
 	fver _occache_dll  = getFileVer(System32+L"\\occache.dll",&status);
 	fver _odbc32_dll   = getFileVer(System32+L"\\odbc32.dll",&status);
 	fver _odbcbcp_dll  = getFileVer(System32+L"\\odbcbcp.dll",&status);
@@ -9158,6 +9159,10 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	if( sp==2 && qfe && (sku & XP_ALL) && _netbt_sys >zero && _netbt_sys <fver(5,1,2600,2910)) {
 		NN("Update for Windows XP (KB919408)");
 		XX(q3+"WindowsXP-KB919408-x86-ENU.exe"+a1);
+	}
+	if( sp==2 && qfe && (sku & XP_ALL) && _objsel_dll >zero && _objsel_dll <fver(5,1,2600,2920)) {
+		NN("Update for Windows XP (KB919692)");
+		XX(q3+"WindowsXP-KB919692-x86-ENU.exe"+a1);
 	}
 	
 
