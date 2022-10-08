@@ -9828,10 +9828,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"WindowsXP-KB906681-x86-ENU.exe"+a1);
 	}*/
 	if(qfe) {
-		if((sp==1 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1735))
-		 /*||(sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2745))*/) {
-			NN("Update for Windows XP (KB906524)"); // KB906524 is replaced by KB968389(5,1,2600,3592) on SP2
-			XX(p1+"WindowsXP-KB906524-x86-ENU.exe"+a1);
+		/*if((sp==1 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1735))
+		 ||(sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2745))) {
+			NN("Update for Windows XP (KB906524)"); // KB906524 is replaced by KB920183
+			XX(q3+"WindowsXP-KB906524-x86-ENU.exe"+a1);
+		}*/
+		if((sp==1 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1851))
+		 /*||(sp==2 && qfe && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,2920))*/) {
+			NN("Update for Windows XP (KB920183)"); // KB920183 is replaced by KB968389(5,1,2600,3592) on SP2
+			XX(q3+"WindowsXP-KB920183-x86-ENU.exe"+a1);
 		}
 	} else {
 		if((sp==1 && (sku & XP_ALL) && _kerberos_dll>zero && _kerberos_dll<fver(5,1,2600,1701))
