@@ -14419,13 +14419,19 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB2835364)");
 		XX(p3+"windowsxp-kb2835364-x86-enu_b055260207a810f44e7d68c2b93a151d6f8d9691.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_TABLET) && (
+		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,2921))
+	  ||  ( _tipband_dll >zero && _tipband_dll <fver(1,7,2600,2921)) )){
+		NN("Update for Windows XP (KB920295)"); // KB920295 is replaced by KB955534
+		XX(q3+"WindowsXP-KB920295-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_TABLET) && (
 		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,3452))
 	  ||  ( _tipband_dll >zero && _tipband_dll <fver(1,7,2600,3452)) ))
 	 ||(sp==3 && qfe && (sku & XP_TABLET) && (
 		  ( _TabTip_exe  >zero && _TabTip_exe  <fver(1,7,2600,5685)) ))) {
 		NN("Update for Windows XP (KB955534)");
-		XX(p3+"WindowsXP-KB955534-v2-x86-ENU.exe"+a1);
+		XX(q4+"WindowsXP-KB955534-v2-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_TABLET) && _InkObj_dll >zero && _InkObj_dll <fver(2,7,2600,2508)) {
 		NN("Update for Windows XP (KB884861)");
