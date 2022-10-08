@@ -5651,6 +5651,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Windows XP COM+ Hotfix Rollup Package 14 (KB922668)");
 		XX(p2+"WindowsXP-KB922668-x86-ENU.exe"+a1);
 	}
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+						  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1892))
+					  ||  ( _rpcrt4_dll   >zero && _rpcrt4_dll   <fver(5,1,2600,1361))
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,1892)) ))
+	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+						  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,2999))       // replaced by KB897571(5,1,2600,3456)
+					  ||  ( _rpcss_dll    >zero && _rpcss_dll    <fver(5,1,2600,2999)) ))*/) { // replaced by KB956572(5,1,2600,3520)
+		NN("Update for Windows XP (KB919880)");
+		XX(q3+"WindowsXP-KB919880-x86-ENU.exe"+a1);
+	}
 	} else {
 		/*if((sp==1 && (sku & XP_ALL) && (
 							  ( _ole32_dll    >zero && _ole32_dll    <fver(5,1,2600,1619))
