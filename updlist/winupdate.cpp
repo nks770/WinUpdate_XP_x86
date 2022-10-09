@@ -5293,10 +5293,13 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Security Update for Windows XP (KB925902)");
 		XX(p2+"windowsxp-kb925902-x86-enu_a7b984afc7cec6e351d4f1d176db202492ac0e0f.exe"+a1);
 	}
-	if( sp==2 && qfe && (sku & XP_ALL) && (
-		 ( _authz_dll   >zero && _authz_dll   <fver(5,1,2600,3106)) )) {
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _authz_dll >zero && _authz_dll <fver(5,1,2600,2925)) {
+		NN("Update for Windows XP (KB920867)"); // KB920867 is replaced by KB934161
+		XX(q3+"WindowsXP-KB920867-x86-ENU.exe"+a1);
+	}*/
+	if( sp==2 && qfe && (sku & XP_ALL) && _authz_dll >zero && _authz_dll <fver(5,1,2600,3106)) {
 		NN("Update for Windows XP (KB934161)");
-		XX(p2+"WindowsXP-KB934161-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB934161-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && (sku & XP_ALL) && (
 		                  ( /*_secdrv_sys    >zero*/ _secdrv_sys_exist
