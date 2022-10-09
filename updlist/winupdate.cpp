@@ -7913,10 +7913,15 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB914028)"); // KB914028 is replaced by KB949483
 		XX(q3+"WindowsXP-KB914028-x86-ENU.exe"+a1);
 	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (
+		 ( _usbhub_sys   >zero && _usbhub_sys   <fver(5,1,2600,2980)) )) {
+		NN("Update for Windows XP (KB920875)"); // KB920875 is replaced by KB949483
+		XX(q3+"WindowsXP-KB920875-x86-ENU.exe"+a1);
+	}*/
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _usbhub_sys   >zero && _usbhub_sys   <fver(5,1,2600,3325)) )) {
 		NN("Update for Windows XP (KB949483)");
-		XX(p2+"WindowsXP-KB949483-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB949483-x86-ENU.exe"+a1);
 	}
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _usbehci_sys >zero && _usbehci_sys <fver(5,1,2600,3321))
