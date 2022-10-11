@@ -11636,7 +11636,12 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
 		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2754)) )) {
 		NN("Update for Windows XP (KB906473)"); // KB906473 is replaced by KB958215 (6,0,2900,3462)
-		XX(p2+"WindowsXP-KB906473-x86-ENU.exe"+a1);
+		XX(q3+"WindowsXP-KB906473-x86-ENU.exe"+a1);
+	}*/
+	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(6,0,0,0) && _iexplore_exe<fver(7,0,0,0)) && (
+		   ( _shdocvw_dll >zero && _shdocvw_dll <fver(6,0,2900,2936)) )) {
+		NN("Update for Windows XP (KB920982)"); // KB920982 is replaced by KB958215 (6,0,2900,3462)
+		XX(q3+"WindowsXP-KB920982-x86-ENU.exe"+a1);
 	}*/
 	if((sp==1 && (sku & XP_ALL) && ( (_browseui_dll>zero && _browseui_dll<fver(6,0,2800,1892))
 					  ||  (_shdocvw_dll>zero && _shdocvw_dll<fver(6,0,2800,1892)) ))
@@ -12669,7 +12674,7 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (_iexplore_exe>=fver(7,0,5730,11) && _iexplore_exe<fver(7,1,0,0))
 		&& _ieframe_dll>zero && _ieframe_dll<fver(7,0,6000,20696)) {
 		NN("Update for Internet Explorer 7 for Windows XP (KB906473)"); // IE7-KB906473 is probably replaced by IE7-KB958215
-		XX(p2+"IE7-WindowsXP-KB906473-v2-x86-ENU.exe"+a1);
+		XX(q3+"IE7-WindowsXP-KB906473-v2-x86-ENU.exe"+a1);
 	}*/
 	if( sp==2 && (sku & XP_ALL) && (_iexplore_exe>=fver(8,0,6001,18702) && _iexplore_exe<fver(8,1,0,0)) && (
 		/* GDR */
