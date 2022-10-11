@@ -8674,20 +8674,29 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB319440)");
 		XX(q3+"WindowsXP-KB319440-x86-ENU.exe"+a1);
 	}
-	if((sp==1 && qfe && (sku & XP_ALL) && (
+	/*if((sp==1 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,1581))
 	  ||  ( _atapi_sys_cache <fver(5,1,2600,1581)) ))
-	 /*||(sp==2 && qfe && (sku & XP_ALL) && (
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2505))
-	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))*/) {
-		NN("Update for Windows XP (KB842520)"); // KB842520 is replaced by KB898439 on SP2
+	  ||  ( _atapi_sys_cache <fver(5,1,2600,2505)) ))) {
+		NN("Update for Windows XP (KB842520)"); // KB842520 is replaced by KB920918
 		XX(q3+"WindowsXP-KB842520-x86-ENU.exe"+a6);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2714))
 	  ||  ( _atapi_sys_cache               <fver(5,1,2600,2714)) )) {
-		NN("Update for Windows XP (KB898439)");
-		XX(p2+"WindowsXP-KB898439-x86-ENU.exe"+a1);
+		NN("Update for Windows XP (KB898439)"); // KB898439 is replaced by KB920918
+		XX(q3+"WindowsXP-KB898439-x86-ENU.exe"+a1);
+	}*/
+	if((sp==1 && qfe && (sku & XP_ALL) && (
+		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,1864))
+	  ||  ( _atapi_sys_cache <fver(5,1,2600,1864)) ))
+	 ||(sp==2 && qfe && (sku & XP_ALL) && (
+		  ( _atapi_sys >zero && _atapi_sys <fver(5,1,2600,2939))
+	  ||  ( _atapi_sys_cache <fver(5,1,2600,2939)) ))) {
+		NN("Update for Windows XP (KB920918)");
+		XX(q3+"WindowsXP-KB920918-x86-ENU.exe"+a1);
 	}
 	if( sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _srchctls_dll >zero && _srchctls_dll <fver(1,0,0,5326))
