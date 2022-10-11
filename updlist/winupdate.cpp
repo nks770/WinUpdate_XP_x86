@@ -3941,10 +3941,14 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		XX(p2+"windowsxp-kb932168-x86-enu_646e8c2d535461396b8b53ce8fe04410327925a2.exe"+a1);
 	}
 	if(qfe) {
+		/*if( sp==2 && qfe && (sku & XP_ALL) && _sxs_dll>zero && _sxs_dll<fver(5,1,2600,2932)) {
+			NN("Update for Windows XP (KB921337)"); // KB921337 is replaced by KB943232
+			XX(q3+"WindowsXP-KB921337-x86-ENU.exe"+a1);
+		}*/
 		if((sp==2 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,3466))
 		 ||(sp==3 && qfe && (sku & XP_ALL) && _sxs_dll >zero && _sxs_dll <fver(5,1,2600,5699))) {
 			NN("Update for Windows XP (KB943232)");
-			XX(p3+"WindowsXP-KB943232-v2-x86-ENU.exe"+a1);
+			XX(q4+"WindowsXP-KB943232-v2-x86-ENU.exe"+a1);
 		}
 	} else {
 		if( sp==2 && (sku & XP_ALL) && _sxs_dll>zero && _sxs_dll<fver(5,1,2600,3019)) {
