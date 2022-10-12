@@ -7853,12 +7853,16 @@ void windowsUpdates(std::vector<std::string>* name, std::vector<std::string>* ex
 		NN("Update for Windows XP (KB969557)");
 		XX(p3+"WindowsXP-KB969557-x86-ENU.exe"+a1);
 	}
+	/*if( sp==2 && qfe && (sku & XP_ALL) && _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,2938)) {
+		NN("Update for Windows XP (KB921411)"); // KB921411 is replaced by KB948720
+		XX(q3+"WindowsXP-KB921411-x86-ENU.exe"+a1);
+	}*/
 	if((sp==2 && qfe && (sku & XP_ALL) && (
 		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,3374)) ))
 	 ||(sp==3 && qfe && (sku & XP_ALL) && (
 		  ( _setupapi_dll >zero && _setupapi_dll <fver(5,1,2600,5603)) ))) {
 		NN("Update for Windows XP (KB948720)");
-		XX(p3+"WindowsXP-KB948720-x86-ENU.exe"+a1);
+		XX(q4+"WindowsXP-KB948720-x86-ENU.exe"+a1);
 	}
 	/*if( sp==2 && qfe && (sku & XP_ALL) && (
 		 ( _usbehci_sys   >zero && _usbehci_sys   <fver(5,1,2600,2644)) )) {
